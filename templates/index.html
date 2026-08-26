@@ -6,7 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#141110">
 <link rel="manifest" href="/static/manifest.json">
-<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/static/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/static/ta-trame-icone-180.png">
 <title>Ta Trame</title>
 <style>
 /* Align — sobre, chaud, sans kitsch ésotérique.
@@ -30,25 +31,27 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden}
-/* Le fond de « Le jour » (et de toute la page) : EXACTEMENT le même que
-   l'écran d'accueil plein écran (.accueil-jour, plus bas) — même image,
-   même cadrage (55% 48%, le cœur doré du mandala), même voile en dégradé.
-   Décision de Martin (2026-08-24) après un essai la veille (2026-08-23) où
-   l'image, positionnée autrement (`top center`) puis réduite (`contain` sur
-   mobile pour éviter un rognage trop serré), avait fini presque invisible
-   sur mobile — pas ce qu'il voulait.
-   L'en-tête (.bandeau-marque, plus bas) N'EST PAS touché : il a sa propre
-   image ET sa propre `background-color:#141110` opaque, qui le protège déjà
-   entièrement de ce qu'il y a dessous. Aucune bande de transition n'est
-   donc nécessaire ici (elle l'était pour l'ancien fond `top center`, plus
-   pour celui-ci qui recouvre déjà tout l'écran en `cover`). */
+/* Le fond de « Le jour » (et de toute la page) : une TUILE répétée
+   (metier2.png, 1024×1024, motif conçu pour se raccorder en boucle), pas
+   une image unique recadrée en `cover` — Martin n'aimait plus le rendu
+   précédent (2026-08-26). Largeur de tuile fixée en px (pas en %) : une
+   taille de motif STABLE d'un appareil à l'autre, comme un vrai papier
+   peint — en pourcentage, la densité du motif changerait du tout au tout
+   entre mobile et bureau. Deux couches, chacune sa propre taille/répétition
+   (l'ordre des valeurs suit l'ordre des images) : le dégradé COUVRE tout
+   (`auto` = toute la boîte, jamais répété), la tuile, elle, se répète.
+   L'en-tête (.bandeau-marque, plus bas) N'EST PAS touché : sa propre image
+   (trame-bandeau.jpg) et sa propre `background-color:#141110` opaque le
+   protègent déjà entièrement de ce qu'il y a dessous. */
 body{
   background-color:var(--papier);
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
-    url('/static/img/metierAtisser1.png');
-  background-position:55% 48%; background-size:cover; background-repeat:no-repeat;
+    url('/static/img/metier2.png');
+  background-position:0 0, top left;
+  background-size:auto, 360px auto;
+  background-repeat:no-repeat, repeat;
   color:var(--encre); font-family:var(--sans);
   line-height:1.62; -webkit-font-smoothing:antialiased;
   padding:0 20px env(safe-area-inset-bottom); min-height:100vh;
