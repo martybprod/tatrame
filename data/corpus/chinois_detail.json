@@ -1,0 +1,31 @@
+{
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "La voix chinoise du jour — relation entre l'animal du jour et l'animal natal. Ton non-fataliste (pas de bon/mauvais jour). L'app injecte les noms d'animaux ; le texte décrit la dynamique.",
+  "relations": {
+    "choc": {
+      "en_bref": "Une journée qui te pousse dans l'autre sens, loin de ton rythme habituel.",
+      "miroir": "Ton rythme ne colle pas avec ce qui t'entoure aujourd'hui. Une conversation qui coince, un imprévu, une décision qui traîne et qui remonte d'un coup. Rien de dramatique, juste un grain de sable dans l'engrenage. Ce frottement qui t'agace un peu débloque souvent une chose immobile depuis trop longtemps.",
+      "geste": "Change d'angle avant de forcer. Si une porte résiste, cherche la fenêtre à côté. Décale un rendez-vous, prends l'autre chemin, laisse une réponse attendre une heure. La souplesse fait plus que la ténacité aujourd'hui."
+    },
+    "harmonie": {
+      "en_bref": "Le courant te porte aujourd'hui, l'entente vient sans effort.",
+      "miroir": "Les choses s'emboîtent aujourd'hui sans que tu aies à forcer. Quelqu'un comprend ce que tu veux dire avant que tu finisses ta phrase, un service s'échange, une entraide se propose. Ton énergie et celle des autres s'accordent un moment, et la coopération vient plus simplement.",
+      "geste": "Profites-en pour tendre la main en premier. Appelle quelqu'un que tu repousses depuis un moment, ou propose un vrai rendez-vous plutôt qu'un message. Ce qui se dit aujourd'hui a des chances d'être bien reçu, alors dis-le franchement."
+    },
+    "trine": {
+      "en_bref": "Une journée accordée à ton grain, où tout coule plus facilement.",
+      "miroir": "Ce que tu fais déjà bien te demande moins d'efforts aujourd'hui. Les mots viennent, les gestes s'enchaînent, une idée en amène une autre sans que tu la cherches. Tu es sur un terrain qui te ressemble, où ton énergie trouve un chemin tout tracé plutôt qu'un obstacle.",
+      "geste": "Lance ce que tu remettais à plus tard, la tâche créative, la conversation à avoir, le projet mis de côté. Le jour porte l'élan plus que l'analyse, alors avance sans trop réfléchir à chaque étape."
+    },
+    "nuisance": {
+      "en_bref": "De petites choses accrochent aujourd'hui, sans que rien de grave se joue.",
+      "miroir": "Ce sont des détails qui accrochent aujourd'hui. Un message mal compris, un objet égaré, un rendez-vous qui glisse d'une heure. Rien qui pèse, mais assez pour t'agacer si tu t'y arrêtes trop. Ça demande juste un peu plus de patience pour ne pas s'accumuler.",
+      "geste": "Vérifie deux fois avant d'envoyer un message important, et laisse un peu de mou dans ton horaire. Si un détail t'irrite, respire avant de répondre. La plupart de ces accrocs se dissolvent d'ici demain."
+    },
+    "identique": {
+      "en_bref": "Une journée en miroir, où ce qui te caractérise ressort plus fort.",
+      "miroir": "Tu te ressembles plus que d'habitude aujourd'hui. Tes réflexes, tes goûts, ta manière de trancher, tout est amplifié, le meilleur comme les tics les plus connus. Les gens qui te connaissent bien te reconnaissent tout de suite. C'est une occasion de te regarder tel que tu es, sans filtre.",
+      "geste": "Observe ce que tu fais aujourd'hui sans le juger tout de suite, le bon comme le tic agaçant. C'est rarement aussi clair. Note une chose que tu remarques chez toi, juste pour la garder en tête."
+    }
+  }
+}

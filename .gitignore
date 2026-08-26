@@ -1,0 +1,32 @@
+# ── Environnement Python ──
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# ── macOS ──
+.DS_Store
+
+# ── Secrets : JAMAIS dans git (SECRET_KEY, ADMIN_PASSWORD, clés API…) ──
+# En prod, ces valeurs viennent des variables d'environnement Coolify, pas de ce fichier.
+.env
+.env.*
+
+# ── État local Claude Code (personnel, pas du code projet) ──
+.claude/
+
+# ── Données de référence lourdes (statiques, téléchargeables/régénérables) ──
+data/geo/
+data/ephem/
+
+# ── Données utilisateur générées à l'exécution (profils = données personnelles) ──
+data/profils/
+
+# ── Secret des notifications push : régénérer invaliderait tous les abonnements ──
+data/vapid/
+# ── Abonnements et préférences de notifications (données utilisateur) ──
+data/notifications/
+
+# Extraction de textes sources pour distillation (textes sous copyright, hors produit)
+_distillation/sources/

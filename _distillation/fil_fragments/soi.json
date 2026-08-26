@@ -1,0 +1,94 @@
+{
+  "_note": "Fragment domaine soi (maison I — identité, mentalité, valeur de soi). Sources : cartes_de_concepts.md §19 Mindset (Dweck), §20 The Gifts of Imperfection (Brown), §12 Daring Greatly (Brown), §1 Atomic Habits §C identité (Clear). Concepts repris, jamais la prose des livres. Déculpabilisation constante : la mentalité fixe, le perfectionnisme, la honte sont traités comme du conditionnement appris, jamais comme une faute — vocabulaire courant, aucun nom de méthode. PAS de clé phase (soi n'est pas un domaine à processus, §3 de la spéc). Volume : 15 clés (générique + fluide/tension + 4 planètes pertinentes × 3 classes — soleil, saturne, mars, pluton, seules planètes qui recolorent vraiment l'identité sans devenir arbitraires). Plus bas que la cible 28-33, assumé honnêtement comme pour echanges/communaute/ressources : au-delà de ces quatre, aucune autre planète ne parle spécifiquement de qui-je-suis plutôt que d'un autre domaine — la règle d'or de volume (§3) interdit d'en rajouter pour faire du nombre. Les autres planètes retombent sur soi_fluide / soi_tension, ce qui est le fonctionnement prévu.",
+
+  "soi": {
+    "source_livre": "d'après les concepts de Dweck et Clear, sur l'identité et le conditionnement",
+    "themes": ["identite", "mentalite", "conditionnement"],
+    "miroir": "Aujourd'hui, une situation ordinaire se transforme vite en verdict sur qui tu es, un mot de travers pris comme une preuve plutôt que comme un moment.",
+    "geste": "Note une chose qui t'a chiffonné aujourd'hui en commençant par « je suis en train de », pas par « je suis »."
+  },
+  "soi_fluide": {
+    "source_livre": "d'après les concepts de Dweck, sur la mentalité de croissance",
+    "themes": ["curiosite", "apprentissage", "confiance"],
+    "miroir": "Aujourd'hui, essayer quelque chose de nouveau te coûte moins cher que d'habitude, la peur du jugement recule et la curiosité prend sa place.",
+    "geste": "Lance une chose que tu ne sais pas encore faire, sans attendre de la réussir du premier coup."
+  },
+  "soi_tension": {
+    "source_livre": "d'après les concepts de Brown, sur la comparaison et la pénurie",
+    "themes": ["comparaison", "valeur", "pression"],
+    "miroir": "Aujourd'hui, tu te compares et tu sors perdant du calcul presque à chaque fois, un chiffre qui n'existe nulle part ailleurs que dans ta tête.",
+    "geste": "Ferme une heure entière l'écran ou la situation qui alimente la comparaison, et observe ce qui reste de toi sans elle."
+  },
+  "soi_transit_soleil_conjonction": {
+    "source_livre": "d'après les concepts de Brown, sur le courage de se montrer",
+    "themes": ["visibilite", "authenticite", "courage"],
+    "miroir": "Aujourd'hui, on te voit un peu plus que d'habitude, et une partie de toi a envie de se montrer entière plutôt qu'à moitié.",
+    "geste": "Dis une chose vraie sur toi à quelqu'un, sans l'adoucir ni la justifier d'avance."
+  },
+  "soi_transit_soleil_sextile-trigone": {
+    "source_livre": "d'après les concepts de Brown, sur l'authenticité comme pratique",
+    "themes": ["authenticite", "aisance", "affirmation"],
+    "miroir": "Aujourd'hui, être toi-même demande moins d'efforts que d'habitude, les mots sortent sans détour et sans répétition intérieure.",
+    "geste": "Occupe en entier une place que tu prends d'habitude à moitié, une parole, une réunion, une photo."
+  },
+  "soi_transit_soleil_carre-opposition": {
+    "source_livre": "d'après les concepts de Brown, sur le perfectionnisme comme bouclier",
+    "themes": ["jugement", "exposition", "perfectionnisme"],
+    "miroir": "Aujourd'hui, le regard des autres pèse plus que d'habitude, et tu ajustes ce que tu montres avant même qu'on ait eu le temps de te juger.",
+    "geste": "Montre-toi une fois sans corriger d'avance ce que tu vas dire ou porter."
+  },
+  "soi_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Dweck et Clear, sur les règles héritées et l'identité rigide",
+    "themes": ["conditionnement", "exigence", "heritage"],
+    "miroir": "Aujourd'hui, une vieille règle sur qui tu dois être se rappelle à toi, sérieuse et exigeante, comme un examen permanent.",
+    "geste": "Écris cette règle en une phrase, puis demande-toi qui te l'a transmise en premier."
+  },
+  "soi_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de Clear, sur les petites preuves qui construisent une identité",
+    "themes": ["constance", "construction", "discipline"],
+    "miroir": "Aujourd'hui, un effort discipliné construit quelque chose de solide en toi, sans qu'il y ait besoin de le prouver à qui que ce soit.",
+    "geste": "Fais un seul geste minuscule et répétable, dans le sens de qui tu veux devenir."
+  },
+  "soi_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Dweck, sur l'échec pris pour une identité",
+    "themes": ["echec", "verdict", "valeur"],
+    "miroir": "Aujourd'hui, une limite ou un refus se transforme vite en verdict sur ta valeur entière, plutôt qu'en simple information à lire.",
+    "geste": "Sépare sur une feuille ce que tu as raté aujourd'hui de qui tu es, deux colonnes, pas une seule."
+  },
+  "soi_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de Brown, sur la vulnérabilité comme courage",
+    "themes": ["courage", "risque", "action"],
+    "miroir": "Aujourd'hui, une occasion d'oser se présente, et le risque d'échouer te paraît soudain moins lourd que celui de ne rien tenter.",
+    "geste": "Tente la chose que tu remets depuis un moment, même sans garantie que ça marche."
+  },
+  "soi_transit_mars_sextile-trigone": {
+    "source_livre": "d'après les concepts de Brown, sur le courage ordinaire de dire qui on est",
+    "themes": ["affirmation", "aisance", "limites"],
+    "miroir": "Aujourd'hui, t'affirmer demande moins d'énergie que d'habitude, dire non ou dire ce que tu penses sort presque naturellement.",
+    "geste": "Affirme une préférence à voix haute aujourd'hui, sans l'entourer d'excuses."
+  },
+  "soi_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Brown, sur les réflexes de défense face à la honte",
+    "themes": ["reaction", "conflit", "defense"],
+    "miroir": "Aujourd'hui, une remarque te touche plus fort que d'habitude, et l'envie de riposter ou de te fermer arrive avant que tu aies choisi.",
+    "geste": "Avant de répondre à l'autre, nomme pour toi-même ce que tu ressens, en un seul mot."
+  },
+  "soi_transit_pluton_conjonction": {
+    "source_livre": "d'après les concepts de Brown, sur la honte qui se soigne en la racontant",
+    "themes": ["honte", "profondeur", "recit"],
+    "miroir": "Aujourd'hui, quelque chose d'ancien et enfoui sur qui tu es remonte à la surface, plus fort et plus net que d'habitude.",
+    "geste": "Nomme cette chose à une personne qui a gagné le droit de l'entendre, même en une phrase."
+  },
+  "soi_transit_pluton_sextile-trigone": {
+    "source_livre": "d'après les concepts de Clear et Brown, sur l'identité qui peut s'assouplir",
+    "themes": ["transformation", "souplesse", "liberation"],
+    "miroir": "Aujourd'hui, une vieille version de toi peut se relâcher un peu sans drame, presque sans que tu aies besoin de forcer quoi que ce soit.",
+    "geste": "Laisse tomber, ne serait-ce qu'une heure, une étiquette que tu portes depuis longtemps sur toi-même."
+  },
+  "soi_transit_pluton_carre-opposition": {
+    "source_livre": "d'après les concepts de Brown, sur la honte qui prospère dans le silence",
+    "themes": ["honte", "intensite", "silence"],
+    "miroir": "Aujourd'hui, une honte ancienne remonte avec plus de force que d'habitude, et le réflexe est de te cacher ou de l'anesthésier.",
+    "geste": "Mets un mot précis sur ce que tu ressens, même seul, avant de chercher à l'éteindre."
+  }
+}

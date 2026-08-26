@@ -1,0 +1,38 @@
+# Ce qui ne doit JAMAIS entrer dans l'image conteneur.
+#
+# Deux buts : garder le contexte de build léger, et surtout empêcher les données
+# LOCALES (profils de test, secrets, éphémérides, géo) de se retrouver dans l'image —
+# les données de référence sont reconstruites au build (voir Dockerfile), les données
+# utilisateur vivent dans un volume persistant, jamais dans l'image.
+
+# Environnement Python local
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Historique git et état local
+.git/
+.gitignore
+.claude/
+.DS_Store
+
+# Secrets — jamais dans l'image (fournis par variables d'env Coolify)
+.env
+
+# Données de référence : RECONSTRUITES au build (éphémérides JPL + géo GeoNames)
+data/ephem/
+data/geo/
+
+# Données utilisateur : vivent dans le VOLUME persistant, jamais dans l'image
+data/profils/
+data/contacts/
+data/vapid/
+data/notifications/
+
+# Gros fichiers sources / de travail hors produit
+_distillation/
+*.pdf
+book_OPS_*.txt
+liberez_creativite_extrait.txt
+tests/

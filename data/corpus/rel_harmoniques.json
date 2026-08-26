@@ -1,0 +1,17 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "La méta-règle numérologique posée en surplomb de la paire de Cap (voir rel_nombres.json) : identiques, opposés (1/9, 2/8, 3/7, 4/6), écart de deux, ou aucun de ces cas. Sélection déterministe dans moteur/relations.py::_harmonique.",
+
+ "identiques": {
+  "note": "Le même Cap des deux côtés. Vous comprenez tout de suite ce qui presse l'autre, parce que c'est exactement ce qui vous presse aussi."
+ },
+ "opposes": {
+  "note": "Vos deux Cap se tiennent aux deux bouts de la roue. L'attirance peut être forte — chacun a, sans effort, ce que l'autre cherche à construire en lui-même."
+ },
+ "ecart_deux": {
+  "note": "Un écart de deux entre vos Cap. Assez proche pour se comprendre vite, assez différent pour ne pas tourner en rond ensemble."
+ },
+ "autre": {
+  "note": ""
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "id": "c-msy1m1f5",
+ "nom_affiche": "Jimmy Rancourt",
+ "prenoms_nom": [
+  "Jimmy",
+  "Rancourt"
+ ],
+ "naissance": {
+  "annee": 1979,
+  "mois": 4,
+  "jour": 30
+ },
+ "fold": 0,
+ "contact": true,
+ "complet": false
+}

@@ -1,0 +1,364 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le croisement des deux Cap (chemin de vie) — l'axe central de la lecture numérologique d'un lien. Clé canonique 'min-max'. Les paires mixtes portent deux perspectives (vers_min/vers_max) : la même paire se vit différemment selon le côté où on se trouve. Vocabulaire ancré sur data/corpus/nombres_detail.json::cap (en_un_mot), jamais recopié mot pour mot.",
+
+ "1-1": {
+  "en_bref": "Deux initiatives dans la même pièce, qui veulent démarrer chacune à sa façon.",
+  "meme": "Vous avez tous les deux besoin de décider seuls, et ça se télescope vite : deux personnes qui veulent prendre les devants au même moment.",
+  "atouts": "À deux, rien ne traîne. Une idée devient un geste sans détour.",
+  "frictions": "Le désaccord se joue sur QUI décide, pas sur quoi décider.",
+  "conditions": "Se répartir des terrains où chacun décide sans l'autre dans les jambes."
+ },
+ "1-2": {
+  "en_bref": "L'un fonce, l'autre ajuste — deux tempos qui peuvent se compléter ou s'agacer.",
+  "vers_min": "Face à un 2, le 1 sent un frein : tout ce temps passé à soupeser lui semble retenir l'élan.",
+  "vers_max": "Face à un 1, le 2 se sent bousculé, comme si on tranchait avant d'avoir fini d'écouter tout le monde.",
+  "atouts": "Le 1 avance, le 2 recolle les morceaux derrière : la décision tient mieux à deux.",
+  "frictions": "La vitesse de l'un lit comme de l'impatience, la prudence de l'autre comme de l'hésitation.",
+  "conditions": "Le 1 annonce avant d'agir, le 2 donne un délai clair plutôt qu'un délai flou."
+ },
+ "1-3": {
+  "en_bref": "Deux façons de sortir de soi : l'un par l'action, l'autre par la parole.",
+  "vers_min": "Face à un 3, le 1 s'impatiente parfois : tant de mots avant qu'une chose ne bouge.",
+  "vers_max": "Face à un 1, le 3 se sent parfois pressé de conclure avant d'avoir fini de raconter.",
+  "atouts": "L'un fait, l'autre raconte ce qui se fait : ensemble, l'histoire ET le mouvement existent.",
+  "frictions": "Le silence de l'un et le débordement de l'autre se lisent mal, chacun de son côté.",
+  "conditions": "Donner à l'un le temps de dire, à l'autre le droit d'agir sans tout expliquer d'abord."
+ },
+ "1-4": {
+  "en_bref": "Le premier pas et la fondation : deux temps différents d'un même chantier.",
+  "vers_min": "Face à un 4, le 1 peut trouver le rythme trop lent pour son envie de démarrer déjà.",
+  "vers_max": "Face à un 1, le 4 voit un chantier commencé sans plan, et ça l'inquiète un peu.",
+  "atouts": "Le 1 lance, le 4 construit dessus. Ce qui commence vite finit par tenir.",
+  "frictions": "L'un veut avancer, l'autre veut d'abord vérifier — les deux ont raison, au mauvais moment.",
+  "conditions": "Convenir d'un ordre : un galop d'essai du 1, puis les fondations du 4."
+ },
+ "1-5": {
+  "en_bref": "Deux élans, mais qui ne pointent pas dans la même direction.",
+  "vers_min": "Face à un 5, le 1 sent que le cap change trop souvent pour construire quelque chose de suivi.",
+  "vers_max": "Face à un 1, le 5 se sent parfois enfermé dans une direction fixée trop vite.",
+  "atouts": "Ensemble, rien ne s'endort : l'un pousse à commencer, l'autre à ne jamais se figer.",
+  "frictions": "Le besoin de décider de l'un rencontre le besoin de tout garder ouvert de l'autre.",
+  "conditions": "Le 1 fixe le point de départ, le 5 garde la main sur la route pour y arriver."
+ },
+ "1-6": {
+  "en_bref": "L'un se tourne vers lui-même, l'autre vers l'ensemble du groupe.",
+  "vers_min": "Face à un 6, le 1 peut sentir qu'on lui demande de ralentir pour prendre soin d'un détail qu'il n'avait pas vu.",
+  "vers_max": "Face à un 1, le 6 s'inquiète parfois qu'on avance sans regarder qui reste derrière.",
+  "atouts": "Le 1 ouvre la voie, le 6 s'assure que personne ne se perd en chemin.",
+  "frictions": "L'un veut avancer vite, l'autre veut avancer ensemble : ce n'est pas le même pas.",
+  "conditions": "Nommer clairement qui porte la décision et qui porte le soin du groupe."
+ },
+ "1-7": {
+  "en_bref": "Décider vite d'un côté, douter longtemps de l'autre.",
+  "vers_min": "Face à un 7, le 1 peut trouver que la question se retourne trop de fois avant d'agir.",
+  "vers_max": "Face à un 1, le 7 sent parfois qu'on tourne la page sans lui laisser le temps de creuser.",
+  "atouts": "Le 1 empêche le 7 de tourner en rond, le 7 empêche le 1 de se tromper vite.",
+  "frictions": "L'un vit le doute de l'autre comme une hésitation, l'autre vit la vitesse comme de la légèreté.",
+  "conditions": "Fixer un temps de réflexion limité, connu d'avance des deux côtés."
+ },
+ "1-8": {
+  "en_bref": "Deux tempéraments qui veulent tous les deux tenir les rênes.",
+  "vers_min": "Face à un 8, le 1 peut sentir le poids d'une autorité qui ne lui laisse pas toujours la main.",
+  "vers_max": "Face à un 1, le 8 voit parfois une décision prise sans mesurer ce qu'elle engage vraiment.",
+  "atouts": "Le 1 lance le mouvement, le 8 lui donne l'ampleur et la portée.",
+  "frictions": "Deux façons de vouloir commander se cognent plus souvent qu'elles ne se relaient.",
+  "conditions": "Se donner des rôles distincts : qui initie, qui pèse les conséquences."
+ },
+ "1-9": {
+  "en_bref": "Deux bouts du cercle : le geste d'un côté, la vue d'ensemble de l'autre.",
+  "vers_min": "Face à un 9, le 1 peut se sentir freiné par des considérations qui dépassent la situation immédiate.",
+  "vers_max": "Face à un 1, le 9 voit parfois une décision prise sans tenir compte de tout ce qui est en jeu autour.",
+  "atouts": "Une forte attirance, souvent : chacun a ce que l'autre n'a pas encore trouvé en lui-même.",
+  "frictions": "L'urgence de l'un et la largeur de vue de l'autre demandent un vrai pont pour se rejoindre.",
+  "conditions": "Se donner le temps de construire ce pont plutôt que de forcer l'accord tout de suite."
+ },
+
+ "2-2": {
+  "en_bref": "Deux personnes attentives aux mêmes détails, au même moment.",
+  "meme": "Vous sentez les mêmes écarts, les mêmes silences de trop — une compréhension immédiate, mais personne pour trancher quand il faut trancher.",
+  "atouts": "Rien ne passe inaperçu à deux : l'accord se cherche avec soin, des deux côtés.",
+  "frictions": "Chacun attend que l'autre fasse le premier pas, et l'attente peut durer.",
+  "conditions": "Se donner le droit, à tour de rôle, de proposer sans attendre l'accord de l'autre."
+ },
+ "2-3": {
+  "en_bref": "L'un sent les nuances, l'autre les met en mots.",
+  "vers_min": "Face à un 3, le 2 peut se sentir débordé par tout ce qui sort, avant d'avoir fini de le peser.",
+  "vers_max": "Face à un 2, le 3 sent parfois qu'on freine ce qu'il a envie de dire tout haut.",
+  "atouts": "Ce que le 2 perçoit, le 3 sait le formuler : à deux, rien ne reste tu.",
+  "frictions": "La prudence de l'un et la spontanéité de l'autre ne marchent pas toujours au même pas.",
+  "conditions": "Laisser le 3 dire d'abord, le 2 ajuster ensuite — pas l'inverse."
+ },
+ "2-4": {
+  "en_bref": "Deux tempéraments patients, qui préfèrent construire lentement et bien.",
+  "vers_min": "Face à un 4, le 2 peut sentir une rigidité là où il cherchait surtout de la souplesse.",
+  "vers_max": "Face à un 2, le 4 voit parfois une hésitation là où il attendait une base solide.",
+  "atouts": "Aucun des deux ne brusque rien : ce qui se construit tient dans la durée.",
+  "frictions": "L'un veut ajuster en continu, l'autre veut fixer une fois pour toutes.",
+  "conditions": "Convenir d'un moment pour revoir les choses, plutôt que de tout ajuster ou tout figer d'un coup."
+ },
+ "2-5": {
+  "en_bref": "L'un cherche l'équilibre, l'autre cherche le changement.",
+  "vers_min": "Face à un 5, le 2 peut avoir l'impression que rien ne reste assez longtemps en place pour être ajusté.",
+  "vers_max": "Face à un 2, le 5 sent parfois qu'on cherche à le retenir plutôt qu'à le suivre.",
+  "atouts": "Le 2 empêche le 5 de tout casser en changeant, le 5 empêche le 2 de s'enliser.",
+  "frictions": "La stabilité recherchée par l'un peut ressembler, pour l'autre, à une cage.",
+  "conditions": "Le 5 prévient avant de changer de direction, le 2 accepte de ne pas tout contrôler."
+ },
+ "2-6": {
+  "en_bref": "Deux tempéraments tournés vers l'autre, qui ajustent et qui soignent.",
+  "vers_min": "Face à un 6, le 2 peut sentir un poids : celui de veiller sur tout un ensemble, pas seulement sur l'accord entre deux.",
+  "vers_max": "Face à un 2, le 6 trouve souvent un allié naturel pour sentir ce qui ne va pas.",
+  "atouts": "Une entente qui se fait presque sans mots — les deux visent la même justesse.",
+  "frictions": "À force de veiller l'un sur l'autre, personne ne dit ce dont il a besoin pour lui.",
+  "conditions": "Se rappeler, de temps en temps, de demander plutôt que de deviner."
+ },
+ "2-7": {
+  "en_bref": "L'un ressent les écarts, l'autre les questionne jusqu'au fond.",
+  "vers_min": "Face à un 7, le 2 peut se sentir dépassé par des questions qui n'en finissent pas.",
+  "vers_max": "Face à un 2, le 7 sent parfois qu'on cherche l'accord avant d'avoir compris le fond du problème.",
+  "atouts": "Le 2 apaise ce que le 7 retourne trop longtemps ; le 7 affine ce que le 2 sent sans le nommer.",
+  "frictions": "Le besoin d'harmonie de l'un peut sembler fuir la question que l'autre veut creuser.",
+  "conditions": "Accepter que la question se pose avant que l'accord se fasse."
+ },
+ "2-8": {
+  "en_bref": "L'accord discret d'un côté, le poids des choses de l'autre.",
+  "vers_min": "Face à un 8, le 2 peut se sentir petit devant une énergie qui pèse plus fort que la sienne.",
+  "vers_max": "Face à un 2, le 8 sent parfois qu'on hésite là où lui voudrait juste avancer.",
+  "atouts": "Le 2 humanise ce que le 8 construit ; le 8 donne de l'assise à ce que le 2 propose.",
+  "frictions": "L'un cherche l'équilibre entre les personnes, l'autre l'échelle des choses — deux mesures différentes.",
+  "conditions": "Le 8 ralentit pour écouter, le 2 ose dire quand quelque chose ne va pas."
+ },
+ "2-9": {
+  "en_bref": "Un lien de fond, entre le souci du détail et le souci de tout.",
+  "vers_min": "Face à un 9, le 2 peut se sentir loin, comme si ses ajustements de tous les jours pesaient peu face à la vue d'ensemble.",
+  "vers_max": "Face à un 2, le 9 trouve souvent une écoute rare, précise, attentive à ce qui se joue vraiment.",
+  "atouts": "Le 2 ancre le 9 dans le concret, le 9 donne du sens à ce que le 2 fait au jour le jour.",
+  "frictions": "Le petit et le grand se perdent parfois de vue, chacun pris dans sa propre échelle.",
+  "conditions": "Se raconter régulièrement où chacun en est, pour garder les deux échelles reliées."
+ },
+
+ "3-3": {
+  "en_bref": "Deux personnes qui ont besoin de faire sortir ce qu'elles portent.",
+  "meme": "Vous parlez la même langue tout de suite, et la conversation peut vite déborder — personne pour écouter en dernier.",
+  "atouts": "Rien ne reste coincé dedans : tout se dit, tout se joue, tout se partage.",
+  "frictions": "Deux personnes qui veulent raconter en même temps finissent par ne plus s'écouter.",
+  "conditions": "Se passer la parole consciemment, comme un objet qu'on se tend."
+ },
+ "3-4": {
+  "en_bref": "L'un a besoin de dire, l'autre a besoin que ça tienne.",
+  "vers_min": "Face à un 4, le 3 peut sentir qu'on met un cadre là où il cherchait juste à s'exprimer librement.",
+  "vers_max": "Face à un 3, le 4 voit parfois beaucoup d'idées et peu de suite dans les idées.",
+  "atouts": "Le 3 apporte la matière, le 4 lui donne une forme qui dure.",
+  "frictions": "L'un se sent bridé, l'autre se sent débordé — souvent au même moment.",
+  "conditions": "Laisser le 3 dire sans filtre d'abord, trier ensemble ensuite."
+ },
+ "3-5": {
+  "en_bref": "Deux énergies qui aiment bouger, mais pas dans le même sens.",
+  "vers_min": "Face à un 5, le 3 peut avoir du mal à finir une histoire avant que l'autre soit déjà ailleurs.",
+  "vers_max": "Face à un 3, le 5 sent parfois qu'on tourne autour du sujet plutôt que d'avancer.",
+  "atouts": "L'ennui n'a pas sa place : l'un raconte, l'autre explore, à deux ça ne s'arrête pas.",
+  "frictions": "Beaucoup de mouvement, mais rarement dans la même direction au même moment.",
+  "conditions": "Choisir ensemble UNE direction avant de partir, plutôt que d'en suivre chacun une."
+ },
+ "3-6": {
+  "en_bref": "L'un s'exprime, l'autre veille à ce que tout le monde aille bien.",
+  "vers_min": "Face à un 6, le 3 peut sentir qu'on le rappelle à l'ordre juste au moment où il se lâchait.",
+  "vers_max": "Face à un 3, le 6 s'inquiète parfois de ce qui est dit sans y avoir réfléchi avant.",
+  "atouts": "Le 3 égaye ce que le 6 protège avec sérieux ; le 6 donne un cadre où le 3 peut se lâcher sans dommage.",
+  "frictions": "La légèreté de l'un peut sembler de l'insouciance à l'autre, qui porte plus lourd.",
+  "conditions": "Le 6 dit ce qui l'inquiète sans couper court, le 3 entend sans se sentir jugé."
+ },
+ "3-7": {
+  "en_bref": "Deux bouts opposés du cercle : dire tout haut, ou chercher tout seul.",
+  "vers_min": "Face à un 7, le 3 peut sentir un mur : trop de silence, trop de retenue avant de parler.",
+  "vers_max": "Face à un 3, le 7 sent parfois une exposition qu'il n'a pas demandée, tout mis sur la table trop vite.",
+  "atouts": "Une forte attirance, souvent : chacun cherche en secret ce que l'autre fait sans effort.",
+  "frictions": "Le besoin de dire de l'un et le besoin de garder pour soi de l'autre demandent un vrai pont.",
+  "conditions": "Se laisser du temps, sans forcer ni le silence ni la parole de l'autre."
+ },
+ "3-8": {
+  "en_bref": "L'expression légère d'un côté, le poids des choses de l'autre.",
+  "vers_min": "Face à un 8, le 3 peut se sentir jugé sur des résultats plutôt qu'écouté sur des idées.",
+  "vers_max": "Face à un 3, le 8 voit parfois de l'énergie qui se disperse au lieu de se concentrer.",
+  "atouts": "Le 3 rend vivant ce que le 8 construit, le 8 donne du poids à ce que le 3 imagine.",
+  "frictions": "L'un cherche à faire sortir, l'autre cherche à faire tenir — deux buts, un même chantier.",
+  "conditions": "Donner un espace pour créer sans contrainte, un autre pour concrétiser sans presser."
+ },
+ "3-9": {
+  "en_bref": "Deux façons de sortir de soi : par le récit, par le lien à tout.",
+  "vers_min": "Face à un 9, le 3 peut sentir sa parole prise dans quelque chose de plus grand que lui.",
+  "vers_max": "Face à un 3, le 9 trouve souvent une voix pour dire ce que lui-même sent sans toujours le formuler.",
+  "atouts": "Le 3 donne une forme concrète à ce que le 9 ressent en grand angle.",
+  "frictions": "Le détail qui amuse l'un peut sembler futile face aux enjeux que porte l'autre.",
+  "conditions": "Le 9 laisse une place au léger, le 3 laisse une place au fond."
+ },
+
+ "4-4": {
+  "en_bref": "Deux personnes qui veulent que les choses tiennent, vraiment.",
+  "meme": "Vous construisez de la même façon, pierre après pierre — solide, mais parfois lent à changer de plan quand il le faudrait.",
+  "atouts": "Ce qui se bâtit à deux dure : rien de fragile, rien de pressé.",
+  "frictions": "Deux avis fermes sur la bonne façon de faire peuvent se figer face à face.",
+  "conditions": "Prévoir, dès le départ, comment on révise le plan sans perdre la face."
+ },
+ "4-5": {
+  "en_bref": "L'un veut que ça tienne, l'autre veut que ça bouge.",
+  "vers_min": "Face à un 5, le 4 peut avoir l'impression que rien n'est jamais assez fixé pour être solide.",
+  "vers_max": "Face à un 4, le 5 sent parfois un cadre qui se resserre plus qu'il ne soutient.",
+  "atouts": "Le 4 empêche le 5 de tout emporter avec lui, le 5 empêche le 4 de s'enraciner trop tôt.",
+  "frictions": "Ce que l'un appelle prudence, l'autre l'appelle immobilisme, et inversement.",
+  "conditions": "Fixer ce qui doit rester stable, laisser le reste ouvert au changement."
+ },
+ "4-6": {
+  "en_bref": "Deux nombres qui veulent que ça marche vraiment. Ce sont les deux bouts opposés du cercle, malgré ce point commun.",
+  "vers_min": "Face à un 6, le 4 peut sentir qu'on lui demande de veiller sur plus de choses qu'il ne peut solidement tenir.",
+  "vers_max": "Face à un 4, le 6 voit parfois une structure qui oublie l'humain qu'elle est censée porter.",
+  "atouts": "Une forte attirance, souvent : chacun tient ce que l'autre cherche à préserver.",
+  "frictions": "La structure de l'un et le souci du groupe de l'autre se heurtent quand il faut choisir.",
+  "conditions": "Se rappeler que la structure sert les gens, pas l'inverse — et se le dire à voix haute."
+ },
+ "4-7": {
+  "en_bref": "L'un bâtit du concret, l'autre creuse dans l'abstrait.",
+  "vers_min": "Face à un 7, le 4 peut trouver que trop de questions retardent un chantier bien avancé.",
+  "vers_max": "Face à un 4, le 7 voit parfois une solidité qui n'a jamais vraiment été questionnée.",
+  "atouts": "Le 4 donne une forme à ce que le 7 comprend en profondeur.",
+  "frictions": "Le concret de l'un et l'abstrait de l'autre demandent un effort réel de traduction.",
+  "conditions": "Le 7 dit à quoi sert sa question, le 4 accepte de ne pas tout avoir vérifié d'avance."
+ },
+ "4-8": {
+  "en_bref": "Deux nombres qui savent construire à grande échelle, chacun à sa manière.",
+  "vers_min": "Face à un 8, le 4 peut se sentir dépassé par un rythme qui va plus vite que sa méthode.",
+  "vers_max": "Face à un 4, le 8 voit parfois une prudence qui freine une ambition qu'il pousse depuis longtemps.",
+  "atouts": "Le 4 pose des bases solides, le 8 les fait grandir jusqu'à leur pleine mesure.",
+  "frictions": "La patience de l'un et l'impatience de l'autre se disputent le même chantier.",
+  "conditions": "S'accorder sur un rythme commun, ni trop lent, ni trop pressé."
+ },
+ "4-9": {
+  "en_bref": "L'un tient le concret, l'autre voit large.",
+  "vers_min": "Face à un 9, le 4 peut se sentir tiré vers des considérations qui dépassent le chantier immédiat.",
+  "vers_max": "Face à un 4, le 9 sent parfois qu'on se limite à ce qui est là, sans regarder plus loin.",
+  "atouts": "Le 4 rend possible ce que le 9 imagine à grande échelle.",
+  "frictions": "L'échelle du quotidien et l'échelle du grand ensemble ne se parlent pas toujours facilement.",
+  "conditions": "Le 9 explique le pourquoi, le 4 propose le comment — dans cet ordre."
+ },
+
+ "5-5": {
+  "en_bref": "Deux personnes qui ont besoin de bouger pour se sentir vivantes.",
+  "meme": "Vous comprenez tout de suite le besoin de changer d'air — mais rien n'oblige personne à rester, et ça peut se sentir.",
+  "atouts": "Aucun des deux ne retient l'autre : la liberté circule des deux côtés.",
+  "frictions": "Sans un minimum de terrain commun, chacun peut finir par filer de son côté.",
+  "conditions": "Choisir ensemble un ou deux points fixes, même petits, pour garder un fil."
+ },
+ "5-6": {
+  "en_bref": "L'un a besoin de large, l'autre a besoin d'un port.",
+  "vers_min": "Face à un 6, le 5 peut se sentir retenu par un souci d'ordre et de stabilité qui n'est pas le sien.",
+  "vers_max": "Face à un 5, le 6 s'inquiète parfois de ce qui n'est jamais fixé assez longtemps.",
+  "atouts": "Le 6 donne au 5 un endroit où revenir, le 5 rappelle au 6 qu'on peut respirer dehors.",
+  "frictions": "Le besoin de partir de l'un percute le besoin de veiller sur tout de l'autre.",
+  "conditions": "Convenir d'un rythme de va-et-vient qui respecte les deux besoins."
+ },
+ "5-7": {
+  "en_bref": "Deux façons de chercher : en bougeant, ou en creusant sur place.",
+  "vers_min": "Face à un 7, le 5 peut trouver que tout ce temps passé à réfléchir retarde le prochain départ.",
+  "vers_max": "Face à un 5, le 7 sent parfois qu'on change de sujet avant d'avoir vraiment compris.",
+  "atouts": "Le 5 apporte au 7 de nouveaux terrains à explorer, le 7 donne au 5 une vraie profondeur.",
+  "frictions": "La quête de l'un se fait en surface, celle de l'autre en profondeur — un vrai décalage de rythme.",
+  "conditions": "Le 5 ralentit assez longtemps pour que le 7 aille au bout d'une idée."
+ },
+ "5-8": {
+  "en_bref": "L'un cherche la liberté, l'autre cherche l'ampleur.",
+  "vers_min": "Face à un 8, le 5 peut sentir un poids : celui d'un projet qui demande de rester en place pour porter ses fruits.",
+  "vers_max": "Face à un 5, le 8 voit parfois une énergie qui se disperse avant d'avoir construit quoi que ce soit de durable.",
+  "atouts": "Le 5 empêche le 8 de s'enfermer dans son ambition, le 8 donne au 5 une direction qui rapporte.",
+  "frictions": "La légèreté de l'un et le sérieux de l'autre se jugent facilement, chacun de son côté.",
+  "conditions": "S'entendre sur ce qui reste négociable et ce qui ne l'est pas dans le projet commun."
+ },
+ "5-9": {
+  "en_bref": "Deux nombres qui n'aiment pas les limites, chacun à son échelle.",
+  "vers_min": "Face à un 9, le 5 peut se sentir porté par des enjeux plus grands que sa propre envie du moment.",
+  "vers_max": "Face à un 5, le 9 voit parfois une agitation qui se disperse sans jamais se poser sur rien de durable.",
+  "atouts": "L'un explore le concret, l'autre explore le sens : ensemble, la liberté a une direction.",
+  "frictions": "Le mouvement de l'un peut sembler sans but à l'autre, qui cherche du fond partout.",
+  "conditions": "Le 9 propose un cap large, le 5 garde la liberté d'y aller à sa façon."
+ },
+
+ "6-6": {
+  "en_bref": "Deux personnes qui veillent, chacune sur l'ensemble à sa façon.",
+  "meme": "Vous voyez tous les deux ce qui ne va pas chez l'autre avant qu'il ne le dise — précieux, mais qui prend soin de vous deux, dans tout ça ?",
+  "atouts": "Rien n'est laissé de côté : à deux, le souci de l'autre ne manque jamais.",
+  "frictions": "À force de veiller sur tout le monde, personne ne demande ce dont il a besoin pour lui-même.",
+  "conditions": "S'autoriser, chacun son tour, à recevoir autant qu'à donner."
+ },
+ "6-7": {
+  "en_bref": "L'un veille sur l'ensemble, l'autre a besoin de s'isoler pour comprendre.",
+  "vers_min": "Face à un 7, le 6 peut s'inquiéter d'un retrait qui ressemble, de l'extérieur, à un éloignement.",
+  "vers_max": "Face à un 6, le 7 sent parfois qu'on interrompt sa réflexion pour vérifier que tout va bien.",
+  "atouts": "Le 6 rappelle au 7 qu'il n'est pas seul, le 7 apporte au 6 une vraie profondeur de vue.",
+  "frictions": "Le besoin de présence de l'un et le besoin de silence de l'autre demandent un accord clair.",
+  "conditions": "Nommer d'avance les moments de retrait, pour que le silence ne soit pas pris pour un signal."
+ },
+ "6-8": {
+  "en_bref": "L'un veille sur les gens, l'autre veille sur ce qui se construit.",
+  "vers_min": "Face à un 8, le 6 peut trouver qu'on avance sans assez regarder qui en paie le prix.",
+  "vers_max": "Face à un 6, le 8 sent parfois qu'on freine une ambition au nom du confort de tous.",
+  "atouts": "Le 6 garde le 8 ancré dans ce qui compte vraiment, le 8 donne au 6 les moyens de bien faire.",
+  "frictions": "Le soin du détail humain et le regard sur l'ensemble matériel se disputent la priorité.",
+  "conditions": "Décider ensemble, projet par projet, ce qui passe en premier."
+ },
+ "6-9": {
+  "en_bref": "Deux tempéraments qui pensent aux autres avant eux-mêmes, à des échelles différentes.",
+  "vers_min": "Face à un 9, le 6 peut se sentir petit devant des causes qui dépassent son cercle proche.",
+  "vers_max": "Face à un 6, le 9 trouve souvent quelqu'un qui prend soin de ce qui est juste devant lui.",
+  "atouts": "Le 6 ancre dans le proche ce que le 9 porte à grande échelle.",
+  "frictions": "Le proche et le lointain se disputent l'attention, et personne ne gagne vraiment.",
+  "conditions": "Se rappeler que veiller sur un proche compte autant que veiller sur le monde."
+ },
+
+ "7-7": {
+  "en_bref": "Deux personnes qui ont besoin de silence pour comprendre.",
+  "meme": "Vous respectez d'instinct le besoin de retrait de l'autre — rassurant, mais qui pousse à sortir du silence quand il le faut vraiment ?",
+  "atouts": "Aucun des deux ne force l'autre à parler avant d'être prêt : un vrai respect mutuel.",
+  "frictions": "Deux silences côte à côte peuvent finir par s'éloigner, sans que personne ne le veuille.",
+  "conditions": "Prévoir des moments où l'un des deux sort volontairement du silence pour l'autre."
+ },
+ "7-8": {
+  "en_bref": "L'un cherche le sens, l'autre cherche le résultat.",
+  "vers_min": "Face à un 8, le 7 peut trouver qu'on veut conclure avant d'avoir vraiment compris la question.",
+  "vers_max": "Face à un 7, le 8 sent parfois qu'on retarde une décision pour la retourner encore et encore.",
+  "atouts": "Le 7 empêche le 8 d'avancer à l'aveugle, le 8 donne au 7 une raison concrète de conclure.",
+  "frictions": "Le temps que prend l'un pour comprendre coûte cher à l'autre, qui veut agir.",
+  "conditions": "Fixer une date pour trancher, connue des deux dès le départ."
+ },
+ "7-9": {
+  "en_bref": "Deux nombres qui cherchent au-delà du visible, chacun à sa manière.",
+  "vers_min": "Face à un 9, le 7 peut se sentir emporté dans des causes larges avant d'avoir fini d'y voir clair pour lui-même.",
+  "vers_max": "Face à un 7, le 9 trouve souvent une réflexion rare, qui va au fond des choses.",
+  "atouts": "Le 7 approfondit ce que le 9 porte en grand angle : ensemble, la profondeur ET la largeur.",
+  "frictions": "Le repli sur soi de l'un et l'ouverture à tout de l'autre demandent un vrai dialogue.",
+  "conditions": "Le 9 respecte le rythme du retrait, le 7 finit par revenir partager ce qu'il a trouvé."
+ },
+
+ "8-8": {
+  "en_bref": "Deux personnes qui pensent à grande échelle, en même temps.",
+  "meme": "Vous visez tous les deux large — porteur si vous tirez dans le même sens, mais l'un de vous doit accepter de ne pas mener seul.",
+  "atouts": "Rien ne semble trop grand quand deux 8 s'y mettent ensemble.",
+  "frictions": "Deux ambitions fortes au même endroit finissent par se disputer la direction.",
+  "conditions": "Se répartir les terrains où chacun mène, plutôt que de tout partager en double."
+ },
+ "8-9": {
+  "en_bref": "L'un mesure ce qui pèse, l'autre pense en grand angle.",
+  "vers_min": "Face à un 9, le 8 peut trouver flou ce qui n'est pas encore chiffré ni concrétisé.",
+  "vers_max": "Face à un 8, le 9 sent parfois qu'on réduit une cause large à une simple question de moyens.",
+  "atouts": "Le 8 donne à ce que le 9 porte les moyens de vraiment exister.",
+  "frictions": "Le concret de l'un et l'idéal de l'autre demandent un vrai effort de traduction.",
+  "conditions": "Le 9 accepte de chiffrer un peu, le 8 accepte qu'un projet vaille au-delà du résultat."
+ },
+
+ "9-9": {
+  "en_bref": "Deux personnes qui pensent en grand angle, ensemble.",
+  "meme": "Vous vous sentez concernés par les mêmes causes — porteur, mais qui pense à ce qui est juste devant vous deux, dans tout ça ?",
+  "atouts": "Une vraie largeur de vue à deux, rarement égoïste, souvent généreuse.",
+  "frictions": "À force de regarder loin, le quotidien à deux peut passer au second plan.",
+  "conditions": "Se réserver, volontairement, du temps qui ne sert à rien d'autre qu'à être ensemble."
+ }
+}

@@ -1,0 +1,244 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Les 48 sous-périodes du zodiaque (personologie, version Ta Trame). Structure réutilisée du système de personologie (idée libre) ; noms et textes 100% originaux, jamais ceux d'un ouvrage source. Chaque signe se lit en 5 crans. Une cuspide d'entrée (mélange avec le signe précédent), 3 semaines (entrée, cœur, fin du signe), une cuspide de sortie. Cette dernière est la cuspide d'entrée du signe suivant. Clés = moteur/periodes.py::PERIODES. Additif au signe, jamais un remplacement : ce texte affine, il ne redit pas le portrait du signe.",
+ "cuspe_poissons_belier": {
+  "nom": "Le seuil qui bascule",
+  "essence": "L'eau qui se retire cède la place au feu qui s'élance.",
+  "texte": "Tu portes deux mouvements à la fois. Celui qui laisse aller et celui qui fonce. Une partie de toi sent encore tout, absorbe l'air d'une pièce avant qu'on ait parlé. L'autre veut déjà être passée à autre chose, sans attendre que le sentiment finisse de se déposer. Ce grand écart n'est pas une indécision, c'est la nature même du printemps qui recommence. Rien ne finit vraiment avant que quelque chose ait déjà repris. Au quotidien, ça donne quelqu'un qui peut pleurer un film puis courir un escalier dans la même heure, sans contradiction ressentie. Le risque, c'est de vouloir clore trop vite un chagrin pour retrouver l'élan. Et de traîner ensuite un fond de tristesse mal digérée sous une énergie de façade. Laisser le sentiment finir sa course avant de t'élancer change tout. Le départ est alors net, pas une fuite déguisée en enthousiasme."
+ },
+ "belier_1": {
+  "nom": "Le premier pas cru",
+  "essence": "Ce qui commence n'a pas encore de plan, et ça lui va très bien.",
+  "texte": "À ce point du signe, l'élan est encore à l'état brut. Tu sautes avant d'avoir fini de regarder, et le mouvement lui-même te renseigne mieux que n'importe quelle réflexion préalable. Il y a une franchise dans ce démarrage, presque enfantine, qui désarme autant qu'elle agace ceux qui préparent longtemps. Tu n'aimes pas qu'on te demande d'expliquer avant d'avoir essayé. L'essai est l'explication. Ce cran donne des débuts mémorables et des suites parfois bancales, faute d'avoir posé un cadre. Le geste qui aide n'est pas de ralentir le départ, mais de garder un œil ouvert une fois lancé. Pour ajuster en marche plutôt que de foncer les yeux fermés jusqu'au mur."
+ },
+ "belier_2": {
+  "nom": "Le feu qui tient tête",
+  "essence": "Ici, l'élan devient une affaire de principe, pas juste d'envie.",
+  "texte": "Au cœur du signe, l'énergie de départ s'est muée en quelque chose de plus tenace. Tu ne démarres plus seulement par envie, tu tiens une position, et reculer te coûte plus cher qu'à d'autres. C'est le cran le plus ouvertement compétitif du trio. Celui qui a besoin de sentir qu'il avance devant, ou du moins qu'il n'est distancé par personne. Cette combativité rend service dans l'action, moins dans l'écoute. Il est facile d'entendre un désaccord comme un défi à relever plutôt que comme une information à considérer. Ce qui aide, c'est de séparer le sujet de la personne qui le porte. Gagner un point n'oblige pas à écraser qui te l'a opposé. Et la plupart des batailles que tu gagnes vraiment sont celles que tu choisis de ne pas engager."
+ },
+ "belier_3": {
+  "nom": "La flamme qui rassemble",
+  "essence": "L'élan individuel commence à vouloir entraîner quelqu'un d'autre avec lui.",
+  "texte": "Vers la fin du signe, le feu cesse d'être seulement personnel. Il cherche à convaincre, à embarquer, à faire de sa cause celle du groupe. Tu deviens plus généreux de ton énergie qu'au début du signe. Capable de te battre pour quelqu'un d'autre avec la même intensité que pour toi-même. Cette générosité a un prix discret. Tu prêtes ta force sans toujours vérifier si elle est vraiment demandée. Et l'aide non sollicitée peut se lire comme une intrusion plutôt qu'un cadeau. Le mouvement le plus utile ici est une question simple posée avant l'élan. Est-ce qu'on m'a demandé de me battre, ou est-ce que je me bats pour ne pas rester sur le côté à regarder."
+ },
+ "cuspe_belier_taureau": {
+  "nom": "Le feu qui se pose",
+  "essence": "L'élan brut cherche enfin où se déposer durablement.",
+  "texte": "Tu tiens ensemble l'urgence de commencer et le besoin d'installer les choses pour de bon. Deux tempos qui se contredisent en apparence et s'équilibrent en pratique. L'impulsion te lance, la solidité te retient d'abandonner en cours de route. Ce qui donne des débuts vifs, suivis d'une ténacité que peu de gens soupçonnent au premier abord. Le risque de ce mélange est de vouloir tout construire à la vitesse du départ. Et de t'impatienter contre un sol qui a besoin de temps pour se stabiliser. Ce cran gagne à séparer les deux temps au lieu de les vouloir simultanés. Élancer vite, puis accepter que l'ancrage prenne le temps qu'il prend, sans y voir un échec de l'élan initial."
+ },
+ "taureau_1": {
+  "nom": "La première prise ferme",
+  "essence": "Ce qui est saisi ici ne se lâche pas facilement.",
+  "texte": "En entrant dans ce signe, la main se referme tôt sur ce qu'elle veut garder. Une idée, une relation, une habitude adoptée tôt et jamais vraiment remise en question depuis. Cette fermeté rassure ceux qui t'entourent, elle donne un point fixe dans un monde qui bouge. Mais elle peut aussi t'enfermer dans une préférence choisie une fois pour toutes. Sans que l'expérience ait jamais eu la chance de la réviser. Ce qui aide à ce stade, c'est de tester à nouveau, de temps en temps. Une chose que tu crois savoir depuis longtemps. La prise ferme n'a rien à perdre à s'ouvrir un instant pour vérifier qu'elle tient encore la bonne chose."
+ },
+ "taureau_2": {
+  "nom": "Le sol qui porte le monde",
+  "essence": "Au centre du signe, la stabilité personnelle devient un service rendu aux autres.",
+  "texte": "Ce cran du milieu ne se contente plus d'être solide pour soi. Il devient le point d'appui sur lequel d'autres viennent se reposer, sans toujours le demander clairement. Tu deviens la personne qu'on appelle quand ça vacille, celle dont la présence suffit à calmer une pièce. Cette solidité a un revers. On oublie de te demander comment toi, tu tiens, précisément parce que tu sembles toujours tenir. Le mouvement utile ici est d'accepter d'être, à ton tour, celui qu'on porte un peu. Plutôt que de rester en permanence celui qui porte. La charge répartie tient plus longtemps que la charge solitaire, même solide."
+ },
+ "taureau_3": {
+  "nom": "Le fruit qui mûrit lentement",
+  "essence": "Ce qui a été patiemment construit commence à donner ce qu'on en attendait.",
+  "texte": "En fin de signe, l'effort de constance déposé plus tôt commence à porter ses fruits. Et ce cran sait attendre ce moment sans s'impatienter outre mesure. C'est peut-être le plus patient des trois. Il y a une jouissance tranquille à voir mûrir ce qu'on a mis longtemps à planter. Un plaisir qui ne cherche pas à être vu ni applaudi. Le piège, à ce stade, est de s'attacher tellement au fruit qu'on refuse d'en planter un autre. Par peur de recommencer un cycle de patience. Ce qui aide est de célébrer la récolte sans t'y arrêter. Le prochain semis mérite le même soin, même si l'attente à venir ressemble à celle déjà traversée."
+ },
+ "cuspe_taureau_gemeaux": {
+  "nom": "La terre qui apprend à parler",
+  "essence": "Ce qui était stable et silencieux se met soudain à vouloir circuler.",
+  "texte": "Deux besoins cohabitent chez toi sans toujours s'accorder. Celui de garder les choses telles qu'elles sont, et celui de les raconter, de les faire bouger par les mots. Tu peux être d'une grande fidélité à tes habitudes tout en changeant sans cesse de sujet de conversation. Comme si la stabilité intérieure te donnait la liberté de papillonner en surface. Le risque de ce mélange est de disperser en paroles l'énergie que tu devrais consacrer à construire. Et de confondre parler d'un projet avec avancer dessus. Ce qui sert le mieux ce cran est de traiter la parole comme un outil de clarification avant l'action. Pas comme un substitut à elle."
+ },
+ "gemeaux_1": {
+  "nom": "La première question posée à voix haute",
+  "essence": "Ici, comprendre passe d'abord par le fait de demander, sans filtre.",
+  "texte": "Au début de ce signe, la curiosité est directe, presque candide. Tu poses la question qui te traverse sans peser si elle est la bonne à poser en public. Ce réflexe te donne accès à une information que d'autres n'obtiennent jamais, faute d'avoir osé demander. Le revers, c'est une conversation qui peut sembler décousue à qui ne suit pas le fil de tes associations rapides. Et une tendance à changer de sujet avant que l'autre ait fini sa réponse. Le geste utile ici est d'attendre la fin d'une réponse avant de lancer la question suivante. L'information que tu cherches est souvent dans la dernière phrase, pas la première."
+ },
+ "gemeaux_2": {
+  "nom": "Le fil qui relie deux idées",
+  "essence": "Au cœur du signe, l'esprit devient un pont entre des choses qu'on croyait séparées.",
+  "texte": "Ce cran excelle à voir le lien entre deux domaines que personne n'avait pensé à rapprocher. À traduire une idée compliquée dans le langage de quelqu'un d'autre. Cette agilité fait de toi un excellent passeur d'information, quelqu'un qu'on consulte pour comprendre plutôt que pour décider. La difficulté apparaît quand il faut choisir un seul fil parmi tous ceux que tu vois. La multiplicité des connexions possibles peut retarder indéfiniment le moment de trancher. Ce qui aide est de te donner une contrainte de temps avant de choisir un chemin. Sachant qu'un bon lien suivi jusqu'au bout vaut mieux que dix aperçus jamais approfondis."
+ },
+ "gemeaux_3": {
+  "nom": "Le mot qui rassemble une foule",
+  "essence": "Vers la fin du signe, parler devient un moyen d'unir plutôt que de simplement informer.",
+  "texte": "En sortant de ce signe, ton rapport à la parole change de nature. Elle ne sert plus seulement à demander ou relier. Elle cherche à convaincre un groupe, à donner une direction commune à des avis dispersés. Tu deviens capable de résumer en une phrase ce que dix personnes tentaient de dire maladroitement. Et ce don te place naturellement en position de porte-parole, même sans l'avoir cherché. Le danger est de simplifier au point de perdre les nuances qui comptaient. Pour le confort d'un message qui rassemble tout le monde. Ce qui aide est d'accepter qu'un message clair peut garder une nuance honnête, sans que l'un nuise à l'autre."
+ },
+ "cuspe_gemeaux_cancer": {
+  "nom": "La parole qui se met à ressentir",
+  "essence": "Les mots vifs de l'un rencontrent la mémoire profonde de l'autre.",
+  "texte": "Tu passes facilement de l'analyse détachée à l'émotion la plus vive, parfois dans la même phrase. Ce qui déroute ceux qui te croyaient d'un genre ou de l'autre. Cette double capacité te rend rare. Tu peux nommer un sentiment avec une précision que peu atteignent, parce que tu le regardes autant que tu le vis. Le risque est d'utiliser l'esprit pour fuir le sentiment quand il devient trop lourd. En le transformant en simple sujet de conversation, pour ne pas avoir à le traverser. Ce qui aide ce cran est de laisser parfois le silence durer un peu, sans le meubler de mots. Le temps que le sentiment ait fini de dire ce qu'il avait à dire."
+ },
+ "cancer_1": {
+  "nom": "La première marée",
+  "essence": "Ici, ce qu'on ressent arrive sans prévenir et impose son rythme.",
+  "texte": "Au début de ce signe, l'émotion arrive en vague, pleine et sans permission demandée. Tu ressens avant de comprendre pourquoi, et cette immédiateté peut surprendre autant les autres que toi-même. Cette sensibilité brute te donne un accès direct à ce qui se passe vraiment dans une pièce. Souvent avant que quiconque l'ait dit à voix haute. Le revers est une difficulté à distinguer ton ressenti de celui de la personne en face. Comme si les deux fusionnaient un instant. Ce qui aide ici est une pause avant de réagir à un sentiment fort. Le temps de vérifier s'il t'appartient vraiment, ou s'il vient de quelqu'un d'autre que tu as simplement absorbé."
+ },
+ "cancer_2": {
+  "nom": "Le foyer qui tient bon",
+  "essence": "Au centre du signe, protéger devient une vocation plus qu'un réflexe.",
+  "texte": "Ce cran du milieu construit autour de lui un espace où d'autres peuvent se sentir en sécurité. Souvent au prix d'une vigilance constante que personne ne voit vraiment. Tu deviens celui ou celle qui remarque le premier signe de fatigue chez un proche. Tu anticipes un besoin avant qu'il soit dit. Cette attention généreuse s'épuise pourtant si elle ne circule que dans un sens. Et le risque est de t'oublier au bénéfice de ceux que tu protèges. Ce qui aide est de désigner, une fois de temps en temps, quelqu'un pour veiller sur toi de la même manière. Le foyer que tu tiens a aussi besoin d'un gardien."
+ },
+ "cancer_3": {
+  "nom": "La mémoire qui devient récit",
+  "essence": "Vers la fin du signe, ce qui a été vécu et ressenti cherche à être transmis.",
+  "texte": "En sortant de ce signe, ta mémoire affective ne se contente plus d'accumuler. Elle veut raconter, transmettre à d'autres ce qui a compté pour toi. Tu deviens gardien d'une histoire, familiale ou personnelle, et tu ressens le besoin qu'elle continue au-delà de toi. Le piège est de t'accrocher à la version du passé qui te rassure, quitte à en oublier des parts moins confortables. Pour préserver un récit plus doux que les faits. Ce qui aide est d'accepter que la mémoire honnête vaut mieux que la mémoire belle. Transmettre vraiment, c'est transmettre entier, y compris ce qui n'était pas simple."
+ },
+ "cuspe_cancer_lion": {
+  "nom": "L'intime qui veut être vu",
+  "essence": "Ce qui se protégeait en silence commence à vouloir se montrer au grand jour.",
+  "texte": "Tu tiens ensemble un besoin de protection et un besoin de rayonner. Deux mouvements qui semblent opposés et qui, chez toi, se nourrissent l'un l'autre. Ta chaleur touche parce qu'elle vient d'un endroit vulnérable, pas d'une posture apprise. Le risque est de vouloir protéger ton image autant que tes proches. Et de confondre à l'occasion la fierté légitime avec la peur d'être vu imparfait. Ce qui aide ce cran est de te rappeler une chose. Le rayonnement le plus durable vient justement de ce qu'on croyait devoir cacher. Ta part sensible est un atout, pas une faille à couvrir."
+ },
+ "lion_1": {
+  "nom": "Le premier éclat sans calcul",
+  "essence": "Ici, briller n'est pas une stratégie, c'est un réflexe joyeux.",
+  "texte": "Au début de ce signe, l'envie de te montrer est spontanée, presque enfantine dans sa franchise. Tu occupes l'espace sans arrière-pensée, simplement parce que c'est agréable d'être vu. Cette générosité naturelle attire, elle donne envie de te suivre dans une pièce. Le revers apparaît quand la lumière ne se tourne pas vers toi assez vite à ton goût. Naît alors une déception qui semble disproportionnée de l'extérieur. Ce qui aide ici est d'apprendre à briller aussi dans les moments où personne ne regarde. La constance de l'éclat compte plus que son intensité au moment précis où on te voit."
+ },
+ "lion_2": {
+  "nom": "Le socle qui ne vacille pas",
+  "essence": "Au cœur du signe, l'assurance devient une force tranquille plutôt qu'un éclat.",
+  "texte": "Ce cran du milieu a moins besoin de briller que de tenir. Ton assurance est devenue un socle sur lequel d'autres s'appuient sans même avoir à demander la permission. Tu portes une autorité naturelle qui n'a pas besoin de s'affirmer bruyamment pour être reconnue. La difficulté vient quand cette solidité se fige en rigidité. Il devient difficile d'admettre une erreur sans sentir que tout l'édifice vacille. Ce qui aide est de traiter une erreur comme un simple ajustement du socle, pas comme une fissure qui menace tout. Un socle solide peut se corriger sans s'effondrer."
+ },
+ "lion_3": {
+  "nom": "La lumière qui éclaire les autres",
+  "essence": "Vers la fin du signe, briller sert surtout à faire briller quelqu'un d'autre.",
+  "texte": "En sortant de ce signe, ton énergie change de cible. Elle se tourne vers ceux que tu peux mettre en valeur, plus que vers ta propre visibilité. Tu deviens généreux de ta lumière, capable de pousser quelqu'un d'autre sur le devant de la scène avec un plaisir sincère. Ce mouvement te grandit sans que tu aies besoin de rester au centre. Le piège serait de croire que cette générosité doit rester invisible. Rendre service en silence use, à la longue, sans qu'on s'en aperçoive tout de suite. Ce qui aide est de nommer clairement ce que tu donnes, sans en réclamer les honneurs, mais sans le taire non plus."
+ },
+ "cuspe_lion_vierge": {
+  "nom": "L'éclat qui se met au travail",
+  "essence": "La fierté d'exister rencontre l'exigence de bien faire.",
+  "texte": "Tu tiens ensemble le désir d'être remarqué et l'exigence, presque sévère, de mériter cette attention par un travail réellement soigné. Cette combinaison donne une fiabilité rare. Ce que tu montres a toujours été vérifié, poli, pensé jusqu'au détail. Le risque est un perfectionnisme qui retarde le moment de te montrer, par peur qu'un détail imparfait éclipse tout le reste. Ce qui aide ce cran est de distinguer deux choses. Le soin porté au travail, précieux, et l'attente d'une perfection totale avant de l'exposer, coûteuse. Le travail fini et imparfait vaut mieux que le travail parfait jamais montré."
+ },
+ "vierge_1": {
+  "nom": "Le premier détail qui compte",
+  "essence": "Ici, l'exactitude commence par remarquer ce que personne d'autre n'a vu.",
+  "texte": "Au début de ce signe, ton attention se porte immédiatement sur le détail qui cloche. L'incohérence minuscule que d'autres traversent sans la voir. Cette acuité rend un vrai service, surtout dans un travail qui exige de la précision. Mais elle peut aussi t'installer dans une posture de correction permanente, même quand personne ne t'a demandé d'évaluer. Le revers, c'est de traiter chaque imperfection repérée comme une urgence à signaler, au risque de fatiguer ceux qui t'entourent. Ce qui aide est de choisir quel détail mérite vraiment d'être nommé. Et de laisser passer les autres, sans que ce silence pèse sur toi."
+ },
+ "vierge_2": {
+  "nom": "L'atelier qui tourne sans bruit",
+  "essence": "Au cœur du signe, l'utilité devient une manière constante d'exister.",
+  "texte": "Ce cran du milieu se sent bien quand il est utile de façon concrète. Quand une tâche précise avance grâce à lui, sans qu'il ait besoin d'en faire état. Tu es souvent celui ou celle qui répare discrètement ce qui menaçait de dérailler, sans réclamer d'attention pour cela. Cette discrétion a un coût. Ton travail passe parfois inaperçu, et l'absence de reconnaissance peut s'accumuler en une frustration jamais dite. Ce qui aide est d'apprendre à nommer ta contribution une fois qu'elle est faite. Pas pour t'en vanter, mais pour que l'utilité rendue soit simplement vue pour ce qu'elle est."
+ },
+ "vierge_3": {
+  "nom": "Le geste qui rend service au loin",
+  "essence": "Vers la fin du signe, le soin du détail se met au service d'une cause plus grande que la tâche elle-même.",
+  "texte": "En sortant de ce signe, ton besoin d'être utile dépasse la tâche immédiate. Tu cherches à ce que ton travail serve quelque chose qui te dépasse, une cause, une communauté, un principe. Cette évolution donne du sens à l'exigence développée plus tôt, elle en fait un outil plutôt qu'une fin en soi. Le danger, à ce stade, est de te sacrifier au nom de la cause au point de t'oublier complètement. Comme si ton propre bien-être devenait secondaire par principe. Ce qui aide est de te rappeler que tu fais aussi partie de ce que ton travail cherche à améliorer. Pas seulement l'outil qui l'améliore."
+ },
+ "cuspe_vierge_balance": {
+  "nom": "Le soin qui cherche l'équilibre",
+  "essence": "L'exigence du détail rencontre le besoin d'harmonie entre les personnes.",
+  "texte": "Tu portes à la fois un œil critique sur ce qui pourrait être mieux fait. Et un désir sincère que tout le monde reparte satisfait de l'échange. Cette combinaison te rend précieux dans la médiation. Tu vois ce qui cloche et tu sais, en général, comment le dire sans casser l'harmonie. Le risque est de lisser un désaccord réel par peur de perturber l'équilibre. Au point que le problème identifié ne soit jamais vraiment traité. Ce qui aide ce cran est d'accepter qu'un vrai équilibre inclut parfois un moment de friction assumée. L'harmonie construite sur un silence n'est qu'un calme provisoire."
+ },
+ "balance_1": {
+  "nom": "Le premier regard qui compare",
+  "essence": "Ici, comprendre une chose passe d'abord par la mettre en face d'une autre.",
+  "texte": "Au début de ce signe, ton esprit fonctionne par comparaison. Tu vois une option en te demandant ce que l'autre proposait à côté. Et cette mise en perspective t'aide à juger avec justesse. Cette habileté te rend bon dans le choix éclairé, dans la capacité à peser réellement le pour et le contre. Le revers, c'est une peur de trancher qui vient de vouloir tenir compte de trop d'angles à la fois. Ce qui peut retarder une décision simple. Ce qui aide ici est de fixer une limite de temps à la comparaison. Au-delà, une décision imparfaite mais prise vaut mieux qu'une balance qui pèse indéfiniment."
+ },
+ "balance_2": {
+  "nom": "Le pont qui tient les deux rives",
+  "essence": "Au cœur du signe, relier des personnes devient un talent presque naturel.",
+  "texte": "Ce cran du milieu excelle à tenir ensemble deux points de vue qui semblaient inconciliables. À trouver le mot qui permet à chacun de se sentir entendu. Tu deviens souvent celui ou celle qu'on appelle pour calmer un différend. Non parce que tu prends parti, mais parce que tu sais nommer ce que chaque camp voulait vraiment dire. Cette qualité s'épuise si tu portes seul le poids de tous les désaccords autour de toi. Sans jamais exprimer ton propre avis dans l'histoire. Ce qui aide est de te donner le droit d'avoir une position, même en tant que médiateur. Relier n'oblige pas à disparaître."
+ },
+ "balance_3": {
+  "nom": "L'élégance qui inspire",
+  "essence": "Vers la fin du signe, le sens de l'harmonie devient un exemple qu'on suit sans le savoir.",
+  "texte": "En sortant de ce signe, ta façon de traiter les gens et les situations avec justesse change de portée. Elle devient un modèle discret pour ceux qui t'observent. Même sans que tu cherches à enseigner quoi que ce soit. Tu incarnes une certaine idée du savoir-vivre qui rassure et qui, souvent, désamorce un conflit avant même qu'il éclate. Le piège de ce cran est de vouloir maintenir cette image de justesse au prix d'une authenticité un peu érodée. En évitant les sujets qui pourraient ternir l'harmonie apparente. Ce qui aide est de rappeler que l'élégance la plus inspirante reste celle qui admet, elle aussi, ses désaccords et ses maladresses."
+ },
+ "cuspe_balance_scorpion": {
+  "nom": "L'harmonie qui plonge en profondeur",
+  "essence": "Le goût de la justesse rencontre le besoin de vérité, même inconfortable.",
+  "texte": "Tu tiens ensemble un désir d'apaisement et une attirance pour ce qui se cache sous la surface. Deux forces qui te poussent parfois dans des directions opposées au même moment. Cette combinaison te rend capable d'aborder des sujets délicats avec un tact que peu possèdent, sans pour autant les esquiver. Le risque est de vouloir garder une façade sereine tout en creusant sous elle des vérités que d'autres préféreraient laisser enfouies. Naît alors une tension entre ce que tu montres et ce que tu sais. Ce qui aide ce cran est d'accepter une chose. Dire une vérité inconfortable peut, à terme, produire plus d'harmonie qu'un calme qui la tait."
+ },
+ "scorpion_1": {
+  "nom": "Le premier regard qui perce",
+  "essence": "Ici, sentir ce qui se cache derrière une façade arrive avant même qu'on l'ait cherché.",
+  "texte": "Au début de ce signe, ton instinct détecte immédiatement ce qui est tu. Ce qui ne colle pas entre les mots et le ton de celui qui les prononce. Cette lucidité précoce te protège de bien des désillusions, mais elle peut aussi t'installer dans une méfiance systématique. Comme si tout devait être suspecté avant d'être cru. Le revers est de voir une intention cachée là où il n'y en a peut-être pas. Simplement parce que ton regard cherche toujours la couche en dessous. Ce qui aide est de laisser, de temps en temps, une chose être exactement ce qu'elle paraît être. Sans creuser plus loin qu'il ne faut."
+ },
+ "scorpion_2": {
+  "nom": "La flamme qui transforme",
+  "essence": "Au cœur du signe, traverser une épreuve devient une manière de te refaire entièrement.",
+  "texte": "Ce cran du milieu ne traverse pas les crises, il s'en sert pour se reconstruire différemment à chaque fois. Comme si chaque perte importante ouvrait la possibilité d'une version plus vraie de toi-même. Cette capacité impressionne ceux qui te voient traverser des passages difficiles avec une intensité qui finit par produire quelque chose de neuf. Le danger est de rechercher inconsciemment la crise, comme si la stabilité tranquille manquait de sens à tes yeux. Ce qui aide est de te rappeler qu'une transformation vaut aussi quand elle se fait doucement. Sans avoir besoin de brûler quelque chose au préalable pour y avoir droit."
+ },
+ "scorpion_3": {
+  "nom": "Le secret qui devient force partagée",
+  "essence": "Vers la fin du signe, ce qui était gardé caché commence à servir de guide pour d'autres.",
+  "texte": "En sortant de ce signe, ta profondeur cesse d'être une chose que tu protèges seul. Elle devient une ressource que tu peux offrir. Une expérience de traversée qui aide quelqu'un d'autre à ne pas se perdre dans la sienne. Tu deviens capable d'accompagner sans minimiser la difficulté, parce que tu sais de première main ce qu'elle coûte. Le piège serait de garder cette connaissance pour toi, par habitude du secret. En pensant qu'elle perdrait de sa valeur à être partagée. Ce qui aide est de comprendre une chose. Ce que tu as traversé prend justement tout son sens quand il éclaire le chemin de quelqu'un d'autre."
+ },
+ "cuspe_scorpion_sagittaire": {
+  "nom": "L'intensité qui prend le large",
+  "essence": "Ce qui creusait en profondeur cherche soudain l'horizon et l'espace.",
+  "texte": "Tu tiens ensemble une intensité qui veut tout comprendre en profondeur. Et un besoin d'air, d'ouverture, de perspective large, qui refuse de s'enfermer trop longtemps dans un seul sujet. Cette double nature donne une réflexion qui va au fond des choses sans jamais y rester bloquée. Capable de prendre du recul juste au bon moment. Le risque est de fuir une émotion difficile en la transformant précipitamment en grande théorie ou en projet de voyage. Pour ne pas avoir à la sentir jusqu'au bout. Ce qui aide ce cran est de laisser l'intensité faire son travail avant de chercher la sortie vers l'horizon. Les deux mouvements ont leur place, mais pas au même moment."
+ },
+ "sagittaire_1": {
+  "nom": "Le premier élan vers l'ailleurs",
+  "essence": "Ici, l'envie de voir plus loin précède toute raison de le faire.",
+  "texte": "Au début de ce signe, l'appel du large est immédiat et peu réfléchi. Tu veux partir, essayer, sortir du cadre connu, souvent avant d'avoir un plan précis pour le faire. Cette impulsion te fait vivre des expériences que la prudence aurait empêchées, et elle nourrit un optimisme communicatif. Le revers est une tendance à t'engager dans une direction sans avoir mesuré ce qu'elle coûterait vraiment. Tu laisses parfois des affaires en suspens derrière toi. Ce qui aide ici est de garder, même en partant vite, un fil qui te relie à ce que tu quittes. Pour ne pas devoir tout reconstruire au retour."
+ },
+ "sagittaire_2": {
+  "nom": "La carte qui s'élargit",
+  "essence": "Au cœur du signe, chercher du sens devient une quête plus grande que la simple curiosité.",
+  "texte": "Ce cran du milieu ne se contente plus de voir du pays. Il cherche à comprendre ce qui relie les cultures, les idées, les façons de vivre qu'il croise. Tu deviens capable de synthétiser des expériences très diverses en une vision cohérente, presque philosophique, de ce qui compte vraiment. Cette hauteur de vue peut pourtant t'éloigner du concret. Il est facile de préférer la grande idée au petit problème pratique qui, lui, réclame ton attention immédiate. Ce qui aide est d'atterrir régulièrement dans le détail du quotidien, sans le juger trop étroit pour ta vision d'ensemble."
+ },
+ "sagittaire_3": {
+  "nom": "La flèche qui indique une direction",
+  "essence": "Vers la fin du signe, la quête personnelle devient un enseignement pour d'autres.",
+  "texte": "En sortant de ce signe, ton expérience accumulée du grand large commence à vouloir guider. À montrer un chemin à ceux qui n'ont pas encore osé partir. Tu deviens une sorte de repère pour les autres, quelqu'un dont l'enthousiasme donne envie de sortir aussi de sa zone connue. Le piège, ici, est de transformer ta propre vérité en règle générale. En oubliant que le chemin qui t'a convenu n'est pas forcément celui qui conviendra à l'autre. Ce qui aide est de partager ton expérience comme une possibilité parmi d'autres, pas comme la seule bonne direction à suivre."
+ },
+ "cuspe_sagittaire_capricorne": {
+  "nom": "L'horizon qui se structure",
+  "essence": "L'élan vers le large rencontre l'exigence de bâtir quelque chose de solide.",
+  "texte": "Tu tiens ensemble un goût pour la grande vision et une discipline concrète pour la faire tenir debout. Deux qualités rarement réunies avec autant de naturel. Cette combinaison te permet de transformer une intuition ambitieuse en projet réellement réalisable. Là où d'autres restent au stade du rêve ou de la structure sans souffle. Le risque est de te charger d'objectifs si vastes que la discipline nécessaire pour les tenir devient écrasante. Au point d'y perdre le plaisir du départ. Ce qui aide ce cran est de garder une part de légèreté dans l'ambition. La structure sert le rêve, elle ne doit pas l'étouffer."
+ },
+ "capricorne_1": {
+  "nom": "La première pierre posée",
+  "essence": "Ici, construire commence tôt, souvent avant que d'autres n'aient fini de réfléchir.",
+  "texte": "Au début de ce signe, le sérieux s'installe précocement. Tu prends des responsabilités avant qu'on te les demande. Tu poses les fondations d'un projet pendant que d'autres discutent encore de sa faisabilité. Cette maturité anticipée te vaut une confiance rapide, on te confie facilement des tâches qui comptent. Le revers est de porter cette charge trop tôt, trop seul, en te privant d'une légèreté qui aurait pourtant sa place. Ce qui aide ici est de te rappeler que construire sérieusement n'oblige pas à porter chaque pierre seul. Demander de l'aide n'annule rien de ce que tu as déjà bâti."
+ },
+ "capricorne_2": {
+  "nom": "L'édifice qui monte pierre par pierre",
+  "essence": "Au cœur du signe, la patience devient la vraie force de construction.",
+  "texte": "Ce cran du milieu sait qu'aucun résultat solide ne vient vite, et il en fait une force plutôt qu'une contrainte. Tu avances méthodiquement, un étage après l'autre, sans te laisser distraire par ceux qui promettent des raccourcis. Cette constance construit des choses qui durent, souvent bien après que d'autres projets, plus rapides mais moins ancrés, se soient effondrés. Le danger est de mesurer ta valeur uniquement à ce que tu as bâti. En oubliant que tu existes aussi indépendamment de tes réalisations. Ce qui aide est de te rappeler, parfois, que tu comptes même les jours où rien de nouveau n'a été construit."
+ },
+ "capricorne_3": {
+  "nom": "Le sommet qui devient un abri pour d'autres",
+  "essence": "Vers la fin du signe, l'autorité acquise se met au service de ceux qui montent après toi.",
+  "texte": "En sortant de ce signe, ta position d'autorité change de sens. Elle ne sert plus seulement à consolider ce que tu as construit. Elle devient un point d'appui pour ceux qui commencent leur propre ascension. Tu deviens capable de transmettre l'expérience durement acquise sans en faire une leçon pesante. Le piège, à ce stade, est de trop contrôler la façon dont les autres gravissent leur propre montagne. Tu oublies alors que ton chemin n'est pas le seul valable. Ce qui aide est de guider en laissant de la place à une méthode différente de la tienne."
+ },
+ "cuspe_capricorne_verseau": {
+  "nom": "La structure qui s'ouvre au collectif",
+  "essence": "L'exigence individuelle rencontre le besoin d'appartenir à quelque chose de plus grand.",
+  "texte": "Tu tiens ensemble un sens aigu de la responsabilité personnelle et un attrait pour les causes collectives. Les idées qui dépassent ta seule trajectoire. Cette combinaison te rend efficace dans les projets communs. Tu apportes la rigueur qui manque souvent aux belles idées portées par un groupe. Le risque est de vouloir imposer une structure à un collectif qui, par nature, préfère l'inventer ensemble. Plutôt que de la recevoir déjà faite. Ce qui aide ce cran est d'apporter ta discipline comme une proposition, pas comme un cadre fixé d'avance. Le collectif a besoin de sentir qu'il construit aussi la structure, pas seulement qu'il l'habite."
+ },
+ "verseau_1": {
+  "nom": "La première idée qui détonne",
+  "essence": "Ici, penser autrement que les autres n'est pas un choix, c'est un réflexe.",
+  "texte": "Au début de ce signe, ta pensée prend naturellement le chemin le moins emprunté. Là où d'autres suivent une évidence, tu remarques d'abord ce qui cloche dans cette évidence même. Cette originalité te vaut d'être précieux dans une équipe qui a besoin d'un angle neuf. Mais elle peut aussi t'isoler quand personne ne suit tout de suite ton raisonnement. Le revers est une impatience envers ceux qui n'ont pas encore vu ce que tu vois déjà clairement. Ce qui aide ici est de prendre le temps d'expliquer le chemin, pas seulement la conclusion. Ton originalité gagne à être comprise, pas seulement admirée de loin."
+ },
+ "verseau_2": {
+  "nom": "Le réseau qui se tisse",
+  "essence": "Au cœur du signe, l'amitié devient un principe de vie, presque une philosophie.",
+  "texte": "Ce cran du milieu tisse des liens larges et variés. Avec une aisance particulière à se sentir proche de gens très différents de lui. Tu deviens un point de connexion entre des mondes qui, sans toi, ne se seraient jamais croisés. Cette largeur relationnelle a un revers. L'intimité profonde avec une seule personne peut sembler plus difficile à atteindre que la sympathie facile avec beaucoup. Ce qui aide est d'accepter qu'un lien puisse être à la fois large et profond, sans que l'un empêche l'autre. Le choisir consciemment, plutôt que le laisser au hasard des rencontres."
+ },
+ "verseau_3": {
+  "nom": "La vision qui devance son temps",
+  "essence": "Vers la fin du signe, l'originalité personnelle se transforme en cause à porter pour d'autres.",
+  "texte": "En sortant de ce signe, ta différence cesse d'être une simple curiosité personnelle. Elle devient un projet, une cause pour laquelle tu veux que le monde change, pas seulement toi. Tu es capable de voir une direction que la majorité ne perçoit pas encore. Et d'y croire assez fort pour continuer, même sans validation immédiate. Le piège de ce cran est de mépriser un peu ceux qui n'ont pas encore compris ta vision. Comme s'ils étaient simplement en retard. Ce qui aide est de te rappeler une chose. Devancer son temps demande aussi de la patience envers ceux qui n'y sont pas encore."
+ },
+ "cuspe_verseau_poissons": {
+  "nom": "L'idée qui se dissout en ressenti",
+  "essence": "La pensée qui voulait tout comprendre cède la place à ce qui se sent sans mots.",
+  "texte": "Tu tiens ensemble une intelligence qui analyse et une sensibilité qui absorbe. Deux façons de connaître le monde qui, chez toi, finissent par se rejoindre plus qu'elles ne s'opposent. Cette combinaison te donne une intuition informée, capable de deviner juste sans toujours savoir l'expliquer sur le moment. Le risque est de te réfugier dans l'abstraction pour échapper à un sentiment trop envahissant. Ou, à l'inverse, de te laisser emporter par une émotion sans le recul qui l'aurait rendue plus claire. Ce qui aide ce cran est de laisser les deux mouvements alterner sans forcer l'un à dominer l'autre en permanence."
+ },
+ "poissons_1": {
+  "nom": "Le premier courant ressenti",
+  "essence": "Ici, ce qui vient d'ailleurs traverse avant même qu'on ait pu s'y préparer.",
+  "texte": "Au début de ce signe, la porosité est immédiate. L'humeur d'une pièce, la tristesse d'un inconnu croisé dans la rue, tout te traverse sans filtre préalable. Cette réceptivité rend certains talents artistiques ou empathiques particulièrement vifs à ce stade, une capacité rare à sentir avant de savoir. Le revers est de confondre régulièrement deux choses. Ce qui vient de toi, et ce que tu as simplement absorbé de l'ambiance ou de quelqu'un d'autre. Ce qui aide ici est un temps d'isolement régulier, court mais réel. Pour laisser retomber ce qui n'était pas à toi et retrouver ton propre courant."
+ },
+ "poissons_2": {
+  "nom": "Le rêve qui prend forme",
+  "essence": "Au cœur du signe, l'imaginaire cherche enfin une manière concrète de s'exprimer.",
+  "texte": "Ce cran du milieu ne se contente plus de rêver. Il cherche un canal — une œuvre, un geste, une pratique — pour donner une forme tangible à ce qu'il ressent intérieurement. Tu deviens capable de transformer une émotion diffuse en quelque chose que d'autres peuvent voir, entendre ou toucher. Et c'est souvent là que ton talent se révèle vraiment. La difficulté est de rester au stade du rêve par peur que la forme concrète le trahisse ou le réduise. Ce qui aide est d'accepter qu'une forme imparfaite vaut mieux qu'un rêve jamais incarné. L'œuvre finie porte toujours une part de ce qui l'a inspirée, même imparfaite."
+ },
+ "poissons_3": {
+  "nom": "La vague qui referme le cycle",
+  "essence": "Vers la fin du signe, tout ce qui a été vécu dans l'année se prépare à recommencer autrement.",
+  "texte": "En sortant de ce signe, tu sens venir une fin de cycle, une dissolution nécessaire avant qu'un nouveau départ soit possible. Le calme avant que le feu du signe suivant reprenne. Cette proximité avec les transitions te rend particulièrement doué pour accompagner une fin, un deuil, un passage. Sans chercher à le presser artificiellement. Le piège est de t'attarder dans cette dissolution plus longtemps qu'il ne faut. Par confort, ou par peur de ce qui vient après. Ce qui aide est de faire confiance au cycle. Ce qui se termine ici laisse justement la place à ce qui va recommencer, un peu plus loin."
+ }
+}

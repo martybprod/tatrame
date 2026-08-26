@@ -1,0 +1,301 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le lexique de vulgarisation. Un nombre nu est la chose la plus opaque qui soit : « Le Cap 9 », « héritage 19 », « 6 sur 9 », « maison 10 » ne disent RIEN à qui n'y connaît rien. Chaque terme technique reçoit ici un nom en français clair et une explication d'une phrase. Rien n'est affiché sans son nom.",
+ "termes": {
+  "cap": {
+   "nom": "Le Cap",
+   "quoi": "Ta direction de fond — ce vers quoi tu tends sans avoir eu à le décider.",
+   "d_ou": "Il se calcule à partir de ta date de naissance complète."
+  },
+  "voix": {
+   "nom": "La Voix",
+   "quoi": "Ce qui s'exprime de toi vers l'extérieur — la façon dont tu te fais entendre.",
+   "d_ou": "Elle se calcule à partir de toutes les lettres de ton état civil."
+  },
+  "foyer": {
+   "nom": "Le Foyer",
+   "quoi": "Ton centre intérieur — ce vers quoi tu reviens quand personne ne regarde.",
+   "d_ou": "Il se calcule à partir de ton jour et de ton mois de naissance."
+  },
+  "elan": {
+   "nom": "L'Élan",
+   "quoi": "L'énergie qui se dégage de l'ensemble — la résultante des trois autres.",
+   "d_ou": "Il combine ton Cap, ta Voix et ton Foyer."
+  },
+  "reflet": {
+   "nom": "Le Reflet",
+   "quoi": "L'image que tu renvoies aux autres, avant même d'avoir parlé.",
+   "d_ou": "Il se calcule à partir de ton jour de naissance."
+  },
+  "geste": {
+   "nom": "Le Geste",
+   "quoi": "Ta manière d'agir, ton style quand tu passes à l'acte.",
+   "d_ou": "Il compte certaines lettres de ton nom."
+  },
+  "source": {
+   "nom": "La Source",
+   "quoi": "Ce qui te nourrit affectivement — ce dont tu as besoin pour tenir.",
+   "d_ou": "Elle se calcule à partir des voyelles de ton nom."
+  },
+  "trace": {
+   "nom": "La Trace",
+   "quoi": "Ce que tu cherches à accomplir, ce que tu voudrais laisser.",
+   "d_ou": "Elle se calcule à partir des consonnes de ton nom."
+  },
+  "heritages": {
+   "nom": "Les Héritages",
+   "quoi": "Des schémas reçus — de ta famille, de ton milieu — que tu n'as pas choisis mais qui te traversent.",
+   "d_ou": "Quatre nombres particuliers (13, 14, 16, 19) qui apparaissent dans tes calculs.",
+   "pourquoi_ce_mot": "« Héritage », pas « dette » : on ne te réclame rien, on t'a transmis quelque chose. À toi de voir ce que tu en fais."
+  },
+  "frictions": {
+   "nom": "Les Frictions",
+   "quoi": "Les écarts entre deux parties de toi qui ne tirent pas dans le même sens.",
+   "d_ou": "Elles se calculent par les différences entre les morceaux de ta date de naissance."
+  },
+  "appuis": {
+   "nom": "Les Appuis",
+   "quoi": "Les qualités déjà présentes dans ton nom — celles sur lesquelles tu peux compter.",
+   "d_ou": "Chaque lettre de ton nom nourrit une qualité. Celles qui sont représentées sont tes appuis."
+  },
+  "chantiers": {
+   "nom": "Les Chantiers",
+   "quoi": "Les qualités absentes de ton nom. Pas un manque à déplorer : un terrain à bâtir.",
+   "d_ou": "Les qualités qu'aucune lettre de ton nom ne nourrit.",
+   "pourquoi_ce_mot": "« Chantier », pas « manque » : il n'y a rien à réparer, il y a à construire."
+  },
+  "annee_personnelle": {
+   "nom": "Ton année",
+   "quoi": "Le climat de l'année en cours pour toi. Elle tourne sur un cycle de neuf ans, puis recommence.",
+   "d_ou": "Elle combine ton jour et ton mois de naissance avec l'année du calendrier.",
+   "quand": "Elle change au 1er janvier, pas à ton anniversaire."
+  },
+  "mois_personnel": {
+   "nom": "Ton mois",
+   "quoi": "La saison du moment, entre le chapitre de l'année et la journée qui vient du ciel. Elle tourne aussi sur un cycle de neuf, mais glisse d'une année à l'autre : un même mois du calendrier ne retombe jamais sur le même chiffre.",
+   "d_ou": "Ton année personnelle additionnée au numéro du mois en cours, puis réduite.",
+   "quand": "Elle change le 1er de chaque mois, pas à une date qui t'est propre."
+  },
+  "carte_naissance": {
+   "nom": "Ta carte",
+   "quoi": "Une image qui décrit un schéma que tu portes depuis le début. Elle n'est pas tirée au hasard : elle se calcule à partir de ta date de naissance.",
+   "d_ou": "La somme de ta date, ramenée à l'une des 22 grandes images du tarot."
+  },
+  "carte_annee": {
+   "nom": "La carte de l'année",
+   "quoi": "L'image qui accompagne ton année en cours. Elle change chaque 1er janvier."
+  },
+  "resonance": {
+   "nom": "Ton ciel appuie",
+   "quoi": "Ce que cet endroit met en avant, ta carte ou ton nombre, est fort dans ton ciel de naissance. Les deux vont dans le même sens, ça se renforce.",
+   "court": "ton ciel appuie"
+  },
+  "tension": {
+   "nom": "Ton ciel te bouscule",
+   "quoi": "Ce que cet endroit met en avant est en difficulté dans ton ciel. Ce n'est pas un mauvais présage. C'est simplement là qu'il y a du travail, donc là que c'est intéressant.",
+   "court": "ton ciel te bouscule"
+  },
+  "neutre": {
+   "nom": "Ton ciel est neutre",
+   "quoi": "Ton ciel n'appuie pas particulièrement, et ne te bouscule pas non plus. Ni renfort marqué, ni bousculade.",
+   "court": "ton ciel est neutre"
+  }
+ },
+ "qualites": {
+  "_note": "Le nom de chacune des 9 valeurs de la grille Appuis/Chantiers — condensé à partir de Castells & Durandy, Numérologie (Eyrolles), chapitre « Identification et acquisition de vos qualités à développer ». Les couples genrés du livre (qualité Homme/Femme pour 5 et 6) sont ramenés à leur fond commun, dans le ton de Ta Trame.",
+  "1": {
+   "nom": "Action",
+   "quoi": "Décider, initier, prendre les devants — ce n'est pas un réflexe chez toi. Tu attends parfois que la vie tranche à ta place. Ce chantier se bâtit petit : une décision modeste, puis une autre."
+  },
+  "2": {
+   "nom": "Regard",
+   "quoi": "Voir l'autre pour de vrai, et te sentir vu en retour — ça ne va pas de soi. Tu fusionnes avec qui t'entoure, ou tu t'effaces devant lui. S'arrêter, écouter, regarder : ça s'apprivoise avec le temps."
+  },
+  "3": {
+   "nom": "Communication",
+   "quoi": "Dire ce qui se passe en toi, avec justesse — ce n'est pas naturel chez toi. Les mots restent bloqués, ou sortent plus durs que prévu. Ce chantier se travaille en petit comité, avant les grandes scènes."
+  },
+  "4": {
+   "nom": "Travail",
+   "quoi": "La régularité, la discipline, tenir un cadre — ça te coûte plus qu'à d'autres. Tu fuis la contrainte, ou tu t'y noies entièrement. Un cadre choisi, plutôt que subi, aide à l'apprivoiser."
+  },
+  "5": {
+   "nom": "Liberté",
+   "quoi": "Savoir qui tu es et gérer ta liberté — ce chantier ne va pas de soi. Tu t'enfermes dans une routine, ou tu t'emballes sans mesurer la suite. Le terrain à bâtir : une liberté qui tient dans la durée."
+  },
+  "6": {
+   "nom": "Lien",
+   "quoi": "Te reconnaître dans tes liens proches — amoureux, familiaux, amicaux — demande du travail. Tu attends beaucoup de l'autre, ou tu contrôles pour éviter d'être blessé. Lâcher un peu, sans tout lâcher : voilà le chantier."
+  },
+  "7": {
+   "nom": "Confiance",
+   "quoi": "La confiance en toi, et l'ouverture à ce qui te dépasse — ce n'est pas acquis d'avance. Tu doutes de toi, ou tu compenses en jouant celui qui sait tout. Ce chantier se nourrit de tout ce qui t'aide à mieux te connaître."
+  },
+  "8": {
+   "nom": "Réalisation",
+   "quoi": "Prendre ta place et t'y sentir légitime — ce chantier demande du temps. Tu te vis en victime, ou tu bouscules pour exister. Te faire respecter, sans violence, ouvre la voie."
+  },
+  "9": {
+   "nom": "Groupe",
+   "quoi": "Trouver ta place parmi les autres, ni trop loin ni fondu dedans — ça ne va pas de soi. Tu t'isoles, ou tu t'oublies à force de te dévouer. S'ouvrir au monde, à ton rythme : voilà le chantier."
+  }
+ },
+ "maisons": {
+  "1": {
+   "nom": "toi-même",
+   "quoi": "ton corps, ton allure, la façon dont tu arrives quelque part"
+  },
+  "2": {
+   "nom": "tes ressources",
+   "quoi": "ton argent, tes biens, ce sur quoi tu peux compter"
+  },
+  "3": {
+   "nom": "tes échanges proches",
+   "quoi": "tes mots, tes trajets courts, tes frères et sœurs, tes voisins"
+  },
+  "4": {
+   "nom": "tes racines",
+   "quoi": "ta maison, ta famille, d'où tu viens"
+  },
+  "5": {
+   "nom": "ton jeu",
+   "quoi": "ce que tu crées, ce qui t'amuse, tes amours, tes enfants"
+  },
+  "6": {
+   "nom": "ton quotidien",
+   "quoi": "ton travail de tous les jours, ta santé, tes habitudes"
+  },
+  "7": {
+   "nom": "l'autre",
+   "quoi": "ton couple, tes associés, ceux qui te font face"
+  },
+  "8": {
+   "nom": "ce qui se transforme",
+   "quoi": "ce qui meurt et renaît, l'argent partagé, l'intime"
+  },
+  "9": {
+   "nom": "ton horizon",
+   "quoi": "tes voyages, tes études, ce qui donne du sens"
+  },
+  "10": {
+   "nom": "ce que tu montres",
+   "quoi": "ton métier, ta réputation, ce que les autres voient de toi"
+  },
+  "11": {
+   "nom": "tes amitiés",
+   "quoi": "tes amis, tes groupes, tes projets à long terme"
+  },
+  "12": {
+   "nom": "ton retrait",
+   "quoi": "ton silence, ton invisible, ce que tu gardes pour toi"
+  }
+ },
+ "phases": {
+  "nouvelle": {
+   "nom": "Nouvelle Lune",
+   "quoi": "Rien n'est encore visible. Quelque chose commence sans preuve."
+  },
+  "croissante": {
+   "nom": "Lune croissante",
+   "quoi": "Ça pousse. Les premiers signes apparaissent."
+  },
+  "premier_quartier": {
+   "nom": "Premier quartier",
+   "quoi": "La moitié du chemin. C'est là que ça résiste."
+  },
+  "gibbeuse": {
+   "nom": "Lune presque pleine",
+   "quoi": "Presque au bout. Le doute arrive juste avant la fin."
+  },
+  "pleine": {
+   "nom": "Pleine Lune",
+   "quoi": "Tout est éclairé, y compris ce qu'on ne voulait pas voir."
+  },
+  "diffusante": {
+   "nom": "Lune décroissante",
+   "quoi": "Ce qui a été compris se partage, se transmet."
+  },
+  "dernier_quartier": {
+   "nom": "Dernier quartier",
+   "quoi": "On fait le tri. Ce qui ne sert plus s'écarte."
+  },
+  "balsamique": {
+   "nom": "Fin de cycle",
+   "quoi": "L'énergie est basse et c'est normal. Le cycle se termine, un autre attend."
+  }
+ },
+ "planetes": {
+  "soleil": {
+   "nom": "le Soleil",
+   "quoi": "ce que tu es au fond"
+  },
+  "lune": {
+   "nom": "la Lune",
+   "quoi": "ton humeur, tes besoins"
+  },
+  "mercure": {
+   "nom": "Mercure",
+   "quoi": "ta tête, tes mots"
+  },
+  "venus": {
+   "nom": "Vénus",
+   "quoi": "ce qui te plaît, ce que tu aimes"
+  },
+  "mars": {
+   "nom": "Mars",
+   "quoi": "ton envie d'agir, ta colère"
+  },
+  "jupiter": {
+   "nom": "Jupiter",
+   "quoi": "ton horizon, ce qui s'ouvre"
+  },
+  "saturne": {
+   "nom": "Saturne",
+   "quoi": "tes limites, ce qui demande du temps"
+  },
+  "uranus": {
+   "nom": "Uranus",
+   "quoi": "ton besoin de neuf, ce qui secoue"
+  },
+  "neptune": {
+   "nom": "Neptune",
+   "quoi": "ton imaginaire, ce qui est flou"
+  },
+  "pluton": {
+   "nom": "Pluton",
+   "quoi": "ce qui te transforme en profondeur"
+  },
+  "noeud_moyen": {
+   "nom": "le Nœud lunaire",
+   "quoi": "la direction vers laquelle tu es poussé"
+  },
+  "asc": {
+   "nom": "l'Ascendant",
+   "quoi": "la façon dont tu te présentes"
+  },
+  "mc": {
+   "nom": "le Milieu du Ciel",
+   "quoi": "ce que tu montres au monde"
+  }
+ },
+ "aspects": {
+  "conjonction": {
+   "nom": "se superpose à",
+   "quoi": "les deux se mélangent, impossible de les séparer"
+  },
+  "carre-opposition": {
+   "nom": "bouscule",
+   "quoi": "les deux tirent dans des sens différents — ça demande un arbitrage, ce n'est pas un malheur"
+  },
+  "sextile-trigone": {
+   "nom": "coule vers",
+   "quoi": "les deux s'entendent — le risque est de ne pas s'en servir"
+  }
+ },
+ "dignites": {
+  "domicile": "chez elle, à son aise",
+  "exil": "en terrain étranger",
+  "exaltation": "portée, mise en valeur",
+  "chute": "mal à l'aise, obligée de faire autrement"
+ }
+}

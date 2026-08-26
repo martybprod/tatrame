@@ -1,0 +1,27 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le cadrage par TYPE de relation (la lentille — voir moteur/relations.py::LENTILLES). Le type ne change AUCUN calcul, seulement l'angle sous lequel on lit les mêmes axes. Et un conseil de clôture, ancré dans le registre propre à ce type de lien. `conseil` s'inspire des thèmes déjà distillés du coaching relationnel (styles d'attachement, conversations du couple, langages de l'affection). Jamais leurs mots, jamais leurs noms d'auteur.",
+ "amour": {
+  "cadrage": "Dans un couple, ce qui se joue entre vos deux ciels compte le plus. Le désir, la tendresse, la sécurité se lisent d'abord là, avant les nombres ou le signe chinois.",
+  "conseil": "Une dispute qui revient cache presque toujours un besoin qu'on n'a pas encore nommé. Chercher ce besoin fait plus avancer que rejouer la dispute."
+ },
+ "travail": {
+  "cadrage": "Dans un lien de travail, ce qui compte d'abord, c'est comment vous avancez ensemble au quotidien. Le rythme, la communication, la fiabilité passent avant la chimie.",
+  "conseil": "Nommer tôt le rôle de chacun évite bien des accrochages qui, sinon, se rejouent sans jamais se dire clairement."
+ },
+ "parent_enfant": {
+  "cadrage": "Dans un lien parent-enfant, ce qui compte d'abord, c'est le climat du quotidien et ce qui se transmet. Le cadre et le soin comptent plus que l'accord parfait.",
+  "conseil": "Un enfant qui teste une limite cherche souvent à savoir si le cadre tient, pas à provoquer. Un cadre qui tient rassure plus qu'il ne punit.",
+  "conseil_enfant": "Ce que ton parent a posé tôt te sert encore, ou te pèse encore. Faire le tri entre les deux, à ton rythme, c'est reprendre la main sans avoir à couper le lien.",
+  "_synastrie_intro_note": "Placée en tête de « Entre vos ciels » quand le rôle est connu. Le lien parent-enfant a un sens : le ciel du parent façonne celui de l'enfant plus que l'inverse. {parent}/{enfant} sont les prénoms.",
+  "synastrie_intro": "Dans un lien parent-enfant, c'est surtout le ciel de {parent} qui colore celui de {enfant}. Ces rencontres se lisent d'abord dans ce sens, du parent vers l'enfant."
+ },
+ "ami": {
+  "cadrage": "Dans une amitié, ce qui compte d'abord, c'est l'affinité naturelle et la liberté qu'on se laisse. Personne n'a besoin de tout partager pour que ça tienne.",
+  "conseil": "Une amitié qui dure n'est pas celle où tout s'accorde. C'est celle où chacun peut disparaître un temps sans que ça se brise."
+ },
+ "famille": {
+  "cadrage": "Dans un lien de famille, ce qui compte d'abord, c'est ce qui se répète depuis longtemps. Ce qui rapproche et ce qui accroche y sont souvent plus anciens que vous deux.",
+  "conseil": "Ce qui accroche en famille vient rarement de la situation du jour. Ça aide de se demander depuis quand, pas seulement pourquoi."
+ }
+}

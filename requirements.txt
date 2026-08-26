@@ -1,0 +1,33 @@
+# Runtime — ENTIÈREMENT ÉPINGLÉ.
+#
+# Le déterminisme de l'app repose sur ce fichier autant que sur son code :
+# une version qui glisse, c'est un thème qui change en silence.
+#
+# ⚠️ Ne JAMAIS ajouter pyswisseph ici. Il est AGPL sans option commerciale et
+#    son projet est dormant ; il ne sert que d'oracle de test hors production.
+#    Voir requirements-dev.txt et PROPOSITION.md §6.
+
+skyfield==1.54          # MIT — éphémérides, temps sidéral, repères
+numpy==2.4.6            # dépendance de skyfield
+jplephem==2.24          # lecture des noyaux SPICE (.bsp)
+sgp4==2.27              # dépendance de skyfield (satellites — inutilisée)
+
+# tzdata épinglé : SANS lui, zoneinfo lit /usr/share/zoneinfo, qui suit les
+# mises à jour de macOS (2026b ici) et ferait dériver les thèmes d'une version
+# du système à l'autre. Avec lui, zoneinfo le préfère au système.
+tzdata==2026.3
+
+# Notifications push (rappels du jour, PWA) — pas de rapport avec le calcul
+# astrologique, mais soumis à la même discipline d'épinglage.
+pywebpush==2.3.0        # envoi des notifications, signature VAPID
+apscheduler==3.11.3     # scheduler in-process (heures fixes, pas de cron externe)
+cryptography==49.0.0    # dépendance de pywebpush (signature VAPID)
+
+# Serveur web + gabarits. Non déclarés jusqu'ici (présents dans le venv local mais
+# jamais épinglés) : le build conteneur exige de les fixer, et Jinja/Werkzeug touchent
+# au HTML rendu et à la sécurité des sessions — même discipline d'épinglage. On épingle
+# les trois qui pèsent sur le comportement observable ; leurs autres transitives (click,
+# blinker, markupsafe…) restent laissées à pip, comme pour skyfield.
+flask==3.1.2            # routes, sessions, templates
+werkzeug==3.1.8         # utilisé directement : hachage des mots de passe (auth.py)
+jinja2==3.1.6           # rendu des gabarits

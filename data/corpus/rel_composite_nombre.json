@@ -1,0 +1,67 @@
+{
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "Le NOMBRE COMPOSÉ d'une relation (distillé de Dan Millman) : le « vous » comme entité, calculé par les nombres. Valeur = réduire(cap_a + cap_b) réduite à 1-9 (moteur/relations.py::nombre_composite). Pendant numérologique du thème composite astral (rel_composite.json), source différente. Table ADDITIVE de 9 entrées, jamais une matrice. Registre « vous » (le lien, pas l'un ni l'autre). Textes ORIGINAUX écrits depuis les énergies de base (carte de concepts, section C), jamais depuis la prose de Millman. L'intro de cadrage vit dans templates/index.html, comme les intros période/axe.",
+  "1": {
+    "en_bref": "Ensemble, vous êtes faits pour ouvrir des portes et lancer des choses neuves.",
+    "le_but": "Ce lien démarre. À deux, vous osez des débuts qu'aucun de vous deux n'aurait tentés seul de son côté, et vous avancez avant d'avoir toutes les réponses.",
+    "l_atout": "Rien ne stagne longtemps entre vous. Une idée devient vite un geste, et votre énergie donne le courage de se lancer.",
+    "le_piege": "Deux moteurs qui veulent mener peuvent se buter, chacun tirant de son côté. L'élan tourne alors en bras de fer.",
+    "la_question": "Qu'est-ce que vous avez envie de commencer ensemble, là, maintenant ?"
+  },
+  "2": {
+    "en_bref": "Ensemble, vous êtes faits pour vous soutenir et trouver le bon accord.",
+    "le_but": "Ce lien relie. À deux, vous apprenez à ajuster vos rythmes, à donner et recevoir sans que la balance penche toujours du même côté.",
+    "l_atout": "Vous vous portez l'un l'autre. C'est un lien fiable, attentif, où chacun sent qu'il compte pour de vrai.",
+    "le_piege": "À trop vouloir s'accorder, l'un s'efface et finit par en vouloir à l'autre en silence. L'harmonie devient un poids.",
+    "la_question": "Est-ce que chacun de vous ose dire ce dont il a besoin, avant d'être à bout ?"
+  },
+  "3": {
+    "en_bref": "Ensemble, vous êtes faits pour vous exprimer et faire circuler la vie.",
+    "le_but": "Ce lien parle. À deux, vous mettez des mots sur ce que vous ressentez, et cette parole partagée nourrit tout le reste.",
+    "l_atout": "On se sent vivant près de vous. Les idées fusent, le rire vient facile, et rien d'important ne reste enfermé longtemps.",
+    "le_piege": "Quand ça va mal, on parle beaucoup et on se dit peu. Les mots servent alors à cacher ce qu'on ressent, pas à le montrer.",
+    "la_question": "Ce que vous vous dites, est-ce que ça vient du cœur ou de la tête ?"
+  },
+  "4": {
+    "en_bref": "Ensemble, vous êtes faits pour bâtir du solide, une pierre à la fois.",
+    "le_but": "Ce lien construit. À deux, vous posez des bases qui tiennent : un foyer, un projet, une vie de tous les jours qui ne s'écroule pas au premier vent.",
+    "l_atout": "On peut compter sur vous. Ce que vous montez ensemble dure, parce que vous prenez le temps de bien faire.",
+    "le_piege": "À force de sérieux, la routine prend toute la place et l'on oublie de respirer. Le lien tient debout, mais il s'ennuie.",
+    "la_question": "Qu'est-ce que vous construisez ensemble, et est-ce que ça vous ressemble encore ?"
+  },
+  "5": {
+    "en_bref": "Ensemble, vous êtes faits pour bouger, essayer, prendre l'air.",
+    "le_but": "Ce lien explore. À deux, vous cherchez du neuf, vous changez de décor, et l'aventure vous garde éveillés l'un à l'autre.",
+    "l_atout": "On ne s'ennuie pas avec vous. Ce lien laisse de la place à chacun pour respirer et revenir sans se sentir enfermé.",
+    "le_piege": "Trop de mouvement finit par tout disperser. On accumule les expériences sans jamais rien approfondir, y compris entre vous.",
+    "la_question": "Qu'est-ce qui, entre vous, mérite qu'on s'arrête et qu'on creuse ?"
+  },
+  "6": {
+    "en_bref": "Ensemble, vous êtes faits pour prendre soin et veiller sur ce qui compte.",
+    "le_but": "Ce lien protège. À deux, vous tenez à ce que les choses soient justes et belles, et vous prenez soin des gens autour de vous.",
+    "l_atout": "On se sent en sécurité près de vous. C'est un lien chaleureux, qui donne et qui accueille, souvent bien au-delà du couple.",
+    "le_piege": "L'idéal que vous visez peut devenir une barre trop haute. On se juge, on juge l'autre, et rien ne semble jamais assez bien.",
+    "la_question": "Est-ce que vous vous acceptez tels que vous êtes, ou tels que vous rêvez d'être ?"
+  },
+  "7": {
+    "en_bref": "Ensemble, vous êtes faits pour chercher du sens et aller au fond des choses.",
+    "le_but": "Ce lien approfondit. À deux, vous ne vous contentez pas de la surface : vous voulez comprendre, réfléchir, toucher quelque chose de vrai.",
+    "l_atout": "Il y a de la profondeur entre vous. Les silences ne font pas peur, et vous vous comprenez souvent sans avoir à tout dire.",
+    "le_piege": "Chacun peut se replier dans sa tête et la distance s'installe sans bruit. On partage un toit sans se rejoindre vraiment.",
+    "la_question": "Qu'est-ce que vous gardez pour vous, par pudeur, et qui gagnerait à être dit ?"
+  },
+  "8": {
+    "en_bref": "Ensemble, vous êtes faits pour entreprendre et peser dans le monde.",
+    "le_but": "Ce lien réalise. À deux, vous menez des projets qui comptent, vous gérez le concret, l'argent, l'ampleur, et vous voyez grand.",
+    "l_atout": "Vous formez une équipe qui obtient des résultats. Ce que vous décidez ensemble avance et laisse une trace.",
+    "le_piege": "Le pouvoir peut se glisser entre vous : qui décide, qui contrôle, qui gagne. Le lien devient alors un rapport de force.",
+    "la_question": "Est-ce que vous jouez dans la même équipe, ou l'un contre l'autre ?"
+  },
+  "9": {
+    "en_bref": "Ensemble, vous êtes faits pour relier large et servir plus grand que vous.",
+    "le_but": "Ce lien rassemble. À deux, vous vous sentez concernés par ce qui vous dépasse, et vous acceptez vos différences comme une richesse.",
+    "l_atout": "Il y a de la générosité et de l'ouverture entre vous. Ce lien donne, inspire, et fait de la place à ce qui n'est pas pareil.",
+    "le_piege": "En regardant loin, on oublie parfois le quotidien juste à côté. Chacun peut se sentir seul, même à deux.",
+    "la_question": "Est-ce que vous prenez soin du lien lui-même, autant que de tout le reste ?"
+  }
+}

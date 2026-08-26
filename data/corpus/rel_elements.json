@@ -1,0 +1,55 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "La résonance des éléments (Feu, Terre, Air, Eau) entre les points personnels de deux thèmes — Soleil, Lune, Vénus, Mars, Ascendant comparés un à un (voir moteur/relations.py::_axe_elements). Clé canonique 'x-y' en minuscules, triée alphabétiquement. Feu et Air sont actifs, Terre et Eau sont réceptifs : ces deux familles s'accordent naturellement entre elles.",
+
+ "air-air": {
+  "en_bref": "Deux esprits qui pensent de la même façon.",
+  "texte": "Vous parlez, vous nommez, vous tournez les choses en idées avant d'agir. La conversation va vite entre vous. Ce qui manque parfois, c'est ce qui sort du domaine des mots : un geste, un silence, une décision prise sans en avoir discuté d'abord.",
+  "etat": "neutre"
+ },
+ "air-eau": {
+  "en_bref": "L'un pense tout haut, l'autre sent en silence — deux langues à apprivoiser.",
+  "texte": "Ce qui compte pour l'un se dit, se nomme, se clarifie en mots. Ce qui compte pour l'autre se sent avant même de se dire. Vous parlez deux langues différentes — et c'est justement ce qui rend la traduction intéressante : chacun apprend peu à peu le parler de l'autre.",
+  "etat": "tension"
+ },
+ "air-feu": {
+  "en_bref": "Une idée qui devient un geste, presque sans effort.",
+  "texte": "L'un pense, l'autre agit, et souvent l'un nourrit directement l'autre. Une conversation devient vite un projet. C'est vivant, ça bouge, et ça respire sans que personne n'ait besoin de forcer la rencontre.",
+  "etat": "resonance"
+ },
+ "air-terre": {
+  "en_bref": "L'un vit dans les idées, l'autre dans le concret — deux chemins vers le même endroit.",
+  "texte": "Une idée n'existe pour l'un que discutée, tournée, mise en mots. Pour l'autre, elle ne prend forme qu'une fois posée, touchée, mesurée. Ce n'est pas un désaccord de fond : juste deux tempos différents, qui gagnent à se laisser le temps d'arriver ensemble.",
+  "etat": "tension"
+ },
+ "eau-eau": {
+  "en_bref": "Deux personnes qui ressentent avant de comprendre.",
+  "texte": "Vous captez l'ambiance de l'autre sans qu'il ait besoin de l'expliquer. C'est intime, presque instinctif : deux personnes qui absorbent tout ce qui se passe autour gagnent à garder, quelque part, un peu de terre ferme où poser ce qu'elles ressentent.",
+  "etat": "neutre"
+ },
+ "eau-feu": {
+  "en_bref": "Une intensité rare, à doser plutôt qu'à redouter.",
+  "texte": "L'un avance par élan, l'autre par ressenti profond. Ensemble, c'est une chaleur peu commune : la même flamme qui réchauffe l'eau peut aussi la faire frémir. Trouvé à deux, le bon dosage transforme cette intensité en un feu qui dure.",
+  "etat": "tension"
+ },
+ "eau-terre": {
+  "en_bref": "Un sol qui accueille ce qui se ressent.",
+  "texte": "L'un ressent, l'autre offre un endroit stable où ce ressenti peut se poser. C'est une combinaison qui tient bien dans la durée, faite pour construire un quotidien plutôt qu'un feu d'artifice.",
+  "etat": "resonance"
+ },
+ "feu-feu": {
+  "en_bref": "Deux élans qui partent vite, dans la même direction ou pas.",
+  "texte": "Vous comprenez d'instinct l'envie d'aller de l'avant de l'autre. C'est stimulant, vivant : deux personnes qui foncent en même temps gagnent, de temps en temps, à laisser l'une ralentir pour l'autre — un relais plutôt qu'une course.",
+  "etat": "neutre"
+ },
+ "feu-terre": {
+  "en_bref": "Un élan qui rencontre un sol qui veut d'abord vérifier qu'il tient.",
+  "texte": "L'un veut avancer maintenant, l'autre veut d'abord s'assurer que le terrain porte. Ce n'est ni un manque d'envie chez l'un, ni un manque d'audace chez l'autre — juste un élan et une fondation, qui ont besoin de se caler l'un sur l'autre.",
+  "etat": "tension"
+ },
+ "terre-terre": {
+  "en_bref": "Deux personnes qui construisent au même rythme, posé.",
+  "texte": "Vous avez le même besoin de sentir les choses solides avant d'avancer. C'est stable, et ça peut aussi manquer de surprise : rien ne bouge tant que personne ne décide, ensemble, de bouger.",
+  "etat": "neutre"
+ }
+}

@@ -1,0 +1,117 @@
+{
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "Les 17 lois distillées de Dan Millman (Votre Chemin de Vie) comme leviers. Textes ORIGINAUX écrits depuis les CONCEPTS de la carte (_distillation/votre_chemin_de_vie_carte_de_concepts.md, section G), jamais depuis la prose du livre. Les 17 noms de lois (Flexibilité, Choix, Responsabilité...) sont des mots français courants, pas une marque. `_routage` associe à chaque base de Cap (1 à 9) 2-3 lois prioritaires, dérivées du sens propre que Ta Trame donne déjà à chaque Cap dans nombres_detail.json (pas des listes du livre, qui sont protégées). Table additive : router seulement sur la base 1-9 en v1 ; les maîtres (11/22/33) et le 0 n'ont pas d'entrée dédiée, ils héritent du routage de leur base réduite.",
+  "flexibilite": {
+    "nom": "La loi de la souplesse",
+    "en_un_mot": "plier sans casser",
+    "le_principe": "Tu résistes souvent à ce qui arrive, avant même de savoir si ça vaut la peine. C'est humain, et ça use pour rien. Une branche rigide casse au premier grand vent. Une branche souple plie, puis se replace. Tu n'as pas à aimer une situation pour t'y ajuster. Plier ne veut pas dire abandonner. Ça garde ta force disponible pour le bon moment, au lieu de la perdre à pousser contre un mur.",
+    "le_pas": "La prochaine fois qu'un imprévu dérange tes plans, remarque le moment précis où tu te braques. Demande-toi ensuite ce que ça donnerait d'avancer avec la situation, plutôt que de pousser contre elle."
+  },
+  "choix": {
+    "nom": "La loi du choix",
+    "en_un_mot": "il reste une marge",
+    "le_principe": "Une situation peut sembler t'imposer une seule réaction possible. Regarde de plus près. Il reste presque toujours une marge, même petite, entre te fermer et rester ouvert, entre bâtir et démolir. Cette marge ne dépend de personne d'autre que toi, même dans les journées où tu as l'impression de subir. Tu ne choisis pas toujours ce qui t'arrive. Tu choisis comment tu y réponds.",
+    "le_pas": "Repère une réaction que tu répètes presque automatiquement. Une seule fois cette semaine, avant d'agir comme d'habitude, demande-toi ce que tu choisis vraiment, et si c'est ce que tu veux."
+  },
+  "responsabilite": {
+    "nom": "La loi des limites",
+    "en_un_mot": "ta part, pas plus",
+    "le_principe": "Tu prends parfois en charge des choses qui reviennent à quelqu'un d'autre, par habitude ou par peur de décevoir. Sur la durée, ça t'épuise, et ça empêche l'autre personne d'apprendre à porter ce qui lui appartient. Dire jusqu'où va ta part n'a rien d'une froideur. C'est ce qui rend l'entraide possible longtemps, au lieu qu'elle craque d'un coup, un jour, sans prévenir.",
+    "le_pas": "Repère une tâche ou un souci que tu portes seul en ce moment, alors qu'il concerne aussi quelqu'un d'autre. Dis-le simplement, sans t'excuser. Tu n'as pas à tout régler tout seul."
+  },
+  "equilibre": {
+    "nom": "La loi de la mesure",
+    "en_un_mot": "revenir au centre",
+    "le_principe": "Trop donner mène souvent, avec le temps, à se refermer complètement. Trop attendre des autres finit par user leur patience, et la tienne aussi. Ce qui te manque le plus, en ce moment, ressemble souvent à ce que tu as le plus à offrir. L'équilibre ne vient pas d'éviter les extrêmes. Il vient d'y revenir après les avoir touchés une fois, sans en faire un drame.",
+    "le_pas": "Regarde une relation où tu donnes beaucoup ces temps-ci, sans trop y penser. Demande-toi honnêtement ce que tu reçois en retour, et ce dont tu aurais vraiment besoin."
+  },
+  "methode": {
+    "nom": "La loi des étapes",
+    "en_un_mot": "une marche à la fois",
+    "le_principe": "Sauter une étape parce qu'elle semble accessoire finit presque toujours par coûter plus cher que si tu l'avais faite au bon moment. Chaque étape terminée compte comme une réussite en elle-même, pas seulement comme un passage vers autre chose. Tu n'as pas besoin de voir tout le trajet pour avancer. Voir la prochaine marche suffit amplement, et ça change tout dans les jours où le but semble loin.",
+    "le_pas": "Prends un objectif qui te paraît trop gros en ce moment, celui qui traîne depuis un moment. Découpe-le en trois étapes concrètes, et commence seulement par la première, aujourd'hui."
+  },
+  "comportements": {
+    "nom": "La loi des habitudes",
+    "en_un_mot": "refaire pareil donne pareil",
+    "le_principe": "Une habitude, bonne ou mauvaise, s'enracine un peu plus chaque fois qu'elle se répète. Te dire que ça va changer à partir de maintenant ne suffit presque jamais. L'ancien réflexe revient tout seul, sans prévenir, exactement comme avant. Ce qui marche vraiment, c'est de repérer le moment précis où il démarre, et de faire à cet instant-là quelque chose de complètement différent, même petit.",
+    "le_pas": "Repère un comportement que tu répètes malgré toi, celui qui revient toujours pareil. La prochaine fois qu'il commence, arrête-toi et fais une seule chose différente, même petite, même étrange."
+  },
+  "discipline": {
+    "nom": "La loi de la régularité",
+    "en_un_mot": "la liberté se construit",
+    "le_principe": "On confond souvent la discipline avec une privation. En réalité, elle donne accès à une vraie liberté plus tard, avec plus de choix, plus de solidité, plus d'indépendance. L'ennui que tu ressens au milieu d'un effort n'annonce pas un échec. C'est souvent le signe que tu commences tout juste à comprendre ce que tu fais, juste avant la partie intéressante.",
+    "le_pas": "Choisis une chose que tu remets sans cesse par manque d'envie, quelque chose de précis. Fais-la aujourd'hui, seulement dix minutes, juste assez pour retrouver le rythme."
+  },
+  "perfection": {
+    "nom": "La loi de l'assez bon",
+    "en_un_mot": "viser juste, pas parfait",
+    "le_principe": "Rien de ce que tu fais ne sera jamais parfait. Ça n'a rien d'un échec personnel, c'est une caractéristique du monde réel, la même pour tout le monde. Ce qu'on peut atteindre, avec du temps et de la pratique, c'est l'excellence, pas la perfection. Tes idéaux ont leur utilité, ils montrent une direction à suivre. Ils ne servent pas à mesurer ta valeur.",
+    "le_pas": "Choisis un travail que tu retouches sans fin en ce moment. Fixe-toi un nombre de retouches, par exemple trois, puis arrête-toi et considère que c'est assez bon."
+  },
+  "moment_present": {
+    "nom": "La loi de maintenant",
+    "en_un_mot": "seul l'instant existe",
+    "le_principe": "La plupart de tes soucis ne se passent pas maintenant. Ils viennent d'un souvenir que tu rejoues, ou d'un futur que tu imagines déjà en détail, avec tous les scénarios possibles. Le présent, lui, contient rarement autant de problèmes qu'il n'y paraît une fois qu'on le regarde en face. Revenir à ce qui se passe vraiment, là, tout de suite, dégage souvent plus d'espace que prévu.",
+    "le_pas": "La prochaine fois qu'une inquiétude monte, demande-toi calmement si elle concerne ce moment précis, ou plutôt un souvenir, ou une anticipation. Nomme-la simplement pour ce qu'elle est."
+  },
+  "non_jugement": {
+    "nom": "La loi de l'accueil",
+    "en_un_mot": "voir sans condamner",
+    "le_principe": "Plus tes attentes envers toi-même sont hautes, plus tu risques de te juger durement quand la réalité ne suit pas exactement. Ce jugement bloque plus qu'il n'aide, il fige au lieu de faire avancer les choses. Une erreur reconnue et corrigée fait plus de chemin qu'une erreur ressassée pendant des jours. Tu peux voir clairement ce qui ne va pas, sans pour autant te condamner.",
+    "le_pas": "Pense à une erreur récente que tu te reproches encore. Dis-toi une phrase claire, comme j'ai compris, je corrige, et laisse le reste de côté pour aujourd'hui."
+  },
+  "foi": {
+    "nom": "La loi de la confiance intérieure",
+    "en_un_mot": "tu en sais plus que tu crois",
+    "le_principe": "Tu vas parfois chercher dehors une confirmation que tu portes déjà en toi, dans une opinion, un livre, un avis extérieur. Demander conseil n'a rien de mauvais. Mais une part de toi sait souvent, avant même que tu l'admettes, ce qui est juste pour ta situation précise. Faire confiance à ce ressenti, même sans preuve extérieure, change la façon dont tu avances dans les moments flous.",
+    "le_pas": "La prochaine fois que tu hésites entre ton ressenti et l'avis de quelqu'un d'autre, écoute d'abord ton ressenti en entier, avant de regarder ce que les autres en pensent."
+  },
+  "attentes": {
+    "nom": "La loi de ce qu'on attend",
+    "en_un_mot": "ce qu'on attend se confirme",
+    "le_principe": "Ce que tu attends, au fond de toi, finit souvent par façonner ce que tu remarques, et parfois ce que tu provoques sans le vouloir vraiment. Si tu t'attends à ce que ça tourne mal, tu remarqueras surtout les signes qui semblent te donner raison. Ça ne veut pas dire que tout dépend de ta pensée. Ça veut dire qu'une vieille attente mérite parfois d'être révisée, plutôt que traitée comme un fait acquis.",
+    "le_pas": "Repère une attente négative que tu portes sur une situation précise. Écris une phrase qui décrit ce que tu attendrais avec plus de confiance, et garde-la sous les yeux aujourd'hui."
+  },
+  "honnetete": {
+    "nom": "La loi du vrai",
+    "en_un_mot": "se mentir coûte cher",
+    "le_principe": "Se mentir à soi-même précède presque toujours le fait de mentir aux autres, même de façon discrète et bien intentionnée. Tricher sans se faire prendre n'apporte pas la paix qu'on espérait. La tension reste, elle est simplement déplacée à l'intérieur. Dire les choses directement, même maladroitement, coûte moins cher à long terme que les sous-entendus, les soupirs ou les silences chargés.",
+    "le_pas": "Pense à une chose que tu n'as pas dite clairement récemment, par gêne ou par prudence. Dis-la aujourd'hui, en une phrase simple, à la bonne personne."
+  },
+  "volonte_superieure": {
+    "nom": "La loi du sens plus large",
+    "en_un_mot": "servir plus grand que soi",
+    "le_principe": "Une action pensée seulement pour ton propre intérêt reste souvent petite, et fragile dès qu'un obstacle arrive en travers du chemin. La même action, mise au service de quelque chose de plus large qu'un besoin personnel, trouve en général plus d'énergie pour tenir dans la durée. Tu n'as pas besoin d'une grande cause. Un proche, une équipe, un principe auquel tu tiens suffisent amplement.",
+    "le_pas": "Avant une décision qui te préoccupe, demande-toi ce qui servirait le mieux les gens concernés, pas seulement toi. Laisse cette réponse peser dans la balance."
+  },
+  "intuition": {
+    "nom": "La loi du centre",
+    "en_un_mot": "ton avis compte le plus",
+    "le_principe": "Tu mesures parfois ta valeur à ce que les autres pensent de toi, sans même t'en rendre compte sur le moment. Ce réflexe demande beaucoup d'énergie, et il te tient loin de ton propre jugement. L'opinion des autres peut éclairer une décision. Elle ne devrait pas la remplacer entièrement. Revenir à ce que toi tu ressens, avant de consulter tout le monde, te rapproche de ton propre centre.",
+    "le_pas": "La prochaine fois que tu hésites à cause de ce que quelqu'un pourrait penser, nomme-le clairement pour toi-même, puis décide en fonction de ce que tu ressens."
+  },
+  "action": {
+    "nom": "La loi d'agir",
+    "en_un_mot": "agir avant d'être prêt",
+    "le_principe": "Tu attends parfois d'être certain, ou d'avoir moins peur, avant de commencer quelque chose d'important. Cette certitude n'arrive presque jamais avant le premier pas. Elle arrive après, une fois que tu as bougé. Faire un petit geste, même maladroit, en dit souvent plus long que réfléchir une fois de plus. La peur reste présente, elle n'empêche pas vraiment d'avancer, elle accompagne simplement le trajet.",
+    "le_pas": "Choisis une chose que tu remets à plus tard parce que tu ne te sens pas encore prêt. Fais-en une toute petite partie aujourd'hui, sans attendre de te sentir prêt."
+  },
+  "cycles": {
+    "nom": "La loi du bon moment",
+    "en_un_mot": "tout a son heure",
+    "le_principe": "Une même action ne donne pas le même résultat selon le moment où tu la poses dans ta vie. Il y a des périodes où pousser porte du fruit, et d'autres où ça épuise pour presque rien. Reconnaître dans quelle phase tu te trouves, monter, tenir, redescendre, recommencer, t'aide à choisir quand agir et quand simplement attendre, sans que ce soit un échec ou un manque de volonté.",
+    "le_pas": "Avant d'insister sur quelque chose qui résiste depuis longtemps, demande-toi si le moment est bon, ou si ça vaut la peine d'attendre une meilleure fenêtre."
+  },
+  "_routage": {
+    "1": ["action", "choix", "flexibilite"],
+    "2": ["responsabilite", "equilibre", "honnetete"],
+    "3": ["action", "honnetete", "non_jugement"],
+    "4": ["methode", "comportements", "discipline"],
+    "5": ["discipline", "choix", "cycles"],
+    "6": ["equilibre", "perfection", "non_jugement"],
+    "7": ["foi", "intuition", "attentes"],
+    "8": ["volonte_superieure", "honnetete", "responsabilite"],
+    "9": ["intuition", "volonte_superieure", "moment_present"]
+  }
+}

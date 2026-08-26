@@ -1,0 +1,1288 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Textes ORIGINAUX. Deux étages : rapides = déclencheurs du jour, lentes = climat de fond sur des mois. Jamais de jargon, jamais de prédiction.",
+ "transits_generiques": {
+  "soleil_conjonction": {
+   "miroir": "Il y a beaucoup de toi dans la pièce aujourd'hui. Ce que tu fais te ressemble, et ça se voit davantage que tu ne le crois.",
+   "geste": "Dis une chose que tu veux, à la première personne, sans la déguiser en besoin collectif. Une phrase suffit. Ce que tu veux se retient mieux dit à voix haute que gardé en tête.",
+   "pensee_soir": "Repense au moment où tu t'es montré tel quel aujourd'hui, sans l'ajuster pour qu'on t'aime davantage. C'est celui-là qui compte, pas les autres."
+  },
+  "soleil_carre-opposition": {
+   "miroir": "Ce que tu as envie de faire et ce qu'on attend de toi ne logent pas au même endroit. D'où cette impression de devoir te justifier juste pour avoir ta place.",
+   "geste": "Prends une décision de dix minutes que personne n'a à valider. L'ordre de tes tâches, ton heure de pause. Ta place se tient par des petites choses, pas par des bras de fer.",
+   "pensee_soir": "Qu'as-tu sacrifié aujourd'hui pour ne pas déranger ? Rien à corriger ce soir — juste un compte à connaître."
+  },
+  "soleil_sextile-trigone": {
+   "miroir": "La place est offerte aujourd'hui. On te suit sans que tu aies à convaincre. C'est exactement le genre de journée qui file sans qu'on l'ait vue passer.",
+   "geste": "Demande maintenant la chose que tu remets depuis des semaines. Pas parce que c'est écrit quelque part. Parce que c'est plus léger aujourd'hui, et que la légèreté ne s'installe pas.",
+   "pensee_soir": "La journée a coulé sans effort. Repense à ce qu'elle t'a offert sans que tu le demandes — rien de tout ça n'était dû."
+  },
+  "lune_conjonction": {
+   "miroir": "L'humeur prend toute la place. Ce que tu ressens ce matin ne commente pas la journée, il la colore entièrement. Et ça se déguise très bien en lucidité.",
+   "geste": "Avant de conclure quoi que ce soit d'important, note ton état en trois mots. Relis-les ce soir. L'écart t'apprendra plus que la conclusion.",
+   "pensee_soir": "Relis les trois mots notés ce matin. L'écart avec ce que tu ressens maintenant dit plus sur ta journée que n'importe quelle conclusion tirée sur le coup."
+  },
+  "lune_carre-opposition": {
+   "miroir": "Ton dedans et ton agenda ne vont pas dans le même sens. C'est le dedans qui encaisse, en silence, sans rien réclamer.",
+   "geste": "Retire une chose de ta journée. Une seule, la moins nécessaire. Tu ne renonces à rien, tu fais de la place à ton besoin de repos. Il en demande peu, mais il en demande.",
+   "pensee_soir": "Ce que tu as retiré aujourd'hui, est-ce que ça a vraiment manqué ? Le silence de ce soir a la réponse, si tu prends le temps de l'écouter."
+  },
+  "lune_sextile-trigone": {
+   "miroir": "Il y a de la place à l'intérieur aujourd'hui. Les gens se lisent sans effort, les états aussi. Cette disponibilité passe très bien pour une journée ordinaire.",
+   "geste": "Appelle quelqu'un dont l'état t'a traversé l'esprit ces temps-ci. Rien de spécial à dire. La justesse est là aujourd'hui. Autant qu'elle serve à quelqu'un.",
+   "pensee_soir": "As-tu appelé la personne à qui tu pensais ? La justesse d'aujourd'hui ne se garde pas — elle se transmet, ou elle se referme."
+  },
+  "mercure_conjonction": {
+   "miroir": "Ça pense vite et ça parle plus vite encore. La journée est saturée de mots, dont une bonne partie n'attendait qu'un espace pour sortir.",
+   "geste": "Dis à voix haute ce qui tourne, seul ou à quelqu'un, dix minutes sans chercher à être clair. Ce qui reste après ça, c'est ce qui compte. Le reste voulait seulement circuler.",
+   "pensee_soir": "De tout ce qui a circulé en mots aujourd'hui, qu'est-ce qui est resté vrai une fois dit ? C'est la seule chose qui valait la peine de sortir."
+  },
+  "mercure_carre-opposition": {
+   "miroir": "Les mots tombent de travers aujourd'hui. Ce que tu dis arrive autrement que prévu. Tu t'agaces moins du malentendu que d'avoir à répéter.",
+   "geste": "Sur la conversation qui coince, reformule ce que l'autre dit avant de répondre. Une phrase. Tu ne cèdes rien. Tu vérifies juste que vous parlez de la même chose.",
+   "pensee_soir": "Repense au malentendu du jour. Étiez-vous vraiment en désaccord, ou juste en train de parler de deux choses différentes sans le savoir ?"
+  },
+  "mercure_sextile-trigone": {
+   "miroir": "Tu trouves la phrase juste sans la chercher. Les explications passent, les négociations glissent, et rien ne signale que c'est une bonne journée pour ça.",
+   "geste": "Envoie le message que tu réécris depuis trois jours. Il est probablement déjà bon. Aujourd'hui, ta façon de dire les choses demande moins de retouches que d'habitude.",
+   "pensee_soir": "Le message envoyé aujourd'hui, relis-le ce soir. Ce qui te semblait juste sur le coup l'est-il encore, à froid ?"
+  },
+  "venus_conjonction": {
+   "miroir": "Tu as besoin d'être aimé aujourd'hui, et ça ne se présente pas sous ce nom-là. Ça ressemble à une envie d'arranger, de plaire, d'acheter quelque chose de joli.",
+   "geste": "Offre-toi une chose petite et sans témoin. Un détour, un goût, dix minutes de rien. Le plaisir se nourrit aussi tout seul, sans personne à côté, et c'est le jour de le vérifier.",
+   "pensee_soir": "Ce petit geste sans témoin que tu t'es offert aujourd'hui, remarque-le. Ce n'était pas un luxe, c'était une réponse à un vrai besoin."
+  },
+  "venus_carre-opposition": {
+   "miroir": "Ton goût et ton devoir tirent chacun de leur côté. La tentation, aujourd'hui, c'est de trancher pour le devoir puis d'en vouloir discrètement à quelqu'un.",
+   "geste": "Repère où tu es en train de dire oui contre ton envie. Pas pour refuser, juste pour le savoir. Une envie qu'on reconnaît arrête de retomber en douce sur les autres.",
+   "pensee_soir": "Repère l'endroit où tu as dit oui contre ton envie aujourd'hui. Rien à réparer ce soir — juste à savoir que ça s'est passé."
+  },
+  "venus_sextile-trigone": {
+   "miroir": "Le lien coule tout seul aujourd'hui. On te trouve agréable sans que tu aies rien fait pour. C'est si facile qu'on oublie de s'en servir.",
+   "geste": "Dis à quelqu'un ce que tu apprécies chez lui, précisément, sans l'emballer dans une blague. Aujourd'hui ça passe tout seul. Demain ce sera plus cher.",
+   "pensee_soir": "Quelqu'un t'a trouvé agréable aujourd'hui sans que tu forces rien. Reviens sur ce moment avant qu'il ne se dissolve dans le reste de la journée."
+  },
+  "mars_conjonction": {
+   "miroir": "L'énergie est entière aujourd'hui, sans filtre. Elle veut bouger, et elle trouvera bien où aller. Sur quelque chose d'utile, ou pas : c'est ça qui se joue aujourd'hui.",
+   "geste": "Donne un chantier à cette force avant qu'elle ne se choisisse un adversaire. Vingt minutes sur ce qui traîne, physique de préférence. Elle demande à dépenser, pas à avoir raison.",
+   "pensee_soir": "Où est passée l'énergie du jour ? À ce qu'elle a servi, ou à ce qu'elle a abîmé faute d'avoir trouvé où aller."
+  },
+  "mars_carre-opposition": {
+   "miroir": "Ça résiste, et l'agacement arrive avant son objet. La contrariété du jour n'est presque jamais à la taille de la réaction qu'elle déclenche.",
+   "geste": "Reprends la première chose qui t'a irrité ce matin et demande-toi à quoi elle ressemble. Ce n'est pas elle qui pèse, c'est ce qu'elle rappelle. Nomme-le, une phrase, pour toi seul.",
+   "pensee_soir": "Repense à ce qui t'a irrité en premier ce matin. Maintenant que la journée est passée, à quoi ça ressemblait vraiment ?"
+  },
+  "mars_sextile-trigone": {
+   "miroir": "Agir demande peu aujourd'hui. L'obstacle qui te bloquait la semaine dernière a la même taille, mais il pèse moins. Et rien ne te le signalera.",
+   "geste": "Fais la chose que tu repousses parce qu'elle t'ennuie. Pas la grande, la pénible. Le coût est bas aujourd'hui, c'est tout l'intérêt de la journée.",
+   "pensee_soir": "Cette chose que tu repoussais et que tu as finalement faite aujourd'hui — remarque comme elle a coûté moins cher que prévu. Une information à garder."
+  },
+  "jupiter_conjonction": {
+   "miroir": "Tout paraît plus grand ces temps-ci. Les projets, les promesses, la certitude que ça va marcher. L'ampleur est réelle. La mesure, elle, n'est pas venue avec.",
+   "geste": "Prends un engagement récent et divise-le par deux. La durée, le budget, la portée. S'il tient encore, il tenait vraiment. Sinon, c'était l'enthousiasme qui parlait à ta place.",
+   "pensee_soir": "Une promesse ou un projet a grandi aujourd'hui dans ta tête. Tiendrait-il encore, une fois l'enthousiasme du jour retombé ?"
+  },
+  "jupiter_carre-opposition": {
+   "miroir": "Ce qui s'ouvre coûte plus cher qu'annoncé. La période mesure moins ta chance que ta capacité à refuser une bonne occasion.",
+   "geste": "Décline une proposition intéressante. Pas mauvaise, intéressante. Une seule. Puis regarde ce que la place libérée fait à la semaine suivante.",
+   "pensee_soir": "Ce que tu as décliné aujourd'hui, la place qu'elle a laissée libre — qu'est-ce qu'elle a fait à ta soirée ?"
+  },
+  "jupiter_sextile-trigone": {
+   "miroir": "Les portes ne résistent pas en ce moment. Les coups de pouce arrivent, les gens disent oui. Rien ne t'oblige à t'en servir, et c'est précisément le risque.",
+   "geste": "Demande une chose disproportionnée à quelqu'un qui peut la donner. La saison est courte, et personne ne te préviendra le jour où elle se referme.",
+   "pensee_soir": "Une porte s'est ouverte aujourd'hui, peut-être sans que tu la pousses. Repense à ce que ça t'a coûté de ne pas t'en servir."
+  },
+  "saturne_conjonction": {
+   "miroir": "C'est une saison où tout demande sa preuve. Ce qui tenait par habitude est prié de justifier sa place, et plusieurs choses ne survivront pas à l'examen.",
+   "geste": "Choisis un engagement que tu tiens sans savoir pourquoi et pose-toi une seule question. Est-ce que je le reprendrais aujourd'hui, en connaissance de cause ? Pas besoin de trancher. La question travaille toute seule.",
+   "pensee_soir": "Qu'as-tu tenu aujourd'hui par habitude plutôt que par choix ? La question ne demande pas de réponse ce soir, juste d'être posée."
+  },
+  "saturne_carre-opposition": {
+   "miroir": "L'effort ne paie pas tout de suite en ce moment. Le travail est fait, le résultat traîne. Le doute s'installe pile dans cet écart-là.",
+   "geste": "Note ce que tu as réellement accompli ce mois-ci, en liste, sans commenter. Ce n'est pas de l'encouragement, c'est une mesure. Et c'est elle qui manque.",
+   "pensee_soir": "Ce que tu as accompli aujourd'hui ne s'est peut-être pas encore vu. Note-le quand même, avant que le doute du soir ne l'efface."
+  },
+  "saturne_sextile-trigone": {
+   "miroir": "La durée travaille pour toi ces mois-ci. Ce que tu poses tient, les structures acceptent d'être bâties. Rien n'insiste, et c'est pour ça qu'on passe à côté.",
+   "geste": "Choisis une chose que tu veux voir exister dans deux ans et donne-lui son premier quart d'heure aujourd'hui. Ce genre de terrain ne reste pas meuble longtemps.",
+   "pensee_soir": "Ce petit quart d'heure donné aujourd'hui à quelque chose de durable ne paraît rien ce soir. C'est justement le signe qu'il compte."
+  },
+  "uranus_conjonction": {
+   "miroir": "Quelque chose ne rentre plus dans le cadre. Pas par crise, par étroitesse. Ce qui allait très bien commence à te serrer, comme un vêtement devenu trop petit, sans qu'on sache dire depuis quand.",
+   "geste": "Change une habitude sans importance. Le trajet, l'ordre du matin, la place à table. Le petit écart révèle où le cadre serre vraiment, et il le révèle sans rien coûter.",
+   "pensee_soir": "Repense au moment où le cadre habituel a semblé un peu trop serré aujourd'hui. Ce n'était pas un caprice — c'était une mesure prise sur le vif."
+  },
+  "uranus_carre-opposition": {
+   "miroir": "Le calme résiste mal ces temps-ci. Ce que tu as construit fonctionne, et une partie de toi voudrait le mettre dehors. Les deux ont raison, d'où l'inconfort.",
+   "geste": "Écris ce que tu jetterais si rien ne retenait. Ne jette rien. La liste dit ce qui étouffe, et ça ne s'obtient pas autrement.",
+   "pensee_soir": "Ce que tu as eu envie de jeter aujourd'hui, sans le faire — regarde la liste ce soir. Elle dit ce qui étouffe, pas ce qu'il faut détruire."
+  },
+  "uranus_sextile-trigone": {
+   "miroir": "En ce moment, l'inhabituel passe sans casse. Les écarts que tu tentes trouvent preneur, l'entourage suit. La marge est ouverte, elle ne le restera pas.",
+   "geste": "Dis à voix haute une idée que tu gardes pour toi parce qu'elle est bizarre. Le climat l'accueille mieux qu'il ne le fera l'an prochain.",
+   "pensee_soir": "L'idée bizarre que tu as dite tout haut aujourd'hui, comment a-t-elle été reçue ? Ce climat-là ne dure pas — reviens-y avant qu'il change."
+  },
+  "neptune_conjonction": {
+   "miroir": "Depuis un moment, tout devient plus flou autour de toi. L'envie est floue, la fatigue vague, les repères moins nets. Rien ne s'affaiblit pour autant. C'est juste l'éclairage qui a changé.",
+   "geste": "Ne tranche rien d'important aujourd'hui, et note ce dont tu rêvais à vingt ans. Ce flou-là a des choses à dire. Il les dit mal, mais il les dit.",
+   "pensee_soir": "À quoi as-tu rêvé sans y prêter attention aujourd'hui ? Le flou du jour a peut-être dit quelque chose que la clarté n'aurait pas osé."
+  },
+  "neptune_carre-opposition": {
+   "miroir": "Le réel déçoit sans qu'on comprenne bien pourquoi. Souvent, c'est qu'une image ancienne du bonheur tient encore le rôle de l'étalon.",
+   "geste": "Prends une déception de ces derniers mois et écris à quoi tu la comparais. La comparaison est presque toujours plus instructive que la déception.",
+   "pensee_soir": "Cette déception d'aujourd'hui, à quoi la comparais-tu vraiment ? La réponse en dit souvent plus long que la déception elle-même."
+  },
+  "neptune_sextile-trigone": {
+   "miroir": "Tu perçois juste en ce moment, sans forcer. Tu as l'imaginaire disponible, et l'inspiration ne se fait pas prier. Ça ne réclame rien, donc ça se perd.",
+   "geste": "Donne une forme à quelque chose. Une page, une heure de musique, un dessin raté. La qualité importe peu. Ce qui n'a pas de forme repart comme c'est venu.",
+   "pensee_soir": "Ce que tu as capté aujourd'hui sans effort, une image, une intuition : a-t-il pris une forme ? Ou s'est-il déjà dissous dans la journée ?"
+  },
+  "pluton_conjonction": {
+   "miroir": "C'est une saison lente, où quelque chose s'en va sans avoir été annoncé. Une version de toi, un rôle, une manière de tenir. On s'en aperçoit après, jamais pendant.",
+   "geste": "Nomme une chose que tu ne fais plus et qui te définissait il y a trois ans. Juste la nommer. On ne se sépare pas de ce qu'on n'a pas constaté.",
+   "pensee_soir": "Repense à une chose que tu ne fais plus, et qui te définissait il y a quelques années. La nommer ce soir, c'est déjà commencer à s'en détacher."
+  },
+  "pluton_carre-opposition": {
+   "miroir": "Tu contrôles moins de choses qu'avant, ces temps-ci. Ce qui marchait par volonté ne répond plus, et l'instinct est de serrer plus fort. Ça coûte cher pour rien.",
+   "geste": "Repère un endroit où tu tiens tout à bout de bras et lâche une prise sans conséquence. Délègue une tâche, laisse une chose se faire moins bien. Puis regarde ce qui s'effondre. Rien.",
+   "pensee_soir": "Ce que tu as lâché aujourd'hui, même un peu, regarde ce qui s'est vraiment effondré. Souvent, rien."
+  },
+  "pluton_sextile-trigone": {
+   "miroir": "Le fond bouge sans violence en ce moment. Ce qui doit finir peut finir proprement, ce qui doit changer change sans qu'il faille tout casser. La porte est entrouverte.",
+   "geste": "Termine une chose que tu prolonges par habitude. Un abonnement, un dossier, une politesse. Le moment coûte peu. Ce n'est pas toujours le cas.",
+   "pensee_soir": "Cette chose prolongée par habitude que tu as terminée aujourd'hui — remarque comme la porte s'est refermée sans bruit."
+  }
+ },
+ "transits_precis": {
+  "lune_conjonction_soleil": {
+   "miroir": "Ton humeur du matin ne commente pas ta journée : elle raconte qui tu es, en ce moment précis. Ce que tu ressens là te ressemble de façon presque trop nette. Ça se lit sur ton visage, avant même que tu parles.",
+   "geste": "Regarde-toi une minute dans une vitre ou l'écran de ton téléphone avant de sortir. Note ce que ton expression dit de toi aujourd'hui, sans la corriger. Cette version de toi mérite d'être vue telle quelle, au moins une fois dans la journée.",
+   "pensee_soir": "Ce que tu as ressenti ce matin, est-ce que ça te ressemblait vraiment ? Ou est-ce que c'était juste l'humeur du jour, qui parlait fort ? Les deux se distinguent mieux ce soir."
+  },
+  "lune_carre-opposition_soleil": {
+   "approche": {
+    "miroir": "Un petit décalage s'installe entre ce que tu ressens et ce que la journée attend de toi. Il est léger encore, mais tu le sens déjà venir avant même d'avoir mis les pieds dehors.",
+    "geste": "Repère le moment précis où ce décalage se fait sentir aujourd'hui. Tu n'as rien à corriger tout de suite, juste à le remarquer pendant qu'il est encore petit."
+   },
+   "coeur": {
+    "miroir": "Tu as un rôle à tenir aujourd'hui, professionnel ou familial. Ton état intérieur traîne les pieds, pendant que le reste de toi avance. L'écart demande de l'énergie, une énergie que personne d'autre ne voit passer.",
+    "geste": "Avant d'entrer dans ce rôle, donne trente secondes à ce que tu ressens vraiment, sans le maquiller. Puis avance quand même. Tu ne trahis rien de toi en séparant l'humeur du jour de qui tu es censé être."
+   },
+   "retrait": {
+    "miroir": "Le rôle que tu tiens aujourd'hui pèse un peu moins qu'il y a deux ou trois jours. L'écart entre ce que tu ressens et ce qu'on attend de toi se referme doucement, sans que tu aies eu à forcer.",
+    "geste": "Remarque ce qui a changé depuis le début de la semaine, dans ta manière de tenir ce rôle. Note-le, même juste dans ta tête. C'est la preuve que ça bouge, pas seulement que ça pèse."
+   },
+   "pensee_soir": "Le rôle que tu as tenu aujourd'hui a coûté de l'énergie que personne n'a vue. Reconnais-le ce soir, même si personne d'autre ne l'a fait."
+  },
+  "lune_sextile-trigone_soleil": {
+   "approche": {
+    "miroir": "Une aisance légère s'installe entre ton humeur et ton énergie. Les deux commencent à marcher ensemble, et une chose que tu fais chaque jour demande un peu moins d'effort qu'hier.",
+    "geste": "Saisis le premier moment aujourd'hui où une action coule plus facilement. Note-le sans en faire plus : il annonce la couleur du passage."
+   },
+   "coeur": {
+    "miroir": "Quand le passage culmine, ton humeur et ta vitalité sont alignées, ce qui est rare. Tu te sens plein, disponible, et ce que tu entreprends te renvoie de l'énergie au lieu de t'en coûter.",
+    "geste": "Lance ce que tu repoussais par manque d'élan. Aujourd'hui le moteur est là, la fenêtre est courte : dépense ce surplus pendant qu'il tient."
+   },
+   "retrait": {
+    "miroir": "Le plein d'énergie se retire, mais il t'a montré un état que tu sais atteindre. Tu as une référence concrète de ce que « en forme » veut dire, pour toi.",
+    "geste": "Retiens précisément ce que tu as réussi à faire à ce niveau. Cette référence te servira plus tard pour reconnaître quand tu y reviens."
+   },
+   "pensee_soir": "Une journée où humeur et vitalité se sont accordées, ça ne se garde pas. Repense à ce qu'elle t'a permis de faire sans effort."
+  },
+  "mercure_conjonction_soleil": {
+   "miroir": "Tu te parles beaucoup de toi-même aujourd'hui, dans ta tête ou à voix haute. Les mots sur qui tu es, ce que tu vaux, ta place légitime, tournent plus fort que d'habitude et cherchent une sortie.",
+   "geste": "Formule à voix haute trois phrases qui commencent par « je suis », sans réfléchir à l'ordre. Laisse sortir ce qui tourne. Ce que tu dis aujourd'hui en dit plus long sur toi qu'une réflexion posée.",
+   "pensee_soir": "Tout ce que tu as dit de toi aujourd'hui, ta place, ta valeur : était-ce vraiment pour quelqu'un ? Ou juste pour te l'entendre dire ?"
+  },
+  "mercure_carre-opposition_soleil": {
+   "approche": {
+    "miroir": "Une voix commence à mettre en doute ta place. Elle n'est pas encore très forte, mais elle revient, phrase après phrase, et tu sens qu'elle va insister.",
+    "geste": "Nomme cette voix pour ce qu'elle est, une habitude, pas une vérité. Écris une phrase qui te ressemble plus, et garde-la sous les yeux aujourd'hui."
+   },
+   "coeur": {
+    "miroir": "Une voix conteste aujourd'hui ta place, ta légitimité, le droit que tu as d'occuper l'espace que tu occupes. Elle parle fort, mais elle répète surtout de vieilles phrases apprises ailleurs, pas un jugement neuf sur toi.",
+    "geste": "Repère la phrase précise qui te fait douter de toi en ce moment. Demande-toi qui te l'a dite la première fois. Elle vient rarement de toi, et ça change beaucoup la façon de l'entendre."
+   },
+   "retrait": {
+    "miroir": "Tu sens cette voix perdre du terrain. Elle continue de contester ta place, mais avec moins de conviction. Ce qu'elle dit te touche moins qu'il y a quelques jours.",
+    "geste": "Profite de ce répit pour écrire, en une phrase, ce que tu sais vrai sur toi. Relis-la la prochaine fois que la même voix reviendra."
+   },
+   "pensee_soir": "Cette voix qui a contesté ta place aujourd'hui, d'où vient-elle vraiment ? Rarement de quelqu'un qui te regardait, en ce moment, toi."
+  },
+  "mercure_sextile-trigone_soleil": {
+   "approche": {
+    "miroir": "Les mots commencent à venir un peu plus facilement pour dire qui tu es aujourd'hui. L'aisance n'est pas encore complète, mais expliquer ta place te demande déjà moins d'effort.",
+    "geste": "Sens la phrase que tu dis sur toi aujourd'hui et qui sort plus juste que d'habitude. Tu n'as rien à préparer, juste à observer cette facilité qui commence."
+   },
+   "coeur": {
+    "miroir": "Tu trouves facilement les mots pour dire qui tu es aujourd'hui, sans les chercher longtemps. Expliquer ta place, ta vitalité, ce que tu vises, ça sort clair, et ça surprend presque par sa simplicité.",
+    "geste": "Présente-toi à quelqu'un de nouveau ou reformule ton propre parcours en deux phrases, à voix haute. Aujourd'hui les mots collent à toi sans effort. Dis ta phrase d'intro maintenant, pendant que c'est facile."
+   },
+   "retrait": {
+    "miroir": "La facilité à parler de toi ces derniers jours commence à redescendre doucement. Les mots demandent à nouveau un peu plus d'effort, sans que ce soit inquiétant.",
+    "geste": "Garde la phrase qui t'a le mieux définie ces derniers jours de côté. Elle te resservira, même si les mots viennent moins vite aujourd'hui."
+   },
+   "pensee_soir": "Les mots pour dire qui tu es sont venus facilement aujourd'hui. Retiens la phrase qui a le mieux sonné juste — elle ne reviendra pas telle quelle."
+  },
+  "venus_conjonction_soleil": {
+   "miroir": "Tu t'aimes bien aujourd'hui, tel que tu es là, sans avoir besoin qu'on te le confirme. Ce goût pour toi-même se mélange à ton identité au point de devenir difficile à distinguer de la confiance.",
+   "geste": "Fais une chose aujourd'hui uniquement parce qu'elle te plaît à toi, sans utilité pour personne d'autre. Un vêtement, un détour, un plaisir pris seul. Ce plaisir-là nourrit directement le sentiment d'être toi.",
+   "pensee_soir": "Tu t'es aimé aujourd'hui sans qu'on te le confirme. Repense à ce moment précis, avant qu'il ne se dilue dans le doute habituel."
+  },
+  "venus_carre-opposition_soleil": {
+   "approche": {
+    "miroir": "Un petit inconfort commence à poindre face à ton image, un reflet, une photo, ta voix enregistrée. Rien de précis encore, juste un léger décalage qui se fait sentir.",
+    "geste": "Remarque la prochaine fois où une image de toi te dérange légèrement. Tu n'as rien à corriger, juste à noter que ça commence à te toucher."
+   },
+   "coeur": {
+    "miroir": "Une photo, un miroir, l'enregistrement de ta propre voix : quelque chose te renvoie aujourd'hui une image de toi que tu n'aimes qu'à moitié. Ce que tu vois ne colle pas tout à fait avec ce que tu voudrais être.",
+    "geste": "Note ce que précisément tu n'aimes pas dans cette image, sans en tirer un verdict sur toi tout entier. Un détail agace rarement une personne complète. Isole-le, nomme-le, et laisse le reste tranquille."
+   },
+   "retrait": {
+    "miroir": "L'inconfort face à ton image s'atténue. Ce qui te dérangeait dans une photo ou un reflet, il y a deux ou trois jours, te touche déjà un peu moins.",
+    "geste": "Regarde à nouveau la photo ou le reflet qui t'a agacé ces derniers jours. Vois si le détail qui te dérangeait a encore autant de poids maintenant."
+   },
+   "pensee_soir": "Cette image de toi qui t'a dérangé aujourd'hui, un miroir, une photo, n'était qu'un reflet, pas un verdict. Regarde-la une dernière fois ce soir, sans jugement."
+  },
+  "venus_sextile-trigone_soleil": {
+   "miroir": "Ton reflet te va bien aujourd'hui, sans que tu aies rien changé, et les autres semblent d'accord avec toi là-dessus. Cet accord facile entre ce que tu es et ce que tu aimes ne dure jamais bien longtemps.",
+   "geste": "Accepte un compliment aujourd'hui sans le renvoyer par politesse. Dis simplement merci et laisse-le atterrir. Ta place plaît en ce moment, et ce n'est vraiment pas la peine de la minimiser devant les autres.",
+   "pensee_soir": "Ton reflet t'allait bien aujourd'hui, et les autres semblaient d'accord. Ce genre d'accord facile mérite d'être noté avant qu'il ne s'efface."
+  },
+  "soleil_conjonction_soleil": {
+   "miroir": "Tu changes de chapitre aujourd'hui, même si rien d'extérieur ne le marque forcément. Ce que tu portais comme élan l'année passée arrive à échéance, et une nouvelle version de toi commence tranquillement, sans bruit particulier.",
+   "geste": "Écris une phrase sur ce que tu veux incarner dans les douze mois qui viennent, pas ce que tu veux accomplir précisément. Garde-la quelque part. Tu la retrouveras à peu près à la même date l'an prochain.",
+   "pensee_soir": "Un chapitre s'est refermé aujourd'hui sans bruit particulier. Repense à ce que tu portais l'année passée — c'est déjà en train de changer de forme."
+  },
+  "soleil_carre-opposition_soleil": {
+   "approche": {
+    "miroir": "Une irritabilité sourde s'installe, sans cause nette. Tu te sens un cran à côté de ton assiette, et une tâche ordinaire commence à te demander un effort surprenant.",
+    "geste": "Repère l'instant précis où une habitude te résiste aujourd'hui. Ne la corrige pas, contente-toi de la nommer : premier signe que ton rythme interne et le calendrier extérieur se décalent."
+   },
+   "coeur": {
+    "miroir": "À son sommet, la tension entre l'élan que tu déploies et celui que tu porterais naturellement est franche. Tu forces un peu ton tempo, comme un musicien légèrement hors de sa mesure. Ce n'est pas une baisse de forme : c'est un décalage de rythme.",
+    "geste": "Fais une seule chose à ton vrai rythme aujourd'hui, même si l'urgence pousse à accélérer. Ce décalage se supporte ; il ne se corrige pas en forçant."
+   },
+   "retrait": {
+    "miroir": "La crispation lâche, en laissant un enseignement. À cette saison précise de ton année, tu te raidis contre un calendrier qui ne colle pas au tien.",
+    "geste": "Note la période où ce décalage t'a pris cette fois-ci. La prochaine, tu ne le confondras plus avec une baisse de régime."
+   },
+   "pensee_soir": "Tu as forcé un peu ton tempo aujourd'hui, comme un instrument légèrement décalé. Ce décalage n'était pas un échec, juste un ajustement en cours."
+  },
+  "soleil_sextile-trigone_soleil": {
+   "miroir": "On te voit aujourd'hui à peu près comme tu te vois toi-même, ce qui n'arrive pas si souvent. Être remarqué ne coûte rien en ce moment, et ta place semble aller de soi aux yeux des autres.",
+   "geste": "Montre-toi là où tu hésitais à te montrer, un projet, une idée, une candidature en attente. La reconnaissance vient facilement en ce moment. Autant t'en servir tant que la porte reste ouverte.",
+   "pensee_soir": "Aujourd'hui, on t'a vu à peu près comme tu te vois. Repense à ce que ça fait, cette rareté, avant que demain ne brouille à nouveau l'image."
+  },
+  "mars_conjonction_soleil": {
+   "miroir": "Une envie d'agir pour toi-même, sans détour ni permission demandée à personne, monte fort aujourd'hui. Ce n'est pas de l'impatience ordinaire, c'est ton identité qui réclame d'être exprimée par un geste, tout de suite.",
+   "geste": "Fais aujourd'hui une chose qui affirme clairement qui tu es, une décision, une prise de position, un pas en avant. Pas besoin de la justifier longuement aux autres. L'élan sait déjà pourquoi il pousse.",
+   "pensee_soir": "Cette envie d'agir pour toi-même, sans demander permission, où a-t-elle atterri aujourd'hui ? Repense au geste qu'elle a fini par devenir."
+  },
+  "mars_carre-opposition_soleil": {
+   "approche": {
+    "miroir": "Une envie d'avancer commence à se cogner contre une hésitation intérieure. Le blocage n'est pas encore net, mais tu sens déjà que quelque chose freine ton élan.",
+    "geste": "Repère ce qui, précisément, retient ton envie d'agir aujourd'hui. Tu n'as rien à forcer maintenant, juste à nommer ce qui commence à freiner ta place."
+   },
+   "coeur": {
+    "miroir": "Tu veux avancer et affirmer ta place aujourd'hui, mais une hésitation freine, comme si le droit d'agir manquait. L'envie est là, la permission intérieure tarde à suivre.",
+    "geste": "Avance quand même d'un petit pas, sans attendre un feu vert qui ne vient pas toujours à temps. Choisis la version la plus modeste de ton envie. Elle suffit largement pour aujourd'hui."
+   },
+   "retrait": {
+    "miroir": "Le frein qui retenait ton élan ces derniers jours se desserre peu à peu. L'envie d'avancer redevient plus simple, sans que tu aies eu besoin d'une permission particulière.",
+    "geste": "Repense au petit pas que tu as fini par oser ces derniers jours. Vois si la suite mérite encore d'attendre, maintenant que le frein s'est relâché."
+   },
+   "pensee_soir": "L'envie d'avancer était là aujourd'hui, la permission intérieure a traîné. Repense à ce qui l'a retenue — ce n'était peut-être pas ce que tu croyais."
+  },
+  "mars_sextile-trigone_soleil": {
+   "miroir": "S'affirmer aujourd'hui ne demande presque rien. Tu prends ta place naturellement, sans forcer le ton ni t'excuser d'être là. Personne autour de toi n'y trouve rien à redire.",
+   "geste": "Prends une initiative que tu remettais depuis un moment, celle qui te ressemble vraiment le plus. Le terrain est facile aujourd'hui pour agir en ton propre nom. Une occasion pareille se joue vite.",
+   "pensee_soir": "Prendre ta place aujourd'hui n'a presque rien coûté. Remarque ce moment précis où ça s'est fait sans effort — il indique quelque chose à retenir."
+  },
+  "lune_conjonction_lune": {
+   "miroir": "Une fois par mois, ton dedans revient pile à son point de départ. C'est une journée de recharge plus nette que les autres, où le besoin de fond se sent sans qu'il faille le traduire.",
+   "geste": "Isole-toi un moment sans but précis, même dix minutes. Pas pour produire quoi que ce soit. Juste pour laisser ton dedans se retrouver, comme on remet de l'ordre dans une pièce délaissée.",
+   "pensee_soir": "Cette journée de recharge mensuelle, qu'est-ce qu'elle a remis en place en toi ? Le besoin de fond qui s'est fait sentir aujourd'hui mérite d'être reconnu, pas juste ressenti."
+  },
+  "lune_carre-opposition_lune": {
+   "approche": {
+    "miroir": "Une tension légère s'installe entre ton humeur du moment et ce dont tu as besoin au fond. Les deux ne marchent pas encore tout à fait ensemble, et tu le sens déjà un peu.",
+    "geste": "Sens lequel des deux, l'humeur ou le besoin de fond, tire le plus fort en ce moment. Tu n'as rien à trancher tout de suite, juste à le voir clairement."
+   },
+   "coeur": {
+    "miroir": "Ton humeur et ton besoin de fond tirent dans deux directions aujourd'hui. Ce qui devrait rassurer agace un peu, et tu hésites sur lequel des deux écouter en premier.",
+    "geste": "Repère ce qui te calmait petit, un geste simple, une position précise, un silence particulier. Refais-le exactement aujourd'hui, sans l'habiller en activité. Le corps se souvient mieux que la tête."
+   },
+   "retrait": {
+    "miroir": "L'accord entre ton humeur et ton besoin de fond revient tranquillement. Ce qui tirait dans deux sens il y a deux ou trois jours s'apaise, presque sans que tu aies eu à choisir.",
+    "geste": "Note ce qui a aidé cette tension à retomber ces derniers jours, même un détail minuscule. La prochaine fois que les deux tireront encore, tu sauras déjà quoi essayer."
+   },
+   "pensee_soir": "Ton humeur et ton besoin de fond ont tiré dans deux sens aujourd'hui. Lequel des deux as-tu fini par écouter, et pourquoi celui-là ?"
+  },
+  "lune_sextile-trigone_lune": {
+   "miroir": "Ce que tu ressens et ce qui te rassure marchent dans le même sens aujourd'hui, sans accroc. Le réconfort habituel fonctionne encore mieux que prévu, presque sans effort de ta part.",
+   "geste": "Offre-toi le rituel qui te sécurise depuis toujours, celui que tu juges un peu enfantin. Une recette précise, un objet, une habitude du soir. Il rend plus aujourd'hui qu'il ne coûte.",
+   "pensee_soir": "Le réconfort habituel a fonctionné mieux que prévu aujourd'hui. Repense à ce qui l'a rendu si facile — ça ne demande peut-être pas tant d'effort d'habitude non plus."
+  },
+  "mercure_conjonction_lune": {
+   "miroir": "Un mot juste tombe enfin sur ce qui te manque, précisément, sans le détour habituel. D'ordinaire ce besoin reste flou. Aujourd'hui il se laisse presque tenir dans une phrase.",
+   "geste": "Écris trois lignes sur ce qui te rassurerait vraiment en ce moment, pas ce qui devrait. Ne les montre à personne. Le simple fait de les formuler déplace déjà quelque chose.",
+   "pensee_soir": "Un mot juste est tombé aujourd'hui sur ce qui te manquait depuis un moment. Retiens-le — ce genre de clarté sur un besoin flou ne dure pas."
+  },
+  "mercure_carre-opposition_lune": {
+   "miroir": "Ce que tu expliques de ton besoin et ce que tu ressens réellement ne se recoupent pas tout à fait. Le ventre sait autre chose que la phrase, et l'écart t'agace plus que le fond.",
+   "geste": "Avant de raconter ce qui te manque à quelqu'un, vérifie si c'est bien ça ou une version plus présentable. Corrige la phrase intérieurement d'abord. Ça évite un malentendu qui traînerait ensuite.",
+   "pensee_soir": "Ce que tu as expliqué de ton besoin aujourd'hui et ce que tu ressentais vraiment ne se recoupaient pas tout à fait. Lequel des deux disait le plus vrai ?"
+  },
+  "mercure_sextile-trigone_lune": {
+   "miroir": "Les mots viennent facilement aujourd'hui pour dire ce qui te touche, sans les alourdir. Une conversation ordinaire suffit à faire remonter un besoin ancien, et ça sort sans aucun drame.",
+   "geste": "Confie à quelqu'un de confiance ce qui te rassure d'habitude, sans grande explication. La légèreté du moment porte bien ce genre de sujet. Demain il faudra sans doute plus de mots.",
+   "pensee_soir": "Dire ce qui te touchait aujourd'hui n'a presque rien demandé. Repense à ce qui est sorti sans drame — ça valait la peine d'être dit."
+  },
+  "venus_conjonction_lune": {
+   "approche": {
+    "miroir": "Un attendrissement léger te gagne. Une musique, une odeur d'enfance, un geste tendre te touche davantage que d'habitude : ton seuil d'émotion a baissé, et en bien.",
+    "geste": "Repère la première chose qui te ramollit le cœur aujourd'hui, sans la juger. C'est le transit qui s'installe, pas une faiblesse de ton côté."
+   },
+   "coeur": {
+    "miroir": "Quand il culmine, ce que tu aimes et ce dont tu as besoin ne font qu'un. Tu te sens nourri par des choses simples, un repas, une présence, une chaleur, sans exigence ni manque.",
+    "geste": "Accorde-toi le petit confort que tu te refuses d'habitude par « pas le moment ». Aujourd'hui c'est exactement le moment."
+   },
+   "retrait": {
+    "miroir": "La plénitude se retire, mais elle a nommé un besoin réel que tu avais perdu de vue. Tu sais mieux ce qui te nourrit, distinct de ce que tu crois devoir vouloir.",
+    "geste": "Garde en mémoire le détail précis qui t'a fait du bien. C'est un repère pour les jours creux : tu sauras quoi te donner."
+   },
+   "pensee_soir": "Ce qui t'a nourri aujourd'hui était simple, un repas, une présence, une chaleur. Retiens ce moment précis, sans lui demander d'être plus."
+  },
+  "venus_carre-opposition_lune": {
+   "approche": {
+    "miroir": "Un petit conflit s'installe entre ce qui te tente et ce qui te rassure. L'envie d'une chose, un achat, une sortie, une présence, bouscule un discret « pas vraiment ce dont j'ai besoin ».",
+    "geste": "Repère la première tentation d'aujourd'hui qui t'excite sans te calmer. Ne cède pas encore, observe le tiraillement qui s'installe."
+   },
+   "coeur": {
+    "miroir": "Au sommet du passage, le conflit est net : ce qui te plaît ne te nourrit pas. Tu peux être tenté de combler un manque affectif par du superficiel : un achat, une flatterie, du sucre. Mais ça ne marche pas.",
+    "geste": "Avant de céder à la tentation du jour, demande-toi si elle comble un goût ou un manque. Choisis en conséquence, une seule fois suffit."
+   },
+   "retrait": {
+    "miroir": "La tension s'apaise, et elle a séparé deux faims que tu confondais. Tu sais désormais lequel, de ton envie ou de ton besoin, parlait le plus fort.",
+    "geste": "Retiens ce que tu as fini par te refuser, ou t'offrir. La prochaine fois, la distinction entre les deux ira plus vite."
+   },
+   "pensee_soir": "Tu as peut-être cherché à combler un manque avec quelque chose de superficiel aujourd'hui. Ça n'a pas pris, et c'est une information utile pour demain."
+  },
+  "venus_sextile-trigone_lune": {
+   "miroir": "Le réconfort arrive sans effort aujourd'hui, et il tombe pile sur le besoin réel, pas à côté. La douceur du jour va exactement là où il fallait qu'elle aille.",
+   "geste": "Accepte un geste tendre qu'on t'offre, sans le minimiser ni t'en excuser aussitôt. Un compliment, une attention, une étreinte. Aujourd'hui il nourrit vraiment, laisse-le simplement faire son travail.",
+   "pensee_soir": "Le réconfort d'aujourd'hui est tombé exactement là où il fallait. Remarque cette précision-là avant qu'elle ne se fonde dans le reste de la semaine."
+  },
+  "soleil_conjonction_lune": {
+   "miroir": "Un manque discret d'habitude prend toute la lumière aujourd'hui, presque impossible à ignorer. Ce besoin qui reste souvent en coulisses se retrouve exposé sans que tu l'aies cherché.",
+   "geste": "Nomme à voix haute, même seul chez toi, ce qui te rassurerait en ce moment. Pas pour le régler tout de suite. Juste pour que le besoin cesse de rester invisible.",
+   "pensee_soir": "Un besoin discret s'est retrouvé exposé aujourd'hui, presque malgré toi. Repense à ce qu'il a demandé une fois visible — c'est rarement ce qu'on redoutait."
+  },
+  "soleil_carre-opposition_lune": {
+   "approche": {
+    "miroir": "Un petit tiraillement commence à poindre entre ce qu'on attend de toi et ce dont tu as besoin pour te sentir en sécurité. Rien n'est tranché encore : juste un début de gêne.",
+    "geste": "Remarque le moment où le rôle qu'on te tend ne colle pas tout à fait à ton besoin du jour. Tu n'as rien à choisir maintenant, juste à le voir venir."
+   },
+   "coeur": {
+    "miroir": "Le rôle qu'on attend de toi et ton besoin de sécurité tirent chacun de leur côté aujourd'hui. Tu te sens un peu écartelé entre les deux exigences, sans savoir laquelle honorer.",
+    "geste": "Choisis, une seule fois dans la journée, ton besoin plutôt que le rôle attendu. Une pause, un silence, un refus doux suffisent. Personne n'en souffre vraiment, et toi non plus au fond."
+   },
+   "retrait": {
+    "miroir": "L'écart entre le rôle attendu et ton besoin de sécurité se resserre doucement. Ce qui tiraillait il y a deux ou trois jours redevient gérable, presque sans effort de ta part.",
+    "geste": "Reviens sur le moment où tu as choisi ton besoin plutôt que le rôle, ces derniers jours. Vois ce que ce choix t'a appris, maintenant que la tension retombe."
+   },
+   "pensee_soir": "Le rôle attendu de toi et ton besoin de sécurité ont tiré chacun de leur côté aujourd'hui. Lequel des deux as-tu fini par honorer, même à moitié ?"
+  },
+  "soleil_sextile-trigone_lune": {
+   "miroir": "Ce que tu montres aujourd'hui et ce qui te sécurise vraiment vont dans le même sens, sans façade à tenir. Se sentir vu et se sentir en sécurité ne coûtent soudain rien de plus.",
+   "geste": "Montre-toi tel que tu es à quelqu'un qui compte, sans filtre particulier. La sécurité de fond porte bien l'exposition aujourd'hui. Ce genre d'alignement ne se présente pas si souvent.",
+   "pensee_soir": "Se sentir vu et se sentir en sécurité n'ont rien coûté de plus aujourd'hui. Repense à ce moment où les deux ont coïncidé sans façade."
+  },
+  "mars_conjonction_lune": {
+   "miroir": "Un besoin qui patientait depuis un moment réclame maintenant, sans détour ni politesse excessive. Ça sort vite, parfois plus fort que prévu, et ça surprend presque autant que ça soulage.",
+   "geste": "Dis directement ce dont tu as besoin à quelqu'un, sans l'emballer en demande raisonnable. Une phrase brute suffit largement. L'énergie du jour porte mieux la franchise que la diplomatie prudente.",
+   "pensee_soir": "Un besoin qui patientait depuis un moment a réclamé aujourd'hui, plus fort que prévu. Repense à ce qu'il a fini par obtenir, et ce que ça a soulagé."
+  },
+  "mars_carre-opposition_lune": {
+   "miroir": "Un besoin non comblé se change en irritation avant même que tu comprennes d'où elle vient vraiment. Tu réagis fort à un petit désagrément qui n'explique pas tout ce qui monte.",
+   "geste": "Face à un agacement du jour, demande-toi ce qui manquait juste avant qu'il n'arrive. Un repas sauté, un mot dur, un silence trop long. Nomme-le plutôt que de le retourner contre quelqu'un.",
+   "pensee_soir": "Un petit désagrément a déclenché aujourd'hui une réaction plus forte que lui. Repense à ce qui, en dessous, attendait vraiment d'être entendu."
+  },
+  "mars_sextile-trigone_lune": {
+   "miroir": "Défendre ce dont tu as besoin demande peu d'effort aujourd'hui, presque sans accroc. Ce qui exigeait d'habitude un vrai courage passe cette fois presque tout seul.",
+   "geste": "Demande clairement ce qui te rassurerait dans une situation en cours, sans t'excuser d'avance. Le terrain est favorable pour ça aujourd'hui. Une phrase directe suffit largement, pas besoin d'en dire plus.",
+   "pensee_soir": "Défendre ce dont tu avais besoin n'a presque rien demandé aujourd'hui. Retiens cette facilité — elle dit que le courage n'est pas toujours nécessaire."
+  },
+  "lune_conjonction_venus": {
+   "miroir": "Ce matin, ce qui te plaît prend toute la place. Un café, une couleur, une odeur te touchent plus fort que d'habitude. Tu confonds ça avec un signe, alors que c'est ton humeur qui grossit le plaisir.",
+   "geste": "Choisis un petit plaisir tout simple avant midi, sans le justifier. Un fruit, une chanson, un vêtement doux. Laisse l'humeur choisir à ta place, juste pour voir ce qu'elle retient.",
+   "pensee_soir": "Ce qui t'a plu aujourd'hui a peut-être semblé plus fort que d'habitude. Repense à ce qui venait vraiment de la chose, et ce qui venait de ton humeur."
+  },
+  "lune_carre-opposition_venus": {
+   "approche": {
+    "miroir": "Un petit agacement commence à poindre contre des choses que tu aimes d'habitude. Il est encore léger, mais tu sens déjà que ton goût habituel vacille un peu.",
+    "geste": "Repère ce qui commence tout juste à t'agacer, un vêtement, un plat, une habitude. N'en tire encore aucune conclusion, laisse simplement l'irritation se montrer."
+   },
+   "coeur": {
+    "miroir": "Ton humeur du jour grince contre ce que tu aimes d'habitude. Le vêtement préféré ne va plus, le plat habituel te tombe dessus. Tu cherches la faute dans l'objet, alors qu'elle est dans ton état.",
+    "geste": "Ne jette rien et ne change rien d'important aujourd'hui. Attends demain pour juger ce vêtement ou ce plat. Contente-toi de noter ce qui coince, sans décider que ça ne te plaît plus."
+   },
+   "retrait": {
+    "miroir": "L'agacement contre ce que tu aimes d'habitude redescend. Le vêtement, le plat qui te tombaient dessus ces derniers jours retrouvent peu à peu leur place normale.",
+    "geste": "Reprends ce que tu avais mis de côté ces derniers jours sans le juger. Regarde si ça t'agace encore, maintenant que ton humeur a changé."
+   },
+   "pensee_soir": "Le vêtement, le plat, la chose aimée d'habitude n'a pas fonctionné aujourd'hui. La faute n'était peut-être pas dans l'objet, mais dans l'état où tu l'as reçu."
+  },
+  "lune_sextile-trigone_venus": {
+   "approche": {
+    "miroir": "Ton humeur commence à s'accorder avec ce que tu aimes. Rien de spectaculaire encore, mais un détail agréable te touche déjà un peu plus facilement que d'habitude.",
+    "geste": "Remarque la première petite chose qui te fait plaisir aujourd'hui, une odeur, une couleur, un geste. Tu n'as rien à chercher, juste à la laisser venir."
+   },
+   "coeur": {
+    "miroir": "Aujourd'hui, ton humeur et ce que tu aimes marchent dans le même sens sans effort. Une promenade, une odeur de pain, un sourire échangé suffisent à te faire du bien, et ça passe presque inaperçu.",
+    "geste": "Sors marcher dix minutes sans but précis. Laisse-toi arrêter par ce qui te plaît sur le chemin, une vitrine, une fleur, un visage. Ce petit détour compte plus que tu ne crois."
+   },
+   "retrait": {
+    "miroir": "L'accord entre ton humeur et tes goûts commence à se relâcher tranquillement. Les petits plaisirs des derniers jours demandent à nouveau un peu plus d'attention pour être remarqués.",
+    "geste": "Repense au petit plaisir qui t'a le plus marqué ces derniers jours et garde-le en tête. Il reviendra, même si aujourd'hui demande un peu plus d'effort pour le retrouver."
+   },
+   "pensee_soir": "Une odeur, un sourire, une promenade ont suffi aujourd'hui à te faire du bien, presque sans que tu le remarques. Repense à ce qui est passé si vite."
+  },
+  "mercure_conjonction_venus": {
+   "miroir": "Les mots te viennent facilement aujourd'hui pour dire ce que tu aimes. Tu sais nommer précisément ce qui te touche chez quelqu'un ou dans un objet. D'habitude, tu restes plutôt vague sur ces choses-là.",
+   "geste": "Dis à quelqu'un, en mots simples, ce que tu aimes chez lui ou chez elle. Pas un compliment vague, une chose précise. La justesse des mots aujourd'hui vaut mieux qu'un long discours.",
+   "pensee_soir": "Tu as su nommer précisément ce qui te touchait aujourd'hui, chose rare. Retiens cette clarté-là avant qu'elle ne redevienne le flou habituel."
+  },
+  "mercure_carre-opposition_venus": {
+   "miroir": "Tu cherches tes mots pour parler d'argent ou d'un cadeau, et rien ne sort comme prévu. Une remarque sur le prix ou le goût de l'autre tombe mal, sans que tu l'aies voulu ainsi.",
+   "geste": "Avant de commenter le goût ou le prix de quelque chose aujourd'hui, laisse passer une phrase. Reformule une fois dans ta tête. Ça évite le mot qui blesse sans le vouloir.",
+   "pensee_soir": "Une remarque sur un prix ou un goût est tombée de travers aujourd'hui, sans que tu l'aies voulu. Repense à ce que tu voulais vraiment dire."
+  },
+  "mercure_sextile-trigone_venus": {
+   "miroir": "Parler de ce que tu aimes aujourd'hui se fait sans effort. Les compliments passent bien, les goûts se partagent facilement, et la conversation glisse vers ce qui plaît sans jamais forcer.",
+   "geste": "Complimente quelqu'un sur un détail précis, sa façon de s'habiller, un choix qu'il a fait. Fais-le simplement, sans grande phrase. Un mot juste aujourd'hui porte plus loin qu'un long discours.",
+   "pensee_soir": "Les compliments et les goûts partagés ont coulé sans effort aujourd'hui. Repense à celui qui a le plus sonné vrai, pour toi ou pour l'autre."
+  },
+  "venus_conjonction_venus": {
+   "miroir": "Une fois par an, ton goût propre revient exactement là où il était à ta naissance. Ce que tu aimes vraiment, sans influence de personne, se sent plus clairement aujourd'hui que tout le reste de l'année.",
+   "geste": "Offre-toi aujourd'hui quelque chose qui te plaît vraiment, sans penser à l'utilité ni au regard des autres. Un achat, un moment, une visite. Ce jour-là se prête bien à choisir pour toi seul.",
+   "pensee_soir": "Une fois par an, ce que tu aimes vraiment se sent plus clairement. Repense à ce qui s'est montré aujourd'hui, sans influence de personne — c'est celui-là qu'il faut garder."
+  },
+  "venus_carre-opposition_venus": {
+   "miroir": "Deux choses que tu aimes tirent aujourd'hui chacune de leur côté. Un plaisir et une économie, un lien et un autre, et tu sens qu'il va falloir laisser filer l'un pour garder l'autre.",
+   "geste": "Choisis un seul plaisir aujourd'hui plutôt que d'essayer de tout garder à la fois. Renonce à voix haute à l'autre option, même si ça pince un peu. Le choix libère plus qu'il ne coûte.",
+   "pensee_soir": "Deux choses que tu aimes ont tiré chacune de leur côté aujourd'hui. Laquelle as-tu fini par laisser filer, et est-ce que ça t'a vraiment coûté ?"
+  },
+  "venus_sextile-trigone_venus": {
+   "miroir": "Ce que tu aimes et les gens que tu aimes s'accordent aujourd'hui sans qu'il y ait rien à négocier. Un moment agréable en attire un autre, et le plaisir circule sans que tu aies à le provoquer.",
+   "geste": "Passe du temps aujourd'hui avec quelqu'un que tu aimes sincèrement, sans idée derrière la tête. Choisis une activité simple qui vous plaît à tous les deux. Ça n'a pas besoin d'être plus compliqué.",
+   "pensee_soir": "Un moment agréable en a attiré un autre aujourd'hui, sans que tu aies rien à provoquer. Repense à la chaîne que ça a formée."
+  },
+  "soleil_conjonction_venus": {
+   "miroir": "Ce que tu aimes se voit aujourd'hui plus que d'habitude, ton style, tes goûts, la façon dont tu t'entoures. On le remarque sans que tu aies rien fait de spécial pour ça.",
+   "geste": "Montre aujourd'hui un goût qui est vraiment le tien, une pièce que tu portes rarement, un objet que tu gardes précieusement. Ne t'excuse pas de l'aimer. Laisse-le simplement se voir.",
+   "pensee_soir": "Ce que tu aimes s'est vu aujourd'hui plus que d'habitude, sans effort de ta part. Repense à ce qu'on a remarqué en toi, précisément."
+  },
+  "soleil_carre-opposition_venus": {
+   "miroir": "Ce que tu aimes vraiment et ce qu'on attend que tu montres ne s'accordent pas aujourd'hui. Tu te retrouves à afficher un goût qui n'est pas tout à fait le tien pour tenir ta place.",
+   "geste": "Choisis un moment aujourd'hui pour montrer ton vrai goût, même petit, même discret. Un choix de vêtement, un objet sur ton bureau. Tu n'as pas à convaincre, juste à laisser voir.",
+   "pensee_soir": "Tu as peut-être affiché aujourd'hui un goût qui n'était pas tout à fait le tien, pour tenir ta place. Repère lequel, pour la prochaine fois."
+  },
+  "soleil_sextile-trigone_venus": {
+   "miroir": "On admire aujourd'hui ce que tu aimes sans que tu aies à le défendre. Ton goût passe bien, ton style plaît, et cette reconnaissance facile te met plus à l'aise que d'habitude.",
+   "geste": "Accepte aujourd'hui un compliment sur ton goût sans le minimiser. Dis simplement merci, sans ajouter une excuse. Laisse la reconnaissance entrer telle qu'elle vient, sans la repousser tout de suite.",
+   "pensee_soir": "Ton goût a plu aujourd'hui sans que tu aies eu à le défendre. Cette reconnaissance facile, qu'est-ce qu'elle a changé dans ta soirée ?"
+  },
+  "mars_conjonction_venus": {
+   "miroir": "L'envie de te faire plaisir monte fort aujourd'hui, et elle veut aller vite. Un achat, une personne, une envie précise s'impose avec une énergie qui ne demande pas la permission.",
+   "geste": "Agis aujourd'hui pour ce qui te plaît, mais donne-toi une nuit avant l'achat ou le message important. L'élan est bon, le laisser reposer un peu ne l'abîme pas.",
+   "pensee_soir": "Une envie de te faire plaisir est montée fort aujourd'hui, pressée. Repense à ce qu'elle est devenue, un achat, un geste, une personne, et si ça t'a vraiment nourri."
+  },
+  "mars_carre-opposition_venus": {
+   "miroir": "Tu as envie d'agir tout de suite pour ce qui te plaît. Mais quelque chose freine : le prix, le bon sens, une contrainte. Cette envie contrariée te rend plus impatient que d'habitude.",
+   "geste": "Attends une heure avant de céder à une envie d'achat ou de dépense aujourd'hui. Si l'envie tient encore après, elle est vraie. Sinon, c'est juste l'impatience du moment qui parlait.",
+   "pensee_soir": "Quelque chose a freiné aujourd'hui une envie que tu voulais suivre tout de suite. Cette impatience-là, d'où venait-elle vraiment ?"
+  },
+  "mars_sextile-trigone_venus": {
+   "miroir": "Agir pour ce qui te plaît se fait aujourd'hui sans effort ni calcul. Tu bouges facilement vers une personne ou une chose que tu aimes, et ça avance tout seul, presque sans y penser.",
+   "geste": "Fais aujourd'hui un geste simple pour quelqu'un ou quelque chose que tu aimes, sans attendre le moment parfait. Un service rendu, un cadeau spontané. L'élan est là, autant s'en servir maintenant.",
+   "pensee_soir": "Tu as avancé aujourd'hui vers ce qui te plaît sans y penser vraiment. Repense à ce moment où ça s'est fait tout seul."
+  },
+  "lune_conjonction_mars": {
+   "miroir": "Ton humeur du jour et ton envie d'agir se collent l'une à l'autre. Ce que tu ressens se transforme tout de suite en geste, sans détour, sans filtre entre les deux.",
+   "geste": "Bouge dès que ça te prend, avant d'analyser. Marche vite dix minutes, range une pièce en accéléré, ou dis tout de suite ce que tu penses à quelqu'un de confiance.",
+   "pensee_soir": "Ce que tu as ressenti aujourd'hui s'est transformé tout de suite en geste, sans filtre. Repense à ce que ça a donné, une fois posé."
+  },
+  "lune_carre-opposition_mars": {
+   "approche": {
+    "miroir": "Une envie de foncer commence à monter, mais elle n'a pas encore trouvé de sortie. Tu sens la pression qui s'accumule, sans savoir encore où elle ira.",
+    "geste": "Bouge physiquement quelques minutes avant que cette pression ne trouve une sortie moins choisie. Marche vite, monte un escalier, secoue les bras. N'importe quoi qui bouge fait l'affaire."
+   },
+   "coeur": {
+    "miroir": "Quelque chose en toi voudrait foncer, mais l'humeur du moment retient le geste avant qu'il ne parte. Ça agace plus que la situation elle-même ne le mérite.",
+    "geste": "Laisse sortir l'irritation sans la garder pour toi. Frappe un coussin, écris trois lignes bien senties que tu ne montreras à personne, puis reviens à ce que tu voulais faire."
+   },
+   "retrait": {
+    "miroir": "Ton envie de foncer retombe peu à peu. Ce qui t'agaçait plus que de raison, ces derniers jours, perd de sa charge. Le geste retenu n'a plus besoin de sortir.",
+    "geste": "Repense à ce qui t'a fait bouillir ces derniers jours. Vois si ça mérite encore une action aujourd'hui, ou si l'envie elle-même est déjà retombée."
+   },
+   "pensee_soir": "Une envie de foncer a été retenue aujourd'hui par ton humeur du moment. Ce frein t'a-t-il vraiment protégé, ou juste ralenti ?"
+  },
+  "lune_sextile-trigone_mars": {
+   "miroir": "Ce que tu ressens aujourd'hui pousse dans le même sens que ton envie d'agir. Les deux avancent ensemble, sans que tu aies à forcer quoi que ce soit.",
+   "geste": "Enchaîne les petites actions qui te tentent, dans l'ordre où elles se présentent. Ne planifie pas trop, suis l'élan du moment, il te mènera plus loin qu'un programme serré.",
+   "pensee_soir": "Ce que tu ressentais et ton envie d'agir ont avancé ensemble aujourd'hui, sans que tu forces rien. Repense à ce que ça a rendu possible."
+  },
+  "mercure_conjonction_mars": {
+   "miroir": "Tes mots et tes gestes marchent au même pas aujourd'hui. Ce que tu dis, tu le fais dans la foulée, presque avant d'avoir fini la phrase qui l'annonçait.",
+   "geste": "Dis ce que tu comptes faire à voix haute, puis fais-le tout de suite après. Ne laisse pas la phrase refroidir entre l'idée qui vient et le mouvement qui suit.",
+   "pensee_soir": "Tu as fait ce que tu disais presque avant d'avoir fini la phrase aujourd'hui. Repense à ce que cette vitesse-là t'a évité, ou t'a coûté."
+  },
+  "mercure_carre-opposition_mars": {
+   "miroir": "Les mots te viennent plus vite que la mesure aujourd'hui. Dès que l'élan du moment s'en mêle, ça peut sortir plus sec que prévu.",
+   "geste": "Avant de répondre à ce qui t'agace, compte jusqu'à trois. Dis ta réponse à voix haute d'abord, écoute comment elle sonne, puis seulement après choisis si tu l'envoies telle quelle.",
+   "pensee_soir": "Un mot est sorti plus sec que prévu aujourd'hui, porté par l'élan du moment. Repense à ce qu'il a vraiment voulu dire, une fois l'élan retombé."
+  },
+  "mercure_sextile-trigone_mars": {
+   "miroir": "Tu trouves les mots justes pour accompagner ce que tu entreprends aujourd'hui. Expliquer ce que tu fais devient facile, et ça t'aide même à avancer plus vite.",
+   "geste": "Explique à voix haute ou par écrit ce que tu es en train de faire. Le simple fait de le formuler va clarifier tout seul ton prochain geste.",
+   "pensee_soir": "Expliquer ce que tu entreprenais aujourd'hui t'a aidé à avancer plus vite. Repense à la phrase qui a débloqué quelque chose."
+  },
+  "venus_conjonction_mars": {
+   "miroir": "Ton envie d'agir se met au service de ce qui te plaît, ou de quelqu'un que tu apprécies. Foncer et séduire se ressemblent beaucoup aujourd'hui, presque sans distinction.",
+   "geste": "Fais un geste pour la personne ou le projet qui te tient à coeur, sans attendre d'y être obligé. Choisis-le toi-même, maintenant, plutôt que de le remettre plus tard.",
+   "pensee_soir": "Foncer et séduire se sont ressemblés aujourd'hui, presque sans distinction. Repense à ce que tu poursuivais vraiment derrière l'élan."
+  },
+  "venus_carre-opposition_mars": {
+   "miroir": "Vouloir plaire et vouloir foncer tirent chacun de leur côté aujourd'hui. Tu hésites entre y aller franchement et ménager quelqu'un que tu aimes bien voir content.",
+   "geste": "Choisis un seul camp pour une heure. Soit tu avances pour toi sans t'excuser, soit tu mets l'autre en premier. Arrête juste de trancher entre les deux à chaque minute.",
+   "pensee_soir": "Tu as hésité aujourd'hui entre foncer franchement et ménager quelqu'un. Lequel des deux a fini par gagner, et est-ce que tu le regrettes ?"
+  },
+  "venus_sextile-trigone_mars": {
+   "miroir": "Foncer et plaire vont ensemble aujourd'hui, sans que tu aies à choisir entre les deux. Ce que tu entreprends se fait avec une aisance qui attire plutôt qu'elle ne bouscule.",
+   "geste": "Lance ce que tu repousses depuis un moment, en y mettant ta façon à toi de faire les choses. Le résultat plaira sans que tu aies besoin de forcer quoi que ce soit.",
+   "pensee_soir": "Ce que tu as entrepris aujourd'hui a attiré plutôt que bousculé. Repense à ce moment où l'action et le charme ont marché ensemble."
+  },
+  "soleil_conjonction_mars": {
+   "miroir": "Ce que tu affirmes aujourd'hui se voit, et se voit fort. Ton envie d'exister par l'action prend toute la place, difficile de passer inaperçu dans ce que tu entreprends.",
+   "geste": "Prends la parole ou la place que tu évites d'habitude. Une seule fois, dans une seule situation, mais fais-le en pleine lumière plutôt qu'à moitié caché.",
+   "pensee_soir": "Ton envie d'exister par l'action a pris toute la place aujourd'hui, difficile à ignorer. Repense à ce qu'elle a vraiment affirmé de toi."
+  },
+  "soleil_carre-opposition_mars": {
+   "miroir": "Vouloir être reconnu et vouloir foncer se bousculent aujourd'hui. Tu sens l'élan monter, puis une gêne qui te retient d'occuper toute la place que tu voudrais prendre.",
+   "geste": "Avance quand même, mais sans chercher l'approbation de personne autour de toi. Fais le geste pour toi d'abord, et laisse le regard des autres arriver après, pas avant.",
+   "pensee_soir": "Vouloir être reconnu et vouloir foncer se sont bousculés aujourd'hui. Repense au moment où l'un a retenu l'autre, et pourquoi."
+  },
+  "soleil_sextile-trigone_mars": {
+   "miroir": "S'affirmer et agir vont dans le même sens aujourd'hui. Ce que tu montres de toi et ce que tu fais se renforcent l'un l'autre sans effort particulier à fournir.",
+   "geste": "Occupe la place qui te revient dans une réunion, une conversation, un projet. Le moment se prête bien à montrer ce que tu fais vraiment, sans en rajouter.",
+   "pensee_soir": "Ce que tu as montré de toi et ce que tu as fait aujourd'hui se sont renforcés sans effort. Repense à ce qu'ils ont construit ensemble."
+  },
+  "mars_conjonction_mars": {
+   "miroir": "Ton élan retrouve aujourd'hui la même position qu'à un point de départ, deux ans plus tôt. Une envie de repartir s'installe, nette, sans que rien d'extérieur l'explique vraiment.",
+   "geste": "Lance quelque chose de neuf plutôt que de continuer ce qui traîne. Un projet, une démarche, un message que tu remets depuis des mois. Choisis-le pour marquer ce redémarrage.",
+   "pensee_soir": "Ton élan est revenu aujourd'hui à un point de départ d'il y a deux ans. Repense à ce qui a changé depuis, et à ce qui redémarre pareil."
+  },
+  "mars_carre-opposition_mars": {
+   "miroir": "Deux envies de foncer se télescopent aujourd'hui : celle de maintenant, et une autre plus ancienne. Comme si tu voulais aller dans deux sens à la fois.",
+   "geste": "Arrête-toi une minute avant de trancher entre les deux envies qui se disputent en toi. Choisis une seule direction pour la journée, et laisse l'autre attendre demain sans culpabiliser.",
+   "pensee_soir": "Deux envies de foncer se sont télescopées aujourd'hui, l'une nouvelle, l'une plus ancienne. Laquelle des deux avait vraiment raison de pousser ?"
+  },
+  "mars_sextile-trigone_mars": {
+   "miroir": "Ton élan d'aujourd'hui rejoint celui qui te porte depuis toujours, sans accroc entre les deux. Foncer te ressemble particulièrement bien en ce moment, presque sans effort à fournir.",
+   "geste": "Reprends un projet qui te tient à coeur depuis longtemps et avance dessus aujourd'hui. Le terrain est bon, profite de cette facilité plutôt que de la laisser filer.",
+   "pensee_soir": "Ton élan d'aujourd'hui a rejoint celui qui te porte depuis toujours, sans friction. Repense à ce que ça a permis de faire sans y penser."
+  },
+  "lune_conjonction_mercure": {
+   "miroir": "Ce que tu ressens ce matin passe directement dans tes mots, sans détour. Tu parles avec ton humeur du jour, pas avec ta réflexion, et ça s'entend chez qui t'écoute.",
+   "geste": "Avant une conversation qui compte, prends deux minutes pour nommer ce que tu ressens, à part. Ensuite seulement, parle. Ta pensée aura une chance de passer devant ton humeur.",
+   "pensee_soir": "Ce que tu ressentais ce matin est passé directement dans tes mots aujourd'hui. Repense à ce que ça a révélé à qui t'écoutait."
+  },
+  "lune_carre-opposition_mercure": {
+   "approche": {
+    "miroir": "Une petite gêne commence à brouiller tes mots aujourd'hui. Rien de grave encore, mais tu sens déjà que la phrase va sortir un peu plus de travers que d'habitude.",
+    "geste": "Repère le moment précis où le mot juste t'échappe aujourd'hui. Laisse ce flottement exister sans chercher tout de suite la formule parfaite, il est encore trop tôt pour ça."
+   },
+   "coeur": {
+    "miroir": "Tu cherches tes mots plus que d'habitude aujourd'hui, comme si l'humeur brouillait la phrase avant qu'elle sorte. Tu penses clair, mais ça se bouscule en sortant, et l'agacement vient de là.",
+    "geste": "Sur le message qui ne sort pas bien, arrête-toi une phrase avant la fin. Relis-la demain matin plutôt que ce soir. L'humeur du jour n'aura plus la main sur le choix des mots."
+   },
+   "retrait": {
+    "miroir": "Le brouillard qui embrouillait tes mots ces derniers jours commence à se dissiper. Les phrases reviennent plus simplement, sans cet effort supplémentaire pour dire ce que tu penses vraiment.",
+    "geste": "Relis un message que tu avais laissé de côté ces derniers jours, faute des bons mots. Vois s'il mérite encore une réponse, maintenant que la phrase vient plus facilement."
+   },
+   "pensee_soir": "Tu pensais clair aujourd'hui, mais ça s'est bousculé en sortant. Repense à ce que l'humeur a brouillé, plutôt que la pensée elle-même."
+  },
+  "lune_sextile-trigone_mercure": {
+   "miroir": "Dire ce qui se passe en toi aujourd'hui ne demande presque aucun effort. La phrase arrive avant même que tu aies eu à la chercher. Exprimer un ressenti, même délicat, se fait sans l'embarras habituel.",
+   "geste": "Partage avec quelqu'un ce que tu ressens vraiment sur un sujet que tu évites d'habitude. Les mots viendront plus facilement que prévu, profite de cette ouverture pendant qu'elle est là.",
+   "pensee_soir": "Dire ce qui se passait en toi n'a presque rien demandé aujourd'hui. Repense à la phrase qui est sortie sans l'embarras habituel."
+  },
+  "mercure_conjonction_mercure": {
+   "miroir": "Il y a des jours où ta façon propre de penser se sent nettement, sans que rien d'autre ne vienne la couvrir. Aujourd'hui en fait partie, et tu peux presque l'entendre penser.",
+   "geste": "Prends une idée qui te trotte en tête. Dis-la à voix haute, avec tes mots à toi, sans emprunter ceux de personne d'autre. Écoute-toi la formuler : c'est rare de s'entendre penser aussi nettement.",
+   "pensee_soir": "Ta façon propre de penser s'est fait sentir nettement aujourd'hui, sans rien pour la couvrir. Repense à ce qu'elle a dit de toi, une fois entendue clairement."
+  },
+  "mercure_carre-opposition_mercure": {
+   "miroir": "Tes pensées partent dans deux sens à la fois aujourd'hui, et choisir laquelle dire en premier demande plus d'effort que d'habitude. Ce n'est pas le sujet qui coince, c'est le tri.",
+   "geste": "Choisis une seule idée à exprimer aujourd'hui et laisse les autres de côté pour l'instant. Répète-la une fois dans ta tête avant de la dire, ça évitera qu'elle se perde en chemin.",
+   "pensee_soir": "Tes pensées sont parties dans deux sens aujourd'hui, et choisir laquelle dire en premier a coûté un effort. Repense à ce que le tri a révélé."
+  },
+  "mercure_sextile-trigone_mercure": {
+   "miroir": "Les idées s'enchaînent aujourd'hui sans que tu aies à forcer, une phrase amène la suivante presque toute seule. Expliquer, comprendre, relier deux bouts d'une même histoire, tout ça coule plus facilement.",
+   "geste": "Reprends le texte ou l'explication que tu remets depuis un moment et termine-le aujourd'hui. Les mots devraient venir plus vite que prévu, sans qu'il y ait grand-chose à polir.",
+   "pensee_soir": "Les idées se sont enchaînées aujourd'hui sans que tu forces rien. Repense au fil qui s'est tissé — il ne se retrouve pas tous les jours."
+  },
+  "venus_conjonction_mercure": {
+   "miroir": "Tes mots sortent plus doux qu'à l'habitude aujourd'hui, une gentillesse s'y glisse sans que tu l'aies décidé. Ça change la façon dont on reçoit ce que tu dis, même sans changer le fond.",
+   "geste": "Nomme à quelqu'un, en une phrase simple, ce que tu apprécies chez lui sans l'habiller d'une blague. Aujourd'hui les mots doux passent sans effort, ça vaut la peine de s'en servir.",
+   "pensee_soir": "Une douceur s'est glissée dans tes mots aujourd'hui, sans que tu l'aies décidée. Repense à ce qu'elle a changé dans la façon dont on t'a reçu."
+  },
+  "venus_carre-opposition_mercure": {
+   "miroir": "Tu enrobes ce que tu dis plus que nécessaire aujourd'hui, et le message finit par se perdre dans les précautions. Vouloir ménager l'autre prend le pas sur vouloir être compris clairement.",
+   "geste": "Formule une fois aujourd'hui la version simple de ce que tu penses, sans l'adoucir avant de la sortir. Une seule phrase, sans les trois précautions qui l'accompagnent d'habitude.",
+   "pensee_soir": "Tu as peut-être enrobé un message aujourd'hui au point qu'il s'est perdu dans les précautions. Repense à ce que tu voulais vraiment dire, sans l'emballage."
+  },
+  "venus_sextile-trigone_mercure": {
+   "miroir": "Ce que tu dis passe bien aujourd'hui. Le ton fait la moitié du travail, sans que tu aies à forcer sur les mots. Même une remarque délicate atterrit en douceur, presque sans accroc.",
+   "geste": "Aborde aujourd'hui le sujet délicat que tu repousses depuis un moment. Le ton devrait porter la conversation tout seul, ce qui d'habitude demande des pincettes en demandera nettement moins.",
+   "pensee_soir": "Le ton a fait la moitié du travail aujourd'hui, même sur une remarque délicate. Repense à ce qui est passé si facilement."
+  },
+  "soleil_conjonction_mercure": {
+   "miroir": "Une idée que tu portais discrètement aujourd'hui se remarque plus que d'habitude, elle prend soudain de la place. Tu parles pareil, mais on t'écoute autrement, et ça se sent.",
+   "geste": "Exprime à voix haute l'avis que tu gardes pour toi depuis un moment, une seule fois aujourd'hui. Il a de bonnes chances d'être entendu, alors qu'un autre jour il serait passé inaperçu.",
+   "pensee_soir": "Une idée que tu portais discrètement a pris de la place aujourd'hui. Repense à ce qui a changé dans la façon dont on t'a écouté."
+  },
+  "soleil_carre-opposition_mercure": {
+   "miroir": "Tu tiens aujourd'hui à être compris exactement comme tu le penses, et ça demande plus d'énergie que d'habitude. Répéter, préciser, reformuler, ça t'épuise plus que ça ne convainc qui t'écoute.",
+   "geste": "Laisse quelqu'un finir sa phrase avant de répondre, une fois aujourd'hui, même si tu sais déjà où il veut en venir. Cette pause suffira souvent à faire passer ton idée mieux qu'insister.",
+   "pensee_soir": "Vouloir être compris exactement comme tu le pensais aujourd'hui a coûté plus d'énergie que ça n'a convaincu. Repense à ce qui aurait suffi, plus simplement."
+  },
+  "soleil_sextile-trigone_mercure": {
+   "miroir": "Présenter une idée aujourd'hui demande moins d'effort que d'habitude, elle se comprend vite et sans que tu aies à insister dessus. Tu parles clair, et ça se voit sans que tu forces le trait.",
+   "geste": "Présente aujourd'hui l'idée que tu gardais pour un meilleur moment. Elle a de bonnes chances d'être bien reçue, sans effort particulier de ta part. Une phrase claire suffira largement.",
+   "pensee_soir": "Une idée s'est comprise vite aujourd'hui, sans que tu aies à insister. Repense à ce qui a rendu la clarté si facile cette fois."
+  },
+  "mars_conjonction_mercure": {
+   "miroir": "Aujourd'hui les mots sortent presque aussi vite que l'idée qui les précède, tu dis les choses sans détour ni délai. Ce qui prend d'habitude trois brouillons sort en une fois, tout droit.",
+   "geste": "Dis maintenant la phrase directe que tu répètes dans ta tête depuis ce matin, avant qu'elle refroidisse. Aujourd'hui elle sortira plus franche et plus nette que si tu attends demain.",
+   "pensee_soir": "Ce qui prend d'habitude trois brouillons est sorti d'un coup aujourd'hui. Repense à ce que cette vitesse-là a gagné, ou perdu, en justesse."
+  },
+  "mars_carre-opposition_mercure": {
+   "miroir": "Ta langue va plus vite que ta pensée aujourd'hui. Une réplique un peu sèche sort avant même que tu aies eu le temps de la peser. L'impatience s'invite dans les mots avant que tu la remarques.",
+   "geste": "Compte jusqu'à trois avant de répondre au message qui t'agace, rien de plus. Ce court délai suffit souvent à changer complètement le ton de ce que tu allais écrire.",
+   "pensee_soir": "Une réplique un peu sèche est sortie aujourd'hui avant que tu aies eu le temps de la peser. Repense à ce qu'elle disait vraiment, une fois l'impatience retombée."
+  },
+  "mars_sextile-trigone_mercure": {
+   "miroir": "Ce qui traînait dans un échange se règle aujourd'hui sans détour, une phrase claire suffit là où d'habitude il en fallait dix. Trancher et le dire, aujourd'hui, ça va presque tout seul.",
+   "geste": "Règle aujourd'hui l'échange que tu traînes depuis un moment, en un message clair et court. Ça devrait se conclure plus vite et plus net que ce que tu redoutais.",
+   "pensee_soir": "Une phrase claire a réglé aujourd'hui ce qui traînait depuis un moment. Repense à ce qui a rendu ce moment si direct."
+  },
+  "lune_conjonction_saturne": {
+   "miroir": "L'humeur qui te traverse ce matin se confond avec le poids que tu portes d'habitude, sans y penser. Ce que tu tiens au sérieux te retombe dessus d'un coup. Comme si la fatigue et le devoir n'étaient plus qu'une seule chose.",
+   "geste": "Nomme ce soir ce qui est vraiment fatigue et ce qui est vraiment devoir. Deux colonnes, deux mots suffisent pour chacune. Tu verras que la deuxième colonne est plus courte que ce que tu croyais ce matin.",
+   "pensee_soir": "Ce que tu portais au sérieux t'est retombé dessus aujourd'hui comme une seule chose avec la fatigue. Repense à ce qui, en dessous, demandait juste du repos."
+  },
+  "lune_carre-opposition_saturne": {
+   "miroir": "Ce que tu ressens ce matin refuse la règle que tu t'imposes d'habitude. L'envie de tout lâcher se cogne contre l'horaire, le rôle, la chose promise, et ça grince un peu plus que d'habitude.",
+   "geste": "Choisis une seule obligation du jour et allège-la d'un cran, sans l'annuler complètement. Un rendez-vous raccourci, une tâche remise à demain matin. La limite tient encore si tu la desserres un peu.",
+   "pensee_soir": "L'envie de tout lâcher s'est cognée aujourd'hui contre un horaire ou une promesse tenue. Repense à ce que ce grincement disait vraiment."
+  },
+  "lune_sextile-trigone_saturne": {
+   "miroir": "Il y a une aisance ce matin qui se glisse sans accroc dans ce que tu tiens d'habitude. Le sérieux ne pèse pas, il accompagne, et tu portes ta part sans avoir à te forcer ni à te surveiller.",
+   "geste": "Profite de cette aisance pour avancer la tâche que tu remets depuis des jours, celle qui demande de la constance plus que de l'énergie. Elle se fait plus facilement aujourd'hui que demain.",
+   "pensee_soir": "Le sérieux n'a pas pesé aujourd'hui, il a accompagné. Repense à ce moment où porter ta part s'est fait sans te surveiller."
+  },
+  "mercure_conjonction_saturne": {
+   "miroir": "Tes pensées tournent en boucle autour d'une règle ou d'un devoir précis. Tu rejoues la même phrase, le même reproche que tu t'adresses. Comme si le sérieux avait pris toute la place dans ta tête.",
+   "geste": "Nomme cette pensée qui tourne, une seule fois, à voix haute ou à quelqu'un de confiance, puis n'y reviens plus aujourd'hui. Elle a le droit d'exister sans que tu la retournes vingt fois dans la journée.",
+   "pensee_soir": "Une même phrase, un même reproche, a tourné en boucle aujourd'hui. Repense à ce qu'elle cherchait vraiment à te dire, au-delà de la répétition."
+  },
+  "mercure_carre-opposition_saturne": {
+   "miroir": "Ce que tu penses d'une contrainte et ce qu'elle exige de toi ne s'accordent pas aujourd'hui. Tu cherches les mots pour la contester, et ils arrivent de travers, ou parfois pas du tout.",
+   "geste": "Avant de discuter la règle qui t'agace, explique à voix haute, même seul, ce qu'elle protège vraiment. Tu n'as pas à l'aimer. Tu vérifies juste ce qu'elle empêche d'arriver dans ta journée.",
+   "pensee_soir": "Tu as cherché les mots pour contester une contrainte aujourd'hui, et ils sont arrivés de travers, ou pas du tout. Repense à ce que tu voulais vraiment dire."
+  },
+  "mercure_sextile-trigone_saturne": {
+   "miroir": "Les mots te viennent facilement aujourd'hui pour expliquer une chose sérieuse, un cadre, une limite que tu tiens depuis longtemps. Ce qui demandait d'habitude un effort d'explication sort tout seul.",
+   "geste": "Mets cette clarté au service d'une conversation que tu repoussais, celle où une limite reste à poser ou une règle à rappeler. Les mots seront plus simples à trouver aujourd'hui.",
+   "pensee_soir": "Expliquer un cadre que tu tiens depuis longtemps est sorti tout seul aujourd'hui. Repense à ce que cette clarté a changé pour qui t'écoutait."
+  },
+  "venus_conjonction_saturne": {
+   "miroir": "Une contrainte que tu portes depuis longtemps se pare aujourd'hui d'un peu de douceur. Ce qui est sérieux ne perd rien de son poids, mais tu le regardes avec plus de tendresse que d'habitude.",
+   "geste": "Ajoute un petit plaisir précis à la tâche la plus austère de ta journée. Une musique, une pause, un café pris lentement. La rigueur n'a pas besoin d'être austère pour tenir bon.",
+   "pensee_soir": "Une contrainte ancienne s'est parée d'un peu de douceur aujourd'hui. Repense à ce regard plus tendre — le poids n'a pas changé, mais quelque chose oui."
+  },
+  "venus_carre-opposition_saturne": {
+   "miroir": "Ton envie de douceur et la responsabilité que tu tiens aujourd'hui tirent chacune de leur côté. Tu voudrais lâcher la règle pour te faire plaisir, et la culpabilité s'invite dès que tu y penses.",
+   "geste": "Accorde-toi le plaisir en entier, sans le raccourcir par culpabilité, mais range-le à une heure précise. Le cadre et le goût peuvent cohabiter, à condition de ne pas se mélanger.",
+   "pensee_soir": "L'envie de lâcher une règle pour te faire plaisir aujourd'hui s'est heurtée à la culpabilité. Repense à laquelle des deux méritait vraiment de gagner."
+  },
+  "venus_sextile-trigone_saturne": {
+   "miroir": "Ce que tu tiens aujourd'hui te demande moins d'effort que d'habitude, et tu y trouves même un certain agrément. La rigueur et le plaisir marchent côte à côte sans se gêner l'un l'autre.",
+   "geste": "Choisis la façon la plus agréable possible d'accomplir une obligation du jour. Un lieu que tu aimes, une compagnie choisie. Le sérieux n'en sera pas moins tenu, juste moins pesant.",
+   "pensee_soir": "Ce que tu tiens d'habitude a demandé moins d'effort aujourd'hui, presque avec plaisir. Repense à ce moment où rigueur et douceur ont marché ensemble."
+  },
+  "soleil_conjonction_saturne": {
+   "miroir": "Le rôle sérieux que tu assumes en coulisses se retrouve en pleine lumière aujourd'hui. On te voit tenir cette part-là, celle qui porte et qui dure, et ça se remarque plus qu'un jour ordinaire.",
+   "geste": "Assume à voix haute, devant quelqu'un, le rôle sérieux que tu tiens d'habitude en silence. Une phrase suffit. Être vu dans cette part-là ne l'alourdit pas, elle la confirme simplement.",
+   "pensee_soir": "Le rôle sérieux que tu assumes en coulisses s'est vu aujourd'hui. Repense à ce que ça fait d'être reconnu pour la part qui porte et qui dure."
+  },
+  "soleil_carre-opposition_saturne": {
+   "miroir": "La lumière tombe aujourd'hui sur une limite que tu préfères d'habitude garder discrète. On te demande des comptes sur un cadre que tu tiens depuis longtemps sans jamais l'expliquer à personne.",
+   "geste": "Explique une seule fois, simplement, pourquoi tu tiens cette limite précise. Pas de justification longue. Une phrase dite calmement referme la question mieux qu'un silence gêné et tendu.",
+   "pensee_soir": "On t'a demandé des comptes aujourd'hui sur un cadre que tu tiens depuis longtemps sans l'expliquer. Repense à ce que tu aurais voulu répondre."
+  },
+  "soleil_sextile-trigone_saturne": {
+   "miroir": "On reconnaît aujourd'hui le sérieux avec lequel tu tiens une chose depuis longtemps. Cette reconnaissance arrive sans que tu aies eu à la réclamer, et elle te va plutôt bien, franchement.",
+   "geste": "Laisse quelqu'un te remercier pour une responsabilité que tu assumes en silence depuis des mois. Ne minimise pas la réponse. Le mérite existe encore, même quand il arrive en retard.",
+   "pensee_soir": "On a reconnu aujourd'hui le sérieux avec lequel tu tiens une chose depuis longtemps. Repense à ce que ça fait de ne pas avoir eu à le réclamer."
+  },
+  "mars_conjonction_saturne": {
+   "miroir": "Ton envie d'avancer se cogne directement contre le cadre que tu t'es fixé. Tu sens la poussée et la limite au même endroit, comme deux forces qui se tiennent l'une contre l'autre sans céder.",
+   "geste": "Mets cette énergie dans la tâche la plus exigeante de ta liste, celle que la discipline seule fait avancer d'habitude. Aujourd'hui, l'élan fait le travail à la place de la volonté.",
+   "pensee_soir": "Ta poussée et ta limite se sont tenues aujourd'hui au même endroit, sans que l'une cède. Repense à ce que cet équilibre tendu t'a appris."
+  },
+  "mars_carre-opposition_saturne": {
+   "miroir": "Tu voudrais foncer, et une règle, un délai, une limite se met en travers de ton chemin. La frustration monte plus vite que d'habitude devant ce qui te freine ou te fait attendre.",
+   "geste": "Avant de forcer contre la limite qui te retient, dépense l'élan ailleurs, une marche rapide, du rangement, un effort physique court. Reviens ensuite vers la contrainte, plus calme qu'avant.",
+   "pensee_soir": "Une règle ou un délai s'est mis en travers de ton élan aujourd'hui. Repense à ce que cette attente forcée t'a montré de ton impatience."
+  },
+  "mars_sextile-trigone_saturne": {
+   "miroir": "Ton énergie du jour avance dans le même sens que la discipline que tu t'imposes d'habitude. Ce qui demande normalement de la volonté se fait presque sans y penser, porté par un seul élan.",
+   "geste": "Attaque aujourd'hui la tâche exigeante que tu remets depuis un moment, celle qui demande de la constance plus que de l'inspiration. L'élan est de ton côté, profites-en pendant qu'il dure.",
+   "pensee_soir": "Ce qui demande d'habitude de la volonté s'est fait aujourd'hui presque sans y penser. Repense à ce qui a porté cet élan si facilement."
+  },
+  "lune_conjonction_jupiter": {
+   "miroir": "Ce matin, ton humeur et ta confiance ne font plus qu'un. Tu te sens capable de beaucoup, peut-être un peu plus que ce que la journée peut vraiment tenir.",
+   "geste": "Note l'idée généreuse qui te traverse là, sans l'annoncer à personne encore. Laisse-la respirer une heure avant de t'engager, pour voir si elle tient toujours debout.",
+   "pensee_soir": "Tu t'es senti capable de beaucoup aujourd'hui, peut-être un peu plus que ce que la journée pouvait vraiment tenir. Repense à l'écart, sans le juger."
+  },
+  "lune_carre-opposition_jupiter": {
+   "miroir": "Tu sens un doute traîner pile là où tu voudrais croire large aujourd'hui. L'écart entre ce que tu ressens et ce que tu espères se fait sentir, sans drame.",
+   "geste": "Choisis une seule chose à laquelle tu tiens vraiment aujourd'hui, et laisse le reste de côté. Ta confiance n'a pas besoin de convaincre l'humeur, juste de tenir un point.",
+   "pensee_soir": "Un doute a traîné aujourd'hui pile là où tu voulais croire large. Repense à ce que cet écart entre l'espoir et le ressenti a dit de vrai."
+  },
+  "lune_sextile-trigone_jupiter": {
+   "miroir": "L'humeur du jour et ta confiance marchent dans le même sens sans effort. Voir grand te coûte moins cher que d'habitude, presque naturellement.",
+   "geste": "Propose l'idée un peu ambitieuse que tu gardes pour toi depuis un moment. Le climat s'y prête aujourd'hui, profites en pour la dire à voix haute.",
+   "pensee_soir": "Voir grand n'a presque rien coûté aujourd'hui. Repense à ce moment où l'humeur et la confiance ont marché ensemble, sans effort."
+  },
+  "mercure_conjonction_jupiter": {
+   "miroir": "Tes pensées tournent en boucle autour d'une idée qui te semble immense. Les mots grossissent tout seuls, et ta confiance s'en mêle sans que tu le décides vraiment.",
+   "geste": "Confie cette idée à quelqu'un de terre à terre, à voix haute ou dans un message, la plus simple possible. Sa réaction te dira ce qui tient et ce qui grossissait tout seul.",
+   "pensee_soir": "Une idée a grossi toute seule aujourd'hui, portée par ta confiance plus que par les faits. Repense à sa taille réelle, une fois la journée retombée."
+  },
+  "mercure_carre-opposition_jupiter": {
+   "miroir": "Tu cherches les mots pour dire une vision qui te dépasse un peu, et ils résistent. Ce que tu penses grand se cogne contre ce que tu sais dire vraiment.",
+   "geste": "Parle de ton idée à une seule personne, en petit, sans l'habiller. Tu verras vite ce qui tient debout et ce qui n'était que de l'enthousiasme parlé trop vite.",
+   "pensee_soir": "Tu as cherché les mots pour dire une vision qui te dépassait un peu aujourd'hui. Repense à ce qui a résisté — peut-être que ce n'était pas encore le moment de le dire."
+  },
+  "mercure_sextile-trigone_jupiter": {
+   "miroir": "Une idée large trouve ses mots sans forcer aujourd'hui. Ce que tu penses de grand se dit avec une aisance qui te surprend presque toi-même.",
+   "geste": "Explique ton projet à quelqu'un qui n'y connaît rien. La clarté viendra du récit, et ta confiance dans l'idée en sortira un peu plus solide.",
+   "pensee_soir": "Une idée large a trouvé ses mots aujourd'hui sans forcer. Repense à la phrase qui t'a surpris toi-même par son aisance."
+  },
+  "venus_conjonction_jupiter": {
+   "miroir": "Le plaisir du jour se mêle à ton envie de voir grand. Tu as le goût d'offrir plus que d'habitude, et ça peut vite déborder du raisonnable.",
+   "geste": "Fais un geste généreux, mais fixe une limite avant de commencer. Le plaisir de donner se garde mieux quand il ne se vide pas d'un coup.",
+   "pensee_soir": "Ton envie d'offrir a débordé un peu aujourd'hui, mêlée au plaisir du jour. Repense à ce que ça a donné, et si le raisonnable a suivi."
+  },
+  "venus_carre-opposition_jupiter": {
+   "miroir": "Ce qui te ferait plaisir aujourd'hui ne colle pas avec l'ampleur de ce que tu vises. Un petit tiraillement s'installe entre le confort et la grande idée.",
+   "geste": "Choisis le plaisir modeste plutôt que la promesse généreuse trop lourde à tenir. Tu pourras revenir à la vision large une fois le tiraillement retombé.",
+   "pensee_soir": "Ce qui te ferait plaisir aujourd'hui ne collait pas avec l'ampleur de ce que tu vises. Repense à lequel des deux tu as choisi, sur le moment."
+  },
+  "venus_sextile-trigone_jupiter": {
+   "miroir": "Le goût du jour accompagne ta confiance sans grincer. Ce qui te fait plaisir sert justement la vision plus large que tu portes en ce moment.",
+   "geste": "Accorde-toi le plaisir qui nourrit ton projet plutôt que celui qui le retarde. Aujourd'hui les deux se rejoignent, autant en profiter pleinement.",
+   "pensee_soir": "Ce qui t'a fait plaisir aujourd'hui a servi la vision plus large que tu portes. Repense à ce moment où les deux se sont rejoints sans grincer."
+  },
+  "soleil_conjonction_jupiter": {
+   "miroir": "Aujourd'hui, on remarque justement l'endroit où tu oses viser haut. Ce que tu portes en confiance prend de la place, parfois plus que tu ne l'avais prévu.",
+   "geste": "Montre ton ambition à quelqu'un plutôt que de la garder discrète. La mise en lumière du jour porte, mais garde un pied dans ce qui est vraiment faisable.",
+   "pensee_soir": "Ce que tu portais en confiance a pris de la place aujourd'hui, parfois plus que prévu. Repense à ce que ça a révélé de ce que tu vises vraiment."
+  },
+  "soleil_carre-opposition_jupiter": {
+   "miroir": "On te regarde justement là où ta confiance vacille un peu. L'attention du jour tombe sur une promesse que tu n'es pas certain de pouvoir tenir.",
+   "geste": "Dis clairement ce que tu peux offrir maintenant, sans en rajouter pour paraître à la hauteur. Une ambition honnête tient mieux qu'une grande annoncée trop vite.",
+   "pensee_soir": "L'attention est tombée aujourd'hui sur une promesse que tu n'es pas certain de pouvoir tenir. Repense à ce doute — il ne mérite pas d'être caché."
+  },
+  "soleil_sextile-trigone_jupiter": {
+   "miroir": "Tu occupes la lumière sans qu'elle pèse aujourd'hui. Ta confiance se montre facilement, sans que tu aies besoin ni de la forcer ni de t'excuser.",
+   "geste": "Occupe la place qu'on te donne et dis ce que tu vises vraiment. La lumière du jour porte ta vision plus loin qu'un jour ordinaire.",
+   "pensee_soir": "Ta confiance s'est montrée aujourd'hui sans que tu aies à la forcer ni à t'en excuser. Repense à ce moment simple, il ne demande pas plus."
+  },
+  "mars_conjonction_jupiter": {
+   "miroir": "L'élan du jour fonce droit sur ta plus grande idée. Ça pousse fort, au point que la vitesse peut dépasser ce que la situation permet vraiment.",
+   "geste": "Avance sur ton projet, mais fixe un seul pas avant de foncer sur le reste. L'élan est réel aujourd'hui, il n'a juste pas besoin de tout prendre d'un coup.",
+   "pensee_soir": "L'élan du jour a foncé droit sur ta plus grande idée aujourd'hui, peut-être plus vite que la situation ne le permettait. Repense à ce qui a suivi."
+  },
+  "mars_carre-opposition_jupiter": {
+   "miroir": "Tu veux foncer sur une idée large, et quelque chose freine juste au moment où tu pousses. Ce frein n'annule rien, il retarde simplement le tempo.",
+   "geste": "Fais une action plus petite que celle que tu voulais aujourd'hui. Garde la grande pour un moment où la route sera moins encombrée qu'en ce moment.",
+   "pensee_soir": "Tu as voulu foncer sur une idée large aujourd'hui, et quelque chose a freiné juste à ce moment-là. Repense à ce que ce délai a changé, au fond."
+  },
+  "mars_sextile-trigone_jupiter": {
+   "miroir": "L'envie d'agir et ta confiance avancent ensemble sans se marcher dessus. Foncer sur une idée large coûte moins d'énergie qu'un jour normal.",
+   "geste": "Lance l'action que tu remettais depuis un moment sur ton grand projet. Le terrain est dégagé aujourd'hui, profites en pour avancer franchement.",
+   "pensee_soir": "Foncer sur une idée large a coûté moins d'énergie qu'un jour normal aujourd'hui. Repense à ce que cette aisance t'a permis d'accomplir."
+  },
+  "lune_conjonction_asc": {
+   "miroir": "Ce que tu ressens en te levant arrive dans la pièce avant toi. Ton humeur choisit ton ton de voix, ta vitesse, la tête que tu fais en disant bonjour.",
+   "geste": "Avant de sortir ou de répondre au premier appel, nomme ton humeur en un mot, à voix haute. Ça suffit à l'empêcher de décider seule de ton abord.",
+   "pensee_soir": "Ton humeur est entrée dans la pièce avant toi aujourd'hui. Repense à ce qu'elle a choisi à ta place, le ton, la vitesse, le visage que tu as fait."
+  },
+  "lune_carre-opposition_asc": {
+   "approche": {
+    "miroir": "Tu sens un petit écart poindre entre ce que tu ressens et ce que tu montres en entrant quelque part. Il est encore léger, mais il commence à te demander un effort.",
+    "geste": "Avant d'entrer quelque part aujourd'hui, prends note de ce que tu ressens vraiment, en un mot. Tu n'as rien à changer, juste à le savoir avant que ça se voie."
+   },
+   "coeur": {
+    "miroir": "Ton visage ne suit pas ton humeur aujourd'hui. Tu forces un sourire au moment d'entrer dans une pièce, et ça se voit un peu, même si personne ne dit rien.",
+    "geste": "Arrête-toi trois secondes sur le pas de la porte avant d'entrer quelque part. Laisse ton visage se défroisser avant que quelqu'un le voie. Ce petit délai change beaucoup de choses."
+   },
+   "retrait": {
+    "miroir": "Ton visage et ton humeur se recollent peu à peu. Le sourire forcé du début de semaine demande de moins en moins d'effort, jusqu'à devenir presque vrai.",
+    "geste": "Remarque le moment aujourd'hui où entrer quelque part ne te demande plus aucun effort de composition. Ce relâchement mérite d'être noté, pas seulement traversé sans y penser."
+   },
+   "pensee_soir": "Tu as forcé un sourire aujourd'hui au moment d'entrer quelque part. Repense à ce que ça a coûté, même si personne n'a rien dit."
+  },
+  "lune_sextile-trigone_asc": {
+   "approche": {
+    "miroir": "Ton humeur commence à s'accorder avec ta façon d'aborder les gens. L'aisance n'est pas encore complète, mais entrer quelque part demande déjà un peu moins d'effort qu'hier.",
+    "geste": "Choisis une personne que tu abordes rarement en premier, et va vers elle aujourd'hui. Même si l'aisance n'est pas encore totale, elle suffit pour faire ce petit pas."
+   },
+   "coeur": {
+    "miroir": "Aujourd'hui, ton humeur et ta façon d'aborder les gens vont dans le même sens. Tu entres quelque part et ça passe tout seul, sans effort de ta part.",
+    "geste": "Va vers la personne ou le groupe que tu évites d'habitude en entrant quelque part. L'abord se fait sans effort aujourd'hui. Profites-en pendant que cette facilité est là."
+   },
+   "retrait": {
+    "miroir": "L'aisance à aborder les gens redescend doucement vers ta normale. Ça reste plus facile qu'un jour ordinaire, mais tu sens que l'énergie des derniers jours commence à se retirer.",
+    "geste": "Profite de ce qui reste de facilité pour finir une approche commencée ces derniers jours. La fenêtre se referme tranquillement, mais elle n'est pas encore fermée."
+   },
+   "pensee_soir": "Entrer quelque part aujourd'hui s'est fait tout seul, sans effort de ta part. Repense à ce moment où ton dedans et ta façon d'arriver ont coïncidé."
+  },
+  "mercure_conjonction_asc": {
+   "miroir": "Les premiers mots que tu dis à quelqu'un de nouveau sortent tout seuls aujourd'hui, avant même que tu aies eu le temps d'y réfléchir. Ta présentation, ce sont tes mots.",
+   "geste": "Répète à voix haute, une fois, la phrase que tu utiliseras pour ouvrir ta prochaine conversation avec quelqu'un que tu ne connais pas. Aujourd'hui, tes mots parlent avant toi : autant les choisir.",
+   "pensee_soir": "Les premiers mots que tu as dits à quelqu'un de nouveau aujourd'hui sont sortis avant que tu y réfléchisses. Repense à ce qu'ils ont révélé de toi, sans filtre."
+  },
+  "mercure_carre-opposition_asc": {
+   "miroir": "Tu cherches tes mots au moment précis où il faudrait les avoir. Face à quelqu'un de nouveau, ta pensée du jour et ta façon d'aborder ne s'accordent pas bien.",
+   "geste": "Sors un papier ou ton téléphone avant un échange qui compte aujourd'hui, et note deux ou trois mots clés. Tu n'as pas besoin d'improviser ton abord en entier.",
+   "pensee_soir": "Tu as cherché tes mots au moment précis où il fallait les avoir aujourd'hui. Repense à ce qui a coincé, entre ce que tu pensais et ce que tu as dit."
+  },
+  "mercure_sextile-trigone_asc": {
+   "approche": {
+    "miroir": "Les phrases viennent mieux pour te présenter ou expliquer qui tu es. Moins d'à-peu-près, moins de reformulation : ta bouche et ton image commencent à se mettre d'accord.",
+    "geste": "Saisis la première phrase qui te sort claire alors qu'elle patine d'habitude. Tu n'as rien à en faire, juste à la remarquer."
+   },
+   "coeur": {
+    "miroir": "À son intensité, tu te présentes sans préparation, et ça sonne juste. Les mots épousent l'idée au moment où tu la penses. C'est idéal pour une intro, un entretien, un mail où il faut te présenter.",
+    "geste": "Dis la chose que tu n'arrivais pas à formuler, sur toi, sur un projet, sur un désaccord. Aujourd'hui elle sortira nette, et la fenêtre est courte."
+   },
+   "retrait": {
+    "miroir": "La facilité verbale se tarit, mais elle a laissé une formule à toi. Une façon de te dire t'appartient désormais, que tu n'avais pas avant ce passage.",
+    "geste": "Retiens la phrase qui t'a le mieux défini aujourd'hui. Réutilise-la même quand les mots reviendront moins vite."
+   },
+   "pensee_soir": "Tu t'es présenté aujourd'hui sans préparation, et ça a sonné juste. Repense à ce moment où les mots ont épousé l'idée sans effort."
+  },
+  "venus_conjonction_asc": {
+   "approche": {
+    "miroir": "Les échanges commencent à passer plus facilement. Un sourire rendu, une porte tenue, un compliment qui arrive sans être cherché. Le monde te renvoie une image plus douce qu'à l'ordinaire.",
+    "geste": "Note la première interaction agréable de la journée, même minuscule. C'est elle qui annonce la couleur de ce passage."
+   },
+   "coeur": {
+    "miroir": "Au pic, tu es simplement plus agréable à fréquenter. Pas par effort : c'est que ce qui te plaît et ce que tu projettes s'alignent. Les autres le sentent, et ils répondent.",
+    "geste": "Va vers la rencontre ou la démarche que tu repoussais par gêne. Aujourd'hui elle passe toute seule, et cette fenêtre ne dure pas."
+   },
+   "retrait": {
+    "miroir": "L'aisance redescend, mais elle a prouvé une chose. Tu peux entrer en contact sans te raidir. Cette version plus fluide de toi, dans le regard des autres, existe bel et bien.",
+    "geste": "Retiens la façon dont tu t'y prenais aujourd'hui pour aborder les gens. Elle te resservira même quand la fenêtre se refermera."
+   },
+   "pensee_soir": "Tu as été plus agréable à fréquenter aujourd'hui, sans effort particulier. Repense à ce que les autres ont senti, et que tu n'as même pas eu à provoquer."
+  },
+  "venus_carre-opposition_asc": {
+   "miroir": "Tu hésites entre sourire franchement et te protéger un peu, et ça se voit dans ta façon d'aborder les gens aujourd'hui. Le premier contact demande plus d'énergie que d'habitude.",
+   "geste": "Décide ce que tu montres et ce que tu gardes pour toi avant de rencontrer quelqu'un de nouveau aujourd'hui. Ce petit choix t'évite d'improviser ton abord sur le moment.",
+   "pensee_soir": "Tu as hésité aujourd'hui entre sourire franchement et te protéger un peu. Repense à ce que ce premier contact a demandé de toi, en énergie."
+  },
+  "venus_sextile-trigone_asc": {
+   "miroir": "Personne ne te force à rien aujourd'hui côté contact. Une douceur naturelle porte ta façon d'aborder les gens, et ça met tout le monde à l'aise assez vite.",
+   "geste": "Propose un moment simple à quelqu'un que tu apprécies sans trop savoir comment l'aborder d'habitude, un café, un appel. Aujourd'hui, ça se fait sans effort, alors ose le faire.",
+   "pensee_soir": "Une douceur naturelle a porté ta façon d'aborder les gens aujourd'hui. Repense à ce qu'elle a mis à l'aise chez l'autre, sans que tu le calcules."
+  },
+  "soleil_conjonction_asc": {
+   "miroir": "On te remarque dès que tu entres quelque part aujourd'hui. Ta façon de te présenter prend toute la place, et tu n'as même pas besoin de faire un effort pour ça.",
+   "geste": "Entre dans la pièce ou la réunion sans t'excuser d'y être. Dis bonjour en premier, avant qu'on ne te salue. Aujourd'hui, la place se prend facilement, alors prends la.",
+   "pensee_soir": "On t'a remarqué dès que tu es entré quelque part aujourd'hui, sans effort de ta part. Repense à ce que ça fait de prendre la place sans la demander."
+  },
+  "soleil_carre-opposition_asc": {
+   "approche": {
+    "miroir": "Un flottement apparaît entre qui tu es et la façon dont tu te présentes. Pas encore conflictuel, mais tu hésites un instant avant d'entrer quelque part.",
+    "geste": "Remarque la prochaine fois où tu ajustes ton attitude en entrant dans un groupe. Tu n'as rien à décider, juste à observer ce tiraillement qui s'installe."
+   },
+   "coeur": {
+    "miroir": "La tension est vive. Le rôle qu'on te lit et celui que tu te sens être ne collent pas. Entrer quelque part te met devant un choix conscient : te montrer, ou te faire discret.",
+    "geste": "Décide à l'avance comment tu veux entrer dans la prochaine pièce. Ce simple choix t'évite de flotter entre les deux options au moment critique."
+   },
+   "retrait": {
+    "miroir": "Le tiraillement se desserre, et il a mis en lumière un écart précis. Tu ajustes ta présentation selon le public parfois bien plus que tu ne le crois.",
+    "geste": "Repasse en tête la façon dont tu t'y prenais ces derniers jours. Ce que tu en retiens vaut pour les prochaines fois où tu choisiras ta posture."
+   },
+   "pensee_soir": "Le rôle qu'on t'a lu aujourd'hui et celui que tu te sentais être ne collaient pas tout à fait. Repense au choix que tu as fait, entre te montrer et te faire discret."
+  },
+  "soleil_sextile-trigone_asc": {
+   "miroir": "La place se donne d'elle-même aujourd'hui, tu n'as rien à réclamer pour l'obtenir. Ta façon d'entrer quelque part attire l'attention doucement, sans effort ni calcul de ta part.",
+   "geste": "Prends la parole en premier dans la prochaine réunion ou rencontre, même pour dire une chose simple. Aujourd'hui, l'attention vient à toi sans effort, alors profites en un peu.",
+   "pensee_soir": "La place s'est donnée d'elle-même aujourd'hui, sans que tu aies rien à réclamer. Repense à ce moment d'attention qui est venu te trouver."
+  },
+  "mars_conjonction_asc": {
+   "miroir": "Ton premier geste part vite aujourd'hui. Tu entres quelque part, tu tends la main, tu ouvres la conversation. Ça se fait avec une énergie qui se voit tout de suite.",
+   "geste": "Fonce vers la personne que tu veux aborder aujourd'hui sans attendre le moment parfait. Ton élan est là maintenant, utilise le pendant qu'il porte au lieu de le garder pour plus tard.",
+   "pensee_soir": "Ton premier geste est parti vite aujourd'hui, une main tendue, une conversation ouverte. Repense à ce que cette énergie visible a déclenché chez l'autre."
+  },
+  "mars_carre-opposition_asc": {
+   "miroir": "Ta vivacité arrive plus vite que ta façon habituelle d'aborder les gens aujourd'hui. Tu coupes la parole, tu entres trop fort dans une pièce, et tu le sens après coup.",
+   "geste": "Laisse passer trois secondes de plus que d'habitude avant de répondre ou d'entrer quelque part aujourd'hui. Ce petit délai enlève la brusquerie sans enlever l'énergie qui est derrière.",
+   "pensee_soir": "Tu as coupé la parole ou franchi une porte trop fort aujourd'hui, et tu l'as senti après coup. Repense à ce que cette vivacité voulait vraiment dire."
+  },
+  "mars_sextile-trigone_asc": {
+   "miroir": "Ton élan et ta façon d'entrer quelque part vont dans le même sens aujourd'hui. Le geste part au bon moment, ni trop tôt ni trop tard, et ça se sent.",
+   "geste": "Fais aujourd'hui l'action que tu retardais faute du bon moment, un appel, une demande, un premier pas vers quelqu'un. Ton élan est juste maintenant, il n'a pas besoin d'attendre plus.",
+   "pensee_soir": "Le geste est arrivé au bon moment aujourd'hui, ni trop tôt ni trop tard. Repense à ce que cette justesse t'a permis, sans que tu la calcules."
+  },
+  "lune_conjonction_mc": {
+   "miroir": "Ton humeur du matin se colle directement à l'idée que tu te fais de ta place dans le monde. Ce que tu ressens là, tu le prends pour un jugement sur ta valeur au travail.",
+   "geste": "Écris en une phrase ce que tu ressens maintenant, avant de le rattacher à ta carrière. Relis ce soir. Ton humeur a changé, ta valeur professionnelle, elle, est restée exactement où elle était.",
+   "pensee_soir": "Ce que tu as ressenti ce matin, tu l'as peut-être pris pour un jugement sur ta valeur au travail. Repense à ce qui était vraiment de l'humeur, et ce qui tenait du fond."
+  },
+  "lune_carre-opposition_mc": {
+   "approche": {
+    "miroir": "Une petite lourdeur commence à se glisser dans la façon dont tu regardes ta carrière aujourd'hui. Rien n'a changé dans les faits, mais le doute cherche déjà une prise.",
+    "geste": "Écris en une ligne ce que tu penses vraiment de ta direction professionnelle, avant que le doute prenne toute la place. Tu la reliras plus tard, quand l'humeur sera passée."
+   },
+   "coeur": {
+    "miroir": "Une lourdeur du dedans vient peser sur l'image que tu donnes au travail. Tu doutes soudain de la direction choisie, pour des raisons qui tiennent plus au moral bas qu'à un vrai désaccord.",
+    "geste": "Repousse d'un jour toute décision qui touche ta carrière ou ta réputation. Laisse la lourdeur redescendre seule. Ce que tu construis mérite mieux qu'un jugement rendu un jour de grand vent."
+   },
+   "retrait": {
+    "miroir": "La lourdeur qui pesait sur ta carrière ces derniers jours commence à se lever. Le doute perd de sa force, et la direction choisie recommence à te paraître juste.",
+    "geste": "Reprends la décision que tu avais mise de côté ces derniers jours. Regarde si le doute qui la retenait tient encore, maintenant que la lourdeur est passée."
+   },
+   "pensee_soir": "Un doute sur ta direction professionnelle est monté aujourd'hui, porté surtout par le moral bas. Repense à ce qui, une fois la fatigue passée, reste vraiment en question."
+  },
+  "lune_sextile-trigone_mc": {
+   "approche": {
+    "miroir": "Ton dedans commence à s'accorder avec l'image que tu donnes au monde. L'harmonie n'est pas encore complète, mais elle s'installe déjà un peu dans ta façon de te présenter.",
+    "geste": "Observe un moment aujourd'hui où ce que tu montres colle un peu mieux que d'habitude à ce que tu ressens. Note-le simplement, sans en faire plus."
+   },
+   "coeur": {
+    "miroir": "Ton dedans et l'image que tu donnes au monde marchent enfin ensemble. Ce que tu montres professionnellement ressemble, pour une fois, à ce que tu portes vraiment en toi ce matin.",
+    "geste": "Parle à quelqu'un d'un projet qui te tient à cœur, sans l'habiller ni le réduire. La justesse de l'instant porte tes mots plus loin qu'un jour ordinaire ne le ferait."
+   },
+   "retrait": {
+    "miroir": "L'accord entre ton dedans et ton image publique commence à se relâcher tranquillement. Ce qui coulait tout seul ces derniers jours demande à nouveau un peu plus d'ajustement.",
+    "geste": "Note ce que tu as réussi à montrer clairement de toi ces derniers jours. Cette justesse reviendra, même si ce n'est pas aujourd'hui."
+   },
+   "pensee_soir": "Ce que tu as montré professionnellement aujourd'hui ressemblait, pour une fois, à ce que tu portais vraiment en toi. Repense à ce moment rare où les deux se sont accordés."
+  },
+  "mercure_conjonction_mc": {
+   "miroir": "Ta tête ne quitte plus ta carrière, ce que tu veux faire de ta vie, comment on te voit au travail. Elle planifie ta vocation en boucle, plus qu'elle ne la vit vraiment.",
+   "geste": "Écris en cinq lignes ce que tu veux qu'on retienne de toi dans dix ans professionnellement. Pas un plan détaillé, juste l'intention brute. Ce qui sort aujourd'hui est plus franc que d'habitude.",
+   "pensee_soir": "Ta tête a tourné aujourd'hui autour de ta carrière, de comment on te voit, plus qu'elle ne l'a vécue vraiment. Repense à ce que cette boucle cherchait à résoudre."
+  },
+  "mercure_carre-opposition_mc": {
+   "miroir": "Une phrase sur ton travail ou ta direction de vie revient sans arrêt, et pourtant rien ne sonne juste. Les mots butent contre l'image que tu voudrais donner de toi.",
+   "geste": "Arrête de chercher la formule parfaite sur ta carrière. Dis la version brute à voix haute, même seul chez toi. Une pensée qui tourne trop longtemps exagère toujours son urgence réelle.",
+   "pensee_soir": "Une phrase sur ton travail est revenue aujourd'hui sans jamais sonner tout à fait juste. Repense à ce que tu voulais vraiment dire, derrière les mots qui butaient."
+  },
+  "mercure_sextile-trigone_mc": {
+   "miroir": "Les mots viennent sans effort aujourd'hui pour parler de ce que tu fais, d'où tu vas, de ce que tu construis pour le monde. Ta direction s'exprime avec une clarté rare.",
+   "geste": "Profite de cette clarté pour envoyer le message ou poser la question sur ta carrière que tu remets depuis un moment. Les mots sortiront plus simplement aujourd'hui qu'un autre jour.",
+   "pensee_soir": "Ta direction s'est exprimée aujourd'hui avec une clarté rare. Repense à la phrase qui a le mieux dit où tu vas."
+  },
+  "venus_conjonction_mc": {
+   "miroir": "Tu prends un plaisir inhabituel à penser à ce que tu montres de toi au monde : ton travail, ta réputation, la trace que tu laisses derrière toi. Ça te fait sourire, sans raison précise.",
+   "geste": "Choisis une chose que tu as accomplie professionnellement et regarde-la vraiment, sans la minimiser tout de suite. Laisse-toi aimer ce que tu construis, même deux minutes, avant de viser autre chose.",
+   "pensee_soir": "Tu as pris un plaisir inhabituel aujourd'hui à penser à ce que tu montres de toi au monde. Repense à ce sourire sans raison précise, il en avait peut-être une."
+  },
+  "venus_carre-opposition_mc": {
+   "miroir": "Ce que tu montres de toi professionnellement te déplaît un peu aujourd'hui. Tu compares ta trajectoire à celle des autres, avec un goût amer. Le plaisir de construire semble s'être absenté.",
+   "geste": "Éloigne-toi une heure des comparaisons, réseaux ou conversations sur les carrières des autres. Reviens ensuite à ton propre projet, sans jugement. Ce goût amer n'appartient qu'à cette journée précise, pas à ta valeur.",
+   "pensee_soir": "Tu as comparé ta trajectoire à celle des autres aujourd'hui, avec un goût amer. Repense à ce que cette comparaison a caché du plaisir de construire, qui n'a pas disparu."
+  },
+  "venus_sextile-trigone_mc": {
+   "miroir": "Tu aimes ce que tu fais de ta vie aujourd'hui, et l'image que ça donne de toi te va bien. Une douceur rare s'installe entre ta trajectoire professionnelle et ce que tu ressens.",
+   "geste": "Remercie quelqu'un qui a contribué à ce que tu construis, un collègue, un mentor, un proche. Ce plaisir que tu ressens pour ta trajectoire aujourd'hui se partage facilement, autant en profiter maintenant.",
+   "pensee_soir": "Ce que tu fais de ta vie t'a plu aujourd'hui, et l'image que ça donne aussi. Repense à cette rare douceur entre trajectoire et ressenti."
+  },
+  "soleil_conjonction_mc": {
+   "miroir": "Aujourd'hui, tout ce qui touche ton travail ou ta trajectoire de vie prend de la lumière. Ce que tu fais se voit davantage, et ce que tu es devient plus visible que d'habitude.",
+   "geste": "Montre à quelqu'un qui compte pour toi un projet en cours, même inachevé. La lumière est de ton côté aujourd'hui, et un projet montré maintenant marque plus qu'un autre jour ne le ferait.",
+   "pensee_soir": "Ce que tu fais s'est vu davantage aujourd'hui, sans que tu forces rien. Repense à ce que cette visibilité a changé dans la façon dont tu t'es senti."
+  },
+  "soleil_carre-opposition_mc": {
+   "approche": {
+    "miroir": "Un léger inconfort apparaît entre la direction où tu vas et celle qu'on attend de toi. Rien de frontal encore, juste une pression diffuse sur tes choix professionnels.",
+    "geste": "Repère le moment où une décision liée à ta trajectoire te laisse un arrière-goût d'à-peu-près. Tu n'as rien à trancher, juste à voir la pression s'installer."
+   },
+   "coeur": {
+    "miroir": "Maintenant, la tension est nette. Ton ambition tire d'un côté, l'image que tu dois incarner de l'autre. Tu te sens exposé sur une scène que tu n'as pas tout à fait choisie.",
+    "geste": "Choisis une seule tâche visible et mène-la à ton rythme, sans te presser pour l'audience. Ta direction reste la tienne même à demi-visible."
+   },
+   "retrait": {
+    "miroir": "La pression redescend, mais elle a clarifié une chose. L'une de tes ambitions tenait vraiment à toi, l'autre au rôle qu'on t'a collé dessus.",
+    "geste": "Garde en tête laquelle des deux l'a emporté ces derniers jours. C'est un repère pour ta prochaine bifurcation."
+   },
+   "pensee_soir": "Tu t'es senti exposé aujourd'hui sur une scène que tu n'avais pas tout à fait choisie. Repense à ce que l'ambition et l'image attendue ont chacune réclamé de toi."
+  },
+  "soleil_sextile-trigone_mc": {
+   "miroir": "On remarque aujourd'hui ce que tu fais, sans que tu aies eu à forcer quoi que ce soit. Ta contribution se voit d'elle-même, et l'attention qui te trouve arrive au bon moment.",
+   "geste": "Accepte un compliment sur ton travail sans le renvoyer aussitôt par politesse. Laisse la reconnaissance atterrir une seconde de plus que d'habitude. Elle vient facilement aujourd'hui, autant la recevoir pleinement.",
+   "pensee_soir": "Ta contribution s'est vue d'elle-même aujourd'hui, sans que tu aies eu à forcer. Repense à ce moment où l'attention est arrivée au bon moment."
+  },
+  "mars_conjonction_mc": {
+   "miroir": "Une envie d'avancer dans ta carrière ou ta direction de vie te traverse avec une force qui ne demande qu'à sortir. Rester assis devant ce projet professionnel te coûte plus cher qu'un autre jour.",
+   "geste": "Fais dès maintenant le geste le plus concret possible vers ce que tu construis, un appel, un envoi, une inscription. L'élan est là aujourd'hui, il se perd vite si tu attends demain.",
+   "pensee_soir": "Une envie d'avancer sur ta carrière t'a traversé aujourd'hui avec une force qui ne demandait qu'à sortir. Repense à ce qu'elle a réussi à bouger, même un peu."
+  },
+  "mars_carre-opposition_mc": {
+   "miroir": "Tu veux avancer sur ta carrière ou ta trajectoire. Mais quelque chose freine : un obstacle, une hiérarchie, une lenteur qui n'est pas la tienne. L'énergie cogne contre un mur qui ne bouge pas.",
+   "geste": "Dirige cette impatience vers une action que tu contrôles entièrement, ranger ton espace de travail, finir une tâche annexe. Le mur extérieur attendra demain, ton énergie d'aujourd'hui mérite un terrain qui répond.",
+   "pensee_soir": "Tu as voulu avancer aujourd'hui, et un obstacle qui n'était pas le tien a freiné l'élan. Repense à ce que cette lenteur t'a appris sur ce qui dépend vraiment de toi."
+  },
+  "mars_sextile-trigone_mc": {
+   "miroir": "Tu avances aujourd'hui sur ta direction professionnelle sans avoir à forcer les portes. L'énergie que tu mets dans ce que tu construis rencontre moins de résistance que d'habitude, et ça se sent nettement.",
+   "geste": "Attaque la tâche professionnelle qui te semblait lourde hier. Elle passera plus facilement aujourd'hui. Profite de cette énergie disponible pour avancer d'un cran sur ce qui compte vraiment pour toi.",
+   "pensee_soir": "Tu as avancé aujourd'hui sur ta direction sans avoir à forcer les portes. Repense à ce que cette énergie a construit, presque sans t'en rendre compte."
+  },
+  "lune_conjonction_uranus": {
+   "miroir": "Ce matin, ton humeur et ton envie de tout changer se confondent complètement. Tu ne sais plus si tu as juste mal dormi. Ou si une vraie envie de rupture est en train de monter en toi.",
+   "geste": "Avant de changer quoi que ce soit d'important, bouge un objet dans la pièce où tu es. Un tiroir, une chaise, une photo. Le besoin de casser quelque chose peut se satisfaire en petit, sans tout renverser.",
+   "pensee_soir": "Tu ne savais plus ce matin si c'était la fatigue ou une vraie envie de rupture. Repense à ce que la journée a fini par te répondre là-dessus."
+  },
+  "lune_carre-opposition_uranus": {
+   "miroir": "Ton humeur du jour ne colle pas avec ce que ta journée exige de toi. Ça te donne une envie sourde de tout annuler d'un coup, rendez-vous compris.",
+   "geste": "Annule une seule chose, la moins importante de ta liste. Pas toute la journée, juste une case. Ton besoin de liberté a parfois seulement besoin d'une porte de sortie, pas de la sortie complète.",
+   "pensee_soir": "Une envie sourde d'annuler la journée est montée aujourd'hui, portée par un décalage entre l'humeur et ce qu'elle exigeait. Repense à ce que tu as fini par faire de cette envie."
+  },
+  "lune_sextile-trigone_uranus": {
+   "miroir": "Ton humeur du jour s'accorde sans effort avec ton envie de changement. Un imprévu arrive et, au lieu de te déranger, il te soulage presque tout de suite.",
+   "geste": "Laisse un imprévu réorganiser ta journée sans discuter. Suis-le une heure, sans plan de secours. Ce détour te ressemble plus, là maintenant, que ce que tu avais prévu ce matin.",
+   "pensee_soir": "Un imprévu est arrivé aujourd'hui et, au lieu de déranger, il a presque soulagé. Repense à ce que cette souplesse a rendu possible."
+  },
+  "mercure_conjonction_uranus": {
+   "miroir": "Une idée un peu décalée tourne dans ta tête depuis ce matin, et elle refuse de se ranger avec les autres. Tu la retournes dans tous les sens, presque malgré toi.",
+   "geste": "Raconte cette idée décalée à une personne qui ne jugera pas, de vive voix ou dans un mot griffonné. Ton esprit a besoin de la sortir de sa tête pour voir si elle tient debout.",
+   "pensee_soir": "Une idée un peu décalée a tourné dans ta tête aujourd'hui, refusant de se ranger avec les autres. Repense à ce qu'elle cherchait vraiment à te dire."
+  },
+  "mercure_carre-opposition_uranus": {
+   "miroir": "Quelqu'un remet en question ta façon de penser autrement, et ça te hérisse plus que d'habitude. L'envie de défendre ton originalité prend toute la place dans la conversation.",
+   "geste": "Dans cette discussion, dis une seule phrase qui explique pourquoi tu penses différemment, sans te justifier davantage. Une fois suffit. Tu n'as pas à convaincre tout le monde aujourd'hui.",
+   "pensee_soir": "Quelqu'un a remis en question ta façon de penser autrement aujourd'hui, et ça t'a hérissé. Repense à ce que tu défendais vraiment, au-delà de l'agacement."
+  },
+  "mercure_sextile-trigone_uranus": {
+   "miroir": "Une conversation ouvre une porte sur une idée que tu portais en silence depuis longtemps. Quelqu'un comprend ton angle bizarre sans que tu aies à tout expliquer.",
+   "geste": "Parle de cette idée à voix haute avec la personne qui t'écoute bien en ce moment. Ne prépare rien avant. Les mots viendront plus facilement que tu ne le crois, et sans effort.",
+   "pensee_soir": "Quelqu'un a compris aujourd'hui ton angle un peu bizarre sans que tu aies eu à tout expliquer. Repense à ce que ça fait de se sentir compris sans effort."
+  },
+  "venus_conjonction_uranus": {
+   "miroir": "Ton attirance se porte vers ce qui sort complètement du cadre habituel, une personne, un lieu, une façon de vivre une relation. Le classique t'ennuie soudainement pour de bon.",
+   "geste": "Accepte une proposition inhabituelle qui te tente, même petite. Un lieu que tu ne fréquentes jamais, une rencontre hors de ta routine. Ton goût pour l'inattendu mérite d'être suivi une fois.",
+   "pensee_soir": "Le classique t'a ennuyé aujourd'hui, et ce qui sortait du cadre t'a attiré. Repense à ce que cette attirance cherchait vraiment, au-delà de la nouveauté."
+  },
+  "venus_carre-opposition_uranus": {
+   "miroir": "Ton envie d'indépendance et ton attachement à quelqu'un tirent dans deux directions opposées. Le confort habituel te donne soudain l'impression d'un enfermement doux.",
+   "geste": "Nomme à voix haute, pour toi seul, ce que tu voudrais changer dans cette relation sans tout casser. Un mot suffit. Tu n'as pas à agir tout de suite, juste à le savoir clairement.",
+   "pensee_soir": "Un attachement habituel a pris aujourd'hui des airs d'enfermement doux. Repense à ce que l'indépendance et le lien réclamaient, chacun de leur côté."
+  },
+  "venus_sextile-trigone_uranus": {
+   "miroir": "Une relation ou un plaisir sort un peu de l'ordinaire, et ça passe tout seul, sans drame ni négociation. Ton goût pour l'inhabituel trouve enfin un endroit où se poser.",
+   "geste": "Propose la version la moins classique d'une sortie ou d'un moment à deux. Le nouveau restaurant, l'itinéraire différent. La légèreté du jour vient justement de ce petit écart au programme habituel.",
+   "pensee_soir": "Un plaisir un peu inhabituel a trouvé aujourd'hui où se poser, sans drame. Repense à ce que ton goût pour l'écart a fini par récolter."
+  },
+  "soleil_conjonction_uranus": {
+   "miroir": "On te remarque précisément pour ce qui ne ressemble à personne d'autre chez toi. Ton besoin d'être libre attire l'attention plutôt que de te faire passer pour bizarre.",
+   "geste": "Montre, dans une seule situation aujourd'hui, la version la plus originale de toi-même, sans l'adoucir. Un vêtement, une opinion, une façon de faire. Laisse-la être vue telle quelle, une fois.",
+   "pensee_soir": "On t'a remarqué aujourd'hui précisément pour ce qui ne ressemble à personne d'autre chez toi. Repense à ce que ça fait d'être vu pour ta différence, pas malgré elle."
+  },
+  "soleil_carre-opposition_uranus": {
+   "miroir": "Ton besoin d'être indépendant se heurte à ce qu'on attend de toi dans un groupe ou au travail. Rester à ta place demande un effort presque physique.",
+   "geste": "Trouve un moment dans la journée où tu décides seul d'une chose, même minime, sans demander d'accord. L'heure d'un appel, l'ordre d'une tâche. Ta liberté se construit par ces détails-là.",
+   "pensee_soir": "Rester à ta place dans un groupe a demandé aujourd'hui un effort presque physique. Repense à ce que ton besoin d'indépendance essayait de dire, sous la contrainte."
+  },
+  "soleil_sextile-trigone_uranus": {
+   "miroir": "Ta différence passe bien aujourd'hui. On te laisse faire les choses à ta manière, sans discussion. Cette liberté, accordée si facilement, te surprend presque autant qu'elle te fait du bien.",
+   "geste": "Fais la chose à ta façon, celle que tu remets d'habitude par peur qu'on te la refuse. Personne ne s'y oppose en ce moment. Autant en profiter pendant que la porte est ouverte.",
+   "pensee_soir": "On t'a laissé faire les choses à ta manière aujourd'hui, sans discussion. Repense à cette liberté accordée facilement, elle ne se présente pas tous les jours ainsi."
+  },
+  "mars_conjonction_uranus": {
+   "miroir": "Une envie soudaine de tout quitter ou de tout changer te traverse d'un coup, avec une force qui surprend même toi. Une situation figée depuis longtemps te devient insupportable en une seconde.",
+   "geste": "Avant d'agir sur ce coup de tête, marche dix minutes dehors. Si l'envie de rompre tient encore après, garde-la comme une information sérieuse sur toi, pas comme un caprice à ignorer.",
+   "pensee_soir": "Une situation figée depuis longtemps t'est devenue insupportable en une seconde aujourd'hui. Repense à ce que cette envie soudaine cherchait vraiment à changer."
+  },
+  "mars_carre-opposition_uranus": {
+   "miroir": "Tu voudrais tout lâcher d'un coup, mais quelque chose ou quelqu'un te retient et bloque l'élan. Cette énergie de rupture n'a nulle part où aller, alors elle tourne en rond dans ton corps.",
+   "geste": "Dépense cette énergie bloquée ailleurs que dans la situation qui te frustre. Un effort physique, une tâche qui se termine vite. Le corps a besoin de bouger même si la situation reste figée.",
+   "pensee_soir": "Une énergie de rupture a tourné en rond aujourd'hui, retenue par quelqu'un ou quelque chose. Repense à où elle est finalement allée, faute de sortie directe."
+  },
+  "mars_sextile-trigone_uranus": {
+   "miroir": "Une décision de rupture ou de changement que tu portais depuis un moment devient facile à poser aujourd'hui. L'action suit l'envie sans le combat que tu attendais.",
+   "geste": "Pose ce geste de changement que tu remettais, pendant que ça glisse tout seul. Envoie le message, ferme le dossier, prends la sortie. La facilité du jour ne dure pas toujours.",
+   "pensee_soir": "Une décision de changement que tu portais depuis un moment est devenue facile à poser aujourd'hui. Repense à ce qui a rendu ce geste si simple, sans le combat attendu."
+  },
+  "lune_conjonction_neptune": {
+   "miroir": "Ce que tu ressens ce matin se confond avec ce que tu espères. Tu ne sais plus lequel des deux parle vraiment. Une inquiétude vague prend des airs de vérité profonde.",
+   "geste": "Écris ce qui te semble être une évidence aujourd'hui, puis relis-la demain matin. Si elle tient encore une fois l'humeur retombée, elle mérite ton attention. Sinon, laisse-la filer tranquillement.",
+   "pensee_soir": "Ce que tu ressentais ce matin s'est confondu avec ce que tu espérais. Repense à ce qui, de l'inquiétude ou de l'espoir, parlait vraiment aujourd'hui."
+  },
+  "lune_carre-opposition_neptune": {
+   "miroir": "Tu attendais un peu de magie dans ta journée, et le réel te répond par une corvée ou un retard. L'écart entre ce que tu espérais sentir et ce qui arrive vraiment pique un peu.",
+   "geste": "Nomme précisément ce que tu espérais de cette journée avant de la juger décevante. Compare-le ensuite à ce qui s'est réellement passé. La déception dit souvent plus sur l'attente que sur les faits.",
+   "pensee_soir": "Tu attendais un peu de magie aujourd'hui, et le réel a répondu par une corvée. Repense à cet écart, il ne dit rien de faux sur ta journée, juste sur ton attente."
+  },
+  "lune_sextile-trigone_neptune": {
+   "miroir": "Ton humeur du jour glisse sans effort vers ce que tu aimes imaginer, comme une chanson qui revient sans qu'on l'ait cherchée. Rien ne force ici, tout s'accorde de lui-même.",
+   "geste": "Laisse toi dériver une vingtaine de minutes vers une rêverie ou une musique qui t'inspire, sans horaire ni objectif précis. Ce genre de détour nourrit souvent plus que bien des efforts.",
+   "pensee_soir": "Ton humeur a glissé aujourd'hui vers ce que tu aimes imaginer, sans effort. Repense à ce qui est venu te chercher sans que tu l'aies appelé."
+  },
+  "mercure_conjonction_neptune": {
+   "miroir": "Tes mots deviennent difficiles à fixer aujourd'hui, comme si chaque phrase que tu commences se dissolvait avant la fin. En même temps, une image te traverse plus claire que d'habitude.",
+   "geste": "Note l'image ou la phrase qui te vient avant de vouloir tout expliquer d'un coup. Certaines idées perdent leur force dès qu'on les justifie trop vite. Garde la donc brute pour l'instant.",
+   "pensee_soir": "Chaque phrase que tu commençais aujourd'hui semblait se dissoudre avant la fin, pendant qu'une image, elle, restait claire. Repense à ce que cette image disait, à sa manière."
+  },
+  "mercure_carre-opposition_neptune": {
+   "miroir": "Tu essaies de dire ce que tu espères vraiment et les mots sortent tordus, trop vagues ou trop grands. On te demande d'être clair sur un projet qui, pour toi, tient encore du pressentiment.",
+   "geste": "Face à une question précise sur ce projet flou, réponds d'abord par une image plutôt que par un plan complet. Dis à quoi ça ressemble avant de dire comment ça marche concrètement.",
+   "pensee_soir": "On t'a demandé d'être clair aujourd'hui sur quelque chose qui, pour toi, tenait encore du pressentiment. Repense à ce qu'il te manquait vraiment pour le dire, peut-être juste du temps."
+  },
+  "mercure_sextile-trigone_neptune": {
+   "miroir": "Les mots te viennent facilement aujourd'hui pour parler de ce que tu espères, sans que tu aies à forcer la formule. Une conversation ordinaire glisse vite vers ce qui t'inspire vraiment.",
+   "geste": "Raconte à quelqu'un, en quelques phrases simples, un rêve ou un projet qui te tient à cœur. La facilité du moment aide à le rendre un peu plus réel, aussi pour toi.",
+   "pensee_soir": "Une conversation ordinaire a glissé aujourd'hui vers ce qui t'inspire vraiment. Repense à ce moment où dire ton espoir n'a demandé aucun effort."
+  },
+  "venus_conjonction_neptune": {
+   "miroir": "Un lien ou une envie prend aujourd'hui des couleurs presque trop belles pour être vraies. Tu vois quelqu'un, ou quelque chose, à travers un filtre plus doux que d'habitude.",
+   "geste": "Profite du charme du moment sans t'en méfier, mais évite de promettre quoi que ce soit de définitif aujourd'hui. Reviens sur ce sentiment dans quelques jours, à tête plus reposée.",
+   "pensee_soir": "Tu as vu quelqu'un, ou quelque chose, aujourd'hui à travers un filtre plus doux que d'habitude. Repense à ce que ce filtre a embelli, et à ce qu'il a peut-être caché."
+  },
+  "venus_carre-opposition_neptune": {
+   "miroir": "Ce que tu espérais d'un lien ou d'un plaisir ne colle pas à ce qui se présente réellement. Une petite déception s'installe. L'idéal que tu t'étais fait était plus doux que la réalité.",
+   "geste": "Dis à voix haute ce que tu attendais exactement de ce moment décevant, plutôt que d'avaler la déception en silence. Nommer l'écart évite de le reporter sur la personne en face.",
+   "pensee_soir": "Ce que tu espérais d'un lien ou d'un plaisir ne collait pas à ce qui s'est présenté aujourd'hui. Repense à l'idéal que tu t'étais fait, était-il vraiment nécessaire ?"
+  },
+  "venus_sextile-trigone_neptune": {
+   "miroir": "Un plaisir simple aujourd'hui prend une douceur qui dépasse un peu ce qu'il devrait normalement offrir. Tu goûtes à quelque chose qui ressemble à ton idéal de tendresse, sans avoir eu à le chercher.",
+   "geste": "Accorde-toi ce plaisir doux sans lui trouver tout de suite une utilité ou une suite logique. Une belle heure se suffit à elle-même, elle n'a pas besoin de mener quelque part.",
+   "pensee_soir": "Un plaisir simple a pris aujourd'hui une douceur qui dépassait ce qu'il devait offrir. Repense à ce moment de tendre inattendu, sans l'avoir cherché."
+  },
+  "soleil_conjonction_neptune": {
+   "miroir": "L'attention se porte aujourd'hui sur ce que tu espères plutôt que sur ce que tu accomplis concrètement. Tu brilles davantage par ton idéal que par un résultat visible pour l'instant.",
+   "geste": "Parle aujourd'hui de ce à quoi tu aspires, même sans plan précis derrière. Dire l'idéal à voix haute, devant quelqu'un, lui donne déjà un peu plus de poids réel.",
+   "pensee_soir": "L'attention s'est portée aujourd'hui sur ce que tu espères plutôt que sur un résultat visible. Repense à ce que ça fait de briller par un idéal, pas encore prouvé."
+  },
+  "soleil_carre-opposition_neptune": {
+   "miroir": "On te demande d'être concret et de montrer un résultat. Pendant ce temps, ce qui compte pour toi reste encore un espoir difficile à prouver. Le décalage se sent nettement.",
+   "geste": "Face à une demande de preuve ou de résultat, sépare clairement deux choses : ce que tu as déjà fait, et ce que tu espères encore faire. Les deux comptent, mais pas de la même façon.",
+   "pensee_soir": "On t'a demandé un résultat concret aujourd'hui, pendant que ce qui comptait pour toi restait un espoir difficile à prouver. Repense à ce décalage, sans chercher à le résoudre ce soir."
+  },
+  "soleil_sextile-trigone_neptune": {
+   "miroir": "Ce que tu espères depuis longtemps trouve aujourd'hui un peu de lumière, sans que tu aies eu à le mettre en avant toi-même. On remarque ton idéal presque malgré toi.",
+   "geste": "Montre à une personne de confiance ce projet ou ce rêve que tu gardes d'habitude pour toi seul. Le moment se prête bien à le sortir un peu de l'ombre.",
+   "pensee_soir": "Un espoir que tu portes depuis longtemps a trouvé aujourd'hui un peu de lumière, presque malgré toi. Repense à ce que ça fait d'être remarqué pour ce qu'on n'a pas encore montré."
+  },
+  "mars_conjonction_neptune": {
+   "miroir": "Tu veux agir aujourd'hui pour quelque chose qui reste flou dans ta tête. L'énergie part un peu dans toutes les directions à la fois. L'élan est réel ; la cible, beaucoup moins.",
+   "geste": "Avant de te lancer, choisis une seule direction concrète qui sert ton idéal, même toute petite. Mieux vaut un pas net vers le flou qu'une agitation qui part partout.",
+   "pensee_soir": "Tu as voulu agir aujourd'hui pour quelque chose de flou dans ta tête. L'énergie est partie un peu dans toutes les directions. Repense à ce vers quoi elle cherchait vraiment à aller."
+  },
+  "mars_carre-opposition_neptune": {
+   "miroir": "Tu veux avancer vite sur quelque chose de précis, et un doute ou une hésitation vague vient freiner l'élan. Ce qui te retient n'a pas vraiment de forme claire, mais il retient quand même.",
+   "geste": "Repère ce qui, dans ton hésitation du jour, ressemble à une peur sans nom plutôt qu'à un obstacle réel. Avance d'un petit geste concret malgré ce flou, sans attendre qu'il se dissipe tout seul.",
+   "pensee_soir": "Un doute sans forme claire a freiné aujourd'hui une envie d'avancer sur quelque chose de précis. Repense à ce que ce flou retenait vraiment."
+  },
+  "mars_sextile-trigone_neptune": {
+   "miroir": "Ton énergie du jour se met facilement au service de ce que tu espères, sans bras de fer entre agir et rêver. Un geste simple fait avancer un projet qui te tenait surtout à cœur jusque là.",
+   "geste": "Consacre un moment d'action concrète aujourd'hui à ce projet qui restait jusqu'ici surtout dans ta tête. L'élan est disponible, profites en pendant qu'il coule sans effort.",
+   "pensee_soir": "Un geste simple a fait avancer aujourd'hui un projet qui te tenait surtout à cœur jusque-là. Repense à ce que ça fait de voir un espoir prendre enfin une forme."
+  },
+  "lune_conjonction_pluton": {
+   "miroir": "Ce matin, une chose lourde que tu traînais discrètement remonte d'un coup, portée par ton humeur plus que par les événements. Tu la sens plus nettement que d'habitude, presque à fleur de peau.",
+   "geste": "Prends dix minutes seul avant que la journée t'emporte. Nomme pour toi ce qui pèse, sans chercher à le résoudre tout de suite. Le simple fait de le voir suffit aujourd'hui.",
+   "pensee_soir": "Une chose lourde que tu traînais discrètement est remontée aujourd'hui, plus nette que d'habitude. Repense à ce qu'elle voulait vraiment te montrer, à fleur de peau."
+  },
+  "lune_carre-opposition_pluton": {
+   "miroir": "Ton humeur du jour résiste à quelque chose qui cherche à bouger en toi depuis un moment : une vieille histoire de contrôle ou de pouvoir, que tu croyais réglée. Elle revient te chercher sans prévenir.",
+   "geste": "Ne force rien aujourd'hui. Si une discussion tourne au bras de fer, recule d'un pas et reviens-y demain. Ce qui doit se transformer n'a pas besoin d'être gagné dans l'heure.",
+   "pensee_soir": "Une vieille histoire de contrôle que tu croyais réglée est revenue te chercher aujourd'hui, sans prévenir. Repense à ce qui, en elle, n'était peut-être pas si réglé."
+  },
+  "lune_sextile-trigone_pluton": {
+   "miroir": "Aujourd'hui, ce qui te pesait depuis des semaines se relâche un peu, presque sans effort. Une humeur plus légère que d'habitude te porte. Tu le remarques après coup, pas pendant.",
+   "geste": "Profite de cette ouverture pour ranger un tiroir, un dossier ou une conversation que tu remettais. Rien de spectaculaire, juste un geste qui referme doucement quelque chose de vieux.",
+   "pensee_soir": "Ce qui te pesait depuis des semaines s'est relâché aujourd'hui, presque sans effort. Repense à ce moment de relâche, tu ne l'as remarqué qu'après coup."
+  },
+  "mercure_conjonction_pluton": {
+   "miroir": "Tes pensées tournent en boucle autour d'une chose que tu n'as jamais vraiment dite à voix haute. Aujourd'hui, les mots pour la nommer te viennent plus facilement que d'habitude.",
+   "geste": "Écris trois phrases sur ce sujet que tu évites, juste pour toi, sans intention de les montrer à personne. Voir la chose noir sur blanc change déjà comment tu la portes.",
+   "pensee_soir": "Les mots pour nommer une chose jamais dite à voix haute sont venus aujourd'hui plus facilement que d'habitude. Repense à ce que ça fait de l'avoir enfin approchée."
+  },
+  "mercure_carre-opposition_pluton": {
+   "miroir": "Tu voudrais dire une chose importante, mais les mots se coincent. C'est comme si les nommer donnait trop de pouvoir à ce qu'ils décrivent. Ce blocage en dit plus long que le silence.",
+   "geste": "Partage une seule phrase honnête avec quelqu'un aujourd'hui, dite ou écrite, même courte. Laisse le reste attendre un jour où les mots viendront mieux. Tout ne doit pas sortir d'un coup.",
+   "pensee_soir": "Les mots pour dire une chose importante se sont coincés aujourd'hui. C'est comme si les nommer donnait trop de pouvoir à ce qu'ils décrivent. Repense à ce que ce silence a dit, malgré tout."
+  },
+  "mercure_sextile-trigone_pluton": {
+   "miroir": "La conversation qui te faisait peur depuis un moment devient soudain plus simple à amorcer. Comme si les mots pour dire une chose profonde se trouvaient tout seuls aujourd'hui.",
+   "geste": "Passe cet appel ou envoie ce message que tu remets depuis trop longtemps. La facilité est là aujourd'hui, profites-en pendant qu'elle dure, avant que le doute ne reprenne sa place.",
+   "pensee_soir": "Une conversation qui te faisait peur depuis un moment est devenue plus simple à amorcer aujourd'hui. Repense à ce qui a rendu les mots si accessibles, cette fois."
+  },
+  "venus_conjonction_pluton": {
+   "miroir": "Une personne ou une chose t'attire aujourd'hui avec une intensité qui dépasse le raisonnable. Tu le sens bien : ce n'est pas juste du goût, c'est plus lourd que ça.",
+   "geste": "Avant de foncer, demande-toi ce que cette attirance réveille vraiment chez toi. Tu peux la vivre sans t'y perdre. Un simple temps d'arrêt suffit à garder la main.",
+   "pensee_soir": "Une attirance a dépassé aujourd'hui le raisonnable, plus lourde qu'un simple goût. Repense à ce qu'elle cherchait vraiment, sous l'intensité."
+  },
+  "venus_carre-opposition_pluton": {
+   "miroir": "Ce qui t'attire et ce qui pousse à lâcher tirent en sens opposés aujourd'hui. Tu sens un jeu de pouvoir s'installer dans une relation, même dans un détail minuscule.",
+   "geste": "Ne tranche rien sous le coup de l'agacement. Écris ce que tu voudrais dire à cette personne, garde-le une journée, et relis-le ce soir avant d'en envoyer une version.",
+   "pensee_soir": "Un jeu de pouvoir s'est installé aujourd'hui dans une relation, même dans un détail minuscule. Repense à ce qui, entre attirance et besoin de lâcher, a vraiment mené la danse."
+  },
+  "venus_sextile-trigone_pluton": {
+   "miroir": "Une relation qui comptait beaucoup, parfois trop, se détend un peu aujourd'hui sans que tu aies rien forcé. L'attachement reste là, mais il pèse différemment, plus doucement qu'avant.",
+   "geste": "Dis à quelqu'un ce que cette relation change vraiment en toi, sans détour ni excuse. La sincérité passe bien aujourd'hui, et elle rapproche plus qu'elle ne complique les choses.",
+   "pensee_soir": "Une relation qui comptait beaucoup, parfois trop, s'est détendue un peu aujourd'hui sans que tu forces rien. Repense à ce que ça fait de la sentir peser plus doucement."
+  },
+  "soleil_conjonction_pluton": {
+   "miroir": "L'attention se porte aujourd'hui sur une part de toi que tu montres rarement, celle qui a traversé des choses lourdes. Ça se voit, même si tu n'en dis rien.",
+   "geste": "Laisse quelqu'un voir cette part de toi aujourd'hui, sans la minimiser ni l'exagérer. Raconte un moment difficile que tu as traversé, tel qu'il s'est passé, sans en faire un exploit.",
+   "pensee_soir": "Une part de toi que tu montres rarement, celle qui a traversé des choses lourdes, s'est vue aujourd'hui même sans un mot. Repense à ce que ça fait d'être reconnu pour elle."
+  },
+  "soleil_carre-opposition_pluton": {
+   "miroir": "On te voit aujourd'hui d'une façon qui touche à un rapport de pouvoir. Comme si ta place dans une relation ou un groupe se négociait plus que d'habitude.",
+   "geste": "Reste toi-même dans ce tiraillement au lieu de forcer le passage. Choisis un moment précis pour dire clairement ta position, sans hausser le ton ni reculer d'un pouce.",
+   "pensee_soir": "Ta place dans une relation ou un groupe s'est négociée aujourd'hui plus que d'habitude. Repense à ce que ce rapport de force a révélé, une fois calmé."
+  },
+  "soleil_sextile-trigone_pluton": {
+   "miroir": "Ce qui est intense chez toi se montre aujourd'hui sans effort, et ça ne dérange personne, au contraire. On te fait confiance sur les sujets que tu prends au sérieux.",
+   "geste": "Aborde aujourd'hui le sujet que tu réserves d'habitude aux moments graves. La légèreté ambiante lui fait du bien, et tu verras que ça n'a pas besoin d'être si solennel.",
+   "pensee_soir": "Ce qui est intense chez toi s'est montré aujourd'hui sans déranger personne. Repense à cette confiance qu'on t'a faite sur les sujets que tu prends au sérieux."
+  },
+  "mars_conjonction_pluton": {
+   "miroir": "Une envie d'agir monte en toi aujourd'hui, forte, presque pressante, tournée vers une chose que tu repousses depuis longtemps. Tu as envie d'en finir, là, maintenant, pas demain.",
+   "geste": "Canalise cette poussée dans un geste concret et mesuré, un rangement, un tri, une décision reportée depuis trop longtemps. L'énergie est là, sers-t'en sans tout brusquer autour de toi.",
+   "pensee_soir": "Une envie pressante d'en finir avec une chose repoussée depuis longtemps t'a traversé aujourd'hui. Repense à ce qu'elle a réussi à bouger, même un peu."
+  },
+  "mars_carre-opposition_pluton": {
+   "miroir": "Tu as envie de forcer un changement aujourd'hui, et quelque chose en face résiste juste autant, une personne, une règle, une habitude. Le bras de fer te tente, plus qu'il ne t'aide vraiment.",
+   "geste": "Avant d'insister, choisis ton terrain. Une seule chose à pousser aujourd'hui, pas dix. Le reste peut attendre demain, et ça t'évite une bataille que tu n'as pas besoin de gagner.",
+   "pensee_soir": "Un bras de fer t'a tenté aujourd'hui plus qu'il n'était utile. Repense à ce que la résistance en face essayait vraiment de protéger."
+  },
+  "mars_sextile-trigone_pluton": {
+   "miroir": "L'énergie pour transformer une chose ancienne est là aujourd'hui, disponible, sans résistance particulière autour de toi. Ce qui demandait d'habitude un effort se met en mouvement tout seul.",
+   "geste": "Fais aujourd'hui ce pas que tu remettais, un tri, une conversation, une fin de quelque chose. Le terrain est favorable, avance pendant qu'il l'est, sans attendre d'être totalement prêt.",
+   "pensee_soir": "L'énergie pour transformer une chose ancienne s'est mise en mouvement aujourd'hui presque toute seule. Repense à ce que ce mouvement, enfin possible, a changé."
+  }
+ }
+}

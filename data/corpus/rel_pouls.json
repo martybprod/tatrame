@@ -1,0 +1,29 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le pouls du jour : le transit le plus fort du ciel réel sur le thème composite (moteur/relations.py::pouls_composite, qui réutilise jour.transits). Additif : une phrase par CLASSE d'aspect + une nuance courte par POINT du composite touché. Le message se compose de ces deux morceaux plus le nom de la planète du jour. Jamais une prédiction — un climat qui change avec le ciel.",
+
+ "cadre": "Chaque jour, le ciel réel touche votre lien à un endroit différent. Voici où il appuie aujourd'hui.",
+
+ "classe": {
+  "conjonction": "Le ciel du jour se pose pile là : il l'allume, le rend plus présent qu'à l'ordinaire.",
+  "carre-opposition": "Le ciel du jour passe la main sur cet endroit de votre lien et le réveille : une journée qui demande un léger accordage à deux — et demain, il sera ailleurs.",
+  "sextile-trigone": "Le ciel du jour lui tend la main : une facilité offerte, à saisir si vous y pensez."
+ },
+
+ "point": {
+  "soleil": "ce qui vous anime tous les deux",
+  "lune": "le climat au fond de votre lien",
+  "mercure": "la façon dont vous vous parlez",
+  "venus": "la tendresse entre vous",
+  "mars": "le désir et l'allant de votre lien",
+  "jupiter": "ce qui fait grandir votre lien",
+  "saturne": "ce qui donne de la durée à votre lien",
+  "uranus": "ce qui a besoin d'air entre vous",
+  "neptune": "le rêve que vous partagez",
+  "pluton": "ce qui se transforme en profondeur entre vous",
+  "asc": "ce que votre lien montre au monde",
+  "mc": "là où votre lien avance au grand jour"
+ },
+
+ "pied": "Ce pouls change chaque jour avec le ciel. Il n'annonce rien : il éclaire seulement où poser un peu d'attention aujourd'hui."
+}

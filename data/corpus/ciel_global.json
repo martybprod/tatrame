@@ -1,0 +1,111 @@
+{
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "L'idée globale du ciel — le premier niveau, ce qu'on lit AVANT de plonger. Textes ORIGINAUX. Clés produites par moteur/synthese.py (seuils : dominant >= 4/10, creux <= 1/10, modalité >= 5/10, hémisphère >= 7/10). Un creux n'est jamais un défaut : c'est le cousin des Chantiers — il ne manque rien, il y a à bâtir.",
+
+  "element_dominant": {
+    "feu": {
+      "titre": "L'envie arrive en premier",
+      "texte": "Quatre astres au moins, sur dix, logent dans l'élan. Ça se remarque vite. L'envie arrive avant le plan, la réponse avant la question. Démarrer ne coûte presque rien, c'est s'arrêter qui coûte. On t'a sans doute félicité pour ça. L'école, le travail, tout applaudit ceux qui foncent. Et on t'a beaucoup moins appris quoi faire de cette chaleur quand personne ne la réclame. Le canal existe pourtant, et il est simple. Donner à cette poussée quelque chose d'assez grand pour l'occuper. Un vrai chantier, pas de l'agitation. Sans ça, la même énergie se retourne, se cherche des adversaires, ou brûle à vide sur des broutilles. Il n'y a rien à éteindre là-dedans. Il y a une chose à nourrir correctement."
+    },
+    "terre": {
+      "titre": "Le réel avant la promesse",
+      "texte": "Le poids de ce ciel est tombé sur le concret. Quatre astres au moins, sur dix, dans ce qui se touche, se mesure et dure. Une idée séduisante ne suffit pas, il faut voir comment elle tient debout. Ce réflexe passe souvent pour du sérieux, parfois pour de la lenteur, et il vaut mieux que les deux. C'est une manière de vérifier avant de s'engager. Le canal, c'est la matière. Construire, réparer, cultiver, tenir un budget, faire quelque chose de ses mains. Sans matière à travailler, la même solidité se referme sur le contrôle, la peur de perdre, la liste qui ne finit jamais. La question utile n'est pas « est-ce que je suis trop terre à terre ». C'est plutôt de savoir ce que tu bâtis, en ce moment, de tes mains."
+    },
+    "air": {
+      "titre": "Ça pense pendant que ça vit",
+      "texte": "Ici, la majorité des astres travaille avec des mots, des idées, du lien. Une situation arrive et, avant même de la vivre, quelque chose en toi l'a déjà commentée. C'est un talent réel. Ça permet de comprendre vite, d'expliquer clairement, de trouver l'angle que les autres ratent. Ça a aussi un prix rarement dit. Mettre un mot sur une émotion peut servir à ne pas la traverser. La distance est un outil, pas une cachette. Le canal, c'est la conversation vraie, avec quelqu'un en face, qui répond, qui contredit. Écrire compte aussi. Privé d'interlocuteur, ce ciel tourne en boucle et rejoue les mêmes débats tout seul, à trois heures du matin. Beaucoup d'air ne veut pas dire froid. Ça veut dire que le chemin passe par la pensée."
+    },
+    "eau": {
+      "titre": "Tout passe par le ressenti",
+      "texte": "Le gros de ce ciel baigne dans le ressenti. Quatre astres au moins, sur dix, du côté de la mémoire, de l'attachement, de ce qui se sent avant de se dire. L'information arrive par le corps. Une ambiance de pièce se lit en trois secondes, bien avant la première phrase. C'est une intelligence, même si on l'appelle rarement comme ça. On t'a probablement appris à la mettre de côté, « ne le prends pas personnellement », « reste objectif ». Le canal, c'est un endroit où ce flux peut sortir et prendre forme. Quelqu'un de sûr, un carnet, un atelier, un soin donné. Sans cet endroit, tout reste dedans, s'accumule, et finit par déborder sur ce qui n'y était pour rien. Rien de fragile là-dedans. Beaucoup de matière, et un besoin de lit pour couler."
+    }
+  },
+
+  "element_creux": {
+    "feu": {
+      "titre": "L'élan ne vient pas tout seul",
+      "texte": "Une planète, au plus, du côté de l'élan. L'envie brute, le démarrage sans raison, le « on y va » qui ne demande la permission à personne, ce terrain-là ne se donne pas d'avance ici. Ça ne veut pas dire mou. Ça veut dire que ton envie s'allume au contact de quelque chose, pas toute seule dans le vide. Une personne, une cause, une échéance, une colère juste. Beaucoup de gens attendent une motivation spontanée qui, pour eux, n'arrivera jamais, et se croient en faute. Le geste utile est l'inverse du conseil habituel. Commencer, même sans envie, et laisser l'envie venir en route. C'est un chantier, pas un manque. Et ce qui s'acquiert comme ça se pilote souvent mieux que ce qui va de soi."
+    },
+    "terre": {
+      "titre": "Le concret, ça s'apprend",
+      "texte": "Le concret, dans ce ciel, n'a presque personne pour le porter. Une planète, ou aucune. Les papiers, la durée, l'entretien des choses, le corps qu'on écoute, rien de tout ça n'arrive par réflexe. Il ne s'agit pas de négligence, mais d'une absence de pilote automatique. Là où d'autres rangent sans y penser, ici il faut décider de ranger. Alors on invente des béquilles. Des rappels, des listes, une heure fixe, quelqu'un à qui rendre des comptes. Et voilà l'affaire. Ces béquilles-là tiennent souvent mieux que l'instinct des autres, parce qu'elles ont été choisies au lieu d'être subies. Ce qu'on construit, on sait le réparer. La phrase à jeter, c'est « je ne suis pas quelqu'un d'organisé ». La phrase juste, c'est que ce terrain n'était pas donné. Il se bâtit, et il se bâtit très bien."
+    },
+    "air": {
+      "titre": "Mettre des mots, ça se travaille",
+      "texte": "Presque rien, dans ce ciel, ne travaille avec la distance et les mots. Une planète au plus. Le vécu arrive entier, sans le petit décalage qui permettrait de le regarder de loin. Alors c'est intense, c'est vrai, et c'est parfois difficile à raconter à quelqu'un d'autre. On confond souvent ça avec un problème d'intelligence. Ça n'a rien à voir. C'est le pas de côté qui n'est pas fourni d'origine. Il s'acquiert. Écrire trois lignes le soir, expliquer une chose à voix haute, demander « et toi, tu le vois comment ». Chaque fois, un peu d'air entre dans la pièce. Ceux qui l'ont naturellement s'en servent parfois pour fuir ce qu'ils sentent. Ici, aucun risque. Le mot, quand il vient, arrive sur quelque chose de réellement vécu."
+    },
+    "eau": {
+      "titre": "Le ressenti à voix basse",
+      "texte": "Côté ressenti, ce ciel est presque vide. Une planète, ou aucune. Les émotions ne s'annoncent pas, elles se découvrent après coup, trois jours plus tard, « en fait, ça m'avait touché ». Ce décalage passe pour de la froideur. Il n'en est pas. Le signal existe, il arrive seulement sans étiquette. Et une bonne part du conditionnement est là. On récompense partout ceux qui « gèrent », qui ne pleurent pas en réunion, qui répondent au lieu de sentir. Le chantier consiste à s'offrir le temps que les autres ne demandent pas. Après un choc, se poser la question franchement, sans se juger. Il y a aussi un cadeau dedans, rarement nommé, tenir bon dans les moments où l'émotion des autres emporte tout. Ce n'est pas rien, ça."
+    }
+  },
+
+  "modalite_dominante": {
+    "cardinal": {
+      "titre": "Ouvrir des portes",
+      "texte": "Démarrer ne pose pas de problème ici. Cinq astres au moins, sur dix, sont du côté de ce qui lance. Une page blanche appelle, un projet neuf réveille, une équipe sans direction finit par se tourner vers toi sans que personne ait voté. Le début, c'est le terrain naturel. Ce qui l'est moins, c'est le mois sept d'un projet, quand plus rien n'est excitant et qu'il faut juste continuer. Beaucoup de choses commencées, moins de choses finies. Rien à voir avec de la légèreté, c'est la forme même de cette énergie. Le canal, c'est d'assumer le rôle plutôt que de le déguiser. Ouvrir, oui, et organiser franchement le relais. Terminer parce qu'on a promis de terminer, ça s'apprend. Ouvrir quand tout le monde hésite, beaucoup moins."
+    },
+    "fixe": {
+      "titre": "Ce qui tient, tient",
+      "texte": "Ce ciel tient, et c'est sa signature. Cinq astres au moins, sur dix, du côté de ce qui maintient et approfondit. Une décision prise reste prise. Une amitié de vingt ans est normale. Un métier appris se creuse au lieu de se changer. Dans un monde qui célèbre le pivot tous les six mois, cette endurance se fait rarement applaudir. Pourtant c'est elle qui produit tout ce qui demande du temps, une compétence réelle, une confiance, une œuvre. Il y a un revers, et il est logique. Ce qui tient tient aussi quand c'est fini. On reste dans un poste, une histoire, une position, longtemps après avoir su. Le canal, c'est de choisir consciemment ce à quoi cette solidité s'attache. Elle ne fait pas le tri toute seule. Elle tient ce qu'on lui donne à tenir."
+    },
+    "mutable": {
+      "titre": "Rien n'est figé longtemps",
+      "texte": "Rien ne se fige ici. Cinq astres au moins, sur dix, du côté de ce qui s'ajuste et circule. Le plan change et ce n'est pas un drame. La personne en face change de ton et tu changes avec elle, souvent sans le remarquer. Ça rend précieux dans les moments où tout bouge. Pendant qu'on cherche le coupable, tu as déjà trouvé l'autre chemin. Ça se paie ailleurs. À force de s'accorder à tout, on ne sait plus toujours quelle était sa propre note. Et ceux qui savent quoi vouloir prennent facilement le volant. Le canal, c'est un cadre choisi, une chose non négociable, décidée à froid, qu'on ne réajuste pas. Souple partout, sauf là. La souplesse n'est pas une absence de colonne. C'est une colonne qui accepte de plier."
+    }
+  },
+
+  "equilibre": {
+    "equilibre": {
+      "titre": "Aucun camp ne l'emporte",
+      "texte": "Aucun élément ne domine, aucun ne manque. L'élan, le concret, les idées, le ressenti, les dix astres se répartissent sans qu'aucun camp l'emporte. C'est rare, et ce n'est pas une case vide qu'on essaierait de meubler. C'est une information à part entière. Au quotidien, ça donne peu de réflexes automatiques et beaucoup de réglage. Là où quelqu'un de très marqué a une réponse d'avance, toujours foncer, toujours vérifier, toujours en parler, ici la réponse se choisit chaque fois. Ça peut ressembler à de l'hésitation vu du dehors. Ça peut ressembler, du dedans, à ne pas savoir « qui on est vraiment ». Personne n'a de dominante à brandir en soirée, et alors. Le vrai appui est ailleurs. Accès aux quatre terrains, aucun angle mort, et le luxe de pouvoir vraiment décider."
+    }
+  },
+
+  "hemisphere": {
+    "haut": {
+      "titre": "La vie se joue dehors",
+      "texte": "À l'heure de ta naissance, la plupart des astres se tenaient au-dessus de l'horizon, sept sur dix, au moins. La lecture classique y voit une vie qui se joue dehors. Le travail, le regard des autres, ce qui se dit en public. Les choses prennent leur sens une fois sorties de toi. Une idée gardée pour soi reste tiède. Montrée, elle devient vraie. Rien à voir avec de la vanité, c'est un circuit. Ça se retourne logiquement. Quand tout se valide au-dehors, une journée sans témoin sonne creux. Le canal, c'est de garder un endroit sans public. Une heure, une pratique, quelqu'un devant qui rien n'est à prouver. Dehors, l'énergie se déploie. Le dedans, lui, se cultive exprès."
+    },
+    "bas": {
+      "titre": "L'essentiel reste au-dedans",
+      "texte": "À l'heure où tu es né, le gros du ciel se tenait encore sous l'horizon, sept astres sur dix, au moins. Une vie dont le centre de gravité est privé. La maison, les proches, ce qui se construit sans témoin. Ce qui compte vraiment ne passe pas par la scène. Le monde valorise l'inverse, alors ce fonctionnement se fait traduire en « discret », « pas assez ambitieux ». C'est un jugement du dehors, pas une vérité. Ici, la force se fabrique à l'abri, puis sort quand elle est prête. Le point d'attention est simple. À l'abri, on peut aussi attendre indéfiniment le bon moment. Le canal, c'est une sortie choisie, petite, à intervalles décidés. Pas devenir quelqu'un d'exposé. Juste ne pas rester invisible par défaut."
+    },
+    "est": {
+      "titre": "Ça part de toi",
+      "texte": "Le ciel s'est massé du côté qui se lève, sept astres sur dix, au moins, à l'est. La lecture classique appelle ça l'initiative. Le mouvement part de toi, pas de la situation. Attendre le signal d'un autre coûte cher. Quand personne ne décide, quelque chose décide en toi et c'est réglé. Ça marche, et ça isole aussi. À toujours ouvrir la marche, on oublie de vérifier si les autres suivent, ou même s'ils voulaient aller là. Rien à se retenir pour autant. Juste demander avant de partir, une question, cinq secondes. Le canal, c'est de choisir ce qu'on lance, plutôt que de lancer parce que le silence est insupportable. L'élan est là de toute façon. La direction, elle, se décide."
+    },
+    "ouest": {
+      "titre": "Ça se déclenche au contact",
+      "texte": "Presque tout s'est rangé du côté où le ciel descend, sept astres sur dix, au moins, à l'ouest. La lecture classique y voit la réponse, ce qui se met en route au contact des autres. Seul dans une pièce vide, pas grand-chose ne se lance. En face de quelqu'un, tout arrive d'un coup, les idées, l'énergie, la répartie. Rien à voir avec de la dépendance. C'est un circuit qui demande un partenaire pour se fermer. Le conditionnement pèse ici. On répète partout qu'il faudrait « se suffire à soi-même », et ce ciel-là se retrouve à s'excuser d'avoir besoin de quelqu'un. Le point d'attention est plus concret. Choisir en face de qui on se branche, parce que l'énergie prendra la forme de la personne. Le canal, c'est l'entourage, décidé exprès."
+    }
+  },
+
+  "trio": {
+    "intro": {
+      "titre": "Trois points suffisent",
+      "texte": "Trois choses disent l'essentiel avant tout le reste, le Soleil, la Lune et l'Ascendant. Le Soleil, c'est le fond, ce qui reste quand tout le reste est retiré. La Lune, c'est le besoin. L'humeur, ce qu'il faut pour tenir, ce qui se réveille quand ça va mal. L'Ascendant, c'est le signe qui se levait à l'horizon à la minute exacte de ta naissance. La porte d'entrée, la façon d'arriver dans une pièce, ce que les gens croisent avant de te connaître. Pourquoi ces trois-là et pas d'autres. Parce que ce sont les plus rapides. Le Soleil change de signe une fois par mois, la Lune tous les deux jours et demi, l'Ascendant toutes les deux heures. Autrement dit, c'est là que deux personnes se distinguent vraiment. Le reste du ciel nuance. Ces trois-là posent le décor."
+    }
+  },
+
+  "maitre": {
+    "intro": {
+      "titre": "L'astre qui donne le la",
+      "texte": "Chaque ciel a un astre qui donne le la. La règle est ancienne et simple. Chaque signe a une planète attitrée, celle qui le gouverne. Comme l'Ascendant est ta porte d'entrée, la planète attitrée de ce signe-là se retrouve à mener l'ensemble, un peu comme le chef d'orchestre est choisi par la partition qu'on joue. Là où elle se trouve, ce qu'elle traverse, les liens qu'elle a avec les autres, tout ça colore le reste. Ta Trame dit aussi dans quel état elle se trouve, solide, moyenne, en peine. « En peine » ne veut pas dire condamnée. Ça veut dire que ce guide travaille sans confort, et que ce qui passe par lui demande plus d'effort qu'il n'en faudrait ailleurs. C'est une information utile, pas un mauvais présage."
+    }
+  },
+
+  "en_vue": {
+    "intro": {
+      "titre": "Celui qu'on voit d'abord",
+      "texte": "Parmi les dix, un astre se voit plus que les autres. Ce n'est pas une opinion, ça se calcule. Trois choses le font monter. Être posté à un endroit stratégique du ciel, près de l'horizon ou du sommet. Être dans un signe où il fonctionne à son aise. Avoir beaucoup de liens serrés avec le reste. Additionne, et un astre sort du lot. Celui-là s'entend plus fort. Les gens le remarquent avant même de savoir pourquoi, et il a tendance à s'inviter partout, y compris là où on ne l'a pas appelé. Attention au piège. Le plus en vue n'est pas le plus important, et il n'est pas non plus « le meilleur ». Il est simplement le plus audible. À toi de voir si ce qu'il dit te convient."
+    }
+  },
+
+  "stellium": {
+    "intro": {
+      "titre": "Quand tout se serre au même endroit",
+      "texte": "Il arrive que trois astres ou plus se retrouvent tassés dans le même signe. On appelle ça une concentration, et ça change la lecture. Au lieu d'une énergie répartie, une bonne part du ciel se rassemble sur un seul terrain, une seule couleur, un seul thème. Ce qui se passe là est démesuré par rapport au reste. Plus intense, plus fréquent, plus difficile à mettre de côté. C'est souvent l'endroit où les autres te reconnaissent, et l'endroit où ça revient toujours, quoi qu'on décide. Le revers tient dans la même phrase. Tant d'énergie au même endroit en laisse peu ailleurs, et le reste de la vie peut attendre longtemps son tour. Le canal, c'est de servir cette zone franchement, au lieu de s'excuser d'y passer autant de temps."
+    }
+  }
+}

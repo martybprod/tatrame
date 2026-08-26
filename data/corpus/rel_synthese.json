@@ -1,0 +1,21 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le climat d'ensemble d'une lecture Relations et les clôtures affichées en pied de panneau. Jamais un score (C1) : une couleur qualitative, choisie par moteur/relations.py::_synthese selon les badges des axes présents. Plus le rappel non-fataliste, toujours affiché. Le bloc `axes` donne l'étiquette courte de chaque axe, pour NOMMER les points forts dans la synthèse d'intro (top_appui/top_bouscule renvoyés par _synthese) ; le contenu précis vient du en_bref de l'axe lui-même.",
+ "axes": {
+  "nombres": "vos chemins de vie",
+  "elements": "vos éléments",
+  "chinois": "vos signes chinois",
+  "synastrie": "vos deux ciels"
+ },
+ "dominante": {
+  "resonance_forte": "Ce qui ressort le plus, sur plusieurs axes à la fois : un appui de fond, qui revient sous plusieurs formes différentes.",
+  "tension_forte": "Ce qui revient le plus, sur plusieurs axes à la fois. L'endroit le plus vivant du lien, celui qui vous demande le plus d'invention.",
+  "mixte": "Ce lien a du relief : de vrais appuis, et de vrais endroits qui vous font bouger. Les deux coexistent — et c'est cette double présence qui l'empêche de s'endormir.",
+  "neutre": "Rien ne domine particulièrement ici. Ce n'est pas un manque — juste un lien qui ne se lit pas fort sur ces axes-là."
+ },
+ "pied": {
+  "non_verdict": "Rien ici n'est un verdict. Un lien se vit, il ne se calcule pas — ces axes donnent des repères, pas une réponse.",
+  "conditions": "Ce qui fait tenir un lien ne dépend jamais d'un seul axe. C'est la somme de petites conditions, tenues des deux côtés, jour après jour.",
+  "bidirectionnel": "Chaque axe se lit dans les deux sens. Ce que l'un ressent face à l'autre n'est pas forcément ce que l'autre ressent en retour."
+ }
+}

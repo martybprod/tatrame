@@ -1,0 +1,99 @@
+{
+  "_note": "Fragment fil.json — domaine SENS (maison IX : quête de sens, croyances, croissance). Sources : cartes_de_concepts.md §5 Man's Search for Meaning (Frankl), §19 Mindset (Dweck), §3 Le pouvoir du moment présent (Tolle), §9 When Things Fall Apart (Chödrön). Concepts repris (quête de sens comme moteur, trois sources de sens, liberté d'attitude, croyances qui évoluent, paix au-delà du bonheur, sol qui manque, impermanence), jamais la prose des livres. Planètes pertinentes pour ce domaine : jupiter, saturne, neptune, uranus (venus/mars/mercure/lune/soleil ne recolorent pas la quête de sens de façon distincte du domaine autre/echanges/traversee). Le plafond mathématique du namespace §3 avec ces 4 planètes est donc 1 générique + 2 tonalités + 4×3 transits = 15 entrées, toutes écrites ici et toutes meaning-gated (aucune ajoutée pour faire du nombre — la cible ~25-30 de la spéc générale flexe à la baisse ici, comme pour communaute et ressources). Aucune clé _phase_ (sens n'est pas un domaine à processus). À fusionner dans data/corpus/fil.json.",
+
+  "sens": {
+    "source_livre": "d'après les concepts de Viktor Frankl",
+    "themes": ["sens", "quete"],
+    "miroir": "Une question de fond remonte ces jours-ci : pourquoi ça, pourquoi maintenant, à quoi ça sert vraiment. C'est un signal à écouter, pas un vide à craindre. Le sens ne se trouve pas dans une formule générale, il se trouve dans ce que la situation d'aujourd'hui te demande précisément.",
+    "geste": "Note ce soir une seule tâche concrète que la journée t'a demandée, et ce que ça a voulu dire de t'y engager."
+  },
+
+  "sens_fluide": {
+    "source_livre": "d'après les concepts de Frankl et Tolle",
+    "themes": ["sens", "clarte"],
+    "miroir": "Le sens ne se cherche pas en ce moment, il arrive par surcroît, dans un geste, une rencontre, un instant simple. Tu n'as rien à forcer pour que ça compte.",
+    "geste": "Reste dans ce que tu es en train de faire au lieu de vérifier si c'est la bonne direction. La réponse vient souvent après coup, jamais pendant qu'on la cherche."
+  },
+  "sens_tension": {
+    "source_livre": "d'après les concepts de Frankl",
+    "themes": ["sens", "doute"],
+    "miroir": "Un vide s'installe en ce moment, l'impression que rien ne pèse vraiment même quand tout va bien en surface. C'est souvent un manque de sens plus qu'un manque de choses, un signal à écouter plutôt qu'un problème à corriger.",
+    "geste": "Rends-toi utile aujourd'hui à quelqu'un ou à quelque chose de précis, même petitement. Ça apaise plus sûrement qu'un raisonnement sur le vide."
+  },
+
+  "sens_transit_jupiter_conjonction": {
+    "source_livre": "d'après les concepts de Carol Dweck",
+    "themes": ["croyance", "croissance"],
+    "miroir": "Une croyance ancienne sur ce que tu peux devenir s'assouplit ces jours-ci. Ce que tu croyais figé en toi s'ouvre un peu, et ça se sent presque physiquement, comme une place qui se libère.",
+    "geste": "Termine aujourd'hui une phrase par « pas encore » plutôt que par un point final, sur une chose que tu crois ne pas savoir faire."
+  },
+  "sens_transit_jupiter_sextile-trigone": {
+    "source_livre": "d'après les concepts de Frankl",
+    "themes": ["sens", "ouverture"],
+    "miroir": "Se tourner vers plus grand que soi, servir, aimer, créer, te demande moins d'effort que d'habitude ces jours-ci. L'élan est là, presque naturel.",
+    "geste": "Consacre un moment aujourd'hui à quelqu'un ou à quelque chose qui te dépasse, sans chercher ce que tu en retires."
+  },
+  "sens_transit_jupiter_carre-opposition": {
+    "source_livre": "d'après les concepts de Frankl",
+    "themes": ["croyance", "exces"],
+    "miroir": "Une conviction ou une cause prend beaucoup de place ces jours-ci, au point de vouloir l'imposer ou de juger ceux qui n'y adhèrent pas. Le sens qu'on vise trop fort finit par échapper, comme un plaisir qu'on poursuit de face.",
+    "geste": "Ramène aujourd'hui ta conviction à un geste concret et modeste plutôt qu'à un discours."
+  },
+
+  "sens_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Frankl",
+    "themes": ["limite", "sens"],
+    "miroir": "Une limite réelle borne en ce moment ce que tu peux changer dans ta situation. Ce qui reste possible, c'est la manière de t'y tenir, pas de la nier.",
+    "geste": "Choisis aujourd'hui une chose que tu ne peux pas changer, et décide seulement comment t'y tenir avec dignité."
+  },
+  "sens_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de Carol Dweck",
+    "themes": ["conviction", "perseverance"],
+    "miroir": "Une conviction que tu tiens depuis longtemps se solidifie ces jours-ci, portée par la répétition plus que par un éclat soudain. Ce genre de certitude tient mieux, parce qu'elle a déjà traversé des accrocs.",
+    "geste": "Rappelle-toi aujourd'hui un moment où cette conviction a résisté à une épreuve, et laisse ça la renforcer encore un peu."
+  },
+  "sens_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Frankl",
+    "themes": ["doute", "vide"],
+    "miroir": "Le poids de ce que tu portes dépasse en ce moment ce qui semble avoir un sens. Ceux qui plient sous une charge écrasante ne manquent pas de force intérieure, c'est le poids qui écrase.",
+    "geste": "Allège aujourd'hui une seule chose sur ta liste, même symboliquement, plutôt que de chercher un sens à tout porter d'un coup."
+  },
+
+  "sens_transit_neptune_conjonction": {
+    "source_livre": "d'après les concepts de Tolle",
+    "themes": ["quete", "flou"],
+    "miroir": "Un appel vers quelque chose de plus grand se fait sentir ces jours-ci, flou, difficile à nommer précisément. C'est réel, même sans destinataire clair pour l'instant.",
+    "geste": "Donne-lui un support concret aujourd'hui, une marche, un silence, une pratique, plutôt que de rester seulement dans l'idée."
+  },
+  "sens_transit_neptune_sextile-trigone": {
+    "source_livre": "d'après les concepts de Tolle et Frankl",
+    "themes": ["intuition", "paix"],
+    "miroir": "Une paix discrète t'accompagne ces jours-ci, pas liée à ce qui va bien mais à quelque chose de plus stable en dessous. Un coucher de soleil, une musique, un instant suffisent à la faire remonter.",
+    "geste": "Arrête-toi aujourd'hui devant une chose belle, quelques secondes, sans la photographier ni la commenter."
+  },
+  "sens_transit_neptune_carre-opposition": {
+    "source_livre": "d'après les concepts de Tolle",
+    "themes": ["illusion", "desillusion"],
+    "miroir": "Une idée que tu t'étais faite d'une personne, d'une cause ou d'un chemin se dégonfle un peu ces jours-ci. La déception porte moins sur eux que sur l'image que tu leur avais prêtée.",
+    "geste": "Nomme aujourd'hui, pour toi seul, ce que tu avais idéalisé, sans chercher tout de suite à qui la faute."
+  },
+
+  "sens_transit_uranus_conjonction": {
+    "source_livre": "d'après les concepts de Chödrön",
+    "themes": ["rupture", "reveil"],
+    "miroir": "Un repère auquel tu tenais lâche brusquement ces jours-ci, une certitude, une habitude, une manière de voir. L'état entre-deux qui suit n'est pas un problème à résoudre, c'est un terrain qui se réorganise.",
+    "geste": "Reste aujourd'hui sans combler tout de suite le vide laissé par ce repère. Assieds-toi avec, même une minute."
+  },
+  "sens_transit_uranus_sextile-trigone": {
+    "source_livre": "d'après les concepts de Dweck et Chödrön",
+    "themes": ["insight", "liberte"],
+    "miroir": "Une idée neuve sur toi-même s'installe facilement ces jours-ci, sans le choc habituel des changements de cap. La porte s'ouvre presque sans bruit.",
+    "geste": "Écris aujourd'hui en une phrase ce que tu vois maintenant que tu ne voyais pas avant, et garde-la."
+  },
+  "sens_transit_uranus_carre-opposition": {
+    "source_livre": "d'après les concepts de Chödrön",
+    "themes": ["incertitude", "perte-de-reperes"],
+    "miroir": "Le sol que tu croyais stable bouge sous toi ces jours-ci, un projet, une croyance, un plan qui ne tient plus. Chercher un terrain fixe à tout prix ne mène nulle part, alors autant s'asseoir quand même, sans lui.",
+    "geste": "Choisis aujourd'hui une seule action simple qui ne dépend pas du repère perdu, et fais-la."
+  }
+}

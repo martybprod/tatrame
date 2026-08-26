@@ -1,0 +1,94 @@
+{
+  "_note": "domaine retrait — Fil du jour Align",
+
+  "retrait": {
+    "source_livre": "d'après les concepts de Tolle et Pema Chödrön",
+    "themes": ["presence", "solitude", "calme"],
+    "miroir": "La journée invite au repli, vers l'intérieur. Ce qui t'agite en ce moment t'indique surtout où tu te crispes, et l'instant présent reste l'endroit le plus calme, toujours disponible.",
+    "geste": "Prends trois minutes seul, sans écran, à suivre ta respiration. Quand une pensée t'emporte, note-le doucement et reviens au souffle. Sans en faire un drame, autant de fois qu'il faut."
+  },
+
+  "retrait_fluide": {
+    "source_livre": "d'après les concepts de Pema Chödrön",
+    "themes": ["solitude", "calme"],
+    "miroir": "Le calme se fait accueillant aujourd'hui, la solitude a perdu son goût de menace. Rester un moment sans rien résoudre, sans repère, est l'un des gestes les plus reposants qu'on puisse poser.",
+    "geste": "Offre-toi un temps vide, sans but ni programme. Laisse l'esprit se déposer comme l'eau qui s'éclaircit quand on cesse de la remuer."
+  },
+
+  "retrait_tension": {
+    "source_livre": "d'après les concepts de Claire Weekes",
+    "themes": ["anxiete", "acceptation"],
+    "miroir": "Une inquiétude tourne, et tu prends peur de la sensation elle-même. C'est ce cercle qui use, la peur d'avoir peur, plus que la vague de départ, qui retombe toujours si on cesse de l'alimenter.",
+    "geste": "Au lieu de lutter, laisse la sensation être là et traverse-la comme on flotte sur l'eau. Nomme tout bas ce que ton corps fait vraiment. Regarder ce qu'on fuyait lui enlève son bluff."
+  },
+
+  "retrait_transit_lune_conjonction": {
+    "source_livre": "d'après les concepts de Tolle",
+    "themes": ["emotion", "corps", "accueil"],
+    "miroir": "Ta sensibilité est à fleur de peau aujourd'hui. Une émotion qu'on n'accueille pas ne disparaît pas, elle s'accumule et finit par parler par le corps.",
+    "geste": "Accorde une place à ce que tu ressens, sans le juger ni le repousser. Sentir une émotion, c'est déjà la laisser passer plutôt que la garder coincée quelque part."
+  },
+
+  "retrait_transit_lune_carre-opposition": {
+    "source_livre": "d'après les concepts de Claire Weekes",
+    "themes": ["anxiete", "corps"],
+    "miroir": "Une vague d'angoisse ou de tristesse monte vite. Elle est désagréable mais inoffensive, le même signal normal monté en volume par des nerfs à vif, et le corps a une limite à ce qu'il produit.",
+    "geste": "Relâche les épaules, laisse le corps s'affaisser, souffle lentement. Reste en place et laisse la vague faire son pire puis passer. Sans la tension ajoutée, elle monte moins haut."
+  },
+
+  "retrait_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Pema Chödrön",
+    "themes": ["solitude", "bienveillance"],
+    "miroir": "Un besoin de te retirer, de rester seul avec un certain poids. La solitude n'est pas un ennemi à fuir, et il n'est jamais trop tard pour commencer à te traiter comme quelqu'un que tu aimerais connaître.",
+    "geste": "Traite-toi aujourd'hui avec la douceur que tu offrirais à un ami en peine. Se regarder en clair ne suffit pas, l'honnêteté sans la gentillesse devient une autre façon de se maltraiter."
+  },
+
+  "retrait_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Claire Weekes",
+    "themes": ["decouragement", "repos"],
+    "miroir": "Le moral est bas, l'énergie émotionnelle comme vidée. Cette baisse ressemble à un épuisement, une batterie tirée trop longtemps par la peur, et elle se recharge quand on cesse de la vider.",
+    "geste": "Ne t'agite pas pour la fuir, ça fatigue et l'installe. Laisse-la venir à un rythme normal, occupe-toi calmement, et rappelle-toi qu'hier était sombre mais qu'aujourd'hui peut être meilleur."
+  },
+
+  "retrait_transit_neptune_conjonction": {
+    "source_livre": "d'après les concepts de Tolle",
+    "themes": ["lacher-prise", "acceptation"],
+    "miroir": "Les contours se brouillent aujourd'hui, l'envie de lâcher prise se fait sentir. Lâcher prise n'est pas se résigner, c'est accepter l'instant tel qu'il est, puis agir depuis là.",
+    "geste": "Cesse un instant de vouloir tout tenir. Accepte le petit segment qu'est le présent, sans lutter contre l'agitation, car ce à quoi on résiste ne fait que durer plus longtemps."
+  },
+
+  "retrait_transit_neptune_carre-opposition": {
+    "source_livre": "d'après les concepts de Claire Weekes",
+    "themes": ["irrealite", "fatigue"],
+    "miroir": "Un sentiment d'irréalité, comme si tu étais derrière une vitre, un peu loin de tout. C'est de la fatigue mentale, pas de la folie, le monde paraît lointain parce que l'attention est tournée vers l'intérieur.",
+    "geste": "Ne force pas le retour des émotions normales, elles dégèlent avec le temps. Pose une chose concrète et simple, sentir tes pieds au sol, l'air qui entre, pour te reposer dans le présent."
+  },
+
+  "retrait_transit_mercure_conjonction": {
+    "source_livre": "d'après les concepts de Tolle",
+    "themes": ["mental", "observation"],
+    "miroir": "L'esprit commente tout aujourd'hui, sans arrêt. Tu n'es pas cette voix, tu es celui qui l'entend, et chaque fois qu'une pensée est simplement observée, elle perd un peu de son pouvoir.",
+    "geste": "Écoute ton dialogue intérieur une minute, sans le juger ni le suivre. Constate qu'il y a la pensée, et quelqu'un qui la regarde. Un intervalle de silence s'ouvre là."
+  },
+
+  "retrait_transit_mercure_carre-opposition": {
+    "source_livre": "d'après les concepts de Sapolsky et Claire Weekes",
+    "themes": ["rumination", "mental"],
+    "miroir": "Les pensées tournent en boucle et ressassent bien après l'événement. Ce ressassement prolonge le stress, le corps a besoin qu'on le laisse s'éteindre, et tourner la page coupe aussi l'alarme.",
+    "geste": "Plus tu luttes contre une pensée qui revient, plus elle revient. Laisse-la être, sans t'y accrocher ni t'en effrayer, et occupe doucement ton esprit à autre chose. Elle finit par pâlir."
+  },
+
+  "retrait_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Claire Weekes",
+    "themes": ["agitation", "acceptation"],
+    "miroir": "Une agitation intérieure te pousse à lutter contre toi-même. Combattre une montée d'angoisse, c'est la faire monter, la lutte ajoute de la tension à la tension.",
+    "geste": "Arrête le combat une minute. Au lieu de repousser ce qui monte, laisse-le passer à travers toi comme un bruit qu'on n'écoute plus. Ce qui traverse ne laisse pas de trace."
+  },
+
+  "retrait_transit_soleil_carre-opposition": {
+    "source_livre": "d'après les concepts de Pema Chödrön",
+    "themes": ["retrait", "repos"],
+    "miroir": "Tu te sens peu vu, en retrait du monde, et l'envie de disparaître un peu monte. Ce repli n'est pas une punition, c'est un message que le moment est venu d'arrêter de forcer.",
+    "geste": "Accorde-toi ce retrait sans culpabilité, comme une recharge et non une fuite. Un moment seul, choisi, te rend au reste des jours plus disponible, pas plus petit."
+  }
+}

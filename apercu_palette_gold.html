@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#141110">
+<title>Aperçu — Palette GOLD · Align</title>
+<style>
+/* ════════════════════════════════════════════════════════════════
+   APERÇU AUTONOME — ne touche pas à l'app.
+   Le CSS ci-dessous est une copie fidèle de celui d'Align
+   (templates/index.html), SEULE la palette de :root change :
+   bronze → gold, texte sur fond sombre en champagne doré.
+   ════════════════════════════════════════════════════════════════ */
+
+/* Bandeau d'avertissement propre à l'aperçu */
+.bandeau{
+  background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r);
+  padding:10px 14px;margin:0 0 18px;display:flex;align-items:center;gap:12px;
+  font-size:12px;color:var(--encre2);
+}
+.bandeau .bouton-preview{margin:0 0 0 auto;padding:7px 13px;font-size:12px}
+
+:root{
+  /* ── Palette GOLD — mode clair ───────────────────────────── */
+  --encre:#2a2521; --encre2:#6b6058; --encre3:#9a8f85;
+  --papier:#f6f2ec; --papier2:#efe9e0; --bord:#e2d9cd;
+  --accent:#8a6d2f; --accent-doux:#c9a858;
+  --resonance:#5f7a52; --tension:#a86a4a; --neutre:#8a8078;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    /* ── Palette GOLD — mode sombre (le cœur de la proposition) ── */
+    --encre:#ece0bd; --encre2:#b3a68a; --encre3:#86795f;
+    --papier:#141110; --papier2:#1e1a16; --bord:#372e1e;
+    --accent:#d9b95c; --accent-doux:#e9d494;
+    --resonance:#9db383; --tension:#dfa277; --neutre:#8a8078;
+  }
+}
+/* force pour la bascule d'aperçu */
+html.sombre{color-scheme:dark}
+html.sombre :root{
+  --encre:#ece0bd; --encre2:#b3a68a; --encre3:#86795f;
+  --papier:#141110; --papier2:#1e1a16; --bord:#372e1e;
+  --accent:#d9b95c; --accent-doux:#e9d494;
+  --resonance:#9db383; --tension:#dfa277; --neutre:#8a8078;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--papier); color:var(--encre); font-family:var(--sans);
+  line-height:1.62; -webkit-font-smoothing:antialiased;
+  padding:16px 20px 60px; min-height:100vh;
+}
+.enveloppe{max-width:660px;margin:0 auto}
+
+/* en-tête */
+header{margin-bottom:26px}
+.rangee-haut{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.marque{font-family:var(--serif);font-size:24px;letter-spacing:.16em;font-weight:400}
+.marque::after{content:'';display:block;width:24px;height:1px;background:var(--accent);margin-top:6px}
+nav{display:flex;gap:2px;margin-top:16px;flex-wrap:wrap}
+nav button{
+  background:none;border:0;font:inherit;font-size:13px;color:var(--encre3);
+  padding:7px 11px;border-radius:8px;cursor:pointer;transition:.15s;
+}
+nav button:hover{color:var(--encre2);background:var(--papier2)}
+nav button.actif{color:var(--encre);background:var(--papier2)}
+
+/* pastille de profil */
+.puce-profil{
+  display:flex;align-items:center;gap:8px;background:var(--papier2);
+  border:1px solid var(--bord);border-radius:20px;padding:5px 12px;
+  cursor:pointer;font-size:13px;color:var(--encre2);transition:.15s;
+}
+.puce-profil:hover{border-color:var(--accent-doux);color:var(--encre)}
+.puce-profil .fleche{font-size:9px;color:var(--encre3)}
+
+/* blocs */
+.carte{
+  background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r);
+  padding:24px;margin-bottom:14px;
+}
+.chapo{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--encre3);margin-bottom:12px}
+.miroir{font-family:var(--serif);font-size:21px;line-height:1.5;margin-bottom:18px}
+.geste{border-left:2px solid var(--accent-doux);padding-left:16px;color:var(--encre2);font-size:15px}
+.geste strong{color:var(--encre);font-weight:600}
+
+.entete-jour{text-align:center;padding:6px 0 22px}
+.date{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--encre3)}
+.lune{font-family:var(--serif);font-size:15px;color:var(--encre2);margin-top:7px}
+
+/* pastilles d'état */
+.etat{display:inline-flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.09em}
+.etat::before{content:'';width:6px;height:6px;border-radius:50%}
+.etat.resonance{color:var(--resonance)} .etat.resonance::before{background:var(--resonance)}
+.etat.tension{color:var(--tension)} .etat.tension::before{background:var(--tension)}
+.etat.neutre{color:var(--neutre)} .etat.neutre::before{background:var(--neutre)}
+
+/* un nombre — cliquable, JAMAIS nu */
+.nombre{
+  display:flex;align-items:flex-start;gap:16px;padding:16px;margin:0 -16px;
+  border-radius:10px;cursor:pointer;transition:.15s;
+  border-bottom:1px solid var(--bord);
+}
+.nombre:last-of-type{border-bottom:0}
+.nombre:hover{background:var(--papier)}
+.nombre .val{font-family:var(--serif);font-size:32px;min-width:46px;color:var(--accent);line-height:1.1}
+.nombre .nom{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--encre3)}
+.nombre .motcle{font-family:var(--serif);font-size:19px;color:var(--encre);margin:2px 0 4px}
+.nombre .txt{font-size:13px;color:var(--encre2)}
+.nombre .plus{color:var(--encre3);font-size:11px;align-self:center;white-space:nowrap}
+
+/* les tuiles de l'aperçu */
+.grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px}
+.tuile{
+  background:var(--papier);border:1px solid var(--bord);border-radius:10px;
+  padding:13px;transition:.15s;
+}
+.tuile[data-va]{cursor:pointer}
+.tuile[data-va]:hover{border-color:var(--accent-doux)}
+.tuile-haut{font-size:10px;text-transform:uppercase;letter-spacing:.11em;color:var(--encre3)}
+.tuile-gros{font-family:var(--serif);font-size:22px;color:var(--encre);margin:4px 0 2px;line-height:1.15}
+.tuile-bas{font-size:12px;color:var(--encre2);line-height:1.35}
+
+/* la carte du jour — remplacée ici par un placeholder dessiné en gold */
+.carte-jour-ph{
+  width:60px;height:105px;flex:none;border-radius:6px;
+  border:1px solid var(--bord);
+  background:linear-gradient(160deg, var(--accent-doux), var(--accent) 72%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:24px;color:var(--papier);
+  box-shadow:0 1px 3px rgba(0,0,0,.35)
+}
+
+/* synthèse */
+.synthese{background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r);padding:18px 20px;margin-bottom:16px}
+.synthese .entete-jour{padding:2px 0 0;margin-bottom:0}
+.synthese-transit{padding-top:14px;margin-top:14px;border-top:1px solid var(--bord)}
+.synthese-transit .lib{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--encre3);display:block;margin-bottom:4px}
+.synthese-transit .corps{font-family:var(--serif);font-size:17px;color:var(--encre);line-height:1.4}
+.synthese-transit .corps b{font-weight:600}
+.synthese .carte-jour-zone{padding-top:14px;margin-top:14px;border-top:1px solid var(--bord);display:flex;align-items:center;gap:14px}
+
+/* tiroirs */
+.jour-section{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--encre3);font-weight:600;margin:24px 0 8px}
+.jour-groupe{background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r);overflow:hidden}
+details.tiroir{border-bottom:1px solid var(--bord)}
+details.tiroir:last-child{border-bottom:0}
+details.tiroir>summary{
+  list-style:none;cursor:pointer;padding:15px 20px;
+  display:flex;align-items:center;gap:14px;transition:background .15s;
+}
+details.tiroir>summary::-webkit-details-marker{display:none}
+details.tiroir>summary:hover{background:var(--papier)}
+details.tiroir>summary .tete{flex:1;min-width:0}
+.tiroir-nom{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--encre3);display:block}
+.tiroir-resume{font-family:var(--serif);font-size:17px;color:var(--encre);line-height:1.4;display:block;margin-top:3px}
+.tiroir-chev{flex:none;color:var(--accent-doux);font-size:18px;line-height:1;transition:transform .18s ease}
+details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
+.tiroir-corps{padding:14px 20px 18px}
+.tiroir-corps p{font-size:15px;color:var(--encre2);line-height:1.65}
+.tiroir-corps .geste{margin-top:12px}
+.tout-lire{display:inline-block;margin-top:12px;font-size:13px;color:var(--accent);cursor:pointer;font-weight:600}
+.tout-lire:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* formulaire */
+label{display:block;font-size:12px;color:var(--encre3);margin:14px 0 5px;text-transform:uppercase;letter-spacing:.1em}
+input{
+  width:100%;background:var(--papier);border:1px solid var(--bord);
+  border-radius:9px;padding:11px 13px;font:inherit;font-size:15px;color:var(--encre);
+}
+input:focus{outline:none;border-color:var(--accent-doux)}
+.bouton{
+  width:100%;background:var(--accent);color:var(--papier);border:0;
+  border-radius:9px;padding:13px;font:inherit;font-size:15px;font-weight:600;
+  cursor:pointer;margin-top:22px;
+}
+.bouton:hover{opacity:.92}
+.bouton.discret{background:none;color:var(--encre3);border:1px solid var(--bord);margin-top:10px}
+.bouton.discret:hover{color:var(--encre);border-color:var(--accent-doux)}
+.bouton.danger{background:none;color:var(--tension);border:1px solid var(--bord);margin-top:10px}
+.bouton.danger:hover{border-color:var(--tension)}
+
+/* réserves — visibles, jamais tues */
+.avis{
+  background:color-mix(in srgb, var(--tension) 8%, transparent);
+  border:1px solid color-mix(in srgb, var(--tension) 26%, transparent);
+  border-radius:10px;padding:14px;margin-bottom:14px;font-size:13px;color:var(--encre2);
+}
+.avis b{color:var(--tension)}
+.note{font-size:12px;color:var(--encre3);line-height:1.6;margin-top:24px;text-align:center}
+.trou{border:1px dashed var(--bord);border-radius:10px;padding:14px;font-size:13px;color:var(--encre3);margin-top:12px}
+.quoi{font-size:13px;color:var(--encre3);line-height:1.55;margin-top:6px}
+
+.pont{background:var(--papier);border:1px solid var(--bord);border-radius:10px;padding:16px;margin-top:14px;font-size:14px;color:var(--encre2)}
+.pont .cible{color:var(--encre);font-weight:600}
+
+/* ── légende de la palette (propre à l'aperçu) ─────────────── */
+.legende{margin-top:46px;padding-top:22px;border-top:1px solid var(--bord)}
+.legende h3{font-family:var(--serif);font-size:18px;margin-bottom:4px}
+.legende .soustitre{font-size:12px;color:var(--encre3);margin-bottom:16px}
+.essence{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.nuancier{
+  background:var(--papier);border:1px solid var(--bord);border-radius:10px;padding:10px;
+}
+.nuancier .pastille{height:44px;border-radius:7px;border:1px solid rgba(0,0,0,.14);margin-bottom:8px}
+.nuancier .code{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--encre3);line-height:1.5}
+.nuancier .role{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--encre2)}
+.contraste{margin-top:14px;font-size:12px;color:var(--encre3);line-height:1.7}
+
+@media (max-width:480px){
+  .rangee-haut{flex-direction:column;align-items:flex-start;gap:12px}
+  nav{width:100%}
+  .carte{padding:20px}
+  .miroir{font-size:19px}
+  .bandeau{flex-wrap:wrap}
+  .bandeau .bouton-preview{margin:0;width:100%}
+}
+</style>
+</head>
+<body>
+<div class="enveloppe">
+
+  <div class="bandeau">
+    <span><b>Aperçu — Palette GOLD</b> · fichier indépendant, l'app n'est pas modifiée</span>
+    <button class="bouton discret bouton-preview" id="basculer" style="margin:0">Basculer clair/sombre</button>
+  </div>
+
+  <header>
+    <div class="rangee-haut">
+      <div class="marque">ALIGN</div>
+      <div class="puce-profil">Martin · 5 août <span class="fleche">▾</span></div>
+    </div>
+    <nav>
+      <button class="actif">Le Jour</button>
+      <button>Tout</button>
+      <button>Le Portrait</button>
+      <button>Le Ciel</button>
+      <button>Les Règles</button>
+    </nav>
+  </header>
+
+  <!-- Le bandeau de synthèse du jour -->
+  <div class="synthese">
+    <div class="entete-jour">
+      <div class="date">5 Août 2026</div>
+      <div class="lune">La Lune éclaire le Verseau · Gibbeuse décroissante</div>
+    </div>
+    <div class="synthese-transit">
+      <span class="lib">Transit dominant</span>
+      <span class="corps">Le Soleil <b>en Lion</b> rencontre ta <b>Vénus natale</b> — un jour de chaleur, à partager.</span>
+    </div>
+    <div class="carte-jour-zone">
+      <div class="carte-jour-ph">21</div>
+      <div>
+        <div class="tiroir-nom">Ta carte du jour</div>
+        <div style="font-family:var(--serif);font-size:19px;color:var(--encre);margin-top:4px">Le Monde</div>
+        <div class="quoi" style="margin-top:4px">Elle se dévoile au clic — calculée du jour, pas tirée au sort.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aujourd'hui -->
+  <div class="carte">
+    <div class="chapo">Aujourd'hui</div>
+    <p class="quoi" style="margin:-4px 0 12px">Ce que le ciel a à te dire.</p>
+    <div class="miroir">Le miroir du jour : ta chaleur intérieure demande une scène — pas pour briller, mais pour éclairer quelqu'un.</div>
+    <div class="geste"><strong>Le pas :</strong> écris trois lignes à la personne qui compte, avant la fin du jour.</div>
+  </div>
+
+  <!-- Les angles du jour -->
+  <div class="jour-section">Les angles du jour</div>
+  <div class="jour-groupe">
+    <details class="tiroir" open>
+      <summary>
+        <span class="tete"><span class="tiroir-nom">Transit</span>
+          <span class="tiroir-resume">Soleil en Lion sur ta Vénus natale — la générosité est ton meilleur angle.</span></span>
+        <span class="tiroir-chev">▾</span>
+      </summary>
+      <div class="tiroir-corps">
+        <p>Le Soleil visite ton Vénus : ce qui est beau, tu le rends partageable. Un compliment donné ce matin reviendra doublé ce soir.</p>
+        <div class="geste"><strong>Le pas :</strong> offre une vraie attention, sans en attendre le compte-rendu.</div>
+      </div>
+    </details>
+    <details class="tiroir">
+      <summary>
+        <span class="tete"><span class="tiroir-nom">Portrait</span>
+          <span class="tiroir-resume">Ton Soleil Balance reste l'arrière-plan de la journée.</span></span>
+        <span class="tiroir-chev">▾</span>
+      </summary>
+      <div class="tiroir-corps">
+        <p>Ta façon de peser, d'écouter les deux côtés, est ta signature — pas une hésitation.</p>
+      </div>
+    </details>
+    <details class="tiroir">
+      <summary>
+        <span class="tete"><span class="tiroir-nom">Ciel</span>
+          <span class="tiroir-resume">La Lune en Verseau rend les idées neuves plus faciles à entendre.</span></span>
+        <span class="tiroir-chev">▾</span>
+      </summary>
+      <div class="tiroir-corps">
+        <p>Un point de vue inattendu te convainc aujourd'hui plus qu'un argument poli.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Le fond du temps -->
+  <div class="jour-section">Le fond du temps</div>
+  <div class="jour-groupe">
+    <details class="tiroir">
+      <summary>
+        <span class="tete"><span class="tiroir-nom">Année personnelle</span>
+          <span class="tiroir-resume compact">Année 3 — celle de la rencontre et de l'expression.</span></span>
+        <span class="tiroir-chev">▾</span>
+      </summary>
+      <div class="tiroir-corps">
+        <p>Une année pour dire, montrer, rencontrer.</p>
+      </div>
+    </details>
+    <details class="tiroir">
+      <summary>
+        <span class="tete"><span class="tiroir-nom">Année universelle</span>
+          <span class="tiroir-resume compact">Le monde compte l'année 2026 — un cycle d'ajustement.</span></span>
+        <span class="tiroir-chev">▾</span>
+      </summary>
+      <div class="tiroir-corps">
+        <p>Rien de spectaculaire : une remise en ordre discrète.</p>
+      </div>
+    </details>
+    <details class="tiroir">
+      <summary>
+        <span class="tete"><span class="tiroir-nom">Ta carte de l'année</span>
+          <span class="tiroir-resume">Le Monde — elle change au 1er janvier, comme ton année.</span></span>
+        <span class="tiroir-chev">▾</span>
+      </summary>
+      <div class="tiroir-corps">
+        <p>Une boucle qui se referme : ce qui s'achève libère la place pour la suite.</p>
+        <div class="tout-lire">Tout lire →</div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Rappels du jour -->
+  <div class="carte">
+    <div class="chapo">🔔 Rappels du jour</div>
+    <p class="quoi" style="margin:-4px 0 12px">Un rappel le matin (le miroir du jour) et un autre en fin de journée.</p>
+    <div class="etat resonance">Résonance</div>
+    <div class="etat tension" style="margin-left:14px">Tension</div>
+    <div class="etat neutre" style="margin-left:14px">Neutre</div>
+    <button class="bouton">Activer les rappels</button>
+    <button class="bouton discret">Modifier mon profil</button>
+    <button class="bouton danger">Supprimer ce profil</button>
+  </div>
+
+  <!-- Un nombre + une tuile pour montrer l'accent en grand -->
+  <div class="carte">
+    <div class="chapo">L'essentiel en un chiffre</div>
+    <div class="nombre">
+      <div class="val">3</div>
+      <div style="flex:1">
+        <div class="nom">Année personnelle</div>
+        <div class="motcle">La Rencontre</div>
+        <div class="txt">Le thème de ton année, en un mot et un nombre.</div>
+      </div>
+      <div class="plus">voir →</div>
+    </div>
+    <div class="grille" style="margin-top:14px">
+      <div class="tuile" data-va="1">
+        <div class="tuile-haut">Lune</div>
+        <div class="tuile-gros">Verseau</div>
+        <div class="tuile-bas">Les idées neuves écoutent.</div>
+      </div>
+      <div class="tuile" data-va="1">
+        <div class="tuile-haut">Soleil</div>
+        <div class="tuile-gros">Lion</div>
+        <div class="tuile-bas">La chaleur, à partager.</div>
+      </div>
+      <div class="tuile" data-va="1">
+        <div class="tuile-haut">Saturne</div>
+        <div class="tuile-gros">Poissons</div>
+        <div class="tuile-bas">La limite qui rend juste.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Réserves -->
+  <div class="carte">
+    <div class="chapo">Les réserves, visibles</div>
+    <div class="avis">Une réserve ici : <b>ce texte est un appui, pas un verdict.</b> Il t'aide à regarder ta journée, il ne la décide pas.</div>
+    <label for="f-exemple">Lieu de naissance</label>
+    <input id="f-exemple" placeholder="Trois-Pistoles" autocomplete="off">
+    <div class="trou">Corpus en construction — rien d'écrit pour cette entrée.</div>
+    <div class="pont">Le pont vers l'année : <span class="cible">une étape que tout le monde traverse au même âge.</span></div>
+    <p class="note">Align — une lecture, pas une vérité. Tout reste à vivre.</p>
+  </div>
+
+  <!-- Légende de la palette -->
+  <div class="legende">
+    <h3>La palette proposée</h3>
+    <p class="soustitre">Variables CSS telles qu'elles entreraient dans <code>:root</code> d'Align — rien d'autre ne change.</p>
+    <div class="essence" id="essence"></div>
+    <p class="contraste" id="contraste"></p>
+  </div>
+
+</div>
+
+<script>
+/* Légende — les deux palettes, valeurs figées ici pour l'aperçu. */
+var palettes = {
+  'Mode sombre': {
+    encre:'#ece0bd', encre2:'#b3a68a', encre3:'#86795f',
+    papier:'#141110', papier2:'#1e1a16', bord:'#372e1e',
+    accent:'#d9b95c', 'accent-doux':'#e9d494',
+    resonance:'#9db383', tension:'#dfa277', neutre:'#8a8078'
+  },
+  'Mode clair': {
+    encre:'#2a2521', encre2:'#6b6058', encre3:'#9a8f85',
+    papier:'#f6f2ec', papier2:'#efe9e0', bord:'#e2d9cd',
+    accent:'#8a6d2f', 'accent-doux':'#c9a858',
+    resonance:'#5f7a52', tension:'#a86a4a', neutre:'#8a8078'
+  }
+};
+var roles = {
+  encre:'texte principal', encre2:'texte secondaire', encre3:'texte discret',
+  papier:'fond', papier2:'cartes', bord:'bordures',
+  accent:'accent gold', 'accent-doux':'gold clair',
+  resonance:'résonance', tension:'tension', neutre:'neutre'
+};
+function legende(){
+  var div = document.getElementById('essence');
+  div.innerHTML = '';
+  var modes = Object.keys(palettes);
+  for (var m=0; m<modes.length; m++){
+    var nom = modes[m], p = palettes[nom];
+    for (var cle in p){
+      if (!p.hasOwnProperty(cle)) continue;
+      var b = document.createElement('div');
+      b.className = 'nuancier';
+      b.innerHTML = '<div class="pastille" style="background:'+p[cle]+'"></div>' +
+        '<div class="role">'+roles[cle]+'</div>' +
+        '<div class="code">--'+cle+'<br>'+p[cle]+'</div>';
+      div.appendChild(b);
+    }
+  }
+  document.getElementById('contraste').innerHTML =
+    'Contraste calculé (mode sombre) : texte principal ' +
+    '<b>#ece0bd sur #141110 ≈ 13:1</b> (AAA), ' +
+    'accent <b>#d9b95c sur #141110 ≈ 9,8:1</b> (AAA). ' +
+    'Le texte en champagne doré reste parfaitement lisible sur le fond noir chaud.';
+}
+legende();
+
+/* Bascule clair / sombre (propre à l'aperçu). */
+document.getElementById('basculer').addEventListener('click', function(){
+  document.documentElement.classList.toggle('sombre');
+  this.textContent = document.documentElement.classList.contains('sombre')
+    ? 'Basculer vers le mode clair' : 'Basculer vers le mode sombre';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+{
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "Textes ORIGINAUX. Aucun extrait d'ouvrage. Voir CHARTE.md § Interdits.",
+
+  "cap": {
+    "1": {
+      "anime": "Quelque chose en toi part avant que le groupe ait fini de délibérer. Ce n'est pas de l'impatience. Tu comprends les choses en les commençant, c'est ta manière de penser. Le Cap 1 pousse à ouvrir des routes plutôt qu'à les emprunter.",
+      "alimenter": "Ce canal a besoin d'un territoire à toi. Un projet, un coin, une décision dont tu réponds seul et entièrement. Pas pour la gloire. Pour avoir un endroit où ton oui et ton non pèsent leur poids réel.",
+      "contrarie": "Sans ce territoire, la poussée se retourne. Tu discutes tout, tu tranches sur des broutilles, tu t'irrites contre des gens qui n'ont rien fait. On t'a peut-être appris que vouloir passer devant était impoli. Ce n'était pas une leçon de morale, c'était une consigne de silence."
+    },
+    "2": {
+      "anime": "Tu enregistres l'ambiance d'une pièce avant d'enregistrer les mots. Le Cap 2 travaille par ajustement. Il perçoit l'écart entre deux personnes et cherche à le réduire. C'est une intelligence, pas une gentillesse. Et elle fonctionne à des vitesses que les autres ne voient pas passer.",
+      "alimenter": "Ce canal s'ouvre quand tu es en duo réel. Un binôme, une équipe à deux, une œuvre à quatre mains. Et quand on te reconnaît comme moitié, pas comme appoint. La lenteur t'est nécessaire, c'est le temps qu'il faut à la finesse.",
+      "contrarie": "Non alimenté, il se replie sur la peur de déranger. Tu devines ce qu'on attend et tu le fournis, jusqu'à ne plus savoir ce que tu voulais. On t'a entraîné à lire la salle. Personne ne t'a dit que tu avais le droit d'y être quelqu'un."
+    },
+    "3": {
+      "anime": "Ça sort. Une idée te traverse et te voilà en train de la raconter, de la dessiner, de la mettre en forme. Le Cap 3 vit de la circulation. Il pense en public, il pense en couleurs, il pense en éclats.",
+      "alimenter": "Il lui faut une sortie régulière et un public, même minuscule. Et une contrainte, aussi. Un cadre, une échéance, une forme. La contrainte n'étouffe pas le 3, elle le rend audible. Sans elle, il n'y a pas de silence entre les notes.",
+      "contrarie": "Sans forme, ça part partout. Dix chantiers commencés, du charme dans toutes les pièces et rien qui reste. Derrière l'entrain, une déprime que personne ne soupçonne. On t'a beaucoup félicité d'être drôle. On t'a rarement demandé si tu allais bien."
+    },
+    "4": {
+      "anime": "Tu vois ce qui tient et ce qui va lâcher. Le Cap 4 travaille dans la durée. Il pose une pierre, vérifie, en pose une autre. Ce qu'il produit existe encore dans dix ans, ce qui est rare et ne se remarque jamais sur le moment.",
+      "alimenter": "Il lui faut du concret à faire tenir. Une méthode, un métier, un lieu, un système. Et un délai honnête. Le 4 alimenté n'est pas lent, il est en avance de dix ans sur les gens pressés.",
+      "contrarie": "Non alimenté, il durcit. La règle devient sa propre raison d'être, l'imprévu devient une agression, et tu tiens des choses qui ne méritent plus d'être tenues. On t'a appris que la sécurité se mérite. C'est une phrase de survivant, pas une loi."
+    },
+    "5": {
+      "anime": "Le monde t'arrive par les sens et par le mouvement. Le Cap 5 apprend en se déplaçant. Changer d'angle, de ville, d'avis, non par instabilité, mais parce qu'un point de vue immobile lui paraît une information incomplète. Ce que d'autres appellent se disperser, lui l'appelle vérifier.",
+      "alimenter": "Il lui faut du terrain et des expériences choisies, pas subies. Et un point fixe, aussi. Une personne, un lieu, une pratique où revenir. Le 5 sans ancrage ne voyage pas, il fuit, et de loin ça se ressemble beaucoup.",
+      "contrarie": "Non alimenté, il consomme. Sensations, écrans, débuts de relations, tout ce qui bouge un peu. La vie devient une longue distraction d'elle-même. On t'a serré tôt, et tu as compris que rester, c'était se laisser attraper. Ce n'était vrai que là-bas."
+    },
+    "6": {
+      "anime": "Tu remarques ce qui ne va pas chez les autres avant qu'ils le disent. Le Cap 6 tend vers la justesse d'un ensemble. Un foyer, une équipe, un lien. Et il assume ce que ça demande, souvent sans compter.",
+      "alimenter": "Ce canal s'ouvre quand tu choisis à qui tu réponds et jusqu'où. Pas « aider » en général. Cette personne-là, ce cadre-là, cette limite-là. La responsabilité choisie nourrit. La responsabilité attrapée au vol épuise. C'est la même énergie, et ce n'est pas du tout la même vie.",
+      "contrarie": "Non alimenté, il s'installe au milieu de tout le monde et porte tout, en attendant une reconnaissance qui ne vient jamais dans les termes espérés. On t'a chargé jeune, on t'a dit merci, et le merci a servi de salaire. Ce n'était pas un contrat, c'était un pli."
+    },
+    "7": {
+      "anime": "Tu ne crois pas la première version. Le Cap 7 creuse. Il retourne la question, cherche la couture, refuse la réponse plausible. Il a besoin de comprendre pour de vrai, ce qui le rend lent en surface et rapide en profondeur.",
+      "alimenter": "Il lui faut du silence et un sujet. Un vrai, tenu longtemps. Et un lien humain choisi qui reste ouvert pendant que tu creuses, sinon la profondeur se referme sur elle-même et s'appelle solitude.",
+      "contrarie": "Sans sujet, le doute s'attaque à ce qui passe. Les gens, toi, le fait même de vouloir quelque chose. On t'a appris que se montrer, c'est s'exposer, et tu as trouvé la porte de derrière. Le retrait t'a protégé. Il n'est pas obligé de te loger à vie."
+    },
+    "8": {
+      "anime": "Les rapports de force te sont lisibles. Qui décide, ce que ça coûte, ce qui se joue vraiment sous ce qui se dit. Le Cap 8 travaille sur la matière, sur l'argent, le pouvoir, l'échelle. Il veut que ça pèse.",
+      "alimenter": "Il lui faut des enjeux à sa taille et des chiffres réels, regardés en face. Et une réponse tenue à une seule question. Ce pouvoir, il sert quoi ? Le 8 avec une réponse construit. Le 8 sans réponse accumule.",
+      "contrarie": "Non alimenté, il joue en petit. Bras de fer sur des riens, tout ou rien, cycles de conquête et de crash qui se ressemblent d'une décennie à l'autre. On a mesuré ta valeur en résultats, tôt et souvent. Tu as appris à compter juste et à te compter mal."
+    },
+    "9": {
+      "anime": "Le détail te lasse vite. L'ensemble t'attrape. Le Cap 9 pense en grand angle. Il relie des choses que les autres tiennent séparées, et se sent concerné par ce qui, techniquement, ne le regarde pas. Il arrive souvent à la fin d'une histoire commencée avant lui.",
+      "alimenter": "Il lui faut une cause plus large que toi et un travail concret dedans. Grand angle et mains dans le cambouis, les deux, sinon ce n'est qu'une opinion. Et une pratique du lâcher. Le 9 termine des choses, c'est son métier, même si personne ne l'a prévenu.",
+      "contrarie": "Non alimenté, il flotte. De la compassion pour l'humanité et de l'agacement pour le voisin, une nostalgie sans objet, des adieux qui n'en finissent pas de commencer. Tu portes peut-être un chagrin qui n'était pas le tien. Il se rend."
+    },
+    "11": {
+      "anime": "C'est un 2, monté trop haut pour rester tranquille. Tu captes ce qui n'a pas été dit, et tu le captes que tu le veuilles ou non. Le Cap 11 ne perçoit pas mieux. Il perçoit plus fort, sans filtre, tout le temps.",
+      "alimenter": "Il lui faut une forme. Écrire, soigner, transmettre, quelque chose qui fasse passer la charge par un canal étroit. Et du sommeil, du silence, du corps. Une antenne sans mise à la terre grille. C'est de la physique, pas une morale.",
+      "contrarie": "Non alimenté, ça devient du bruit. Anxiété sans cause identifiable, hypersensibilité aux humeurs des autres, éclats puis effondrements. On ne t'a refusé aucun don. Tu as une intensité sans emploi, c'est tout. Et « maître » ne veut rien dire ici. Ça vibre plus haut, et ça coûte plus cher."
+    },
+    "22": {
+      "anime": "C'est un 4, avec une échelle qui n'a pas demandé la permission. Tu vois la structure, et tu la vois grande, collective, à dix ans. Le Cap 22 ne rêve pas. Il repère ce qui manque et calcule ce qu'il faudrait pour le poser.",
+      "alimenter": "Il lui faut du très concret et des mains autres que les tiennes. Une équipe, des étapes, des dates. La vision seule ne pose aucune pierre. La première pierre, oui, et elle est toujours plus petite que prévu.",
+      "contrarie": "Non alimenté, l'écart écrase. La vision reste entière dans la tête, le réel paraît minable à côté, alors on ne commence pas. On appelle ça de la paresse. C'est de la démesure sans plan. Rien de supérieur là-dedans, juste une charge plus lourde à porter que celle du 4."
+    },
+    "33": {
+      "anime": "C'est un 6, débordé de son cercle. Le soin que le 6 met dans un foyer, le Cap 33 le met dehors. Sur des gens qui ne lui ont rien demandé, souvent plus qu'ils n'en veulent.",
+      "alimenter": "Il lui faut un cadre et un métier du lien. Des horaires, une porte qui se ferme, quelqu'un qui prend soin de toi aussi. Le soin sans cadre n'est pas plus généreux. Il est seulement plus long à s'effondrer.",
+      "contrarie": "Non alimenté, ça devient un sacrifice que personne n'a réclamé, puis une amertume que personne ne comprend. On t'a très tôt confié plus que ton âge. Tu as trouvé ça normal. Ce 33 n'est pas un rang au-dessus du 6. C'est le même mouvement, sans les murs qui le rendaient tenable."
+    }
+  },
+
+  "foyer": {
+    "1": {
+      "anime": "Au-dedans, ça tend vers un point. Être d'accord avec toi. Le Foyer 1 ne cherche pas l'approbation, il cherche la coïncidence, que ce que tu fais et ce que tu penses tiennent dans la même personne.",
+      "alimenter": "Ça se nourrit de décisions prises seul, en silence, sans les soumettre à personne. Petites, quotidiennes, sans importance apparente. Le film que tu regardes, l'heure où tu te lèves. Chaque fois que tu tranches sans consulter, le centre se serre d'un cran.",
+      "contrarie": "Sans ça, la solitude arrive quand même, mais par le mauvais bout. Tu t'isoles au lieu de te tenir, et tu appelles ça de l'indépendance. On t'a appris que demander, c'était perdre. Ce n'est pas de la force, c'est une garde qui a oublié qu'elle avait le droit de sortir."
+    },
+    "2": {
+      "anime": "Au-dedans, ça tend vers l'accord. Pas la paix à tout prix, la justesse entre deux. Le Foyer 2 se sent chez lui quand la relation est propre, rien de tordu, rien de tu. Une seule chose non dite dans une pièce, et le centre le sait avant toi.",
+      "alimenter": "Ça se nourrit d'un lien où tu dis les choses petites avant qu'elles grossissent. Et de la capacité à supporter un désaccord sans que le monde tremble. C'est ça, l'exercice. Rester en désaccord et rester là.",
+      "contrarie": "Non alimenté, le centre déménage chez l'autre. Ton humeur dépend de la sienne, ta valeur de son regard, et tu appelles ça de l'amour. On t'a formé à apaiser la pièce, souvent très jeune. C'était une compétence de survie, pas une vocation."
+    },
+    "3": {
+      "anime": "Au-dedans, ça tend vers la joie. Pas l'amusement, la joie. Ce moment où quelque chose sort de toi tel quel et te ressemble sans retouche. Le Foyer 3 se reconnaît là, et nulle part ailleurs, quel que soit le succès du reste.",
+      "alimenter": "Ça se nourrit d'une pratique où tu produis sans être évalué. Un carnet, un instrument, une cuisine, un jardin. Quelque chose que personne ne note, dont personne n'attend rien, et que tu ne montres pas.",
+      "contrarie": "Non alimenté, le centre confond joie et attention. Il faut que ça plaise, sinon ça n'a pas eu lieu. Tu deviens drôle en permanence et de plus en plus seul dedans. On a beaucoup ri de tes blagues. On t'a rarement demandé de te taire pour t'écouter."
+    },
+    "4": {
+      "anime": "Au-dedans, ça tend vers la solidité. Un endroit qui ne bouge pas, un cadre où poser les pieds. Le Foyer 4 a besoin de savoir sur quoi il est assis, et il le vérifie plus souvent qu'il ne l'avoue.",
+      "alimenter": "Ça se nourrit de choses tenues dans le temps. Un lieu, un rythme, deux ou trois engagements simples honorés. Le centre ne demande pas grand-chose, il demande que ça revienne. La répétition n'est pas de l'ennui, ici. C'est de la preuve.",
+      "contrarie": "Non alimenté, la solidité se cherche dans le contrôle. Verrouiller, prévoir, ne rien laisser au hasard, et tout ce qui échappe devient une menace. On t'a appris que ça pouvait s'écrouler d'un coup. Quelqu'un l'a vécu avant toi. Toi, tu montes encore la garde."
+    },
+    "5": {
+      "anime": "Au-dedans, ça tend vers l'air libre. Pas le voyage, la respiration. Savoir que la porte n'est pas fermée à clé. Le Foyer 5 supporte presque tout, sauf de ne pas pouvoir sortir.",
+      "alimenter": "Ça se nourrit d'un espace à toi dans chaque engagement. Une soirée, une pièce, un droit de partir dont tu n'uses pas. Le 5 reste très bien, et longtemps, tant qu'il n'est pas enfermé. La fidélité ne lui coûte rien, l'obligation lui coûte tout.",
+      "contrarie": "Non alimenté, le centre fuit avant qu'on l'attrape. Tu pars quand ça devient sérieux, tu appelles ça de la liberté, et le lendemain c'est vide. On t'a serré, et tu as juré qu'on ne t'aurait plus. Le serment tient encore, contre des gens innocents."
+    },
+    "6": {
+      "anime": "Au-dedans, ça tend vers l'appartenance. Un cercle où ta place est nette, où les gens vont bien parce que tu es là et où tu n'as pas à le prouver chaque semaine.",
+      "alimenter": "Ça se nourrit d'un foyer réel où tu reçois aussi. Le centre du 6 ne s'apaise pas en donnant davantage. Il s'apaise en étant tenu à son tour, ne serait-ce que de temps en temps. Se laisser aider n'est pas un repos. C'est l'exercice difficile.",
+      "contrarie": "Non alimenté, l'appartenance s'achète. Tu deviens indispensable pour être sûr de rester, et le prix monte tous les ans sans que personne le renégocie. On t'a aimé quand tu étais utile. C'est ce que tu as observé, et tu en as tiré la conclusion logique. Elle était fausse."
+    },
+    "7": {
+      "anime": "Au-dedans, ça tend vers le vrai. Pas la vérité en majuscules, la sensation nette de ne pas se raconter d'histoires. Le Foyer 7 tolère mal l'à-peu-près, surtout le sien.",
+      "alimenter": "Ça se nourrit de temps seul, sans écran et sans but. Et d'une ou deux personnes devant qui tu ne construis rien, devant qui tu peux être médiocre sans conséquence. Le 7 ne demande pas beaucoup de monde. Il demande que ce monde-là soit sans façade.",
+      "contrarie": "Non alimenté, la lucidité se retourne. Tu vois clair chez tout le monde, tu appelles ça du discernement, et plus personne n'entre. On ne peut pas être admis par quelqu'un qui vérifie. On t'a montré tôt que les adultes mentaient. Tu avais raison. Tu as juste gardé la conclusion un peu longtemps."
+    },
+    "8": {
+      "anime": "Au-dedans, ça tend vers la maîtrise. Ne dépendre de personne pour manger, décider, partir. Le Foyer 8 veut que sa vie lui appartienne, et il veut que ça se vérifie matériellement. Une conviction ne le rassure pas, un compte en banque un peu.",
+      "alimenter": "Ça se nourrit de moyens réels, regardés en face. Savoir combien, savoir jusqu'à quand. Et d'une zone de ta vie où tu ne comptes rien du tout, où rien ne se rend et rien ne se doit.",
+      "contrarie": "Non alimenté, tout devient transaction. Les gens deviennent des positions, les liens des rapports de force, et la sécurité n'arrive jamais parce qu'elle n'a pas de chiffre. On a manqué autour de toi, ou on a eu peur de manquer. La peur se transmet mieux que l'argent."
+    },
+    "9": {
+      "anime": "Au-dedans, ça tend vers le vaste. Le sentiment d'appartenir à quelque chose de plus grand que ton nom, et qui continuera sans lui. Le Foyer 9 respire mal dans les vies trop bien rangées autour d'elles-mêmes.",
+      "alimenter": "Ça se nourrit d'un lien à ce qui te dépasse. L'art, la nature, la transmission, le silence, pratiqués régulièrement, pas admirés de loin. Et de deuils faits pour de bon, un par un, à leur rythme, sans se demander si c'est raisonnable d'y mettre ce temps-là.",
+      "contrarie": "Non alimenté, le vaste devient du flou. Tu aimes tout le monde en général et personne en particulier, et une tristesse sans cause s'installe comme un meuble qu'on a fini par contourner. Tu portes peut-être un chagrin qu'on t'a passé sans le dire. On peut le poser."
+    },
+    "11": {
+      "anime": "C'est un 2, sous tension. Au-dedans, ça tend vers l'accord. Mais l'antenne reste branchée en permanence et capte les états d'âme de la pièce comme s'ils étaient les tiens.",
+      "alimenter": "Ça se nourrit de savoir trier ce qui est à toi et ce qui est à l'autre. La question « est-ce que cette angoisse est la mienne ? » n'est pas une coquetterie, c'est de l'hygiène. Et le corps compte aussi. Marcher, dormir, manger. La mise à la terre passe par là.",
+      "contrarie": "Non alimenté, le centre est habité par tout le monde sauf par toi. Tu vibres à la moindre humeur et tu es épuisé sans avoir rien fait. Rien de supérieur là-dedans, c'est un volume. Le 2 a un filtre. Toi, non. C'est tout ce que ça veut dire."
+    },
+    "22": {
+      "anime": "C'est un 4, avec une exigence hors norme. Au-dedans, ça tend vers la solidité. Mais rien de ce que tu construis ne semble jamais à la hauteur de ce que tu vois. Le 4 est content d'un mur droit. Toi, tu compares le mur à la cathédrale.",
+      "alimenter": "Ça se nourrit de choses finies, même modestes, comptées honnêtement. Le centre du 22 ne s'apaise ni par la vision ni par la promesse. Il s'apaise par un objet réel, terminé, qui tient quand on s'appuie dessus.",
+      "contrarie": "Non alimenté, la mesure disparaît. Tout ce que tu fais est insuffisant, donc tu ne le fais pas, donc c'est insuffisant. La boucle est logique et fausse. Ça ne te met pas au-dessus du 4. Ça te rend plus difficile à contenter, ce qui est un travail de plus, pas un privilège."
+    }
+  },
+
+  "annee_perso": {
+    "1": {
+      "miroir": "Un cycle de neuf ans vient de repartir, et le premier tour se fait toujours sans témoin. Ce qui commence cette année n'a pas encore de nom que les autres puissent prononcer.",
+      "geste": "Écris en une phrase ce que tu veux avoir commencé dans neuf mois. Une phrase, pas une liste. Garde-la là où tu la reverras sans la chercher."
+    },
+    "2": {
+      "miroir": "Rien ne semble avancer, et l'attente ressemble tellement à l'échec que forcer paraît raisonnable. Ce qui a été semé l'an dernier travaille sous terre, hors de vue. L'année se joue à deux, jamais seul.",
+      "geste": "Choisis une chose que tu allais relancer cette semaine, et ne la relance pas. Laisse-la sept jours. Note ce qui bouge sans toi."
+    },
+    "3": {
+      "miroir": "On te remarque cette année, on te propose, on te veut. Et être voulu est assez agréable pour qu'on dise oui à tout sans jamais choisir. La visibilité ne trie pas. Elle amplifie.",
+      "geste": "Regarde ce qui te sollicite en ce moment et refuse-en une. La plus flatteuse, si possible. Tu sauras après lesquelles tu voulais vraiment."
+    },
+    "4": {
+      "miroir": "Payer, c'est le mot de l'année. Les idées de l'an dernier présentent leur facture, et elle se règle en heures. Rien de spectaculaire là-dedans, et c'est pourtant ce qui portera le reste du cycle.",
+      "geste": "Prends le chantier le plus ingrat de ta liste et donne-lui une heure aujourd'hui. Une seule. Le 4 ne demande pas de l'héroïsme, il demande des retours."
+    },
+    "5": {
+      "miroir": "Le cadre que tu as bâti toi-même s'est mis à serrer, et l'envie de tout claquer arrive déguisée en lucidité. Le mouvement est réel cette année. Sa destination, non.",
+      "geste": "Change une seule variable cette semaine : un trajet, un horaire, une pièce. Vois si l'étouffement descend. S'il descend, tu n'avais pas besoin de partir."
+    },
+    "6": {
+      "miroir": "Les liens rattrapent. Quelqu'un a besoin de toi, un engagement se resserre, une porte se referme doucement. L'année ne demande pas de tout porter. Elle pose une question précise. Lesquels sont à toi ?",
+      "geste": "Nomme, pour toi seul, une responsabilité que tu portes sans l'avoir choisie. Ne la lâche pas aujourd'hui. Écris juste son nom. C'est déjà beaucoup."
+    },
+    "7": {
+      "miroir": "Tu es en train de ralentir sans l'avoir décidé, et ce que tu prends pour une panne est le seul moment du cycle où l'on peut regarder ce qu'on fabrique depuis six ans.",
+      "geste": "Bloque deux heures seul cette semaine, sans écran, sans objectif. Pas pour réfléchir. Pour laisser venir ce que tu évites de penser."
+    },
+    "8": {
+      "miroir": "Les résultats arrivent. L'argent, la position, la reconnaissance. Et avec eux la note. C'est l'année où l'on découvre au prix de quoi on les voulait, et si le prix était le sien.",
+      "geste": "Regarde un chiffre que tu évites de regarder. Un solde, un délai, un nombre d'heures. Compte-le exactement, une fois, sans rien décider ensuite."
+    },
+    "9": {
+      "miroir": "Ça se termine, et ça se sent partout. Les choses se défont sans drame, des gens s'éloignent sans dispute. L'envie de démarrer quelque chose de neuf est surtout une manière de ne pas regarder la fin.",
+      "geste": "Trouve une chose que tu gardes par habitude. Un objet, un abonnement, une conversation en boucle. Termine-la proprement cette semaine. Ne la remplace pas."
+    }
+  }
+}

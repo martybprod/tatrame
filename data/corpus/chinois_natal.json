@@ -1,0 +1,88 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le signe chinois de naissance — 12 animaux + 5 éléments, additifs. Portrait d'identité, ton miroir non-fataliste.",
+ "animaux": {
+  "rat": {
+   "en_un_mot": "l'opportuniste vif",
+   "resume": "Le Rat repère vite ce qui se passe autour de lui. Il flaire les occasions, les gens fiables, les portes qui s'ouvrent. Vif d'esprit, il préfère improviser plutôt que suivre un plan figé.",
+   "portrait": "Tu vois les choses avant les autres. Une occasion qui passe, une personne qui ment, un couloir qui va se libérer, ton attention capte ça sans effort. Ça vient d'une curiosité qui ne s'arrête jamais vraiment, même au repos tu observes. Cette vivacité te sert à t'adapter vite quand un plan tombe à l'eau. Tu trouves un autre chemin en quelques secondes, là où d'autres restent bloqués un moment. Le revers, c'est que cette attention aux opportunités peut virer à l'inquiétude. Tu calcules, tu anticipes, et parfois tu n'arrives plus à lâcher prise sur ce que tu ne contrôles pas. Tu peux aussi accumuler par prudence, garder des options ouvertes plutôt que choisir franchement. Rien de fixe là-dedans. Ce sont des penchants, pas une nature gravée. Un jour tu fonces, un autre tu observes en retrait, et les deux te ressemblent autant l'un que l'autre."
+  },
+  "buffle": {
+   "en_un_mot": "l'endurant obstiné",
+   "resume": "Le Buffle avance sans se presser mais sans jamais lâcher. Il préfère un effort long et régulier à un coup d'éclat. Une idée en tête, elle est difficile à en détourner.",
+   "portrait": "Tu tiens dans la durée. Là où d'autres s'essoufflent après le premier obstacle, toi tu continues, méthodique, presque tranquille. Cette endurance vient d'un rapport simple à l'effort. Tu ne cherches pas à aller vite, tu cherches à finir ce que tu as commencé. Une tâche répétitive ne t'épuise pas comme elle épuise les autres, elle te structure plutôt. Le revers, c'est la difficulté à changer de cap une fois lancé. Ton avis se forme lentement et, une fois formé, il bouge peu, même face à de bons arguments qui pointent le contraire. Ça peut ressembler à de l'entêtement, et parfois ça l'est vraiment. Tu tiens beaucoup à ta parole, une promesse faite reste une promesse à honorer, quitte à t'oublier un peu dans l'histoire. Rien de tout ça n'est figé pour toujours. C'est une tendance de fond, et tu peux apprendre à lâcher plus vite qu'avant."
+  },
+  "tigre": {
+   "en_un_mot": "l'audacieux impulsif",
+   "resume": "Le Tigre fonce là où d'autres hésitent. Il a besoin d'espace, d'action, d'un terrain où déployer son énergie. L'autorité mal justifiée le hérisse, il préfère se convaincre lui-même.",
+   "portrait": "Tu avances par élans plutôt que par petits pas. Une décision se prend chez toi d'un coup, presque physiquement. Et une fois le mouvement lancé, il est difficile à arrêter en route. Cette énergie te donne du courage là où d'autres calculent trop longtemps, tu oses parler, tu oses partir, tu oses trancher. Elle vient d'un besoin réel de liberté de mouvement, l'enfermement dans une routine ou sous un chef trop rigide te pèse vite. Le revers, c'est l'impulsivité qui saute une étape utile, la réflexion qu'on aurait dû prendre le temps de faire d'abord. Tu peux aussi t'agacer plus vite que nécessaire face à ce qui te semble injuste ou lent. Ce tempérament n'est pas un défaut de caractère, c'est une intensité qui cherche où se loger. Bien dirigée, elle porte loin. Livrée à elle-même, elle s'épuise en accès qui ne mènent nulle part."
+  },
+  "lapin": {
+   "en_un_mot": "le diplomate prudent",
+   "resume": "Le Lapin cherche l'harmonie avant tout. Il sent les tensions avant qu'elles éclatent et préfère désamorcer plutôt qu'affronter de front. Sa douceur cache souvent une vraie ténacité.",
+   "portrait": "Tu sens l'ambiance d'une pièce avant même que quelqu'un ait parlé. Ce radar aux tensions te pousse naturellement à calmer, à trouver le mot qui apaise. À éviter que ça dégénère pour de bon. Ce n'est pas de la mollesse, c'est une préférence claire pour la paix plutôt que pour avoir raison à tout prix. Cette douceur te rend facile à vivre au quotidien, les gens se confient à toi sans qu'on sache toujours bien pourquoi. Le revers, c'est que tu peux repousser un conflit nécessaire simplement parce qu'il fait du bruit. Tu ravales ce qui te dérange pour ne pas déranger à ton tour, et ça finit par peser sur toi. Tu tiens aussi beaucoup à ton cadre, ta routine rassurante, un changement trop brutal te déstabilise plus qu'il ne devrait. Ce sont des penchants qui peuvent s'assouplir avec le temps, pas une fragilité permanente."
+  },
+  "dragon": {
+   "en_un_mot": "le flamboyant confiant",
+   "resume": "Le Dragon avance avec une confiance qui se voit de loin. Il aime les grands projets, les rôles visibles, et croit sincèrement que les choses peuvent réussir en grand.",
+   "portrait": "Tu portes une confiance qui attire le regard, même quand tu ne le cherches pas particulièrement. Un projet ambitieux ne te fait pas peur, au contraire, plus il est grand, plus il te motive vraiment. Cette assurance vient d'une croyance simple, que les choses peuvent aller loin si on y met l'énergie nécessaire. Les gens autour de toi le sentent et suivent souvent ton élan sans trop se poser de questions. Le revers, c'est qu'une telle présence peut prendre toute la place sans le vouloir. Écraser des avis plus discrets qui méritaient d'être entendus autant. Tu peux aussi avoir du mal à accepter un échec ou une critique. Ton image compte pour toi plus que tu ne l'admets. Rien de tout ça n'est une posture jouée, c'est une énergie de fond. Elle peut porter un groupe entier ou, mal réglée, l'étouffer un peu."
+  },
+  "serpent": {
+   "en_un_mot": "le stratège discret",
+   "resume": "Le Serpent observe plus qu'il ne parle. Il pense loin, garde ses plans pour lui, et préfère comprendre en profondeur avant d'agir. Sa discrétion cache une vraie détermination.",
+   "portrait": "Tu regardes avant de bouger. Une situation nouvelle, tu la laisses se déployer devant toi le temps de la comprendre vraiment. Plutôt que de réagir tout de suite comme d'autres le feraient. Cette patience te donne une lecture fine des gens et des rapports de force. Tu vois ce qui se trame sous la surface. Elle vient d'un besoin de contrôle discret plutôt que d'un besoin de briller au grand jour. Le revers, c'est une tendance à garder trop pour toi. À ne pas dire ce que tu penses vraiment, par calcul ou par méfiance. Ça peut créer une distance que les autres ressentent sans savoir la nommer clairement. Tu peux aussi ruminer plus que nécessaire une contrariété, la retourner dans ta tête bien après qu'elle soit passée. Ce sont des inclinations, pas un masque permanent. Tu sais aussi, quand la confiance est là, te livrer entièrement."
+  },
+  "cheval": {
+   "en_un_mot": "l'indépendant impatient",
+   "resume": "Le Cheval a besoin d'air et de mouvement. Il s'ennuie vite dans un cadre trop fermé et préfère avancer à son rythme, quitte à bousculer les habitudes des autres.",
+   "portrait": "Tu as besoin de sentir que tu peux partir quand tu veux, même si tu ne pars pas vraiment. Un cadre trop serré, un horaire trop fixe, une dépendance trop forte envers quelqu'un. Tout ça te pèse plus vite que la moyenne. Cette soif de mouvement te rend vivant, spontané, à l'aise pour changer de direction sans faire de drame. Elle vient d'un attachement réel à ta liberté de choix, plus qu'à la nouveauté pour elle-même. Le revers, c'est une impatience qui peut lasser ceux qui avancent plus lentement. Ou une difficulté à t'engager sur la durée, quand ça demande de renoncer à d'autres options. Tu peux aussi partir un peu vite d'une situation inconfortable plutôt que d'y rester le temps de la régler. Ce n'est pas de la fuite. C'est un tempérament qui a besoin d'espace pour respirer, et qui peut apprendre à en trouver sans tout quitter."
+  },
+  "chevre": {
+   "en_un_mot": "l'artiste sensible",
+   "resume": "La Chèvre ressent plus fort que la moyenne et transforme ça en création, en goût, en attention aux détails. Elle a besoin d'un cadre sécurisant pour donner sa pleine mesure.",
+   "portrait": "Tu ressens les choses avec une intensité que tout le monde n'a pas. Une ambiance, une beauté, une maladresse d'autrui : ça te touche plus vite et plus fort que la moyenne. Cette sensibilité nourrit un vrai sens esthétique. Tu remarques ce qui est beau ou juste là où d'autres passent à côté sans le voir. Elle te pousse aussi à créer, à arranger, à améliorer ce qui t'entoure sans qu'on te le demande. Le revers, c'est une fragilité face à la critique ou à l'instabilité. Tu as besoin d'un sol stable sous les pieds pour oser vraiment. Sans ce filet, le doute prend vite toute la place. Tu peux te rétracter au lieu de montrer ce que tu fais. Tu peux aussi t'appuyer beaucoup sur les autres pour te rassurer, plus que tu ne voudrais l'admettre. Ce sont des penchants qui s'apaisent avec de la sécurité, pas des failles définitives."
+  },
+  "singe": {
+   "en_un_mot": "le malin curieux",
+   "resume": "Le Singe résout les problèmes avec plaisir, presque en jouant. Curieux de tout, il s'adapte vite à un contexte nouveau et trouve souvent la solution que personne n'avait vue.",
+   "portrait": "Tu aimes les problèmes, au sens où ils t'amusent plus qu'ils ne t'inquiètent vraiment. Ton esprit tourne vite, fait des liens que d'autres ne voient pas. Il trouve une porte de sortie là où ça semblait bloqué pour de bon. Cette agilité vient d'une curiosité increvable, tu veux comprendre comment les choses marchent, quitte à démonter ce qui fonctionnait déjà. Elle te rend adaptable presque partout, un nouveau travail, un nouveau groupe, tu t'y glisses vite et sans trop d'efforts. Le revers, c'est une difficulté à rester longtemps sur la même chose une fois la nouveauté passée. L'ennui arrive vite et te pousse à passer à autre chose avant d'avoir vraiment fini. Tu peux aussi jouer un peu trop avec les règles, convaincu que ta débrouille vaut bien le respect strict d'un cadre. Rien de tout ça n'est fixé pour toujours, la constance se travaille, comme le reste."
+  },
+  "coq": {
+   "en_un_mot": "le rigoureux exigeant",
+   "resume": "Le Coq aime que les choses soient faites bien, dans les règles, avec de la précision. Il parle franc, parfois trop, et tient à ce que son travail se voie.",
+   "portrait": "Tu remarques le détail qui cloche, la faute que personne d'autre n'a vue, le travail bâclé sous une belle présentation. Cette exigence vient d'un vrai respect pour le travail bien fait, pas d'un besoin de rabaisser qui que ce soit. Même si ça peut être reçu comme ça. Tu dis les choses franchement, sans trop les habiller, ce qui peut surprendre ou piquer ceux qui préfèrent les tournures plus douces. Le revers, c'est une exigence qui se retourne parfois contre toi. Une autocritique sévère quand un résultat n'est pas à la hauteur que tu t'étais fixée. Tu peux aussi avoir besoin qu'on remarque ce que tu fais, une reconnaissance qui compte plus que tu ne l'avoues facilement. Ce sont des tendances, pas un jugement sur ta valeur. Un peu plus de souplesse envers toi-même et envers les autres change déjà beaucoup de choses."
+  },
+  "chien": {
+   "en_un_mot": "le loyal inquiet",
+   "resume": "Le Chien tient à la justice et à la fidélité plus qu'à sa propre tranquillité. Il s'inquiète pour ceux qu'il aime et se méfie de ce qui brille trop.",
+   "portrait": "Tu tiens parole, et tu attends la même chose des autres. Ce qui te rend fiable, mais parfois dur avec ceux qui déçoivent. Cette loyauté vient d'un sens aigu de ce qui est juste. Une injustice te touche même quand elle ne te concerne pas directement. Tu protèges facilement ceux que tu aimes, parfois plus qu'ils ne le demandent vraiment. Le revers, c'est une inquiétude de fond qui peut tourner à la méfiance. Tu doutes vite de ce qui semble trop facile ou trop beau pour être vrai. Ça peut te rendre difficile à rassurer une fois qu'un doute s'est bien installé. Tu peux aussi porter les soucis des autres comme les tiens, au point de t'oublier un peu dans l'histoire. Rien de tout ça n'est une nature figée pour toujours. Apprendre à faire confiance sans tout vérifier, ça se construit, comme le reste."
+  },
+  "cochon": {
+   "en_un_mot": "le généreux confiant",
+   "resume": "Le Cochon profite de la vie sans complication, partage volontiers, et fait confiance par défaut. Il préfère la simplicité et le plaisir concret à la stratégie ou au calcul.",
+   "portrait": "Tu donnes facilement, ton temps, ton attention, ce que tu as, sans faire le compte de ce que ça te coûte vraiment. Cette générosité vient d'un rapport simple au plaisir et au partage. Tu profites des bonnes choses sans culpabiliser, et tu aimes que les autres en profitent aussi. Ça te rend agréable à côtoyer, sans calcul apparent, sans arrière-pensée cachée derrière. Le revers, c'est une confiance qui peut être mal placée. Tu crois facilement ce qu'on te dit, et tu mets du temps à voir qu'on abuse de ta bonne volonté. Tu peux aussi éviter les sujets difficiles en te disant que ça se réglera tout seul, ce qui n'est pas toujours vrai. Ce sont des penchants, pas une naïveté permanente et définitive. Avec l'expérience, tu gardes la générosité et tu ajustes juste la vigilance qui va avec."
+  }
+ },
+ "elements": {
+  "bois": {
+   "en_un_mot": "la croissance",
+   "nuance": "Le Bois pousse vers le haut et vers les autres. Sous cette influence, l'énergie de l'animal cherche à grandir, à coopérer, à faire équipe plutôt qu'à avancer seul dans son coin. Ça adoucit les tempéraments les plus rigides et donne une vraie envie de construire avec du monde autour de soi. Le revers, c'est une difficulté à dire non et à poser une limite ferme quand il le faudrait vraiment."
+  },
+  "feu": {
+   "en_un_mot": "l'élan",
+   "nuance": "Le Feu accélère tout ce qu'il touche. Sous cette influence, l'énergie de l'animal devient plus visible, plus chaleureuse, plus pressée aussi de passer à l'action. Les décisions se prennent vite, l'enthousiasme se voit de loin et se communique facilement à ceux qui sont autour. Le revers, c'est une intensité qui s'épuise si elle ne trouve pas à s'exprimer régulièrement. Et une impatience qui peut brusquer sans le vouloir."
+  },
+  "terre": {
+   "en_un_mot": "la stabilité",
+   "nuance": "La Terre ancre et ralentit, dans le bon sens du terme. Sous cette influence, l'énergie de l'animal devient plus posée, plus fiable, plus attentive au concret et au long terme. Les engagements se tiennent, les habitudes rassurent plutôt qu'elles n'ennuient vraiment. Le revers, c'est une lenteur à changer d'avis et une prudence qui peut freiner un élan qui méritait pourtant d'être suivi."
+  },
+  "metal": {
+   "en_un_mot": "la détermination",
+   "nuance": "Le Métal apporte de la netteté. Sous cette influence, l'énergie de l'animal se structure, tranche plus facilement, tient une décision une fois qu'elle est prise. Les priorités deviennent claires, l'exigence envers soi et envers les autres monte d'un cran. Le revers, c'est une rigidité qui laisse peu de place au compromis, et une sévérité qui peut blesser sans le vouloir vraiment."
+  },
+  "eau": {
+   "en_un_mot": "la fluidité",
+   "nuance": "L'Eau assouplit et fait circuler. Sous cette influence, l'énergie de l'animal s'adapte plus facilement, lit les situations avec finesse. Elle change de forme selon le contexte sans perdre son fond. L'intuition se fait plus fine, la diplomatie plus naturelle et moins forcée. Le revers, c'est une direction qui se dilue, une difficulté à choisir un cap et à s'y tenir vraiment."
+  }
+ }
+}

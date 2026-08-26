@@ -1,0 +1,14 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Une amorce par CLASSE d'aspect (conjonction / carré-opposition / sextile-trigone), posée avant le texte de fond de l'aspect. Le fond réutilise TEL QUEL le corpus déjà écrit des 135 aspects (data/corpus/aspects_1..4.json, clé canonique via moteur/synthese.py::cle_aspect) — on n'en réécrit aucun. {a} et {b} sont les deux points personnels concernés (ex. 'ta Vénus' et 'son Mars').",
+
+ "conjonction": {
+  "amorce": "Vos {a} et {b} se superposent presque exactement. Ce que ça touche chez l'un se sent directement chez l'autre, sans filtre."
+ },
+ "carre-opposition": {
+  "amorce": "Vos {a} et {b} s'écartent, chacun dans sa direction. Tenues ensemble, ces deux directions donnent de l'amplitude à votre lien : ce point ne va pas de soi, il s'invente à deux, activement."
+ },
+ "sextile-trigone": {
+  "amorce": "Vos {a} et {b} se répondent sans effort. Ce lien facilite plus qu'il ne demande, mais il peut aussi passer inaperçu si on ne le remarque pas."
+ }
+}

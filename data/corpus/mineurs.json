@@ -1,0 +1,172 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Les 56 arcanes mineurs -- carte MINEURE PERSONNELLE du jour (en plus de la carte du jour universelle, un majeur, voir arcanes.json). Nom et correspondance sont CALCULES par moteur/mineurs.py, jamais dupliques ici : seule l'invitation (le texte du jour, meme fonction que celle des majeurs) est ecrite, 100% originale. Convention Ta Trame (2 axes independants : couleur = element de la Lune transit, rang = ecart Soleil transit -> Ascendant natal / 14) -- voir moteur/mineurs.py pour le detail et le piege mathematique evite.",
+ "batons_as": {
+  "invitation": "Une étincelle peut se lever aujourd'hui, avant même d'avoir un projet précis. Repère l'envie de tout planifier d'abord, elle vient d'une peur ancienne de se tromper de direction. Laisse cette énergie exister sans la nommer tout de suite, juste pour sentir qu'elle est là."
+ },
+ "batons_2": {
+  "invitation": "Une décision de partir peut se préciser aujourd'hui, le moment juste avant d'agir. Remarque l'envie de tout attendre pour être sûr, elle vient d'une prudence apprise plutôt que d'un vrai doute. Choisis un seul geste qui engage un peu, sans attendre une certitude totale."
+ },
+ "batons_3": {
+  "invitation": "Un premier élan peut commencer à porter ses fruits aujourd'hui, un signe discret que ça avance. Remarque le réflexe de minimiser ce début, il vient d'une habitude à ne célébrer que les résultats finis. Prends un instant pour regarder plus loin, sans forcer la suite."
+ },
+ "batons_4": {
+  "invitation": "Une étape franchie peut se montrer aujourd'hui, quelque chose qui mérite d'être reconnu. Observe l'envie de passer vite à la suite sans t'arrêter, elle vient d'un pli pris à ne jamais s'arrêter avant la fin. Offre-toi une petite pause aujourd'hui, même courte, pour marquer ce qui est fait."
+ },
+ "batons_5": {
+  "invitation": "Un frottement entre plusieurs envies ou plusieurs personnes peut se montrer aujourd'hui, chacune tirant vers sa direction. Remarque le besoin d'avoir raison tout de suite, il vient d'une vieille peur de perdre sa place. Choisis d'écouter une voix différente de la tienne, juste un moment."
+ },
+ "batons_6": {
+  "invitation": "Une reconnaissance méritée peut se présenter aujourd'hui, un signe que l'effort a été vu. Remarque le réflexe de la minimiser ou de la partager trop vite, il vient d'une gêne apprise face aux compliments. Laisse-toi porter un instant par ce que les autres te renvoient."
+ },
+ "batons_7": {
+  "invitation": "Une position à défendre peut se présenter aujourd'hui, face à une pression réelle ou sentie. Remarque l'envie de céder pour avoir la paix tout de suite, elle vient d'une habitude à éviter le conflit à tout prix. Tiens ta position sur un seul point aujourd'hui, sans chercher à tout gagner."
+ },
+ "batons_8": {
+  "invitation": "Plusieurs choses peuvent s'accélérer aujourd'hui en même temps, un rythme qui surprend un peu. Remarque l'envie de tout contrôler pour ne rien perdre, elle vient d'une peur ancienne de rater quelque chose d'important. Choisis une seule chose à suivre de près, laisse le reste avancer seul."
+ },
+ "batons_9": {
+  "invitation": "Une fatigue après une longue série d'efforts peut se faire sentir aujourd'hui, même si tu tiens encore debout. Remarque l'envie de prouver que tout va bien, elle vient d'un vieux réflexe qui ignore les limites du corps. Accorde-toi un geste de repos aujourd'hui, même petit."
+ },
+ "batons_10": {
+  "invitation": "Une charge lourde peut se faire sentir aujourd'hui, quelque chose que tu portes depuis un moment déjà. Remarque l'envie de tout finir d'un coup pour t'en libérer, elle vient d'un vieux pli qui confond effort et valeur personnelle. Pose une petite partie du poids aujourd'hui, juste pour respirer un peu."
+ },
+ "batons_valet": {
+  "invitation": "Une idée encore jeune peut se montrer aujourd'hui, une curiosité qui n'a pas encore été mise à l'épreuve. Remarque l'envie de la juger tout de suite trop sérieuse ou trop naïve, elle vient d'un besoin ancien de certitudes rapides. Laisse cette idée exister un moment sans lui demander de preuve."
+ },
+ "batons_cavalier": {
+  "invitation": "Une envie de partir vite peut se montrer aujourd'hui, avant même d'avoir vérifié les détails. Remarque cette impatience sans la juger, elle vient d'une énergie ancienne pressée d'agir plutôt que de réfléchir. Ralentis d'un cran sur un seul point aujourd'hui, juste avant de t'élancer."
+ },
+ "batons_reine": {
+  "invitation": "Une confiance chaleureuse peut se montrer aujourd'hui, une énergie qui donne envie aux autres d'avancer aussi. Remarque l'envie de la mettre au service de tout le monde sauf toi, elle vient d'une habitude à se rendre utile avant de se sentir légitime. Garde un peu de cette chaleur pour toi."
+ },
+ "batons_roi": {
+  "invitation": "Un élan maîtrisé peut se montrer aujourd'hui, une direction claire que tu tiens sans avoir à forcer. Remarque l'envie d'imposer ce rythme aux autres pour aller plus vite, elle vient d'une habitude à confondre autorité et contrôle. Mène ce que tu as à faire à ton pas, sans écraser personne."
+ },
+ "coupes_as": {
+  "invitation": "Un sentiment plus grand que prévu peut déborder aujourd'hui, avant même de savoir pour qui ou pourquoi il vient. Regarde cette vague sans la juger, elle ne trahit rien, elle dit juste que quelque chose est vivant en toi. Laisse-la monter sans la nommer tout de suite."
+ },
+ "coupes_2": {
+  "invitation": "Un échange sincère avec quelqu'un peut se présenter aujourd'hui, un partage qui va dans les deux sens sans calcul. Repère l'habitude de donner plus que tu ne reçois, elle vient d'ailleurs, pas d'un vrai choix. Essaie de recevoir aussi, sans compter, juste pour voir."
+ },
+ "coupes_3": {
+  "invitation": "Une envie de retrouver du monde peut se montrer aujourd'hui, une joie qui se vit mieux à plusieurs que seul. Regarde-la sans y voir une faiblesse, certaines joies ont juste besoin d'être partagées pour exister pleinement. Appelle quelqu'un, ou propose un moment simple ensemble."
+ },
+ "coupes_4": {
+  "invitation": "Une lassitude peut s'installer aujourd'hui, une impression que rien de neuf n'arrive, même si quelque chose de bon est juste là. Regarde cette fatigue sans la combattre, elle vient d'un manque qu'on ressasse plus que du réel qui t'entoure. Cherche une chose simple, déjà présente, à apprécier."
+ },
+ "coupes_5": {
+  "invitation": "Un chagrin ou une perte peut occuper ton esprit aujourd'hui, plus que ce que la situation demande. Regarde cette peine sans la repousser, elle a sa place, mais elle n'est pas tout ce qui existe en ce moment. Tourne un instant le regard vers ce qui reste debout."
+ },
+ "coupes_6": {
+  "invitation": "Un souvenir tendre peut remonter aujourd'hui, une image d'avant, un lien simple qui appartient presque à l'enfance. Laisse-le venir sans le juger démodé ou naïf, il porte peut-être quelque chose dont tu as encore besoin. Reste un instant avec cette douceur, sans te presser d'en sortir."
+ },
+ "coupes_7": {
+  "invitation": "Plusieurs envies ou possibles peuvent se présenter en même temps aujourd'hui, au point de brouiller ce que tu ressens vraiment. Regarde cette abondance sans t'y perdre, elle n'exige pas de tout choisir tout de suite. Écarte-en un, doucement, juste pour alléger le reste."
+ },
+ "coupes_8": {
+  "invitation": "Une envie de t'éloigner de quelque chose de confortable mais qui ne suffit plus peut se montrer aujourd'hui. Regarde cette envie sans culpabilité, elle ne rejette pas ce qui était bon, elle cherche juste plus profond maintenant. Fais un petit pas dans cette direction, même discret."
+ },
+ "coupes_9": {
+  "invitation": "Un contentement simple peut se présenter aujourd'hui, une chose qui s'est arrangée ou un souhait qui s'est réalisé sans grand bruit. Repère l'envie d'enchaîner tout de suite vers le prochain désir, elle n'a pas à décider si vite. Savoure ce qui est là, juste un moment."
+ },
+ "coupes_10": {
+  "invitation": "Une forme de plénitude avec les tiens peut se ressentir aujourd'hui, presque physiquement, dans le corps autant que dans la tête. Repère l'envie de la vérifier ou de la questionner par habitude, elle n'a pas besoin de preuve. Laisse-la juste être là, sans l'analyser."
+ },
+ "coupes_valet": {
+  "invitation": "Une sensibilité encore neuve peut se manifester aujourd'hui, une intuition douce, pas encore mise à l'épreuve du réel. Regarde-la sans la trouver naïve, elle n'a pas à être solide tout de suite pour compter. Laisse-la s'exprimer une fois, même petitement, même maladroitement."
+ },
+ "coupes_cavalier": {
+  "invitation": "Une proposition ou une invitation portée par l'émotion peut se présenter aujourd'hui, plus qu'une décision réfléchie au sens strict. Regarde cet élan sans t'en méfier d'avance, il n'est pas moins valable parce qu'il vient du cœur. Suis-le un peu, juste pour voir où il mène."
+ },
+ "coupes_reine": {
+  "invitation": "Une empathie profonde peut se montrer aujourd'hui, une capacité à sentir ce que l'autre traverse sans qu'il ait besoin de tout dire. Regarde cette qualité pour ce qu'elle est, une force, pas une porte ouverte à tout absorber. Accueille ce que tu perçois, sans t'y noyer."
+ },
+ "coupes_roi": {
+  "invitation": "Une situation émotionnellement chargée peut se présenter aujourd'hui, chez toi ou autour de toi, sans grande agitation en retour de ta part. Repère cette capacité à rester posé comme un acquis, pas un hasard ni de la froideur. Reste ce point stable, sans t'oublier toi-même dans le rôle."
+ },
+ "epees_as": {
+  "invitation": "Une évidence peut te traverser aujourd'hui, une idée si claire qu'elle semble s'imposer avant même d'être pensée. Repère l'envie de tout de suite la justifier, elle vient d'une vieille habitude de ne faire confiance qu'à ce qui s'explique. Laisse cette clarté exister quelques instants, sans preuve à fournir."
+ },
+ "epees_2": {
+  "invitation": "Un choix peut rester en suspens aujourd'hui, deux options qui semblent aussi valables l'une que l'autre. Observe l'envie de ne pas trancher, elle vient de la peur ordinaire de perdre ce que l'autre option promettait. Choisis une petite chose, sans attendre d'être totalement sûr."
+ },
+ "epees_3": {
+  "invitation": "Une déception peut se montrer aujourd'hui, une vérité qui fait mal en étant dite ou entendue. Regarde cette peine sans la repousser trop vite, elle n'est pas un échec, juste la trace d'une chose qui comptait. Accorde-lui un moment, même bref, avant de passer à autre chose."
+ },
+ "epees_4": {
+  "invitation": "Une fatigue mentale peut se faire sentir aujourd'hui, comme un trop-plein après une période de tension. Repère l'idée que s'arrêter serait une faiblesse, elle vient d'une habitude de confondre valeur et rendement constant. Offre-toi une vraie pause, sans culpabilité ni chronomètre."
+ },
+ "epees_5": {
+  "invitation": "Un conflit peut se présenter aujourd'hui, avec l'envie d'avoir raison à tout prix. Observe ce besoin de gagner, il vient d'une vieille peur de compter pour rien si tu perds. Demande-toi ce que cette victoire coûterait vraiment, avant de t'y accrocher."
+ },
+ "epees_6": {
+  "invitation": "Une envie de t'éloigner d'une situation difficile peut se montrer aujourd'hui, même sans savoir exactement ce qui t'attend ensuite. Regarde ce mouvement comme un soin, pas comme une fuite, la sécurité totale n'a jamais été une condition pour avancer. Fais un pas vers plus calme, même petit."
+ },
+ "epees_7": {
+  "invitation": "Une envie de contourner un problème plutôt que de l'affronter de face peut apparaître aujourd'hui. Regarde cette stratégie sans la juger, elle vient d'un temps où dire les choses directement n'était pas sûr. Choisis, si tu peux, d'en dire un peu plus que d'habitude."
+ },
+ "epees_8": {
+  "invitation": "Un sentiment d'être coincé peut s'installer aujourd'hui, des pensées qui tournent en boucle sans mener nulle part. Regarde ces pensées pour ce qu'elles sont, une vieille façon de te protéger en anticipant tout, pas la réalité entière. Note une seule sortie possible, même minuscule, juste pour voir qu'elle existe."
+ },
+ "epees_9": {
+  "invitation": "Une inquiétude peut prendre trop de place aujourd'hui, surtout si elle revient la nuit et grossit dans le silence. Regarde-la sans la nourrir davantage, elle vient d'un vieux réflexe de veille plus que d'un danger réel présent. Écris-la quelque part, pour voir sa taille véritable à la lumière."
+ },
+ "epees_10": {
+  "invitation": "Un point bas peut sembler déjà atteint aujourd'hui, comme la fin d'une période qui a beaucoup demandé mentalement. Regarde ça comme une fin plutôt qu'un effondrement de plus, il n'y a rien à ajouter à ce qui est déjà tombé. Repère ce qui, doucement, recommence déjà à se relever."
+ },
+ "epees_valet": {
+  "invitation": "Une curiosité vive peut te pousser aujourd'hui à poser des questions directes, presque sans filtre. Regarde cette franchise sans la freiner complètement, elle vient d'un désir sincère de comprendre plutôt que d'un manque de tact. Pose une question qui te démange vraiment, quitte à la formuler simplement."
+ },
+ "epees_cavalier": {
+  "invitation": "Une idée peut te donner envie de foncer aujourd'hui, sans attendre l'accord de personne pour avancer. Repère cette impatience sans la museler, elle vient d'une énergie réelle qui a juste besoin d'un endroit où aller. Choisis où la diriger, plutôt que de la laisser tout emporter."
+ },
+ "epees_reine": {
+  "invitation": "Une lucidité tranchante peut se montrer aujourd'hui, la capacité à voir une chose clairement et à la nommer. Regarde l'envie de l'adoucir jusqu'à la vider de son sens, ou au contraire de la durcir par peur d'être ignoré. Dis-la avec justesse, sans l'un ni l'autre excès."
+ },
+ "epees_roi": {
+  "invitation": "Une décision peut demander à être posée aujourd'hui, avec la tête plus qu'avec l'humeur du moment. Repère l'envie de trancher vite pour en finir, elle vient d'une impatience compréhensible plus que d'une vraie clarté. Prends un instant de plus pour juger avec calme."
+ },
+ "deniers_as": {
+  "invitation": "Une petite ouverture concrète peut se présenter aujourd'hui, sans mode d'emploi encore. Repère l'envie de tout comprendre avant de commencer, elle vient d'une prudence apprise, pas d'un manque de courage. Pose un premier geste simple, même sans connaître la suite."
+ },
+ "deniers_2": {
+  "invitation": "Plusieurs priorités concrètes peuvent te tirer dans des sens différents aujourd'hui. Remarque le réflexe de vouloir tout tenir parfaitement en même temps, une vieille habitude plus qu'une nécessité réelle. Choisis une seule chose à ajuster maintenant, le reste peut attendre son tour."
+ },
+ "deniers_3": {
+  "invitation": "Un travail que tu soignes peut aujourd'hui prendre forme grâce à d'autres mains autour de toi. Remarque l'envie de tout porter seul pour prouver ta valeur, elle appartient à une vieille école. Accepte qu'une compétence partagée compte aussi, et laisse une part du mérite circuler."
+ },
+ "deniers_4": {
+  "invitation": "Une envie de tout retenir fermement peut se montrer aujourd'hui, argent, temps, ou une place acquise. Regarde cette crispation sans la juger, elle vient d'une peur ancienne de manquer. Essaie de desserrer les doigts sur une seule petite chose, juste pour voir ce qui se passe."
+ },
+ "deniers_5": {
+  "invitation": "Un sentiment de manque peut se montrer aujourd'hui, l'impression d'être laissé dehors alors que d'autres semblent à l'abri. Regarde cette impression sans la prendre pour un jugement sur toi, elle exagère souvent la réalité. Cherche une aide proche que tu n'as peut-être pas encore vue."
+ },
+ "deniers_6": {
+  "invitation": "Un échange de ressources peut se présenter aujourd'hui, donner quelque chose ou en recevoir. Remarque qui tient la position haute dans ce moment précis, sans en faire une honte pour personne. Regarde ce rapport en face, ça suffit souvent à le rendre plus juste."
+ },
+ "deniers_7": {
+  "invitation": "Une envie de faire le bilan d'un effort déjà investi peut se montrer aujourd'hui. Remarque l'impatience de vouloir une récolte immédiate, elle vient d'un doute ancien plus que du présent. Prends un instant pour regarder ce qui a vraiment poussé, avant de décider la suite."
+ },
+ "deniers_8": {
+  "invitation": "Un geste répété peut occuper ta journée aujourd'hui, presque machinal en apparence. Regarde cette répétition pour ce qu'elle est, un entraînement patient plutôt qu'une corvée sans but. Reste sur une seule chose un peu plus longtemps, sans chercher de raccourci pour aller plus vite."
+ },
+ "deniers_9": {
+  "invitation": "Un confort gagné par tes propres moyens peut se remarquer aujourd'hui, petit ou installé depuis longtemps. Repère l'envie de minimiser ce que tu as bâti seul, une modestie parfois trop bien apprise. Prends un moment pour savourer ça sans le partager ni le justifier."
+ },
+ "deniers_10": {
+  "invitation": "Quelque chose qui dépasse ta seule personne peut se montrer aujourd'hui, un héritage, une stabilité construite avant toi. Remarque le réflexe de vouloir tout mesurer à ton échelle immédiate. Regarde ce qui se transmet plus loin que ta propre vie, et la place que tu y tiens."
+ },
+ "deniers_valet": {
+  "invitation": "Un projet concret peut vouloir démarrer aujourd'hui, encore fragile et pas tout à fait certain. Remarque l'envie de tout savoir avant le premier pas, elle vient d'un sérieux appris plutôt que d'une peur. Autorise-toi à étudier la chose un peu, puis à avancer quand même."
+ },
+ "deniers_cavalier": {
+  "invitation": "Une lenteur méthodique peut se montrer aujourd'hui dans une chose que tu avances. Remarque l'impatience qui compare ton rythme à celui des autres, elle ne connaît pas ton terrain. Choisis la méthode fiable plutôt que la vitesse, un pas après l'autre, sans te presser."
+ },
+ "deniers_reine": {
+  "invitation": "Une envie de prendre soin des besoins concrets d'un proche peut se montrer aujourd'hui, nourrir, dépanner, arranger. Regarde ce geste sans exiger qu'il soit remarqué en retour, un vieux réflexe de prouver ta valeur. Donne ce que tu peux donner aujourd'hui, sans en tenir le compte."
+ },
+ "deniers_roi": {
+  "invitation": "Une stabilité matérielle bâtie avec le temps peut se remarquer aujourd'hui, même modeste. Repère l'envie de rester prudent par réflexe, alors que la place est là pour donner un peu de marge à quelqu'un. Une générosité tranquille, sans urgence, peut trouver sa place aujourd'hui."
+ }
+}

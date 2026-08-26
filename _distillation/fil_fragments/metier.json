@@ -1,0 +1,180 @@
+{
+  "_note": "Domaine metier (maison X — vocation, visibilité, essentiel), fragment du Fil du jour. Distillé des sections 14 (Essentialism, McKeown), 4 (7 Habitudes, Covey), 8 (War of Art, Pressfield) et 13 (Deep Work, Newport) de _distillation/cartes_de_concepts.md. Domaine à phase (cycle d'un projet professionnel, calqué sur les 8 phases lunaires). CONCEPTS repris, jamais la prose des livres, aucun nom de méthode ni de marque.",
+
+  "metier": {
+    "source_livre": "d'après les concepts de McKeown, Covey, Pressfield et Newport",
+    "themes": ["vocation", "priorites", "visibilite"],
+    "miroir": "Ta journée de travail se remplit vite, et ce qui compte vraiment passe souvent après ce qui presse. Le tri entre les deux, lui, reste rarement fait.",
+    "geste": "Choisis une seule chose aujourd'hui qui ferait vraiment avancer ce qui compte pour toi. Fais-la avant de répondre au reste."
+  },
+  "metier_fluide": {
+    "source_livre": "d'après les concepts de Newport et Pressfield",
+    "themes": ["concentration", "elan"],
+    "miroir": "Le travail avance sans que tu aies à te forcer aujourd'hui. Tu es entré dedans presque tout seul, et le temps a filé sans que tu comptes les minutes.",
+    "geste": "Profite de cette entrée facile pour attaquer la tâche que tu remets depuis des jours. Elle passera mieux maintenant qu'un autre jour."
+  },
+  "metier_tension": {
+    "source_livre": "d'après les concepts de Pressfield et McKeown",
+    "themes": ["resistance", "priorites"],
+    "miroir": "Une part de toi freine devant ce travail, et tu prends ça pour de la paresse. C'est plutôt le signe que la chose compte vraiment pour toi.",
+    "geste": "Commence quand même, cinq minutes, sans attendre que l'envie vienne en premier. Elle suit souvent, elle ne précède presque jamais."
+  },
+
+  "metier_phase_nouvelle": {
+    "source_livre": "d'après les concepts de Pressfield — la bascule professionnelle",
+    "themes": ["debut", "engagement"],
+    "miroir": "Un projet démarre, et tu attends encore un signe extérieur pour te sentir légitime. Ce signe ne viendra pas. Se considérer comme sérieux dans ce qu'on fait, ça se décide, ça ne s'attend pas.",
+    "geste": "Écris en une phrase ce que tu veux vraiment construire ici. Garde-la visible cette semaine, comme un repère à chaque décision."
+  },
+  "metier_phase_croissante": {
+    "source_livre": "d'après les concepts de Pressfield — se présenter chaque jour",
+    "themes": ["routine", "constance"],
+    "miroir": "Ce qui a commencé prend de l'ampleur, et l'envie de t'y remettre ne sera pas toujours au rendez-vous. Ça n'a jamais été la condition pour continuer.",
+    "geste": "Donne dix minutes à ce projet aujourd'hui, motivé ou non. Le retour, pas la durée, fait la différence."
+  },
+  "metier_phase_premier_quartier": {
+    "source_livre": "d'après les concepts de Pressfield — le blocage intérieur",
+    "themes": ["resistance", "peur"],
+    "miroir": "Le premier vrai obstacle arrive, avec sa voix qui trouve de bonnes raisons de remettre à plus tard. Plus ce projet compte pour toi, plus elle parle fort.",
+    "geste": "Nomme aujourd'hui, pour toi-même, la raison précise qui te retient. Puis avance d'un pas malgré elle, sans attendre qu'elle se taise."
+  },
+  "metier_phase_gibbeuse": {
+    "source_livre": "d'après les concepts de McKeown et Newport — couper avant de montrer",
+    "themes": ["edition", "exigence"],
+    "miroir": "C'est presque prêt, et l'envie de peaufiner encore peut devenir une façon de ne jamais livrer. Un résultat imparfait mais fini vaut mieux qu'une perfection qui n'arrive jamais.",
+    "geste": "Retire aujourd'hui un élément superflu de ce que tu prépares, plutôt que d'en ajouter un de plus. Ce qui reste respirera mieux."
+  },
+  "metier_phase_pleine": {
+    "source_livre": "d'après les concepts de Pressfield — le territoire et l'exposition",
+    "themes": ["visibilite", "exposition"],
+    "miroir": "Ce que tu portes se montre en pleine lumière aujourd'hui, et ça expose autant que ça valorise. Tu n'as jamais eu la main sur l'accueil qu'on lui fait, seulement sur le soin que tu y as mis.",
+    "geste": "Montre ce travail à quelqu'un dont l'avis vient du terrain, pas seulement d'un proche bienveillant. Ce retour-là pèse plus lourd."
+  },
+  "metier_phase_diffusante": {
+    "source_livre": "d'après les concepts de Pressfield — le retour du monde réel",
+    "themes": ["retour", "circulation"],
+    "miroir": "Ce que tu as fait circule maintenant, hors de tes mains, et les retours commencent à arriver. Certains piqueront, d'autres surprendront, aucun ne dit qui tu es.",
+    "geste": "Note un retour reçu récemment, même désagréable, sans le juger ce soir. Relis-le demain, il parlera autrement."
+  },
+  "metier_phase_dernier_quartier": {
+    "source_livre": "d'après les concepts de Newport — fermer les boucles",
+    "themes": ["cloture", "ordre"],
+    "miroir": "Des tâches de ce projet traînent, à moitié faites, et elles occupent plus de place dans ta tête que dans ton agenda. Le temps n'est pas le problème, la fermeture l'est.",
+    "geste": "Écris ce soir la prochaine étape de la tâche la plus ancienne en suspens. Tu n'as pas besoin de la finir pour libérer l'esprit qu'elle occupe."
+  },
+  "metier_phase_balsamique": {
+    "source_livre": "d'après les concepts de Newport — le repos comme travail",
+    "themes": ["repos", "recuperation"],
+    "miroir": "Ce cycle professionnel se referme, et l'envie d'enchaîner tout de suite sur autre chose est forte. Arrêter le soir ou la semaine n'est pas du temps perdu, c'est ce qui range les problèmes en arrière-plan.",
+    "geste": "Accorde-toi une vraie coupure ce soir, sans reprendre le dossier même en pensée. Le prochain élan en sortira plus net."
+  },
+
+  "metier_transit_soleil_conjonction": {
+    "source_livre": "d'après les concepts de Pressfield — le territoire, faire pour soi",
+    "themes": ["visibilite", "affirmation"],
+    "miroir": "On te voit davantage en ce moment sur ce que tu fais, et ça peut donner envie de plaire plutôt que de rester juste. Le geste qui vaut est celui qui tiendrait même sans public.",
+    "geste": "Fais aujourd'hui la version de ce travail qui te ressemble, pas celle que tu devines attendue. Le résultat n'est pas sous ta main, l'effort l'est."
+  },
+  "metier_transit_soleil_sextile-trigone": {
+    "source_livre": "d'après les concepts de Pressfield et Covey — être vu sans forcer",
+    "themes": ["visibilite", "reconnaissance"],
+    "miroir": "Ce que tu fais se remarque facilement aujourd'hui, sans que tu aies eu à insister. C'est le moment de laisser voir, pas de te faire petit par réflexe.",
+    "geste": "Partage aujourd'hui une chose que tu as accomplie récemment, sans la minimiser en la racontant. Dis-la simplement, telle qu'elle est."
+  },
+  "metier_transit_soleil_carre-opposition": {
+    "source_livre": "d'après les concepts de Pressfield — la peur de réussir",
+    "themes": ["visibilite", "peur"],
+    "miroir": "Être vu sur ce terrain te met mal à l'aise aujourd'hui, plus que tu ne t'y attendais. La peur la plus profonde n'est souvent pas d'échouer, mais de se révéler à la hauteur de ce qu'on pressent.",
+    "geste": "Avance quand même la tâche visible du jour, sans attendre que le malaise parte avant de commencer. Il reflue une fois dans l'action, presque jamais avant."
+  },
+  "metier_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Pressfield — se préparer pour la durée",
+    "themes": ["engagement", "structure"],
+    "miroir": "Un cadre plus sérieux s'installe autour de ce que tu fais, avec ses exigences et ses échéances. Ça pèse un peu, et c'est aussi le signe que la chose devient réelle.",
+    "geste": "Fixe aujourd'hui une échéance concrète pour la prochaine étape, même modeste. Un cadre posé à l'avance coûte moins cher qu'un cadre subi."
+  },
+  "metier_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de Newport — le rituel qui protège",
+    "themes": ["structure", "concentration"],
+    "miroir": "Un cadre simple, un horaire, un lieu fixe, tient bien aujourd'hui et te porte sans effort de volonté. C'est la routine qui travaille à ta place, pas ta motivation du jour.",
+    "geste": "Répète aujourd'hui, à la même heure et au même endroit, le geste qui fait avancer ce projet. Le cadre décide, tu n'as qu'à t'y présenter."
+  },
+  "metier_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de McKeown — le tampon et les délais",
+    "themes": ["limites", "pression"],
+    "miroir": "Le temps presse plus que prévu sur ce que tu dois livrer, et la marge que tu croyais avoir s'est réduite. On sous-estime presque toujours la durée réelle d'une tâche, ça n'a rien d'un raté personnel.",
+    "geste": "Retire une chose du programme du jour pour respecter le délai qui compte vraiment. Une urgence traitée à temps évite une crise plus tard."
+  },
+  "metier_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de Pressfield — se lancer déclenche la suite",
+    "themes": ["debut", "action"],
+    "miroir": "L'énergie pour te lancer sur ce projet est là aujourd'hui, entière, presque impatiente. S'asseoir et commencer suffit souvent à faire venir la suite, elle ne précède presque jamais le geste.",
+    "geste": "Démarre maintenant la tâche que tu prépares depuis un moment, sans chercher à tout planifier avant. Le mouvement ouvrira le reste tout seul."
+  },
+  "metier_transit_mars_sextile-trigone": {
+    "source_livre": "d'après les concepts de Newport — l'intensité qui sert",
+    "themes": ["elan", "concentration"],
+    "miroir": "Tu as aujourd'hui la charge pour tenir une vraie plage de concentration sur ce qui compte, sans te disperser. Deux heures pleines valent souvent plus que six heures distraites.",
+    "geste": "Bloque une heure sans messages ni notifications pour avancer la tâche la plus exigeante du jour. Protège ce créneau comme un rendez-vous qu'on ne déplace pas."
+  },
+  "metier_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de McKeown — un problème choisi plutôt que subi",
+    "themes": ["conflit", "priorites"],
+    "miroir": "Plusieurs urgences professionnelles réclament ton énergie en même temps aujourd'hui, et vouloir tout mener de front les affaiblit toutes. La bonne question n'est pas de tout concilier, c'est de choisir laquelle mérite vraiment le combat du jour.",
+    "geste": "Choisis une seule urgence à traiter à fond aujourd'hui, et dis clairement non aux autres pour l'instant. Elles attendront sans dommage réel."
+  },
+  "metier_transit_mercure_conjonction": {
+    "source_livre": "d'après les concepts de McKeown — le critère explicite",
+    "themes": ["clarte", "decision"],
+    "miroir": "Une idée se précise aujourd'hui sur la direction à prendre dans ton travail, plus nette que d'habitude. C'est le bon moment pour la poser par écrit avant qu'elle se dilue dans le reste de la journée.",
+    "geste": "Écris en une phrase le critère qui te fera dire oui ou non à ce qui se présentera cette semaine. Relis-la avant de répondre à une sollicitation."
+  },
+  "metier_transit_mercure_sextile-trigone": {
+    "source_livre": "d'après les concepts de Newport — la marche qui libère les idées",
+    "themes": ["clarte", "concentration"],
+    "miroir": "Les idées sur ton travail s'organisent facilement aujourd'hui, surtout loin de l'écran. C'est souvent en marchant ou en changeant d'air qu'un nœud se dénoue, pas en fixant le problème de plus près.",
+    "geste": "Sors dix minutes sans ton téléphone avant de trancher une question qui traîne sur ce projet. Laisse la réponse venir plutôt que de la forcer."
+  },
+  "metier_transit_mercure_carre-opposition": {
+    "source_livre": "d'après les concepts de Newport — le coût du changement de tâche",
+    "themes": ["dispersion", "concentration"],
+    "miroir": "Les messages et les petites tâches grignotent ton attention aujourd'hui, et chaque interruption laisse un résidu qui ralentit ce qui suit. Ce n'est pas un manque de discipline, c'est un environnement construit pour te disperser.",
+    "geste": "Regroupe les petites tâches du jour dans un seul bloc, plus tard, et ferme le reste en attendant. Une chose à la fois ira plus vite que toutes en même temps."
+  },
+  "metier_transit_jupiter_sextile-trigone": {
+    "source_livre": "d'après les concepts de McKeown — le oui franc",
+    "themes": ["opportunite", "discernement"],
+    "miroir": "Une occasion intéressante se présente sur ton terrain professionnel aujourd'hui, et elle coche presque toutes les cases. Si elle n'est pas un oui franc et net, elle vaut un non, même si elle semble bonne sur le papier.",
+    "geste": "Évalue cette occasion contre ce que tu veux vraiment construire, pas contre l'envie du moment. Accepte-la seulement si elle passe ce test haut la main."
+  },
+  "metier_transit_jupiter_carre-opposition": {
+    "source_livre": "d'après les concepts de McKeown — le coût d'opportunité",
+    "themes": ["dispersion", "priorites"],
+    "miroir": "Les propositions et les possibilités se multiplient aujourd'hui autour de ton travail, et chaque oui semble gratuit sur le moment. Il ne l'est jamais, il retire toujours du temps à autre chose.",
+    "geste": "Nomme ce que tu devrais abandonner pour accepter la nouvelle proposition du jour. Si le prix te semble trop haut une fois dit, décline."
+  },
+  "metier_transit_venus_conjonction": {
+    "source_livre": "d'après les concepts de Covey — le centre qui ne varie pas",
+    "themes": ["valeurs", "sens"],
+    "miroir": "Ton travail d'aujourd'hui touche à ce qui compte vraiment pour toi, pas seulement à ce qui rapporte ou qui plaît. C'est rare de sentir les deux alignés, et ça se remarque au calme que ça donne.",
+    "geste": "Choisis, parmi les tâches du jour, celle qui sert le plus ce que tu veux vraiment construire. Commence par elle."
+  },
+  "metier_transit_venus_carre-opposition": {
+    "source_livre": "d'après les concepts de McKeown — le respect plutôt que la popularité",
+    "themes": ["limites", "relation"],
+    "miroir": "Une demande professionnelle te met en tension aujourd'hui entre faire plaisir et rester juste avec toi-même. Un refus clair coûte un moment d'agacement et évite un ressentiment qui dure bien plus longtemps.",
+    "geste": "Réponds aujourd'hui par un non net à ce que tu comptais accepter par gêne. Explique brièvement, sans t'excuser en boucle."
+  },
+  "metier_transit_lune_sextile-trigone": {
+    "source_livre": "d'après les concepts de Newport — écouter la fatigue réelle",
+    "themes": ["rythme", "ecoute"],
+    "miroir": "Tu sens plus clairement aujourd'hui ce que ton énergie peut vraiment porter dans ton travail, sans te forcer à suivre un rythme qui n'est pas le tien. Cette clarté-là mérite d'être écoutée, pas dépassée par principe.",
+    "geste": "Cale la tâche la plus exigeante du jour sur le moment où tu te sens le plus disponible. Laisse le reste attendre ce créneau."
+  },
+  "metier_transit_lune_carre-opposition": {
+    "source_livre": "d'après les concepts de Pressfield — le doute comme allié",
+    "themes": ["doute", "emotion"],
+    "miroir": "Un doute sur ce que tu fais professionnellement remonte fort aujourd'hui, et tu voudrais qu'il disparaisse. On ne doute vraiment que de ce qui compte, les projets sans importance n'inquiètent jamais personne.",
+    "geste": "Écris ce doute en une phrase au lieu de le laisser tourner en boucle dans ta tête. Le nommer lui retire déjà de la place."
+  }
+}

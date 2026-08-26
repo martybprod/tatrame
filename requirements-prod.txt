@@ -1,0 +1,11 @@
+# Dépendances de PRODUCTION (conteneur) = tout le runtime + le serveur WSGI.
+#
+# En local, l'app tourne sur le serveur de dev de Flask (app.run, run.sh). En conteneur,
+# c'est gunicorn qui sert l'app (voir Dockerfile et wsgi.py) — jamais app.run en prod.
+#
+# ⚠️ gunicorn DOIT rester à 1 worker : le scheduler des rappels et le compteur
+#    anti-brute-force d'auth.py sont in-process (voir wsgi.py). Ce n'est pas un réglage
+#    de perf mais une contrainte de correction.
+-r requirements.txt
+
+gunicorn==23.0.0        # serveur WSGI de production

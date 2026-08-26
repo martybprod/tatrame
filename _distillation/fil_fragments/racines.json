@@ -1,0 +1,94 @@
+{
+  "_note": "Fragment domaine racines (maison IV — foyer, famille, présence au quotidien). Sources : cartes_de_concepts.md §22 The Whole-Brain Child (Siegel & Bryson), §17 How to Talk So Kids Will Listen (Faber & Mazlish), §3 Le pouvoir du moment présent (Tolle) §présence/relations. Concepts repris, jamais la prose des livres. Les principes de parentalité des §17/§22 sont formulés largement : ils valent pour n'importe quelle relation proche (partenaire, parent, ami, colocataire), jamais réservés à l'enfant — aucune entrée ne nomme un lien précis. À fusionner dans data/corpus/fil.json. Volume : 15 clés (générique + fluide/tension + 4 planètes pertinentes [lune, mars, saturne, venus] × 3 classes), même gabarit que communaute.json et ressources.json — les autres planètes n'ont pas de nuance propre sur le foyer et retombent sur racines_fluide / racines_tension, ce qui est le fonctionnement prévu. Aucune clé _phase_ (racines n'est pas un domaine à processus).",
+
+  "racines": {
+    "source_livre": "d'après les concepts de Siegel & Bryson et Tolle, sur la présence au quotidien",
+    "themes": ["presence", "foyer", "quotidien"],
+    "miroir": "Chez toi, aujourd'hui, quelqu'un a surtout besoin que tu sois là, pas que tu règles quelque chose. La présence pèse plus que la performance dans une maison.",
+    "geste": "Passe dix minutes avec un proche sans téléphone ni tâche en tête, juste à être dans la même pièce."
+  },
+  "racines_fluide": {
+    "source_livre": "d'après les concepts de Siegel & Bryson, sur le jeu qui construit le lien",
+    "themes": ["jeu", "lien", "foyer"],
+    "miroir": "Aujourd'hui, la maison est plus légère, une blague passe, un moment se prolonge sans qu'on le force. Ce genre d'instant compte plus qu'il n'y paraît.",
+    "geste": "Propose un jeu, une balade ou un repas sans agenda avec les tiens, juste pour le plaisir d'être ensemble."
+  },
+  "racines_tension": {
+    "source_livre": "d'après les concepts de Siegel & Bryson, sur les tempêtes qui font partie de la relation",
+    "themes": ["conflit", "foyer", "tempete"],
+    "miroir": "Ça grince à la maison aujourd'hui, une tension traîne sans raison claire. Un moment difficile ne casse pas un lien, c'est souvent là qu'il se construit.",
+    "geste": "Laisse la tension redescendre avant de vouloir tout régler, puis reviens vers l'autre calmement."
+  },
+  "racines_transit_lune_conjonction": {
+    "source_livre": "d'après les concepts de Siegel & Bryson, sur nommer ce qui déborde",
+    "themes": ["emotion", "famille", "sensibilite"],
+    "miroir": "Tu sens tout plus fort aujourd'hui à la maison, une remarque anodine touche plus qu'elle ne devrait. Le jour amplifie, ça ne dit rien sur ta solidité.",
+    "geste": "Nomme à voix haute ce que tu ressens avant que ça ne sorte de travers."
+  },
+  "racines_transit_lune_sextile-trigone": {
+    "source_livre": "d'après les concepts de Siegel & Bryson, sur la connexion qui apaise",
+    "themes": ["emotion", "chaleur", "famille"],
+    "miroir": "Tout coule sans effort à la maison aujourd'hui, les émotions passent, personne n'a besoin de forcer un sourire. Profite de ce genre de jour, il se savoure.",
+    "geste": "Dis à un proche, simplement, ce que sa présence t'apporte."
+  },
+  "racines_transit_lune_carre-opposition": {
+    "source_livre": "d'après les concepts de Siegel & Bryson, sur relier avant de recadrer",
+    "themes": ["emotion", "conflit", "famille"],
+    "miroir": "Tu vois une émotion déborder à la maison aujourd'hui, la tienne ou celle d'un proche, et raisonner ne sert à rien tant que ça déborde. On connecte d'abord, on parle ensuite.",
+    "geste": "Avant d'expliquer quoi que ce soit, reste juste présent, sans commentaire, jusqu'à ce que ça redescende."
+  },
+  "racines_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de Faber & Mazlish, sur dire ses sentiments avec force",
+    "themes": ["action", "affirmation", "foyer"],
+    "miroir": "Tu as envie de trancher quelque chose à la maison aujourd'hui, plus vite que d'habitude. L'énergie est là, reste à voir où elle atterrit.",
+    "geste": "Dis ce qui te dérange en commençant par « je », pas par une accusation."
+  },
+  "racines_transit_mars_sextile-trigone": {
+    "source_livre": "d'après les concepts de Faber & Mazlish, sur l'autonomie qui se construit petit à petit",
+    "themes": ["action", "tache", "foyer"],
+    "miroir": "Tu as l'énergie pour avancer sur une chose qui traînait à la maison, sans que ça pèse comme d'habitude. Ce genre d'élan mérite d'être utilisé aujourd'hui.",
+    "geste": "Termine une tâche domestique en suspens, sans attendre le moment parfait."
+  },
+  "racines_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Faber & Mazlish, sur décrire le problème au lieu d'accuser",
+    "themes": ["conflit", "foyer", "reaction"],
+    "miroir": "Un rien peut mettre le feu aux poudres à la maison aujourd'hui, un ton de trop, une remarque mal reçue. Décrire le problème passe mieux que viser la personne en face.",
+    "geste": "Remplace une phrase qui commence par « tu » par une phrase qui décrit juste les faits."
+  },
+  "racines_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Siegel & Bryson, sur vérifier le basique avant la cause profonde",
+    "themes": ["responsabilite", "foyer", "poids"],
+    "miroir": "Tu sens le poids du quotidien à la maison aujourd'hui, les tâches, les horaires, la charge qui ne se voit pas d'habitude. Avant de chercher plus loin, vérifie le basique, sommeil, faim, repos.",
+    "geste": "Règle une chose simple et concrète avant de chercher une explication compliquée."
+  },
+  "racines_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de Faber & Mazlish, sur les règles claires qui rassurent",
+    "themes": ["limites", "structure", "foyer"],
+    "miroir": "C'est un bon jour pour fixer une règle claire à la maison, un cadre qui manquait depuis un moment. Une limite bien posée n'enferme pas, elle rassure tout le monde.",
+    "geste": "Nomme une seule règle simple pour la maison, et tiens-la cette fois."
+  },
+  "racines_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Faber & Mazlish, sur la conséquence qui répare plutôt que la punition",
+    "themes": ["punition", "rigidite", "foyer"],
+    "miroir": "Tu as envie de sévir plus vite que d'habitude à la maison aujourd'hui. Une conséquence qui répare apprend plus qu'une punition qui vise juste à faire payer.",
+    "geste": "Avant de sanctionner, demande ce qui permettrait de réparer plutôt que de punir."
+  },
+  "racines_transit_venus_conjonction": {
+    "source_livre": "d'après les concepts de Siegel & Bryson, sur le non-verbal qui rassure",
+    "themes": ["tendresse", "lien", "foyer"],
+    "miroir": "Tu ressens de la tendresse facilement aujourd'hui à la maison, un geste, un regard, une voix plus douce que d'habitude. Le corps dit souvent mieux que les mots.",
+    "geste": "Offre un contact simple à un proche, une main sur l'épaule, un câlin, sans un mot."
+  },
+  "racines_transit_venus_sextile-trigone": {
+    "source_livre": "d'après les concepts de Faber & Mazlish, sur le compliment qui nourrit",
+    "themes": ["affection", "chaleur", "foyer"],
+    "miroir": "Tu trouves les mots doux sans effort aujourd'hui à la maison. Un compliment qui décrit ce que tu vois nourrit plus qu'un mot flatteur et vague.",
+    "geste": "Dis à un proche précisément ce que tu remarques de bien chez lui aujourd'hui."
+  },
+  "racines_transit_venus_carre-opposition": {
+    "source_livre": "d'après les concepts de Siegel & Bryson, sur la réparation après une rupture de lien",
+    "themes": ["reparation", "lien", "foyer"],
+    "miroir": "Un froid s'est installé à la maison aujourd'hui, quelque chose qui n'a pas été dit ou réparé. Le lien se soigne par un geste, pas seulement par des excuses.",
+    "geste": "Fais un geste concret de réparation envers un proche, même petit, plutôt qu'une simple excuse verbale."
+  }
+}

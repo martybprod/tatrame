@@ -1,0 +1,165 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "L'axe éléments réécrit selon la doctrine « langage clair » (CHARTE §Comprendre à la première lecture) : concret, NOMS des personnes (pas « l'un/l'autre »), gender-safe (aucun elle/il ni adjectif accordé), registre québécois neutre, une idée par phrase. Composé au rendu par app.py::_texte_elements. Clé = {point}_{cle} (cle canonique triée, ex. 'feu-terre'). Jetons : {feu}/{terre}/{air}/{eau} = remplacés par le prénom de la personne qui a CET élément sur ce point ; {a}/{b} (prénoms de A et B) quand les deux ont le même élément. Le même cle sur deux points donne deux textes (le domaine change : soleil=qui on est, lune=émotions, venus=amour, mars=action, asc=première impression). Les 50 combinaisons (5 points x 10 paires) sont toutes couvertes ; app.py garde un repli sur l'ancien rel_elements par sécurité.",
+
+ "soleil_air-air": {
+  "texte": "Au fond, {a} et {b} carburent aux mêmes affaires : les idées, les mots, comprendre avant d'agir. Se parler, c'est se retrouver. L'avantage, c'est que la conversation ne manque jamais entre vous deux. Le risque, c'est de rester dans la tête et d'oublier de passer aux actes. Ça tient bien quand l'un des deux propose un geste concret, de temps en temps."
+ },
+ "lune_air-air": {
+  "texte": "Côté émotions, {a} et {b} ont besoin de mettre des mots sur ce qu'ils ressentent pour que ça devienne clair. Parler aide à comprendre ce qui se passe en dedans. L'avantage, c'est que vous vous expliquez facilement, sans vous braquer. Le risque, c'est d'analyser une émotion au lieu de juste la vivre un moment. Ça tient bien quand l'un des deux accepte de se taire et de ressentir, sans tout de suite chercher les mots."
+ },
+ "venus_air-air": {
+  "texte": "En amour, {a} et {b} aiment discuter, jouer avec les idées, changer de sujet souvent. La complicité passe par les mots et par la curiosité pour ce qui est nouveau. L'avantage, c'est que vous ne vous ennuyez jamais à parler ensemble. Le risque, c'est de rester dans la tête et de moins vous rapprocher physiquement. Ça reste vivant quand l'un des deux prend l'initiative d'un geste tendre, sans attendre d'en parler d'abord."
+ },
+ "mars_air-air": {
+  "texte": "Quand vient le temps d'agir, {a} et {b} passent par les mots avant de bouger : discuter le plan, peser les options, en reparler encore. Ça évite bien des erreurs. L'avantage, c'est que vous avancez rarement à l'aveugle. Le risque, c'est de tellement discuter que l'action n'arrive jamais. Ça marche quand l'un des deux tranche, un jour donné, et que vous passez enfin aux gestes."
+ },
+ "asc_air-air": {
+  "texte": "{a} et {b} donnent tous les deux une image vive, curieuse, portée sur les échanges. Les gens vous trouvent faciles à aborder, pleins de sujets de conversation. L'avantage, c'est que la glace se casse vite entre vous et les autres. Le risque, c'est de rester en surface, à parler de tout sans jamais aller au fond des choses. Ça reste riche quand l'un des deux ose ralentir pour vraiment écouter."
+ },
+
+ "soleil_eau-eau": {
+  "texte": "Au fond, {a} et {b} ressentent tout en profondeur : peu de choses restent légères ou anodines. Ce qui touche l'un touche presque toujours l'autre aussi, sans grande explication. L'avantage, c'est une compréhension qui n'a pas besoin de longs discours. Le risque, c'est de se laisser emporter à deux dans la même vague, sans personne pour garder les pieds sur terre. Ça tient bien quand l'un des deux trouve, de temps en temps, un peu de recul pour l'autre."
+ },
+ "lune_eau-eau": {
+  "texte": "Côté émotions, {a} et {b} captent tout, même ce qui n'est pas dit. Une contrariété chez l'un se sent presque aussitôt chez l'autre. L'avantage, c'est un réconfort qui vient sans qu'on ait à le demander. Le risque, c'est de se noyer à deux dans la même émotion, sans personne pour respirer plus large. Ça tient bien quand l'un des deux prend un moment seul pour retrouver son calme."
+ },
+ "venus_eau-eau": {
+  "texte": "En amour, {a} et {b} ont besoin de sentir une vraie profondeur avant de s'ouvrir. Un lien de surface ne suffit à aucun des deux. L'avantage, c'est une intimité qui va loin, presque sans effort. Le risque, c'est de devenir possessifs ou de trop dépendre l'un de l'autre pour se sentir bien. Ça reste sain quand l'un des deux garde un espace à soi, même en étant proches."
+ },
+ "mars_eau-eau": {
+  "texte": "Quand vient le temps d'agir, {a} et {b} avancent au ressenti plus qu'au plan : on sent le bon moment plutôt qu'on le calcule. Ça donne une belle complicité dans le mouvement. L'avantage, c'est que personne ne force jamais la main de l'autre. Le risque, c'est d'attendre le moment parfait et de ne jamais bouger. Ça marche quand l'un des deux ose lancer les choses, même sans être certain à cent pour cent."
+ },
+
+ "lune_feu-feu": {
+  "texte": "Côté émotions, {a} et {b} réagissent vite et fort : ça monte vite, ça se voit tout de suite, ça retombe presque aussi vite. Personne n'a à deviner l'humeur de l'autre. L'avantage, c'est une franchise émotionnelle rare. Le risque, c'est deux colères qui se répondent et qui montent en flèche. Ça tient bien quand l'un des deux prend une pause avant de répliquer."
+ },
+ "venus_feu-feu": {
+  "texte": "En amour, {a} et {b} savent ce qu'ils veulent et vont le chercher sans détour. La passion s'allume vite entre vous deux. L'avantage, c'est une attirance franche, sans jeu ni détour. Le risque, c'est deux fortes envies qui se heurtent quand chacun veut mener la danse. Ça tient bien quand l'un des deux laisse à l'autre la place de décider, à son tour."
+ },
+ "mars_feu-feu": {
+  "texte": "Quand vient le temps d'agir, {a} et {b} foncent, presque au même instant. Personne n'attend l'autre pour se lancer. L'avantage, c'est un élan commun qui fait avancer vite. Le risque, c'est deux personnes pressées qui se marchent sur les pieds, ou qui s'épuisent à courir sans répit. Ça marche quand l'un des deux ralentit le premier, pour laisser respirer les deux."
+ },
+ "asc_feu-feu": {
+  "texte": "{a} et {b} donnent tous les deux une image énergique, directe, qui prend sa place sans hésiter. On vous remarque vite dans une pièce. L'avantage, c'est une confiance contagieuse quand vous êtes ensemble. Le risque, c'est de vouloir occuper le même espace au même moment. Ça reste vivant quand l'un des deux laisse la lumière à l'autre, à tour de rôle."
+ },
+
+ "soleil_terre-terre": {
+  "texte": "Au fond, {a} et {b} veulent du solide : quelque chose qui dure, qu'on peut toucher, sur quoi on peut compter. Les grandes promesses en l'air ne vous intéressent pas vraiment. L'avantage, c'est une confiance qui se bâtit vite entre vous. Le risque, c'est de rester dans le connu et de ne jamais oser un vrai changement. Ça tient bien quand l'un des deux propose, de temps en temps, quelque chose de nouveau."
+ },
+ "lune_terre-terre": {
+  "texte": "Côté émotions, {a} et {b} ont besoin de calme et de repères stables pour se sentir bien. Le changement soudain dérange les deux pareillement. L'avantage, c'est un climat posé, sans grands drames. Le risque, c'est de garder les soucis pour soi trop longtemps, jusqu'à ce que ça pèse. Ça tient bien quand l'un des deux ose parler avant que ça s'accumule."
+ },
+ "venus_terre-terre": {
+  "texte": "En amour, {a} et {b} montrent leur affection par des gestes concrets plus que par des mots : un service rendu, une présence fiable, du temps donné. L'avantage, c'est un amour qui se sent, qui ne s'envole pas en paroles. Le risque, c'est d'oublier de dire ce qu'on ressent, en pensant que les gestes suffisent. Ça reste vivant quand l'un des deux prend le temps de le dire aussi, pas juste de le faire."
+ },
+ "mars_terre-terre": {
+  "texte": "Quand vient le temps d'agir, {a} et {b} avancent pas à pas, sans se presser, en s'assurant que ça tient. Personne ne pousse l'autre à foncer trop vite. L'avantage, c'est un rythme qui convient aux deux, sans accrochage sur la vitesse. Le risque, c'est de rester si prudents que rien ne bouge vraiment. Ça marche quand l'un des deux ose lancer les choses un peu plus tôt que prévu."
+ },
+ "asc_terre-terre": {
+  "texte": "{a} et {b} donnent tous les deux une image posée, fiable, sur qui on peut compter. Les gens vous font confiance rapidement. L'avantage, c'est une crédibilité qui s'installe sans effort. Le risque, c'est de sembler un peu prévisibles, sans surprise. Ça reste intéressant quand l'un des deux ose, de temps en temps, sortir du cadre habituel."
+ },
+
+ "soleil_feu-feu": {
+  "texte": "Au fond, {a} et {b} fonctionnent au même rythme : les deux décident vite et passent à l'action sans attendre. Ils se comprennent d'instinct là-dessus. L'avantage, c'est que personne ne freine l'autre. Le piège, c'est que quand les deux foncent en même temps, personne ne ralentit pour regarder où ça s'en va. Ça tient bien quand l'un des deux accepte, de temps en temps, de ralentir un peu pour deux."
+ },
+ "asc_eau-eau": {
+  "texte": "{a} et {b} donnent tous les deux une impression sensible, à fleur de peau. Vous captez vite l'ambiance d'un lieu, l'humeur des gens autour. Entre vous, ça crée une compréhension sans mots : souvent, vous ressentez la même chose en même temps. Le revers, c'est que deux personnes sensibles peuvent absorber le stress autour et se le renvoyer. Ça reste doux quand l'un des deux garde les pieds sur terre pendant que l'autre ressent."
+ },
+
+ "soleil_air-feu": {
+  "texte": "Au fond, {feu} avance par élan et décide vite. {air} pense les choses, cherche les mots pour les nommer. Ensemble, ça donne un bel équilibre : {air} donne du sens à ce que {feu} lance, et {feu} met en mouvement ce que {air} imagine. Le petit risque, c'est de trop réfléchir à deux et de perdre l'élan du départ. Ça reste vivant quand {air} laisse {feu} foncer sans tout expliquer d'avance."
+ },
+ "lune_air-feu": {
+  "texte": "Côté émotions, {feu} réagit vite et fort, sur le coup. {air} a besoin de mettre des mots sur ce qui se passe pour que ça se calme. Ensemble, ça marche bien : {air} nomme ce que {feu} vit, et ça aide la tension à retomber. Le petit risque, c'est de vouloir analyser une émotion avant qu'elle soit passée. Ça reste fluide quand {air} laisse d'abord {feu} se calmer, avant d'en parler."
+ },
+ "mars_air-feu": {
+  "texte": "Quand vient le temps d'agir, {air} propose des idées, des façons de faire, et {feu} passe à l'action tout de suite. Une idée de {air} devient vite un geste chez {feu}. Ça avance sans que personne ait à pousser l'autre. Le petit risque, c'est de lancer trop de projets à la fois, sans en finir un seul. Ça marche encore mieux quand vous choisissez, ensemble, une seule chose à mener jusqu'au bout."
+ },
+ "asc_air-feu": {
+  "texte": "{feu} donne une image énergique et directe, {air} une image vive et curieuse. Ensemble, vous formez un duo qui attire l'attention et qui met les gens à l'aise vite. L'un lance la conversation, l'autre la fait rebondir. Le petit risque, c'est de parler beaucoup et d'écouter un peu moins. Ça reste attachant quand vous laissez, chacun votre tour, une vraie place à l'autre."
+ },
+ "venus_air-feu": {
+  "texte": "En amour, {feu} fonce vers ce qui lui plaît, et {air} met des mots dessus, joue avec les idées. Les deux s'entraînent : une envie de {feu} devient vite une discussion, un projet, une sortie. C'est vivant, ça bouge, il y a de la complicité et du rire. Le petit risque, c'est de rester dans le mouvement et les mots sans jamais s'arrêter sur ce qu'on ressent vraiment. Ça reste beau longtemps quand, de temps en temps, vous posez tout pour juste être ensemble."
+ },
+
+ "soleil_eau-terre": {
+  "texte": "Au fond, {eau} ressent tout en profondeur, et {terre} offre un sol stable où ça peut se poser. Ensemble, ça fait une belle combinaison : la sensibilité de {eau} trouve, chez {terre}, un endroit sûr pour exister. Le petit risque, c'est de s'installer dans une routine tranquille et d'oublier de bouger. Ça reste vivant quand {terre} laisse un peu de place à l'imprévu de {eau}."
+ },
+ "lune_eau-terre": {
+  "texte": "Côté émotions, {eau} ressent tout intensément, et {terre} reste calme, un point d'ancrage fiable. Quand {eau} déborde, {terre} aide à retrouver un sol stable. Ensemble, ça apaise plus que ça n'inquiète. Le petit risque, c'est que {terre} mette de côté ses propres émotions pour rester le pilier. Ça reste sain quand {eau} prend soin de {terre}, à son tour."
+ },
+ "venus_eau-terre": {
+  "texte": "En amour, {eau} a besoin de sentir une vraie émotion pour s'ouvrir, et {terre} le prouve par des gestes constants, du concret. Ensemble, ça fait un amour qui tient : {terre} rassure {eau}, et {eau} donne de la profondeur à ce que {terre} construit. Le petit risque, c'est de s'installer dans le confort et d'oublier la surprise. Ça reste beau longtemps quand vous prenez le temps de vous le dire, pas juste de le vivre."
+ },
+ "mars_eau-terre": {
+  "texte": "Quand vient le temps d'agir, {eau} avance au ressenti, doucement, et {terre} avance étape par étape, solidement. Les deux rythmes se marient bien : rien ne se fait dans la précipitation. Le petit risque, c'est de prendre tellement de précautions que rien ne bouge. Ça marche quand l'un des deux, de temps en temps, ose lancer les choses un peu plus vite."
+ },
+ "asc_eau-terre": {
+  "texte": "{eau} donne une image sensible et douce, {terre} une image posée et fiable. Ensemble, vous inspirez confiance facilement : les gens se sentent en sécurité avec vous deux. Le petit risque, c'est de sembler un peu réservés, pas assez expressifs au premier abord. Ça reste chaleureux une fois qu'on vous connaît un peu mieux."
+ },
+
+ "soleil_air-eau": {
+  "texte": "Au fond, {air} comprend le monde en le pensant, en mettant des mots dessus. {eau} le comprend en le ressentant, souvent sans mots du tout. Ce n'est pas la même langue, et ça peut créer des malentendus : {air} peut sembler froid, {eau} peut sembler difficile à suivre. Ce n'est pas un défaut, juste deux façons différentes de saisir les choses. {air} apporte la clarté, {eau} apporte la profondeur. Ça marche quand {air} accepte de ressentir un peu plus, et que {eau} accepte de mettre des mots, même imparfaits."
+ },
+ "lune_air-eau": {
+  "texte": "Côté émotions, {eau} ressent tout en profondeur, sans toujours pouvoir l'expliquer. {air} a besoin de comprendre, de nommer ce qui se passe pour se sentir bien. Quand {eau} n'arrive pas à mettre de mots sur ce qui se passe en dedans, {air} peut se sentir perdu. Ce n'est pas un manque de communication, juste deux rythmes différents pour vivre une émotion. Ça s'apaise quand {air} laisse à {eau} le temps de ressentir avant de demander des explications."
+ },
+ "venus_air-eau": {
+  "texte": "En amour, {air} a besoin de parler, d'entendre que ça va, de nommer les choses. {eau} a besoin de sentir l'émotion, au-delà des mots. Une déclaration de {air} peut sembler vide à {eau} si elle ne vient pas avec du ressenti ; le silence de {eau} peut sembler froid à {air}. Ce n'est pas un manque d'amour, juste deux langues différentes du cœur. Ça se réchauffe quand {air} ajoute du geste à ses mots, et que {eau} ose dire ce qu'il ressent, même sans les mots parfaits."
+ },
+ "mars_air-eau": {
+  "texte": "Quand vient le temps d'agir, {air} veut d'abord en parler, peser les options, comprendre le plan. {eau} préfère suivre son ressenti, sans trop expliquer pourquoi. {air} peut trouver ça flou, {eau} peut trouver {air} trop dans sa tête. Ce n'est pas un désaccord de fond, juste deux façons différentes de savoir quand agir. Ça marche quand {air} fait confiance à l'instinct de {eau}, et que {eau} accepte d'expliquer un peu son plan."
+ },
+ "asc_air-eau": {
+  "texte": "{air} donne une image vive, curieuse, à l'aise pour parler à tout le monde. {eau} donne une image plus sensible, plus réservée au premier contact. Les gens peuvent lire {air} comme superficiel et {eau} comme distant, à tort dans les deux cas. Ce n'est pas un désaccord, juste deux façons différentes de se montrer au monde. Ça se complète bien quand {air} ralentit un peu pour laisser {eau} s'ouvrir à son rythme."
+ },
+
+ "soleil_air-terre": {
+  "texte": "Au fond, {air} vit dans les idées : discuter, imaginer, envisager plein de possibilités. {terre} vit dans le concret : ce qu'on touche, ce qui est prouvé, ce qui dure. Une idée de {air} peut sembler du vent pour {terre} tant qu'elle n'a pas pris forme. La prudence de {terre} peut sembler lente pour {air}, impatient d'avancer. Ce n'est pas un désaccord de fond, juste deux chemins vers le même but. Ça marche quand {air} pose ses idées sur du concret, et que {terre} laisse une place à l'imprévu."
+ },
+ "lune_air-terre": {
+  "texte": "Côté émotions, {air} a besoin d'en parler pour comprendre ce qui se passe en dedans. {terre} a besoin de calme et de routine pour se sentir bien, sans nécessairement en discuter. Quand {air} veut tout mettre en mots, {terre} peut se sentir bousculé dans son besoin de stabilité. Ce n'est pas un manque d'écoute, juste deux façons différentes de gérer une émotion. Ça s'apaise quand {air} laisse à {terre} le temps de se poser avant de parler."
+ },
+ "venus_air-terre": {
+  "texte": "En amour, {air} aime la nouveauté, changer les habitudes, garder de la variété. {terre} aime la routine, ce qui est établi, ce qui dure sans surprise. {air} peut trouver {terre} routinier, et {terre} peut trouver {air} instable. Ce n'est pas un désaccord de fond : l'amour se vit en mouvement ET en stabilité. Ça marche quand {terre} accepte un peu de nouveauté, et que {air} apprécie ce qui reste pareil, jour après jour."
+ },
+ "mars_air-terre": {
+  "texte": "Quand vient le temps d'agir, {air} veut avancer vite, tester une idée pour voir ce que ça donne. {terre} veut d'abord vérifier que le terrain tient, avancer une étape à la fois. {air} peut trouver {terre} lent, et {terre} peut trouver {air} précipité. Ce n'est pas un désaccord, juste deux vitesses différentes pour arriver au même endroit. Ça marche quand {air} accepte de ralentir un peu, et que {terre} accepte de foncer, de temps en temps, sans tout vérifier d'avance."
+ },
+ "asc_air-terre": {
+  "texte": "{air} donne une image vive, pleine de sujets de conversation. {terre} donne une image posée, solide, qui inspire confiance sans en faire trop. Les gens peuvent trouver {air} un peu dispersé et {terre} un peu réservé. Ce n'est pas un désaccord de fond, juste deux façons différentes de se présenter. Ça se complète bien quand {air} laisse la place au calme de {terre}, et que {terre} se laisse porter par la curiosité de {air}."
+ },
+
+ "soleil_eau-feu": {
+  "texte": "Au fond, {feu} avance vite, sur l'impulsion du moment. {eau} a besoin de ressentir les choses en profondeur avant de bouger. L'élan de {feu} peut brusquer {eau}, et la lenteur de {eau} peut impatienter {feu}. Ce n'est pas un défaut, juste deux rythmes différents pour vivre les choses. {feu} apporte l'énergie, {eau} apporte la profondeur. Ça marche quand {feu} ralentit un peu pour {eau}, et que {eau} ose se lancer sans tout ressentir d'avance."
+ },
+ "lune_eau-feu": {
+  "texte": "Côté émotions, {feu} réagit tout de suite, fort, et ça retombe presque aussi vite. {eau} ressent tout en profondeur, et ça reste longtemps. Une remarque un peu vive de {feu} peut marquer {eau} bien plus longtemps que {feu} ne l'imagine. Ce n'est pas de la méchanceté, juste deux façons différentes de vivre une émotion. Ça s'apaise quand {feu} fait attention à ses mots sur le coup, et que {eau} dit ce qui reste, une fois calmé."
+ },
+ "venus_eau-feu": {
+  "texte": "En amour, {feu} fonce vers ce qui lui plaît, sans détour. {eau} a besoin de sentir une vraie connexion avant de s'ouvrir. L'élan de {feu} peut sembler trop rapide pour {eau}, et la réserve de {eau} peut sembler froide pour {feu}. Ce n'est pas un manque d'attirance, juste deux vitesses différentes pour tomber en confiance. Ça se réchauffe quand {feu} ralentit son approche, et que {eau} ose se laisser aller un peu plus tôt."
+ },
+ "mars_eau-feu": {
+  "texte": "Quand vient le temps d'agir, {feu} veut foncer tout de suite, sans trop réfléchir. {eau} préfère sentir si le moment est le bon avant de bouger. {feu} peut trouver {eau} trop hésitant, et {eau} peut trouver {feu} trop brusque. Ce n'est pas un manque de courage, juste deux façons différentes d'être prêt à agir. Ça marche quand {feu} laisse un peu de temps à {eau}, et que {eau} fait confiance à l'élan de {feu}, de temps en temps."
+ },
+ "asc_eau-feu": {
+  "texte": "{feu} donne une image énergique, qui prend sa place sans hésiter. {eau} donne une image douce, sensible, plus discrète au premier contact. Les gens peuvent trouver {feu} intense et {eau} difficile à cerner. Ce n'est pas un désaccord de fond, juste deux façons différentes de se montrer. Ça se complète bien quand {feu} baisse le ton pour laisser {eau} s'exprimer, à son rythme."
+ },
+
+ "soleil_feu-terre": {
+  "texte": "Au fond, {feu} veut avancer, tenter, décider vite. {terre} veut construire du solide, qui dure, sans se presser. L'élan de {feu} peut sembler imprudent pour {terre}, et la prudence de {terre} peut sembler lente pour {feu}. Ce n'est pas un défaut, juste deux façons différentes d'avancer dans la vie. {feu} apporte l'élan, {terre} apporte la solidité. Ça marche quand {feu} accepte de ralentir un peu, et que {terre} ose foncer, de temps en temps, sans tout vérifier d'avance."
+ },
+ "lune_feu-terre": {
+  "texte": "Côté émotions, {terre} a besoin de calme et de stabilité pour se sentir bien. {feu} réagit vite et fort, sur le coup. Quand il y a une contrariété, {feu} la sort tout de suite, pendant que {terre} aurait besoin que ça reste posé. Ça peut faire des étincelles : trop d'un côté, pas assez de l'autre. Ce n'est pas de l'incompatibilité, juste deux façons de vivre les émotions. Ça s'apaise quand {feu} baisse le ton d'un cran, et que {terre} accepte qu'un orage passe souvent vite et sans danger."
+ },
+ "venus_feu-terre": {
+  "texte": "En amour, {feu} va droit vers ce qui lui plaît, sans attendre. {terre} préfère prendre son temps, construire la confiance étape par étape. L'élan de {feu} peut brusquer {terre}, et la lenteur de {terre} peut impatienter {feu}. Ce n'est pas un manque d'envie, juste deux rythmes différents pour tomber en confiance. Ça marche quand {feu} ralentit son approche, et que {terre} ose se laisser convaincre un peu plus vite."
+ },
+ "mars_feu-terre": {
+  "texte": "Quand vient le temps d'agir, {feu} veut avancer tout de suite, foncer, régler les choses vite. {terre} préfère y aller étape par étape, solidement, sans se presser. {feu} pousse pendant que {terre} veut d'abord s'assurer que le terrain tient. Ça peut coincer : trop pressé d'un côté, trop lent de l'autre. Mais mis ensemble, l'élan de {feu} et le solide de {terre} font avancer loin. Ça marche quand {feu} accepte quelques étapes, et que {terre} se permet de foncer une fois de temps en temps."
+ },
+ "asc_feu-terre": {
+  "texte": "{feu} donne une image énergique, directe, qui se remarque vite. {terre} donne une image posée, fiable, qui rassure sans éclat. Les gens peuvent trouver {feu} un peu trop intense et {terre} un peu trop réservé. Ce n'est pas un désaccord de fond, juste deux façons différentes de se présenter. Ça se complète bien quand {feu} laisse de la place au calme de {terre}, et que {terre} se laisse porter par l'énergie de {feu}."
+ }
+}

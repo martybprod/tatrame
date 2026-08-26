@@ -1,0 +1,193 @@
+{
+  "_note": "Fragment du domaine quotidien (maison VI — habitudes, santé, sommeil, routine) pour Le Fil du jour. Distillé de cartes_de_concepts.md §1 (Atomic Habits, James Clear), §23 (Why We Sleep, Matthew Walker), §24 (Why Zebras Don't Get Ulcers, Robert Sapolsky). CONCEPTS repris, JAMAIS la prose des livres. Domaine à phase : le cycle lunaire suit le processus de construction d'une habitude (démarrer, ancrer, résister, suivre, tester, consolider, reprendre, récupérer), pas trois intensités de la même scène. À fusionner dans data/corpus/fil.json sous les clés quotidien_*.",
+  "_charte": "data/corpus/CHARTE.md",
+
+  "quotidien": {
+    "source_livre": "d'après les concepts de James Clear, Matthew Walker et Robert Sapolsky",
+    "themes": ["habitude", "routine", "corps"],
+    "miroir": "Ta journée tourne sur des gestes répétés bien plus que sur des décisions. Le lever, les repas, l'écran du soir dessinent ta forme plus sûrement que les grandes résolutions.",
+    "geste": "Choisis un seul geste du quotidien à observer aujourd'hui, sans le changer. Remarque-le au moment où il arrive. Voir, c'est déjà commencer à pouvoir choisir."
+  },
+  "quotidien_fluide": {
+    "source_livre": "d'après les concepts de James Clear",
+    "themes": ["habitude", "facilite"],
+    "miroir": "Aujourd'hui, ce que tu fais tous les jours coule sans forcer. Le geste habituel se déclenche presque seul, porté par ce qui l'entoure plus que par ta volonté.",
+    "geste": "Profite de cette facilité pour ancrer un geste que tu veux garder. Fais-le au même endroit, à la même heure. Ce qui se répète sans effort aujourd'hui tient souvent demain."
+  },
+  "quotidien_tension": {
+    "source_livre": "d'après les concepts de James Clear et Robert Sapolsky",
+    "themes": ["habitude", "resistance"],
+    "miroir": "Ta routine résiste aujourd'hui. Le lit tarde à convaincre, le repas prévu perd son attrait, l'exercice ressemble à une corvée. Le système grince, ça ne veut pas dire que tu relâches.",
+    "geste": "Réduis la barre aujourd'hui, pas l'exigence. Fais la version courte du geste plutôt que rien, deux minutes de marche, un fruit au lieu du repas complet. Un pas moche vaut mieux qu'un vide."
+  },
+
+  "quotidien_phase_nouvelle": {
+    "source_livre": "d'après les concepts de James Clear — l'identité et les systèmes",
+    "themes": ["habitude", "identite", "depart"],
+    "miroir": "Un départ se présente aujourd'hui, pas dans les grandes lignes mais dans un geste minuscule que tu peux répéter. Ce petit geste vote pour la personne que tu deviens, un jour à la fois.",
+    "geste": "Choisis un geste si petit qu'il tienne en deux minutes, et fais-le une fois aujourd'hui. Ne vise pas le résultat, vise juste de pouvoir le refaire demain."
+  },
+  "quotidien_phase_croissante": {
+    "source_livre": "d'après les concepts de James Clear — l'environnement",
+    "themes": ["habitude", "environnement", "declencheur"],
+    "miroir": "Ce que tu répètes ces jours-ci prend appui sur ce qui t'entoure plus que sur ta volonté. Un objet à portée, un lieu associé à un seul usage, une heure fixe font naître le geste sans discuter.",
+    "geste": "Aménage aujourd'hui un détail de ton espace pour rendre le bon geste plus visible ou plus proche. Pose les chaussures devant la porte, le livre sur l'oreiller. Le décor fait la moitié du travail."
+  },
+  "quotidien_phase_premier_quartier": {
+    "source_livre": "d'après les concepts de James Clear — la friction et le doute",
+    "themes": ["habitude", "resistance", "doute"],
+    "miroir": "La routine que tu tiens depuis peu rencontre son premier vrai obstacle. L'envie faiblit, une excuse valable se présente, et tu te demandes si ça valait la peine. C'est le moment attendu, pas un signe d'échec.",
+    "geste": "Réduis l'effort du jour à sa plus petite version possible, mais fais-le quand même. Une pompe, une page, une minute. Le format compte moins que le fait de ne pas t'arrêter."
+  },
+  "quotidien_phase_gibbeuse": {
+    "source_livre": "d'après les concepts de James Clear — le suivi du progrès",
+    "themes": ["habitude", "progres", "satisfaction"],
+    "miroir": "Ta routine commence à prendre forme, et l'attention retombe justement là, faute de nouveauté. Ce qui se voit se tient mieux que ce qui reste invisible dans ta tête.",
+    "geste": "Note ce soir, sur un papier ou une appli, le geste que tu as tenu aujourd'hui. Un trait, une case cochée suffisent. Rendre visible ce que tu fais déjà donne envie de continuer la série."
+  },
+  "quotidien_phase_pleine": {
+    "source_livre": "d'après les concepts de Robert Sapolsky — le corps sous tension",
+    "themes": ["corps", "fatigue", "tension"],
+    "miroir": "L'engagement que tu tiens ces jours-ci se teste maintenant, au moment où le corps est le plus sollicité. La fatigue ou la tension ne disent pas que tu craques, elles disent que la charge est réelle.",
+    "geste": "Donne au corps une vraie sortie aujourd'hui, une marche, un verre d'eau, quelques minutes dehors. Une petite décharge suffit à faire retomber la pression accumulée par la journée."
+  },
+  "quotidien_phase_diffusante": {
+    "source_livre": "d'après les concepts de Matthew Walker — la consolidation nocturne",
+    "themes": ["sommeil", "memoire", "habitude"],
+    "miroir": "Ce que tu répètes ces derniers jours se fixe surtout pendant que tu dors, pas pendant que tu t'entraînes ou que tu révises. La nuit qui vient compte autant que l'effort du jour.",
+    "geste": "Couche-toi ce soir sans repousser l'heure pour finir une chose de plus. Le geste d'aujourd'hui a besoin de cette nuit pour vraiment s'installer."
+  },
+  "quotidien_phase_dernier_quartier": {
+    "source_livre": "d'après les concepts de James Clear — la reprise après un manque",
+    "themes": ["habitude", "reprise", "indulgence"],
+    "miroir": "Un jour est tombé dans ta routine, sauté, oublié, remis à demain. Un jour manqué ne défait rien à lui seul. C'est le deuxième jour d'affilée qui commence une nouvelle habitude, celle de laisser tomber.",
+    "geste": "Reprends aujourd'hui, même en version réduite, le geste que tu as laissé filer. L'important n'est pas de rattraper le jour perdu, c'est de ne pas en perdre un deuxième."
+  },
+  "quotidien_phase_balsamique": {
+    "source_livre": "d'après les concepts de Matthew Walker — la dette de sommeil",
+    "themes": ["sommeil", "repos", "recuperation"],
+    "miroir": "Le cycle se termine et le corps réclame sa part, plus de sommeil, moins d'agenda. Une dette de repos ne se solde pas d'un coup, elle se rembourse lentement, une nuit régulière après l'autre.",
+    "geste": "Couche-toi et lève-toi ce soir et demain à des heures aussi proches que possible l'une de l'autre. La régularité répare mieux qu'une grasse matinée isolée."
+  },
+
+  "quotidien_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de James Clear — l'élan de départ",
+    "themes": ["energie", "habitude", "depart"],
+    "miroir": "Tu as de l'énergie en trop aujourd'hui, et l'occasion de la mettre dans un geste que tu remets depuis un moment. L'élan du jour ouvre une porte qui se referme vite si tu attends d'être prêt.",
+    "geste": "Lance aujourd'hui, tout de suite, une version brute du geste que tu repousses. Dix minutes, sans chercher la bonne méthode. L'énergie du jour porte le début, pas la suite."
+  },
+  "quotidien_transit_mars_sextile-trigone": {
+    "source_livre": "d'après les concepts de James Clear — le terrain favorable",
+    "themes": ["energie", "exercice", "facilite"],
+    "miroir": "Le corps répond bien aujourd'hui, et l'effort physique coûte moins cher que d'habitude. C'est le bon jour pour bouger, pas pour forcer plus que d'habitude.",
+    "geste": "Profite de cette énergie facile pour une séance de mouvement que tu remettais, marche, sport, ménage énergique. Vise le plaisir du geste plus que la performance."
+  },
+  "quotidien_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Robert Sapolsky — l'alarme sans issue",
+    "themes": ["energie", "tension", "conflit"],
+    "miroir": "Une agitation intérieure cherche une sortie aujourd'hui, et la routine tranquille peine à la contenir. Le corps se prépare à agir alors que rien de précis à faire ne se présente.",
+    "geste": "Donne à cette énergie une dépense physique franche aujourd'hui, marche rapide, ménage, escaliers. Fermer la boucle par le corps évite qu'elle se retourne contre ton sommeil ce soir."
+  },
+  "quotidien_transit_lune_conjonction": {
+    "source_livre": "d'après les concepts de Matthew Walker — le rythme intérieur",
+    "themes": ["sensibilite", "sommeil", "emotion"],
+    "miroir": "Tu es plus sensible que d'habitude à ton propre rythme aujourd'hui, à ce qui te fatigue ou te repose vraiment. C'est une bonne occasion d'écouter ce signal plutôt que l'horaire prévu.",
+    "geste": "Accorde-toi le repos que ton corps demande aujourd'hui, même dix minutes de plus. Ignorer ce signal maintenant coûte plus cher demain que d'y répondre tout de suite."
+  },
+  "quotidien_transit_lune_sextile-trigone": {
+    "source_livre": "d'après les concepts de Matthew Walker — les signaux du corps",
+    "themes": ["sensibilite", "sommeil", "apaisement"],
+    "miroir": "Ton corps parle clairement aujourd'hui, la fatigue arrive à l'heure, la faim aussi. Suivre ces signaux demande moins d'effort que d'habitude.",
+    "geste": "Écoute un signal du corps aujourd'hui sans le repousser, va te coucher dès que la fatigue arrive, mange quand la faim se présente. Le corps sait déjà, il suffit de le laisser parler en premier."
+  },
+  "quotidien_transit_lune_carre-opposition": {
+    "source_livre": "d'après les concepts de Matthew Walker — le sommeil et l'humeur",
+    "themes": ["emotion", "sommeil", "irritabilite"],
+    "miroir": "Tes émotions partent plus vite dans les extrêmes aujourd'hui, et ça n'a peut-être rien à voir avec ce qui se passe autour de toi. Un corps qui manque de repos réagit plus fort au négatif comme au positif.",
+    "geste": "Avant de trancher une décision ou une dispute aujourd'hui, vérifie combien tu as dormi cette nuit. Si la nuit était courte, remets la décision à demain matin."
+  },
+  "quotidien_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de James Clear — la discipline qui tient",
+    "themes": ["discipline", "habitude", "structure"],
+    "miroir": "La structure que tu t'es donnée tient bien aujourd'hui, sans qu'il faille serrer les dents. Une contrainte choisie, une heure fixe, un cadre clair, ça porte plus que ça ne pèse.",
+    "geste": "Renforce aujourd'hui un cadre qui te sert déjà, une heure de coucher, un créneau réservé. Ajoute une règle simple pendant que la discipline coûte peu."
+  },
+  "quotidien_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de James Clear — la rigidité identitaire",
+    "themes": ["discipline", "rigidite", "exigence"],
+    "miroir": "Tu te juges dur aujourd'hui sur un geste manqué, comme si un jour ou deux ratés annulaient tout le reste. Une routine trop rigide finit par se briser plutôt que par plier.",
+    "geste": "Assouplis la règle d'un cran aujourd'hui plutôt que de l'abandonner. Une version plus courte, plus simple, reste une version qui tient. Le cadre sert la routine, pas l'inverse."
+  },
+  "quotidien_transit_venus_conjonction": {
+    "source_livre": "d'après les concepts de James Clear — le geste qui plaît",
+    "themes": ["plaisir", "soin", "habitude"],
+    "miroir": "Prendre soin de toi aujourd'hui n'a pas besoin d'être une obligation, ça peut être un plaisir simple. Un geste répété tient mieux quand il fait du bien tout de suite, pas seulement plus tard.",
+    "geste": "Ajoute un petit plaisir à un geste de routine aujourd'hui, une musique aimée pendant le ménage, une tisane après le sport. Rendre le geste agréable maintenant l'aide à revenir demain."
+  },
+  "quotidien_transit_venus_sextile-trigone": {
+    "source_livre": "d'après les concepts de Matthew Walker — le rituel du soir",
+    "themes": ["plaisir", "sommeil", "douceur"],
+    "miroir": "La douceur du soir t'est accessible facilement aujourd'hui, un bain, une lecture, une lumière tamisée. Ce genre de transition prépare le corps à basculer vers le sommeil bien mieux qu'un passage brutal.",
+    "geste": "Installe ce soir un moment calme avant le lit, vingt minutes sans écran, une activité douce. Ce petit sas entre la journée et la nuit vaut plus qu'il n'y paraît."
+  },
+  "quotidien_transit_venus_carre-opposition": {
+    "source_livre": "d'après les concepts de James Clear — le plaisir immédiat",
+    "themes": ["plaisir", "tentation", "indulgence"],
+    "miroir": "Le plaisir facile tire plus fort que d'habitude aujourd'hui, un écran, un grignotage, un coucher repoussé. Le geste agréable tout de suite a toujours un avantage sur celui qui paie plus tard.",
+    "geste": "Choisis un seul renoncement ce soir, pas dix, sur ce qui compte le plus pour ta nuit. Repousser l'écran d'une heure vaut mieux qu'une liste de résolutions qui ne tiendra pas."
+  },
+  "quotidien_transit_mercure_sextile-trigone": {
+    "source_livre": "d'après les concepts de James Clear — la clarté du geste",
+    "themes": ["clarte", "planification", "habitude"],
+    "miroir": "Réfléchir à ta routine aujourd'hui donne des idées nettes plutôt qu'un casse-tête. C'est le bon moment pour préciser quand et où un geste doit avoir lieu, pas seulement se dire qu'il faudrait le faire.",
+    "geste": "Écris aujourd'hui, en une phrase, le moment et le lieu exacts d'un geste que tu veux garder, après le café, dans la cuisine, par exemple. Une intention précise tient mieux qu'une bonne intention floue."
+  },
+  "quotidien_transit_mercure_carre-opposition": {
+    "source_livre": "d'après les concepts de Matthew Walker — les pensées qui tournent",
+    "themes": ["mental", "sommeil", "rumination"],
+    "miroir": "Ta tête tourne plus que d'habitude ce soir, une liste, une inquiétude, une phrase à reformuler dans le noir. Rester couché à ressasser apprend au corps que le lit sert à veiller, pas à dormir.",
+    "geste": "Si le sommeil ne vient pas d'ici une vingtaine de minutes, lève-toi et note ce qui tourne sur un papier près du lit. Recouche-toi seulement quand la fatigue revient."
+  },
+  "quotidien_transit_jupiter_sextile-trigone": {
+    "source_livre": "d'après les concepts de James Clear — l'élan qui s'étend",
+    "themes": ["expansion", "habitude", "confiance"],
+    "miroir": "Une routine que tu tiens depuis un moment demande à s'agrandir aujourd'hui, un peu plus de temps, un cran de plus. L'élan est là, et il est tentant d'en demander beaucoup d'un coup.",
+    "geste": "Augmente d'un seul cran, pas de dix, un geste qui tient déjà. Cinq minutes de plus, une répétition de plus. L'expansion qui dure se fait par petits paliers."
+  },
+  "quotidien_transit_jupiter_carre-opposition": {
+    "source_livre": "d'après les concepts de Robert Sapolsky — l'excès qui coûte",
+    "themes": ["exces", "corps", "alimentation"],
+    "miroir": "L'envie d'en faire ou d'en manger plus que d'habitude se présente aujourd'hui, et elle se déguise en bonne humeur. Trop d'un coup fatigue le corps autant qu'un manque, juste autrement.",
+    "geste": "Choisis aujourd'hui une seule chose à faire en plus, pas trois. Le corps digère mal l'excès, même quand l'excès part d'une bonne intention."
+  },
+  "quotidien_transit_soleil_conjonction": {
+    "source_livre": "d'après les concepts de Matthew Walker — la lumière du matin",
+    "themes": ["rythme", "energie", "visibilite"],
+    "miroir": "Ta vitalité se voit aujourd'hui, et ton horloge intérieure en profite. La lumière du matin est le signal le plus fiable pour caler ton rythme sur la journée qui vient.",
+    "geste": "Sors dehors dans la première heure après le réveil aujourd'hui, même cinq minutes, même sans soleil direct. Ce seul geste recale l'horloge mieux qu'un réveil plus tôt."
+  },
+  "quotidien_transit_soleil_carre-opposition": {
+    "source_livre": "d'après les concepts de James Clear — l'identité mise à l'épreuve",
+    "themes": ["identite", "exigence", "affirmation"],
+    "miroir": "Une tension se joue aujourd'hui entre l'image que tu veux montrer et le rythme que ton corps réclame. Vouloir prouver quelque chose pousse à sacrifier le repos, et le prix se paie plus tard.",
+    "geste": "Accorde-toi aujourd'hui la pause que tu repousserais pour bien paraître. Personne ne voit le sommeil manqué, mais le corps, lui, tient les comptes."
+  },
+  "quotidien_transit_uranus_carre-opposition": {
+    "source_livre": "d'après les concepts de James Clear — l'environnement bousculé",
+    "themes": ["rupture", "habitude", "imprevu"],
+    "miroir": "Un imprévu vient de casser le cadre qui portait ta routine, un horaire changé, un lieu différent, une habitude privée de son décor habituel. Le geste perd ses appuis, pas sa valeur.",
+    "geste": "Fais aujourd'hui une version minimale du geste, adaptée au nouveau contexte, plutôt que de l'annuler entièrement. Une habitude survit mieux à un changement de décor qu'à un jour blanc."
+  },
+  "quotidien_transit_neptune_carre-opposition": {
+    "source_livre": "d'après les concepts de Matthew Walker — le flou du soir",
+    "themes": ["fatigue", "flou", "sommeil"],
+    "miroir": "Les frontières de ta journée se brouillent aujourd'hui, l'heure du repas, celle du coucher, celle de l'écran glissent un peu toutes ensemble. Ce flou n'est pas de la paresse, c'est un repère qui manque.",
+    "geste": "Fixe une seule limite claire ce soir, une heure d'écran ou de repas, et tiens-la. Un seul repère net suffit à redonner un contour à la soirée."
+  },
+  "quotidien_transit_pluton_carre-opposition": {
+    "source_livre": "d'après les concepts de Robert Sapolsky — le contrôle et l'impuissance",
+    "themes": ["controle", "compulsion", "corps"],
+    "miroir": "Un besoin de tout contrôler dans ta routine se fait sentir aujourd'hui, comme si lâcher un détail menaçait tout l'édifice. C'est souvent le signe d'un contrôle qui manque ailleurs, déplacé sur ce qui se laisse encore régler.",
+    "geste": "Repère aujourd'hui un détail de ta routine que tu peux laisser filer sans dommage réel. Desserrer un point ne fait pas s'effondrer les autres."
+  }
+}

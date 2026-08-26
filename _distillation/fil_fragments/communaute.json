@@ -1,0 +1,98 @@
+{
+  "_note": "Fragment fil.json — domaine COMMUNAUTE (maison XI : amitiés, appartenance, coopération). Sources : cartes_de_concepts.md §20 The Gifts of Imperfection (Brown), §12 Daring Greatly (Brown), §4 Les 7 Habitudes (Covey). Concepts repris (appartenance vs conformisme, compte de confiance, synergie, mentalité d'abondance, limites et compassion), jamais la prose des livres. Ce domaine n'a que 4 planètes pertinentes (venus, saturne, jupiter, mars) dans son espace de clés — le plafond mathématique du namespace §3 est donc 1 générique + 2 tonalités + 4×3 transits = 15 entrées, toutes écrites ici et toutes meaning-gated (aucune ajoutée pour faire du nombre). À fusionner dans data/corpus/fil.json.",
+
+  "communaute": {
+    "source_livre": "d'après les concepts de Brené Brown — l'appartenance",
+    "themes": ["appartenance", "amitie"],
+    "miroir": "Dans un groupe, tu ajustes parfois ce que tu montres pour être sûr qu'on te garde. C'est humain, tout le monde apprend ça tôt. Mais l'appartenance qui tient vraiment commence avant les autres, dans ce que tu acceptes déjà de toi-même.",
+    "geste": "Dis aujourd'hui, dans un groupe, une phrase vraie que tu aurais normalement adoucie pour plaire. Une seule suffit pour sentir la différence."
+  },
+  "communaute_fluide": {
+    "source_livre": "d'après les concepts de Stephen Covey — le compte de confiance",
+    "themes": ["lien", "confiance"],
+    "miroir": "En ce moment, rendre service ou accepter de l'aide te coûte moins que d'habitude dans tes liens. C'est le moment où la confiance se dépose sans effort, presque sans que tu t'en rendes compte.",
+    "geste": "Profite de cette facilité pour déposer une vraie attention chez quelqu'un du groupe : un message, un service, une présence. Pas besoin que ce soit grand pour que ça compte."
+  },
+  "communaute_tension": {
+    "source_livre": "d'après les concepts de Brené Brown — le désengagement",
+    "themes": ["conflit", "appartenance"],
+    "miroir": "Un lien du groupe grince en ce moment, une invitation ratée, un mot mal reçu, une place qui semble prise. L'envie est de t'éloigner doucement plutôt que de nommer ce qui coince.",
+    "geste": "Dis le point de friction à voix haute à la personne concernée, sans reproche ajouté. Une phrase factuelle suffit à rouvrir la porte."
+  },
+
+  "communaute_transit_venus_conjonction": {
+    "source_livre": "d'après les concepts de Brené Brown — la connexion réelle",
+    "themes": ["lien", "presence"],
+    "miroir": "La tentation aujourd'hui est de répondre à un message plutôt que d'appeler ou de voir la personne. Être joignable rassure, mais ça ne remplace pas d'être vu et entendu pour de vrai.",
+    "geste": "Choisis une personne du groupe et appelle-la, ou propose de la voir, plutôt que d'envoyer un texto de plus."
+  },
+  "communaute_transit_venus_sextile-trigone": {
+    "source_livre": "d'après les concepts de Stephen Covey — la mentalité d'abondance",
+    "themes": ["gratitude", "amitie"],
+    "miroir": "La réussite d'un proche te touche aujourd'hui sans le pincement habituel. C'est rare, et ça vaut la peine d'être dit au lieu de filer dessus sans un mot.",
+    "geste": "Écris ou dis à cette personne, en une phrase, ce que tu admires dans ce qui lui arrive."
+  },
+  "communaute_transit_venus_carre-opposition": {
+    "source_livre": "d'après les concepts de Brené Brown — la pénurie",
+    "themes": ["comparaison", "appartenance"],
+    "miroir": "Le lien d'un autre, un couple d'amis, un groupe soudé, te pince aujourd'hui plus que d'habitude. En comparant, tu ne vois que ce qui manque chez toi, jamais ce qui est déjà là.",
+    "geste": "Nomme pour toi ce qui existe déjà dans tes propres liens, même modeste : un appel régulier, une présence fidèle. Compare à ça, pas à une image."
+  },
+
+  "communaute_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Brené Brown — les limites et la compassion",
+    "themes": ["limites", "confiance"],
+    "miroir": "Poser une limite avec quelqu'un du groupe te semble abîmer le lien. C'est l'inverse. Dire non protège ce qui compte, alors qu'un accord silencieux ronge en douce, sans bruit.",
+    "geste": "Pose aujourd'hui un non clair sur un point précis, sans justification à rallonge."
+  },
+  "communaute_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Brené Brown — le retour honnête",
+    "themes": ["responsabilite", "confiance"],
+    "miroir": "Une responsabilité prise dans un groupe pèse plus que prévu en ce moment. L'envie de laisser filer discrètement, sans rien dire, grandit un peu chaque jour.",
+    "geste": "Dis clairement où tu en es à la personne concernée, même si c'est moins que promis. Une mise à jour honnête vaut mieux qu'un silence qui s'étire."
+  },
+  "communaute_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de Stephen Covey — tenir ses promesses",
+    "themes": ["fidelite", "confiance"],
+    "miroir": "Tu tiens une présence répétée avec quelqu'un ces jours-ci, sans éclat, et ça pèse plus lourd en confiance qu'un grand geste isolé. Ce que tu répètes, même petit, compte plus que ce que tu promets.",
+    "geste": "Tiens aujourd'hui un engagement minuscule pris envers quelqu'un : l'heure dite, le message promis. La régularité compte plus que la taille du geste."
+  },
+
+  "communaute_transit_jupiter_conjonction": {
+    "source_livre": "d'après les concepts de Stephen Covey — les différences comme appuis",
+    "themes": ["ouverture", "reseau"],
+    "miroir": "Ton cercle s'ouvre un peu ces jours-ci, une invitation, une présentation, une porte entrebâillée. Rester dans le connu est tentant parce que c'est confortable, pas parce que c'est mieux.",
+    "geste": "Accepte aujourd'hui une occasion sociale qui sort un peu de ton cercle habituel, même petite."
+  },
+  "communaute_transit_jupiter_sextile-trigone": {
+    "source_livre": "d'après les concepts de Stephen Covey — la synergie",
+    "themes": ["cooperation", "creation"],
+    "miroir": "Une collaboration en cours donne en ce moment plus que la somme de ce que chacun apportait seul. Deux idées moyennes en fabriquent une meilleure, sans que personne n'ait dû céder.",
+    "geste": "Propose aujourd'hui une idée à mi-chemin entre la tienne et celle d'un autre, plutôt que de trancher entre les deux."
+  },
+  "communaute_transit_jupiter_carre-opposition": {
+    "source_livre": "d'après les concepts de Stephen Covey — dire non à ses priorités",
+    "themes": ["limites", "generosite"],
+    "miroir": "Tu dis oui à beaucoup de monde en ce moment, et ça commence à te coûter plus que ça ne donne. Dire oui à tout finit par appauvrir ce que tu offres à chacun.",
+    "geste": "Choisis aujourd'hui une sollicitation à décliner, gentiment et sans long argumentaire."
+  },
+
+  "communaute_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de Brené Brown — le courage ordinaire",
+    "themes": ["courage", "expression"],
+    "miroir": "L'envie de dire une chose vraie devant le groupe, plutôt que de la garder pour un aparté plus tard, monte aujourd'hui. Le courage ordinaire, c'est surtout ça : parler au bon endroit.",
+    "geste": "Dis-la où elle doit être dite, devant les bonnes personnes, pas en coulisses."
+  },
+  "communaute_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Stephen Covey — la compétition entre proches",
+    "themes": ["conflit", "rivalite"],
+    "miroir": "Une rivalité pointe dans un groupe où tu comptais sur de la coopération, une place, un mérite, une reconnaissance à partager. Le réflexe est de jouer contre plutôt qu'avec.",
+    "geste": "Nomme à voix haute ce que tu voudrais obtenir, sans passer par une pique ou un coup bas. La clarté désamorce plus qu'une manœuvre."
+  },
+  "communaute_transit_mars_sextile-trigone": {
+    "source_livre": "d'après les concepts de Stephen Covey — s'affirmer sans écraser",
+    "themes": ["affirmation", "respect"],
+    "miroir": "Tu peux dire ce que tu penses dans le groupe aujourd'hui sans avoir besoin d'écraser l'avis d'en face. Les deux choses arrivent en même temps, ce qui est plus rare qu'il n'y paraît.",
+    "geste": "Défends ton point sans invalider celui de l'autre : les deux phrases peuvent tenir dans la même conversation."
+  }
+}

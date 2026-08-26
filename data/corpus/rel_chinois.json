@@ -1,0 +1,52 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le lien chinois entre deux naissances : la relation entre les branches d'année (réutilise moteur/chinois.py::relation_branches, déjà vérifié contre Joey Yap) et la relation entre les éléments d'année (cycle de génération/contrôle des Cinq Éléments). Additif, jamais par animal — reste valable quels que soient les deux animaux en jeu.",
+
+ "branches": {
+  "choc": {
+   "en_bref": "Deux natures aux antipodes sur la roue — le vis-à-vis qui réveille.",
+   "texte": "Vous vous tenez chacun à l'opposé de la roue chinoise. C'est le lien qui bouscule le plus — celui qui empêche de s'installer dans le confort sans y mettre du sien, et qui, pour cette raison même, ne s'endort jamais tout à fait.",
+   "etat": "tension"
+  },
+  "harmonie": {
+   "en_bref": "Deux natures faites pour s'unir.",
+   "texte": "Vos deux signes forment l'une des six paires d'union du cycle chinois. Un appui qui se sent tôt, sans grand effort, et qui tient dans la durée quand on continue à le nourrir.",
+   "etat": "resonance"
+  },
+  "trine": {
+   "en_bref": "Deux natures du même triangle, portées par le même élan.",
+   "texte": "Vous partagez la même façon d'aborder le monde, chacun avec sa nuance. Une affinité naturelle, faite pour collaborer sans avoir besoin de tout s'expliquer.",
+   "etat": "resonance"
+  },
+  "nuisance": {
+   "en_bref": "Un pli qui revient, léger, et qu'on apprend à défroisser.",
+   "texte": "Ce n'est pas un choc frontal, plutôt une petite note qui revient de temps en temps. Un détail qu'on ne s'explique pas toujours, facile à ignorer, et encore plus facile à désamorcer une fois qu'on l'a nommé ensemble.",
+   "etat": "tension"
+  },
+  "identique": {
+   "en_bref": "Le même signe des deux côtés.",
+   "texte": "Vous partagez le même animal. Vous vous reconnaissez vite l'un dans l'autre, pour le meilleur et pour ce qu'il faudrait parfois tempérer. Deux versions de la même nature, côte à côte.",
+   "etat": "neutre"
+  },
+  "neutre": {
+   "en_bref": "Aucun lien marqué entre vos deux signes.",
+   "texte": "Ni élan particulier, ni relief marqué du côté chinois. Ce silence n'est pas un manque. D'autres axes de la lecture, les nombres, le ciel, porteront le poids de votre histoire.",
+   "etat": "neutre"
+  }
+ },
+
+ "elements": {
+  "genere": {
+   "texte": "L'élément de l'un nourrit celui de l'autre. Un appui qui circule dans un sens, discret mais réel. L'un donne, l'autre reçoit, et ça peut se sentir avec le temps."
+  },
+  "controle": {
+   "texte": "L'élément de l'un donne forme à l'énergie de l'autre, comme une berge qui guide un courant sans l'arrêter. Cela demande de la mesure : accompagner le mouvement de l'autre, pas le contenir de force."
+  },
+  "meme": {
+   "texte": "Le même élément des deux côtés : vous partagez une même matière de fond. Rassurant — et parfois un terrain sans relief, tant que personne n'apporte la nuance qui manque encore."
+  },
+  "neutre": {
+   "texte": ""
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "Textes ORIGINAUX. Aucun extrait d'ouvrage. Voir CHARTE.md § Interdits.",
+
+  "phases": {
+    "nouvelle": {
+      "miroir": "Rien n'est visible aujourd'hui, et c'est précisément ce qui inquiète. Quelque chose commence sans fournir la moindre preuve, et l'envie d'en montrer une tout de suite est forte.",
+      "geste": "Note en trois mots ce que tu voudrais voir démarrer, sur un papier que tu ne montres à personne. Range-le. Ne l'annonce pas aujourd'hui."
+    },
+    "croissante": {
+      "miroir": "Ça pousse. L'Élan est là, un peu brut, un peu trop pressé. Et il cherche partout à la fois plutôt qu'au seul endroit où il servirait vraiment.",
+      "geste": "Reprends la chose que tu as commencée cette semaine et donne-lui dix minutes maintenant. Pas une idée neuve. Celle-là, déjà entamée, déjà à toi."
+    },
+    "premier_quartier": {
+      "miroir": "Quelque chose résiste. Un obstacle concret, une objection, une fatigue. La tentation est de lire ça comme le signe qu'il fallait renoncer. C'est simplement l'endroit où le travail commence.",
+      "geste": "Repère le point exact qui bloque et écris-le en une phrase. Pas la solution, le blocage, nommé précisément. Dix minutes suffisent."
+    },
+    "gibbeuse": {
+      "miroir": "Le doute arrive au moment le plus bête, quand c'est presque fait. L'envie de tout reprendre depuis le début se déguise très bien en exigence de qualité.",
+      "geste": "Choisis un seul détail à corriger, corrige-le, et arrête là. Le reste attendra demain, ou n'avait pas besoin de toi."
+    },
+    "pleine": {
+      "miroir": "Tout est éclairé d'un coup, y compris ce qu'on préférait laisser dans l'ombre. Les émotions arrivent en grand format et les mots sortent plus vite que d'habitude.",
+      "geste": "Avant d'envoyer quoi que ce soit d'important aujourd'hui, écris-le, puis attends une heure. Relis. Envoie seulement si ça tient encore debout."
+    },
+    "diffusante": {
+      "miroir": "Il y a du trop-plein à évacuer, et ça cherche une oreille. Raconter ce qui vient de se passer n'est pas du bavardage aujourd'hui. C'est la manière dont ça se range.",
+      "geste": "Appelle quelqu'un et raconte-lui une chose que tu as comprise récemment. Dix minutes. Sans conseil demandé, sans conclusion à tirer."
+    },
+    "dernier_quartier": {
+      "miroir": "Quelque chose demande à être coupé, et tu le sais déjà. La difficulté n'est pas de le savoir. Elle est de le faire sans se raconter que ce n'est pas encore le moment.",
+      "geste": "Prends une chose finie que tu traînes encore : un dossier, une conversation, un onglet. Termine-la aujourd'hui. La plus petite des trois."
+    },
+    "balsamique": {
+      "miroir": "L'énergie est basse et ça n'a rien à voir avec ta volonté. La journée demande peu, et ce qu'on force ici se paie la semaine suivante, avec les intérêts.",
+      "geste": "Retire une chose de ta journée. Une seule, la plus optionnelle des trois qui te viennent. Ne la remplace par rien."
+    }
+  },
+
+  "lune_maison": {
+    "1": {
+      "miroir": "Le corps parle plus fort que le calendrier aujourd'hui. Humeur, faim, fatigue, tout se lit sur toi. Les autres le voient souvent avant que tu l'aies remarqué.",
+      "geste": "Devant une glace, trois secondes, demande-toi de quoi tu as envie. Pas ce que tu dois faire. Réponds une chose. Fais-la si elle tient en dix minutes."
+    },
+    "2": {
+      "miroir": "Aujourd'hui, tout se compte. Ce que tu as, ce que ça coûte, ce que tu laisses filer sans le voir. Ça touche l'argent, mais pas seulement. Le temps aussi se dépense.",
+      "geste": "Regarde un solde ou un abonnement que tu évites. Une fois, exactement, jusqu'au chiffre. Sans rien décider ensuite."
+    },
+    "3": {
+      "miroir": "Ça circule. Messages, allers-retours, petites conversations qui semblent sans importance. L'attention s'éparpille facilement, et c'est pourtant par là que la journée a quelque chose à dire.",
+      "geste": "Envoie le message que tu repousses depuis mardi. Deux phrases suffisent. Le retard pèse déjà plus lourd que le contenu."
+    },
+    "4": {
+      "miroir": "Le lieu où tu vis, les gens d'avant, ce qui t'a fabriqué. La journée regarde par là. L'envie de sortir est faible, et ce n'est pas de la paresse.",
+      "geste": "Remets en ordre un seul coin de chez toi, celui qui t'agace depuis des semaines. Une étagère, un tiroir, dix minutes. Arrête après."
+    },
+    "5": {
+      "miroir": "Il y a une envie de jouer, de faire quelque chose pour rien, sans utilité démontrable. Et une petite voix qui trouve ça frivole avant même que tu aies essayé.",
+      "geste": "Fais une chose gratuite aujourd'hui. Dessine, cuisine sans recette, joue avec quelqu'un. Dix minutes, et personne n'a besoin de le voir."
+    },
+    "6": {
+      "miroir": "Le détail prend toute la place. Ce qui cloche dans la liste, dans le dossier, dans le corps. C'est utile, et ça se transforme vite en tribunal si on le laisse tourner.",
+      "geste": "Règle une seule chose en attente. La plus petite, pas la plus urgente. Puis ferme la liste et va ailleurs."
+    },
+    "7": {
+      "miroir": "L'autre occupe beaucoup de place aujourd'hui. Ce qu'il pense, ce qu'il n'a pas dit, ce qu'il attend peut-être. La journée se lit à travers quelqu'un, et le Reflet renvoie autant sur toi.",
+      "geste": "Pose à un proche une question dont tu crois connaître la réponse sans l'avoir jamais vérifiée. Simplement. Écoute jusqu'au bout sans corriger."
+    },
+    "8": {
+      "miroir": "Un non-dit pèse plus lourd que tout ce qui se dit. Ça peut toucher l'argent partagé, une dépendance, un sujet contourné depuis des années. Bref, l'endroit où l'on ne va pas de bon cœur.",
+      "geste": "Écris pour toi seul la phrase que tu ne dis pas. Une phrase, exactement. Tu n'as rien à en faire aujourd'hui."
+    },
+    "9": {
+      "miroir": "L'horizon s'élargit et le quotidien paraît soudain trop étroit. Envie de partir, d'apprendre, de comprendre à quoi rime tout ça. C'est agréable, et ça sert aussi très bien à éviter ce qui est devant toi.",
+      "geste": "Lis dix pages d'un livre qui ne sert à rien de ce que tu fais. Pas un article, un livre. Aujourd'hui, pas ce week-end."
+    },
+    "10": {
+      "miroir": "Ce que les autres voient de toi devient bruyant. Le métier, le rôle, l'image. La journée pousse à soigner la façade, et l'écart avec ce que tu ressens dedans s'entend mieux que d'habitude.",
+      "geste": "Nomme, pour toi seul, une chose que tu fais uniquement parce que ça a l'air bien. Écris-la. Ne change rien aujourd'hui."
+    },
+    "11": {
+      "miroir": "Les amitiés et les projets lointains reviennent frapper. Une bande, un groupe, une envie collective. Ça donne de l'air, et ça peut aussi diluer ce qui était à toi jusqu'à ce matin.",
+      "geste": "Écris à quelqu'un que tu aimes bien et que tu n'as pas vu depuis longtemps. Pas pour organiser. Juste pour dire que tu y pensais."
+    },
+    "12": {
+      "miroir": "Le retrait attire, et le dehors sonne faux. C'est le moment du cycle où l'on est mauvais en réunion et bon en silence. Tu ne baisses pas de régime. Tu en changes.",
+      "geste": "Prends dix minutes seul, sans écran, sans objectif, porte fermée. Ne cherche rien. Laisse venir ce qui vient."
+    }
+  }
+}

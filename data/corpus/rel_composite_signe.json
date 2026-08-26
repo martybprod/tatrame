@@ -1,0 +1,148 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le Soleil et la Lune du thème COMPOSITE (« le vous »), en signe. Registre « vous » (le couple comme entité), PAS « tu » : ces textes reprennent l'IMAGERIE de l'axe natal astre_signe (resume) mais re-voix au pluriel, parce que le composite décrit le lien, pas une personne. Clés soleil_<signe> / lune_<signe> / venus_<signe> / mars_<signe>, entrées À PLAT (surtout pas sous une clé « astre_signe » : c'est un axe fusionné, ça écraserait le corpus natal). Seul le champ `resume` est affiché. app.py::_textes_relations lit ici pour le composite, et garde astre_signe (en « tu ») pour Le Portrait natal.",
+ "soleil_belier": {
+  "resume": "Le fond de votre lien se reconnaît au démarrage. Pas au résultat, pas au plan. À la seconde où ça part. Attendre vous vide bien plus que de vous tromper."
+ },
+ "soleil_taureau": {
+  "resume": "Ce qui vous tient debout, c'est ce qui dure. Une chose vraie se touche, se garde, revient demain pareille. Le reste ressemble à du vent bien habillé."
+ },
+ "soleil_gemeaux": {
+  "resume": "Une seule version de vous vous semble trop petite. Vous vous sentez vivants quand ça circule. Plusieurs sujets, plusieurs gens, plusieurs façons d'être vous-mêmes le même jour."
+ },
+ "soleil_cancer": {
+  "resume": "Vous vous reconnaissez surtout au lien. Ce que vous êtes se voit dans la façon dont vous prenez soin des vôtres, dans ce que vous gardez, dans ce dont vous vous souvenez."
+ },
+ "soleil_lion": {
+  "resume": "Il vous faut de la chaleur pour tenir. Un regard, un rire, quelqu'un qui remarque ce que vous avez fait. Sans ça, même une réussite refroidit vite."
+ },
+ "soleil_vierge": {
+  "resume": "Ce fond-là s'affirme en rendant les choses meilleures. Utile, précis, à sa place. Le tapage ne vous intéresse pas du tout ; qu'une chose fonctionne vraiment, oui, énormément."
+ },
+ "soleil_balance": {
+  "resume": "Rien ne va tant que le déséquilibre est dans la pièce. Ce que vous êtes passe par l'accord avec les autres, par ce qui se répond et ce qui tient droit entre vous."
+ },
+ "soleil_scorpion": {
+  "resume": "La surface vous ennuie en deux minutes. Ce qui vous fait exister, c'est ce qu'on ne dit pas. Le dessous d'une histoire, le vrai motif, ce que ça remue pour de bon."
+ },
+ "soleil_sagittaire": {
+  "resume": "Une vie sans horizon vous paraît irrespirable. Il vous faut du sens, de l'ailleurs, une raison plus grande que la semaine en cours. Sinon tout devient une corvée."
+ },
+ "soleil_capricorne": {
+  "resume": "Ce qui vous définit se construit, pierre après pierre. Rien n'a de valeur si ça n'a rien coûté. Vous visez loin et vous acceptez que ce soit long."
+ },
+ "soleil_verseau": {
+  "resume": "Faire comme tout le monde vous coûte plus que d'être à part. Il y a chez vous un écart assumé, une manière de voir la chose que le groupe n'a pas vue."
+ },
+ "soleil_poissons": {
+  "resume": "Les contours nets ne vous ressemblent pas. Vous vous sentez vivants dans ce qui déborde. La musique, l'imaginaire, l'émotion d'un autre qui devient un peu la vôtre."
+ },
+ "lune_belier": {
+  "resume": "Dès que ça remue entre vous, ça sort tout de suite. Pas de sas, pas de délai. La réaction arrive entière, puis retombe presque aussi vite qu'elle est montée."
+ },
+ "lune_taureau": {
+  "resume": "Votre calme passe par des choses qu'on touche. La même tasse, un plat mijoté, un corps posé quelque part. L'apaisement, chez vous, est concret ou n'est pas."
+ },
+ "lune_gemeaux": {
+  "resume": "Les émotions passent par les mots avant d'être vraiment senties. Tant que vous pouvez en parler, ça va. Le silence, lui, vous met plus mal à l'aise que le problème."
+ },
+ "lune_cancer": {
+  "resume": "Rien ne vous apaise comme un lieu connu et des gens à vous. La porte se ferme, l'épaule descend d'un cran. Le foyer n'est pas un décor, c'est un besoin."
+ },
+ "lune_lion": {
+  "resume": "Votre humeur a besoin d'un regard chaud. Un mot vrai, un rire partagé, et ça repart. Une indifférence polie vous refroidit plus que n'importe quelle mauvaise nouvelle."
+ },
+ "lune_vierge": {
+  "resume": "Vous vous inquiétez, et vous rangez. Une liste, un tiroir, une chose remise droite, et le trouble baisse d'un cran. Le désordre autour devient vite un désordre dedans."
+ },
+ "lune_balance": {
+  "resume": "Une tension dans la pièce vous traverse avant que vous compreniez pourquoi. Tant que c'est fâché autour de vous, votre intérieur ne se pose pas."
+ },
+ "lune_scorpion": {
+  "resume": "Ce que vous ressentez descend loin et reste longtemps. Rien n'est tiède là-dedans. Une chose vous atteint entièrement, ou bien elle glisse sur vous sans laisser la moindre trace."
+ },
+ "lune_sagittaire": {
+  "resume": "Un horizon bouché vous pèse bien plus lourd qu'un vrai problème. Ce qui vous remet d'aplomb, c'est de l'air, du large, et l'idée qu'autre chose reste toujours possible ailleurs."
+ },
+ "lune_capricorne": {
+  "resume": "Vos émotions attendent d'avoir un motif solide avant de sortir. Tant qu'il faut tenir, vous tenez. Le contrecoup arrive après, quand la porte est fermée."
+ },
+ "lune_verseau": {
+  "resume": "Quand ça chauffe, vous prenez de la hauteur. Comprendre vous calme plus que consoler. Vos émotions se regardent d'un mètre, et de là elles deviennent tenables."
+ },
+ "lune_poissons": {
+  "resume": "Vous absorbez l'ambiance d'une pièce comme un mur prend l'humidité. Souvent, ce que vous ressentez à dix-huit heures ne vous appartenait même pas au départ. Ça vient d'ailleurs."
+ },
+ "venus_belier": {
+  "resume": "L'amour, chez vous, se déclare. Ça part vite, ça se dit sans détour, et le terrain d'entente se trouve dans la franchise plus que dans les manières."
+ },
+ "venus_taureau": {
+  "resume": "Votre tendresse se montre par ce qui se touche et se garde. La constance compte plus que les mots, et le rituel de chaque jour fait le lien."
+ },
+ "venus_gemeaux": {
+  "resume": "Votre lien se nourrit de paroles, de rires et d'échanges qui n'en finissent pas. La conversation est votre vraie chambre à coucher."
+ },
+ "venus_cancer": {
+  "resume": "Votre amour se protège, se chauffe, se met à l'abri. La confiance se construit lentement, par de petites preuves répétées, et la maison est votre territoire du cœur."
+ },
+ "venus_lion": {
+  "resume": "Votre lien aime être vu, admiré, célébré. La fierté d'être ensemble est un carburant, et le grand geste compte autant que la constance."
+ },
+ "venus_vierge": {
+  "resume": "Votre attention passe par les détails : un besoin remarqué, une prévenance sans bruit. L'amour, chez vous, se fait en prenant soin, plus qu'en déclarations."
+ },
+ "venus_balance": {
+  "resume": "Votre lien cherche l'harmonie, l'équilibre, le juste milieu. Le dialogue est votre langue, et le désaccord se digère mieux quand il se dit avec soin."
+ },
+ "venus_scorpion": {
+  "resume": "Votre amour va en profondeur, sans demi-mesure. L'intensité et la fidélité sont vos références, et la vraie intimité vaut plus que tous les compromis de surface."
+ },
+ "venus_sagittaire": {
+  "resume": "Votre lien a besoin d'air, de projets, d'horizons. L'aventure à deux compte plus que la routine, et la liberté partagée est votre façon de rester proches."
+ },
+ "venus_capricorne": {
+  "resume": "Votre amour se bâtit, se solidifie, se prouve dans la durée. La lenteur ne vous fait pas peur, et ce qui tient après les années est ce qui compte vraiment."
+ },
+ "venus_verseau": {
+  "resume": "Votre lien laisse de la place à chacun, sans se coller. L'amitié est le socle, la différence est bienvenue, et la complicité passe par le respect de ce que l'autre a d'unique."
+ },
+ "venus_poissons": {
+  "resume": "Votre tendresse se devine avant de se dire, comme une eau qui sait où aller. L'empathie est votre langue, et l'intuition guide souvent mieux que les mots."
+ },
+ "mars_belier": {
+  "resume": "L'énergie de votre couple est directe et franche. Les disputes éclatent vite et retombent vite, et le désir se lit sans détour dans l'élan de se retrouver."
+ },
+ "mars_taureau": {
+  "resume": "Votre force à deux est patiente, obstinée, sans précipitation. Ce que vous décidez ensemble tient, et l'énergie monte lentement mais ne s'épuise pas."
+ },
+ "mars_gemeaux": {
+  "resume": "Entre vous, l'énergie passe par les idées, les débats, les taquineries. La friction qui vous anime est surtout cérébrale, et la parole est votre terrain de jeu."
+ },
+ "mars_cancer": {
+  "resume": "Votre protection mutuelle est profonde et souvent silencieuse. L'énergie se déploie surtout pour prendre soin, et la défense du lien prime sur la victoire dans l'échange."
+ },
+ "mars_lion": {
+  "resume": "Le désir et la fierté se mêlent chez vous. Vous vous animez quand l'autre vous voit, vous célèbre, vous défend, et cette flamme-là se nourrit de reconnaissance."
+ },
+ "mars_vierge": {
+  "resume": "Votre énergie à deux se met au service du concret : résoudre, organiser, avancer. La friction vient de la précision, et la réparation passe par l'action utile."
+ },
+ "mars_balance": {
+  "resume": "Votre élan cherche l'accord avant la victoire. La dispute se mène en cherchant l'équilibre, et la vraie force du couple est de revenir sans cesse vers le juste."
+ },
+ "mars_scorpion": {
+  "resume": "L'intensité de votre couple ne transige pas. Le désir, la jalousie, la passion : tout se vit à fond, et la loyauté est le seul sol où cette flamme tient."
+ },
+ "mars_sagittaire": {
+  "resume": "Votre énergie veut bouger, partir, tenter. La routine éteint, l'aventure rallume, et le désir se porte mieux quand il a un horizon devant lui."
+ },
+ "mars_capricorne": {
+  "resume": "Votre force à deux est celle du temps et de l'ambition partagée. Ce que vous construisez ensemble vous anime, et la fidélité dans l'effort est votre façon de désirer."
+ },
+ "mars_verseau": {
+  "resume": "Votre énergie refuse les rails et invente ses propres règles. L'excitation naît de l'inattendu et du partage des idées, plus que des conventions du couple."
+ },
+ "mars_poissons": {
+  "resume": "Votre élan se glisse, s'adapte, suit le courant de l'autre. La force de votre couple est sa souplesse, et l'énergie se retrouve dans la fusion plus que dans l'affrontement."
+ }
+}

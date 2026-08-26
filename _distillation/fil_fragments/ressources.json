@@ -1,0 +1,108 @@
+{
+  "_note": "Fragment du domaine ressources (maison II — argent, valeurs, rapport à l'avoir) pour fil.json, distillé de la section 21 de cartes_de_concepts.md (The Psychology of Money, Morgan Housel). Une seule source : domaine volontairement lean, pas de remplissage. Registre = rapport psychologique à l'argent (l'assez, la liberté, le temps, l'épargne comme choix librement fait), jamais un conseil de placement ou une recommandation financière. Aucune clé _phase_ (ressources n'est pas un domaine à processus, cf. §2 de fil_du_jour_SPEC.md). Couverture : générique + fluide/tension + les 3 classes (conjonction, sextile-trigone, carre-opposition) pour les 4 planètes pertinentes au registre argent (jupiter = expansion/appétit, saturne = limite/peur/marge, venus = valeurs/regard/liens, mars = impulsion/action) — matrice complète et non arbitraire, chaque case recolore réellement le conseil.",
+
+  "ressources": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "comportement", "assez"],
+    "miroir": "Tu sais très bien ce qu'il faudrait faire avec ton argent. C'est au moment d'agir que ça se complique, pas au moment de savoir. Ton rapport à l'argent tient à tes habitudes bien plus qu'à ton intelligence.",
+    "geste": "Repère une décision d'argent que tu as prise aujourd'hui, petite ou grande. Regarde juste ce que tu as fait, sans chercher à te corriger."
+  },
+
+  "ressources_fluide": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "liberte", "marge"],
+    "miroir": "Ces jours-ci, l'argent pèse un peu moins. Tu sens la marge que tu as, même petite, et ce qu'elle change dans ta façon de dire oui ou non.",
+    "geste": "Profite de ce relâchement pour nommer une chose que ta marge actuelle te permet de refuser. Rien qu'à toi-même, ça suffit déjà."
+  },
+
+  "ressources_tension": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "comparaison", "assez"],
+    "miroir": "L'argent frotte ces jours-ci. Une envie monte, une comparaison s'installe, et le seuil de ce qui te suffirait recule au même rythme que ce que tu obtiens.",
+    "geste": "Écris la phrase 'j'aurai assez quand' et termine-la sans réfléchir. Regarde ce que ça donne. C'est souvent une liste sans fin, pas une vérité."
+  },
+
+  "ressources_transit_jupiter_conjonction": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "assez", "expansion"],
+    "miroir": "Une occasion d'argent se présente ces jours-ci, et l'envie d'en vouloir encore plus grandit avec elle. Plus tu obtiens en ce moment, plus la barre que tu t'es fixée risque de monter avec toi.",
+    "geste": "Avant de courir vers le prochain palier, écris ce que 'assez' voudrait dire pour toi aujourd'hui. Garde le mot en vue cette semaine."
+  },
+
+  "ressources_transit_jupiter_carre-opposition": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "risque", "audace"],
+    "miroir": "Une occasion qui a l'air belle te pousse à aller plus loin que d'habitude ces jours-ci. La frontière entre l'audace et l'imprudence ne se voit presque jamais avant coup, seulement après.",
+    "geste": "Avant de trancher, demande-toi ce que tu ferais si ça tournait mal, pas seulement si ça tournait bien. Laisse cette réponse peser autant que l'envie."
+  },
+
+  "ressources_transit_jupiter_sextile-trigone": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "temps", "croissance"],
+    "miroir": "Quelque chose grossit doucement ces jours-ci, presque sans bruit, et ton premier réflexe est de vouloir accélérer. Ce qui avance petit à petit tient rarement grâce à un coup de force.",
+    "geste": "Laisse tourner ce qui est déjà en marche encore un peu aujourd'hui, sans y ajouter d'urgence. La régularité fait le travail que la vitesse ne fait pas."
+  },
+
+  "ressources_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "epargne", "discipline"],
+    "miroir": "Une contrainte d'argent se rappelle à toi ces jours-ci, un budget, une limite à tenir. Ce que tu mets de côté dépend plus de ce que tu choisis de désirer que de ce que tu gagnes.",
+    "geste": "Fixe un montant modeste à ne pas dépenser cette semaine, sans raison précise à donner. Une épargne sans but reste une réserve, pas un caprice."
+  },
+
+  "ressources_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "peur", "marge"],
+    "miroir": "La peur de manquer se resserre ces jours-ci, et chaque dépense pèse plus lourd que d'habitude. Rester dans le jeu compte plus que gagner gros, surtout quand le sol semble bouger sous toi.",
+    "geste": "Repère ce qui te servirait de marge si un imprévu arrivait cette semaine, même modeste. Nomme-la. Une marge visible calme plus qu'un chiffre qu'on évite de regarder."
+  },
+
+  "ressources_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "patience", "equilibre"],
+    "miroir": "Une prudence tenue depuis un moment commence à porter ses fruits ces jours-ci. Tu peux croire que ça va s'arranger sur la durée et rester prudent sur le chemin. Les deux tiennent ensemble.",
+    "geste": "Remercie-toi aujourd'hui pour une prudence passée dont tu vois enfin l'effet, même minime. Un mot suffit, à voix haute ou dans ta tête."
+  },
+
+  "ressources_transit_venus_conjonction": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "valeurs", "liens"],
+    "miroir": "L'argent croise tes valeurs ces jours-ci, une dépense qui touche à ce qui compte vraiment pour toi. On retient rarement d'une vie l'objet acheté. On retient le temps passé et les liens gardés.",
+    "geste": "Mets aujourd'hui un peu d'argent ou de temps vers une personne plutôt qu'une chose. Même un geste minuscule compte."
+  },
+
+  "ressources_transit_venus_carre-opposition": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "apparence", "regard"],
+    "miroir": "Une dépense ces jours-ci vise plus le regard des autres que ton propre confort. Tu crois qu'un objet impressionnant force l'admiration. La plupart des gens s'imaginent juste à ta place, ils ne te voient pas vraiment.",
+    "geste": "Avant d'acheter pour être vu, demande-toi si la même somme te ferait plus de bien en restant invisible. Choisis en le sachant, pas en pilote automatique."
+  },
+
+  "ressources_transit_venus_sextile-trigone": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "liens", "valeurs"],
+    "miroir": "L'argent circule plus doucement avec les autres ces jours-ci, prêter, partager, offrir sans calculer à la décimale. Ta réputation, tes proches et ton bien-être ne valent jamais la peine d'être risqués pour un gain, aussi beau soit-il.",
+    "geste": "Fais un geste d'argent généreux et sans calcul aujourd'hui, même petit. Regarde ce que ça déplace en toi, pas juste dans ton compte."
+  },
+
+  "ressources_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "temps", "action"],
+    "miroir": "Une envie d'agir sur l'argent monte fort ces jours-ci, tout de suite. Ce qui fait la différence sur la durée n'est presque jamais un coup de génie. C'est d'avoir commencé tôt et de ne pas avoir lâché.",
+    "geste": "Fais aujourd'hui un geste d'argent que tu repousses depuis longtemps, même minuscule. Le début compte plus que sa taille."
+  },
+
+  "ressources_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "impulsion", "risque"],
+    "miroir": "Une décision d'argent te presse ces jours-ci, et l'envie de trancher vite ressemble à de la clarté. Elle est parfois surtout de l'urgence, et l'urgence choisit rarement aussi bien qu'un jour d'attente.",
+    "geste": "Donne-toi jusqu'à demain avant de conclure la dépense qui te presse aujourd'hui. Un jour ne coûte rien. Une décision précipitée, parfois si."
+  },
+
+  "ressources_transit_mars_sextile-trigone": {
+    "source_livre": "d'après les concepts de Morgan Housel — la psychologie de l'argent",
+    "themes": ["argent", "action", "occasion"],
+    "miroir": "Une occasion d'argent demande une réponse rapide ces jours-ci, et cette fois l'élan te sert plutôt qu'il ne te bouscule. Le bon moment pour agir ressemble rarement à un moment parfaitement calme.",
+    "geste": "Avance aujourd'hui d'un pas concret sur ce qui se présente, sans attendre une certitude totale. Une action moyenne faite à temps vaut mieux qu'une action parfaite trop tard."
+  }
+}

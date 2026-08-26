@@ -1,0 +1,48 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Le thème composite (« le vous ») — Skymates 2. Le calcul (milieux de points) est dans moteur/relations.py::theme_composite ; ici, seulement le cadrage et les amorces. Le fond de chaque planète-en-signe réutilise TEL QUEL l'axe astre_signe (data/corpus/ciel_signe_*.json), et les aspects internes réutilisent aspects_paires — comme la synastrie réutilise déjà les 135 aspects. On n'écrit aucun texte planète×signe neuf.",
+ "cadrage": "Un couple est en réalité un trio : toi, l'autre, et l'entité que vous formez ensemble. Voici le portrait de cette troisième présence. Pas toi, pas l'autre, mais votre lien lui-même, avec ses besoins propres.",
+ "amorces": {
+  "soleil": "Ce qui anime votre lien",
+  "lune": "Le climat au fond de votre lien",
+  "asc": "Ce que votre lien montre au monde",
+  "venus": "Comment votre lien aime",
+  "mars": "Ce qui pousse votre lien à agir"
+ },
+ "aspect": "À l'intérieur de votre lien",
+ "_aspect_interne_note": "Les aspects INTERNES du composite : deux facettes du « nous » qui se parlent. Registre « votre lien » (une seule entité, le couple), PAS « tu ». Composé par app.py::_texte_composite_aspects : phrase-fonction (réutilise rel_synastrie::fonctions) + gabarit de classe ci-dessous. Ne réutilise plus les 135 textes natals en « tu ».",
+ "aspect_interne": {
+  "conjonction": {
+   "verbe": "se superposent presque",
+   "tails": [
+    "ces deux facettes du « nous » n'en font qu'une, un même souffle qui traverse tout le lien.",
+    "impossible de les séparer : ce qui touche l'une se sent aussitôt dans l'autre.",
+    "les deux avancent collées, pour le meilleur comme pour l'intensité."
+   ]
+  },
+  "carre-opposition": {
+   "verbe": "se cherchent, chacune tirant de son côté",
+   "tails": [
+    "un ajustement interne à trouver, et c'est justement lui qui empêche le lien de tourner à vide.",
+    "un peu de tension féconde au cœur du « nous » : elle demande de l'attention, elle donne du relief.",
+    "ces deux besoins ne s'accordent pas d'emblée, et le lien grandit à mesure que vous les conciliez."
+   ]
+  },
+  "sextile-trigone": {
+   "verbe": "se répondent avec aisance",
+   "tails": [
+    "une facilité interne sur laquelle votre lien peut vraiment s'appuyer.",
+    "ça circule tout seul au cœur du « nous », un point d'appui à ne pas oublier de nourrir.",
+    "deux facettes qui se donnent la main sans effort, une ressource tranquille du lien."
+   ]
+  }
+ },
+ "diagnostic": {
+  "_amorce": "À qui ressemble votre lien",
+  "democratie": "Votre lien vous ressemble à tous les deux : chacun s'y retrouve, c'est un terrain d'entente. Restez attentifs aux parts de vous qu'il laisse dans l'ombre, pour qu'aucune ne se sente oubliée.",
+  "feodal": "Votre lien penche du côté de {souverain} : il se déploie sur un terrain familier à l'un, plus dépaysant pour {vassal}. Rien de figé — à condition de partager consciemment la place, pour que chacun s'y sente chez soi.",
+  "etrangere": "Votre lien n'appartient tout à fait ni à l'un ni à l'autre : c'est une contrée neuve, que ni vous ni l'autre ne fréquentez seul. Elle demande des expériences inédites et un peu de temps à chacun — c'est aussi ce qui la rend vivante.",
+  "_pied": "Aucun de ces cas n'est meilleur qu'un autre : c'est une manière de comprendre où votre lien puise, pas un verdict."
+ },
+ "pied": "Ce portrait est celui du « nous », pas l'addition de vous deux. Nourri, il donne de l'élan. Laissé de côté, il s'assoupit doucement, souvent sans qu'on sache pourquoi."
+}

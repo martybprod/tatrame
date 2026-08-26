@@ -1,0 +1,3281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#141110">
+<link rel="manifest" href="/static/manifest.json">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<title>Ta Trame</title>
+<style>
+/* Align — sobre, chaud, sans kitsch ésotérique.
+   Le ton visuel EST le positionnement : on n'est pas un oracle anxiogène. */
+:root{
+  --encre:#2a2521; --encre2:#6b6058; --encre3:#9a8f85;
+  --papier:#f6f2ec; --papier2:#efe9e0; --bord:#e2d9cd;
+  --accent:#8a6d2f; --accent-doux:#c9a858;
+  --resonance:#5f7a52; --tension:#a86a4a; --neutre:#8a8078;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --encre:#ece0bd; --encre2:#b3a68a; --encre3:#86795f;
+    --papier:#141110; --papier2:#1e1a16; --bord:#372e1e;
+    --accent:#d9b95c; --accent-doux:#e9d494;
+    --resonance:#9db383; --tension:#dfa277; --neutre:#8a8078;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden}
+/* Le fond de « Le jour » (et de toute la page) : EXACTEMENT le même que
+   l'écran d'accueil plein écran (.accueil-jour, plus bas) — même image,
+   même cadrage (55% 48%, le cœur doré du mandala), même voile en dégradé.
+   Décision de Martin (2026-08-24) après un essai la veille (2026-08-23) où
+   l'image, positionnée autrement (`top center`) puis réduite (`contain` sur
+   mobile pour éviter un rognage trop serré), avait fini presque invisible
+   sur mobile — pas ce qu'il voulait.
+   L'en-tête (.bandeau-marque, plus bas) N'EST PAS touché : il a sa propre
+   image ET sa propre `background-color:#141110` opaque, qui le protège déjà
+   entièrement de ce qu'il y a dessous. Aucune bande de transition n'est
+   donc nécessaire ici (elle l'était pour l'ancien fond `top center`, plus
+   pour celui-ci qui recouvre déjà tout l'écran en `cover`). */
+body{
+  background-color:var(--papier);
+  background-image:
+    linear-gradient(to bottom,
+      rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
+    url('/static/img/metierAtisser1.png');
+  background-position:55% 48%; background-size:cover; background-repeat:no-repeat;
+  color:var(--encre); font-family:var(--sans);
+  line-height:1.62; -webkit-font-smoothing:antialiased;
+  padding:0 20px env(safe-area-inset-bottom); min-height:100vh;
+}
+.enveloppe{max-width:660px;margin:0 auto;padding:26px 0 90px}
+
+/* Le bandeau — le métier à tisser cosmique. Descend maintenant DERRIÈRE
+   le logo et la nav (hors du flux, z-index négatif) plutôt que de s'arrêter
+   au-dessus : le dégradé continue de couler jusque sous les boutons, pour
+   un fondu continu et doux, sans ajouter d'espace puisqu'il se superpose.
+   Recadré sur le cœur doré du mandala (metierAtisser1.png, focal à
+   x=564 y=488 sur 1024×1024). */
+.bandeau-marque{
+  position:absolute; top:0; left:0; right:0;
+  height:230px; z-index:-1;
+  background-color:#141110;
+  /* Le dégradé fait DEUX choses à des rythmes différents : un voile sombre
+     (rgba(20,17,16,…)) s'épaissit tôt pour garder le texte de l'en-tête
+     lisible tout du long (texte clair fixe, voir plus bas) — puis, dès la
+     barre d'onglets dépassée (~55 % de la hauteur), il redescend très
+     graduellement, étiré sur presque toute la hauteur restante, jusqu'à
+     var(--papier) à la toute limite inférieure de l'image. En mode sombre,
+     papier == #141110 : la jonction est alors invisible. */
+  background-image:
+    linear-gradient(to bottom,
+      rgba(20,17,16,0) 0%, rgba(20,17,16,.55) 45%,
+      #141110 55%, var(--papier) 100%),
+    url('/static/img/trame-bandeau.jpg');
+  background-position:center 44%; background-size:cover; background-repeat:no-repeat;
+}
+/* La hauteur mobile (voir le media query plus bas) reste un peu plus
+   généreuse qu'au bureau : « Les Règles » est sorti de #nav (icône seule,
+   en haut à droite) et les 4 boutons restants passent en version compacte
+   pour tenir sur UNE ligne, mais l'en-tête empile encore le logo et les
+   outils du haut sur mobile (colonne, pas ligne), donc reste un peu plus
+   haut qu'au bureau. */
+
+/* en-tête — repose sur le bandeau, donc toujours en teintes claires
+   (celles du mode sombre) quel que soit le thème choisi : le bandeau est
+   une photo, elle ne s'inverse pas avec le thème, le texte ne doit donc
+   pas s'inverser non plus sous peine de devenir illisible en mode clair. */
+header{margin-bottom:26px; position:relative}
+.rangee-haut{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.marque{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:24px;letter-spacing:.16em;font-weight:400;color:#ece0bd}
+.marque-ico{flex:none;color:#e9d494}
+.marque-texte::after{content:'';display:block;width:24px;height:1px;background:#e9d494;margin-top:6px}
+nav{display:flex;gap:2px;margin-top:16px;flex-wrap:wrap}
+nav button{
+  background:none;border:0;font:inherit;font-size:13px;color:#b3a68a;
+  padding:7px 11px;border-radius:8px;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;gap:6px;
+}
+nav button .ico{flex:none;opacity:.85}
+nav button:hover{color:#e9d494;background:rgba(255,255,255,.08)}
+nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
+
+/* Les Règles, sorti du menu principal : une icône seule en haut à droite,
+   son nom apparaît en étiquette au survol (ou au focus clavier). Mêmes
+   teintes fixes claires que le reste de l'en-tête, pour la même raison
+   (repose sur la photo, ne s'inverse pas avec le thème). */
+.outils-haut{display:flex;align-items:center;gap:10px}
+.bouton-survol{
+  position:relative; background:none; border:0; cursor:pointer;
+  color:#b3a68a; padding:7px; border-radius:8px; display:flex; transition:.15s;
+}
+.bouton-survol:hover, .bouton-survol:focus-visible{color:#e9d494;background:rgba(255,255,255,.08)}
+.etiquette-survol{
+  position:absolute; top:100%; right:0; margin-top:8px;
+  font-size:12px; white-space:nowrap; background:#141110; color:#f4ecd8;
+  border:1px solid rgba(255,255,255,.15); border-radius:6px; padding:4px 10px;
+  opacity:0; transform:translateY(-4px); pointer-events:none; transition:.15s;
+}
+.bouton-survol:hover .etiquette-survol, .bouton-survol:focus-visible .etiquette-survol{
+  opacity:1; transform:translateY(0);
+}
+
+/* pastille de profil */
+.puce-profil{
+  display:flex;align-items:center;gap:8px;background:var(--papier2);
+  border:1px solid var(--bord);border-radius:20px;padding:5px 12px;
+  cursor:pointer;font-size:13px;color:var(--encre2);transition:.15s;
+}
+.puce-profil:hover{border-color:var(--accent-doux);color:var(--encre)}
+.puce-profil .fleche{font-size:9px;color:var(--encre3)}
+
+/* blocs */
+.carte{
+  background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r);
+  padding:24px;margin-bottom:14px;
+}
+.chapo{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--encre3);margin-bottom:12px}
+.chapo-ico{display:inline-flex;vertical-align:-2px;margin-right:7px;color:var(--accent-doux);opacity:.85}
+.miroir{font-family:var(--serif);font-size:21px;line-height:1.5;margin-bottom:18px}
+.geste{border-left:2px solid var(--accent-doux);padding-left:16px;color:var(--encre2);font-size:15px}
+.geste strong{color:var(--encre);font-weight:600}
+
+.entete-jour{text-align:center;padding:6px 0 22px}
+.date{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--encre3)}
+.lune{font-family:var(--serif);font-size:15px;color:var(--encre2);margin-top:7px}
+
+/* pastilles d'état */
+.etat{display:inline-flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.09em}
+.etat::before{content:'';width:6px;height:6px;border-radius:50%}
+.etat.resonance{color:var(--resonance)} .etat.resonance::before{background:var(--resonance)}
+.etat.tension{color:var(--tension)} .etat.tension::before{background:var(--tension)}
+.etat.neutre{color:var(--neutre)} .etat.neutre::before{background:var(--neutre)}
+
+/* un nombre — cliquable, JAMAIS nu */
+.nombre{
+  display:flex;align-items:flex-start;gap:16px;padding:16px;margin:0 -16px;
+  border-radius:10px;cursor:pointer;transition:.15s;
+  border-bottom:1px solid var(--bord);
+}
+.nombre:last-of-type{border-bottom:0}
+.nombre:hover{background:var(--papier)}
+.nombre .val{font-family:var(--serif);font-size:32px;min-width:46px;color:var(--accent);line-height:1.1}
+.nombre .nom{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--encre3)}
+.nombre .motcle{font-family:var(--serif);font-size:19px;color:var(--encre);margin:2px 0 4px}
+.nombre .txt{font-size:13px;color:var(--encre2)}
+.nombre .plus{color:var(--encre3);font-size:11px;align-self:center;white-space:nowrap}
+.heritage{
+  display:inline-block;font-size:11px;color:var(--encre2);background:var(--papier);
+  border:1px solid var(--bord);border-radius:20px;padding:2px 10px;margin:4px 4px 0 0;
+  text-transform:none;letter-spacing:0;
+}
+
+/* les tuiles de l'aperçu — tout le thème en un écran, rien de nu */
+.grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px}
+.tuile{
+  background:var(--papier);border:1px solid var(--bord);border-radius:10px;
+  padding:13px;transition:.15s;
+}
+.tuile[data-va]{cursor:pointer}
+.tuile[data-va]:hover{border-color:var(--accent-doux)}
+.tuile-haut{font-size:10px;text-transform:uppercase;letter-spacing:.11em;color:var(--encre3)}
+.tuile-gros{font-family:var(--serif);font-size:22px;color:var(--encre);margin:4px 0 2px;line-height:1.15}
+.tuile-bas{font-size:12px;color:var(--encre2);line-height:1.35}
+.anneau-cycle{display:block;margin:2px auto 4px}
+.anneau-cycle-chiffre{font-family:var(--serif);font-size:20px;fill:var(--encre)}
+
+/* le trio — l'essentiel en trois traits, cliquables */
+.trio-bloc{
+  flex:1;min-width:110px;background:var(--papier);border:1px solid var(--bord);
+  border-radius:10px;padding:14px;cursor:pointer;transition:.15s;
+}
+.trio-bloc:hover{border-color:var(--accent-doux)}
+.trio-nom{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--encre3)}
+.trio-signe{font-family:var(--serif);font-size:21px;color:var(--encre);margin:3px 0}
+.trio-quoi{font-size:12px;color:var(--encre2);line-height:1.4}
+.trio-glyphe{display:flex;justify-content:center;color:var(--accent-doux);opacity:.85;margin:3px 0 1px}
+.signe-ico{display:inline-flex;align-items:center;vertical-align:middle;color:var(--accent-doux);opacity:.85;flex:none}
+
+/* La tuile « Ta carte » : la vignette ILLUSTRE l'arcane calculé, en accent.
+   Sobriété : petit, encadré par --bord, sans la décoration criarde du jeu. */
+.arcane{display:flex;align-items:center;gap:18px;text-align:left;padding:16px 0;cursor:pointer;border-radius:10px;transition:.15s}
+.arcane:hover{background:var(--papier)}
+.arcane .corps{flex:1;min-width:0}
+.arcane .num{font-family:var(--serif);font-size:30px;color:var(--accent-doux);line-height:1}
+.arcane .nom{font-family:var(--serif);font-size:21px;margin:4px 0 2px}
+.arcane .corr{font-size:12px;color:var(--encre3)}
+.vignette{width:56px;height:98px;object-fit:cover;border-radius:6px;border:1px solid var(--bord);flex:none;box-shadow:0 1px 3px rgba(0,0,0,.12);cursor:zoom-in}
+
+/* La carte du jour se présente retournée, se dévoile au clic — en FONDU
+   (crossfade), pas en 3D : leçon tirée de Francisation, où backface rendait
+   mal. Effet, pas oracle : la carte est CALCULÉE (date du jour → arcane). */
+.carte-jour{position:relative;display:inline-block;width:60px;height:105px;flex:none;border-radius:6px;overflow:hidden;border:1px solid var(--bord);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease}
+.carte-jour .face{opacity:0}
+.carte-jour-zone.revelee .carte-jour .face{opacity:1}
+.carte-jour-zone.revelee .carte-jour .dos{opacity:0}
+/* Les deux cartes côte à côte : chacune empile son image PUIS son texte
+   (au lieu d'être côte à côte l'une dans l'autre), pour que la paire tienne
+   sur une seule ligne même en mobile étroit. */
+.carte-jour-paire{display:flex; gap:16px; align-items:flex-start}
+.carte-jour-zone{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; cursor:pointer}
+.carte-jour-zone .carte-jour{width:72px;height:126px}
+.carte-jour-zone.revelee .carte-jour{cursor:zoom-in}
+
+/* La visionneuse : un clic sur une carte la montre en grand, en détail.
+   Ouverte par ouvrirLightbox(), fermée par clic sur le fond ou Échap. */
+.lightbox{position:fixed;inset:0;background:rgba(8,6,4,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:1100;padding:24px}
+.lightbox.ouvert{display:flex}
+/* L'animation de sortie n'est PAS qu'esthétique : la lightbox reste affichée
+   pendant `lb-out` (180 ms), ce qui absorbe le « clic fantôme » du navigateur
+   après un touchend — sinon, une fois l'overlay caché (display:none), ce clic
+   synthétique retombe sur la carte du dessous et la re-zoome. */
+.lightbox.ouvert{animation:lb-in .18s ease}
+.lightbox.fermant{animation:lb-out .18s ease}
+@keyframes lb-in{from{opacity:0;transform:scale(.965)}to{opacity:1;transform:scale(1)}}
+@keyframes lb-out{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.965)}}
+.lightbox img{max-width:86vw;max-height:80vh;border-radius:8px;border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 50px rgba(0,0,0,.6);cursor:pointer}
+.lightbox-leg{color:#e8e0d4;font-family:var(--serif);font-size:19px;margin-top:18px;text-align:center;max-width:34ch}
+.lightbox-leg .corr{display:block;font-family:var(--sans);font-size:11px;color:#b3a68a;margin-top:6px;text-transform:uppercase;letter-spacing:.12em}
+.lightbox-fermer{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.1);border:0;color:#d4ccc0;font-size:22px;cursor:pointer;z-index:1110;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .15s;line-height:1}
+.lightbox-fermer:hover{background:rgba(255,255,255,.2)}
+
+/* ═══ L'ÉCRAN D'ACCUEIL DU JOUR ═══
+   La carte « Aujourd'hui » seule, montrée une fois par jour à la première
+   ouverture. Touche n'importe où → fondu, la vue Jour (déjà chargée dessous)
+   apparaît. Mobile : plein écran. Bureau : grande carte centrée sur fond
+   assombri (largeur contrainte, cf. .accueil-carte). */
+.accueil-jour{
+  /* TOUJOURS display:flex (jamais none) — voir le pavé « PREMIUM & DOUX »
+     plus bas : c'est l'opacity + pointer-events qui cachent/désactivent,
+     pas le display. `position:fixed` sort déjà l'élément du flux, donc le
+     garder en flex en permanence ne coûte rien au reste de la page. */
+  position:fixed; inset:0; z-index:1050; display:flex; cursor:pointer;
+  flex-direction:column; align-items:center; justify-content:center;
+  padding:28px; overflow:hidden;
+  /* LARGEUR : `inset:0` (left:0 + right:0) cale déjà l'élément sur la largeur
+     exacte du viewport. On NE met PAS `width:100vw` : sur mobile, 100vw peut
+     dépasser la zone réellement visible de quelques pixels (il ignore certaines
+     marges du navigateur), ce qui crée un débordement horizontal — l'app
+     apparaît alors « zoomée » au démarrage, à recadrer à la main. Le bug était
+     là. `inset:0` seul est correct.
+     HAUTEUR : là, un vrai besoin — `inset:0` ne suffit pas toujours en mobile
+     (la barre d'outils du navigateur rétrécit/agrandit la zone visible et
+     laisse voir le fond derrière). 100dvh (hauteur DYNAMIQUE du viewport)
+     referme l'écart ; 100vh reste en repli pour les navigateurs sans dvh. */
+  height:100vh;
+  height:100dvh;
+  /* Le métier à tisser cosmique en fond de l'accueil du jour — la carte, elle,
+     est opaque (papier), donc l'image est visible autour. Le voile sombre garde
+     la carte lisible en toutes circonstances (même image, même logique que le
+     bandeau-marque : la lecture passe avant l'ornement), ancrée sur le cœur
+     doré du mandala (focal x=564 y=488 sur 1024×1024, le même que le bandeau).
+     ⚠️ `background-size` en pourcentage UNIQUE (ex. 130%) ne fixe que la
+     LARGEUR — la hauteur suit en `auto`, selon les proportions de l'image
+     (carrée ici). Sur mobile (écran bien plus haut que large), l'image ne
+     montait donc jamais assez pour couvrir tout l'écran, peu importe la
+     hauteur du conteneur — vrai bug, pas un souci de viewport dynamique.
+     `cover` est le seul réglage qui GARANTIT une couverture totale quel que
+     soit le rapport largeur/hauteur de l'écran (il choisit lui-même le facteur
+     d'agrandissement nécessaire, jamais moins). */
+  background-image:
+    linear-gradient(to bottom,
+      rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
+    url('/static/img/metierAtisser1.png');
+  background-position:55% 48%; background-size:cover; background-repeat:no-repeat;
+  padding-top:max(28px, env(safe-area-inset-top));
+  padding-bottom:max(28px, env(safe-area-inset-bottom));
+}
+/* PREMIUM & DOUX (Martin, 2026-08-24 : « c'était glitchy »). Deux causes
+   corrigées ensemble :
+   1. `display:none→flex` ET `animation` démarraient dans la MÊME frame —
+      le navigateur devait peindre le fond ET lancer l'animation d'un coup,
+      d'où l'à-coup au premier rendu. Reste maintenant TOUJOURS display:flex
+      (`position:fixed` le sort déjà du flux, aucun coût pour le reste de la
+      page) ; `opacity` + `pointer-events` suffisent à cacher/désactiver.
+   2. Une `@keyframes` SAUTE toujours à son `from{}`, même interrompue en
+      cours de route (rouvrir pendant la fermeture papillote). Une
+      `transition` interpole depuis l'état RÉEL courant — jamais de saut. */
+.accueil-jour{
+  opacity:0; pointer-events:none; will-change:opacity;
+  transition:opacity .38s cubic-bezier(.32,.72,0,1);
+}
+.accueil-jour.ouvert{opacity:1; pointer-events:auto}
+.accueil-jour.fermant{transition-duration:.3s}
+.accueil-carte{
+  width:100%; max-width:560px;
+  /* Centrage blindé : `margin:auto` centre sur les DEUX axes, indépendamment
+     du flex parent — si align-items/justify-content venaient à être perdus
+     ou surchargés, la carte reste centrée quoi qu'il arrive. */
+  margin:auto;
+  opacity:0; transform:translateY(14px) scale(.98); will-change:opacity, transform;
+  transition:opacity .38s cubic-bezier(.32,.72,0,1),
+             transform .38s cubic-bezier(.32,.72,0,1);
+}
+.accueil-jour.ouvert .accueil-carte{opacity:1; transform:none}
+.accueil-jour.fermant .accueil-carte{
+  opacity:0; transform:scale(1.02); transition-duration:.3s;
+}
+/* Le chapô, le miroir et « En action » réutilisent les styles existants
+   (.chapo/.miroir/.geste) ; on grossit juste le miroir sur cet écran-là. */
+.accueil-carte .chapo{margin-bottom:16px}
+.accueil-carte .miroir{font-size:24px;line-height:1.55;margin-bottom:22px}
+.accueil-carte .accueil-date{font-family:var(--serif);font-size:15px;color:var(--encre3);margin-bottom:20px}
+.accueil-indice{
+  position:absolute; bottom:max(22px, env(safe-area-inset-bottom));
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--encre3);
+  opacity:0; animation:acc-indice 1s ease 1.1s forwards;
+}
+@keyframes acc-indice{to{opacity:.7}}
+@media (max-width:480px){
+  .accueil-carte .miroir{font-size:21px}
+}
+/* Respect du réglage système « animations réduites » : pas de glissement ni
+   de zoom, juste une apparition/disparition franche mais courte. */
+@media (prefers-reduced-motion:reduce){
+  .accueil-jour, .accueil-jour.fermant,
+  .accueil-carte, .accueil-jour.fermant .accueil-carte{
+    transition-duration:.12s; transition-timing-function:linear;
+  }
+  .accueil-carte, .accueil-jour.fermant .accueil-carte{transform:none}
+  .accueil-indice{animation-duration:.15s; animation-timing-function:linear}
+}
+
+/* Vue plein écran d'une carte du jour (2e clic sur une carte déjà retournée) :
+   RÉUTILISE la classe .accueil-jour (même fond métier à tisser + voile, même
+   animation d'ouverture/fermeture) — « le même mode » demandé. #carte-plein
+   est un id distinct, seul l'id change le comportement JS ; le fond vient
+   entièrement du sélecteur de classe partagé. */
+.carte-plein-corps{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.carte-plein-corps img{width:100%;max-width:280px;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.carte-plein-corps .carte-plein-nom{font-family:var(--serif);font-size:22px;text-align:center}
+.carte-plein-corps .carte-plein-invitation{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--encre2);text-align:center}
+/* Angle du jour en plein écran : contenu texte (pas une carte image), donc
+   pas centré/étroit comme carte-plein-corps — largeur normale, scrollable si
+   long (le panneau .accueil-jour est overflow:hidden, mais SON contenu doit
+   pouvoir défiler quand le texte + aide dépassent la hauteur d'écran). */
+.angle-plein-corps{width:100%;max-width:560px;max-height:calc(100vh - 100px);overflow-y:auto}
+.angle-plein-corps .chapo{margin-bottom:14px}
+/* Bouton de fermeture rond — même patron que .lightbox-fermer (cohérence
+   visuelle), positionné hors du panneau opaque pour rester à portée même
+   quand le contenu défile (voir .angle-plein-corps overflow-y:auto). */
+.angle-plein-fermer{
+  position:absolute; top:max(16px, env(safe-area-inset-top));
+  right:max(16px, env(safe-area-inset-right)); z-index:1110;
+  width:40px;height:40px;border-radius:50%;border:0;
+  background:rgba(255,255,255,.1);color:#d4ccc0;font-size:18px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .15s;
+}
+.angle-plein-fermer:hover{background:rgba(255,255,255,.2)}
+/* Les cartes cliquables des angles (remplacent les tiroirs <details> pour
+   « Ce qui domine », « La Lune », « Nuance », le Fil du jour, les domaines) :
+   même bloc .pont que partout ailleurs, juste rendu cliquable. */
+.angle-carte{cursor:pointer}
+.angle-carte .tete{display:flex;align-items:center;gap:10px}
+
+.pont{background:var(--papier);border:1px solid var(--bord);border-radius:10px;padding:16px;margin-top:14px;font-size:14px;color:var(--encre2)}
+/* La paire de cartes du jour, exception au fond ET au contour de .pont :
+   fond aligné sur le conteneur parent (.jour-groupe, --papier2) au lieu de
+   --papier (nettement plus foncé en thème sombre) — deux bruns superposés
+   juste derrière les cartes faisaient une boîte dans la boîte (Martin,
+   2026-08-24). Le contour de .pont (1px var(--bord)) restait visible même
+   fond unifié — retiré ici pour que le rectangle se fonde complètement dans
+   .jour-groupe (Martin : « uniformiser le tout »). Sélecteur composé
+   (spécificité 0,2,0) pour l'emporter sur .pont sans dépendre de l'ordre
+   dans la feuille de style ; .pont garde son fond ET son contour habituels
+   PARTOUT ailleurs (contraste voulu, ex. Relations). */
+.pont.carte-jour-paire{background:var(--papier2); border:0}
+.pont .cible{color:var(--encre);font-weight:600}
+
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:7px 0;border-bottom:1px solid var(--bord)}
+td:first-child{color:var(--encre3);width:120px;font-size:13px}
+td:last-child{text-align:right;color:var(--encre3);font-size:12px}
+.retro{color:var(--tension);font-size:11px}
+
+/* formulaire */
+label{display:block;font-size:12px;color:var(--encre3);margin:14px 0 5px;text-transform:uppercase;letter-spacing:.1em}
+input,textarea{
+  width:100%;background:var(--papier);border:1px solid var(--bord);
+  border-radius:9px;padding:11px 13px;font:inherit;font-size:15px;color:var(--encre);
+}
+input:focus,textarea:focus{outline:none;border-color:var(--accent-doux)}
+textarea{resize:vertical;min-height:110px}
+.rangee{display:flex;gap:10px}
+.bouton{
+  width:100%;background:var(--accent);color:var(--papier);border:0;
+  border-radius:9px;padding:13px;font:inherit;font-size:15px;font-weight:600;
+  cursor:pointer;margin-top:22px;
+}
+.bouton:hover{opacity:.92}
+.bouton.discret{background:none;color:var(--encre3);border:1px solid var(--bord);margin-top:10px}
+.bouton.discret:hover{color:var(--encre);border-color:var(--accent-doux)}
+/* .actif : la seule règle de sélection existante (nav button.actif) ne
+   couvrait pas les boutons discrets utilisés comme choix (genre, type de
+   lien, rôle parent-enfant) — la classe se posait bien en JS, mais rien ne
+   la rendait visible. */
+.bouton.discret.actif{background:var(--accent-doux);color:var(--papier);border-color:var(--accent-doux)}
+.bouton.danger{background:none;color:var(--tension);border:1px solid var(--bord);margin-top:10px}
+.bouton.danger:hover{border-color:var(--tension)}
+.suggestions{margin-top:6px;border:1px solid var(--bord);border-radius:9px;overflow:hidden}
+.suggestions div{padding:10px 13px;cursor:pointer;font-size:14px;border-bottom:1px solid var(--bord)}
+.suggestions div:last-child{border-bottom:0}
+.suggestions div:hover{background:var(--papier)}
+.suggestions small{color:var(--encre3);display:block;font-size:11px}
+
+/* réserves — visibles, jamais tues */
+.avis{
+  background:color-mix(in srgb, var(--tension) 8%, transparent);
+  border:1px solid color-mix(in srgb, var(--tension) 26%, transparent);
+  border-radius:10px;padding:14px;margin-bottom:14px;font-size:13px;color:var(--encre2);
+}
+.avis b{color:var(--tension)}
+.note{font-size:12px;color:var(--encre3);line-height:1.6;margin-top:24px;text-align:center}
+.trou{border:1px dashed var(--bord);border-radius:10px;padding:14px;font-size:13px;color:var(--encre3);margin-top:12px}
+
+/* le panneau de détail — plein écran, mobile d'abord */
+/* opaque, pas translucide : on lit un texte long ici, la page du dessous ne
+   doit pas transparaître derrière les mots */
+.voile{
+  position:fixed;inset:0;background:var(--papier);
+  z-index:50;overflow-y:auto;padding:20px;
+}
+.panneau{max-width:660px;margin:0 auto;padding-bottom:70px}
+.panneau-haut{
+  position:sticky;top:-20px;background:var(--papier);margin:-20px -20px 0;padding:20px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--bord);z-index:2;
+}
+.fermer{background:none;border:0;font:inherit;font-size:22px;color:var(--encre3);cursor:pointer;padding:4px 10px;line-height:1}
+.fermer:hover{color:var(--encre)}
+.detail-titre{font-family:var(--serif);font-size:34px;margin:26px 0 4px;line-height:1.15}
+.detail-nombre{font-family:var(--serif);font-size:15px;color:var(--accent);letter-spacing:.08em}
+.detail-resume{font-family:var(--serif);font-size:19px;color:var(--encre2);margin:14px 0 8px;line-height:1.5}
+.section{margin-top:26px}
+.section.univers{border-left:2px solid var(--accent);padding-left:16px;margin-left:-2px}
+.univers-nombres{font-family:var(--serif);font-size:18px;color:var(--encre2);margin-bottom:10px}
+.univers-nombres b{color:var(--accent);font-weight:600}
+.section h4{
+  font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--encre3);
+  font-weight:600;margin-bottom:8px;
+}
+.section p{font-size:15px;color:var(--encre2);line-height:1.7}
+.section.douce{background:var(--papier2);border:1px solid var(--bord);border-radius:10px;padding:18px}
+.section.douce h4{color:var(--accent)}
+
+/* le « c'est quoi ? » — la vulgarisation, partout */
+.quoi{font-size:13px;color:var(--encre3);line-height:1.55;margin-top:6px}
+details.aide{margin-top:10px}
+details.aide summary{
+  font-size:11px;color:var(--encre3);cursor:pointer;text-transform:uppercase;letter-spacing:.1em;
+  list-style:none;
+}
+details.aide summary::-webkit-details-marker{display:none}
+details.aide summary::before{content:'⌄ ';color:var(--accent-doux);font-weight:700}
+details.aide[open] summary::before{content:'⌃ '}
+details.aide summary:hover{color:var(--encre2)}
+details.aide p{font-size:13px;color:var(--encre3);margin-top:8px;line-height:1.6}
+
+.lien[data-lien]{cursor:pointer;padding:8px;margin:0 -8px;border-radius:8px;transition:.15s}
+.lien[data-lien]:hover{background:var(--papier)}
+
+/* ═══ Le bandeau de synthèse du jour — l'essentiel d'un coup d'œil. ═══
+   Date + Lune en haut (hérité de .entete-jour), puis une ligne d'état qui
+   rassemble le transit dominant et la carte du jour — les deux faits-clés
+   du ciel aujourd'hui, normalement dispersés plus bas dans la page. */
+.synthese{background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r);padding:18px 20px;margin-bottom:16px}
+.synthese .entete-jour{padding:2px 0 0;margin-bottom:0}
+/* le transit dominant et la carte du jour s'empilent sous l'en-tête,
+   séparés par un trait — un par ligne, pleine largeur, bien lisible. */
+.synthese-transit{padding-top:14px;margin-top:14px;border-top:1px solid var(--bord)}
+.synthese-transit .lib{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--encre3);display:block;margin-bottom:4px}
+.synthese-transit .corps{font-family:var(--serif);font-size:17px;color:var(--encre);line-height:1.4}
+.synthese-transit .corps b{font-weight:600}
+.synthese .carte-jour-zone{padding-top:14px;margin-top:14px;border-top:1px solid var(--bord)}
+.synthese details.aide{margin-top:10px}
+
+/* ═══ PILOTE ÉPURE « Le jour » (2026-08-24) ═══
+   Étoile polaire : une chose à la fois, le reste sur demande. DEUX gestes de
+   divulgation, chacun un sens FIXE et un signifiant distinct — c'est ce qui
+   les rend prévisibles plutôt qu'incohérents (Jakob, Norman) :
+     · le tiroir (chevron ⌄) = EXPLORER un texte sans perdre sa place ;
+     · le plein écran (glyphe ⤢) = CONTEMPLER un objet seul (carte, pensée). */
+
+/* Le message du jour = le héros. Plus d'air, une légère élévation qui le
+   détache, l'en-tête (date + Lune) fondu dedans en fine ligne dés-accentuée. */
+.carte-jour-hero{padding:28px 26px 30px; box-shadow:0 10px 34px rgba(0,0,0,.16)}
+.jour-entete{text-align:center; color:var(--encre3); margin-bottom:22px;
+  padding-bottom:18px; border-bottom:1px solid var(--bord)}
+.jour-entete .date{font-size:11px; letter-spacing:.16em; text-transform:uppercase}
+.jour-entete .lune{font-family:var(--serif); font-size:14px; color:var(--encre2); margin-top:7px}
+.carte-jour-hero .miroir{font-size:21px; line-height:1.62}
+
+/* Une RANGÉE plein écran — visuellement identique à une rangée de tiroir
+   (même padding, même hover, même typo), pour se mêler sans rupture aux
+   tiroirs dans un même groupe « Explorer » (Martin, 2026-08-24 : « la Lune »
+   et « Nuance » ouvrent en plein écran, PAS en dépli inline). Le glyphe ⤢,
+   à la même place que le chevron ⌄ du tiroir, dit « ça s'ouvre en grand »
+   plutôt que « ça se déplie ici ». N'EST PAS utilisé pour les tuiles de
+   domaine (12 cartes dans « Le fil du jour ») : sur une grille aussi dense,
+   l'icône répétée surchargeait pour rien — elles gardent l'ancien style
+   .pont.angle-carte, SANS glyphe (rien à changer là, cette règle ne le
+   posait déjà que via ce bloc, retiré). */
+.rangee-angle{
+  border-bottom:1px solid var(--bord); cursor:pointer;
+  padding:15px 20px; display:flex; align-items:center; gap:14px;
+  transition:background .15s;
+}
+.rangee-angle:last-child{border-bottom:0}
+.rangee-angle:hover{background:var(--papier)}
+.rangee-angle .glyphe-plein{flex:none; color:var(--accent-doux); opacity:.5; font-size:16px; line-height:1}
+
+/* Rythme plus généreux entre les repères de premier niveau (on en a moins). */
+.jour-section{margin-top:34px}
+
+/* Les Rappels sortent du flux de lecture : un pied utilitaire discret, dés-
+   accentué, séparé du contenu contemplatif par un trait fin et de l'air. */
+.jour-pied{margin-top:40px; padding-top:22px; border-top:1px solid var(--bord);
+  text-align:center}
+.jour-pied .chapo{justify-content:center}
+.jour-pied .quoi{max-width:46ch; margin-left:auto; margin-right:auto}
+
+/* ═══ Les tiroirs — dépliables au clic, la divulgation progressive d'Align. ═══
+   Version « section » du details.aide : un résumé toujours lisible dans
+   l'en-tête, le geste et le détail au dépliage. Pas un discret « ? » : la
+   première lecture se fait sans rien ouvrir. */
+.jour-section{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--encre3);font-weight:600;margin:24px 0 8px}
+.jour-groupe{background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+details.tiroir{border-bottom:1px solid var(--bord)}
+details.tiroir:last-child{border-bottom:0}
+details.tiroir>summary{
+  list-style:none;cursor:pointer;padding:15px 20px;
+  display:flex;align-items:center;gap:14px;transition:background .15s;
+}
+details.tiroir>summary::-webkit-details-marker{display:none}
+details.tiroir>summary:hover{background:var(--papier)}
+details.tiroir>summary .tete{flex:1;min-width:0}
+.tiroir-ico{flex:none;display:flex;color:var(--accent-doux);opacity:.7}
+.tiroir-nom{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--encre3);display:block}
+.tiroir-resume{font-family:var(--serif);font-size:17px;color:var(--encre);line-height:1.4;display:block;margin-top:3px}
+.tiroir-resume.compact{font-size:14.5px;color:var(--encre2);font-family:var(--sans)}
+.tiroir-chev{flex:none;color:var(--accent-doux);font-size:18px;line-height:1;transition:transform .18s ease}
+details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
+.tiroir-corps{padding:14px 20px 18px}
+.tiroir-corps p{font-size:15px;color:var(--encre2);line-height:1.65}
+.tiroir-corps p + p{margin-top:10px}
+.tiroir-corps .geste{margin-top:12px}
+/* Une ligne de liste — pour du contenu RÉPÉTÉ (mêmes formes qui se suivent :
+   un élément par point, un aspect par ligne). Reprend l'idiome déjà en place
+   dans .tiroir (séparateur fin), pas un composant nouveau. */
+.tiroir-corps .ligne-rel{font-size:15px;color:var(--encre2);line-height:1.65;padding:10px 0;border-top:1px solid var(--bord)}
+.tiroir-corps .ligne-rel:first-child{border-top:0;padding-top:0}
+/* le « tout lire → » d'un cycle ouvre le panneau de détail, sans conflit
+   avec le summary qui, lui, déplie/replie le tiroir. */
+.tout-lire{display:inline-block;margin-top:12px;font-size:13px;color:var(--accent);cursor:pointer;font-weight:600}
+.tout-lire:hover{text-decoration:underline;text-underline-offset:3px}
+
+.cacher{display:none}
+
+@media (max-width:480px){
+  .rangee-haut{flex-direction:column;align-items:flex-start;gap:12px}
+  nav{width:100%}
+  /* Compacté pour que les 4 boutons tiennent sur une seule ligne même sur
+     les petits téléphones. */
+  nav button{padding:6px 5px;gap:3px;font-size:11.5px}
+  nav button .ico{width:14px;height:14px}
+  .bandeau-marque{height:260px}
+  .enveloppe{padding:22px 0 70px}
+  .carte{padding:20px}
+  .miroir{font-size:19px}
+  .detail-titre{font-size:27px}
+}
+</style>
+</head>
+<body>
+<div class="bandeau-marque" role="presentation"></div>
+<div class="enveloppe">
+  <header>
+    <div class="rangee-haut">
+      <div class="marque">
+        <svg class="marque-ico" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4.5h16"/>
+          <path d="M5 11h3M16 11h3" opacity="0.55"/>
+          <path d="M12 5.6V14"/>
+          <path d="M12 14l2.1 2.6L12 21l-2.1-4.4Z"/>
+          <circle cx="12" cy="4.5" r="1.1" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="marque-texte">TA TRAME</span>
+      </div>
+      <div class="outils-haut">
+        <button id="bouton-regles" class="bouton-survol cacher" data-vue="regles" aria-label="Les Règles">
+          <span class="etiquette-survol">Les Règles</span>
+        </button>
+        <button id="bouton-feedback" class="bouton-survol cacher" aria-label="Un commentaire pour Martin ?">
+          <span class="etiquette-survol">Un commentaire ?</span>
+        </button>
+        <div id="puce-profil" class="puce-profil cacher"></div>
+      </div>
+    </div>
+    <nav id="nav" class="cacher">
+      <button data-vue="jour" class="actif"><span>Le Jour</span></button>
+      <button data-vue="apercu"><span>Tout</span></button>
+      <button data-vue="portrait"><span>Le Portrait</span></button>
+      <button data-vue="ciel"><span>Le Ciel</span></button>
+      <button data-vue="relations"><span>Relations</span></button>
+    </nav>
+  </header>
+
+  <section id="vue-accueil" class="cacher"></section>
+  <section id="vue-jour" class="cacher"></section>
+  <section id="vue-apercu" class="cacher"></section>
+  <section id="vue-portrait" class="cacher"></section>
+  <section id="vue-ciel" class="cacher"></section>
+  <section id="vue-relations" class="cacher"></section>
+  <section id="vue-regles" class="cacher"></section>
+  <section id="vue-profils" class="cacher"></section>
+  <section id="vue-connexion" class="cacher"></section>
+</div>
+
+<div id="voile" class="voile cacher"><div class="panneau" id="panneau"></div></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const T = (s='') => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+
+let LEX = {};          // le lexique — chargé une fois, utilisé partout
+let profilId = localStorage.getItem('align.profil');
+let profils = [];
+let lieuChoisi = null;
+let editionDe = null;  // null = création, sinon l'id du profil qu'on modifie
+
+// Enregistré une fois par chargement de page, quelle que soit la vue — sans
+// lui, aucune notification push n'est possible (voir static/sw.js).
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+
+/* ═══════════════════════════════════════════════════════════
+   VULGARISATION — aucun terme technique n'atteint l'écran nu.
+   Chaque helper traduit une clé en français clair.
+   ═══════════════════════════════════════════════════════════ */
+const nomMaison = n => (LEX.maisons?.[n]?.nom) || `maison ${n}`;
+const quoiMaison = n => (LEX.maisons?.[n]?.quoi) || '';
+const nomPhase = p => (LEX.phases?.[p]?.nom) || String(p).replace(/_/g,' ');
+const quoiPhase = p => (LEX.phases?.[p]?.quoi) || '';
+const nomPlanete = p => (LEX.planetes?.[p]?.nom) || p;
+const quoiPlanete = p => (LEX.planetes?.[p]?.quoi) || '';
+const nomAspect = c => (LEX.aspects?.[c]?.nom) || c;
+const terme = k => LEX.termes?.[k] || {};
+const nomEtat = e => terme(e).court || e;
+
+/* L'URL de la vignette d'un arcane — miroir JS de moteur.tarot.url_carte
+   (22 ≡ 0 : Le Mat ferme la boucle ; format 00.jpg). La vignette ILLUSTRE un
+   arcane calculé, elle ne tire jamais de carte au hasard. */
+const urlCarte = n => `/static/cartes/${String(n === 22 ? 0 : n).padStart(2,'0')}.jpg`;
+
+/* L'URL de la vignette d'une mineure (miroir JS de moteur.mineurs.url_carte_mineure).
+   `onerror` replie sur le dos de carte si le fichier venait à manquer — la
+   vignette illustre un calcul, elle ne doit jamais casser l'affichage. */
+const urlCarteMineur = (suit, rang) => `/static/cartes/mineurs/${suit}_${rang}.jpg`;
+
+/* Le « ? » repliable — la vulgarisation à la demande, jamais imposée. */
+function aide(titre, texte, source) {
+  if (!texte) return '';
+  return `<details class="aide"><summary>${T(titre)}</summary>
+    <p>${T(texte)}${source ? ' <em>' + T(source) + '</em>' : ''}</p></details>`;
+}
+
+/* L'anneau d'un cycle (année sur 9, mois sur 9…) : le chiffre au centre, la
+   position dans le cycle en anneau autour — plus lisible d'un coup d'œil que
+   « 3 sur 9 », et ça reste sobre : un simple contour, une seule section
+   allumée, pas un graphique de jeu vidéo. */
+function anneauCycle(valeur, total, taille = 60) {
+  const cx = taille / 2, cy = taille / 2, r = taille / 2 - 6, epaisseur = 5;
+  const pas = 360 / total, ecart = 3; // degrés de vide entre deux sections
+
+  const polaire = (angle) => {
+    const a = (angle - 90) * Math.PI / 180; // -90° : la section 1 commence en haut
+    return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
+  };
+  const arc = (debut, fin) => {
+    const p1 = polaire(debut), p2 = polaire(fin);
+    const grandArc = (fin - debut) > 180 ? 1 : 0;
+    return `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} A ${r} ${r} 0 ${grandArc} 1 ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
+  };
+
+  let sections = '';
+  for (let i = 0; i < total; i++) {
+    const actif = (i + 1) === valeur;
+    sections += `<path d="${arc(i * pas + ecart, (i + 1) * pas - ecart)}" fill="none"
+      stroke="${actif ? 'var(--accent)' : 'var(--bord)'}"
+      stroke-width="${actif ? epaisseur + 1.5 : epaisseur}" stroke-linecap="butt"/>`;
+  }
+  return `<svg viewBox="0 0 ${taille} ${taille}" width="${taille}" height="${taille}" class="anneau-cycle">
+    ${sections}
+    <text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central" class="anneau-cycle-chiffre">${valeur}</text>
+  </svg>`;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PROFILS — créer, changer, MODIFIER, supprimer.
+   ═══════════════════════════════════════════════════════════ */
+async function chargerProfils() {
+  profils = await (await fetch('/api/profils')).json();
+  return profils;
+}
+
+function dessinerPuce() {
+  const p = profils.find(x => x.id === profilId);
+  const puce = $('#puce-profil');
+  if (!p) { puce.classList.add('cacher'); return; }
+  puce.classList.remove('cacher');
+  puce.innerHTML = `<span>${T(p.nom_affiche)}</span><span class="fleche">▼</span>`;
+  puce.onclick = () => montrer('profils');
+}
+
+function vueProfils() {
+  let html = `<div class="carte">
+    <div class="chapo">Tes profils</div>`;
+  for (const p of profils) {
+    const actif = p.id === profilId;
+    // la racine du compte (elle-même pour un compte racine, le propriétaire pour
+    // un thème) — sert à exiger le mot de passe quand on change de compte.
+    const racine = p.proprietaire || p.id;
+    html += `<div class="nombre" data-profil="${T(p.id)}" data-racine="${T(racine)}" style="align-items:center">
+      <div style="flex:1">
+        <div class="motcle" style="font-size:17px">${T(p.nom_affiche)}${actif ? ' ·' : ''}${p.secondaire ? ' <span style="font-size:11px;font-weight:400;color:var(--encre3)">· thème ajouté</span>' : ''}</div>
+        <div class="txt">${T(p.naissance)}${p.complet ? ` · ${T(p.lieu)}` : ' · date seule'}</div>
+      </div>
+      <div class="plus">${actif ? 'affiché' : 'voir'}</div>
+    </div>`;
+  }
+  html += `</div>
+  <div class="carte">
+    <div class="chapo">Le profil affiché</div>
+    <button class="bouton" id="p-nouveau">+ Ajouter un profil</button>
+    <button class="bouton discret" id="p-modifier">Modifier « ${T((profils.find(x=>x.id===profilId)||{}).nom_affiche || '')} »</button>
+    <button class="bouton discret" id="p-connexion">Se connecter à un autre compte</button>
+    <button class="bouton discret" id="p-deconnexion">Fermer ce compte sur cet appareil</button>
+    <button class="bouton danger" id="p-supprimer">Supprimer ce profil</button>
+    <p class="quoi" style="margin-top:14px">
+      L'heure et le lieu de naissance changent l'Ascendant et les maisons.
+      Si tu as un doute sur l'heure, tu peux la corriger ici — le thème se recalcule aussitôt.
+    </p>
+  </div>`;
+  $('#vue-profils').innerHTML = html;
+
+  $('#vue-profils').querySelectorAll('[data-profil]').forEach(d => d.onclick = async () => {
+    const cible = d.dataset.profil;
+    const racineCible = d.dataset.racine;
+    // Le profil affiché et le profil visé appartiennent-ils au MÊME compte ?
+    // Les thèmes d'un même compte basculent librement ; changer de compte exige
+    // le mot de passe de CE compte, même s'il a déjà été déverrouillé sur cet
+    // appareil (sinon n'importe quel compte déjà ouvert se laisse lire sans mot
+    // de passe — le trou signalé par Martin).
+    const actuel = profils.find(x => x.id === profilId);
+    const racineActuelle = actuel ? (actuel.proprietaire || actuel.id) : null;
+    if (racineCible && racineCible !== racineActuelle) {
+      const ok = await demanderMotDePasseCompte(racineCible, cible);
+      if (!ok) return;
+    }
+    profilId = cible;
+    localStorage.setItem('align.profil', profilId);
+    await demarrer();
+  });
+  $('#p-nouveau').onclick = () => { editionDe = null; ouvrirFormulaire(); };
+  $('#p-connexion').onclick = () => { vueConnexion(); };
+  $('#p-deconnexion').onclick = async () => {
+    // referme CE compte sur CET appareil : il disparaît de la liste « Tes profils »
+    // et sa session locale est oubliée. Les autres comptes restent déverrouillés.
+    const pid = profilId;
+    await fetch('/api/deconnexion', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({profil: pid}),
+    });
+    if (localStorage.getItem('align.profil') === pid) localStorage.removeItem('align.profil');
+    profilId = null;
+    await chargerProfils();
+    profils.length
+      ? (profilId = profils[0].id, localStorage.setItem('align.profil', profilId), demarrer())
+      : ouvrirFormulaire();
+  };
+  $('#p-modifier').onclick = async () => {
+    editionDe = profilId;
+    ouvrirFormulaire(await (await fetch(`/api/profil/${profilId}`)).json());
+  };
+  $('#p-supprimer').onclick = async () => {
+    if (!confirm('Supprimer ce profil ? Les calculs ne sont pas conservés ailleurs.')) return;
+    await fetch(`/api/profil/${profilId}`, {method:'DELETE'});
+    localStorage.removeItem('align.profil');
+    profilId = null;
+    await chargerProfils();
+    profils.length ? (profilId = profils[0].id,
+      localStorage.setItem('align.profil', profilId), demarrer()) : ouvrirFormulaire();
+  };
+}
+
+/* ── changer de compte = exiger son mot de passe ──
+   Un compte déjà déverrouillé sur cet appareil reste lisible en session, mais
+   on ne bascule PAS dessus sans son mot de passe : la liste « Tes profils »
+   liste tous les comptes ouverts, et la simple lecture d'un autre compte ne
+   doit pas être gratuite. On vérifie via /api/connexion (qui exige le bon mot
+   de passe, et refuse après trop de tentatives). */
+async function demanderMotDePasseCompte(racine, cible) {
+  const entree = profils.find(x => x.id === racine)
+              || profils.find(x => (x.proprietaire || x.id) === racine);
+  const nom = entree ? entree.nom_affiche : racine;
+  const aMdp = entree ? entree.a_mdp : true;
+  $('#vue-profils').innerHTML = `<div class="carte">
+    <div class="chapo">Compte « ${T(nom)} »</div>
+    <p class="quoi" style="margin:-2px 0 12px">${aMdp
+      ? 'Ce compte a son propre mot de passe. Entre-le pour le voir sur cet appareil.'
+      : 'Ce compte n\'a pas encore de mot de passe. Le premier que tu entres deviendra le sien.'}</p>
+    <label>Mot de passe</label>
+    <input id="dc-mdp" type="password" autocomplete="current-password">
+    <button class="bouton" id="dc-valider">Déverrouiller ce compte</button>
+    <button class="bouton discret" id="dc-annuler">Annuler</button>
+    <div id="dc-erreur" class="avis cacher" style="margin-top:14px"></div>
+  </div>`;
+  const err = m => { $('#dc-erreur').innerHTML = m; $('#dc-erreur').classList.remove('cacher'); };
+  return new Promise(resolve => {
+    const valider = async () => {
+      const mdp = $('#dc-mdp').value;
+      if (!mdp) return err('Le mot de passe est requis.');
+      const r = await (await fetch('/api/connexion', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({nom, mot_de_passe: mdp}),
+      })).json();
+      if (r.erreur) return err(T(r.erreur));
+      resolve(true);
+    };
+    $('#dc-valider').onclick = valider;
+    $('#dc-mdp').addEventListener('keydown', e => { if (e.key === 'Enter') valider(); });
+    $('#dc-annuler').onclick = () => { vueProfils(); resolve(false); };
+  });
+}
+
+/* ── le formulaire, en création comme en modification ── */
+function ouvrirFormulaire(profil = null) {
+  const n = profil?.naissance || {};
+  const deuxChiffres = v => v === undefined || v === null ? '' : String(v).padStart(2,'0');
+  $('#vue-accueil').innerHTML = `<div class="carte">
+    <div class="chapo">${profil ? 'Modifier le profil' : 'Pour commencer'}</div>
+    ${profil ? '' : `<p style="font-family:var(--serif);font-size:18px;margin-bottom:6px">
+        Ta Trame ne prédit rien. Elle tend un miroir.</p>
+      <p style="font-size:14px;color:var(--encre2)">
+        Ta date de naissance n'est pas un destin : c'est un point de départ.
+        Ce que tu vas lire décrit un schéma que tu as reçu — non pour t'y enfermer,
+        mais pour que tu le voies.</p>`}
+
+    <label>Prénoms et nom de naissance</label>
+    <input id="f-noms" placeholder="Marie Claire Tremblay" autocomplete="off"
+           value="${T((profil?.prenoms_nom || []).join(' '))}">
+    <p class="quoi">Tous tes prénoms d'état civil, et ton nom de naissance.
+      Chaque lettre compte dans le calcul.</p>
+
+    <label>Genre</label>
+    <div id="f-genre" style="display:flex;flex-wrap:wrap;gap:6px" data-genre="${T(profil?.genre || 'x')}">
+      ${[['f','Femme'],['m','Homme'],['x','Préfère ne pas préciser']].map(([v,l]) =>
+        `<button type="button" class="bouton discret f-genre-b${(profil?.genre || 'x')===v ? ' actif' : ''}" data-genre="${v}" style="flex:none">${l}</button>`).join('')}
+    </div>
+    <p class="quoi">Facultatif — sert seulement à accorder les textes des Relations (« il »/« elle »)
+      quand les deux personnes ont indiqué leur genre. Sinon, les textes restent neutres.</p>
+
+    <label>Date de naissance</label>
+    <div class="rangee">
+      <input id="f-jour" placeholder="Jour" inputmode="numeric" value="${T(n.jour ?? '')}">
+      <input id="f-mois" placeholder="Mois" inputmode="numeric" value="${T(n.mois ?? '')}">
+      <input id="f-annee" placeholder="Année" inputmode="numeric" value="${T(n.annee ?? '')}">
+    </div>
+
+    <p class="quoi">Le reste est facultatif — si tu ne connais pas ton heure ou ton lieu
+      de naissance, laisse-les vides et calcule quand même : la lecture s'en tiendra
+      honnêtement aux nombres, aux cartes et à l'astrologie chinoise, sans Ascendant
+      ni maisons.</p>
+
+    <label>Heure de naissance</label>
+    <div class="rangee">
+      <input id="f-heure" placeholder="Heure" inputmode="numeric" value="${T(deuxChiffres(n.heure))}">
+      <input id="f-minute" placeholder="Minute" inputmode="numeric" value="${T(deuxChiffres(n.minute))}">
+    </div>
+    <p class="quoi">Elle se trouve sur ton acte de naissance. À quelques minutes près,
+      ça change peu ; à une heure près, ça change beaucoup.</p>
+
+    <label>Lieu de naissance</label>
+    <input id="f-lieu" placeholder="Trois-Pistoles" autocomplete="off" value="${T(n.lieu || '')}">
+    <div id="f-suggestions" class="suggestions cacher"></div>
+
+    ${!profil && !profils.length ? `
+    <label>Code d'invitation</label>
+    <input id="f-code" placeholder="Le code reçu avec ton invitation" autocomplete="off">
+    <p class="quoi">Ta Trame est en bêta fermée : ce code, transmis avec ton invitation,
+      débloque la création de ton compte.</p>` : ''}
+
+    <button class="bouton" id="f-valider">${profil ? 'Enregistrer' : 'Calculer'}</button>
+    ${profil || profils.length ? '<button class="bouton discret" id="f-annuler">Annuler</button>' : ''}
+    <div id="f-erreur" class="avis cacher" style="margin-top:14px"></div>
+  </div>`;
+  montrer('accueil');
+
+  /* En modification, le lieu déjà enregistré reste valable tant qu'on n'y
+     touche pas. Si son identifiant manque (profil d'une version antérieure
+     que le serveur n'a pas su retrouver), on le dit et on force un nouveau
+     choix — plutôt que d'échouer sur un message incompréhensible. */
+  lieuChoisi = profil && n.lieu_id ? {id: n.lieu_id, nom: n.lieu} : null;
+  câblerFormulaire(profil);
+  if (profil && !n.lieu_id) {
+    $('#f-erreur').innerHTML = `<b>Le lieu est à confirmer</b> — ce profil a été créé
+      avec une version antérieure. Retape et rechoisis « ${T(n.lieu || '')} » dans la liste.`;
+    $('#f-erreur').classList.remove('cacher');
+  }
+}
+
+function câblerFormulaire(profil) {
+  let minuteur;
+  document.querySelectorAll('.f-genre-b').forEach(b => b.onclick = () => {
+    $('#f-genre').dataset.genre = b.dataset.genre;
+    document.querySelectorAll('.f-genre-b').forEach(x => x.classList.toggle('actif', x === b));
+  });
+  $('#f-lieu').addEventListener('input', e => {
+    clearTimeout(minuteur); lieuChoisi = null;
+    const q = e.target.value.trim();
+    if (q.length < 2) { $('#f-suggestions').classList.add('cacher'); return; }
+    minuteur = setTimeout(async () => {
+      const r = await (await fetch('/api/lieux?q=' + encodeURIComponent(q))).json();
+      const boite = $('#f-suggestions');
+      if (!r.length) { boite.classList.add('cacher'); return; }
+      /* On ne devine JAMAIS : trois « Saint-Fabien » existent, dont un dans une
+         autre province. Un mauvais choix déplace l'Ascendant — à l'utilisateur
+         de trancher. */
+      boite.innerHTML = r.map((l,i) =>
+        `<div data-i="${i}">${T(l.nom)}
+          <small>${T(l.pays)}/${T(l.admin1||'—')} · ${l.lat.toFixed(2)}, ${l.lon.toFixed(2)}</small>
+        </div>`).join('');
+      boite.classList.remove('cacher');
+      boite.querySelectorAll('div[data-i]').forEach(d => d.onclick = () => {
+        lieuChoisi = r[+d.dataset.i];
+        $('#f-lieu').value = lieuChoisi.nom;
+        boite.classList.add('cacher');
+      });
+    }, 180);
+  });
+
+  $('#f-valider').onclick = async () => {
+    const err = m => { $('#f-erreur').innerHTML = m; $('#f-erreur').classList.remove('cacher'); };
+    const noms = $('#f-noms').value.trim().split(/[\s-]+/).filter(Boolean);
+    if (noms.length < 2) return err('Il faut au moins un prénom et un nom.');
+    // Le lieu (et donc l'heure) sont FACULTATIFS — demande de Martin, 2026-08-23.
+    // Si un lieu a été tapé mais pas choisi dans la liste, on le signale plutôt
+    // que de l'ignorer en silence ; si le champ est resté vide, on continue sans.
+    if ($('#f-lieu').value.trim() && !lieuChoisi) {
+      return err('Choisis un lieu dans la liste — les homonymes sont fréquents. Ou vide le champ pour continuer sans.');
+    }
+    const nb = s => parseInt($(s).value, 10);
+    const corps = {
+      prenoms_nom: noms, nom_affiche: noms.join(' '),
+      genre: $('#f-genre').dataset.genre || 'x',
+      jour: nb('#f-jour'), mois: nb('#f-mois'), annee: nb('#f-annee'),
+    };
+    if (lieuChoisi) {
+      corps.lieu_id = lieuChoisi.id;
+      corps.heure = nb('#f-heure') || 0;
+      corps.minute = nb('#f-minute') || 0;
+    }
+    if (!corps.jour || !corps.mois || !corps.annee) return err('La date est incomplète.');
+
+    // Bêta fermée : le champ code n'existe que pour la création d'un PREMIER compte
+    // (voir ouvrirFormulaire). S'il est là, on le joint — le serveur tranche (403 si faux).
+    const codeEl = $('#f-code');
+    if (codeEl) corps.code_invitation = codeEl.value.trim();
+
+    const url = editionDe ? `/api/profil/${editionDe}` : '/api/profil';
+    if (!editionDe) corps.id = noms.join('-').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    const r = await (await fetch(url, {
+      method: editionDe ? 'PUT' : 'POST',
+      headers:{'Content-Type':'application/json'}, body: JSON.stringify(corps),
+    })).json();
+    if (r.erreur) return err(T(r.erreur));
+    // Un thème SECONDAIRE (créé alors qu'on est déjà connecté) n'a jamais son
+    // propre mot de passe — c'est le compte qui l'a créé qui reste la seule
+    // identité connectable (voir « proprietaire » posé côté serveur). Ne pas
+    // confondre son nom avec celui du compte pour une future reconnexion.
+    const nouveauCompte = !editionDe && !r.profil.proprietaire;
+    profilId = r.profil.id;
+    localStorage.setItem('align.profil', profilId);
+    if (nouveauCompte) localStorage.setItem('align.nomAffiche', r.profil.nom_affiche || '');
+    editionDe = null;
+    // Un tout nouveau COMPTE n'a pas encore de mot de passe — l'inviter à en
+    // choisir un tout de suite plutôt que de le laisser ouvert en silence.
+    if (nouveauCompte) await vueChoisirMotDePasse(); else await demarrer();
+  };
+  const annuler = $('#f-annuler');
+  if (annuler) annuler.onclick = () => { editionDe = null; montrer(profilId ? 'profils' : 'accueil'); };
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LE PANNEAU DE DÉTAIL — « beaucoup beaucoup de détails »
+   ═══════════════════════════════════════════════════════════ */
+const ORDRE_DETAIL = [
+  ['le_mouvement', 'Le mouvement'],
+  ['de_quoi_il_s_agit', "De quoi il s'agit"],
+  ['le_ciel_derriere', 'Le ciel derrière'],
+  ['ce_qui_se_transmet', 'Ce qui se transmet'],
+  ['au_quotidien', 'Au quotidien'],
+  ['ce_qui_arrive_souvent', 'Ce qui arrive souvent'],
+  ['ce_que_tu_peux_en_faire', 'Ce que tu peux en faire'],
+  ['avec_les_autres', 'Avec les autres'],
+  ['les_canaux', 'Où ça peut s\'exprimer'],
+  ['ce_qui_aide', 'Ce qui aide'],
+  ['ce_qui_nuit', 'Ce qui nuit'],
+  ['le_piege', 'Le piège'],
+  ['la_place_dans_le_cycle', 'Ta place dans le cycle'],
+  ['la_place_dans_l_annee', 'Ta place dans l\'année'],
+  ['comment_savoir_que_c_est_reussi', 'Comment savoir que ça a marché'],
+];
+const SECTIONS_DOUCES = new Set(['si_tu_ne_te_reconnais_pas', 'comment_savoir_que_c_est_reussi']);
+
+function htmlUnivers(u, anneePerso) {
+  /* Le croisement du monde et de toi. On montre les deux nombres côte à côte
+     (le monde en tant, toi en tant), le climat collectif, puis l'écart
+     constant qui te sépare de ton époque — le même toute ta vie. */
+  if (!u) return '';
+  let h = `<div class="section univers"><h4>L'année du monde</h4>`;
+  h += `<p class="univers-nombres">Le monde est en année <b>${u.universelle}</b>`
+     + `${u.en_un_mot ? ' · ' + T(u.en_un_mot) : ''}.`
+     + `${anneePerso != null ? ` Toi, tu es en année <b>${anneePerso}</b>.` : ''}</p>`;
+  if (u.climat) h += `<p>${T(u.climat)}</p>`;
+  if (u.titre || u.texte) {
+    h += `<h4 style="margin-top:18px">${T(u.titre || 'Ton décalage')}</h4>`;
+    if (u.texte) h += `<p>${T(u.texte)}</p>`;
+  }
+  h += `</div>`;
+  return h;
+}
+function ouvrirDetail({surtitre, titre, motcle, resume, intro, detail, court, extra, avant}) {
+  /* Le panneau est opaque : le clic « à côté » pour fermer n'existe plus.
+     Deux sorties explicites — la croix en haut, un retour en bas — pour ne
+     pas piéger le lecteur au terme de 1 200 mots. */
+  let html = `<div class="panneau-haut">
+      <div class="detail-nombre">${T(surtitre || '')}</div>
+      <button class="fermer" id="d-fermer">✕</button>
+    </div>
+    <h2 class="detail-titre">${T(motcle || titre)}</h2>
+    ${motcle && titre !== motcle ? `<div class="detail-nombre">${T(titre)}</div>` : ''}
+    ${intro ? `<p class="quoi" style="margin:2px 0 10px">${T(intro)}</p>` : ''}
+    ${resume ? `<p class="detail-resume">${T(resume)}</p>` : ''}
+    ${avant || ''}`;
+
+  for (const [cle, libelle] of ORDRE_DETAIL) {
+    const t = detail?.[cle];
+    if (!t) continue;
+    html += `<div class="section"><h4>${libelle}</h4><p>${T(t)}</p></div>`;
+  }
+
+  // le texte court garde sa place : il dit autre chose, plus ramassé
+  if (court) {
+    for (const [cle, libelle] of [['anime','Ce qui pousse'], ['alimenter',"Comment l'alimenter"],
+                                  ['contrarie',"Quand ce n'est pas alimenté"],
+                                  ['conditionnement','Le schéma']]) {
+      if (court[cle]) html += `<div class="section"><h4>${libelle}</h4><p>${T(court[cle])}</p></div>`;
+    }
+  }
+  if (extra) html += extra;
+
+  // l'honnêteté d'Align, mise en valeur plutôt que planquée en bas
+  const doux = detail?.si_tu_ne_te_reconnais_pas;
+  if (doux) {
+    html += `<div class="section douce"><h4>Et si tu ne t'y reconnais pas ?</h4><p>${T(doux)}</p></div>`;
+  }
+  if (!detail && !court) {
+    html += `<div class="trou">Le texte détaillé n'est pas encore écrit pour cette entrée.
+      Le corpus est en construction — l'app le dit plutôt que de faire semblant.</div>`;
+  }
+
+  html += `<button class="bouton discret" id="d-retour" style="margin-top:30px">← Revenir</button>`;
+
+  $('#panneau').innerHTML = html;
+  $('#voile').classList.remove('cacher');
+  $('#voile').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  $('#d-fermer').onclick = fermerDetail;
+  $('#d-retour').onclick = fermerDetail;
+  // déplier un lien d'aspect au clic (délégation sur le panneau)
+  $('#panneau').querySelectorAll('.lien[data-lien]').forEach(el => el.onclick = () => {
+    const t = el.querySelector('.lien-texte');
+    if (t) t.classList.toggle('cacher');
+  });
+  // toute vignette de carte incluse dans le panneau (via `extra`) se zoome au
+  // clic — un seul geste, la même visionneuse que partout ailleurs dans l'app.
+  $('#panneau').querySelectorAll('img.vignette-zoomable').forEach(img => {
+    img.onclick = () => ouvrirLightbox(img.src,
+      `${T(img.dataset.nom)}<span class="corr">côté ciel · ${T(img.dataset.signe)}</span>`);
+  });
+}
+function fermerDetail() {
+  $('#voile').classList.add('cacher');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { fermerDetail(); fermerLightbox(); fermerAccueilJour(); fermerCartePlein(); } });
+
+/* La visionneuse de carte : un clic sur une carte la montre en grand, en détail.
+   Sert pour la carte de naissance (portrait), la carte de l'année et la carte
+   du jour. Se ferme au clic sur le fond ou avec Échap. */
+let fermetureLightboxEnCours = false;
+function ouvrirLightbox(src, legende) {
+  $('#lightbox-img').src = src;
+  $('#lightbox-img').alt = (legende || '').replace(/<[^>]*>/g, '');
+  $('#lightbox-leg').innerHTML = legende || '';
+  const lb = $('#lightbox');
+  lb.classList.remove('fermant');
+  fermetureLightboxEnCours = false;
+  lb.classList.add('ouvert');
+  lb.setAttribute('aria-hidden', 'false');
+}
+function fermerLightbox() {
+  const lb = $('#lightbox');
+  if (!lb.classList.contains('ouvert') || fermetureLightboxEnCours) return;
+  fermetureLightboxEnCours = true;
+  lb.classList.add('fermant');
+  // On retire `ouvert` (donc display:none) seulement APRÈS l'animation —
+  // cf. la note CSS : l'overlay reste affiché 180 ms pour avaler le clic
+  // fantôme post-touchend, et la fermeture est douce au lieu d'un clignotement.
+  setTimeout(() => {
+    lb.classList.remove('ouvert', 'fermant');
+    lb.setAttribute('aria-hidden', 'true');
+    $('#lightbox-img').src = '';
+    fermetureLightboxEnCours = false;
+  }, 180);
+}
+/* Clic ou toucher n'importe où dans la lightbox ferme — y compris sur
+   l'image elle-même (« recliquer sur la carte zoomée » pour la réduire),
+   à côté du bouton × et de l'Escape. `lb.contains(e.target)` protège du
+   clic sur la vignette qui ouvre : si la cible est HORS de la lightbox
+   (la vignette, dans le document), on ne ferme pas. */
+document.addEventListener('click', e => {
+  const lb = $('#lightbox');
+  if (lb && lb.classList.contains('ouvert') && lb.contains(e.target))
+    fermerLightbox();
+});
+document.addEventListener('touchend', e => {
+  const lb = $('#lightbox');
+  if (lb && lb.classList.contains('ouvert') && lb.contains(e.target))
+    fermerLightbox();
+});
+
+/* ═══ L'ÉCRAN D'ACCUEIL DU JOUR ═══
+   La carte « Aujourd'hui » seule, montrée UNE FOIS PAR JOUR à la première
+   ouverture. Le contenu est rempli par chargerJour() (data-jour = la date du
+   message). On ne montre que si : le message existe, et ce jour-là n'a pas
+   déjà été vu (localStorage). Touche n'importe où → fermeture animée, la vue
+   Jour (déjà chargée dessous) reste en place. */
+const CLE_ACCUEIL_VU = 'trame.accueil.vu';
+// ⚠️ TEMPORAIRE — mode test demandé par Martin (2026-08-22) : afficher la carte
+// « Aujourd'hui » à CHAQUE chargement, même si déjà vue dans la journée, pour
+// pouvoir vérifier le rendu sans vider le localStorage à la main. Repasser ce
+// flag à false pour rétablir le comportement d'origine (une fois par jour).
+const ACCUEIL_TEST_TOUJOURS = true;
+let fermetureAccueilEnCours = false;
+
+function montrerAccueilJour() {
+  const acc = $('#accueil-jour');
+  const carte = $('#accueil-jour .accueil-carte');
+  const jour = carte && carte.dataset.jour;
+  if (!jour) return;                                  // rien d'écrit pour ce jour
+  if (!ACCUEIL_TEST_TOUJOURS && localStorage.getItem(CLE_ACCUEIL_VU) === jour) return;  // déjà vu aujourd'hui
+  fermetureAccueilEnCours = false;
+  acc.classList.remove('fermant');
+  acc.classList.add('ouvert');
+  acc.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';            // pas de scroll derrière
+}
+
+function fermerAccueilJour() {
+  const acc = $('#accueil-jour');
+  if (!acc.classList.contains('ouvert') || fermetureAccueilEnCours) return;
+  fermetureAccueilEnCours = true;
+  const carte = $('#accueil-jour .accueil-carte');
+  if (carte && carte.dataset.jour) localStorage.setItem(CLE_ACCUEIL_VU, carte.dataset.jour);
+  acc.classList.add('fermant');
+  // On retire `ouvert` après l'animation (même logique que la lightbox : ça
+  // absorbe le clic fantôme post-touchend et rend la sortie douce).
+  const fini = () => {
+    acc.classList.remove('ouvert', 'fermant');
+    acc.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    fermetureAccueilEnCours = false;
+  };
+  const reduit = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  setTimeout(fini, reduit ? 150 : 440);
+}
+
+/* Délégation au niveau document (comme la lightbox) : ce script s'exécute
+   AVANT que #accueil-jour existe dans le DOM (l'élément est plus bas dans le
+   body), donc on n'attache pas directement dessus — sinon null.addEventListener
+   planterait tout le script. On filtre par `closest('#accueil-jour')`. */
+document.addEventListener('click', e => {
+  const acc = $('#accueil-jour');
+  if (acc && acc.classList.contains('ouvert') && e.target.closest('#accueil-jour'))
+    fermerAccueilJour();
+});
+document.addEventListener('touchend', e => {
+  const acc = $('#accueil-jour');
+  if (acc && acc.classList.contains('ouvert') && e.target.closest('#accueil-jour')) {
+    e.preventDefault();
+    fermerAccueilJour();
+  }
+});
+
+/* ═══════════════════════════════════════════════════════════
+   VUE PLEIN ÉCRAN D'UNE CARTE DU JOUR (2e clic sur une carte déjà
+   retournée) — même mode que l'accueil du jour (#carte-plein partage sa
+   classe .accueil-jour : même fond métier à tisser + voile, même animation).
+   ═══════════════════════════════════════════════════════════ */
+let fermetureCartePleinEnCours = false;
+
+function ouvrirCartePlein(zone) {
+  const vue = $('#carte-plein');
+  $('#carte-plein-img').src = zone.dataset.src;
+  $('#carte-plein-img').alt = zone.dataset.nom;
+  $('#carte-plein-nom').textContent = zone.dataset.nom;
+  $('#carte-plein-invitation').textContent = zone.dataset.invitation || '';
+  fermetureCartePleinEnCours = false;
+  vue.classList.remove('fermant');
+  vue.classList.add('ouvert');
+  vue.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function fermerCartePlein() {
+  const vue = $('#carte-plein');
+  if (!vue.classList.contains('ouvert') || fermetureCartePleinEnCours) return;
+  fermetureCartePleinEnCours = true;
+  vue.classList.add('fermant');
+  const fini = () => {
+    vue.classList.remove('ouvert', 'fermant');
+    vue.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    fermetureCartePleinEnCours = false;
+    // Le texte n'existe qu'ici, jamais en ligne — pas de retour à faire sur la
+    // zone d'origine : elle est déjà réduite à l'image seule (voir ligneCarte).
+  };
+  const reduit = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  setTimeout(fini, reduit ? 150 : 440);
+}
+
+document.addEventListener('click', e => {
+  const vue = $('#carte-plein');
+  if (vue && vue.classList.contains('ouvert') && e.target.closest('#carte-plein'))
+    fermerCartePlein();
+});
+document.addEventListener('touchend', e => {
+  const vue = $('#carte-plein');
+  if (vue && vue.classList.contains('ouvert') && e.target.closest('#carte-plein')) {
+    e.preventDefault();
+    fermerCartePlein();
+  }
+});
+
+/* ═══════════════════════════════════════════════════════════
+   VUE PLEIN ÉCRAN D'UN ANGLE DU JOUR (contenu texte — Ce qui domine, La
+   Lune, Nuance, Le fil du jour, les domaines) : même mode que carte-plein
+   (fond métier à tisser + voile + animation, classe .accueil-jour
+   partagée), mais le contenu est interactif (aide, tout-lire) — donc un
+   bouton Fermer explicite, et « clique pour fermer » actif SEULEMENT sur le
+   fond (hors du panneau opaque), jamais sur le contenu lui-même.
+   ═══════════════════════════════════════════════════════════ */
+let fermetureAnglePleinEnCours = false;
+
+function ouvrirAnglePlein(titre, corpsHTML) {
+  const vue = $('#angle-plein');
+  $('#angle-plein-titre').textContent = titre;
+  $('#angle-plein-corps').innerHTML = corpsHTML;
+  fermetureAnglePleinEnCours = false;
+  vue.classList.remove('fermant');
+  vue.classList.add('ouvert');
+  vue.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  $('#angle-plein-fermer').onclick = fermerAnglePlein;
+}
+
+function fermerAnglePlein() {
+  const vue = $('#angle-plein');
+  if (!vue.classList.contains('ouvert') || fermetureAnglePleinEnCours) return;
+  fermetureAnglePleinEnCours = true;
+  vue.classList.add('fermant');
+  const fini = () => {
+    vue.classList.remove('ouvert', 'fermant');
+    vue.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    fermetureAnglePleinEnCours = false;
+  };
+  const reduit = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  setTimeout(fini, reduit ? 150 : 440);
+}
+
+// Contrairement à carte-plein (contenu pur affichage), ici SEUL un clic sur
+// le fond (hors du panneau opaque .angle-plein-corps) ferme — sinon cliquer
+// une « aide » ou « tout lire → » à l'intérieur fermerait la vue au passage.
+document.addEventListener('click', e => {
+  const vue = $('#angle-plein');
+  if (vue && vue.classList.contains('ouvert') && e.target.closest('#angle-plein')
+      && !e.target.closest('.angle-plein-corps'))
+    fermerAnglePlein();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') fermerAnglePlein();
+});
+
+/* Une carte cliquable d'angle du jour : même bloc .pont que partout
+   ailleurs (icône + titre + résumé), mais un clic ouvre le PLEIN ÉCRAN
+   (titre + corps complet) au lieu de déplier un tiroir. */
+function angleCarte({nom, resume, ico, corpsHTML}) {
+  const id = 'ac-' + Math.random().toString(36).slice(2, 9);
+  // Le plein écran doit montrer le message PRINCIPAL (resume, déjà visible
+  // sur la tuile repliée) en plus des détails (corpsHTML, jusque-là
+  // invisibles avant le clic) — sinon on perd le message en l'ouvrant.
+  const corpsComplet = `${resume ? `<div class="miroir" style="font-size:19px;margin-bottom:18px">${resume}</div>` : ''}${corpsHTML}`;
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.onclick = () => ouvrirAnglePlein(nom, corpsComplet);
+  }, 0);
+  // Même rangée qu'un tiroir (padding, typo, hover) — clique = plein écran
+  // au lieu d'un dépli inline. Se mêle donc sans couture à des tiroirs dans
+  // le même groupe (voir « Explorer », chargerJour). Les tiroirs imbriqués
+  // dans corpsHTML (ex. « Dans le ciel ») ne deviennent visibles/dépliables
+  // qu'une fois là — jamais avant, dans la liste principale.
+  return `<div class="rangee-angle" id="${id}">
+    ${ico ? `<span class="tiroir-ico">${ico}</span>` : ''}
+    <span class="tete">
+      <span class="tiroir-nom">${T(nom)}</span>
+      ${resume ? `<span class="tiroir-resume compact">${resume}</span>` : ''}
+    </span>
+    <span class="glyphe-plein" aria-hidden="true">⤢</span>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LE JOUR
+   ═══════════════════════════════════════════════════════════ */
+/* Le libellé de l'action du jour. « En action » et non « le geste » : Le Geste
+   est déjà une position numérologique d'Align (lexique) — un même mot ne peut
+   pas nommer deux choses. « En action », c'est le passage à l'acte du miroir :
+   l'observation du matin devient une action le soir. Changer de mot = changer
+   cette constante.
+   Le miroir (l'observation du jour) n'a plus de libellé : le texte se lit seul. */
+const LBL_ACTION = 'En action';
+
+/* Un tiroir du jour : la pensée reste visible dans l'en-tête (resume), l'action
+   et le détail se déploient au clic. `resume` et `corps` sont du HTML déjà sûr
+   (les miroirs sont échappés par T() côté appelant) — on ne les repasse pas. */
+/* ═══════════════════════════════════════════════════════════
+   ICÔNES — le motif « fil » de Ta Trame : monoligne, un seul trait
+   (stroke:currentColor, pas de remplissage), un petit nœud doré ponctue
+   certaines. Validées en maquette (MAQUETTE_ICONES.html) avant câblage ici.
+   ═══════════════════════════════════════════════════════════ */
+function icono(inner, taille = 18) {
+  return `<svg viewBox="0 0 24 24" width="${taille}" height="${taille}" fill="none" stroke="currentColor"
+    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ico" aria-hidden="true">${inner}</svg>`;
+}
+
+/* Jeu d'icônes « Ta Trame » — vocabulaire du tissage, converti depuis
+   icones-trame.jsx (chaînes HTML plutôt que JSX ; pas de moteur de rendu
+   composant ici). Grammaire : trait 1.5 currentColor, nœuds = petits
+   disques pleins en currentColor (voir icono()). */
+const ICONES_NAV = {
+  jour: `<circle cx="12" cy="12" r="4.5"/>
+    <path d="M8.1 10.4H15.9M8.1 13.6H15.9"/>
+    <path d="M12 2.8V5M12 19v2.2M2.8 12H5M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95L5.5 18.5"/>`,
+  apercu: `<path d="M3.2 12C6.6 6.6 17.4 6.6 20.8 12c-3.4 5.4-14.2 5.4-17.6 0Z"/>
+    <path d="M3.2 12H1.2M20.8 12h2"/>
+    <circle cx="12" cy="12" r="2.3"/>
+    <circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/>`,
+  portrait: `<circle cx="12" cy="6" r="3"/>
+    <path d="M8 12h8M8 12l-1 8.5M12 12v8.5M16 12l1 8.5"/>
+    <path d="M7.5 15.4h9M7.2 18h9.6"/>`,
+  ciel: `<path d="M4.5 17.5L9 9.5l6 3.5 4.5-7.5M15 13l-2 7"/>
+    <circle cx="4.5" cy="17.5" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="9" cy="9.5" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="15" cy="13" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="19.5" cy="5.5" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="13" cy="20" r="1.1" fill="currentColor" stroke="none"/>`,
+  regles: `<circle cx="7" cy="12" r="4"/>
+    <path d="M7 9.6a2.4 2.4 0 1 1-2.4 2.4"/>
+    <path d="M7 8h13M7 16h13"/>
+    <path d="M20 8c1.2 1.3-1.2 2.7 0 4s-1.2 2.7 0 4"/>
+    <path d="M11.5 8v8M15.5 8v8"/>`,
+  feedback: `<path d="M4 5.5h16a1 1 0 0 1 1 1V15a1 1 0 0 1-1 1H9.5L5 19.8V16H4a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/>
+    <circle cx="8.3" cy="10.8" r="0.9" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="10.8" r="0.9" fill="currentColor" stroke="none"/>
+    <circle cx="15.7" cy="10.8" r="0.9" fill="currentColor" stroke="none"/>`,
+  relations: `<circle cx="9" cy="12" r="5.4"/>
+    <circle cx="15" cy="12" r="5.4"/>
+    <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>`,
+};
+
+const ICONES_JOUR = {
+  fil: `<path d="M3 16c3 0 3-8 6-8s3 8 6 8 3-8 6-8"/>
+    <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>`,
+  domine: `<path d="M2.5 7C6 4 8 10 12 7c4-3 6 3 9.5 0" opacity="0.55"/>
+    <path d="M2.5 17C6 14 8 20 12 17c4-3 6 3 9.5 0" opacity="0.55"/>
+    <path d="M2.5 12C6 9 8 15 12 12c4-3 6 3 9.5 0" stroke-width="2.4"/>
+    <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>`,
+  lune_maison: `<path d="M18.3 5.6a9 9 0 1 0 0 12.8 7 7 0 1 1 0-12.8Z"/>
+    <path d="M4.6 8h4.6M4 12h4.5M4.6 16h4.6"/>`,
+  phase: `<circle cx="12" cy="12" r="8.5"/>
+    <path d="M12 3.5v17"/>
+    <path d="M5.6 7H12M4.2 9.5H12M3.5 12H12M4.2 14.5H12M5.6 17H12"/>`,
+  nuance: `<path d="M3 5v14M4.2 5v14M5.8 5v14M8 5v14M11 5v14M15 5v14M20.5 5v14"/>`,
+  cycle: `<path d="M12 5a7 7 0 1 1-7 7"/>
+    <path d="M12 8.5a3.5 3.5 0 1 1-3.5 3.5"/>
+    <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/>`,
+  rappel: `<path d="M2.5 15c5.5 0 7-6.5 11.5-5.5 3 .7 2.5 5-1 5"/>
+    <path d="M21.5 15c-5.5 0-7-6.5-11.5-5.5-3 .7-2.5 5 1 5"/>`,
+  mediter: `<path d="M3.5 7c1.5 0 2.5 9 8.5 9s7-9 8.5-9"/>
+    <circle cx="3.5" cy="7" r="1.2" fill="currentColor" stroke="none"/>
+    <circle cx="20.5" cy="7" r="1.2" fill="currentColor" stroke="none"/>`,
+};
+
+const ICONES_DOM = {
+  soi: `<path d="M12 3v18M3 12h18"/>
+    <circle cx="12" cy="12" r="3.5"/>
+    <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>`,
+  ressources: `<path d="M7 4h10M7 20h10"/>
+    <path d="M9 4c-1.5 4-1.5 12 0 16M15 4c1.5 4 1.5 12 0 16"/>
+    <path d="M8.3 9.5h7.4M8 12h8M8.3 14.5h7.4"/>`,
+  echanges: `<path d="M3 6c6 0 12 12 18 12M3 18c6 0 12-12 18-12"/>
+    <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>`,
+  racines: `<circle cx="12" cy="4.5" r="2"/>
+    <path d="M12 6.5v4.5"/>
+    <path d="M12 11c0 3-3 4-4 6-.8 1.6-1 2.5-1 3.5M12 11v9.5M12 11c0 3 3 4 4 6 .8 1.6 1 2.5 1 3.5"/>
+    <path d="M8.8 15.6c1.7-.8 4.7-.8 6.4 0"/>`,
+  creation: `<path d="M3.2 18.5c1.3-1.9 4.3-1.9 5.6 0-1.3 1.9-4.3 1.9-5.6 0Z"/>
+    <path d="M8.8 18.5c3.2 0 3.2-4.5 6.2-4.5s3-5 6-5"/>
+    <path d="M19 2.5v3M17.5 4h3"/>`,
+  quotidien: `<path d="M8 4v16M12 4v16M16 4v16M4 8h16M4 12h16M4 16h16"/>`,
+  autre: `<path d="M9 3c0 4.5 6 5.5 6 9s-6 4.5-6 9"/>
+    <path d="M15 3c0 4.5-6 5.5-6 9s6 4.5 6 9"/>`,
+  traversee: `<path d="M5 3v6.5M9 3v6.5M15 3v6.5M19 3v6.5M5 14.5V21M9 14.5V21M15 14.5V21M19 14.5V21"/>
+    <path d="M7 12c2-2.4 8-2.4 10 0-2 2.4-8 2.4-10 0Z"/>
+    <path d="M7 12H2.6M17 12h4.4"/>`,
+  sens: `<path d="M3 5c7 2 11 6 16.5 7M3 10c6 1 11 1.5 16.5 2M3 14c6-1 11-1.5 16.5-2M3 19c7-2 11-6 16.5-7"/>
+    <circle cx="20" cy="12" r="1.4" fill="currentColor" stroke="none"/>`,
+  metier: `<path d="M4 4v16M20 4v16M3 6h18M3 18h18"/>
+    <path d="M8 6v12M12 6v12M16 6v12"/>
+    <path d="M4 13h16" stroke-width="2.4"/>`,
+  communaute: `<path d="M8 3c0 3 8 3 8 6s-8 3-8 6 8 3 8 6"/>
+    <path d="M16 3c0 3-8 3-8 6s8 3 8 6-8 3-8 6"/>
+    <path d="M12 3v18"/>`,
+  retrait: `<path d="M14 4v16M17 4v16M20 4v16"/>
+    <path d="M11 4c0 5-6 6-6.5 11-.2 2 0 3.5.5 5"/>`,
+};
+
+/* Les 12 signes du zodiaque — glyphes filigranes « Ta Trame », convertis
+   depuis icones-zodiaque.jsx (même grammaire que icones-trame.jsx : tracé
+   canonique du signe conservé intégralement, le tissage entre en accent —
+   nœud au point de tension, trame dans les formes fermées). Indexés par le
+   nom français que renvoie le moteur (theme.py::SIGNES). */
+const ICONES_ZODIAQUE = {
+  'Bélier': `<path d="M12 20.5V10"/>
+    <path d="M12 10C12 5 8.5 3 6 4.5 3.6 6 3.8 9.5 6 10.5"/>
+    <path d="M12 10c0-5 3.5-7 6-5.5 2.4 1.5 2.2 5 0 6"/>
+    <circle cx="12" cy="10" r="1.2" fill="currentColor" stroke="none"/>`,
+  'Taureau': `<circle cx="12" cy="15" r="5"/>
+    <path d="M6 11C5.2 5.5 9 3.5 12 7c3-3.5 6.8-1.5 6 4"/>
+    <path d="M7.7 13.5h8.6M7.7 16.5h8.6"/>
+    <circle cx="12" cy="7" r="1.1" fill="currentColor" stroke="none"/>`,
+  'Gémeaux': `<path d="M6 5c3-1.5 9-1.5 12 0"/>
+    <path d="M6 19c3 1.5 9 1.5 12 0"/>
+    <path d="M9 4.3v15.4M15 4.3v15.4"/>
+    <circle cx="9" cy="4.5" r="0.95" fill="currentColor" stroke="none"/>
+    <circle cx="15" cy="4.5" r="0.95" fill="currentColor" stroke="none"/>
+    <circle cx="9" cy="19.5" r="0.95" fill="currentColor" stroke="none"/>
+    <circle cx="15" cy="19.5" r="0.95" fill="currentColor" stroke="none"/>`,
+  'Cancer': `<path d="M4 14.5C4.5 7.5 9.5 5 15.5 6.2"/>
+    <circle cx="18" cy="7.5" r="2.6"/>
+    <path d="M20 9.5c-.5 7-5.5 9.5-11.5 8.3"/>
+    <circle cx="6" cy="16.5" r="2.6"/>
+    <circle cx="18" cy="7.5" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="6" cy="16.5" r="1" fill="currentColor" stroke="none"/>`,
+  'Lion': `<circle cx="7" cy="16.5" r="3.2"/>
+    <path d="M9.5 14.6C12 11 10.5 6 13.5 4.6c3.3-1.5 6 1 4.9 3.9-.8 2.1-2.9 3-3.9 4.5-1 1.6.3 3.5 2.5 4 1.7.4 3 0 3.8-.7"/>
+    <circle cx="7" cy="16.5" r="1.1" fill="currentColor" stroke="none"/>`,
+  'Vierge': `<path d="M4 20.5V9.5"/>
+    <path d="M4 9.5C4 6.5 8.2 6.5 8.2 9.5"/>
+    <path d="M8.2 9.5V20.5"/>
+    <path d="M8.2 9.5c0-3 4.2-3 4.2 0"/>
+    <path d="M12.4 9.5v7C12.4 19.5 15.5 20.8 17.8 19"/>
+    <path d="M10.8 15.2c3.2.6 6.7 2.3 8.7 5.6"/>
+    <circle cx="12.4" cy="15.6" r="1" fill="currentColor" stroke="none"/>`,
+  'Balance': `<path d="M3 18h18"/>
+    <path d="M4.5 13.5h4a3.5 3.5 0 0 1 7 0h4"/>
+    <circle cx="12" cy="10" r="1.1" fill="currentColor" stroke="none"/>`,
+  'Scorpion': `<path d="M4 20.5V9.5"/>
+    <path d="M4 9.5C4 6.5 8.2 6.5 8.2 9.5"/>
+    <path d="M8.2 9.5V20.5"/>
+    <path d="M8.2 9.5c0-3 4.2-3 4.2 0"/>
+    <path d="M12.4 9.5v7c0 3 2.6 4 5.1 2l2.8-2.8"/>
+    <path d="M20.3 15.7h-3.7M20.3 15.7v3.7"/>`,
+  'Sagittaire': `<path d="M4.5 19.5 19 5"/>
+    <path d="M19 5h-5.5M19 5v5.5"/>
+    <path d="M7.5 10.5 13.5 16.5"/>
+    <circle cx="10.5" cy="13.5" r="1.1" fill="currentColor" stroke="none"/>`,
+  'Capricorne': `<path d="M4 9c1.5-3 5-2.5 6 1 .7 2.5 1 4.5 1.5 6.5"/>
+    <path d="M11.5 16.5c1 3 4.5 4 6.5 1.5s.5-6-2.5-5.8c-1.7.1-2.5 1.6-2 2.8"/>
+    <circle cx="11.5" cy="16.5" r="1" fill="currentColor" stroke="none"/>`,
+  'Verseau': `<path d="M3.5 10 7.5 7l4 3 4-3 4 3"/>
+    <path d="M3.5 17 7.5 14l4 3 4-3 4 3"/>`,
+  'Poissons': `<path d="M8 4C4.5 8 4.5 16 8 20"/>
+    <path d="M16 4c3.5 4 3.5 12 0 16"/>
+    <path d="M5.4 12h13.2"/>
+    <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/>`,
+};
+/* L'icône d'un signe (via icono(), même enveloppe que le reste du jeu
+   « Ta Trame »), ou '' si inconnu. */
+const iconoSigne = (nom, taille = 20) => {
+  const inner = ICONES_ZODIAQUE[nom];
+  return inner ? icono(inner, taille) : '';
+};
+/* Un nom de signe précédé de son glyphe — l'usage inline le plus fréquent
+   (« en Bélier », « tous en Lion »). Le glyphe est absent si le signe
+   n'est pas dans la table (corpus en construction). */
+const signeOrne = (nom, taille = 17) => `${iconoSigne(nom, taille) ? `<span class="signe-ico">${iconoSigne(nom, taille)}</span>` : ''}${T(nom)}`;
+
+function tiroir({nom, resume, corps, open = false, ico = ''}) {
+  return `<details class="tiroir"${open ? ' open' : ''}>
+    <summary>
+      ${ico ? `<span class="tiroir-ico">${ico}</span>` : ''}
+      <span class="tete">
+        <span class="tiroir-nom">${T(nom)}</span>
+        ${resume ? `<span class="tiroir-resume">${resume}</span>` : ''}
+      </span>
+      <span class="tiroir-chev" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="tiroir-corps">${corps}</div>
+  </details>`;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LES AUTRES DOMAINES DE TA VIE — le domaine se choisit, la nuance continue
+   de tourner. Le Fil du jour impose UN domaine (la maison de la Lune) ; ici,
+   la personne choisit elle-même (Famille, Argent, Couple…) — à l'intérieur,
+   le transit dominant et la phase ou la tonalité du jour choisissent
+   l'entrée, le même domaine donne un texte différent d'un jour à l'autre,
+   jamais un texte figé. Sous-tiroirs imbriqués dans « Le fil du jour »,
+   chargés au clic (aucun appel réseau tant qu'on n'ouvre pas). Doit rester
+   synchro avec DOMAINE_LABELS et MAISON_DOMAINE côté app.py/jour.py.
+   ═══════════════════════════════════════════════════════════ */
+const DOMAINES_JOUR = [
+  ['soi', 'Toi'], ['ressources', 'Argent'], ['echanges', 'Mots'],
+  ['racines', 'Famille'], ['creation', 'Créativité'], ['quotidien', 'Habitudes'],
+  ['autre', 'Couple'], ['traversee', 'Traversées'], ['sens', 'Sens'],
+  ['metier', 'Métier'], ['communaute', 'Communauté'], ['retrait', 'Solitude'],
+];
+
+/* Une carte cliquable de domaine (remplace l'ancien sous-tiroir <details> imbriqué
+   dans « Les sphères de ta vie », maintenant fusionné dans « Le fil du jour ») : le
+   texte est chargé à la demande au clic (jamais avant, jamais deux fois — cache
+   _cacheDomaines), puis affiché dans le plein écran générique des angles. */
+const _cacheDomaines = {};
+async function ouvrirDomainePlein(domaine, label) {
+  if (!_cacheDomaines[domaine]) {
+    const r = await (await fetch(`/api/explorer/${profilId}/${domaine}`)).json();
+    const c = r.texte;
+    _cacheDomaines[domaine] = c
+      ? `<div class="miroir" style="font-size:16px;margin-bottom:8px">${T(c.miroir)}</div>
+         ${c.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(c.geste)}</div>` : ''}
+         ${aide("D'où vient ce conseil ?", "Une strate de coaching distillée de nombreux ouvrages de développement personnel, réécrite dans la voix de Ta Trame. Tu choisis le domaine ; le transit dominant du jour et la phase ou la tonalité choisissent l'entrée à l'intérieur. C'est le ciel qui décide — reviens demain, ce ne sera pas la même.")}`
+      : `<p class="quoi">Le corpus n'a pas encore d'entrée pour cette configuration du ciel, ${T(label).toLowerCase()}.</p>`;
+  }
+  ouvrirAnglePlein(label, _cacheDomaines[domaine]);
+}
+function domaineCarte(domaine, label) {
+  const ico = ICONES_DOM[domaine] ? `<span class="tiroir-ico">${icono(ICONES_DOM[domaine], 20)}</span>` : '';
+  const id = 'dc-' + domaine;
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.onclick = () => ouvrirDomainePlein(domaine, label);
+  }, 0);
+  return `<div class="pont angle-carte" id="${id}" style="margin-top:6px">
+    <span class="tete">${ico}<span class="tiroir-nom" style="flex:1">${T(label)}</span></span>
+  </div>`;
+}
+
+// Message partagé des onglets qui exigent un thème complet (heure + lieu de
+// naissance) — Le Jour, Le Ciel, L'Aperçu. Le Portrait, lui, garde les
+// nombres et n'affiche jamais ce message (voir vuePortrait).
+function msgThemeIncomplet() {
+  return `<div class="carte">
+    <p class="quoi">Cette lecture demande l'heure et le lieu de naissance
+      (Ascendant, maisons) — pour l'instant, seule la date est connue.</p>
+    <button class="bouton discret" id="mti-completer">Ajouter l'heure et le lieu</button>
+  </div>`;
+}
+function câblerMsgThemeIncomplet() {
+  const b = $('#mti-completer');
+  if (b) b.onclick = async () => {
+    editionDe = profilId;
+    ouvrirFormulaire(await (await fetch(`/api/profil/${profilId}`)).json());
+  };
+}
+
+async function chargerJour() {
+  const j = await (await fetch(`/api/jour/${profilId}`)).json();
+  if (j.complet === false) {
+    $('#vue-jour').innerHTML = msgThemeIncomplet();
+    câblerMsgThemeIncomplet();
+    return;
+  }
+  const d = new Date(j.date + 'T12:00:00');
+  const t = j.textes || {};
+  const dom = j.jour.dominante;
+  const lune = j.jour.lune, phase = j.jour.phase.phase;
+
+  // Le titre du jour, élu par le routeur : le ciel par défaut, la voix chinoise
+  // quand sa relation est plus saillante (avec le sous-titre qui nomme les animaux).
+  const titre = j.titre || t.transit;
+  // Quand le ciel mène, « Aujourd'hui » ET « Ce qui domine aujourd'hui » racontent
+  // le même transit — on ne le dit qu'une fois, dans la première carte.
+  const cielMene = !titre || titre.source !== 'chinois';
+
+  let domPhrase = '', domTempo = '', domCalc = '', domRetourAide = '';
+  if (dom) {
+    const estRetour = dom.transit === dom.natal && dom.classe === 'conjonction';
+    domPhrase = estRetour
+      ? `${T(nomPlanete(dom.transit))} revient exactement où il était à ta naissance.`
+      : `Dans le ciel, <b style="color:var(--encre)">${T(nomPlanete(dom.transit))}</b>
+         (${T(quoiPlanete(dom.transit))}) ${T(nomAspect(dom.classe))}
+         <b style="color:var(--encre)">${T(nomPlanete(dom.natal))}</b>
+         de ton thème${dom.applicatif ? ', et ça se resserre encore' : ''}.`;
+    domTempo = dom.etage === 'declencheur'
+      ? 'Un mouvement rapide : il donne le tempo du jour, à un jour ou deux près.'
+      : 'Un mouvement lent : il dit le climat de fond, pas la journée.';
+    domCalc = aide('Le calcul',
+      `${dom.transit} ${dom.aspect} ${dom.natal} natal · orbe ${dom.orbe.toFixed(2)}° · exactitude ${(dom.exactitude*100).toFixed(0)} %`);
+    domRetourAide = estRetour ? aide("Pourquoi ce jour précisément ?",
+      "Un retour se calcule sur l'instant exact de ta naissance, pas sur la date civile seule. Si tu es né tard en soirée, cet instant peut tomber, une fois ramené au temps universel, sur le jour civil suivant. Le calcul reste précis — il peut juste sembler décalé d'un jour par rapport à ton anniversaire.") : '';
+  }
+
+  /* ═══ AUJOURD'HUI — le héros de la page. Le bandeau de synthèse d'avant est
+     FONDU ici : date + Lune deviennent une fine ligne d'en-tête, dés-accentuée,
+     à l'intérieur même de la carte du message. Un seul bloc primaire, un seul
+     foyer d'attention (protéger le pic). Les faits-ciel ne vivent QUE dans
+     cette carte quand le ciel mène, ou dans « Explorer » quand le chinois mène
+     — plus jamais dupliqués dans un bandeau. ═══ */
+  const enteteJour = `<div class="jour-entete">
+      <div class="date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
+      <div class="lune">La Lune éclaire ${T(nomMaison(lune.maison))} · ${T(nomPhase(phase))}</div>
+    </div>`;
+
+  let html = '';
+  if (titre && titre.miroir) {
+    html += `<div class="carte carte-jour-hero">
+      ${enteteJour}
+      <div class="chapo">Aujourd'hui</div>
+      ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
+      ${cielMene && dom ? `<p style="font-size:15px;color:var(--encre2)">${domPhrase}</p>
+      <p class="quoi" style="margin:4px 0 12px">${domTempo}</p>` : ''}
+      <div class="miroir">${T(titre.miroir)}</div>
+      ${titre.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(titre.geste)}</div>` : ''}
+      ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
+      ${cielMene ? domRetourAide : ''}
+    </div>`;
+  } else {
+    /* Pas de message écrit ce jour-là : on garde au moins l'en-tête date/Lune,
+       sans le trait ni l'air du dessous, pour ne pas ouvrir sur du vide. */
+    html += `<div class="carte carte-jour-hero"><div class="jour-entete"
+        style="margin-bottom:0;padding-bottom:0;border-bottom:0">
+        <div class="date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
+        <div class="lune">La Lune éclaire ${T(nomMaison(lune.maison))} · ${T(nomPhase(phase))}</div>
+      </div></div>`;
+  }
+
+  /* Tes cartes du jour — les DEUX cartes réunies, sous le message, présentées
+     CÔTE À CÔTE (« Toi » vs « Le pouls du monde »). TOUJOURS affichées, plus
+     de tiroir à déplier (demande de Martin, 2026-08-22) : chaque carte reste
+     retournée par défaut (dos), exactement comme avant — seul le clic pour
+     les dévoiler change, plus besoin d'abord déplier un tiroir pour l'atteindre. */
+  if (j.carte_min || j.carte_jour) {
+    const cm = j.carte_min, cj = j.carte_jour;
+    /* Chaque carte garde son propre dévoilement (comme avant) : dos affiché,
+       cachée tant qu'on n'a pas cliqué sur SA zone — 1er clic = dévoile (la
+       carte se retourne, image seulement, JAMAIS de texte affiché en ligne
+       — pas d'espace réservé non plus, aucun élément de texte n'existe dans
+       cette zone). Nom et invitation vivent SEULEMENT en data-attributs,
+       lus par ouvrirCartePlein : le nom/l'invitation ne sont lisibles qu'en
+       plein écran (2e clic, une fois la carte déjà retournée). */
+    const ligneCarte = (zoneId, src, badge, badgeCol, nom, invitation, alt) => `
+      <div class="carte-jour-zone" id="${zoneId}" title="Clique pour la dévoiler"
+           data-src="${src}" data-nom="${T(nom)}" data-invitation="${T(invitation || '')}">
+        <span class="carte-jour">
+          <img class="face" src="${src}" alt="${alt}"
+               onerror="this.onerror=null;this.src='/static/cartes/dos.jpg'">
+          <img class="dos" src="/static/cartes/dos.jpg" alt="">
+        </span>
+        <span style="display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:${badgeCol};border:1px solid ${badgeCol};border-radius:10px;padding:1px 7px">${badge}</span>
+      </div>`;
+    html += `<div class="jour-section">Tes cartes du jour</div>
+      <div class="jour-groupe" style="padding:2px 2px 8px">
+        <div class="pont carte-jour-paire" style="margin-top:14px">
+          ${cj ? ligneCarte('z-carte-maj', urlCarte(cj.numero), 'Le pouls du monde', 'var(--accent)', cj.nom, cj.invitation, T(cj.nom)) : ''}
+          ${cm ? ligneCarte('z-carte-min', urlCarteMineur(cm.suit, cm.rang), 'Toi', 'var(--accent)', cm.nom, cm.invitation, 'arcane mineur') : ''}
+        </div>
+        ${aide("Deux cartes, pourquoi ?", "La carte « Le pouls du monde » se calcule sur la date du jour seule (le même climat pour tout le monde). La carte « Toi » se calcule sur ton thème (couleur = la Lune du jour, rang = l'écart entre le Soleil du jour et ton Ascendant de naissance) : elle n'appartient qu'à toi. Les deux sont toujours calculées, jamais tirées.")}
+      </div>`;
+  }
+
+  /* ═══ LES ANGLES DU JOUR — tiroirs : la pensée reste visible dans l'en-tête,
+     l'action et le détail se déploient au clic. On balaye les angles d'un coup
+     d'œil sans scroller une longue liste de cartes identiques. ═══ */
+  let angles = '';
+
+  // Le transit dominant, quand il n'est pas déjà dans « Aujourd'hui » (chinois mène).
+  if (dom && !cielMene) {
+    angles += tiroir({
+      nom: "Ce qui domine aujourd'hui",
+      resume: t.transit?.miroir ? T(t.transit.miroir) : domPhrase.replace(/<[^>]*>/g, ''),
+      ico: icono(ICONES_JOUR.domine),
+      // domPhrase contient du HTML (des <b> pour les noms de planètes) — on ne
+      // passe PAS par aide() ici, elle échapperait ces balises via T(). On
+      // reprend directement la classe .aide (même rendu discret replié) pour
+      // garder le HTML intact. Demande de Martin (2026-08-22) : la mécanique
+      // du ciel repliée par défaut, discrète — le mouvement (domTempo) et le
+      // geste restent visibles, eux.
+      corps: `<details class="aide"><summary>Dans le ciel</summary><p>${domPhrase}</p></details>
+        <p class="quoi">${domTempo}</p>
+        ${t.transit?.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(t.transit.geste)}</div>` : ''}
+        ${domCalc}${domRetourAide}`
+    });
+  }
+
+  /* La Lune aujourd'hui — « où ça se joue » (sa maison) ET « le moment du
+     cycle » (sa phase) réunis : c'est le même astre, deux facettes. Fusion de
+     deux ex-tiroirs en un (guide UX : morceler, moins de rangées). Le sous-bloc
+     « le moment du cycle » se déplie à l'intérieur pour ne pas tout empiler. */
+  const lm = t.lune_maison, ph = t.phase;
+  if ((lm && lm.miroir) || (ph && ph.miroir)) {
+    const blocPhase = (ph && ph.miroir) ? `
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bord)">
+        <span class="lib" style="display:block;font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--encre3);margin-bottom:4px">Le moment du cycle</span>
+        <div class="miroir" style="font-size:16px">${T(ph.miroir)}</div>
+        <p class="quoi" style="margin:4px 0 10px">${nomPhase(phase)} — ${quoiPhase(phase)}</p>
+        ${ph.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(ph.geste)}</div>` : ''}
+        ${aide("D'où vient la phase ?", "L'écart entre la Lune et le Soleil dans le ciel du jour, divisé en huit parts égales — un calcul purement astronomique, le même pour tout le monde, qui donne les huit phases classiques (nouvelle, premier quartier, pleine…).")}
+      </div>` : '';
+    angles += angleCarte({
+      nom: 'La Lune aujourd\'hui',
+      resume: T((lm && lm.miroir) || ph.miroir),
+      ico: icono(ICONES_JOUR.lune_maison),
+      corpsHTML: `${(lm && lm.miroir) ? `
+        <details class="aide"><summary>Dans le ciel</summary><p>La Lune traverse ta maison ${lune.maison} aujourd'hui.</p></details>
+        <p class="quoi" style="margin:4px 0 12px">${nomMaison(lune.maison)} — ${quoiMaison(lune.maison)}</p>
+        ${lm.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(lm.geste)}</div>` : ''}
+        ${aide("D'où vient ce calcul ?", "La Lune du jour traverse une maison de ton thème de naissance — précise à ta carte, elle seule dit sur quel terrain de ta vie ça se joue aujourd'hui. Elle change de maison environ tous les deux jours et demi.")}` : ''}
+        ${blocPhase}`
+    });
+  }
+
+  /* Le Fil du jour — un domaine de vie, rythmé par le ciel : la maison de la
+     Lune donne le domaine, le transit dominant et la phase donnent la nuance.
+     FUSIONNÉ avec « Les sphères de ta vie ». Un TIROIR, comme tous les angles
+     textuels depuis le pilote épure (2026-08-24) : ils s'explorent en place,
+     sans plein écran. Les 12 domaines à l'intérieur, EUX, s'ouvrent en plein
+     écran (contempler un domaine à la fois) — via domaineCarte.
+     ⚠️ PLUS de domaine choisi par défaut (demande de Martin, 2026-08-22) : le
+     domaine du ciel (maison de la Lune, t.fil) n'est PLUS affiché d'office au
+     dépli — le tiroir montre directement les 12 domaines, sur un pied
+     d'égalité ; celui du ciel n'est qu'une carte parmi les douze, comme les
+     autres. `t.fil` reste utilisé comme simple GARDE (si le jour ne résout
+     rien du tout côté ciel, improbable depuis que les 12 domaines sont
+     complets, on ne montre pas un tiroir vide). */
+  if (t.fil && t.fil.miroir) {
+    angles += tiroir({
+      nom: 'Le fil du jour',
+      resume: 'Choisis un domaine de vie à explorer aujourd\'hui.',
+      ico: icono(ICONES_JOUR.fil),
+      corps: `
+        ${DOMAINES_JOUR.map(([d, l]) => domaineCarte(d, l)).join('')}
+        ${aide("D'où vient ce fil ?", "Une strate de coaching distillée de nombreux ouvrages de développement personnel, réécrite dans la voix de Ta Trame. Choisis un domaine ; le transit dominant du jour et la phase ou la tonalité choisissent l'entrée à l'intérieur. C'est le ciel qui décide — reviens demain, ce ne sera pas la même.")}`
+    });
+  }
+
+  /* La nuance — le ton de la Lune contrarié : un angle qui demande plus d'appui. */
+  if (j.jour.ton_lunaire_annule) {
+    const nu = j.jour.nuance;
+    const nuPhrase = nu
+      ? `La Lune du jour ${T(nomAspect(nu.classe))} <b style="color:var(--encre)">${T(nomPlanete(nu.natal))}</b> de ton thème.`
+      : '';
+    angles += angleCarte({
+      nom: 'Nuance',
+      resume: "Le ton de la Lune est contrarié aujourd'hui — ce qui semble facile demande un peu plus d'appui.",
+      ico: icono(ICONES_JOUR.nuance),
+      corpsHTML: `${nuPhrase ? `<p style="font-size:15px;color:var(--encre2)">${nuPhrase}</p>` : ''}
+        ${aide("D'où vient cette nuance ?", "Le signe et la maison de la Lune donnent en général le ton du jour — mais quand la Lune du jour fait elle-même un aspect dur (carré ou opposition) très exact à une planète de ton thème de naissance, cet aspect prend le dessus. Le ton habituel de la Lune ne disparaît pas : il se complique, et demande plus d'appui que d'habitude.")}`
+    });
+  }
+
+  /* (Les angles ci-dessus rejoignent le groupe « Explorer » plus bas, avec les
+     cycles du fond du temps — un seul groupe pour tout le secondaire textuel.) */
+
+  /* ═══ LE FOND DU TEMPS — les cycles lents (mois, année, traversée de vie).
+     Ils changent rarement : repliés par défaut, dépliables au clic, avec un
+     « tout lire → » qui ouvre le panneau de détail complet. Ils ne polluent
+     plus la lecture du jour, tout en restant à portée. ═══ */
+  let cycles = '';
+
+  /* Le mois — la saison, entre le chapitre et la journée. */
+  if (t.mois_perso) {
+    const m = t.mois_perso;
+    cycles += tiroir({
+      nom: `Ton mois ${j.jour.mois_personnel}${m.en_un_mot ? ' · ' + T(m.en_un_mot) : ''}`,
+      resume: T(m.miroir || ''),
+      ico: icono(ICONES_JOUR.cycle),
+      corps: `${m.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(m.geste)}</div>` : ''}
+        <span class="tout-lire" data-cible="mois">tout lire →</span>
+        ${aide("C'est quoi, « ton mois » ?", terme('mois_personnel').quoi, terme('mois_personnel').quand)}`
+    });
+  }
+
+  /* L'année — un nombre nu ne dit RIEN. On le nomme, et on peut tout lire. */
+  if (t.annee_perso) {
+    const motcle = t.annee_perso.detail?.en_un_mot;
+    cycles += tiroir({
+      nom: `Ton année ${j.jour.annee_personnelle}${motcle ? ' · ' + T(motcle) : ''}`,
+      resume: T(t.annee_perso.miroir || ''),
+      ico: icono(ICONES_JOUR.cycle),
+      corps: `${t.annee_perso.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(t.annee_perso.geste)}</div>` : ''}
+        ${t.annee_perso.univers ? `<div class="pont" style="margin-top:14px">
+          <span>Le monde, lui, est en année <span class="cible">${t.annee_perso.univers.universelle}</span>${t.annee_perso.univers.titre ? ` — ${T(t.annee_perso.univers.titre.toLowerCase())}` : ''}.</span></div>` : ''}
+        <div class="pont carte-annee" style="margin-top:14px;display:flex;align-items:center;gap:14px">
+          <img class="vignette" src="${urlCarte(j.carte_annee.numero)}" alt="${T(j.carte_annee.nom)}">
+          <span style="flex:1">Carte de l'année : <span class="cible">${T(j.carte_annee.nom)}</span></span>
+        </div>
+        ${t.annee_perso.detail ? `<span class="tout-lire" data-cible="annee">tout lire →</span>` : ''}
+        ${aide("C'est quoi, « ton année » ?", terme('annee_personnelle').quoi, terme('annee_personnelle').quand)}`
+    });
+  }
+
+  /* La traversée de vie — l'échelle la plus lente, la même pour tout le monde. */
+  if (j.vie && j.vie.corpus) {
+    const v = j.vie.corpus;
+    cycles += tiroir({
+      nom: `Ta traversée · ${j.vie.age_ans} ans${v.en_un_mot ? ' · ' + T(v.en_un_mot) : ''}`,
+      resume: T(v.resume || ''),
+      ico: icono(ICONES_JOUR.cycle),
+      corps: `<div class="pont" style="margin-top:0">Une étape que tout le monde traverse au même âge.</div>
+        <span class="tout-lire" data-cible="vie">tout lire →</span>
+        ${aide("D'où vient cette étape ?", "Elle ne dépend que de ton âge — le même passage pour tout le monde au même moment de la vie (le premier bilan vers 29 ans, le grand réveil vers 42…), quel que soit ton thème. C'est la seule échelle de temps de Ta Trame qui ne varie pas d'une personne à l'autre.")}`
+    });
+  }
+
+  /* ═══ EXPLORER — UN seul groupe pour tout ce qui s'explore, au geste unique
+     du tiroir ⌄ : les angles du ciel (ce qui domine, la Lune, la nuance), le
+     fil des domaines, et le fond du temps (mois, année, traversée) niché dans
+     son propre tiroir. Fusionne les ex-« angles du jour » et « fond du temps »
+     — moins de repères de premier niveau (Miller), une seule grammaire de
+     divulgation textuelle. ═══ */
+  if (angles || cycles) {
+    const fondDuTemps = cycles ? tiroir({
+      nom: 'Le fond du temps',
+      resume: 'Les cycles plus lents — ton mois, ton année, ta traversée de vie.',
+      ico: icono(ICONES_JOUR.cycle),
+      corps: cycles,
+    }) : '';
+    html += `<div class="jour-section">Explorer</div>
+      <div class="jour-groupe">${angles}${fondDuTemps}</div>`;
+  }
+
+  /* ═══ À MÉDITER — la clôture du jour, à CONTEMPLER : plein écran (angleCarte,
+     glyphe ⤢), le texte caché tant qu'on ne clique pas, pour ne pas y jeter un
+     œil dès le matin par réflexe. Placée après Explorer, avant le pied. C'est,
+     avec les deux cartes, le seul usage du plein écran : contempler un objet
+     seul, jamais explorer du texte (ça, c'est le tiroir). ═══ */
+  if (t.transit?.pensee_soir) {
+    html += `<div class="jour-groupe" id="c-mediter">${angleCarte({
+      nom: 'À méditer',
+      resume: 'à lire en fin de journée',
+      ico: icono(ICONES_JOUR.mediter),
+      corpsHTML: `<div class="miroir" style="margin-bottom:0">${T(t.transit.pensee_soir)}</div>
+        ${aide("D'où vient cette pensée ?", "Elle prolonge le ciel du jour — le transit dominant qui a coloré ta journée. Là où le matin invitait à agir, celle-ci invite à regarder en arrière, une fois la journée passée. Toujours calculée sur ton thème, différente d'un jour à l'autre.")}`,
+    })}</div>`;
+  }
+
+  /* ═══ RAPPELS — un utilitaire, PAS du contenu : sorti du flux de lecture, en
+     pied de page discret et dés-accentué. Un matin (l'observation), un soir (le
+     geste), aux mêmes heures pour tout le monde — jamais réglés pour maximiser
+     les ouvertures (sobriété plutôt que manipulation). ═══ */
+  html += `<div class="jour-pied" id="c-notifs">
+    <div class="chapo"><span class="chapo-ico">${icono(ICONES_JOUR.rappel, 15)}</span>Rappels du jour</div>
+    <p class="quoi" style="margin:-4px 0 14px">Un rappel le matin (le miroir du jour) et
+      un le soir (en action) — mêmes heures pour tout le monde, jamais réglés pour te faire
+      ouvrir l'app plus souvent.</p>
+    <button class="bouton discret" id="bouton-notifs">Activer les rappels</button>
+  </div>`;
+
+  if (j.manque && j.manque.length) {
+    html += `<div class="trou">Corpus en construction — rien d'écrit pour :
+      ${j.manque.map(T).join(', ')}.</div>`;
+  }
+
+  $('#vue-jour').innerHTML = html;
+
+  /* Le contenu de l'écran d'accueil du jour : l'essentiel seulement (date,
+     chapô, miroir, En action) — les dépliants secondaires restent dans la
+     vue Jour ci-dessus. Rempli ici tant qu'on a les données ; l'affichage
+     (une fois par jour) est décidé par montrerAccueilJour(). */
+  const carteAccueil = $('#accueil-jour .accueil-carte');
+  if (carteAccueil) {
+    if (titre && titre.miroir) {
+      carteAccueil.dataset.jour = j.date;   // clé « une fois par jour »
+      carteAccueil.innerHTML = `<div class="carte">
+        <div class="accueil-date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
+        <div class="chapo">Aujourd'hui</div>
+        ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
+        <div class="miroir">${T(titre.miroir)}</div>
+        ${titre.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(titre.geste)}</div>` : ''}
+      </div>`;
+    } else {
+      delete carteAccueil.dataset.jour;   // rien à montrer ce jour-là
+      carteAccueil.innerHTML = '';
+    }
+  }
+
+  /* Les deux cartes du tiroir « Tes cartes du jour », chacune cachée
+     jusqu'au clic : 1er clic sur SA zone la dévoile en fondu (comme avant),
+     un clic de plus (déjà dévoilée) l'ouvre en plein écran (voir
+     ouvrirCartePlein, câblage commun car même comportement pour les deux). */
+  [$('#z-carte-maj'), $('#z-carte-min')].forEach(zone => {
+    if (!zone) return;
+    zone.onclick = () => {
+      if (zone.classList.contains('revelee')) ouvrirCartePlein(zone);
+      else zone.classList.add('revelee');
+    };
+  });
+  /* La carte de l'année : un clic sur sa vignette (dans le tiroir) la zoome. */
+  const vignetteAn = $('#vue-jour .carte-annee .vignette');
+  if (vignetteAn) {
+    const ca = j.carte_annee;
+    vignetteAn.onclick = e => {
+      e.stopPropagation();
+      ouvrirLightbox(urlCarte(ca.numero), `${T(ca.nom)}<span class="corr">côté ciel · ${T(ca.correspondance[1])}</span>`);
+    };
+  }
+
+  /* Les cycles du fond du temps : « tout lire → » ouvre le panneau de détail
+     complet. Séparé du summary du tiroir, qui, lui, déplie/replie le résumé. */
+  const ouvrirCycle = cible => {
+    if (cible === 'mois' && t.mois_perso) ouvrirDetail({
+      surtitre: `Ton mois ${j.jour.mois_personnel}`,
+      titre: `Mois ${j.jour.mois_personnel}`,
+      motcle: t.mois_perso.en_un_mot,
+      resume: t.mois_perso.miroir,
+      detail: t.mois_perso.detail,
+    });
+    if (cible === 'annee' && t.annee_perso?.detail) ouvrirDetail({
+      surtitre: `Ton année ${j.jour.annee_personnelle}`,
+      titre: `Année ${j.jour.annee_personnelle}`,
+      motcle: t.annee_perso.detail.en_un_mot,
+      resume: t.annee_perso.detail.resume,
+      detail: t.annee_perso.detail,
+      extra: `<div class="section" style="display:flex;gap:16px;align-items:flex-start">
+          <img class="vignette-zoomable" src="${urlCarte(j.carte_annee.numero)}" alt="${T(j.carte_annee.nom)}"
+               data-nom="${T(j.carte_annee.nom)}" data-signe="${T(j.carte_annee.correspondance[1])}"
+               style="width:72px;height:126px;object-fit:cover;border-radius:8px;border:1px solid var(--bord);flex:none;cursor:zoom-in">
+          <div><h4 style="margin-top:0">La carte de l'année</h4>
+          ${j.carte_annee.message ? `<p>${T(j.carte_annee.message)}</p>` : ''}
+          <p class="quoi" style="margin-top:8px">${T(j.carte_annee.nom)} — elle change au 1er janvier, comme ton année.</p></div>
+        </div>` + htmlUnivers(t.annee_perso.univers, j.jour.annee_personnelle),
+    });
+    if (cible === 'vie' && j.vie?.corpus) ouvrirDetail({
+      surtitre: `Ta traversée · ${j.vie.age_ans} ans`,
+      titre: j.vie.corpus.en_un_mot || 'Ce passage',
+      motcle: j.vie.corpus.en_un_mot,
+      resume: j.vie.corpus.resume,
+      detail: j.vie.corpus,
+    });
+  };
+  $('#vue-jour').querySelectorAll('.tout-lire[data-cible]').forEach(el => {
+    el.onclick = e => { e.stopPropagation(); ouvrirCycle(el.dataset.cible); };
+  });
+
+  initCarteNotifications();
+}
+
+/* ── Les rappels push : conversion de la clé VAPID, activation/désactivation,
+   câblage du bouton. Isolés ici pour ne pas alourdir chargerJour(). ── */
+function urlBase64VersUint8Array(base64) {
+  const remplissage = '='.repeat((4 - base64.length % 4) % 4);
+  const brut = atob((base64 + remplissage).replace(/-/g, '+').replace(/_/g, '/'));
+  return Uint8Array.from([...brut].map(c => c.charCodeAt(0)));
+}
+
+async function activerRappels() {
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+    alert("Ton navigateur ne supporte pas les notifications push.");
+    return false;
+  }
+  const permission = await Notification.requestPermission();
+  if (permission !== 'granted') return false;
+  const reg = await navigator.serviceWorker.ready;
+  const { cle } = await (await fetch('/api/notifications/cle-publique')).json();
+  const sub = await reg.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: urlBase64VersUint8Array(cle),
+  });
+  // Le fuseau détecté ICI, côté navigateur — jamais celui du lieu de
+  // naissance, qui n'a rien à voir avec où la personne vit aujourd'hui.
+  const fuseau = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  await fetch(`/api/notifications/${profilId}`, {
+    method: 'PUT', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({actif: true, subscription: sub.toJSON(), fuseau_notif: fuseau}),
+  });
+  return true;
+}
+
+async function desactiverRappels() {
+  const reg = await navigator.serviceWorker.ready;
+  const sub = await reg.pushManager.getSubscription();
+  if (sub) await sub.unsubscribe();
+  await fetch(`/api/notifications/${profilId}`, {
+    method: 'PUT', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({actif: false}),
+  });
+}
+
+async function initCarteNotifications() {
+  const bouton = $('#bouton-notifs');
+  if (!bouton) return;
+  const majLabel = actif => { bouton.textContent = actif ? 'Désactiver les rappels' : 'Activer les rappels'; };
+  try {
+    const { actif } = await (await fetch(`/api/notifications/${profilId}`)).json();
+    majLabel(actif);
+  } catch (e) { majLabel(false); }
+
+  bouton.onclick = async () => {
+    bouton.disabled = true;
+    const veutDesactiver = bouton.textContent.startsWith('Désactiver');
+    try {
+      if (veutDesactiver) { await desactiverRappels(); majLabel(false); }
+      else { majLabel(await activerRappels()); }
+    } finally {
+      bouton.disabled = false;
+    }
+  };
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TOUT — le thème entier d'un coup d'œil.
+   « Il faut pouvoir bien comprendre facilement tout son thème, tous ces
+   chiffres, numéros, et sa carte du ciel. »
+   Une seule vue, rien de nu, tout cliquable.
+   ═══════════════════════════════════════════════════════════ */
+async function chargerApercu() {
+  const d = await (await fetch(`/api/apercu/${profilId}`)).json();
+  if (d.complet === false) {
+    $('#vue-apercu').innerHTML = msgThemeIncomplet();
+    câblerMsgThemeIncomplet();
+    return;
+  }
+  const p = d.profil;
+
+  const tuile = (haut, gros, bas, action, grosBrut = false) => `
+    <div class="tuile"${action ? ` data-va="${action}"` : ''}>
+      <div class="tuile-haut">${T(haut)}</div>
+      <div class="tuile-gros">${grosBrut ? gros : T(gros)}</div>
+      <div class="tuile-bas">${T(bas || '')}</div>
+    </div>`;
+
+  // La position dans un cycle de 9 (année, mois) se voit d'un coup d'œil dans
+  // l'anneau plutôt que de se lire dans « 3 sur 9 ».
+  const tuileCycle = (haut, valeur, total, bas, action) => `
+    <div class="tuile"${action ? ` data-va="${action}"` : ''}>
+      <div class="tuile-haut">${T(haut)}</div>
+      ${anneauCycle(valeur, total)}
+      <div class="tuile-bas">${T(bas || '')}</div>
+    </div>`;
+
+  let html = `<div class="carte">
+    <div class="chapo">${T(p.nom)}</div>
+    <p class="quoi" style="margin:-6px 0 0">${T(p.naissance)} à ${T(p.heure)} · ${T(p.lieu)}</p>
+  </div>`;
+
+  /* Les échelles de temps — de la plus lente à la plus rapide.
+     C'est ce qui bouge, donc ce qu'on regarde en premier. */
+  const t = d.temps;
+  const vieMot = t.vie?.corpus?.en_un_mot;
+  html += `<div class="carte">
+    <div class="chapo">Où tu en es</div>
+    <div class="grille">
+      ${t.vie ? tuile('Ta traversée', t.vie.age_ans + ' ans', vieMot || '—', 'vie') : ''}
+      ${tuileCycle('Ton année', t.annee.valeur, 9, t.annee.en_un_mot, 'annee')}
+      ${tuileCycle('Ton mois', t.mois.valeur, 9, t.mois.en_un_mot || '—', 'mois')}
+      ${tuile('Ta carte', d.cartes.naissance.nom, 'depuis toujours', 'carte')}
+    </div>
+    <p class="quoi" style="margin-top:12px">La traversée donne l'âge de la vie, l'année le chapitre,
+      le mois la saison. Le jour, lui, vient du ciel — il change tout seul.</p>
+  </div>`;
+
+  /* Les nombres — jamais nus. */
+  html += `<div class="carte">
+    <div class="chapo">Tes nombres</div>
+    <div class="grille">
+      ${['cap','voix','foyer','elan'].map(c => {
+        const n = d.nombres[c], nom = (LEX.termes?.[c]?.nom) || c;
+        return tuile(nom, n.valeur + (n.maitre ? '' : ''), n.en_un_mot || '—', 'nombre:' + c);
+      }).join('')}
+    </div>
+    ${d.chantiers.length ? `<p class="quoi" style="margin-top:12px">
+      Tes chantiers : ${d.chantiers.join(', ')} — les qualités à bâtir plutôt qu'à déplorer.</p>` : ''}
+  </div>`;
+
+  /* Le ciel — l'essentiel, pas le tableau. */
+  html += `<div class="carte">
+    <div class="chapo">Ton ciel</div>
+    <div class="grille">
+      ${tuile('Le Soleil', signeOrne(d.trio.soleil.signe, 22), 'ce que tu es', 'astre:soleil', true)}
+      ${tuile('La Lune', signeOrne(d.trio.lune.signe, 22), 'ce dont tu as besoin', 'astre:lune', true)}
+      ${tuile('Ascendant', signeOrne(d.trio.asc.signe, 22), 'ta porte d\'entrée', 'astre:asc', true)}
+    </div>
+    <table style="margin-top:16px">
+      ${d.element_dominant ? `<tr><td>Ce qui domine</td><td><b>${T(d.element_dominant)}</b></td>
+        <td>ta couleur de fond</td></tr>` : ''}
+      ${d.element_creux ? `<tr><td>En creux</td><td><b>${T(d.element_creux)}</b></td>
+        <td>moins spontané, pas absent</td></tr>` : ''}
+      ${d.equilibre ? `<tr><td>Équilibre</td><td><b>réparti</b></td>
+        <td>aucune couleur ne domine</td></tr>` : ''}
+      ${d.modalite ? `<tr><td>Ta façon</td><td><b>${T(d.modalite)}</b></td>
+        <td>${T({Cardinal:'lancer', Fixe:'tenir', Mutable:'s\'adapter'}[d.modalite] || '')}</td></tr>` : ''}
+      ${d.maitre_theme ? `<tr><td>Qui mène</td><td><b>${T(nomPlanete(d.maitre_theme.planete))}</b></td>
+        <td>${T({solide: 'un appui solide', moyen: 'un appui correct, sans plus',
+                 'en peine': 'un appui qui peine, pas un mauvais signe'}[d.maitre_theme.etat]
+                 || d.maitre_theme.etat)}</td></tr>` : ''}
+      ${d.en_vue ? `<tr><td>Ce qui se voit</td><td><b>${T(nomPlanete(d.en_vue.planete))}</b></td>
+        <td>le plus fort du thème</td></tr>` : ''}
+    </table>
+  </div>`;
+
+  /* Le signe chinois — 4e axe d'identité, après le ciel. */
+  if (d.chinois) {
+    const ch = d.chinois, mot = ch.portrait?.en_un_mot;
+    html += `<div class="carte" id="c-chinois"${ch.portrait ? ' style="cursor:pointer"' : ''}>
+      <div class="chapo">Ton signe chinois</div>
+      <div style="font-family:var(--serif);font-size:26px;margin:6px 0 2px">${T(ch.signe)}</div>
+      ${mot ? `<div class="motcle">${T(mot)}</div>` : ''}
+      <p class="quoi" style="margin-top:10px">L'animal vient de ton année de naissance, l'élément le colore.${ch.portrait ? ' Touche pour le portrait.' : ''}</p>
+    </div>`;
+  }
+
+  /* Le croisement — le seul endroit où les trois se parlent. */
+  if (d.pont) {
+    html += `<div class="carte">
+      <div class="chapo">Le croisement</div>
+      <p style="font-size:15px;color:var(--encre2)">
+        Ta carte <b style="color:var(--encre)">${T(d.cartes.naissance.nom)}</b>
+        pointe vers <b style="color:var(--encre)">${T(d.pont.cible)}</b>,
+        et dans ton ciel réel : <span class="etat ${T(d.pont.etat)}">${T(nomEtat(d.pont.etat))}</span></p>
+      <p class="quoi" style="margin-top:10px">C'est le seul endroit où tes nombres, tes cartes
+        et ton ciel se parlent au lieu d'être posés côte à côte.</p>
+      ${aide(`« ${nomEtat(d.pont.etat)} », ça veut dire quoi ?`, terme(d.pont.etat).quoi)}
+    </div>`;
+  }
+
+  for (const av of (d.avis || [])) {
+    html += `<div class="avis"><b>À trancher</b> — ${T(av.message)}</div>`;
+  }
+  $('#vue-apercu').innerHTML = html;
+
+  $('#vue-apercu').querySelectorAll('[data-va]').forEach(el => el.onclick = () => {
+    const [quoi, cle] = el.dataset.va.split(':');
+    if (quoi === 'astre') { montrerVue('ciel'); setTimeout(() => ouvrirAstre(cle), 120); }
+    else if (quoi === 'nombre') { montrerVue('portrait'); setTimeout(() =>
+      $(`#vue-portrait [data-nombre="${cle}"]`)?.click(), 120); }
+    else if (quoi === 'carte') { montrerVue('portrait'); setTimeout(() =>
+      $('#vue-portrait #c-arcane')?.click(), 120); }
+    else if (quoi === 'vie' || quoi === 'annee' || quoi === 'mois') { montrerVue('jour'); setTimeout(() =>
+      $(`#vue-jour .tout-lire[data-cible="${quoi}"]`)?.click(), 120); }
+    else { montrerVue('jour'); }
+  });
+
+  const cch = $('#c-chinois');
+  if (cch && d.chinois?.portrait) cch.onclick = () => {
+    const ch = d.chinois;
+    ouvrirDetail({
+      surtitre: 'Ton signe chinois',
+      titre: ch.signe,
+      motcle: ch.portrait.en_un_mot,
+      resume: ch.portrait.resume,
+      extra: `<div class="section"><h4>Le portrait</h4><p>${T(ch.portrait.portrait)}</p></div>`
+        + (ch.nuance ? `<div class="section"><h4>L'élément ${T(ch.element)}${ch.nuance.en_un_mot ? ' · ' + T(ch.nuance.en_un_mot) : ''}</h4><p>${T(ch.nuance.nuance)}</p></div>` : ''),
+    });
+  };
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LE PORTRAIT
+   ═══════════════════════════════════════════════════════════ */
+async function chargerPortrait() {
+  const p = await (await fetch(`/api/portrait/${profilId}`)).json();
+  const tx = p.textes || {};
+  let html = '';
+
+  for (const av of (p.theme?.avis || [])) {
+    html += `<div class="avis"><b>À trancher</b> — ${T(av.message)}</div>`;
+  }
+  if (p.complet === false) {
+    html += `<div class="avis"><b>Lecture partielle</b> — sans heure ni lieu de naissance,
+      pas d'Ascendant ni de maisons : ce portrait s'en tient aux nombres et aux cartes.
+      <button class="bouton discret" id="pf-completer" style="margin-top:8px">Ajouter l'heure et le lieu</button></div>`;
+  }
+
+  /* La carte */
+  const na = p.cartes.naissance, pont = p.ponts.naissance;
+  html += `<div class="carte">
+    <div class="chapo">Ta carte</div>
+    <div class="arcane" id="c-arcane">
+      <img class="vignette" src="${urlCarte(na.numero)}" alt="${T(na.nom)}">
+      <div class="corps">
+        <div class="num">${na.numero === 22 ? 0 : na.numero}</div>
+        <div class="nom">${T(na.nom)}</div>
+        <div class="corr">côté ciel : ${T(na.correspondance[1])}</div>
+        <div class="plus" style="margin-top:10px">tout lire →</div>
+      </div>
+    </div>
+    ${aide("C'est quoi, « ta carte » ?", terme('carte_naissance').quoi, terme('carte_naissance').d_ou)}`;
+
+  if (pont) {
+    html += `<div class="pont">
+      <span class="etat ${T(pont.etat)}">${T(nomEtat(pont.etat))}</span>
+      <p style="margin-top:8px">Ta carte pointe vers <span class="cible">${T(pont.cible)}</span>.
+        Dans ton ciel de naissance : ${T(traduireRaisons(pont.raisons))}.</p>
+      ${tx.arcane_naissance?.lecture_etat
+        ? `<p style="margin-top:10px">${T(tx.arcane_naissance.lecture_etat)}</p>` : ''}
+      ${aide(`« ${nomEtat(pont.etat)} », ça veut dire quoi ?`, terme(pont.etat).quoi)}
+    </div>`;
+  }
+  html += `</div>`;
+
+  /* Les nombres — chacun nommé, chacun cliquable */
+  html += `<div class="carte"><div class="chapo">Tes nombres</div>`;
+  for (const cle of ['cap','voix','foyer','elan']) {
+    const n = p.nombres[cle], a = p.accords[cle], t = terme(cle);
+    const det = tx[cle]?.detail;
+    const motcle = det?.en_un_mot;
+    const her = (n.heritages || []).map(h =>
+      `<span class="heritage">héritage ${h}</span>`).join('');
+    html += `<div class="nombre" data-nombre="${cle}">
+      <div class="val">${n.valeur}</div>
+      <div style="flex:1">
+        <div class="nom">${T(t.nom || cle)}</div>
+        ${motcle ? `<div class="motcle">${T(motcle)}</div>` : ''}
+        <div class="txt">${T(t.quoi || '')}</div>
+        ${n.maitre ? `<div class="txt" style="margin-top:4px">Ce nombre vibre fort :
+          il se lit ${n.maitre}, et se ramène à ${n.base}.</div>` : ''}
+        <div style="margin-top:8px">
+          ${a ? `<span class="etat ${T(a.etat)}">${T(nomEtat(a.etat))}</span>` : ''}
+          ${her}
+        </div>
+      </div>
+      <div class="plus">${det ? 'tout lire →' : ''}</div>
+    </div>`;
+  }
+  html += `${aide("C'est quoi, ces nombres ?",
+    "Ils se calculent à partir de ta date de naissance et des lettres de ton nom. Chacun éclaire une facette : ta direction, ta façon de t'exprimer, ton centre, ton énergie d'ensemble.")}
+    ${aide("Et le petit badge « ton ciel appuie » ?",
+      "À côté de chaque nombre, Ta Trame regarde ton ciel de naissance et dit s'il le renforce (il appuie), le complique (il te bouscule), ou reste neutre. Aucun des trois n'est un verdict. C'est juste là qu'il y a du travail, donc là que c'est intéressant.")}
+  </div>`;
+
+  /* Les héritages — jamais un nombre nu */
+  const tousHeritages = [...new Set(['cap','voix','foyer','elan']
+    .flatMap(c => p.nombres[c].heritages || []))];
+  if (tousHeritages.length) {
+    const th = terme('heritages');
+    html += `<div class="carte">
+      <div class="chapo">${T(th.nom)}</div>
+      <p style="font-size:15px;color:var(--encre2)">${T(th.quoi)}</p>
+      <p class="quoi" style="margin-top:8px">${T(th.pourquoi_ce_mot || '')}</p>
+      <div style="margin-top:14px">`;
+    for (const h of tousHeritages) {
+      const ht = tx.heritages?.[h];
+      html += `<div class="nombre" data-heritage="${h}"${ht ? ' style="cursor:pointer"' : ''}>
+        <div class="val">${h}</div>
+        <div style="flex:1">
+          <div class="nom">Héritage ${h}</div>
+          ${ht?.en_un_mot ? `<div class="motcle">${T(ht.en_un_mot)}</div>` : ''}
+          ${ht?.resume ? `<div class="txt">${T(ht.resume)}</div>` : ''}
+        </div>
+        <div class="plus">${ht ? 'tout lire →' : ''}</div>
+      </div>`;
+    }
+    html += `</div>`;
+    if (!tx.heritages || !Object.keys(tx.heritages).length)
+      html += `<div class="trou">Le détail de chaque héritage n'est pas encore écrit.</div>`;
+    html += `</div>`;
+  }
+
+  /* Ta période — le Soleil affiné en 48 sous-périodes (additif au signe) */
+  const per = tx.periode_soleil;
+  if (per) {
+    html += `<div class="carte" data-periode="1" style="cursor:pointer">
+      <div class="chapo">Ta période</div>
+      <div class="nombre">
+        <div style="flex:1">
+          <div class="nom">${T(per.nom)}</div>
+          <div class="txt">${T(per.essence)}</div>
+        </div>
+        <div class="plus">tout lire →</div>
+      </div>
+    </div>`;
+  }
+
+  /* Ton axe — d'où tu viens (nœud sud) vers où tu vas (nœud nord) */
+  const ax = tx.noeuds;
+  if (ax && ax.sud?.texte && ax.nord?.texte) {
+    html += `<div class="carte" data-axe="1" style="cursor:pointer">
+      <div class="chapo">Ton axe</div>
+      <div class="nombre">
+        <div style="flex:1">
+          <div class="nom">${signeOrne(ax.sud.signe)} → ${signeOrne(ax.nord.signe)}</div>
+          <div class="txt">D'où tu viens, où tu vas.</div>
+        </div>
+        <div class="plus">tout lire →</div>
+      </div>
+    </div>`;
+  }
+
+  /* Tes leviers — les lois-appuis du but de vie (distillées de Millman),
+     routées par la base du Cap. Ce ne sont pas des règles : des points sur
+     lesquels agir quand le moment s'y prête. */
+  const lois = tx.lois || [];
+  if (lois.length) {
+    html += `<div class="carte">
+      <div class="chapo">Tes leviers</div>
+      <p style="font-size:15px;color:var(--encre2)">Des points de repère qui
+        travaillent ta direction de fond. On les actionne quand on veut, ce ne
+        sont pas des consignes.</p>
+      <div style="margin-top:14px">`;
+    lois.forEach((L, i) => {
+      html += `<div class="nombre" data-loi="${i}" style="cursor:pointer">
+        <div style="flex:1">
+          <div class="nom">${T(L.nom)}</div>
+          <div class="txt">${T(L.en_un_mot)}</div>
+        </div>
+        <div class="plus">tout lire →</div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  /* Les chantiers — chacun nommé, jamais un chiffre nu */
+  const ch = p.nombres.appuis.chantiers, tc = terme('chantiers');
+  if (ch.length) {
+    html += `<div class="carte">
+      <div class="chapo">${T(tc.nom)}</div>
+      <p style="font-size:15px;color:var(--encre2)">${T(tc.quoi)}</p>
+      <div style="margin-top:14px">`;
+    for (const v of ch) {
+      const q = LEX.qualites?.[v] || {};
+      html += `<div class="nombre">
+        <div class="val">${v}</div>
+        <div style="flex:1">
+          <div class="nom">${T(q.nom || v)}</div>
+          ${q.quoi ? `<div class="txt">${T(q.quoi)}</div>` : ''}
+        </div>
+      </div>`;
+    }
+    html += `</div>
+      <p class="quoi" style="margin-top:10px">${T(tc.pourquoi_ce_mot || '')}</p>
+      ${aide("D'où ça vient ?", tc.d_ou)}
+    </div>`;
+  }
+
+  html += `<div class="note">${T(p.attribution)}<br>
+    Ta Trame ne prédit pas. L'astrologie n'a aucune validité prédictive démontrée —
+    ce que tu lis est un miroir pour t'examiner, et sa valeur est dans la
+    réflexion qu'il déclenche.</div>`;
+
+  $('#vue-portrait').innerHTML = html;
+
+  const pfCompleter = $('#pf-completer');
+  if (pfCompleter) pfCompleter.onclick = async () => {
+    editionDe = profilId;
+    ouvrirFormulaire(await (await fetch(`/api/profil/${profilId}`)).json());
+  };
+
+  /* les clics */
+  $('#vue-portrait').querySelectorAll('[data-nombre]').forEach(el => el.onclick = () => {
+    const cle = el.dataset.nombre, n = p.nombres[cle], t = terme(cle);
+    const d = tx[cle];
+    ouvrirDetail({
+      surtitre: `${t.nom} · ${n.valeur}`,
+      titre: t.nom,
+      motcle: d?.detail?.en_un_mot,
+      intro: t.quoi,
+      resume: d?.detail?.resume,
+      detail: d?.detail,
+      court: d?.court,
+      avant: `<div class="section douce"><h4>D'où vient ce nombre</h4><p>${T(t.d_ou || '')}</p></div>`,
+    });
+  });
+  $('#vue-portrait').querySelectorAll('[data-heritage]').forEach(el => el.onclick = () => {
+    const ht = tx.heritages?.[el.dataset.heritage];
+    if (!ht) return;
+    ouvrirDetail({
+      surtitre: `Héritage ${el.dataset.heritage}`,
+      titre: `Héritage ${el.dataset.heritage}`,
+      motcle: ht.en_un_mot,
+      resume: ht.resume,
+      detail: ht,
+      extra: `<div class="section douce"><h4>Un héritage, pas une dette</h4>
+        <p>${T(terme('heritages').pourquoi_ce_mot || '')}</p></div>`,
+    });
+  });
+  const carPeriode = $('#vue-portrait [data-periode]');
+  if (carPeriode) carPeriode.onclick = () => ouvrirDetail({
+    surtitre: 'Ta période',
+    titre: per.nom,
+    motcle: per.nom,
+    intro: per.essence,
+    resume: per.texte,
+    detail: {},
+    extra: `<div class="section douce"><h4>D'où vient cette lecture</h4>
+      <p>Le Soleil ne dit pas qu'un signe : sa position précise le place dans
+      l'une des 48 sous-périodes du zodiaque, qui affine ton signe sans le
+      remplacer. Ce n'est jamais un remplacement du portrait de ton signe,
+      seulement un cran de plus.</p></div>`,
+  });
+  const carAxe = $('#vue-portrait [data-axe]');
+  if (carAxe) carAxe.onclick = () => ouvrirDetail({
+    surtitre: 'Ton axe',
+    titre: `${T(ax.sud.signe)} → ${T(ax.nord.signe)}`,
+    motcle: `${T(ax.sud.signe)} → ${T(ax.nord.signe)}`,
+    intro: "D'où tu viens, où tu vas.",
+    detail: {},
+    extra: `<div class="section douce"><h4>D'où tu viens (${T(ax.sud.signe)})</h4>
+        <p>${T(ax.sud.texte)}</p></div>
+      <div class="section douce"><h4>Où tu vas (${T(ax.nord.signe)})</h4>
+        <p>${T(ax.nord.texte)}</p></div>
+      <div class="section douce"><h4>C'est quoi, cet axe ?</h4>
+        <p>Deux points opposés du ciel, calculés à ta naissance. Le premier
+        est un acquis, un sillon déjà creusé et confortable. Le second est un
+        cap, pas une obligation : une direction où grandir. Les deux
+        comptent — on n'abandonne pas l'un pour l'autre, on les tient
+        ensemble.</p></div>`,
+  });
+  $('#vue-portrait').querySelectorAll('[data-loi]').forEach(el => el.onclick = () => {
+    const L = (tx.lois || [])[el.dataset.loi];
+    if (!L) return;
+    ouvrirDetail({
+      surtitre: 'Ton levier',
+      titre: L.nom,
+      motcle: L.en_un_mot,
+      extra: `<div class="section"><h4>Le principe</h4><p>${T(L.le_principe)}</p></div>
+        <div class="section"><h4>Le pas</h4><p>${T(L.le_pas)}</p></div>
+        <div class="section douce"><h4>D'où vient cette lecture</h4>
+          <p>Ces leviers relient ta date de naissance à ta direction de fond.
+          Ce ne sont pas des consignes, seulement des appuis à essayer quand le
+          moment s'y prête.</p></div>`,
+    });
+  });
+  const arc = $('#c-arcane');
+  if (arc) arc.onclick = () => ouvrirDetail({
+    surtitre: 'Ta carte',
+    titre: na.nom,
+    motcle: na.nom,
+    court: tx.arcane_naissance,
+    extra: `<div class="section" style="display:flex;gap:16px;align-items:flex-start">
+        <img class="vignette-zoomable" src="${urlCarte(na.numero)}" alt="${T(na.nom)}"
+             data-nom="${T(na.nom)}" data-signe="${T(na.correspondance[1])}"
+             style="width:72px;height:126px;object-fit:cover;border-radius:8px;border:1px solid var(--bord);flex:none;cursor:zoom-in">
+        ${tx.arcane_naissance?.lecture_etat
+          ? `<div><h4 style="margin-top:0">Dans ton ciel</h4><p>${T(tx.arcane_naissance.lecture_etat)}</p></div>` : ''}
+      </div>`,
+  });
+  /* Un clic sur la vignette zoome la carte (sans ouvrir le panneau). */
+  const vignetteArc = $('#c-arcane .vignette');
+  if (vignetteArc) vignetteArc.onclick = e => {
+    e.stopPropagation();
+    ouvrirLightbox(urlCarte(na.numero), `${T(na.nom)}<span class="corr">côté ciel · ${T(na.correspondance[1])}</span>`);
+  };
+}
+
+/* Les raisons viennent du moteur en langage technique — on les traduit. */
+function traduireRaisons(raisons) {
+  return (raisons || []).map(r => r
+    .replace(/\bson maître (\w+)\b/g, (_, p) => `sa planète maîtresse, ${nomPlanete(p)},`)
+    .replace(/\bhabité par (\w+)\b/g, (_, p) => `${nomPlanete(p)} s'y trouve`)
+    .replace(/\b(soleil|lune|mercure|venus|mars|jupiter|saturne|uranus|neptune|pluton)\b/g,
+             (_, p) => nomPlanete(p))
+  ).join(' · ');
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LE CIEL — l'idée globale d'abord, le détail à la demande.
+   « Une idée globale, mais qu'on peut facilement aller en demander plus. »
+   Le tableau seul ne disait rien : treize lignes de chiffres, aucun sens.
+   ═══════════════════════════════════════════════════════════ */
+let CIEL = null;
+
+async function chargerCiel() {
+  const d = await (await fetch(`/api/ciel/${profilId}`)).json();
+  if (d.complet === false) {
+    $('#vue-ciel').innerHTML = msgThemeIncomplet();
+    câblerMsgThemeIncomplet();
+    return;
+  }
+  CIEL = d;
+  const t = d.theme, s = d.synthese, g = d.globaux || {};
+  let html = '';
+
+  /* 1 — LE TRIO. Le plus parlant, donc le premier. */
+  const tr = s.trio;
+  html += `<div class="carte">
+    <div class="chapo">L'essentiel, en trois traits</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+      ${[['soleil', tr.soleil.signe, 'ce que tu es au fond'],
+         ['lune', tr.lune.signe, 'ce dont tu as besoin'],
+         ['asc', tr.asc.signe, 'la porte que les autres voient']].map(([cle, signe, quoi]) =>
+        `<div class="trio-bloc" data-astre="${cle}">
+          <div class="trio-nom">${T(nomPlanete(cle))}</div>
+          ${iconoSigne(signe, 28) ? `<div class="trio-glyphe">${iconoSigne(signe, 28)}</div>` : ''}
+          <div class="trio-signe">${T(signe)}</div>
+          <div class="trio-quoi">${T(quoi)}</div>
+        </div>`).join('')}
+    </div>
+    ${g.trio ? `<p style="font-size:14px;color:var(--encre2)">${T(g.trio.texte)}</p>` : ''}
+  </div>`;
+
+  /* 2 — CE QUI DOMINE, CE QUI MANQUE. */
+  for (const [cle, bloc] of Object.entries(g)) {
+    if (!bloc || !cle.includes('.')) continue;
+    html += `<div class="carte">
+      <div class="chapo">${T(bloc.titre || '')}</div>
+      <p style="font-size:15px;color:var(--encre2)">${T(bloc.texte)}</p>
+    </div>`;
+  }
+
+  /* 3 — LES CONCENTRATIONS. */
+  if (s.stelliums.length && g.stellium) {
+    html += `<div class="carte">
+      <div class="chapo">${T(g.stellium.titre || 'Une concentration')}</div>
+      ${s.stelliums.map(st => `<p style="font-family:var(--serif);font-size:18px;margin-bottom:8px">
+        ${st.corps.map(c => T(nomPlanete(c))).join(', ')} — tous en ${T(st.signe)}</p>`).join('')}
+      <p style="font-size:14px;color:var(--encre2)">${T(g.stellium.texte)}</p>
+    </div>`;
+  }
+
+  /* 4 — QUI MÈNE, QUI SE VOIT. */
+  if (s.maitre && g.maitre) {
+    html += `<div class="carte" data-astre="${T(s.maitre.planete)}" style="cursor:pointer">
+      <div class="chapo">${T(g.maitre.titre || 'Qui mène')}</div>
+      <p style="font-family:var(--serif);font-size:18px;margin-bottom:8px">
+        ${T(nomPlanete(s.maitre.planete))}, en ${T(s.maitre.signe)},
+        dans ${T(nomMaison(s.maitre.maison))} — ${T(s.maitre.etat)}</p>
+      <p style="font-size:14px;color:var(--encre2)">${T(g.maitre.texte)}</p>
+      <div class="plus" style="margin-top:10px">tout lire →</div>
+    </div>`;
+  }
+  if (s.en_vue && g.en_vue) {
+    html += `<div class="carte" data-astre="${T(s.en_vue.planete)}" style="cursor:pointer">
+      <div class="chapo">${T(g.en_vue.titre || 'Ce qui se voit le plus')}</div>
+      <p style="font-family:var(--serif);font-size:18px;margin-bottom:8px">
+        ${T(nomPlanete(s.en_vue.planete))}, en ${T(s.en_vue.signe)},
+        dans ${T(nomMaison(s.en_vue.maison))}</p>
+      <p style="font-size:14px;color:var(--encre2)">${T(g.en_vue.texte)}</p>
+      <div class="plus" style="margin-top:10px">tout lire →</div>
+    </div>`;
+  }
+
+  /* 5 — LE DÉTAIL, à la demande. Chaque ligne se lit. */
+  html += `<div class="carte">
+    <div class="chapo">Chaque astre, un par un</div>
+    <p class="quoi" style="margin:-4px 0 14px">Touche une ligne pour la lire en entier.</p>`;
+  for (const [nom, a] of Object.entries(d.astres)) {
+    const dispo = a.textes.signe || a.textes.maison;
+    html += `<div class="nombre" data-astre="${T(nom)}" style="gap:12px;padding:12px;margin:0 -12px">
+      <div style="flex:1">
+        <div class="motcle" style="font-size:16px">${T(nomPlanete(nom))} en ${T(a.signe)}
+          ${a.retrograde ? '<span class="retro">℞</span>' : ''}</div>
+        <div class="txt">${T(quoiPlanete(nom))}${a.maison ? ' · ' + T(nomMaison(a.maison)) : ''}</div>
+      </div>
+      <div class="plus">${dispo ? 'lire →' : ''}</div>
+    </div>`;
+  }
+  html += `${aide('Comment lire cette liste ?',
+    "Chaque ligne dit trois choses : l'astre (la fonction), son signe (comment elle s'exprime) et le domaine de ta vie où elle se joue. Le signe ℞ veut dire que l'astre semblait reculer dans le ciel ce jour-là.")}
+  </div>`;
+
+  if (d.manque && d.manque.length) {
+    html += `<div class="trou">Corpus en construction — rien d'écrit pour : ${d.manque.map(T).join(', ')}.</div>`;
+  }
+  if (t.maisons.repli) {
+    html += `<div class="avis"><b>Découpage dégradé</b> — ${T(t.maisons.repli)}.
+      Ton lieu de naissance est trop au nord : le découpage habituel n'y est pas
+      défini mathématiquement. On a basculé sur une méthode toujours valide —
+      les angles, eux, restent exacts.</div>`;
+  }
+  for (const l of (t.limites || [])) html += `<div class="trou">${T(l)}</div>`;
+  html += `<div class="note">${T(d.attribution)}</div>`;
+
+  $('#vue-ciel').innerHTML = html;
+  $('#vue-ciel').querySelectorAll('[data-astre]').forEach(el =>
+    el.onclick = e => { if (!e.target.closest('details')) ouvrirAstre(el.dataset.astre); });
+}
+
+/* Le panneau d'un astre : ses DEUX lectures additionnées, puis ses liens.
+   Signe = comment · Maison = où. Jamais leur produit — ce serait 120 × 120. */
+function ouvrirAstre(nom) {
+  const a = CIEL.astres[nom];
+  if (!a) return;
+  const ts = a.textes.signe, tm = a.textes.maison;
+
+  let html = '';
+  if (ts) {
+    html += `<div class="section"><h4>Comment ça s'exprime — en ${signeOrne(a.signe)}</h4>
+      <p>${T(ts.comment_ca_marche)}</p></div>`;
+    if (ts.au_quotidien) html += `<div class="section"><h4>Au quotidien</h4><p>${T(ts.au_quotidien)}</p></div>`;
+    if (ts.le_revers) html += `<div class="section"><h4>Le revers</h4><p>${T(ts.le_revers)}</p></div>`;
+    if (ts.generationnel) {
+      html += `<div class="section douce"><h4>À savoir : ce n'est pas personnel</h4>
+        <p>${T(ts.generationnel)}</p></div>`;
+    }
+  }
+  if (tm) {
+    html += `<div class="section" style="border-top:1px solid var(--bord);padding-top:22px">
+      <h4>Où ça se joue — ${T(nomMaison(a.maison))}</h4><p>${T(tm.ou_ca_se_joue)}</p></div>`;
+    if (tm.au_quotidien) html += `<div class="section"><h4>Au quotidien, sur ce terrain</h4><p>${T(tm.au_quotidien)}</p></div>`;
+    if (tm.le_revers) html += `<div class="section"><h4>Quand ce terrain sature</h4><p>${T(tm.le_revers)}</p></div>`;
+    if (tm.pourquoi_c_est_personnel) {
+      html += `<div class="section douce"><h4>Pourquoi ceci, c'est vraiment à toi</h4>
+        <p>${T(tm.pourquoi_c_est_personnel)}</p></div>`;
+    }
+  }
+
+  /* Les liens — additifs eux aussi : on nomme, on n'invente pas un récit. */
+  const liens = a.textes.aspects || [];
+  if (liens.length) {
+    html += `<div class="section"><h4>Ses liens dans ton ciel</h4>
+      ${liens.map(l => {
+        const titre = `${T(nomPlanete(nom))} <b style="color:var(--encre)">${T(nomAspect(l.classe))}</b> ${T(nomPlanete(l.autre))}`;
+        // Un lien avec texte de corpus se déplie ; sinon la ligne courte du lexique.
+        if (l.corpus) {
+          return `<div class="lien" data-lien="1" style="margin-bottom:8px">
+            <div>${titre} <span style="color:var(--encre3)">· ${T(l.corpus.en_bref || '')}</span></div>
+            <p class="lien-texte cacher" style="font-size:14px;color:var(--encre2);margin-top:6px">${T(l.corpus.texte)}</p>
+          </div>`;
+        }
+        return `<p style="margin-bottom:6px">${titre}
+          <span style="color:var(--encre3)">· ${T((LEX.aspects?.[l.classe]?.quoi) || '')}</span></p>`;
+      }).join('')}
+      <p class="quoi" style="margin-top:10px">Touche un lien pour le lire en entier.
+        Ta Trame ne les fond pas en un récit unique. Chaque lecture s'additionne, aucune n'écrase l'autre.</p>
+    </div>`;
+  }
+
+  if (!ts && !tm) {
+    html += `<div class="trou">Le texte détaillé n'est pas encore écrit pour cet astre.
+      Le corpus se construit par vagues — l'app le dit plutôt que de faire semblant.</div>`;
+  }
+
+  ouvrirDetail({
+    surtitre: `${nomPlanete(nom)} · ${a.degre}° ${a.signe} ${a.minute}'`,
+    titre: nomPlanete(nom),
+    motcle: `${nomPlanete(nom)} en ${a.signe}`,
+    resume: ts?.resume || quoiPlanete(nom),
+    extra: html,
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LES RÈGLES
+   ═══════════════════════════════════════════════════════════ */
+async function chargerRegles() {
+  const c = await (await fetch('/api/conventions')).json();
+  const ORDRE = ['determinisme','accents','trait_union','apostrophes',
+                 'particules','annee_personnelle','mois_personnel','jour_personnel',
+                 'maisons','ephemerides'];
+  const TITRE = {
+    determinisme:'Toujours le même calcul', accents:'Les accents', trait_union:"Le trait d'union",
+    apostrophes:'Les apostrophes', particules:'Les particules',
+    annee_personnelle:"L'année personnelle", mois_personnel:'Le mois personnel',
+    jour_personnel:'Le jour personnel', maisons:'Les maisons', ephemerides:'Les éphémérides',
+  };
+  const SOURCE = {
+    'imprimé':'Documenté dans nos ouvrages de référence',
+    'tranché par Ta Trame':'Tranché par Ta Trame — non documenté ailleurs',
+    'tranché par Ta Trame, appuyé sur les sources':'Tranché par Ta Trame, appuyé sur nos ouvrages de référence',
+    'consensus des ouvrages':'Consensus des ouvrages',
+    'domaine public':'Donnée publique', 'conception':'Choix de conception',
+  };
+  let html = `<div class="carte">
+    <div class="chapo">Pourquoi cette page existe</div>
+    <p style="font-size:15px;color:var(--encre2)">
+      Deux numérologues peuvent donner deux résultats différents pour
+      ton nom — et aucune app ne dit laquelle des règles elle applique.
+      Ta Trame dit les siennes. Même profil, même date, même lecture, toujours —
+      et les publier est ce qui rend cette promesse vérifiable.
+    </p></div>`;
+  for (const cle of ORDRE) {
+    const r = c[cle]; if (!r) continue;
+    const tranche = r.source.startsWith('tranché');
+    html += `<div class="carte">
+      <div class="chapo">${TITRE[cle]}</div>
+      <p style="font-family:var(--serif);font-size:17px;margin-bottom:10px">${T(r.regle)}</p>
+      <p style="font-size:14px;color:var(--encre2)">${T(r.detail)}</p>
+      <div style="margin-top:12px">
+        <span class="etat ${tranche ? 'tension' : 'resonance'}">${T(SOURCE[r.source] || r.source)}</span>
+      </div>
+    </div>`;
+  }
+  $('#vue-regles').innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RELATIONS — le lien entre deux personnes (Phase R1 : socle amour).
+   Le serveur CALCULE (moteur/relations.py) ; ici on affiche ce qu'il a déjà
+   résolu vers le corpus, comme partout ailleurs dans ce fichier.
+   ═══════════════════════════════════════════════════════════ */
+let relContacts = null;
+let relB = null;        // {genre:'profil'|'contact', id}
+let relType = 'amour';
+let relRole = 'parent';  // parent-enfant : 'parent' = moi (A) parent, 'enfant' = moi (A) enfant
+let lieuChoisiRC = null;  // le lieu du contact en cours de création (facultatif)
+const REL_TYPES = [
+  ['amour', 'Amour'], ['travail', 'Travail'], ['parent_enfant', 'Parent-enfant'],
+  ['ami', 'Ami'], ['famille', 'Famille'],
+];
+
+async function vueRelations() {
+  if (relContacts === null) relContacts = await (await fetch('/api/contacts')).json();
+  const autresProfils = profils.filter(p => p.id !== profilId);
+
+  let html = `<div class="carte">
+    <div class="chapo">${icono(ICONES_NAV.relations, 17)}Relations</div>
+    <p class="quoi" style="margin:-2px 0 12px">Compare ton thème à celui d'une autre personne :
+      les nombres, les éléments, le signe chinois, et le ciel entre vous.</p>
+    <label style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--encre3);margin-bottom:6px">Avec qui ?</label>
+    <select id="rel-b" style="width:100%">
+      <option value="">— choisir —</option>
+      ${autresProfils.length ? `<optgroup label="Tes profils">${autresProfils.map(p =>
+        `<option value="profil:${T(p.id)}" ${relB && relB.genre==='profil' && relB.id===p.id ? 'selected' : ''}>${T(p.nom_affiche)}</option>`).join('')}</optgroup>` : ''}
+      ${relContacts.length ? `<optgroup label="Tes contacts">${relContacts.map(c =>
+        `<option value="contact:${T(c.id)}" ${relB && relB.genre==='contact' && relB.id===c.id ? 'selected' : ''}>${T(c.nom_affiche)}${c.complet ? '' : ' (date seule)'}</option>`).join('')}</optgroup>` : ''}
+    </select>
+    <button class="bouton discret" id="rel-ajouter-contact" style="margin-top:10px">+ Ajouter un contact</button>
+    <div id="rel-contact-form" class="cacher" style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+      <input id="rc-prenom" placeholder="Prénom" style="flex:1;min-width:110px">
+      <input id="rc-nom" placeholder="Nom" style="flex:1;min-width:110px">
+      <select id="rc-genre" style="flex:none;width:auto" title="Facultatif — accorde les textes des Relations">
+        <option value="x">Genre (facultatif)</option>
+        <option value="f">Femme</option>
+        <option value="m">Homme</option>
+      </select>
+      <input id="rc-jour" type="number" placeholder="Jour" min="1" max="31" style="width:70px">
+      <input id="rc-mois" type="number" placeholder="Mois" min="1" max="12" style="width:70px">
+      <input id="rc-annee" type="number" placeholder="Année" min="1800" max="2100" style="width:90px">
+      <p class="quoi" style="width:100%;margin:6px 0 0">Le reste est facultatif — sans lui, la lecture s'en tient aux nombres et au signe chinois.</p>
+      <input id="rc-heure" type="number" placeholder="Heure" min="0" max="23" style="width:70px">
+      <input id="rc-minute" type="number" placeholder="Minute" min="0" max="59" style="width:70px">
+      <div style="position:relative;flex:1;min-width:140px">
+        <input id="rc-lieu" placeholder="Lieu de naissance" autocomplete="off" style="width:100%">
+        <div id="rc-suggestions" class="suggestions cacher"></div>
+      </div>
+      <button class="bouton" id="rc-creer" style="flex:none">Créer</button>
+    </div>
+    <label style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--encre3);margin:16px 0 6px">Quel genre de lien ?</label>
+    <div id="rel-types" style="display:flex;flex-wrap:wrap;gap:6px">
+      ${REL_TYPES.map(([v, l]) => `<button class="bouton discret rel-type-b${v===relType ? ' actif' : ''}" data-type="${v}" style="flex:none">${l}</button>`).join('')}
+    </div>
+    <div id="rel-role" class="${relType==='parent_enfant' ? '' : 'cacher'}" style="margin-top:12px">
+      <label style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--encre3);margin-bottom:6px">Qui est le parent&#8239;?</label>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <button class="bouton discret rel-role-b${relRole==='parent' ? ' actif' : ''}" data-role="parent" style="flex:none">Je suis le parent</button>
+        <button class="bouton discret rel-role-b${relRole==='enfant' ? ' actif' : ''}" data-role="enfant" style="flex:none">Je suis l'enfant</button>
+      </div>
+    </div>
+  </div>
+  <div id="rel-resultat"></div>`;
+  $('#vue-relations').innerHTML = html;
+
+  $('#rel-b').onchange = e => {
+    const v = e.target.value;
+    relB = v ? { genre: v.split(':')[0], id: v.split(':')[1] } : null;
+    chargerRelationsResultat();
+  };
+  $('#rel-ajouter-contact').onclick = () => $('#rel-contact-form').classList.toggle('cacher');
+  $('#rc-creer').onclick = creerContactRelation;
+  câblerLieuContact();
+  document.querySelectorAll('.rel-type-b').forEach(b => b.onclick = () => {
+    relType = b.dataset.type;
+    document.querySelectorAll('.rel-type-b').forEach(x => x.classList.toggle('actif', x === b));
+    $('#rel-role').classList.toggle('cacher', relType !== 'parent_enfant');
+    chargerRelationsResultat();
+  });
+  document.querySelectorAll('.rel-role-b').forEach(b => b.onclick = () => {
+    relRole = b.dataset.role;
+    document.querySelectorAll('.rel-role-b').forEach(x => x.classList.toggle('actif', x === b));
+    chargerRelationsResultat();
+  });
+  if (relB) chargerRelationsResultat();
+}
+
+function câblerLieuContact() {
+  lieuChoisiRC = null;
+  let minuteur;
+  $('#rc-lieu').addEventListener('input', e => {
+    clearTimeout(minuteur); lieuChoisiRC = null;
+    const q = e.target.value.trim();
+    if (q.length < 2) { $('#rc-suggestions').classList.add('cacher'); return; }
+    minuteur = setTimeout(async () => {
+      const r = await (await fetch('/api/lieux?q=' + encodeURIComponent(q))).json();
+      const boite = $('#rc-suggestions');
+      if (!r.length) { boite.classList.add('cacher'); return; }
+      boite.innerHTML = r.map((l, i) =>
+        `<div data-i="${i}">${T(l.nom)}
+          <small>${T(l.pays)}/${T(l.admin1 || '—')} · ${l.lat.toFixed(2)}, ${l.lon.toFixed(2)}</small>
+        </div>`).join('');
+      boite.classList.remove('cacher');
+      boite.querySelectorAll('div[data-i]').forEach(d => d.onclick = () => {
+        lieuChoisiRC = r[+d.dataset.i];
+        $('#rc-lieu').value = lieuChoisiRC.nom;
+        boite.classList.add('cacher');
+      });
+    }, 180);
+  });
+}
+
+async function creerContactRelation() {
+  const jo = parseInt($('#rc-jour').value, 10), mo = parseInt($('#rc-mois').value, 10),
+        an = parseInt($('#rc-annee').value, 10);
+  if (!jo || !mo || !an) { alert('Jour, mois et année sont nécessaires.'); return; }
+  if ($('#rc-lieu').value.trim() && !lieuChoisiRC) {
+    alert('Choisis un lieu dans la liste, ou laisse le champ vide — les homonymes sont fréquents.');
+    return;
+  }
+  const id = 'c-' + Date.now().toString(36);
+  const prenoms_nom = [$('#rc-prenom').value, $('#rc-nom').value].map(s => s.trim()).filter(Boolean);
+  const corps = { id, jour: jo, mois: mo, annee: an, prenoms_nom, genre: $('#rc-genre').value || 'x' };
+  if (lieuChoisiRC) {
+    corps.lieu_id = lieuChoisiRC.id;
+    corps.heure = parseInt($('#rc-heure').value, 10) || 0;
+    corps.minute = parseInt($('#rc-minute').value, 10) || 0;
+  }
+  const r = await fetch('/api/contact', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(corps),
+  });
+  const d = await r.json();
+  if (!r.ok) { alert(d.erreur || 'La création a échoué.'); return; }
+  relContacts = null;
+  relB = { genre: 'contact', id };
+  vueRelations();
+}
+
+async function chargerRelationsResultat() {
+  const zone = $('#rel-resultat');
+  if (!relB) { zone.innerHTML = ''; return; }
+  zone.innerHTML = `<div class="carte"><p class="quoi">Ça se calcule…</p></div>`;
+  const roleParam = relType === 'parent_enfant' ? `&role=${relRole}` : '';
+  const r = await fetch(`/api/relations/${encodeURIComponent(profilId)}/${relB.genre}/${encodeURIComponent(relB.id)}?type=${relType}${roleParam}`);
+  const d = await r.json();
+  if (!r.ok) { zone.innerHTML = `<div class="carte"><p class="quoi">${T(d.erreur || "Cette lecture n'est pas disponible.")}</p></div>`; return; }
+
+  const ax = d.resultat.axes, tx = d.textes, synth = d.resultat.synthese;
+  const LABEL_ETAT_REL = { resonance: 'appui', tension: 'bouscule', neutre: 'neutre', mixte: 'mixte' };
+  const badge = etat => `<span class="etat ${T(etat)}">${T(LABEL_ETAT_REL[etat] || etat)}</span>`;
+
+  /* La synthèse d'intro : l'amorce du climat, puis les points les plus forts
+     NOMMÉS (top appui, top bouscule choisis par le moteur), avec leur contenu
+     précis. Déterministe : rien n'est rédigé à la volée, on cite les en_bref
+     déjà calculés. Étiquettes d'axe dans rel_synthese.json::axes. */
+  const labelsAxe = (tx.synthese || {}).axes || {};
+  const clauseAxe = (nom, etat) => {
+    if (nom === 'nombres') return (tx.nombres.paire || {}).en_bref || '';
+    if (nom === 'chinois') return (tx.chinois.branche || {}).en_bref || '';
+    if (nom === 'synastrie') {
+      const n = (tx.synastrie || []).length;
+      return `${n} lien${n > 1 ? 's' : ''} serré${n > 1 ? 's' : ''} entre vos deux thèmes`;
+    }
+    if (nom === 'elements') {
+      const n = (tx.elements || []).filter(p => p.etat === etat).length;
+      return etat === 'resonance'
+        ? `${n} de vos fonctions vont dans le même sens`
+        : `${n} de vos fonctions tirent chacune de leur côté`;
+    }
+    return '';
+  };
+  const pointLigne = (amorce, nom, etat) => {
+    if (!nom || !labelsAxe[nom]) return '';
+    let c = clauseAxe(nom, etat);
+    if (!c) return '';
+    c = c.replace(/\s*\.\s*$/, '');               // pas de double point final
+    c = c.charAt(0).toLowerCase() + c.slice(1);   // s'enchaîne après la virgule
+    return `<p style="margin:2px 0;font-size:15px;color:var(--encre2)"><strong>${amorce} :</strong> ${T(labelsAxe[nom])}, ${T(c)}.</p>`;
+  };
+  // Pur appui (aucun relief) : on nomme un second appui pour rester à 2-3 phrases.
+  const secondAppui = (!synth.top_bouscule && (synth.appuis || [])[1]) ? synth.appuis[1] : null;
+
+  let html = `<div class="carte">
+    <div class="chapo">${T(d.nom_a)} — ${T(d.nom_b)}</div>
+    <p style="font-family:var(--serif);font-size:17px;margin-bottom:8px">${T((tx.synthese.dominante || {}).note || tx.synthese.dominante || '')}</p>
+    <div style="margin:0 0 8px">${badge(synth.climat)}</div>
+    ${pointLigne('En appui', synth.top_appui, 'resonance')}
+    ${secondAppui ? pointLigne('Et aussi', secondAppui, 'resonance') : ''}
+    ${pointLigne('Ça bouscule', synth.top_bouscule, 'tension')}
+    ${tx.type ? `<p class="quoi" style="margin-top:10px">${T(tx.type.cadrage)}</p>` : ''}
+    ${!d.complet_b ? `<p class="quoi">Sans heure ni lieu de naissance de ${T(d.nom_b)}, le ciel entre vous n'est pas calculable — cette lecture reste aux nombres et au signe chinois.</p>` : ''}
+  </div>`;
+
+  if (tx.pouls) {
+    const pl = tx.pouls;
+    html += `<div class="carte" style="border-left:3px solid var(--accent-doux)">
+      <div class="chapo">Le pouls du jour</div>
+      <p class="quoi" style="margin:-2px 0 8px">${T(pl.cadre)}</p>
+      <p style="font-family:var(--serif);font-size:17px;margin-bottom:6px">Aujourd'hui, ${T(pl.planete_jour)} touche ${T(pl.point)}.</p>
+      <p style="font-size:15px;color:var(--encre2)">${T(pl.climat)}</p>
+      <p class="quoi">${T(pl.pied)}</p>
+    </div>`;
+  }
+
+  html += `<div class="jour-groupe">${tiroir({
+    nom: 'Vos nombres', resume: (tx.nombres.paire || {}).en_bref || '',
+    corps: `
+      ${ax.nombres.identiques
+        ? `<p>${T((tx.nombres.paire || {}).meme || '')}</p>`
+        : `<p><strong>${T(d.nom_a)} :</strong> ${T((tx.nombres.paire || {}).vers_min || '')}</p>
+           <p><strong>${T(d.nom_b)} :</strong> ${T((tx.nombres.paire || {}).vers_max || '')}</p>`}
+      ${(tx.nombres.paire || {}).atouts ? `<p><strong>Ça porte :</strong> ${T(tx.nombres.paire.atouts)}</p>` : ''}
+      ${(tx.nombres.paire || {}).frictions ? `<p><strong>Ça bouscule :</strong> ${T(tx.nombres.paire.frictions)}</p>` : ''}
+      ${(tx.nombres.paire || {}).conditions ? `<p><strong>Pour que ça marche :</strong> ${T(tx.nombres.paire.conditions)}</p>` : ''}
+      ${(tx.nombres.harmonique || {}).note ? `<p class="quoi">${T(tx.nombres.harmonique.note)}</p>` : ''}`,
+  })}</div>`;
+
+  /* Votre nombre commun — le composé (Millman) : le « vous » vu par les
+     nombres, à côté du croisement. Somme des deux directions de fond, réduite. */
+  if (tx.nombres.composite) {
+    const cn = tx.nombres.composite;
+    html += `<div class="jour-groupe">${tiroir({
+      nom: 'Votre nombre commun', resume: cn.en_bref || '',
+      corps: `
+        <p class="quoi">Votre lien forme une troisième présence, avec son propre
+          chemin. Ce nombre naît de la somme de vos deux directions de fond.</p>
+        ${cn.le_but ? `<p><strong>Ce que ce lien porte :</strong> ${T(cn.le_but)}</p>` : ''}
+        ${cn.l_atout ? `<p><strong>Sa force :</strong> ${T(cn.l_atout)}</p>` : ''}
+        ${cn.le_piege ? `<p><strong>Son piège :</strong> ${T(cn.le_piege)}</p>` : ''}
+        ${cn.la_question ? `<p class="quoi">${T(cn.la_question)}</p>` : ''}`,
+    })}</div>`;
+  }
+
+  if (tx.elements && tx.elements.length) {
+    html += `<div class="jour-groupe">${tiroir({
+      nom: 'Vos éléments',
+      resume: `${tx.elements.filter(p => p.etat === 'resonance').length} appuis, ${tx.elements.filter(p => p.etat === 'tension').length} reliefs`,
+      corps: tx.elements.map(p => `<div class="ligne-rel">${badge(p.etat)} ${T(p.texte)}</div>`).join(''),
+    })}</div>`;
+  }
+
+  html += `<div class="jour-groupe">${tiroir({
+    nom: 'Côté chinois', resume: (tx.chinois.branche || {}).en_bref || '',
+    corps: `
+      <p>${badge(ax.chinois.etat)} ${T((tx.chinois.branche || {}).texte || '')}</p>
+      ${(tx.chinois.element || {}).texte ? `<p class="quoi">${T(tx.chinois.element.texte)}</p>` : ''}`,
+  })}</div>`;
+
+  if (tx.synastrie && tx.synastrie.length) {
+    const provenance = `<details class="aide" style="margin-top:12px"><summary>D'où vient ceci ?</summary>
+      <p>Chaque ligne compare un point du thème de ${T(d.nom_a)} à un point du thème de ${T(d.nom_b)}. Plus l'écart (l'orbe) est petit, plus le lien est net — on montre les plus serrés d'abord.</p>
+      <ul style="margin:6px 0 0;padding-left:18px">${tx.synastrie.map(a => `<li style="margin:3px 0">${T(a.detail)}</li>`).join('')}</ul></details>`;
+    html += `<div class="jour-groupe">${tiroir({
+      nom: 'Entre vos ciels',
+      resume: `${tx.synastrie.length} liens serrés entre vos deux thèmes`,
+      corps: (tx.synastrie_intro ? `<p class="quoi" style="margin:0 0 10px">${T(tx.synastrie_intro)}</p>` : '')
+        + tx.synastrie.map(a => `<div class="ligne-rel">${T(a.texte)}</div>`).join('') + provenance,
+    })}</div>`;
+  }
+
+  if (tx.composite) {
+    const co = tx.composite;
+    html += `<div class="jour-groupe">${tiroir({
+      nom: 'Le vous', resume: 'Le portrait de votre lien comme troisième présence',
+      corps: `
+        <p class="quoi">${T(co.cadrage)}</p>
+        ${co.luminaires.map(l => `<div class="ligne-rel"><strong>${T(l.amorce)} — ${T(l.signe)} :</strong> ${T((l.fond || {}).resume || '')}</div>`).join('')}
+        ${co.aspects.length ? `<p style="margin-top:14px"><strong>${T(co.amorce_aspect)} :</strong></p>
+          ${co.aspects.map(a => `<div class="ligne-rel">${T(a.texte)}</div>`).join('')}
+          <details class="aide" style="margin-top:8px"><summary>D'où vient ceci ?</summary>
+            <p>Le thème du « nous » est le milieu de vos deux thèmes. Ces liens sont ses aspects internes, les plus serrés d'abord.</p>
+            <ul style="margin:6px 0 0;padding-left:18px">${co.aspects.map(a => `<li style="margin:3px 0">${T(a.detail)}</li>`).join('')}</ul></details>` : ''}
+        ${co.diagnostic ? `<p style="margin-top:14px"><strong>${T(co.diagnostic.amorce)} :</strong> ${T(co.diagnostic.texte)}</p>
+          <p class="quoi">${T(co.diagnostic.pied)}</p>` : ''}
+        <p class="quoi" style="margin-top:14px">${T(co.pied)}</p>`,
+    })}</div>`;
+  }
+
+  html += `<div class="carte">
+    ${tx.type && tx.type.conseil ? `<p style="font-family:var(--serif);font-size:16px;margin-bottom:10px">${T(tx.type.conseil)}</p>` : ''}
+    <p class="quoi">${T((tx.synthese.pied || {}).non_verdict || '')}</p>
+  </div>`;
+  zone.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════════════════════ */
+$('#nav').onclick = e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#nav button').forEach(x => x.classList.toggle('actif', x === b));
+  montrer(b.dataset.vue);
+  if (b.dataset.vue === 'relations') vueRelations();
+};
+
+function montrer(vue) {
+  ['accueil','jour','apercu','portrait','ciel','relations','regles','profils','connexion'].forEach(v =>
+    $('#vue-' + v).classList.toggle('cacher', v !== vue));
+  window.scrollTo(0, 0);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONNEXION — un profil déjà créé, mais verrouillé sur cet appareil
+   (nouveau navigateur, cookies effacés…). Voir /api/connexion.
+   ═══════════════════════════════════════════════════════════ */
+function vueConnexion() {
+  const dernierNom = localStorage.getItem('align.nomAffiche') || '';
+  $('#vue-connexion').innerHTML = `<div class="carte">
+    <div class="chapo">Content de te revoir</div>
+    <p class="quoi" style="margin:-2px 0 12px">Ton profil existe déjà, mais cet
+      appareil ne le reconnaît plus (nouveau navigateur, ou données effacées).
+      Entre ton nom et ton mot de passe pour le retrouver.</p>
+    <label>Prénoms et nom</label>
+    <input id="cx-nom" placeholder="Marie Claire Tremblay" autocomplete="username" value="${T(dernierNom)}">
+    <label>Mot de passe</label>
+    <input id="cx-mdp" type="password" placeholder="Ton mot de passe" autocomplete="current-password">
+    <button class="bouton" id="cx-valider">Se connecter</button>
+    <button class="bouton discret" id="cx-creer">Créer un nouveau profil à la place</button>
+    <div id="cx-erreur" class="avis cacher" style="margin-top:14px"></div>
+  </div>`;
+  montrer('connexion');
+
+  const err = m => { $('#cx-erreur').innerHTML = m; $('#cx-erreur').classList.remove('cacher'); };
+  $('#cx-creer').onclick = () => { editionDe = null; ouvrirFormulaire(); };
+  const valider = async () => {
+    const nom = $('#cx-nom').value.trim();
+    const mdp = $('#cx-mdp').value;
+    if (!nom || !mdp) return err('Nom et mot de passe requis.');
+    const r = await (await fetch('/api/connexion', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({nom, mot_de_passe: mdp}),
+    })).json();
+    if (r.erreur) return err(T(r.erreur));
+    profilId = r.profil;
+    localStorage.setItem('align.profil', profilId);
+    localStorage.setItem('align.nomAffiche', nom);
+    await demarrer();
+  };
+  $('#cx-valider').onclick = valider;
+  $('#cx-mdp').addEventListener('keydown', e => { if (e.key === 'Enter') valider(); });
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PREMIER MOT DE PASSE — juste après la création d'un profil, invite à en
+   choisir un (flux bêta) + l'installation PWA (voir GUIDE_PRATIQUE_UX_UI /
+   plan de rétention iOS : sans écran d'accueil, Safari peut purger les
+   données après quelques jours d'inactivité).
+   ═══════════════════════════════════════════════════════════ */
+function vueChoisirMotDePasse() {
+  $('#vue-accueil').innerHTML = `<div class="carte">
+    <div class="chapo">Protège ton profil</div>
+    <p class="quoi" style="margin:-2px 0 12px">Choisis un mot de passe — libre,
+      celui que tu veux — pour retrouver ton profil sur cet appareil ou un autre.</p>
+    <label>Mot de passe</label>
+    <input id="mdp-nouveau" type="password" placeholder="Ton mot de passe" autocomplete="new-password">
+    <button class="bouton" id="mdp-valider">Continuer</button>
+    <div id="mdp-erreur" class="avis cacher" style="margin-top:14px"></div>
+  </div>`;
+  montrer('accueil');
+  const err = m => { $('#mdp-erreur').innerHTML = m; $('#mdp-erreur').classList.remove('cacher'); };
+  $('#mdp-valider').onclick = async () => {
+    const mdp = $('#mdp-nouveau').value;
+    if (!mdp) return err('Le mot de passe ne peut pas être vide.');
+    const r = await (await fetch(`/api/profil/${profilId}/mot-de-passe`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({mot_de_passe: mdp}),
+    })).json();
+    if (r.erreur) return err(T(r.erreur));
+    if ('storage' in navigator && navigator.storage.persist) navigator.storage.persist();
+    await suiteApresProfil();
+  };
+}
+
+/* Invite d'installation PWA : Safari iOS exige le geste manuel (partage →
+   Sur l'écran d'accueil, aucune API ne peut le déclencher) ; Chrome/Android
+   propose parfois `beforeinstallprompt`, capté ici pour un vrai bouton. */
+let evenementInstallPWA = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  evenementInstallPWA = e;
+});
+
+function inviterInstallationPWA() {
+  const dejaInstalle = window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+  if (dejaInstalle || localStorage.getItem('align.pwaVue')) return suiteApresProfilFin();
+  const estIOS = /iP(hone|ad|od)/.test(navigator.userAgent);
+  $('#vue-accueil').innerHTML = `<div class="carte">
+    <div class="chapo">Garde Ta Trame à portée</div>
+    <p class="quoi" style="margin:-2px 0 12px">${estIOS
+      ? "Appuie sur le bouton de partage " + '<span aria-hidden="true">⬆️</span>' + " de Safari, puis « Sur l'écran d'accueil ». Ta Trame s'ouvre alors comme une vraie app, plein écran."
+      : "Installe Ta Trame sur ton écran d'accueil pour l'ouvrir comme une vraie app."}</p>
+    ${estIOS ? '' : '<button class="bouton" id="pwa-installer">Installer</button>'}
+    <button class="bouton discret" id="pwa-plus-tard">Plus tard</button>
+  </div>`;
+  montrer('accueil');
+  const fin = () => { localStorage.setItem('align.pwaVue', '1'); suiteApresProfilFin(); };
+  $('#pwa-plus-tard').onclick = fin;
+  const bInstaller = $('#pwa-installer');
+  if (bInstaller) bInstaller.onclick = async () => {
+    if (evenementInstallPWA) { evenementInstallPWA.prompt(); await evenementInstallPWA.userChoice; }
+    fin();
+  };
+}
+
+async function suiteApresProfil() { inviterInstallationPWA(); }
+async function suiteApresProfilFin() { await demarrer(); }
+
+/* Naviguer ET mettre l'onglet à jour — sinon un saut depuis l'aperçu laisse
+   la barre du haut sur l'ancien onglet, et on ne sait plus où on est. */
+function montrerVue(vue) {
+  montrer(vue);
+  document.querySelectorAll('#nav button').forEach(b =>
+    b.classList.toggle('actif', b.dataset.vue === vue));
+}
+
+async function demarrer() {
+  await chargerProfils();
+  if (!profils.find(p => p.id === profilId)) {
+    // Un id local qui ne figure plus dans les profils déverrouillés de CETTE
+    // session : soit un vrai premier visiteur (localStorage vide → formulaire
+    // de création), soit quelqu'un qui avait déjà un compte mais dont la
+    // session a expiré/été effacée (cookies, nouvel appareil…) → connexion,
+    // jamais un nouveau profil silencieux qui doublonnerait le sien.
+    const connuAvant = profilId || localStorage.getItem('align.nomAffiche');
+    localStorage.removeItem('align.profil');
+    profilId = profils.length ? profils[0].id : null;
+    if (profilId) { localStorage.setItem('align.profil', profilId); }
+    else if (connuAvant) { vueConnexion(); return; }
+  }
+  if (!profilId) { ouvrirFormulaire(); return; }
+  $('#nav').classList.remove('cacher');
+  $('#bouton-regles').classList.remove('cacher');
+  $('#bouton-feedback').classList.remove('cacher');
+  dessinerPuce();
+  vueProfils();
+  montrer('jour');
+  document.querySelectorAll('#nav button').forEach(x =>
+    x.classList.toggle('actif', x.dataset.vue === 'jour'));
+  await Promise.all([chargerJour(), chargerApercu(), chargerPortrait(),
+                     chargerCiel(), chargerRegles()]);
+  // Une fois la vue Jour prête dessous, l'écran d'accueil du jour par-dessus
+  // (une seule fois par jour — voir montrerAccueilJour).
+  montrerAccueilJour();
+}
+
+document.querySelectorAll('#nav button[data-vue], #bouton-regles[data-vue]').forEach(b => {
+  const ic = ICONES_NAV[b.dataset.vue];
+  if (ic) b.insertAdjacentHTML('afterbegin', icono(ic, 19));
+});
+/* Sorti de #nav (icône seule, en haut à droite) : pas capté par la
+   délégation de clic du menu, il rejoue donc le même changement de vue. */
+$('#bouton-regles').onclick = () => montrerVue('regles');
+$('#bouton-feedback').insertAdjacentHTML('afterbegin', icono(ICONES_NAV.feedback, 18));
+$('#bouton-feedback').onclick = ouvrirFeedback;
+
+/* ═══════════════════════════════════════════════════════════
+   COMMENTAIRE POUR MARTIN — discret, réutilise le panneau générique
+   (#voile/#panneau, déjà utilisé pour les détails). Lisible seulement par
+   lui (voir /admin/commentaires, gardé par mot de passe admin).
+   ═══════════════════════════════════════════════════════════ */
+function ouvrirFeedback() {
+  const p = profils.find(x => x.id === profilId);
+  $('#panneau').innerHTML = `<button class="bouton discret" id="fb-fermer" style="float:right">✕ Fermer</button>
+    <div class="chapo">Un commentaire pour Martin</div>
+    <p class="quoi" style="margin:-2px 0 12px">Un bug, une idée, une phrase qui sonne faux —
+      tout est bienvenu. Seul Martin peut lire ce que tu écris ici.</p>
+    <textarea id="fb-texte" placeholder="Écris ici…" autofocus></textarea>
+    <button class="bouton" id="fb-envoyer" style="margin-top:12px">Envoyer</button>
+    <div id="fb-etat" style="margin-top:10px;font-size:13px;color:var(--encre3)"></div>`;
+  $('#voile').classList.remove('cacher');
+  $('#voile').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  $('#fb-fermer').onclick = fermerFeedback;
+  $('#fb-envoyer').onclick = async () => {
+    const texte = $('#fb-texte').value.trim();
+    const etat = $('#fb-etat');
+    if (!texte) { etat.textContent = 'Écris quelque chose avant d\'envoyer.'; return; }
+    $('#fb-envoyer').disabled = true;
+    etat.textContent = 'Envoi…';
+    try {
+      const r = await (await fetch('/api/commentaire', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({texte, profil: profilId, nom_affiche: p?.nom_affiche || '', vue: document.querySelector('#nav button.actif')?.dataset.vue || ''}),
+      })).json();
+      if (r.erreur) { etat.textContent = T(r.erreur); $('#fb-envoyer').disabled = false; return; }
+      etat.textContent = 'Merci — c\'est envoyé.';
+      $('#fb-texte').value = '';
+      setTimeout(fermerFeedback, 900);
+    } catch (e) {
+      etat.textContent = 'La connexion a échoué — réessaie.';
+      $('#fb-envoyer').disabled = false;
+    }
+  };
+}
+function fermerFeedback() {
+  $('#voile').classList.add('cacher');
+  document.body.style.overflow = '';
+}
+
+(async () => {
+  LEX = await (await fetch('/api/lexique')).json();
+  await demarrer();
+})();
+</script>
+
+<!-- Visionneuse de carte : un clic sur une carte la montre en grand. -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lightbox-fermer" onclick="fermerLightbox()" aria-label="Fermer la visionneuse">×</button>
+  <img id="lightbox-img" src="" alt="">
+  <div id="lightbox-leg" class="lightbox-leg"></div>
+</div>
+
+<!-- Écran d'accueil du jour : la carte « Aujourd'hui » seule, une fois par
+     jour, à la première ouverture. Touche n'importe où pour continuer vers
+     la vue Jour normale (déjà chargée dessous). Rempli par chargerJour(),
+     montré par montrerAccueilJour(). -->
+<div id="accueil-jour" class="accueil-jour" aria-hidden="true" role="dialog" aria-label="Ton message du jour">
+  <div class="accueil-carte"></div>
+  <div class="accueil-indice">touche pour continuer</div>
+</div>
+<div id="carte-plein" class="accueil-jour" aria-hidden="true" role="dialog" aria-label="La carte en grand">
+  <div class="accueil-carte"><div class="carte carte-plein-corps">
+    <img id="carte-plein-img" src="" alt="">
+    <div class="carte-plein-nom" id="carte-plein-nom"></div>
+    <div class="carte-plein-invitation" id="carte-plein-invitation"></div>
+  </div></div>
+</div>
+<!-- Vue plein écran d'un angle du jour (contenu texte, pas une carte tarot) :
+     même mode que carte-plein (classe .accueil-jour partagée) mais avec un
+     bouton Fermer explicite — son contenu (aide/tout-lire) est interactif,
+     « clique n'importe où pour fermer » n'est donc actif QUE sur le fond,
+     jamais sur le panneau opaque (voir fermerAnglePlein / le délégué de clic). -->
+<div id="angle-plein" class="accueil-jour" aria-hidden="true" role="dialog" aria-label="Le détail de cet angle">
+  <button class="angle-plein-fermer" id="angle-plein-fermer" aria-label="Fermer">✕</button>
+  <div class="accueil-carte"><div class="carte angle-plein-corps">
+    <div class="chapo" id="angle-plein-titre"></div>
+    <div id="angle-plein-corps"></div>
+  </div></div>
+</div>
+</body>
+</html>

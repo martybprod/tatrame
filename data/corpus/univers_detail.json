@@ -1,0 +1,82 @@
+{
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "L'année du monde (climat collectif) et le décalage constant de chacun. Textes ORIGINAUX.",
+
+  "univers": {
+    "1": {
+      "en_un_mot": "un monde qui repart",
+      "climat": "Le monde entier rouvre un cycle en même temps. L'air du temps pousse aux commencements, à l'échelle des pays, des marchés, des idées. On voit surgir des projets neufs un peu partout, des mots nouveaux, des envies de table rase. C'est une époque qui préfère lancer plutôt que finir. Rien n'est encore installé, tout se tente. Les débuts se ressemblent d'un continent à l'autre, sans que personne se soit concerté. On sent une impatience générale, un besoin de repartir de zéro. Et comme tous les vrais débuts, celui-ci se passe avant les preuves. Le monde parie, il ne sait pas encore sur quoi."
+    },
+    "2": {
+      "en_un_mot": "le temps de mûrir",
+      "climat": "L'époque ralentit après l'élan de l'année d'avant. Ce qui a démarré partout dans le monde travaille maintenant hors de vue, sans rien montrer encore. C'est un temps de négociations, d'accords cherchés, de patiences imposées. On attend des réponses qui tardent, des dossiers qui reviennent lentement, des alliances qui se nouent à bas bruit. Le monde apprend à composer, à deux, à plusieurs, plutôt qu'à foncer seul. Rien de spectaculaire ne sort, et beaucoup le prennent pour un essoufflement. C'est plutôt de la maturation collective. L'air du temps ne récompense pas ceux qui poussent. Il tient avec ceux qui savent laisser du temps au temps."
+    },
+    "3": {
+      "en_un_mot": "l'air qui circule",
+      "climat": "Le monde a envie de se montrer et de parler. L'air du temps circule, les idées se diffusent vite, tout ce qui avait mûri en silence remonte à la surface. C'est une époque bavarde, créative, un peu dispersée. On voit fleurir les prises de parole, les images, les modes qui s'attrapent d'un pays à l'autre en quelques jours. Le collectif préfère briller plutôt qu'approfondir. Beaucoup de choses commencent et peu se terminent, parce que la prochaine est déjà plus séduisante. On se laisse porter par l'enthousiasme ambiant. Et comme toujours quand tout le monde se montre en même temps, le bruit finit par couvrir une partie du fond."
+    },
+    "4": {
+      "en_un_mot": "la mise en chantier",
+      "climat": "Après l'effervescence, l'époque se met à l'ouvrage. L'air du temps pousse à construire, à consolider, à réparer ce qui tient mal. On parle d'infrastructures, de règles, de méthode, de choses solides et un peu ennuyeuses. Le monde paie en heures ce qu'il a promis les années d'avant. Ça avance lentement, chaque étape coûte, et rien de tout ça ne fait un beau récit. Les fragilités sautent aux yeux, les organisations bancales craquent, ce qui reposait sur l'enthousiasme montre qu'il n'avait pas de charpente. C'est une époque sans éclat qui décide pourtant de la solidité de la suite. On ne saute pas ce genre d'année sans en payer les conséquences plus tard."
+    },
+    "5": {
+      "en_un_mot": "l'époque bouge",
+      "climat": "L'époque a la bougeotte. L'air du temps pousse au mouvement, au changement, au déplacement, et tout ce qui était stable se met à sembler trop étroit. On voit des choses se défaire vite, des cartes rebattues, des imprévus qui réorganisent tout un trimestre à l'échelle du monde. Le collectif a besoin d'air et le prend parfois en cassant plus qu'il ne faudrait. Les envies de rupture se répandent, très argumentées, très convaincantes. C'est une époque de terrain, de contacts, de sensations, où l'on apprend en bougeant plutôt qu'en planifiant. Rien n'indique vers quoi tout ça se dirige. Le monde bouge d'abord, il comprendra après."
+    },
+    "6": {
+      "en_un_mot": "le monde se serre",
+      "climat": "L'époque se resserre autour de ce qui relie. L'air du temps ramène les questions de communauté, de familles, d'appartenance, de responsabilité envers les autres. On se demande de qui l'on est responsable, ce qu'on doit à son groupe, où passent les loyautés. Le monde répare des liens, en tranche d'autres, formalise ce qui flottait depuis longtemps. C'est une époque plus chaude et plus lourde à la fois, parce que prendre soin nourrit et pèse en même temps. Les questions d'habitat, de territoire, de foyer commun reviennent au premier plan. On se rassemble, on se compte, on se demande à qui l'on tient vraiment. Personne n'a lancé de mot d'ordre. C'est simplement l'ambiance du moment."
+    },
+    "7": {
+      "en_un_mot": "la pause du monde",
+      "climat": "Le régime de l'époque baisse. L'air du temps pousse au retrait, à la réflexion, à la remise en question, et les mêmes efforts qu'avant produisent soudain moins. On sent une lassitude collective, une envie de comprendre plutôt que de produire. Les grands projets traînent, les réponses tardent, forcer ne marche plus très bien. Le monde se pose des questions qu'il croyait réglées, sur le sens de ce qu'il poursuit, sur ce qui vaut la peine. Beaucoup y voient une panne ou une crise. C'est plutôt un temps de recul, le moment prévu pour regarder ce qu'on fabrique avant de récolter. L'époque n'a pas ralenti par faiblesse. Elle a changé de tâche."
+    },
+    "8": {
+      "en_un_mot": "l'heure des comptes",
+      "climat": "L'époque passe à la caisse. L'air du temps ramène l'argent, le pouvoir, les positions, tout ce qui pèse et se compte. Ce qui a été bâti les années d'avant rend ce qu'il peut rendre, et ce qui n'a pas été bâti se voit aussi, par son absence. C'est une année de vérification plus que de récompense. On règle des rapports de force, on négocie, on tranche des échelles. Le monde découvre en même temps le prix payé pour en arriver là. Les approximations se rattrapent, les factures anciennes se présentent. C'est une époque dure avec le flou et exacte avec les chiffres. Elle additionne ce qui existe, sans donner d'avis."
+    },
+    "9": {
+      "en_un_mot": "une époque finit",
+      "climat": "Un tour du monde s'achève, et ça se sent partout. L'air du temps pousse à finir, à ranger, à laisser partir ce qui a fait son temps. Des choses se défont sans drame, des pages se tournent, des cycles entiers se referment doucement. C'est une époque nostalgique, un peu fatiguée, occupée à faire l'inventaire de neuf années. Beaucoup se précipitent pour lancer du neuf, alors que la place n'est pas encore libre. Le monde trie plus qu'il ne crée. On voit ressurgir de vieux dossiers, d'anciens conflits qui demandent enfin à être soldés. Ce qui recommencera ensuite aura exactement la place que cette époque aura su libérer."
+    }
+  },
+
+  "decalage": {
+    "1": {
+      "titre": "Un cran devant l'époque",
+      "texte": "Tu as toujours un léger temps d'avance sur ton époque. Quand le monde ouvre à peine un cycle, toi tu es déjà à l'étape suivante, en train de faire mûrir ce que les autres commencent tout juste. Ça ne se voit pas beaucoup, un cran. Ça se sent surtout dans un décalage discret, cette impression d'avoir compris un peu plus tôt, de t'ennuyer d'une nouveauté que tout le monde découvre. Tu n'es ni en avance sur tout ni un visionnaire. Tu es juste un pas plus loin sur le même chemin. Et cet écart ne bouge jamais. Année après année, tu gardes exactement ce cran d'avance, sans pouvoir le rattraper ni le perdre."
+    },
+    "2": {
+      "titre": "Deux pas devant le monde",
+      "texte": "Tu as deux pas d'avance sur ton époque, en permanence. Là où le monde en est à peine à ouvrir, toi tu es déjà à ce qui se montre, à ce qui s'exprime. Deux crans, c'est assez pour que le décalage se remarque. Tu t'intéresses à des choses avant qu'elles deviennent le sujet de tout le monde, et tu passes à autre chose quand elles arrivent enfin. Parfois on te trouve un peu à côté, un peu trop tôt. Rien d'une originalité voulue. C'est juste ta position dans le temps. Elle ne dépend que du jour où tu es né. Elle reste la même toute ta vie, chaque année reconduite à l'identique."
+    },
+    "3": {
+      "titre": "Un tiers de tour d'avance",
+      "texte": "Tu vis avec un tiers de tour d'avance sur ton époque. Quand le monde démarre, toi tu en es déjà à construire, à mettre les mains dans le travail que les autres n'imaginent même pas encore. Trois crans, c'est un vrai écart. Assez pour que tu te sentes souvent en décalage avec l'air du temps, occupé à des choses que le collectif abordera dans deux ou trois ans. Tu peux avoir l'impression d'être incompris, ou simplement ailleurs. Cette avance ne te rend supérieur à personne. Elle t'isole juste un peu. Et elle est constante. Tu portes le même décalage d'un bout à l'autre de ta vie, sans que rien ne le comble."
+    },
+    "4": {
+      "titre": "Quatre crans devant le monde",
+      "texte": "Tu portes presque une demi-longueur d'avance sur ton époque. Quand le monde ouvre son cycle, toi tu en es déjà loin, dans une phase que le collectif mettra des années à rejoindre. Quatre crans, c'est beaucoup. Tu peux traverser des périodes où tout le monde semble parler d'autre chose que toi, où tes préoccupations n'ont aucun écho autour. Ça donne parfois un sentiment de solitude bizarre, celui d'être né un peu trop tôt pour ton propre temps. Rien d'anormal là-dedans. C'est mécanique, lié à ta seule date de naissance. Et ça ne change pas. Ce grand écart au monde t'accompagne chaque année, identique, comme une manière à toi d'habiter le temps."
+    },
+    "5": {
+      "titre": "À l'autre bout du cycle",
+      "texte": "Tu te tiens presque à l'opposé de ton époque dans le cycle. On peut le dire de deux façons, cinq crans devant ou quatre crans derrière, et les deux sont vrais en même temps. C'est la position la plus étrange. Selon les années, tu te sens très en avance ou carrément à la traîne, sans que ta place ait bougé d'un pouce. Le monde et toi regardez rarement dans la même direction. Quand l'époque s'excite, tu es ailleurs, et l'inverse arrive tout autant. Ce grand décalage n'est ni bon ni mauvais. Il fait de toi quelqu'un qui marche à contretemps du collectif, toujours du même pas, année après année."
+    },
+    "6": {
+      "titre": "Le monde ouvre, toi tu ralentis",
+      "texte": "Ton rythme prend le monde à rebours d'une drôle de manière. Au moment où l'époque repart, pleine d'élan, toi tu es plutôt en train de ralentir, de te retirer, de regarder ce que tu fabriques. Et quand le collectif s'essouffle, toi tu es déjà passé à autre chose. Six crans d'avance, ou trois de retard, comme tu préfères le voir. Concrètement, tu es souvent en recul quand tout le monde s'agite, et en mouvement quand tout le monde souffle. Ça peut donner l'impression de ne jamais tomber juste. C'est pourtant une régularité parfaite. Ton horloge intérieure et celle de l'époque gardent toujours le même écart, celui inscrit dans ta date de naissance."
+    },
+    "7": {
+      "titre": "Tu récoltes quand le monde ouvre",
+      "texte": "Tu es en avance d'un temps qui te met souvent à contre-emploi. Quand le monde ouvre tout juste un cycle, toi tu en es déjà aux résultats, à la récolte, à l'heure des comptes. Tu ramasses pendant que les autres sèment. Sept crans d'avance, ou deux petits crans avant que l'époque te rattrape, selon l'angle. Ça se traduit par une impression fréquente d'être en bout de course quand tout le monde repart plein d'enthousiasme. Tu clôtures des chapitres au moment où le collectif s'excite d'en ouvrir. Rien à voir avec un problème de valeur. C'est un décalage de calendrier, fixé par ta naissance, que tu gardes intact toute ta vie."
+    },
+    "8": {
+      "titre": "Tu fermes ce que le monde ouvre",
+      "texte": "Tu vis à contre-courant complet de ton époque, ou presque. Au moment exact où le monde ouvre un cycle neuf, plein d'envies de commencer, toi tu es en train de finir, de ranger, de laisser partir. Tu clôtures ce que les autres démarrent. Huit crans d'avance, ou un cran de retard, les deux disent la même position. Ça peut être inconfortable. Quand l'air du temps déborde d'élans neufs, toi tu fais tes deuils, et personne autour ne comprend bien pourquoi. Puis vient le tour suivant, et l'écart reste identique. Cette avance d'un tour presque entier ne te lâche jamais. Elle fait de toi celui qui boucle pendant que le monde inaugure."
+    },
+    "9": {
+      "titre": "Toujours en phase avec le monde",
+      "texte": "Ton rythme et celui de ton époque coïncident, chaque année, sans exception. Quand le monde ouvre un cycle, toi aussi. Quand il ralentit, tu ralentis. Quand il récolte, tu récoltes. Tu es la seule position qui marche exactement au pas du collectif, portée par le même courant que tout le monde. Ça a du bon. Tu te sens rarement décalé, l'air du temps te parle directement, tes envies épousent celles de l'époque. Ça a un revers aussi. Il est plus dur de prendre du recul sur un climat quand tu le vis en plein, sans distance. Ni mieux ni moins bien que les autres écarts. Juste une manière d'être toujours de plain-pied avec ton temps."
+    }
+  }
+}

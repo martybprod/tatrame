@@ -1,0 +1,15 @@
+# Développement UNIQUEMENT — jamais expédié, jamais importé par moteur/.
+#
+# pyswisseph sert d'ORACLE INDÉPENDANT pour le filet golden : deux moteurs
+# sans code commun (DE440 numérique vs Moshier analytique) qui s'accordent,
+# c'est une vraie preuve. Il reste dev-only parce qu'il est AGPL-3.0 PURE,
+# sans option commerciale — payer les 700 CHF à Astrodienst débloquerait la
+# bibliothèque C, pas ce wrapper Python.
+#
+# Épinglé à 2.10.3.2 : dernière version publiée (2023-06-04), projet dormant.
+# Wheel macOS arm64 disponible pour cp311 seulement — d'où Python 3.11.
+
+-r requirements.txt
+
+pyswisseph==2.10.3.2
+pytest==9.1.1

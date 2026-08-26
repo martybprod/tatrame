@@ -1,0 +1,76 @@
+{
+  "_note": "Fragment domaine traversee (maison VIII — intimité, crise, transformation, deuil, honte). Sources : cartes_de_concepts.md §9 When Things Fall Apart (Chödrön), §12 Daring Greatly §honte (Brown), §5 Man's Search for Meaning §souffrance (Frankl), §10 Accords toltèques §émotions/ego (Ras). Concepts repris, jamais la prose des livres. À fusionner dans data/corpus/fil.json. Volume : 12 clés (générique + fluide/tension + 3 planètes pertinentes pluton/saturne/lune × 3 classes) — plus bas que la cible 25-30, assumé honnêtement : Pluton (transformation/deuil), Saturne (perte/réalité/limite) et Lune (émotion) sont les seules nuances qui recolorent vraiment une crise sans devenir arbitraires (règle d'or de volume, §3 de la spéc) ; Vénus, Mars, Mercure, Soleil, Jupiter n'apportent pas ici un conseil réellement différent du socle fluide/tension. Aucune clé de phase (interdit pour ce domaine, §2 de la spéc).",
+
+  "traversee": {
+    "source_livre": "d'après les concepts de Chödrön et Frankl, sur l'incertitude et le sens dans l'épreuve",
+    "themes": ["crise", "incertitude", "sens"],
+    "miroir": "Quelque chose s'est décroché aujourd'hui, une certitude, un lien, une version de toi que tu croyais stable. Tu cherches un sol ferme sous les pieds, et il n'y en a pas encore. C'est l'endroit inconfortable, pas un échec.",
+    "geste": "Note en une phrase ce qui a changé, sans chercher à le réparer tout de suite. Nommer suffit pour aujourd'hui."
+  },
+  "traversee_fluide": {
+    "source_livre": "d'après les concepts de Chödrön, sur le chaos comme énergie utilisable",
+    "themes": ["transformation", "ouverture"],
+    "miroir": "Ce qui te bouscule aujourd'hui laisse aussi passer un peu de lumière, comme une fissure qui s'ouvre plutôt qu'un mur qui tombe. Le sol reste mouvant, mais il te porte mieux que d'habitude.",
+    "geste": "Profite de cette ouverture pour regarder en face une chose que tu évitais, sans obligation d'agir tout de suite."
+  },
+  "traversee_tension": {
+    "source_livre": "d'après les concepts de Brown, sur la honte et les armures",
+    "themes": ["honte", "protection"],
+    "miroir": "Une vieille voix te dit aujourd'hui que tu n'es pas assez, ou qu'il vaudrait mieux te cacher. C'est un réflexe appris pour se protéger, pas la vérité sur qui tu es.",
+    "geste": "Dis à voix haute, même seul, ce que cette voix raconte. Nommer une honte suffit déjà à la faire rétrécir un peu."
+  },
+  "traversee_transit_pluton_conjonction": {
+    "source_livre": "d'après les concepts de Chödrön, sur l'impermanence et les petites morts",
+    "themes": ["transformation", "fin"],
+    "miroir": "Quelque chose arrive aujourd'hui à un point de non-retour, une page se tourne pour de vrai. Ça ressemble à une perte, et c'est aussi le passage obligé avant qu'autre chose puisse commencer.",
+    "geste": "Laisse cette fin se faire sans la retenir ni la brusquer. Un petit rituel, même minuscule, aide à marquer le moment."
+  },
+  "traversee_transit_pluton_sextile-trigone": {
+    "source_livre": "d'après les concepts de Chödrön, sur le chemin qui se crée moment par moment",
+    "themes": ["transformation", "liberation"],
+    "miroir": "Quelque chose que tu portais depuis longtemps se détache plus facilement aujourd'hui. Tu n'as pas besoin de forcer le lâcher-prise, il vient presque de lui-même.",
+    "geste": "Laisse partir une chose devenue trop lourde à porter, une habitude, un rôle, une attente. Elle a fini son travail."
+  },
+  "traversee_transit_pluton_carre-opposition": {
+    "source_livre": "d'après les concepts de Ras, sur l'ego qui veut tout contrôler",
+    "themes": ["controle", "peur"],
+    "miroir": "Tu serres les dents aujourd'hui pour garder la main sur une situation qui a déjà commencé à changer. Plus tu retiens, plus ça résiste, et ça ne dit rien d'un manque de volonté chez toi.",
+    "geste": "Choisis une seule chose que tu peux lâcher aujourd'hui, même petite, pour desserrer la prise."
+  },
+  "traversee_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Frankl, sur la vie qui pose une question concrète",
+    "themes": ["responsabilite", "realite"],
+    "miroir": "La réalité te demande quelque chose de précis aujourd'hui, une décision à prendre, un fait à regarder en face. Ça pèse, et c'est justement le signe que ça compte vraiment pour toi.",
+    "geste": "Fais une seule chose concrète que la situation attend de toi, sans viser plus loin qu'aujourd'hui."
+  },
+  "traversee_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de Chödrön, sur la méditation comme entraînement à revenir",
+    "themes": ["discipline", "stabilite"],
+    "miroir": "Un petit geste répété redonne de la stabilité aujourd'hui, même au milieu de ce qui reste incertain. Tu n'as pas besoin de tout tenir, seulement de revenir, encore une fois.",
+    "geste": "Reprends une pratique simple que tu avais laissée tomber, même cinq minutes. La régularité compte plus que la durée."
+  },
+  "traversee_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Frankl, sur la charge qui écrase sans faire de fautif",
+    "themes": ["poids", "deculpabilisation"],
+    "miroir": "Le poids de ce que tu portes se fait sentir plus fort aujourd'hui, et rester debout demande déjà beaucoup. Plier sous une charge lourde n'est pas une faute, c'est ce que fait une charge lourde.",
+    "geste": "Allège une seule obligation aujourd'hui, même en la reportant d'un jour. Tu n'as pas à tout tenir en même temps."
+  },
+  "traversee_transit_lune_conjonction": {
+    "source_livre": "d'après les concepts de Ras, sur l'émotion qui monte vite et redescend lentement",
+    "themes": ["emotion", "deuil"],
+    "miroir": "Une émotion monte fort aujourd'hui, du chagrin, de la peur ou une vieille peine qui refait surface. Elle va redescendre, même si pour l'instant elle prend toute la place.",
+    "geste": "Laisse-la passer sans agir sous son coup. Pleurer, marcher ou simplement t'asseoir avec elle suffit pour aujourd'hui."
+  },
+  "traversee_transit_lune_sextile-trigone": {
+    "source_livre": "d'après les concepts de Chödrön, sur la bienveillance envers soi",
+    "themes": ["douceur", "emotion"],
+    "miroir": "Tu te regardes avec un peu plus de douceur aujourd'hui, sans chercher à te corriger ni à te rassurer à tout prix. C'est déjà beaucoup, et ça se cultive comme le reste.",
+    "geste": "Parle-toi aujourd'hui comme tu parlerais à quelqu'un que tu aimes et qui traverse la même chose."
+  },
+  "traversee_transit_lune_carre-opposition": {
+    "source_livre": "d'après les concepts de Brown, sur la honte et l'auto-compassion",
+    "themes": ["honte", "fragilite"],
+    "miroir": "Tu te sens à vif aujourd'hui, prêt à te juger plus durement que d'habitude pour un rien. C'est le moment où la honte parle le plus fort, pas celui où elle dit vrai.",
+    "geste": "Avant de te critiquer, demande-toi ce que tu dirais à un ami dans la même situation. Puis dis-toi la même chose."
+  }
+}

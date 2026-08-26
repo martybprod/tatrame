@@ -1,0 +1,248 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Noms traditionnels français (domaine public). Textes ORIGINAUX. AUCUN lien avec le Tarot Zen d'Osho — voir CHARTE.md § Interdits.",
+ "arcanes": {
+  "0": {
+   "nom": "Le Mat",
+   "correspondance": "Air",
+   "conditionnement": "Tu es en train de recommencer quelque chose, encore, et une voix intérieure te souffle que c'est de l'instabilité. Cette voix n'est pas la tienne, on te l'a prêtée. Le Mat parle de quelqu'un à qui on a appris à s'excuser de bouger. Tu as reçu un rapport léger aux choses, et un entourage qui l'a lu comme un défaut de sérieux. Ce que tu vois là, c'est le schéma, pas ta faute.",
+   "alimenter": "L'Air demande de la circulation. Ce qui te va, c'est le commencement assumé. Un projet neuf, une route pas balisée, une conversation qu'on n'a pas préparée. Donne à ta légèreté un terrain officiel plutôt qu'une sortie de secours, et elle cesse d'être une fuite.",
+   "contrarie": "Sans terrain, la mobilité tourne à vide. Tu es en train de changer de chose pour ne pas avoir à changer de fond. Les débuts s'empilent, aucun ne s'installe, et la légèreté qu'on t'a reprochée finit par te donner raison contre toi-même.",
+   "en_resonance": "L'Air est bien servi dans ton ciel. Le mouvement ne te coûte rien, il te vient. L'avantage a son revers. Tu es en train de confondre la vitesse et la direction. Le Mat marche, mais il regarde où.",
+   "en_tension": "L'Air est peu représenté dans ton ciel, et c'est précisément l'endroit intéressant. Partir léger te demande un effort dont d'autres se dispensent. Ce que tu construis là, tu ne l'as pas reçu. Tu le fabriques.",
+   "invitation": "Des débuts se multiplient un peu partout aujourd'hui, des gens qui partent, changent, recommencent quelque chose. Une énergie de départ flotte dans l'air, avant même que grand-chose ne soit stabilisé.",
+   "pour_l_annee": "Un vrai début s'ouvre cette année, pas un raccommodage du précédent. Le mouvement a longtemps semblé suspect, comme si bouger annonçait un manque de sérieux. Cette fois, donne à ton élan une direction officielle plutôt qu'une sortie de secours. Une année pour commencer sans avoir à s'excuser de le faire."
+  },
+  "1": {
+   "nom": "Le Bateleur",
+   "correspondance": "Mercure",
+   "conditionnement": "Tu es en train de refaire la démonstration. Le Bateleur a tout étalé sur sa table, les outils, l'adresse, l'aisance, et il attend qu'on regarde. Ce schéma-là ne parle pas de talent. Il parle d'une habitude prise tôt, celle de prouver qu'on sait faire pour avoir le droit d'être là. On t'a évalué avant de t'accueillir. Tu as appris le geste, et le geste marche. C'est bien ça, le piège.",
+   "alimenter": "Mercure aime l'ouvrage plus que le public. Ce qui te va, c'est faire une chose pour la chose. Apprendre une technique sans la montrer, bricoler sans annoncer. Ta dextérité est réelle. Elle respire mieux quand personne ne compte les points.",
+   "contrarie": "Sans usage désintéressé, l'adresse tourne au numéro. Tu es en train de multiplier les preuves, et plus tu en donnes, moins elles apaisent, parce que ce n'est pas la compétence qui était en question. La table se remplit d'outils que tu n'utilises pas.",
+   "en_resonance": "Mercure est bien placé dans ton ciel. Les mots et les mains suivent sans effort. À surveiller quand même. Tu es en train de te tirer d'affaire par l'agilité là où il faudrait rester dans l'inconfort un moment de plus.",
+   "en_tension": "Mercure est contrarié dans ton ciel. Le mot juste se fait attendre, la main hésite. C'est l'endroit du travail, donc l'endroit vivant. Ce que tu diras finira par valoir plus cher que ce qui se dit vite.",
+   "invitation": "Beaucoup de gens montrent ce qu'ils savent faire aujourd'hui, dans un climat qui valorise la démonstration presque autant que le résultat. L'habileté s'affiche largement, parfois avant même d'avoir servi à quelque chose de concret.",
+   "pour_l_annee": "Le fil de cette année, c'est l'envie de prouver que tu sais faire. Cette envie remonte de loin, elle vient d'un temps où on évaluait ta place avant de te l'accorder. Une occasion se présente pour exercer une compétence sans la montrer à personne, juste pour le geste. L'adresse respire mieux loin du public."
+  },
+  "2": {
+   "nom": "La Papesse",
+   "correspondance": "Lune",
+   "conditionnement": "Tu es en train de savoir quelque chose que tu ne dis pas. La Papesse tient un livre à moitié ouvert. Elle a lu, elle se tait. Ce schéma décrit un apprentissage précis. On t'a appris que ce que tu percevais n'était pas à dire, ou pas encore, ou pas par toi. Alors tu as rangé. Ton intuition n'a jamais manqué de justesse. Elle a manqué de permission.",
+   "alimenter": "La Lune demande un dedans. Ce qui te va, c'est un lieu où le savoir tacite a droit de cité. Un carnet, un silence choisi, une personne à qui tu dis les choses avant qu'elles soient présentables. Garder n'est pas taire, à condition de savoir pourquoi tu gardes.",
+   "contrarie": "Sans exutoire, le silence se solidifie. Tu es en train de laisser passer des choses que tu avais vues venir, puis d'en vouloir aux autres de ne pas les avoir vues. Le livre reste fermé, et il commence à peser.",
+   "en_resonance": "La Lune est forte dans ton ciel. Tu captes avant de comprendre, et tu as raison plus souvent que tu ne l'admets. Le risque n'est pas de te tromper. C'est de te fier au ressenti sans jamais le vérifier.",
+   "en_tension": "La Lune est contrariée dans ton ciel. L'intérieur est moins bavard, l'intuition ne se présente pas d'elle-même. Tu es en train d'apprendre par la porte du raisonnement ce que d'autres reçoivent tout cuit. Ça tient mieux.",
+   "invitation": "Un savoir circule à mi-voix aujourd'hui, des choses que beaucoup pressentent sans les dire tout haut. Ce silence collectif en dit parfois plus long que les discours qui l'entourent.",
+   "pour_l_annee": "Une année plus silencieuse s'installe, et ce silence n'est pas un manque à combler. Un savoir intérieur mûrit sans se presser de sortir au grand jour. On t'a appris tôt que certaines choses ne sont pas à dire, ou pas encore. Cette année, garde-les un peu, mais sache pourquoi tu les gardes."
+  },
+  "3": {
+   "nom": "L'Impératrice",
+   "correspondance": "Vénus",
+   "conditionnement": "Tu es en train de nourrir quelqu'un. L'Impératrice fait pousser, et le schéma qu'elle décrit ne parle pas de générosité. Il parle de ce qu'on en a fait autour de toi. Tu as reçu une place, celle par qui les choses adviennent, par qui l'ambiance tient, par qui l'autre va mieux. On ne t'a pas demandé si tu la voulais. Elle t'allait bien, alors elle t'est restée.",
+   "alimenter": "Vénus veut de la création, pas seulement du soin. Ce qui te va, c'est faire pousser quelque chose qui ne te réclame rien en retour. Un jardin, une matière, une œuvre. Ta fécondité est réelle, elle n'a pas besoin d'un destinataire reconnaissant.",
+   "contrarie": "Sans terrain à soi, la générosité se facture toute seule. Tu es en train de donner, puis de compter en silence, puis d'en vouloir. Personne n'a signé le contrat que tu appliques. C'est bien pour ça qu'il est intenable.",
+   "en_resonance": "Vénus est bien servie dans ton ciel. Le goût, le lien, le plaisir viennent sans qu'on les convoque. Ce qui se glisse là est discret. Tu es en train de rendre les choses agréables plus vite que tu ne les rends vraies.",
+   "en_tension": "Vénus est contrariée dans ton ciel. Le lien demande du travail, le plaisir ne va pas de soi. C'est l'endroit intéressant. Ce que tu offres, tu l'as choisi, pas subi. Et ça se sent.",
+   "invitation": "Une énergie généreuse traverse les échanges aujourd'hui, des gens qui donnent, produisent, font pousser quelque chose pour d'autres. Cette abondance se donne largement, parfois plus qu'elle ne se garde.",
+   "pour_l_annee": "Quelque chose pousse à naître cette année, une ambiance, un projet, une personne qui va mieux grâce à toi. On t'a souvent confié ce rôle sans te demander ton avis. Garde une part de cette fécondité pour toi cette fois. Fais pousser une chose qui ne réclame rien en retour."
+  },
+  "4": {
+   "nom": "L'Empereur",
+   "correspondance": "Bélier",
+   "conditionnement": "Tu es en train de te mesurer à quelqu'un qui n'est plus là. L'Empereur, ce n'est pas toi sur le trône. C'est la place que le trône occupe encore dans ta tête. On t'a donné une autorité à respecter, ou à craindre, ou à abattre. Dans les trois cas elle continue de décider, puisque tu te positionnes par rapport à elle. Obéir et se révolter sont le même geste, tenu par les deux bouts.",
+   "alimenter": "Le Bélier veut ouvrir, pas riposter. Ce qui te va, c'est décider une chose petite que personne ne t'a interdite. Sans motif, sans opposant, juste parce que c'est toi. L'autorité qui te revient n'a besoin d'aucun trône vacant à occuper.",
+   "contrarie": "Sans initiative propre, la force se cherche un adversaire. Tu es en train de dire non avec beaucoup d'énergie, et de ne pas savoir à quoi tu dis oui. Le trône reste occupé par une absence, ce qui est encore plus difficile à déloger.",
+   "en_resonance": "Le Bélier est fort dans ton ciel. Tu ouvres, tu tranches, tu n'attends pas. La friction est ailleurs. Tu es en train de confondre ce qui presse et ce qui compte.",
+   "en_tension": "Le Bélier est contrarié dans ton ciel. Partir le premier te coûte. C'est l'endroit du chantier, donc l'endroit vivant. L'élan que tu n'as pas reçu, tu es en train d'apprendre à le fabriquer à froid.",
+   "invitation": "Les questions d'autorité reviennent dans beaucoup de conversations aujourd'hui : qui décide, au nom de quoi. Certaines structures anciennes tiennent encore debout sans qu'on sache toujours bien pourquoi.",
+   "pour_l_annee": "L'année invite à te mesurer à une autorité qui n'est peut-être plus là que dans ta tête. Obéir et se révolter reviennent souvent au même geste, tenu par les deux bouts. Décide une chose petite, sans motif à donner, sans trône à occuper ou à renverser. L'autorité qui te revient n'a besoin d'aucun adversaire."
+  },
+  "5": {
+   "nom": "Le Pape",
+   "correspondance": "Taureau",
+   "conditionnement": "Tu es en train de citer quelqu'un sans le nommer. Le Pape transmet, et ce qu'il transmet, il ne l'a pas inventé. Le schéma décrit ce qui t'a été passé comme allant de soi. La bonne manière de faire, la phrase qu'on répète à table, ce qui se fait et ce qui ne se fait pas. Rien de tout cela n'est faux. C'est simplement arrivé avant toi, et sans te demander ton avis.",
+   "alimenter": "Le Taureau veut de la matière, pas des principes. Ce qui te va, c'est vérifier une règle héritée sur pièce. La mettre à l'épreuve, garder ce qui tient, poser le reste. Transmettre ce qu'on a éprouvé, c'est autre chose que répéter.",
+   "contrarie": "Sans vérification, la transmission devient un décor. Tu es en train de défendre des principes que tu n'as jamais testés, et de le faire avec d'autant plus de fermeté que tu ne les as pas choisis. Le doute serait moins lourd à porter.",
+   "en_resonance": "Le Taureau est fort dans ton ciel. Tu tiens, tu dures, tu ne bouges pas pour rien. Le revers est jumeau. Tu es en train de confondre ce qui est solide et ce qui est simplement immobile.",
+   "en_tension": "Le Taureau est contrarié dans ton ciel. Ce qui dure ne te vient pas naturellement, l'ancrage se travaille. C'est l'endroit intéressant. Tu es en train de choisir ce que tu gardes, au lieu de le garder par inertie.",
+   "invitation": "Des habitudes transmises depuis longtemps sont questionnées aujourd'hui, des règles suivies par réflexe collectif plus que par conviction. On se demande, ici et là, si elles servent encore vraiment à quelque chose.",
+   "pour_l_annee": "Des règles transmises depuis longtemps reviennent cette année, la bonne manière de faire, la phrase qu'on répète sans y penser. Rien n'est faux là-dedans, mais rien n'a été vérifié non plus. C'est une année pour tester une règle héritée sur le terrain, garder ce qui tient, poser le reste sans regret."
+  },
+  "6": {
+   "nom": "L'Amoureux",
+   "correspondance": "Gémeaux",
+   "conditionnement": "Tu es en train de peser deux options depuis un moment déjà. L'Amoureux ne parle pas de sentiment, il parle du carrefour, et de ce qu'on t'a appris à en penser. On t'a fait croire que choisir, c'est perdre. Qu'il y a une bonne case et une mauvaise, et qu'on te jugera dessus. Alors tu es resté au milieu, où l'on ne perd rien. Sauf le temps.",
+   "alimenter": "Les Gémeaux aiment les deux voix, pas l'indécision. Ce qui te va, c'est faire un choix petit et réversible, aujourd'hui, pour le plaisir de constater que le ciel ne tombe pas. La capacité à choisir s'entraîne comme un muscle. Elle vient à l'usage, pas à la réflexion.",
+   "contrarie": "Sans décision, le carrefour se met à ressembler à un domicile. Tu es en train de garder les deux options ouvertes, et les deux se referment doucement, toutes seules, sans que personne ait eu à trancher. C'est la seule façon de vraiment perdre.",
+   "en_resonance": "Les Gémeaux sont forts dans ton ciel. Tu vois les deux côtés, toujours, immédiatement. C'est un don réel, et tu es en train de t'en servir pour rester au milieu plutôt que pour choisir vite.",
+   "en_tension": "Les Gémeaux sont contrariés dans ton ciel. Voir l'autre côté te demande un effort. L'endroit du travail est là, et il est fertile. Le choix que tu fais, tu le fais entier.",
+   "invitation": "Beaucoup hésitent aujourd'hui entre deux directions à la fois, dans un climat d'indécision partagée. Les choix se pèsent longtemps avant que la balance ne penche vraiment d'un côté.",
+   "pour_l_annee": "Le carrefour occupe cette année, deux options pesées depuis un moment déjà, sans qu'aucune ne l'emporte. On t'a fait croire que choisir, c'est perdre l'autre option pour de bon. C'est une année pour choisir, même petit, même réversible, juste pour sentir que rien ne s'effondre. Le milieu du chemin n'abrite personne."
+  },
+  "7": {
+   "nom": "Le Chariot",
+   "correspondance": "Cancer",
+   "conditionnement": "Tu es en train d'avancer en tenant. Le Chariot va vite, mais regarde ce qui le tire. Deux forces qui ne vont pas dans le même sens, et un conducteur sans rênes. Le schéma décrit une manière apprise de tenir la route. Sous la carapace, la volonté fait le travail que la confiance devrait faire. On t'a appris à ne pas t'arrêter, parce que s'arrêter avait un coût. Tu as bien retenu.",
+   "alimenter": "Le Cancer a besoin d'un dedans qui tienne sans effort. Ce qui te va, c'est un lieu, une heure, une personne devant qui tu n'as pas à conduire. La carapace, posée quelque part, cesse d'être un poids à traîner. Elle redevient ce qu'elle était, un abri.",
+   "contrarie": "Sans halte, la volonté remplace tout. Tu es en train d'arriver quelque part sans savoir pourquoi tu y allais, et la seule question qui reste, c'est la suivante. Le char roule très bien. Il roule surtout pour ne pas s'arrêter.",
+   "en_resonance": "Le Cancer est fort dans ton ciel. Tu protèges, tu portes, tu tiens le foyer où que tu ailles. Ce qui se glisse là tient en une phrase. Tu es en train de confondre la carapace et la maison.",
+   "en_tension": "Le Cancer est contrarié dans ton ciel. Le refuge ne se donne pas tout seul, tu le construis à mains nues. C'est l'endroit du chantier. Un abri bâti vaut mieux qu'un abri hérité.",
+   "invitation": "Le rythme s'accélère un peu partout aujourd'hui, beaucoup avancent en portant plusieurs choses à la fois. Une époque qui tient large sans toujours savoir vers où elle conduit précisément.",
+   "pour_l_annee": "Tu avances beaucoup cette année, et souvent en tenant plusieurs choses à la fois sans t'arrêter. La volonté fait le travail que la confiance devrait faire, et ça tient, mais ça coûte. Cherche un endroit, une heure, une personne devant qui tu n'as pas besoin de conduire. Un abri bâti vaut mieux qu'un abri traîné."
+  },
+  "8": {
+   "nom": "La Force",
+   "correspondance": "Lion",
+   "conditionnement": "Tu es en train de tenir quelque chose fermé. Sur la Force, la femme ouvre la gueule du lion sans violence, et c'est le geste entier de la carte. Le schéma parle de ce qu'on t'a dit de ta puissance. Qu'elle inquiétait, qu'il fallait la ranger, la contenir, être doux ou raisonnable. Tu as obéi. La force ne s'est pas dissoute pour autant. Elle s'est juste retournée vers l'intérieur.",
+   "alimenter": "Le Lion demande un endroit où la puissance est bienvenue. Ce qui te va, c'est un usage franc de ta force. Un effort qui coûte, une prise de parole tenue, un animal qu'on caresse au lieu de l'enfermer. La douceur qui a du muscle, c'est autre chose que la retenue.",
+   "contrarie": "Contenue, la force ne s'éteint pas, elle se pressurise. Tu es en train de tenir, tenir, tenir, puis de céder d'un coup sur un détail sans importance, et de te trouver excessif. Ce n'était pas de l'excès. C'était de l'arriéré.",
+   "en_resonance": "Le Lion est fort dans ton ciel. La présence te vient, on te voit entrer. Le revers est proche. Tu es en train de prendre de la place avant d'avoir vérifié qu'elle était libre.",
+   "en_tension": "Le Lion est contrarié dans ton ciel. Prendre de la place se paie cher. C'est l'endroit intéressant. La force que tu n'as pas reçue en dotation, tu es en train de l'apprendre geste par geste. Elle sera plus sûre.",
+   "invitation": "Une intensité retenue traverse les échanges aujourd'hui, une force qui pourrait s'imposer mais choisit la fermeté douce plutôt que le rapport de force ouvert. Ça se sent, sans toujours se voir.",
+   "pour_l_annee": "Une force se tient serrée depuis longtemps, retenue par prudence, sans endroit où se poser franchement. Cette année ouvre un espace où cette puissance a droit de cité, un effort qui coûte, une parole tenue, un geste franc plutôt qu'un couvercle de plus. La douceur qui a du muscle n'est pas de la retenue."
+  },
+  "9": {
+   "nom": "L'Hermite",
+   "correspondance": "Vierge",
+   "conditionnement": "Tu es en train de t'éloigner un peu. L'Hermite marche à l'écart avec sa lanterne, et il éclaire à peine trois pas devant lui. Ça suffit. Le schéma décrit une retraite qui a d'abord été une solution. Quelque part, il y a longtemps, se retirer était la manière la plus sûre de ne pas être atteint. Ça marchait. Ça marche encore. C'est bien pour ça que tu ne l'as jamais réexaminé.",
+   "alimenter": "La Vierge veut du travail précis, en silence. Ce qui te va, c'est une solitude choisie et datée. Une heure où tu te retires parce que tu l'as décidé, pas parce que le bruit t'a chassé. La lanterne éclaire mieux quand elle n'est pas un abri.",
+   "contrarie": "Sans retour, le retrait devient l'adresse. Tu es en train de trouver toutes les bonnes raisons de ne pas y aller, et elles sont bonnes. C'est exactement le problème. Personne ne vient chercher quelqu'un qui a l'air d'aller très bien tout seul. C'est même le seul défaut de la solitude réussie.",
+   "en_resonance": "La Vierge est forte dans ton ciel. Tu vois le détail, tu ajustes, tu fais bien. Regarde quand même à côté. Tu es en train de peaufiner une chose pour ne pas avoir à en commencer une autre.",
+   "en_tension": "La Vierge est contrariée dans ton ciel. Le détail te fuit, la méthode se construit. C'est l'endroit du travail, donc l'endroit vivant. La rigueur que tu te donnes vaut celle qu'on ne t'a pas donnée.",
+   "invitation": "Le besoin de retrait se fait sentir plus largement que d'habitude aujourd'hui, un climat où beaucoup cherchent un peu de distance avant de revenir vers le monde. Rien d'un rejet, juste une pause qui se généralise.",
+   "pour_l_annee": "Le retrait revient souvent cette année, et il a longtemps été une façon sûre de ne pas être atteint. Ça marche, c'est même le problème, personne ne va chercher quelqu'un qui semble aller très bien tout seul. Choisis ta solitude, donne-lui une heure précise plutôt qu'une adresse permanente."
+  },
+  "10": {
+   "nom": "La Roue de Fortune",
+   "correspondance": "Jupiter",
+   "conditionnement": "Tu es en train d'attendre que ça tourne. La Roue monte et descend, et il y a toujours quelqu'un dessus pour croire que c'est mérité. Le schéma décrit une lecture du monde qu'on t'a transmise. Les choses arrivent, la chance existe, on est chanceux ou on ne l'est pas. C'est confortable tant que ça monte. Et c'est très cher payé quand ça descend, parce qu'alors plus rien n'est de ton ressort.",
+   "alimenter": "Jupiter veut de l'ampleur, pas de la loterie. Ce qui te va, c'est une chose qui ne dépend d'aucun tour de roue. Un geste petit, répétable, dont le résultat t'appartient. La chance ne se commande pas. La fréquence des essais, si.",
+   "contrarie": "Sans prise, l'attente s'installe. Tu es en train de laisser le hasard porter le chapeau des deux côtés. De tes réussites, ce qui te prive du crédit. De tes ratés, ce qui te prive du levier. La roue tourne. Elle tourne sans toi.",
+   "en_resonance": "Jupiter est bien servi dans ton ciel. Les portes s'ouvrent, les occasions se présentent. Le revers loge juste à côté. Tu es en train de compter dessus, et le jour où ça ne s'ouvre pas, il n'y a pas de plan B.",
+   "en_tension": "Jupiter est contrarié dans ton ciel. Rien ne tombe tout cuit, les portes se poussent à l'épaule. C'est l'endroit intéressant. Tu es en train d'apprendre que ce qui arrive dépend un peu de toi. C'est une bonne nouvelle déguisée.",
+   "invitation": "Quelque chose tourne aujourd'hui, un cycle qui échappe un peu au contrôle de chacun. Des situations basculent sans que grand monde n'y soit vraiment pour quelque chose, dans un sens ou dans l'autre selon où l'on se trouve.",
+   "pour_l_annee": "L'attente occupe cette année, celle de voir si ça va tourner en ta faveur. C'est confortable tant que ça monte, très cher payé quand ça descend, puisque plus rien ne semble dépendre de toi. Repère un geste petit et répétable, dont le résultat t'appartient, peu importe où va la roue."
+  },
+  "11": {
+   "nom": "La Justice",
+   "correspondance": "Balance",
+   "conditionnement": "Tu es en train de te juger pendant que tu fais autre chose. La Justice tient la balance et l'épée. Elle pèse, puis elle tranche. Le schéma décrit un tribunal installé à l'intérieur, dont on t'a confié les clés très tôt. On te faisait rendre des comptes, tu as fini par les rendre tout seul, en continu, sans audience. Le tribunal est toujours ouvert. Il n'acquitte jamais tout à fait.",
+   "alimenter": "La Balance veut de l'équité, y compris avec toi. Ce qui te va, c'est appliquer à ton propre cas la mesure que tu accordes aux autres sans y penser. Tu es un excellent juge. Le dossier est simplement mal instruit d'un seul côté.",
+   "contrarie": "Sans clémence, la balance ne s'arrête plus. Tu es en train de rejouer une scène vieille de trois jours pour vérifier le verdict, et le verdict change à chaque passage. L'épée sert alors toujours dans la même direction, la tienne.",
+   "en_resonance": "La Balance est forte dans ton ciel. Tu vois le juste, tu ajustes, tu rétablis. Il y a un angle mort. Tu es en train de chercher l'équilibre si vite que tu ne laisses pas le déséquilibre te dire quelque chose.",
+   "en_tension": "La Balance est contrariée dans ton ciel. Le juste milieu se dérobe, la mesure se cherche. C'est l'endroit du chantier. Ce que tu finiras par appeler équitable, tu l'auras pesé toi-même.",
+   "invitation": "Les questions d'équité occupent beaucoup d'esprits aujourd'hui. On pèse, publiquement ou en silence, ce qui est juste et ce qui ne l'est pas, sans qu'un verdict simple ne s'impose facilement.",
+   "pour_l_annee": "Un tribunal intérieur siège plus souvent cette année, il pèse et il tranche pendant que tu fais autre chose. On t'a appris tôt à rendre des comptes, tu as fini par les rendre tout seul. Cette année demande d'accorder à ton propre dossier la même mesure équitable que tu offres aux autres sans y penser."
+  },
+  "12": {
+   "nom": "Le Pendu",
+   "correspondance": "Eau",
+   "conditionnement": "Tu es en train d'attendre, et de considérer que c'est du temps perdu. Le Pendu est suspendu par un pied, la tête en bas, et il a l'air parfaitement serein. Regarde-le bien. Le schéma ne parle pas d'un supplice, il parle de ce qu'on t'a appris à penser de l'attente. Que ne pas avancer, c'est reculer. Que la pause demande une justification. Personne ne t'a dit qu'un point de vue à l'envers reste un point de vue.",
+   "alimenter": "L'Eau ne pousse pas, elle épouse. Ce qui te va, c'est une suspension assumée. Un dossier qu'on laisse dormir, une réponse qu'on ne donne pas aujourd'hui, une position dont on décide de ne pas sortir tout de suite. Attendre exprès, ce n'est plus subir.",
+   "contrarie": "Sans consentement, la suspension devient une salle d'attente. Tu es en train de patienter en t'en voulant de patienter, ce qui coûte deux fois le prix et ne fait rien avancer. Le Pendu ne souffre pas d'être à l'envers. Il souffre quand il se débat.",
+   "en_resonance": "L'Eau est bien servie dans ton ciel. Tu épouses, tu ressens, tu laisses venir. Le revers est là aussi. Tu es en train d'appeler patience une chose qui ressemble beaucoup à de l'évitement.",
+   "en_tension": "L'Eau est peu présente dans ton ciel. Lâcher prise ne se donne pas, ça s'apprend. C'est l'endroit intéressant, précisément parce qu'il résiste. Ce que d'autres reçoivent en tempérament, tu es en train d'en faire une décision.",
+   "invitation": "Une forme d'attente générale s'installe aujourd'hui, des situations qui restent en suspens plus longtemps que prévu. Le rythme collectif ralentit un peu, presque à contretemps de l'agitation habituelle.",
+   "pour_l_annee": "Une pause s'installe peut-être cette année, une attente qui ressemble à du temps perdu vu de l'extérieur. On t'a appris que ne pas avancer, c'est reculer. Un point de vue à l'envers reste un point de vue. Laisse une chose en suspens exprès, sans culpabilité jointe, et laisse-la se décanter à son rythme."
+  },
+  "13": {
+   "nom": "L'Arcane sans nom",
+   "correspondance": "Scorpion",
+   "conditionnement": "Tu es en train de maintenir quelque chose en vie au-delà de son terme. La carte 13 n'a pas de nom, les anciens ne le prononçaient pas, et ça en dit long sur ce qu'on nous a transmis des fins. Le schéma décrit ça, pas un événement. On t'a appris que finir est un échec, qu'abandonner est honteux, qu'un lien rompu est un lien raté. Alors tu prolonges. Le faucheur de la carte, lui, coupe des tiges. L'herbe repousse derrière.",
+   "alimenter": "Le Scorpion veut de la vérité, même déplaisante. Ce qui te va, c'est nommer une chose finie qui n'est pas encore enterrée. Un projet, une habitude, une version de toi. Dire « c'est terminé » n'est pas une défaite, c'est un constat, et ça libère la place.",
+   "contrarie": "Sans fin nommée, tout reste ouvert. Tu es en train de porter des choses mortes avec beaucoup de loyauté, et cette loyauté-là ne sert plus personne. Ce n'est pas la fin qui fait mal. C'est la longueur de ce qu'on traîne.",
+   "en_resonance": "Le Scorpion est fort dans ton ciel. Tu vois sous la surface, les fins ne t'effraient pas. Il y a un revers discret. Tu es en train de couper vite, parfois avant d'avoir vérifié que c'était vraiment fini.",
+   "en_tension": "Le Scorpion est contrarié dans ton ciel. Regarder ce qui finit demande du courage à chaque fois. C'est l'endroit du travail, donc l'endroit vivant. Les fins que tu prononces, tu les auras pesées.",
+   "invitation": "Quelque chose arrive à son terme aujourd'hui, sans éclat ni drame particulier. Une fin tranquille qui touche plusieurs histoires à la fois, plus proche d'un constat partagé que d'un bouleversement soudain.",
+   "pour_l_annee": "Une fin demande à être nommée cette année, un projet, une habitude, une version de toi qui a fait son temps. On t'a appris que finir est un échec, qu'un lien rompu est un lien raté, alors tu prolonges. Dire que c'est terminé n'est pas une défaite, c'est un constat, et ça libère la place."
+  },
+  "14": {
+   "nom": "Tempérance",
+   "correspondance": "Sagittaire",
+   "conditionnement": "Tu es en train de doser. L'ange de Tempérance verse un liquide d'un vase à l'autre, sans en perdre une goutte, et il y passe l'éternité. Le schéma décrit une compétence devenue réflexe. On t'a mis très tôt entre deux choses, deux parents, deux camps, deux exigences, et tu as appris à faire le mélange. Tu le fais bien. Personne ne t'a demandé ce que tu buvais, toi, pendant ce temps.",
+   "alimenter": "Le Sagittaire veut du large, pas de l'équilibrage. Ce qui te va, c'est une direction à toi, choisie sans consulter les deux vases. Un voyage, une conviction, un sujet que tu explores parce qu'il te tire. Le mélange se fait mieux quand il va quelque part.",
+   "contrarie": "Sans cap, la modération devient tiédeur. Tu es en train de trouver la juste mesure entre des positions qui ne sont pas les tiennes, et de t'appeler sage pour ça. L'ange verse toujours. Les vases ne sont plus à personne.",
+   "en_resonance": "Le Sagittaire est fort dans ton ciel. Tu vises loin, tu élargis, l'horizon te tire. Le revers est jumeau. Tu es en train de partir vers l'ailleurs juste avant que l'ici ne devienne intéressant.",
+   "en_tension": "Le Sagittaire est contrarié dans ton ciel. L'horizon ne s'ouvre pas tout seul. C'est l'endroit du chantier. Le large que tu te donnes, tu l'auras visé exprès, pas reçu par tempérament.",
+   "invitation": "Un équilibre précaire se cherche aujourd'hui entre des forces qui tirent en sens contraires. Le climat général compose, mélange, dose, plutôt que de trancher franchement dans un sens ou dans l'autre.",
+   "pour_l_annee": "Tu te retrouves encore à doser cette année, entre deux exigences, deux camps, deux personnes, comme on te l'a appris tôt. Tu fais le mélange sans qu'on te demande ce que toi, tu bois pendant ce temps. C'est une année pour choisir une direction rien qu'à toi, sans consulter les deux vases que tu tiens d'habitude."
+  },
+  "15": {
+   "nom": "Le Diable",
+   "correspondance": "Capricorne",
+   "conditionnement": "Tu es en train de tenir à quelque chose qui te tient un peu plus. Regarde la carte de près, c'est tout le sujet. Les deux personnages enchaînés ont le collier trop large. Il suffirait de lever la tête. Ils ne la lèvent pas, et ce n'est pas de la bêtise, c'est du conditionnement. On t'a vendu un manque, puis le produit qui le comble. Le poste, l'écran, la reconnaissance, le verre du soir. Le Diable n'est pas en toi. Il est dans le catalogue.",
+   "alimenter": "Le Capricorne veut construire, et une chaîne, ça se construit aussi. Ce qui te va, c'est regarder l'attachement en face sans le condamner. À quoi il sert, ce qu'il apaise, ce qu'il coûte. Ce qu'on regarde franchement cesse d'avoir besoin d'être caché, et une chaîne visible se desserre déjà.",
+   "contrarie": "Sans regard, l'attachement se fait passer pour un choix. Tu es en train d'expliquer très bien pourquoi c'est différent dans ton cas, et l'explication est excellente. C'est bien ça qui devrait t'alerter. Le collier ne serre pas. Il suffit de lever la tête.",
+   "en_resonance": "Le Capricorne est fort dans ton ciel. Tu bâtis, tu tiens, tu supportes bien la contrainte. Le revers loge juste là. Tu es en train d'endurer une chose par discipline alors que la porte n'était pas fermée à clé.",
+   "en_tension": "Le Capricorne est contrarié dans ton ciel. La contrainte te pèse plus vite qu'aux autres. C'est l'endroit intéressant. Un seuil de tolérance bas, c'est aussi un excellent détecteur de chaînes.",
+   "invitation": "Des attachements communs se font sentir aujourd'hui, des habitudes, des écrans, des dépendances qui traversent beaucoup de monde en même temps. On ne les nomme pas toujours clairement, même quand ils pèsent.",
+   "pour_l_annee": "Un attachement occupe une place importante cette année, un écran, une habitude, une reconnaissance dont tu te passes difficilement. Le collier ne serre pas vraiment, il suffit souvent de lever la tête. Regarde cet attachement en face sans le condamner, vois à quoi il sert et ce qu'il te coûte réellement."
+  },
+  "16": {
+   "nom": "La Maison Dieu",
+   "correspondance": "Mars",
+   "conditionnement": "Tu es en train de consolider un mur qui est déjà fendu. La tour de la carte prend la foudre et deux personnages en tombent. Sauf qu'on oublie de regarder la tour. Elle était trop haute, trop fermée, bâtie pour ne rien laisser entrer. Le schéma ne parle pas de catastrophe, il parle de construction. On t'a appris à te protéger en montant les murs, et ça a très bien marché, jusqu'au jour où le plus dur est devenu de rester dedans.",
+   "alimenter": "Mars veut frapper franc. Ce qui te va, c'est ouvrir une porte avant que la foudre ne s'en charge. Dire la chose, poser la question, retirer une pierre que tu sais posée de travers. Ce qu'on démolit soi-même ne s'appelle pas un effondrement. Ça s'appelle des travaux.",
+   "contrarie": "Sans ouverture, la tour monte encore. Tu es en train de renforcer ce qui te sépare, et chaque étage rend la sortie plus haute. Ce qui finit par tomber n'est jamais ce que tu étais. C'est seulement ce que tu avais construit pour ne pas avoir à l'être.",
+   "en_resonance": "Mars est fort dans ton ciel. Tu frappes, tu tranches, l'obstacle t'appelle. Il y a un angle mort. Tu es en train de démolir avec entrain, et il arrive que la tour d'en face ne t'ait rien fait.",
+   "en_tension": "Mars est contrarié dans ton ciel. Le coup franc ne part pas, la colère reste dedans. C'est l'endroit du travail, donc l'endroit intéressant. Ce que tu n'as pas dit sur le moment attend quelque part, et il attend patiemment.",
+   "invitation": "Une structure ancienne semble ébranlée aujourd'hui, quelque chose de soudain qui bouscule un ordre qu'on croyait stable. Moins une catastrophe qu'un rappel que rien ne tient jamais tout seul indéfiniment.",
+   "pour_l_annee": "Un mur se fissure cette année, un mur bâti pour ne rien laisser entrer, et ça peut faire du bruit. Ce n'est pas une catastrophe qui s'annonce, c'est une construction qui montre enfin son âge. Retire toi-même une pierre posée de travers avant que la foudre ne s'en charge, ça change tout du résultat."
+  },
+  "17": {
+   "nom": "L'Étoile",
+   "correspondance": "Verseau",
+   "conditionnement": "Tu es en train de te montrer moins que tu n'es. Sur l'Étoile, la femme est nue au bord de l'eau et elle verse deux cruches. Elle donne, sans rien pour se couvrir, et personne ne la regarde de travers. Le schéma décrit l'inverse, ce qu'on t'a appris sur le fait d'être vu. Que l'espoir ouvert est naïf, que se découvrir est risqué, qu'il vaut mieux annoncer moins pour ne pas décevoir. Tu as pris l'habitude de verser habillé.",
+   "alimenter": "Le Verseau veut du sincère et du collectif. Ce qui te va, c'est dire une espérance à voix haute devant quelqu'un. Pas un plan, une envie, sans la border d'avance. L'espoir énoncé n'engage à rien. Il indique juste où tu regardes.",
+   "contrarie": "Sans exposition, l'espoir devient privé, puis se fane. Tu es en train de vouloir des choses en secret pour que l'échec reste confidentiel. Sauf que ça rend la réussite confidentielle du même coup, et personne ne trinque à ce qu'il n'a pas su. Les cruches sont pleines. Elles sont surtout bien rangées.",
+   "en_resonance": "Le Verseau est fort dans ton ciel. Tu vois plus loin, tu penses en commun, l'avenir te parle. Le revers est proche. Tu es en train de rêver l'ensemble pendant que le voisin, lui, aurait juste besoin d'un coup de main.",
+   "en_tension": "Le Verseau est contrarié dans ton ciel. L'élan vers l'ouvert se fabrique. C'est l'endroit du chantier. Une espérance construite à la main tient souvent mieux qu'une espérance de tempérament.",
+   "invitation": "Une forme d'espoir discret circule aujourd'hui, après une période qui a demandé plus d'efforts que d'habitude. Rien d'éclatant, mais une confiance qui revient doucement dans l'air du temps.",
+   "pour_l_annee": "L'espoir se dit tout bas cette année, habillé pour ne pas déranger, gardé secret pour que l'échec reste discret le cas échéant. Ça rend la réussite discrète du même coup, et personne ne trinque à ce qu'il n'a pas su. Dis une chose que tu espères, à voix haute, sans la border d'avance."
+  },
+  "18": {
+   "nom": "La Lune",
+   "correspondance": "Poissons",
+   "conditionnement": "Tu es en train de regarder une chose la nuit et de la croire. La Lune éclaire mal, c'est son travail. Deux chiens hurlent, une écrevisse sort de l'eau, et rien n'est tout à fait à sa taille réelle. Le schéma décrit ce que tu as appris à faire de tes peurs, les prendre au sérieux comme des informations. Elles n'en sont pas. Elles sont un éclairage, et l'éclairage change à six heures du matin.",
+   "alimenter": "Les Poissons veulent de l'imaginaire, et l'imaginaire est un excellent outil quand on lui donne un cadre. Ce qui te va, c'est une forme. Écrire, jouer, rêver exprès. Ce qui déborde la nuit se tient très bien dans une page.",
+   "contrarie": "Sans forme, l'imagination travaille pour l'inquiétude, et elle est très douée. Tu es en train de vivre plusieurs fois des scènes qui n'ont pas eu lieu, et de payer chaque fois plein tarif. La Lune ne ment pas. Elle éclaire mal, c'est différent.",
+   "en_resonance": "Les Poissons sont forts dans ton ciel. Tu perçois le flou, tu circules entre les mondes. Le revers est discret. Tu es en train de te fier à un éclairage nocturne pour des décisions qui demandent du jour.",
+   "en_tension": "Les Poissons sont contrariés dans ton ciel. Le flou t'agace, l'indistinct ne te va pas. C'est l'endroit intéressant. Tu es en train d'apprendre que tout ne se laisse pas mettre au net, et que ce n'est pas grave.",
+   "invitation": "Le flou domine plusieurs situations aujourd'hui, un climat où les peurs s'amplifient facilement faute de repères clairs. Ce qui paraît certain dans la pénombre mérite souvent d'être revu à la lumière.",
+   "pour_l_annee": "Les peurs se montrent plus souvent cette année sous un éclairage nocturne qui déforme un peu tout, comme fait la lune sur les formes de la nuit. Elles se prennent pour des informations, elles n'en sont pas. Note ce qui t'inquiète sans le croire tout de suite, et revois la scène en plein jour."
+  },
+  "19": {
+   "nom": "Le Soleil",
+   "correspondance": "Soleil",
+   "conditionnement": "Tu es en train de baisser la lumière. Sur le Soleil, deux enfants jouent sous l'astre et ne se demandent pas s'ils en font trop. C'est exactement l'état qu'on nous fait perdre. Le schéma décrit ce qui s'est passé ensuite. On t'a appris que briller dérange, que la joie affichée se paie, qu'il vaut mieux nuancer son bonheur pour ne pas éveiller la jalousie. Tu t'es réglé sur les autres. Le variateur est resté.",
+   "alimenter": "Le Soleil veut de la simplicité, pas de la performance. Ce qui te va, c'est une joie non commentée. Dire qu'une chose t'a plu, sans la relativiser, sans la petite phrase qui l'excuse. La lumière n'a pas besoin d'être justifiée pour éclairer.",
+   "contrarie": "Sans plein éclairage, la joie devient discrète puis suspecte. Tu es en train de raconter tes bonnes nouvelles avec des pincettes, et à force, tu ne les entends plus toi-même. Il ne s'agit pas de modestie. On t'a mis un réglage, il y a longtemps, et tu ne l'as jamais retouché.",
+   "en_resonance": "Le Soleil est bien placé dans ton ciel. Tu rayonnes sans y penser, la place te vient. Le revers loge juste là. Tu es en train d'éclairer la pièce, et il fait un peu sombre autour de toi.",
+   "en_tension": "Le Soleil est contrarié dans ton ciel. La visibilité se paie, la confiance se bâtit. C'est l'endroit du travail, donc l'endroit vivant. La lumière que tu allumes toi-même n'a de compte à rendre à personne.",
+   "invitation": "Une clarté simple traverse la journée aujourd'hui, des réussites qui se montrent sans trop se cacher. Une joie plus franche que d'habitude circule, visible pour qui prend le temps de la remarquer.",
+   "pour_l_annee": "La joie a de la place cette année, à condition de ne pas baisser tout de suite la lumière par réflexe. On t'a appris que briller dérange, qu'il vaut mieux nuancer son bonheur pour ne pas attiser la jalousie. Dis qu'une chose t'a plu, sans l'excuser, et laisse-la éclairer."
+  },
+  "20": {
+   "nom": "Le Jugement",
+   "correspondance": "Feu",
+   "conditionnement": "Tu es en train d'attendre qu'on te dise que c'est bon. Sur le Jugement, l'ange sonne et les morts se lèvent. Mais regarde qui décide. Personne dans le tableau. Ils se lèvent, c'est tout. Le schéma décrit ce qu'on t'a fait croire du contraire, qu'il faut une convocation, une validation, un diplôme, un feu vert. On t'a donné le goût de l'appel et l'habitude d'en attendre un. Tu es toujours à l'écoute.",
+   "alimenter": "Le Feu ne demande pas d'autorisation, il prend. Ce qui te va, c'est te lever sur une chose sans attendre le signal. Commencer avant d'être prêt, te déclarer avant d'être légitime. L'appel que tu guettes, c'est en général le tien qui traîne.",
+   "contrarie": "Sans départ, l'écoute devient une position. Tu es en train de te tenir prêt depuis longtemps, et cette disponibilité ressemble tellement à du courage qu'elle passe inaperçue. La trompette ne sonnera pas. Elle a déjà sonné, il y a un moment.",
+   "en_resonance": "Le Feu est bien servi dans ton ciel. Tu pars, tu allumes, tu n'attends pas la permission. Il y a un point aveugle. Tu es en train de te lever si vite que tu ne sais pas toujours pour quoi.",
+   "en_tension": "Le Feu est peu présent dans ton ciel. L'élan ne monte pas tout seul, il se provoque. C'est l'endroit intéressant. Le départ que tu décides à froid t'appartient plus que celui qui t'emporte.",
+   "invitation": "Un signal semble attendu un peu partout aujourd'hui, comme si beaucoup retenaient leur élan avant un feu vert extérieur. Un climat d'appel qui pousse doucement vers quelque chose comme un réveil collectif.",
+   "pour_l_annee": "Un signal se fait attendre cette année, une validation, un diplôme, un feu vert avant de commencer vraiment. On t'a donné le goût de l'appel et l'habitude d'en guetter un. Lève-toi sur une chose sans attendre qu'on te l'autorise, l'appel que tu espères, c'est souvent le tien qui traîne."
+  },
+  "21": {
+   "nom": "Le Monde",
+   "correspondance": "Saturne",
+   "conditionnement": "Tu es en train de préparer la suite pendant que celle-ci se termine. Le Monde est la dernière carte. Une figure danse dans une couronne, et le tour est bouclé. Le schéma décrit ce qui empêche de s'y arrêter. On t'a appris qu'après il y a autre chose, qu'un accomplissement se célèbre vite et se dépasse aussitôt, que se poser c'est stagner. Alors tu arrives, et tu es déjà reparti. Le tour se boucle sans toi dedans.",
+   "alimenter": "Saturne veut du temps et de la forme achevée. Ce qui te va, c'est marquer une fin. Constater qu'une chose est faite, la nommer comme telle, et ne rien enchaîner pendant un moment. Terminer, c'est un geste complet. Ce n'est pas la moitié d'un autre.",
+   "contrarie": "Sans arrêt, les accomplissements ne comptent pas. Tu es en train d'ajouter des tours à une couronne déjà fermée, et aucun ne fait l'affaire, parce que ce n'était jamais la question. La danse se fait à l'arrivée. Tu es toujours en route.",
+   "en_resonance": "Saturne est fort dans ton ciel. Tu construis long, tu finis ce que tu commences, la durée te va. Le revers est jumeau. Tu es en train de te donner des délais que personne ne t'a réclamés.",
+   "en_tension": "Saturne est contrarié dans ton ciel. La durée résiste, l'achèvement se dérobe. C'est l'endroit du chantier. Un tour bouclé à la force du poignet vaut plus cher qu'un tour bouclé de naissance.",
+   "invitation": "Un cycle se boucle quelque part aujourd'hui, une étape collective qui s'achève pour de bon. L'époque a l'habitude d'enchaîner vite vers la suivante, sans toujours s'arrêter sur ce qui vient tout juste de finir.",
+   "pour_l_annee": "Un cycle se termine cette année, et une vieille habitude pousse déjà vers la suite avant même d'avoir posé la précédente. On t'a appris que s'arrêter, c'est stagner. Prends le temps de nommer ce qui est fini, de le regarder en face, avant de repartir vers autre chose. Terminer est un geste complet en soi."
+  }
+ }
+}

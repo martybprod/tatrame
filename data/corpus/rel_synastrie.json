@@ -1,0 +1,55 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "La synastrie lue en registre d'INTERACTION : la rencontre de DEUX fonctions appartenant à DEUX personnes, jamais un aspect natal en registre « toi ». Composé déterministement par app.py::_texte_synastrie — une phrase-fonction (neutre) par point + un gabarit par classe (verbe + tails variés choisis par une clé stable). On NE réutilise PAS les 135 textes natals (aspects_1..4), qui décrivent une seule personne et faussent le sens en synastrie. La variété vient du fait que les deux fonctions changent à chaque ligne ; les tails tournent pour éviter toute répétition résiduelle.",
+
+ "fonctions": {
+  "soleil": "l'identité profonde",
+  "lune": "le monde intérieur",
+  "mercure": "la façon de penser",
+  "venus": "les élans du cœur",
+  "mars": "l'envie d'agir",
+  "jupiter": "l'appétit d'ouverture",
+  "saturne": "le rapport à la durée",
+  "uranus": "le besoin de liberté",
+  "neptune": "l'imaginaire",
+  "pluton": "la force de transformation",
+  "asc": "la première impression",
+  "mc": "l'image publique",
+  "noeud_moyen": "le cap d'évolution"
+ },
+
+ "_rappels_note": "Pronom de rappel quand la MÊME fonction est en jeu des deux côtés (Vénus-Vénus…) : évite de répéter la phrase (« l'envie d'agir de X et celle de Y »). Accordé au genre/nombre de la phrase-fonction.",
+ "rappels": {
+  "soleil": "celle", "lune": "celui", "mercure": "celle", "venus": "ceux",
+  "mars": "celle", "jupiter": "celui", "saturne": "celui", "uranus": "celui",
+  "neptune": "celui", "pluton": "celle", "asc": "celle", "mc": "celle",
+  "noeud_moyen": "celui"
+ },
+
+ "classe": {
+  "conjonction": {
+   "verbe": "se superposent presque",
+   "tails": [
+    "Difficile de dire où finit l'un et où commence l'autre — ces deux registres avancent d'un même souffle.",
+    "Ce que ça touche chez l'un se sent aussitôt chez l'autre, sans filtre. Ça rapproche fort.",
+    "Un même élan anime ces deux points chez vous deux, une proximité immédiate qui va parfois jusqu'à se confondre."
+   ]
+  },
+  "carre-opposition": {
+   "verbe": "se cherchent, chacun tirant de son côté",
+   "tails": [
+    "Ce point ne va pas de soi, il s'invente à deux — et c'est justement lui qui donne du relief à votre lien.",
+    "Un peu de traduction est utile ici. L'écart demande un ajustement conscient, et il enrichit qui le relève.",
+    "Ces deux directions ne s'accordent pas d'emblée, mais tenues ensemble, elles élargissent votre terrain commun."
+   ]
+  },
+  "sextile-trigone": {
+   "verbe": "se répondent avec aisance",
+   "tails": [
+    "Un appui facile, presque évident, à remarquer pour qu'il serve vraiment.",
+    "Ça circule tout seul entre vous sur ce terrain, une facilité à cultiver plutôt qu'à tenir pour acquise.",
+    "Ces deux registres se donnent la main sans effort, un bon point d'appui pour bâtir."
+   ]
+  }
+ }
+}

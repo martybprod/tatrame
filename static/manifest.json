@@ -1,0 +1,14 @@
+{
+  "name": "Ta Trame",
+  "short_name": "Ta Trame",
+  "description": "Un petit conseil chaque matin — carte du ciel, numérologie, tarot zen, astrologie chinoise. 100% déterministe.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#141110",
+  "theme_color": "#141110",
+  "lang": "fr",
+  "icons": [
+    {"src": "/static/icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}
+  ]
+}

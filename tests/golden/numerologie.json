@@ -1,0 +1,357 @@
+{
+  "_source": "Castells & Durandy, Numérologie, Eyrolles, ISBN 9782212597790",
+  "_avertissement": "Valeurs de référence relevées DANS le livre (pas recalculées par moi). Aucun texte d'interprétation — uniquement des nombres.",
+  "_convention_pagination": "Les numéros de page proviennent des ancres <a id=\"pageNNN\"> de l'EPUB (pagination de l'édition imprimée).",
+  "_lecture_des_champs": {
+    "valeur": "Le nombre IMPRIMÉ par le livre comme valeur de la clé. Quand le livre imprime un maître-nombre (11/22/33), c'est LUI la valeur — pas sa réduction.",
+    "sous_nombre": "null = le livre n'imprime PAS de sous-nombre pour cette clé dans ce portrait. Ne jamais confondre null et 'absent'.",
+    "memoires": "Mémoires familiales (13/14/16/19) explicitement ATTRIBUÉES par le livre à cette personne pour cette clé. [] = rien d'imprimé.",
+    "source": "printed = valeur littéralement imprimée ; prose = valeur affirmée dans le corps de texte (pas dans un tableau/en-tête)."
+  },
+
+  "conventions_imprimees": {
+    "_page": "291",
+    "accents": {"é": "e", "è": "e", "ä": "a", "ç": "c"},
+    "trait_union": "Le trait d'union de l'état civil impose d'additionner la somme des deux prénoms (ou noms) concernés — voir exemple marie-jeanne.",
+    "table_lettres_1_9": {
+      "1": ["A", "J", "S"], "2": ["B", "K", "T"], "3": ["C", "L", "U"],
+      "4": ["D", "M", "V"], "5": ["E", "N", "W"], "6": ["F", "O", "X"],
+      "7": ["G", "P", "Y"], "8": ["H", "Q", "Z"], "9": ["I", "R"]
+    },
+    "table_voyelles": {"A": 1, "U": 3, "E": 5, "O": 6, "Y": 7, "I": 9},
+    "table_consonnes": {
+      "J": 1, "S": 1, "B": 2, "K": 2, "T": 2, "C": 3, "L": 3,
+      "D": 4, "M": 4, "V": 4, "N": 5, "W": 5, "F": 6, "X": 6,
+      "G": 7, "P": 7, "H": 8, "Q": 8, "Z": 8, "R": 9
+    },
+    "sous_nombres_a_conserver": {
+      "racine1_racine2_tronc_feuille_fruit": [11, 13, 14, 16, 19, 22, 33],
+      "dynamique_de_vie": [11, 22, 33]
+    },
+    "maitres_nombres": [11, 22, 33],
+    "memoires_familiales": [13, 14, 16, 19],
+    "raccourci_369": {
+      "_page": "293 (racine 1), 297 (tronc)",
+      "regle": "Si le premier calcul donne 3, 8 ou 9, inutile de faire les autres calculs : aucun maître-nombre ni mémoire familiale ne s'y réduit.",
+      "valeurs": [3, 8, 9]
+    },
+    "reduction_qualites_innees": {
+      "_page": "304",
+      "regle_imprimee": "Plus de 9 lettres dans une case => réduire en un seul nombre",
+      "exemple_imprime": {"lettres": 12, "resultat": 3}
+    },
+    "defis": {
+      "_page": "307",
+      "formules": {
+        "defi_1": "jour_reduit - mois_reduit",
+        "defi_2": "jour_reduit - annee_reduite",
+        "defi_3": "defi_1 - defi_2",
+        "defi_4": "mois_reduit - annee_reduite"
+      },
+      "valeur_absolue": true,
+      "zero_devient_9": true,
+      "defis_majeurs": [1, 2]
+    },
+    "memoire_jour_de_naissance": {
+      "_page": "306",
+      "jours_a_memoire_forte": [13, 14, 16, 19]
+    },
+    "importance_memoires": {
+      "_page": "306",
+      "tres_forte": ["jour_naissance", "annee_naissance", "racine1", "racine2", "tronc"],
+      "forte": ["feuilles", "fruits"],
+      "relative": ["premier_prenom", "nom_de_famille"],
+      "faible": ["autres_prenoms"]
+    },
+    "nom_epouse": {
+      "_page": "49, 292, 302",
+      "regle_defaut": "nom de jeune fille",
+      "bascule": "Si le nom d'épouse est porté plus longtemps que le nom de naissance, étudier prénom + nom d'épouse. Bascule à 2x l'âge du mariage (Veil : mariée à 19 ans => bascule à 38 ans, en 1965).",
+      "exception_qualites_innees": "Pour les QUALITÉS INNÉES, ne jamais tenir compte du nom d'épouse (p302) — ce sont les qualités propres."
+    },
+    "double_date_naissance": {
+      "_page": "49",
+      "regle": "Si deux dates existent (officielle et réelle), c'est la date OFFICIELLE qui compte."
+    }
+  },
+
+  "portraits": [
+    {
+      "id": "jk-rowling",
+      "en_tete_livre": "J. K. Rowling — née Joanne Rowling le 31/07/1965",
+      "prenoms_nom": ["Joanne", "Rowling"],
+      "naissance": [1965, 7, 31],
+      "page": "112-113",
+      "attendu": {
+        "racine1": {"valeur": 5, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "racine2": {
+          "valeur": 22, "sous_nombre": null, "memoires": [], "source": "printed",
+          "litige": "Le livre imprime « Seconde racine : 22 » (p112). Aucune des trois routes documentées dans l'annexe (p296) ne produit 22 pour JOANNE ROWLING : somme des lettres JOANNE=23 + ROWLING=44 = 67 -> 13/4 ; somme par réduction préalable 5+8 = 13 -> 13/4 ; feuilles(27) + fruits(40) = 67 -> 13/4. Le texte du portrait mentionne d'ailleurs « énergie 4 provenant du 22 », donc x/4 dans les deux hypothèses. Ce champ conserve DÉLIBÉRÉMENT 22 (ce que la source imprime) pour que le test EXPOSE le désaccord au lieu de le masquer. Hypothèses non résolues : (a) le livre calcule sur « Joanne Kathleen Rowling » (K. ajouté après la naissance) — non vérifié, ne donne pas 22 non plus ; (b) coquille ou route de calcul non documentée."
+        },
+        "tronc": {"valeur": 11, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "dynamique": {"valeur": 11, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "ecorce": 4,
+        "branche": 2,
+        "feuille": {"valeur": 9, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "fruit": {"valeur": 4, "sous_nombre": null, "memoires": [], "source": "printed"}
+      },
+      "qualites_manquantes": null,
+      "notes": "Le livre n'imprime AUCUN sous-nombre ni détail de calcul pour ce portrait : seulement les 8 valeurs d'en-tête. Les sous_nombre sont donc null (non imprimés), pas 'inexistants'. — Le livre attribue par ailleurs à Rowling la mémoire familiale 13 de façon INDIRECTE : elle est citée en exemple sous la rubrique « mémoire familiale 13 » (p150), sans que le livre précise dans quelle clé ce 13 se situe. Non consigné dans attendu pour cette raison. — Contrôle de cohérence du nom : branche = 2 = nombre de A/J/S dans JOANNE ROWLING (J, A) => confirme que le calcul porte bien sur « Joanne Rowling » et non « J. K. Rowling »."
+    },
+    {
+      "id": "steve-jobs",
+      "en_tete_livre": "Steve Jobs — né Steven Paul Jobs le 24/02/1955",
+      "prenoms_nom": ["Steven", "Paul", "Jobs"],
+      "naissance": [1955, 2, 24],
+      "page": "162-164",
+      "attendu": {
+        "racine1": {"valeur": 1, "sous_nombre": null, "memoires": [19], "source": "printed (valeur) + prose (mémoire 19)"},
+        "racine2": {"valeur": 1, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "tronc": {"valeur": 8, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "dynamique": {"valeur": 1, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "ecorce": 6,
+        "branche": 4,
+        "feuille": {"valeur": 11, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "fruit": {"valeur": 8, "sous_nombre": null, "memoires": [], "source": "printed"}
+      },
+      "qualites_manquantes": [8],
+      "notes": "Mémoire 19 : le livre écrit p162 « Sa mémoire familiale 19 a également favorisé ce trait de personnalité » — il AFFIRME la mémoire 19 mais n'imprime PAS dans quelle clé elle se trouve. Je l'ai rattachée à racine1 parce que c'est la seule clé où 19 peut apparaître (24+2+1955 = 1981 -> 19), mais c'est une INFÉRENCE de placement : si votre implémentation la place ailleurs, ce n'est pas le livre qui tranche. — Qualité manquante 8 : imprimée p162 (« Steve Jobs avait la qualité manquante 8 »). — Feuille 11 : piège d'implémentation, la route « somme brute » donne 20 -> 2 ; seule la route « réduire chaque prénom/nom PUIS additionner » fait apparaître le 11. Le livre imprime 11. — Contrôle de cohérence du nom : branche = 4 = A/J/S dans STEVEN PAUL JOBS (S, A, J, S) => confirme « Steven Paul Jobs »."
+    },
+    {
+      "id": "barack-obama",
+      "en_tete_livre": "Barack Obama — né Barack Hussein Obama, le 4/08/1961",
+      "prenoms_nom": ["Barack", "Hussein", "Obama"],
+      "naissance": [1961, 8, 4],
+      "page": "234-236",
+      "attendu": {
+        "racine1": {"valeur": 11, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "racine2": {"valeur": 1, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "tronc": {"valeur": 3, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "dynamique": {"valeur": 6, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "ecorce": 4,
+        "branche": 6,
+        "feuille": {"valeur": 9, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "fruit": {"valeur": 1, "sous_nombre": null, "memoires": [], "source": "printed"}
+      },
+      "qualites_manquantes": null,
+      "notes": "Aucun sous-nombre ni mémoire imprimés pour ce portrait. — Racine1 = 11 : piège, la route verticale (4+8+1961 = 1973 -> 20 -> 2) NE donne pas 11 ; c'est la route horizontale (4+8+1+9+6+1 = 29 -> 11) qui le fait apparaître, et le livre retient le maître-nombre COMME valeur. — Contrôle de cohérence du nom : branche = 6 = A/J/S dans BARACK HUSSEIN OBAMA (A,A / S,S / A,A) => confirme les trois éléments « Barack Hussein Obama »."
+    },
+    {
+      "id": "simone-veil",
+      "en_tete_livre": "Simone Veil — née Simone Jacob, le 13/07/1927",
+      "prenoms_nom": ["Simone", "Veil"],
+      "naissance": [1927, 7, 13],
+      "page": "267-268",
+      "attendu": {
+        "racine1": {"valeur": 3, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "racine2": {"valeur": 6, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "tronc": {"valeur": 11, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "dynamique": {"valeur": 11, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "ecorce": 4,
+        "branche": 1,
+        "feuille": {"valeur": 7, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "fruit": {"valeur": 8, "sous_nombre": null, "memoires": [], "source": "printed"}
+      },
+      "qualites_manquantes": null,
+      "notes": "PIÈGE MAJEUR — l'en-tête dit « née Simone Jacob » mais le calcul porte sur SIMONE VEIL (nom d'épouse). Le livre le dit explicitement juste sous l'en-tête (p267) : « Nous étudierons uniquement Simone Veil — et non Simone Jacob — puisqu'elle a utilisé son nom d'épouse pendant plus longtemps que son nom de naissance. Elle a été mariée à 19 ans ; donc à partir de l'âge de 38 ans — c'est-à-dire en 1965 —, son nom d'épouse a eu plus d'influence. » Donc prenons_nom = [Simone, Veil], PAS [Simone, Jacob]. — Contrôle de cohérence : branche = 1 = A/J/S dans SIMONE VEIL (le seul S) ; SIMONE JACOB donnerait 3 (S, J, A) => confirme mathématiquement l'usage du nom d'épouse. — Attention : la règle du nom d'épouse ne s'applique PAS aux qualités innées (p302). — Tronc = 11 : piège, 13+7 = 20 -> 2 ; c'est la route réduite (4+7 = 11) qui fait le 11. — Aucun sous-nombre imprimé, bien que VEIL (feuilles) vaille 14 et le jour 13 soit lui-même une mémoire (p306)."
+    },
+    {
+      "id": "roger-federer",
+      "en_tete_livre": "Roger Federer — né le 8/08/1981",
+      "prenoms_nom": ["Roger", "Federer"],
+      "naissance": [1981, 8, 8],
+      "page": "283-284",
+      "attendu": {
+        "racine1": {"valeur": 8, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "racine2": {"valeur": 7, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "tronc": {"valeur": 7, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "dynamique": {"valeur": 22, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "ecorce": 8,
+        "branche": 0,
+        "feuille": {"valeur": 8, "sous_nombre": null, "memoires": [], "source": "printed"},
+        "fruit": {"valeur": 8, "sous_nombre": null, "memoires": [], "source": "printed"}
+      },
+      "qualites_manquantes": [1, 2, 3, 8],
+      "notes": "Le livre ne donne PAS de nom complet pour Federer (contrairement aux 4 autres portraits) : seulement « Roger Federer ». Les qualités manquantes imprimées p202 (1, 2, 3 et 8) se vérifient exactement sur ROGER FEDERER (aucun A/J/S, aucun B/K/T, aucun C/L/U, aucun H/Q/Z) => le livre calcule bien sur deux éléments seulement. — Branche = 0 : cas limite à tester (zéro lettre A/J/S) ; le livre traite explicitement « Branche : 0 » comme une valeur légitime, PAS comme une absence. — Aucun sous-nombre imprimé alors que tronc (8+8 = 16 -> 7) et racine2 (36+43 = 79 -> 16 -> 7) passent tous deux par 16, une mémoire familiale."
+    }
+  ],
+
+  "exemples_annexe": [
+    {"id": "marie-jeanne-marie", "page": "291", "entree": "MARIE", "attendu": 28,
+     "pourquoi": "Somme des lettres du 1er élément du prénom composé (4+1+9+9+5)."},
+    {"id": "marie-jeanne-jeanne", "page": "291", "entree": "JEANNE", "attendu": 22,
+     "pourquoi": "Somme des lettres du 2e élément (1+5+1+5+5+5)."},
+    {"id": "marie-jeanne-total", "page": "291", "entree": "MARIE-JEANNE", "attendu": 50,
+     "pourquoi": "Le trait d'union impose d'additionner les deux éléments : 28 + 22 = 50."},
+    {"id": "marie-jeanne-reduit-ligne2", "page": "291", "entree": "MARIE-JEANNE (réduction de chaque élément puis somme)",
+     "attendu": {"marie": 10, "jeanne": 4, "total": 14},
+     "pourquoi": "28 -> 10, 22 -> 4, 10 + 4 = 14 : c'est CETTE route qui fait apparaître la mémoire familiale 14 (le livre l'annonce explicitement)."},
+    {"id": "marie-jeanne-reduit-ligne3", "page": "291", "entree": "MARIE-JEANNE (3e ligne)",
+     "attendu": {"marie": 1, "jeanne": 4, "total": 5},
+     "pourquoi": "10 -> 1, 4 -> 4, 1 + 4 = 5. Valeur finale réduite 5, mémoire familiale 14 conservée."},
+
+    {"id": "racine1-vertical-16071972", "page": "293", "entree": [1972, 7, 16],
+     "attendu": {"notation": "6", "valeur": 6, "sous_nombre": null, "memoires": [], "etapes": [1995, 24, 6]},
+     "pourquoi": "Calcul VERTICAL : 16 + 7 + 1972 = 1995 -> 1+9+9+5 = 24 -> 2+4 = 6. 24 n'est ni maître-nombre ni mémoire => aucun sous-nombre."},
+    {"id": "racine1-vertical-29092000", "page": "293", "entree": [2000, 9, 29],
+     "attendu": {"notation": "13/4", "valeur": 4, "sous_nombre": 13, "memoires": [13], "etapes": [2038, 13, 4]},
+     "pourquoi": "Calcul VERTICAL : 29 + 9 + 2000 = 2038 -> 2+0+3+8 = 13 -> 4. On garde le 13 (mémoire familiale)."},
+    {"id": "racine1-horizontal-16071972", "page": "294", "entree": [1972, 7, 16],
+     "attendu": {"notation": "33/6", "valeur": 6, "sous_nombre": 33, "memoires": [], "etapes": [33, 6]},
+     "pourquoi": "Calcul HORIZONTAL (J+J+M+M+A+A+A+A) : 1+6+0+7+1+9+7+2 = 33 -> 6. Le livre imprime « 1 + 6 + 7 + 1 + 9 + 7 + 2 = 33 » (le 0 de 07 est omis à l'impression, sans effet). Le 33 remplace le sous-nombre 24 du calcul vertical : la racine 1 EST 33/6."},
+    {"id": "racine1-horizontal-29092000", "page": "294", "entree": [2000, 9, 29],
+     "attendu": {"notation": "22/4", "valeur": 4, "sous_nombre": 22, "memoires": [13], "etapes": [22, 4]},
+     "pourquoi": "Calcul HORIZONTAL : 2+9+0+9+2+0+0+0 = 22 -> 4. Le livre imprime « 2 + 9 + 9 + 2 = 22 ». Le maître-nombre 22 devient le sous-nombre retenu (à la place du 13 vertical), MAIS le 13 vu au calcul précédent reste à noter comme mémoire familiale à travailler. => Cas clé : sous_nombre et memoires sont DEUX choses distinctes."},
+    {"id": "racine1-reduit-29091991", "page": "295", "entree": [1991, 9, 29],
+     "attendu": {"notation": "13/4", "valeur": 4, "sous_nombre": 13, "memoires": [13],
+                 "reductions_intermediaires": {"jour": 11, "mois": 9, "annee": 20}, "etapes": [40, 13, 4]},
+     "pourquoi": "3e route : réduire jour/mois/année D'ABORD (29 -> 11, 9 -> 9, 1991 -> 20), puis 11 + 9 + 20 = 40 ; la ligne réduite 2 + 9 + 2 = 13 -> 4. ATTENTION : la 'réduction' du jour/mois/année est UN SEUL PAS (1991 -> 20, pas -> 2 ; 29 -> 11, pas -> 2)."},
+
+    {"id": "stephane-somme-lettres", "page": "296", "entree": "STÉPHANE", "attendu": 34,
+     "pourquoi": "prouve la convention É=5 (accents transparents) : 1+2+5+7+8+1+5+5 = 34"},
+    {"id": "jacques-somme-lettres", "page": "296", "entree": "JACQUES", "attendu": 22,
+     "pourquoi": "1+1+3+8+3+5+1 = 22"},
+    {"id": "dupond-somme-lettres", "page": "296", "entree": "DUPOND", "attendu": 29,
+     "pourquoi": "4+3+7+6+5+4 = 29"},
+    {"id": "racine2-stephane-total-brut", "page": "296", "entree": ["STÉPHANE", "JACQUES", "DUPOND"],
+     "attendu": {"notation": "13/4", "total": 85, "valeur": 4, "sous_nombre": 13},
+     "pourquoi": "Ligne 1 (sommes brutes) : 34 + 22 + 29 = 85 -> 8+5 = 13/4."},
+    {"id": "racine2-stephane-ligne-reduite", "page": "296", "entree": ["STÉPHANE", "JACQUES", "DUPOND"],
+     "attendu": {"notation": "22/4", "elements": [7, 4, 11], "total": 22, "valeur": 4, "sous_nombre": 22},
+     "pourquoi": "Ligne 2 (chaque nom réduit d'UN pas : 34 -> 7, 22 -> 4, 29 -> 11) : 7 + 4 + 11 = 22 -> 22/4. Noter 29 -> 11 (et non -> 2)."},
+    {"id": "racine2-stephane-ligne3", "page": "296", "entree": ["STÉPHANE", "JACQUES", "DUPOND"],
+     "attendu": {"notation": "13/4", "elements": [7, 4, 2], "total": 13, "valeur": 4, "sous_nombre": 13},
+     "pourquoi": "Ligne 3 (réduction complète : 11 -> 2) : 7 + 4 + 2 = 13 -> 13/4."},
+    {"id": "racine2-stephane-conclusion", "page": "296", "entree": ["STÉPHANE", "JACQUES", "DUPOND"],
+     "attendu": {"racine2_valeur": 22, "memoires": [13]},
+     "pourquoi": "Conclusion IMPRIMÉE : « la seconde racine de Stéphane Dupond est 22 et il a la mémoire familiale 13 ». => Le maître-nombre 22 DEVIENT la valeur de la clé (pas 4), tandis que le 13 reste un DRAPEAU mémoire. Test le plus discriminant du fichier."},
+
+    {"id": "tronc-1012-brut", "page": "297", "entree": {"jour": 10, "mois": 12},
+     "attendu": {"notation": "22/4", "total": 22, "valeur": 4, "sous_nombre": 22},
+     "pourquoi": "Route 1 (somme brute) : 10 + 12 = 22 -> 4. On garde le 22 (maître-nombre)."},
+    {"id": "tronc-2507-brut", "page": "297", "entree": {"jour": 25, "mois": 7},
+     "attendu": {"notation": "5", "total": 32, "valeur": 5, "sous_nombre": null},
+     "pourquoi": "Route 1 : 25 + 7 = 32 -> 3+2 = 5. 32 n'est ni maître ni mémoire => pas de sous-nombre."},
+    {"id": "tronc-1012-reduit", "page": "298", "entree": {"jour": 10, "mois": 12},
+     "attendu": {"notation": "4", "total": 4, "valeur": 4, "sous_nombre": null},
+     "pourquoi": "Route 2 (réduire d'abord) : 1 + 3 = 4. Rien de remarquable."},
+    {"id": "tronc-1012-arbitrage", "page": "298", "entree": {"jour": 10, "mois": 12},
+     "attendu": {"notation": "22/4", "valeur": 4, "sous_nombre": 22, "route_retenue": "brut"},
+     "pourquoi": "ARBITRAGE IMPRIMÉ : « on retient le résultat du premier calcul, puisqu'il fait apparaître un maître-nombre »."},
+    {"id": "tronc-2507-reduit", "page": "298", "entree": {"jour": 25, "mois": 7},
+     "attendu": {"notation": "14/5", "elements": [7, 7], "total": 14, "valeur": 5, "sous_nombre": 14},
+     "pourquoi": "Route 2 : 7 (car 2+5) + 7 (car 0+7) = 14 -> 5."},
+    {"id": "tronc-2507-arbitrage", "page": "298", "entree": {"jour": 25, "mois": 7},
+     "attendu": {"notation": "14/5", "valeur": 5, "sous_nombre": 14, "route_retenue": "reduit"},
+     "pourquoi": "ARBITRAGE IMPRIMÉ : « on retient le résultat du second calcul, puisqu'il fait apparaître une mémoire familiale ». => La route gagnante dépend du RÉSULTAT, pas d'un ordre fixe."},
+
+    {"id": "dynamique-paul-martin", "page": "299", "entree": {"nom": "Paul Martin", "naissance": [2008, 9, 10]},
+     "attendu": {
+       "racine1": {"valeur": 11},
+       "racine2": {"valeur": 8},
+       "tronc": {"valeur": 1, "memoires": [19]},
+       "somme_maitres_non_reduits": 20,
+       "somme_reduite": 11,
+       "dynamique": {"notation": "11/2", "valeur": 2, "sous_nombre": 11}
+     },
+     "pourquoi": "Dynamique = racine1 + racine2 + tronc. Étape 1 : GARDER les maîtres-nombres non réduits => 11 + 8 + 1 = 20 -> 2. Étape 2 : réduire chaque terme => 2 + 8 + 1 = 11 -> 11/2. Résultat imprimé : « Paul Martin a une dynamique de vie 11/2 ». Le tronc 1 porte une mémoire 19 (imprimé) qui ne se propage PAS dans la dynamique. NB : ici le livre note 11/2 (valeur 2 + sous-nombre 11), alors que dans les portraits il imprime « Dynamique de vie : 11 » — même chose, notation abrégée."},
+
+    {"id": "ecorce-31", "page": "300", "entree": {"jour": 31}, "attendu": 4,
+     "pourquoi": "3 + 1 = 4."},
+    {"id": "ecorce-29", "page": "300", "entree": {"jour": 29}, "attendu": 2,
+     "pourquoi": "2 + 9 = 11 -> 1 + 1 = 2. L'écorce est TOUJOURS réduite à un chiffre : le maître-nombre 11 n'est PAS conservé ici (contrairement au tronc/racines). Le livre demande de noter « le nombre » sans sous-nombre pour l'écorce."},
+    {"id": "ecorce-jour-1-a-9", "page": "300", "entree": {"jour": "1..9"}, "attendu": "le jour lui-même",
+     "pourquoi": "Règle imprimée : jour entre 1 et 9 => aucun calcul."},
+
+    {"id": "branches-martine-sylvie-juson", "page": "300", "entree": ["Martine", "Sylvie", "Juson"], "attendu": 4,
+     "pourquoi": "Compte des lettres A, J, S dans tous les prénoms + nom. Le livre détaille : « un A, un J et deux S » = 4. => Les branches sont un COMPTAGE de lettres, jamais une somme de valeurs, et le résultat n'est PAS réduit."},
+
+    {"id": "feuilles-marie-lise-dupont", "page": "301", "entree": ["Marie", "Lise", "Dupont"],
+     "attendu": {"notation": "11/2", "voyelles_par_element": [15, 14, 9], "total": 38,
+                 "ligne_reduite": [6, 5, 9], "total_reduit": 20, "valeur": 2, "sous_nombre": 11,
+                 "memoires": [{"valeur": 14, "position": "deuxieme_prenom"}]},
+     "pourquoi": "MARIE (A1+I9+E5 = 15) + LISE (I9+E5 = 14) + DUPONT (U3+O6 = 9) = 38 -> 3+8 = 11 ; ligne réduite 6+5+9 = 20 -> 2. Imprimé : « besoins affectifs 11/2 » et « mémoire familiale 14 dans son deuxième prénom ». => Une mémoire peut être LOCALISÉE dans un élément du nom, sans apparaître dans le total."},
+    {"id": "fruits-marie-lise-dupont", "page": "302", "entree": ["Marie", "Lise", "Dupont"],
+     "attendu": {"notation": "8", "consonnes_par_element": [13, 4, 18], "total": 35,
+                 "ligne_reduite": [4, 4, 9], "total_reduit": 17, "valeur": 8, "sous_nombre": null,
+                 "memoires": [{"valeur": 13, "position": "premier_prenom"}]},
+     "pourquoi": "MARIE (M4+R9 = 13) + LISE (L3+S1 = 4) + DUPONT (D4+P7+N5+T2 = 18) = 35 -> 8 ; ligne réduite 4+4+9 = 17 -> 8. Imprimé : « besoins de réalisation 8 » et « mémoire familiale 13 dans son premier prénom ». Le 13 est LOCAL (MARIE), il n'apparaît nulle part dans le total => une implémentation qui ne scanne que les totaux le rate."},
+
+    {"id": "qualites-jeanne-samantha-martin", "page": "305", "entree": ["Jeanne", "Samantha", "Martin"],
+     "attendu": {"1": 7, "2": 2, "3": 0, "4": 2, "5": 6, "6": 0, "7": 0, "8": 1, "9": 2},
+     "qualites_manquantes": [3, 6, 7],
+     "pourquoi": "Comptage imprimé, case par case (A J S = 7 ; B K T = 2 ; C L U = 0 ; D M V = 2 ; E N W = 6 ; F O X = 0 ; G P Y = 0 ; H Q Z = 1 ; I R = 2). Le livre conclut qu'elle n'a ni la qualité Communication (3), ni Femme (6), ni Apprentissage/Spiritualité (7). => Une qualité manquante = case à ZÉRO."},
+
+    {"id": "memoire-annee-1945", "page": "306", "entree": {"annee": 1945}, "attendu": {"somme": 19, "memoire": 19},
+     "pourquoi": "1 + 9 + 4 + 5 = 19 => mémoire familiale 19. UN SEUL pas de réduction : on ne pousse pas jusqu'à 1."},
+    {"id": "memoire-annee-1960", "page": "306", "entree": {"annee": 1960}, "attendu": {"somme": 16, "memoire": 16},
+     "pourquoi": "1 + 9 + 6 + 0 = 16 => mémoire familiale 16."},
+
+    {"id": "defis-29121997-reductions", "page": "308", "entree": {"naissance": [1997, 12, 29]},
+     "attendu": {"jour_reduit": 2, "mois_reduit": 3, "annee_reduite": 8},
+     "pourquoi": "Pour les DÉFIS uniquement, tout est réduit à UN SEUL CHIFFRE : 29 -> 11 -> 2 (le maître-nombre 11 est écrasé !), 12 -> 3, 1997 -> 26 -> 8. Contraste direct avec racine1-reduit-29091991 où 29 -> 11 s'arrête à 11."},
+    {"id": "defis-29121997-resultats", "page": "308", "entree": {"naissance": [1997, 12, 29]},
+     "attendu": [1, 6, 5, 5],
+     "detail": {"defi_1": {"calcul": "2 - 3", "valeur": 1}, "defi_2": {"calcul": "2 - 8", "valeur": 6},
+                "defi_3": {"calcul": "1 - 6", "valeur": 5}, "defi_4": {"calcul": "8 - 3", "valeur": 5}},
+     "pourquoi": "Valeur absolue systématique (2-3 = -1 -> 1 ; 2-8 = -6 -> 6). Le défi 3 se calcule sur les défis 1 et 2, pas sur la date. Le défi 4 est imprimé « 8 - 3 », soit annee - mois (le libellé de la règle dit « mois - année » : même résultat en valeur absolue)."}
+  ],
+
+  "exemples_hors_annexe": [
+    {"id": "federer-qualites-manquantes", "page": "202", "entree": ["Roger", "Federer"], "attendu": [1, 2, 3, 8],
+     "pourquoi": "Imprimé : « Roger Federer a quatre qualités manquantes (1, 2, 3 et 8) ». Se vérifie exactement sur ROGER FEDERER."},
+    {"id": "monroe-qualites-manquantes", "page": "202", "entree": "Marilyn Monroe", "attendu": [3, 7, 8],
+     "pourquoi": "Imprimé. ATTENTION : nom de scène ; le livre ne précise pas l'état civil utilisé (Norma Jeane Mortenson/Baker) — ne pas en faire un test de nom."},
+    {"id": "pasteur-qualites-manquantes", "page": "202", "entree": "Louis Pasteur", "attendu": [4, 8],
+     "pourquoi": "Imprimé. Se vérifie sur LOUIS PASTEUR (aucun D/M/V, aucun H/Q/Z)."},
+    {"id": "gates-qualites-manquantes", "page": "202", "entree": "Bill Gates", "attendu": [6],
+     "pourquoi": "Imprimé (« une qualité manquante (6) »). NB : le livre utilise ici « Bill » et non « William Henry Gates III » — prudence."},
+    {"id": "dali-qualites-manquantes", "page": "202", "entree": "Salvador Dalí", "attendu": [],
+     "pourquoi": "Imprimé : « Salvador Dalí n'avait aucune qualité manquante ». Cas limite : liste vide."},
+    {"id": "juppe-memoire-annee", "page": "248", "entree": {"annee": 1945}, "attendu": {"somme": 19, "memoire": 19},
+     "pourquoi": "Imprimé : « Alain Juppé, né en 1945 (1 + 9 + 4 + 5 = 19) ». Doublon de contrôle de memoire-annee-1945."},
+    {"id": "julie-dynamique", "page": "111", "entree": {"triangle_fondamental": [5, 1, 1]}, "attendu": {"dynamique": 7},
+     "pourquoi": "Imprimé : « Son triangle fondamental est 5 – 1 – 1 ; sa dynamique de vie est 7 ». Cas simple sans maître-nombre : 5 + 1 + 1 = 7."}
+  ],
+
+  "periodes_qualites": {
+    "_note": "Périodes de vie pendant lesquelles la vie 'teste' une qualité manquante. Le champ statut distingue ce qui est IMPRIMÉ de ce que j'INFÈRE.",
+    "_note_bornes": "Le livre n'imprime nulle part la règle de chevauchement des bornes (36 est-il en 5 ou en 6 ?). Les intervalles sont recopiés tels quels ; à votre implémentation de choisir une convention et de la documenter — le livre ne tranche pas.",
+    "periodes": [
+      {"qualite": 1, "nom": "Action", "debut": 0, "fin": 9, "statut": "IMPRIME",
+       "citation_source": "p205 — « C'est entre la naissance et l'âge de 9 ans que cette qualité est le plus facilement susceptible d'être acquise. »"},
+      {"qualite": 2, "nom": "Regard", "debut": 9, "fin": 18, "statut": "IMPRIME",
+       "citation_source": "p207 — « C'est dans la période comprise entre 9 et 18 ans... »"},
+      {"qualite": 3, "nom": "Communication", "debut": 18, "fin": 27, "statut": "IMPRIME",
+       "citation_source": "p209 — « Entre 18 et 27 ans, la vie va vous donner l'occasion de vérifier... »"},
+      {"qualite": 4, "nom": "Travail", "debut": 27, "fin": 36, "statut": "IMPRIME",
+       "citation_source": "p212 — « La période comprise entre 27 et 36 ans... » (confirmé p212 par l'exemple Frank Sinatra, 1943-1952 = ses 27-36 ans)"},
+      {"qualite": 5, "nom": "Homme et Liberté", "debut": 36, "fin": 45, "statut": "IMPRIME",
+       "citation_source": "p215 — « La période comprise entre 36 et 45 ans... »"},
+      {"qualite": 6, "nom": "Femme et Relation amoureuse", "debut": 45, "fin": 54, "statut": "IMPRIME",
+       "citation_source": "p219 — « La période comprise entre 45 et 54 ans... »"},
+      {"qualite": 7, "nom": "Apprentissage et Spiritualité", "debut": 54, "fin": 63, "statut": "IMPRIME",
+       "citation_source": "p222 — « La période comprise entre 54 et 63 ans... »"},
+      {"qualite": 8, "nom": "Réalisation", "debut": 63, "fin": 72, "statut": "IMPRIME",
+       "citation_source": "p225 — « La période comprise entre 63 et 72 ans... »"},
+      {"qualite": 9, "nom": "Groupe", "debut": 72, "fin": 81, "statut": "IMPRIME",
+       "citation_source": "p227 — « La période comprise entre 72 et 81 ans... »"}
+    ],
+    "regle_generale_inferee": {
+      "statut": "INFERE",
+      "formule": "debut = (qualite - 1) * 9 ; fin = qualite * 9",
+      "avertissement": "Le livre n'énonce JAMAIS cette formule ni ne présente les 9 périodes dans un tableau : elles sont dispersées dans 9 sections distinctes du chapitre 5, chacune formulée en prose. La formule reproduit exactement les 9 intervalles imprimés, mais c'est MA généralisation, pas celle des auteurs. Ne pas la tester comme si elle venait du livre."
+    }
+  },
+
+  "valeurs_absentes_du_livre": [
+    "Aucun sous-nombre n'est imprimé pour les 5 portraits (uniquement les 8 valeurs d'en-tête) : tous les champs sous_nombre des portraits sont donc null par ABSENCE de source, jamais par calcul.",
+    "Les qualités innées / qualités manquantes ne sont imprimées que pour Jobs ([8], p162) et Federer ([1,2,3,8], p202). null pour Rowling, Obama, Veil.",
+    "Aucun défi n'est imprimé pour aucun des 5 portraits.",
+    "Aucun détail de calcul (étapes, routes) n'est imprimé pour les 5 portraits : impossible de savoir quelle route le livre a suivie pour chaque clé.",
+    "Le nom complet de Roger Federer n'est pas donné (seulement « Roger Federer »).",
+    "Le livre n'indique pas dans quelle clé se situe la mémoire 19 de Steve Jobs, ni la mémoire 13 attribuée à J. K. Rowling (p150).",
+    "La convention de bornes des périodes de qualité (intervalle ouvert/fermé) n'est jamais précisée.",
+    "L'annexe déclare explicitement (p291) NE PAS documenter les algorithmes des mémoires familiales : « sauf ceux des mémoires familiales, du fait de la complexité des algorithmes ». La détection des mémoires n'est donc reconstructible QUE depuis les exemples ci-dessus, pas depuis une règle imprimée."
+  ]
+}

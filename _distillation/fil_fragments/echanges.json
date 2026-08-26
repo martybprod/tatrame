@@ -1,0 +1,76 @@
+{
+  "_note": "Fragment domaine echanges (maison III — mental, communication, focus). Sources : cartes_de_concepts.md §13 Deep Work (Newport), §17 How to Talk So Kids Will Listen (Faber & Mazlish), §14 Essentialism §non/clarté (McKeown), §10 Accords toltèques §parole (Ras). Concepts repris, jamais la prose des livres. À fusionner dans data/corpus/fil.json. Volume : 12 clés (générique + fluide/tension + 3 planètes pertinentes × 3 classes) — plus bas que la cible 25-30, assumé honnêtement : au-delà de mercure/mars/saturne, aucune autre planète ne recolore vraiment le mental/la parole sans devenir arbitraire (règle d'or de volume, §3 de la spéc). Les autres planètes retombent sur echanges_fluide / echanges_tension, ce qui est le fonctionnement prévu, pas un trou.",
+
+  "echanges": {
+    "source_livre": "d'après les concepts de McKeown et Newport, sur l'essentiel et l'attention",
+    "themes": ["mental", "clarte", "attention"],
+    "miroir": "Ta tête tourne sur plusieurs sujets à la fois aujourd'hui, et rien ne se pose vraiment. C'est un signe de trop-plein, pas de faiblesse d'esprit.",
+    "geste": "Choisis une seule question à clarifier aujourd'hui, et laisse le reste attendre demain."
+  },
+  "echanges_fluide": {
+    "source_livre": "d'après les concepts de Faber & Mazlish et Newport, sur l'écoute et la concentration",
+    "themes": ["parole", "ecoute", "fluidite"],
+    "miroir": "Tu trouves tes mots sans effort aujourd'hui, et écouter l'autre demande moins d'énergie que d'habitude. Profite de cette ouverture, elle ne dure pas toujours.",
+    "geste": "Pose une vraie question à quelqu'un et laisse-le répondre en entier, sans finir sa phrase à sa place."
+  },
+  "echanges_tension": {
+    "source_livre": "d'après les concepts de Ras et Faber & Mazlish, sur la supposition et le malentendu",
+    "themes": ["malentendu", "supposition", "parole"],
+    "miroir": "Un mot passe mal aujourd'hui, ou tu devines ce que l'autre pense sans le lui avoir demandé. L'esprit comble les trous tout seul, souvent à côté.",
+    "geste": "Avant de conclure quoi que ce soit, pose la question directement à la personne concernée."
+  },
+  "echanges_transit_mercure_conjonction": {
+    "source_livre": "d'après les concepts de Newport et McKeown, sur la concentration et la clarté",
+    "themes": ["mental", "clarte", "concentration"],
+    "miroir": "Ton esprit tourne rond aujourd'hui, les idées s'enchaînent sans effort et une chose devient enfin nette. C'est le bon moment pour y voir clair, pas pour tout régler d'un coup.",
+    "geste": "Écris en une phrase ce que tu viens de comprendre, pendant que c'est net."
+  },
+  "echanges_transit_mercure_sextile-trigone": {
+    "source_livre": "d'après les concepts de Faber & Mazlish, sur décrire plutôt qu'accuser",
+    "themes": ["parole", "clarte", "cooperation"],
+    "miroir": "Tu dis les choses plus simplement aujourd'hui, sans peser chaque mot pendant dix minutes. C'est une fenêtre facile pour la conversation que tu repoussais.",
+    "geste": "Envoie le message que tu remets depuis quelques jours, en décrivant les faits plutôt qu'en jugeant."
+  },
+  "echanges_transit_mercure_carre-opposition": {
+    "source_livre": "d'après les concepts de Ras, sur le cerveau et la négation",
+    "themes": ["malentendu", "mental", "parole"],
+    "miroir": "Tu formules de travers aujourd'hui, ou ce que tu dis se comprend à l'envers de ce que tu voulais. Le mental est encombré, ça ne dit rien de ta façon de t'exprimer d'habitude.",
+    "geste": "Reformule en positif ce que tu veux dire, au lieu de partir de ce que tu ne veux pas."
+  },
+  "echanges_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de Faber & Mazlish, sur exprimer sa colère sans attaquer",
+    "themes": ["parole", "conflit", "affirmation"],
+    "miroir": "Tu as envie de trancher aujourd'hui, plus vite et plus fort que d'habitude, et tourner autour du pot t'agace. Dire les choses avec force reste possible, sans viser la personne en face.",
+    "geste": "Formule ce qui te dérange en commençant par « je », pas par « tu »."
+  },
+  "echanges_transit_mars_sextile-trigone": {
+    "source_livre": "d'après les concepts de McKeown, sur le non comme compétence",
+    "themes": ["limites", "affirmation", "parole"],
+    "miroir": "Tu poses une limite plus facilement aujourd'hui, le non sort plus net que d'habitude. C'est une compétence qui s'entraîne, pas un trait de caractère qu'on a ou pas.",
+    "geste": "Dis non une fois, clairement, à une demande qui ne te convient pas."
+  },
+  "echanges_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Ras et Faber & Mazlish, sur ne pas prendre les choses personnellement et sur le blâme",
+    "themes": ["conflit", "parole", "reaction"],
+    "miroir": "Un mot peut vite tourner en dispute aujourd'hui, et ce que l'autre dit te touche plus fort que d'habitude. Ça parle surtout de son état à lui, presque jamais de toi.",
+    "geste": "Avant de répondre, laisse passer une respiration de plus que d'habitude."
+  },
+  "echanges_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Newport, sur le rituel qui protège l'attention",
+    "themes": ["mental", "rigueur", "concentration"],
+    "miroir": "Tes mots pèsent plus lourd aujourd'hui, tu parles avec plus de retenue et de sérieux. C'est une discipline qui s'installe, pas une froideur qui s'invite.",
+    "geste": "Prends le temps de formuler une idée par écrit avant de la dire à voix haute."
+  },
+  "echanges_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de McKeown, sur les critères clairs et les limites qui structurent",
+    "themes": ["structure", "limites", "clarte"],
+    "miroir": "C'est un bon jour pour poser un cadre à une conversation qui traînait sans règles. La structure ne referme rien, elle rend la suite plus simple à tenir.",
+    "geste": "Fixe une seule règle claire pour un échange qui se répète, et tiens-la cette fois."
+  },
+  "echanges_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Ras, sur l'ego qui juge et se justifie",
+    "themes": ["jugement", "parole", "mental"],
+    "miroir": "Un mot reste coincé aujourd'hui, tu te surprends à peser chaque phrase de peur du jugement. Se justifier avant même qu'on t'attaque, c'est déjà donner du pouvoir à cette peur.",
+    "geste": "Dis la phrase simple que tu retiens, sans l'habiller de trois excuses avant."
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "_note": "domaine autre — Fil du jour Align",
+
+  "autre": {
+    "source_livre": "d'après les concepts de Chapman, Johnson, Levine & Heller",
+    "themes": ["amour", "lien", "presence"],
+    "miroir": "Aujourd'hui l'autre prend de la place au centre. Un lien se nourrit ou s'use en silence, un petit geste à la fois, et l'attention qui s'éteint fait plus de dégâts qu'une dispute franche.",
+    "geste": "Pose un geste attentionné pour quelqu'un qui compte, dans ce qui le touche lui, un mot, un service, un moment ensemble. Si tu doutes de ce qui l'atteint, demande-lui simplement."
+  },
+
+  "autre_fluide": {
+    "source_livre": "d'après les concepts de Gary Chapman",
+    "themes": ["amour", "reconnaissance"],
+    "miroir": "Le lien coule bien en ce moment. C'est justement quand tout va que se déposent les réserves où l'on puisera les jours plus durs. La proximité te rend plus ouvert, pas plus fragile.",
+    "geste": "Profite de l'élan pour dire tout haut ce que tu apprécies chez l'autre, concrètement. Une reconnaissance nommée se rejoue longtemps dans la tête de celui qui la reçoit."
+  },
+
+  "autre_tension": {
+    "source_livre": "d'après les concepts de Sue Johnson",
+    "themes": ["amour", "conflit", "besoin"],
+    "miroir": "Quelque chose accroche avec un proche, et la dispute porte rarement sur son vrai sujet. Sous le reproche, il y a presque toujours la même question muette, es-tu là pour moi.",
+    "geste": "Avant de répondre au contenu, réponds à la personne. Nomme calmement l'émotion qui monte chez toi, puis demande-lui la sienne. On sort d'une boucle en changeant de côté, pas en gagnant."
+  },
+
+  "autre_transit_venus_conjonction": {
+    "source_livre": "d'après les concepts de Gary Chapman",
+    "themes": ["amour", "expression"],
+    "miroir": "La tendresse trouve son chemin aujourd'hui. Tu offres souvent l'amour dans ta langue à toi, celle apprise enfant, et elle n'arrive que si l'autre capte sur cette fréquence-là.",
+    "geste": "Demande à quelqu'un que tu aimes ce qui le fait se sentir aimé, puis fais-le. Le bon geste n'est pas le plus généreux, c'est celui que l'autre reçoit vraiment."
+  },
+
+  "autre_transit_venus_sextile-trigone": {
+    "source_livre": "d'après les concepts de Sue Johnson",
+    "themes": ["amour", "toucher"],
+    "miroir": "Le lien se fait facile, presque sans effort. Le contact simple, une main posée, une présence sans exigence, parle une langue que les mots n'atteignent pas toujours.",
+    "geste": "Offre un moment de proximité gratuit, hors de toute demande, hors du lit. Se tenir près de quelqu'un sans rien réclamer nourrit une sécurité qui tient dans le temps."
+  },
+
+  "autre_transit_venus_carre-opposition": {
+    "source_livre": "d'après les concepts de Levine & Heller",
+    "themes": ["amour", "valeurs", "distance"],
+    "miroir": "Une divergence te pince avec un proche, sur ce qui compte, sur ce que chacun attend. Ce que l'autre fait parle surtout de lui et de ses besoins, presque jamais contre toi.",
+    "geste": "Dis ce dont tu as besoin en clair, avec un je et du concret, plutôt qu'une allusion ou une bouderie. L'autre ne lit pas dans tes pensées, et ce n'est pas à lui de deviner."
+  },
+
+  "autre_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de Sue Johnson",
+    "themes": ["amour", "elan", "desir"],
+    "miroir": "Une énergie te pousse vers l'autre aujourd'hui, franche, directe. L'élan est bon, mais se montrer vulnérable reste un risque que rester masqué ne remplace pas.",
+    "geste": "Prends l'initiative d'un vrai contact, et ose dire une chose que tu gardes d'habitude pour toi. L'autre ne peut pas répondre à un désir ou une peur qu'il ne voit pas."
+  },
+
+  "autre_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Sue Johnson",
+    "themes": ["amour", "conflit", "reparation"],
+    "miroir": "Ça chauffe avec quelqu'un de proche. Une attaque est souvent un appel maladroit, une détresse qui cherche à être rejointe plutôt qu'une simple envie de te blesser.",
+    "geste": "Réponds à l'émotion sous les mots, pas aux mots. Une dispute se répare, le but n'est pas d'éviter tout accroc mais de rattraper le moment avant qu'il ne devienne un gouffre."
+  },
+
+  "autre_transit_lune_conjonction": {
+    "source_livre": "d'après les concepts de Levine & Heller",
+    "themes": ["amour", "besoin", "securite"],
+    "miroir": "Le besoin de proximité se fait sentir plus fort aujourd'hui. Ce n'est ni une faiblesse ni un caprice, c'est un système ancien qui vérifie si l'autre est là et disponible.",
+    "geste": "Demande directement la réassurance dont tu as envie, un mot, une présence. Souvent une seule réponse claire suffit à tout apaiser, et c'est l'absence de réponse qui enflamme."
+  },
+
+  "autre_transit_lune_carre-opposition": {
+    "source_livre": "d'après les concepts de Levine & Heller",
+    "themes": ["amour", "emotion", "reaction"],
+    "miroir": "Une émotion monte vite face à un proche, et ton antenne capte le moindre changement de ton. Cette sensibilité n'est pas un défaut, mais réagir à chaud fausse la lecture.",
+    "geste": "Laisse passer un moment avant de conclure ou de riposter. Le temps de te calmer, repère le vrai besoin derrière l'agitation, puis dis-le une fois posé. Parler à froid change tout."
+  },
+
+  "autre_transit_mercure_conjonction": {
+    "source_livre": "d'après les concepts de Levine & Heller",
+    "themes": ["amour", "communication"],
+    "miroir": "Les mots circulent bien avec l'autre aujourd'hui. Formuler un besoin, c'est se montrer, et la façon dont l'autre y répond t'apprend beaucoup sur ce que le lien peut t'offrir.",
+    "geste": "Nomme une chose que tu attends, simplement, sans la déguiser en reproche. Un besoin dit avec un je fait passer le message sans transformer l'autre en coupable."
+  },
+
+  "autre_transit_mercure_carre-opposition": {
+    "source_livre": "d'après les concepts de Patrice Ras",
+    "themes": ["amour", "supposition", "malentendu"],
+    "miroir": "Un malentendu s'installe avec un proche, et l'esprit comble les trous tout seul, le plus souvent à tort. Anticiper la réponse de l'autre, c'est lui prêter tes propres réactions.",
+    "geste": "Plutôt que supposer, demande. Une question posée vaut mieux qu'un scénario inventé dans ta tête, et un refus, s'il vient, ne dit rien de ta valeur."
+  },
+
+  "autre_transit_saturne_conjonction": {
+    "source_livre": "d'après les concepts de Sue Johnson",
+    "themes": ["amour", "engagement", "duree"],
+    "miroir": "Le lien demande du sérieux aujourd'hui, une forme d'engagement. Dépendre de quelqu'un et savoir lui demander du réconfort n'est pas de la faiblesse, c'est ce qui rend vraiment solide.",
+    "geste": "Choisis un petit rituel qui dit à l'autre qu'il compte, un bonjour, un appel, un mot régulier. L'amour est vivant, sans attention il se flétrit doucement."
+  },
+
+  "autre_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Levine & Heller",
+    "themes": ["amour", "distance", "peur"],
+    "miroir": "Une distance s'installe, l'un se rapproche et l'autre recule. C'est un mécanisme en miroir qui se renforce tout seul, pas la faute de l'un ou de l'autre. Celui qui s'éloigne se protège, il ne manque pas d'amour.",
+    "geste": "Dis à l'avance ton besoin d'espace ou de proximité, sans en faire un drame. Nommer la boucle tout haut, on y est encore, lui enlève déjà une part de son pouvoir."
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "domaine creation — Fil du jour Align (remplace creativite.json)",
+
+  "creation": {
+    "source_livre": "d'après les concepts de Gilbert, Rubin, Tharp et Pressfield",
+    "themes": ["créativité", "jeu", "expression"],
+    "miroir": "Aujourd'hui, quelque chose en toi a envie de sortir sous une forme ou une autre, un mot, un geste, une couleur. Tu n'as pas besoin d'exposer pour que ça compte comme créer. C'est une fonction ordinaire, active ou en veille, pas un talent réservé à quelques-uns.",
+    "geste": "Donne dix minutes à une chose faite avec les mains, sans but et sans personne pour la voir. Un croquis, une phrase notée, un rangement qui devient une composition. Le geste compte plus que ce qu'il produit."
+  },
+
+  "creation_fluide": {
+    "source_livre": "d'après les concepts de Rubin et Gilbert",
+    "themes": ["créativité", "élan", "inspiration"],
+    "miroir": "Une idée arrive aujourd'hui sans que tu forces rien, une association, une envie qui pointe, un début qui se présente presque de lui-même. Ça se passe quand l'attention est libre, pas quand tu cherches fort.",
+    "geste": "Suis ce qui te tire aujourd'hui, même si ça semble mineur ou hors sujet. Note-le ou commence-le tout de suite, avant que l'envie de vérifier si c'est une bonne idée ne s'en mêle."
+  },
+
+  "creation_tension": {
+    "source_livre": "d'après les concepts de Pressfield et Gilbert",
+    "themes": ["créativité", "résistance", "peur"],
+    "miroir": "Un projet qui te tient à cœur rencontre aujourd'hui un frein, une envie de remettre à demain, un doute qui prend toute la place. Plus une chose compte pour toi, plus la résistance qu'elle déclenche est forte. C'est un signe de valeur, pas d'incapacité.",
+    "geste": "Fais un seul geste minuscule vers ce que tu repousses, même raté, même dix minutes. Le frein recule rarement d'un coup, il recule d'un pas après l'autre."
+  },
+
+  "creation_phase_nouvelle": {
+    "source_livre": "d'après les concepts de Julia Cameron (pages du matin)",
+    "themes": ["créativité", "vidage", "clarté"],
+    "miroir": "Ta tête arrive déjà pleine le matin. Une liste, une inquiétude, une opinion sur tout, avant même d'avoir choisi quoi que ce soit. Et sous ce bruit, quelque chose de neuf essaie de se faire entendre.",
+    "geste": "Demain au réveil, remplis trois pages à la main, sans t'arrêter ni te relire. Pas pour écrire quelque chose de bon. Pour vider. Ce qui compte sort une fois le bruit déposé."
+  },
+  "creation_phase_croissante": {
+    "source_livre": "d'après les concepts de Julia Cameron (synchronie)",
+    "themes": ["créativité", "signes", "attention"],
+    "miroir": "Depuis que quelque chose a commencé, des coïncidences se présentent. Un nom qui revient, une rencontre, un livre ouvert à la bonne page. Elles étaient là avant. Il fallait être en mouvement pour les voir.",
+    "geste": "Mentionne ce soir, à quelqu'un, une coïncidence récente, même minuscule. Si rien ne te revient, ouvre l'œil aujourd'hui. Dire ce qu'on remarque l'ancre mieux qu'une pensée qui repasse en boucle."
+  },
+  "creation_phase_premier_quartier": {
+    "source_livre": "d'après les concepts de Julia Cameron (le censeur intérieur)",
+    "themes": ["créativité", "critique intérieure", "peur"],
+    "miroir": "Le premier obstacle a une voix, et elle habite chez toi. Elle dit que c'est raté, trop tard, déjà fait mieux ailleurs. On t'a appris à l'écouter en premier. Elle n'est pas un juge, c'est une habitude.",
+    "geste": "Repère cette voix la prochaine fois qu'elle parle aujourd'hui, et nomme-la, à voix haute si tu es seul. Observation ou insulte ? Si c'est une insulte, elle attendra que tu aies fini."
+  },
+  "creation_phase_gibbeuse": {
+    "source_livre": "d'après les concepts de Julia Cameron (produit et procédure)",
+    "themes": ["créativité", "persévérance", "habitude"],
+    "miroir": "C'est presque prêt, et c'est le moment où l'envie faiblit. Tu voudrais l'inspiration pour finir, mais elle suit le travail, elle ne le précède pas. Elle rejoint ceux qui sont déjà à leur poste.",
+    "geste": "Donne cinq minutes à ton chantier aujourd'hui, montre en main, envie ou pas. Cinq vraies minutes suffisent. C'est le retour qui compte, pas la durée."
+  },
+  "creation_phase_pleine": {
+    "source_livre": "d'après les concepts de Julia Cameron (la peur nommée)",
+    "themes": ["créativité", "peur", "expression"],
+    "miroir": "La pleine lumière de ces jours-ci montre aussi la peur qui accompagne ce qui te tient à cœur. Elle ne part pas quand tu la combats. Elle se fatigue quand elle est dite, posée hors de toi.",
+    "geste": "Formule à voix haute une peur liée à ce que tu veux faire, à quelqu'un ou seul devant un miroir. Une phrase suffit. Tu ne la règles pas, tu la sors de la boucle."
+  },
+  "creation_phase_diffusante": {
+    "source_livre": "d'après les concepts de Julia Cameron (partager l'inachevé)",
+    "themes": ["créativité", "partage", "imperfection"],
+    "miroir": "Ce que tu as fait demande à circuler, et l'envie d'attendre que ce soit parfait ressemble à de la prudence. C'est surtout une façon de ne jamais le montrer. Le vivant a toujours un défaut quelque part.",
+    "geste": "Fais circuler aujourd'hui une chose pas tout à fait finie. Une phrase, une photo, une idée encore fragile, à une personne de confiance. Le monde tient le coup, et toi aussi."
+  },
+  "creation_phase_dernier_quartier": {
+    "source_livre": "d'après les concepts de Julia Cameron (finir ce qui traîne)",
+    "themes": ["créativité", "achèvement", "permission"],
+    "miroir": "Des choses commencées traînent comme des phrases sans point. Le temps n'y est pour rien. Ce qui manque, c'est la permission de les laisser finir telles qu'elles sont, imparfaites et complètes.",
+    "geste": "Termine aujourd'hui la plus vieille des choses en suspens, même modestement, même sans conviction. Mets le point. La place libérée ne reste jamais vide longtemps."
+  },
+  "creation_phase_balsamique": {
+    "source_livre": "d'après les concepts de Julia Cameron (remplir le puits)",
+    "themes": ["créativité", "repos", "ressourcement"],
+    "miroir": "Le cycle se termine et l'énergie se retire, comme prévu. Ce creux n'est pas une panne, c'est le moment où le puits se remplit. Créer puise dans une réserve, et la réserve se nourrit de ce qui te fait envie.",
+    "geste": "Réserve-toi une heure seule cette semaine, dans un endroit qui te nourrit. Une librairie, une galerie, un marché, une église vide. Sans but, sans projet, sans rien produire."
+  },
+
+  "creation_transit_mercure_sextile-trigone": {
+    "source_livre": "d'après les concepts de Julia Cameron (le zen du mouvement)",
+    "themes": ["créativité", "mouvement", "idées"],
+    "miroir": "Les idées circulent bien aujourd'hui, et pourtant ce n'est pas assis qu'elles arrivent. Elles viennent quand le corps bouge et que l'esprit renonce à les attraper.",
+    "geste": "Marche vingt minutes aujourd'hui, sans écouteurs et sans but. Laisse le regard traîner. Si une idée insiste, garde-la en tête sans la travailler. Si rien ne vient, la marche aura suffi."
+  },
+  "creation_transit_mercure_carre-opposition": {
+    "source_livre": "d'après les concepts de Julia Cameron (le scepticisme)",
+    "themes": ["créativité", "décision", "doute"],
+    "miroir": "Tu cherches la bonne méthode, le bon avis, la recette qui garantirait le résultat. Chercher encore ressemble à du sérieux. C'est surtout une façon de remettre la décision à quelqu'un d'autre.",
+    "geste": "Décide aujourd'hui une chose que tu repousses en attendant d'être sûr. Sans sondage, sans vérifier en ligne. Ta réponse écartée parce que trop simple était souvent la bonne."
+  },
+  "creation_transit_venus_conjonction": {
+    "source_livre": "d'après les concepts de Julia Cameron (la carte de jalousie)",
+    "themes": ["créativité", "jalousie", "désir"],
+    "miroir": "Quand le travail d'un autre te pince, tu appelles ça de la jalousie et tu passes. Regarde mieux. Ce n'est pas sa réussite qui fait mal, c'est la tienne, restée en attente.",
+    "geste": "Cherche une œuvre qui te rend jaloux, une vraie. Puis nomme ce qu'elle a osé que tu n'oses pas encore. La jalousie est une carte, elle indique où tu veux aller."
+  },
+  "creation_transit_venus_sextile-trigone": {
+    "source_livre": "d'après les concepts de Rubin",
+    "themes": ["créativité", "jeu", "plaisir"],
+    "miroir": "Aujourd'hui, faire prend un air léger, presque un jeu, sans le sérieux qui pèse d'habitude. C'est le moment où le travail avance le mieux, justement parce que l'enjeu baisse.",
+    "geste": "Choisis la version amusante de ta tâche du jour, pas la version consciencieuse. Une couleur qui te plaît plutôt que celle qui convient, une phrase qui te fait sourire plutôt que celle qui impressionne."
+  },
+  "creation_transit_venus_carre-opposition": {
+    "source_livre": "d'après les concepts de Rubin",
+    "themes": ["créativité", "comparaison", "jalousie"],
+    "miroir": "Tu compares aujourd'hui ce que tu fais à ce que font les autres, et ça te ronge plus que d'habitude. Une œuvre ne se mesure pas à une autre, elle se mesure à ce qu'elle est censée être, elle seule.",
+    "geste": "Ferme l'onglet, l'appli ou le regard qui te pousse à comparer aujourd'hui, au moins pendant que tu crées. Reviens à la question simple, qu'est-ce que ce travail-ci a besoin d'être."
+  },
+  "creation_transit_mars_conjonction": {
+    "source_livre": "d'après les concepts de Pressfield",
+    "themes": ["créativité", "commencement", "élan"],
+    "miroir": "Tu as aujourd'hui l'énergie pour te lancer dans quelque chose de neuf, nette, sans qu'il faille la convoquer. Une fois qu'on s'engage vraiment, des aides imprévues ont l'habitude de se présenter.",
+    "geste": "Lance aujourd'hui la version la plus simple du projet que tu remets depuis un moment. Pas le projet entier, juste le premier geste qui l'amorce pour de vrai."
+  },
+  "creation_transit_mars_sextile-trigone": {
+    "source_livre": "d'après les concepts de Julia Cameron (protéger l'enfant créateur)",
+    "themes": ["créativité", "commencement", "action"],
+    "miroir": "Tu as l'énergie pour commencer, et tu attends quand même d'être prêt. Personne ne l'est jamais. Un début n'a pas à être bon, il a à exister. Les bons viennent après, par-dessus les ratés.",
+    "geste": "Commence aujourd'hui la version ratée de ce que tu repousses. Un brouillon volontairement moche, dix minutes. Tu montreras plus tard, ou jamais. L'acte compte, pas le résultat."
+  },
+  "creation_transit_mars_carre-opposition": {
+    "source_livre": "d'après les concepts de Pressfield",
+    "themes": ["créativité", "résistance", "blocage"],
+    "miroir": "Une force intérieure freine fort aujourd'hui, juste avant un geste qui compte vraiment pour toi. Elle ne vient pas d'un manque de talent, elle mesure l'importance de ce que tu es sur le point de faire.",
+    "geste": "Nomme précisément ce que tu remets à plus tard aujourd'hui, et fais-en la version la plus courte possible tout de suite. Cinq minutes, pas plus. Le frein cède rarement avant que tu bouges."
+  },
+  "creation_transit_soleil_conjonction": {
+    "source_livre": "d'après les concepts de Pressfield et Rubin",
+    "themes": ["créativité", "visibilité", "partage"],
+    "miroir": "Ce que tu fais demande aujourd'hui à être vu, même un peu, même imparfait. Un travail jamais montré protège de la critique, mais il ne prouve rien, ni à toi ni à personne.",
+    "geste": "Montre une chose que tu gardes pour toi depuis un moment, à une personne, sans l'accompagner d'excuses. Laisse le retour arriver sans le corriger d'avance."
+  },
+  "creation_transit_soleil_carre-opposition": {
+    "source_livre": "d'après les concepts de Gilbert",
+    "themes": ["créativité", "jugement", "peur"],
+    "miroir": "Tu sens aujourd'hui le poids d'être vu et jugé, plus que d'habitude. Et pourtant personne ne pense à ton travail avec l'intensité que tu lui prêtes, chacun est pris dans son propre film.",
+    "geste": "Fais la chose qui t'expose un peu aujourd'hui en te rappelant que le regard que tu redoutes est surtout occupé de lui-même. Ça n'enlève rien à l'enjeu, ça enlève du poids."
+  },
+  "creation_transit_lune_conjonction": {
+    "source_livre": "d'après les concepts de Rubin",
+    "themes": ["créativité", "sensibilité", "doute"],
+    "miroir": "Ta sensibilité est à vif aujourd'hui, et elle colore ce que tu fais autant qu'elle t'aide à le faire. Douter du travail en cours ne veut pas dire douter de toi.",
+    "geste": "Si un doute se présente aujourd'hui sur ce que tu crées, formule-le sur l'œuvre, pas sur toi. Dis « ce passage-là ne fonctionne pas encore », pas « je ne sais pas faire ». La nuance change tout."
+  },
+  "creation_transit_jupiter_conjonction": {
+    "source_livre": "d'après les concepts de Gilbert et Rubin",
+    "themes": ["créativité", "abondance", "idées"],
+    "miroir": "Les idées se pressent aujourd'hui, plusieurs à la fois, presque trop. Le matériau n'est pas une réserve qui s'épuise. Il continue d'arriver, que tu en uses ou non.",
+    "geste": "Note toutes les idées qui passent aujourd'hui, même les faibles, sans trier tout de suite. Le tri viendra plus tard, pas maintenant. Ce soir, choisis-en une seule à suivre demain."
+  },
+  "creation_transit_saturne_sextile-trigone": {
+    "source_livre": "d'après les concepts de Tharp et Pressfield",
+    "themes": ["créativité", "discipline", "rituel"],
+    "miroir": "Aujourd'hui, un cadre simple, un lieu, une heure, un petit rituel de départ, suffit à te mettre au travail sans débat intérieur. La discipline ne s'oppose pas à l'envie, elle lui fait de la place.",
+    "geste": "Fixe à l'avance le moment et le lieu où tu crées aujourd'hui, et un geste de départ précis, allumer une lampe, ouvrir un carnet. Présente-toi à l'heure dite, envie ou pas."
+  },
+  "creation_transit_saturne_carre-opposition": {
+    "source_livre": "d'après les concepts de Julia Cameron (le danger du perfectionnisme)",
+    "themes": ["créativité", "perfectionnisme", "outils"],
+    "miroir": "Tu retouches, tu recommences, tu repousses le moment de dire que c'est fini. Ça ressemble à de l'exigence. C'est une boucle qui protège du regard des autres, et qui coûte le tien.",
+    "geste": "Sers-toi du pire outil à ta portée aujourd'hui. Le stylo qui bave, le carnet moche, le logiciel basique. Si ça avance quand même, l'outil n'a jamais été le problème."
+  },
+  "creation_transit_neptune_sextile-trigone": {
+    "source_livre": "d'après les concepts de Rubin",
+    "themes": ["créativité", "intuition", "signes"],
+    "miroir": "Des indices se présentent aujourd'hui sans que tu les cherches, une phrase entendue, une image qui reste, une coïncidence qui tombe bien. Ils sont là pour qui reste ouvert, pas pour qui les traque.",
+    "geste": "Laisse un moment aujourd'hui sans programme, sans écran, où l'esprit peut vagabonder. Si une image ou une phrase s'impose, note-la telle quelle, sans la corriger tout de suite."
+  },
+  "creation_transit_neptune_carre-opposition": {
+    "source_livre": "d'après les concepts de Julia Cameron (demi-tours créatifs)",
+    "themes": ["créativité", "abandon", "peur"],
+    "miroir": "Ça avançait, puis tu as lâché sans vraie raison. Un demi-tour discret, presque raisonnable. Il arrive souvent juste avant l'étape où l'on serait vu. La peur choisit bien son moment.",
+    "geste": "Retrouve ce que tu as lâché la dernière fois que ça marchait fort. Repasse dans ta tête ce qui venait juste après. C'est souvent là que ça s'est joué, pas dans la fatigue."
+  },
+  "creation_transit_uranus_conjonction": {
+    "source_livre": "d'après les concepts de Rubin",
+    "themes": ["créativité", "règles", "expérimentation"],
+    "miroir": "Une règle que tu suis sans y penser aujourd'hui mérite d'être questionnée. Ce n'était qu'une hypothèse apprise un jour, pas une loi, et elle ne vaut que tant qu'elle t'aide encore.",
+    "geste": "Prends une règle que tu appliques sans discuter dans ton travail aujourd'hui, et fais volontairement l'inverse une fois, pour voir. Tu n'es pas obligé de garder le résultat."
+  },
+  "creation_transit_pluton_carre-opposition": {
+    "source_livre": "d'après les concepts de Gilbert et Pressfield",
+    "themes": ["créativité", "perfectionnisme", "peur"],
+    "miroir": "Tu retouches encore une chose qui pourrait déjà être finie aujourd'hui. Sous l'exigence, il y a parfois une peur plus profonde que celle de rater, celle de réussir et de ce que ça changerait.",
+    "geste": "Fixe-toi une limite ferme aujourd'hui, une heure, dix corrections, pas plus, puis arrête, même insatisfait. Fini vaut mieux que parfait, et parfait n'existe pas."
+  }
+}

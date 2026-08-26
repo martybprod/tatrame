@@ -1,0 +1,150 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "Aspects entre planètes, ce que ça donne quand deux fonctions se parlent. Textes ORIGINAUX.",
+ "aspects_paires": {
+  "soleil_lune_conjonction": {
+   "en_bref": "Ce que tu es et ce dont tu as besoin ne font qu'un, sans distance entre les deux.",
+   "texte": "Tu ressens et tu es d'un seul tenant. Quand quelque chose te manque, tout toi le sait aussitôt, sans traduction. C'est simple à vivre, et ça coûte quelque chose. Tu prends peu de recul sur ton humeur, puisque ton humeur, c'est toi. Un jour bas se met vite à ressembler à une remise en cause de fond. On t'a peut-être habitué à ne jamais distinguer les deux, à croire que ce que tu sens dit ce que tu vaux. Ici, le travail consiste à laisser une humeur passer sans qu'elle emmène toute ton identité avec elle."
+  },
+  "soleil_lune_carre-opposition": {
+   "en_bref": "Une part de toi vise haut, l'autre réclame du repos, un arbitrage de tous les jours.",
+   "texte": "Ce que tu veux être et ce dont tu as besoin ne demandent pas la même chose. Une part de toi vise haut, avance, veut se tenir droite. L'autre réclame du repos, de la douceur, un abri. Tu passes ton temps à arbitrer entre les deux, souvent sans t'en rendre compte. Quand tu écoutes l'une, l'autre proteste. Rien n'est cassé là-dedans. On t'a montré très tôt deux modèles qui ne s'accordaient pas, et tu as dû apprendre à faire tenir les deux ensemble. C'est un entraînement de fond, et il paie. À force d'arbitrer, tu développes un sens de la justesse que peu de gens possèdent. Tu sais, mieux que quiconque, quand pousser et quand te poser."
+  },
+  "soleil_lune_sextile-trigone": {
+   "en_bref": "Tu te connais sans bagarre intérieure, reste à t'appuyer dessus pour de vrai.",
+   "texte": "Ce que tu es et ce dont tu as besoin vont dans le même sens. Tu te connais sans effort, tu sais assez vite ce qui te fait du bien et ce qui te vide. Pas de guerre intérieure sur ce terrain, l'accord était là avant toi. La seule chose à surveiller, c'est la facilité : une chose acquise sans lutte, on oublie parfois de s'en servir. Tu peux traverser des années à côté de ce calme sans t'y appuyer vraiment. Bonne nouvelle : il suffit de le remarquer pour le réveiller. Pose les yeux dessus, appuie-toi dessus exprès, et cet accord tranquille devient un socle sur lequel bâtir bien plus grand."
+  },
+  "soleil_jupiter_conjonction": {
+   "en_bref": "Tu te vis en grand, ton identité et ton envie de grandir n'en font qu'une.",
+   "texte": "Ce que tu es se vit en grand. Ton envie d'ouvrir, d'aller plus loin, de voir large colle à ton identité même. Tu te sens rarement à l'étroit dans tes projets, tu vises haut sans avoir à te forcer. C'est une belle énergie et elle ne connaît pas bien les freins. Quand les deux se superposent, la mesure devient floue, et un « je peux » sincère se prend parfois pour un « c'est fait ». On t'a peut-être encouragé à ne jamais te limiter. Ton horizon est vaste. Reste à vérifier qu'il y a une route dessous."
+  },
+  "soleil_jupiter_carre-opposition": {
+   "en_bref": "Qui tu es et jusqu'où tu veux aller négocient sans cesse, un ajustement qui t'affine.",
+   "texte": "Tu t'engages large, puis tu te retrouves à tenir quelque chose de plus grand que toi. Ou l'inverse, tu brides ton élan par peur de te gonfler et de te trahir. Entre s'agrandir et rester fidèle à ce qu'on est, tu balances souvent sans t'en rendre compte. Il n'y a là ni démesure ni petitesse. On t'a transmis deux consignes contraires, grandir et rester à ta place, et il t'appartient de les reconcilier toi-même. C'est un ajustement permanent, et c'est aussi ton meilleur outil de calibrage. À force de chercher le point juste, tu finis par trouver ta vraie taille, celle que tu n'as plus besoin ni d'exagérer ni de rabaisser."
+  },
+  "soleil_jupiter_sextile-trigone": {
+   "en_bref": "La confiance et les occasions te viennent, à toi d'en faire un vrai tremplin.",
+   "texte": "Les portes s'ouvrent sans que tu forces, et une part de toi le sait. Tu avances avec une sorte de foi tranquille, l'idée que ça va aller, et souvent ça va. Cet optimisme te sert, il te fait tenter des choses que d'autres n'oseraient pas. Le seul point de vigilance, c'est de t'en servir vraiment. Quand tout arrive facilement, on oublie parfois de muscler ce qui compterait les jours plus durs. Cette facilité est un vrai capital de départ, pas un dû. Utilisée à fond, comme un tremplin qu'on prend soin d'entretenir, elle peut t'emmener bien plus loin que la chance seule ne le ferait."
+  },
+  "soleil_pluton_conjonction": {
+   "en_bref": "Rien ne reste en surface entre ce que tu es et ce qui te transforme.",
+   "texte": "Tu ne fais rien à moitié avec toi-même. Ce que tu es se joue en profondeur, dans l'intensité, jamais dans le tiède. Quand tu changes, tu changes pour de bon, tu ne retouches pas, tu refonds. Cette force impressionne et elle pèse aussi. Tu peux te remettre en cause jusqu'à l'os pour un rien, te démolir pour te reconstruire encore. On t'a peut-être appris que se montrer vulnérable était dangereux, alors tu contrôles, en dedans surtout. Cette puissance ne s'éteindra pas. Elle demande seulement où se poser, sinon elle se retourne contre son propriétaire."
+  },
+  "soleil_pluton_carre-opposition": {
+   "en_bref": "Une part de toi veut juste être, l'autre veut tout transformer, un bras de fer qui t'aguerrit.",
+   "texte": "Il y a en toi quelqu'un qui veut simplement être, tranquille, et quelqu'un qui pousse à creuser, à contrôler, à ne rien laisser en l'état. Le bras de fer se joue à l'intérieur, et il déborde parfois sur les autres, en méfiance ou en rapport de force. Tu te sens fort et menacé à la fois, sans toujours savoir pourquoi. Tu n'es pas dur pour le plaisir de l'être. On t'a appris tôt que la place ne se donnait pas, qu'il fallait la tenir. Ce combat intérieur est exigeant, et c'est précisément lui qui te façonne. Il forge quelqu'un que le fond des choses n'effraie pas, une fois que tu cesses de te le livrer à toi-même et que tu le tournes vers ce qui compte vraiment."
+  },
+  "soleil_pluton_sextile-trigone": {
+   "en_bref": "Tu peux te transformer en profondeur sans te briser, un pouvoir à oser employer.",
+   "texte": "Tu encaisses les grands changements mieux que la plupart. Ce qui bouleverse les autres, tu le traverses, tu en ressors autre sans y laisser ta peau. Cette capacité à muer fait partie de toi, elle ne te coûte pas cher. Le seul point à surveiller, c'est de vraiment t'en servir. Une force qu'on n'a pas eu à conquérir, on peut la laisser en réserve sans même s'en rendre compte. Personne ne t'obligera à plonger, mais rien ne t'empêche non plus de le faire exprès. Le jour où tu descends volontairement dans cette profondeur, tu découvres tout ce qu'un don tranquille peut donner, une fois mis au travail."
+  },
+  "lune_jupiter_conjonction": {
+   "en_bref": "Tes besoins et ton envie d'espace se gonflent ensemble, en grand.",
+   "texte": "Tu ressens large. Tes besoins ne sont jamais petits, ton humeur prend de la place, ta générosité déborde vite. Quand tu vas bien, tout le monde le sait, et quand tu vas mal aussi. Cette chaleur attire et elle peut fatiguer, la tienne comprise. Tu peux te bercer d'un optimisme qui te dispense de regarder ce qui ne va pas. On t'a peut-être appris que se contenter de peu était triste, alors tu vises l'abondance, même côté cœur. Ce grand appétit d'émotions est une richesse. Il gagne juste à savoir aussi se poser dans du simple."
+  },
+  "lune_jupiter_carre-opposition": {
+   "en_bref": "Ton besoin de sécurité et ton envie de large négocient sans relâche, et t'apprennent l'équilibre.",
+   "texte": "Tu te construis un cocon, puis tu rêves d'en sortir. Tu pars loin, et le manque du connu te rattrape. Une part de toi a besoin d'un nid, de repères, de ce qui rassure. Une autre étouffe dès que c'est trop calme et réclame de l'air, du grand, de l'ailleurs. Il n'y a là ni instabilité ni peur. On t'a donné deux besoins qui ne se rangent pas ensemble d'eux-mêmes, tenir et s'ouvrir, et c'est à toi de les faire cohabiter. Ce va-et-vient est un vrai entraînement d'équilibriste, et il porte ses fruits. Il fait de toi quelqu'un qui sait, mieux que la plupart, qu'un abri n'a de sens que si l'on peut librement en sortir."
+  },
+  "lune_jupiter_sextile-trigone": {
+   "en_bref": "Ton moral remonte tout seul, une belle météo à cultiver plutôt qu'à subir.",
+   "texte": "Tu as une bonne étoile intérieure. Ton humeur remonte assez vite, tu accordes ta confiance sans y penser, tu crois que les choses vont s'arranger et souvent elles s'arrangent. Cette chaleur facile te rend agréable à vivre et bon à côtoyer. Le seul point de vigilance. Quand le moral tient tout seul, on peut oublier de se donner des outils pour les jours creux. Cette aisance-là n'attend qu'une chose pour devenir une vraie force de fond, que tu t'en serves activement, que tu t'entraînes pendant le beau temps. Ce climat intérieur était déjà là avant toi ; à toi maintenant d'en faire quelque chose de grand."
+  },
+  "lune_pluton_conjonction": {
+   "en_bref": "Tes besoins et ta part qui creuse fusionnent, tu ne ressens jamais à moitié.",
+   "texte": "Tes émotions vont au fond, toujours. Un attachement devient vite viscéral, une blessure te retourne, un lien se vit à la vie à la mort. Rien de tiède ne t'intéresse côté cœur. Cette intensité te fait connaître les gens en profondeur, et elle t'expose aussi. Tu peux t'accrocher trop fort, ou couper net pour ne pas souffrir. On t'a peut-être appris tôt que sentir était risqué, alors tu gardes tout dedans, sous pression. Cette profondeur ne se dilue pas. Elle demande un endroit sûr où descendre, sans quoi elle finit par te remuer seule dans le noir."
+  },
+  "lune_pluton_carre-opposition": {
+   "en_bref": "Ton besoin de sécurité et ta part qui bouleverse tout se testent sans cesse, et forgent la confiance vraie.",
+   "texte": "Tu veux du calme, un lien stable, de la douceur, et tu remues quand même ce qui devrait rester tranquille. Une part de toi teste, sonde, vérifie que ça tient, quitte à abîmer ce qui te rassure. Tes proches sentent ce mélange de faim et de méfiance sans toujours le comprendre. Rien à voir avec une jalousie mal placée. On t'a montré tôt que l'attachement pouvait faire mal, alors tu contrôles ce que tu tiens le plus. Cette vigilance intense est une école exigeante, et elle finit par payer. Elle t'apprend exactement ce qu'un lien peut porter, et te révèle, mieux que personne, à quel point tu tiens à ce que tu remues."
+  },
+  "lune_pluton_sextile-trigone": {
+   "en_bref": "Tu traverses tes émotions les plus lourdes sans t'y noyer, une force à mettre au travail.",
+   "texte": "Ce qui remue les autres au plus profond, tu le prends assez bien. Tu regardes tes propres zones sombres sans paniquer, tu survis à ce qui te bouleverse, tu ressors des grandes secousses affectives entier. Cette solidité intérieure ne se voit pas, elle agit en silence. Le seul vrai risque, c'est de ne jamais la solliciter. Une force qu'on n'a pas dû arracher, on peut la ranger sans même remarquer qu'elle dort. Cette profondeur ne réclame rien pour exister, elle attend juste que tu la mettes au travail. Le jour où tu oses affronter volontairement ce que d'autres évitent, tu découvres l'étendue de ce que tu portes."
+  },
+  "mercure_saturne_conjonction": {
+   "en_bref": "Ta pensée et ton besoin de rigueur ne se quittent pas, rien ne sort à la légère.",
+   "texte": "Tu penses avec sérieux. Tes mots pèsent, tu vérifies avant de parler, tu ne lances rien en l'air. Cette rigueur donne du solide, on peut se fier à ce que tu dis. Elle a son revers. Tu peux te taire de peur de dire une bêtise, freiner ta pensée, la trouver toujours trop verte pour être montrée. On t'a peut-être appris que se tromper coûtait cher, alors tu attends d'être sûr, et sûr n'arrive jamais tout à fait. Cette tête solide construit du durable. Elle a juste besoin qu'on la laisse penser tout haut avant d'être parfaite."
+  },
+  "mercure_saturne_carre-opposition": {
+   "en_bref": "Ta tête veut avancer, ta prudence exige des preuves, un contrôleur zélé qui affûte ta pensée.",
+   "texte": "Ta tête veut penser vite, dire, échanger, et ta prudence exige des preuves avant de laisser passer. Alors tu réfléchis contre toi-même. Une idée arrive, la censure tombe aussitôt, pas assez mûre, pas assez juste. Tu peux te vivre comme lent ou pas assez brillant, alors que tu es surtout très exigeant. Tu ne manques pas d'intelligence pour autant. On t'a fait sentir tôt qu'une erreur se paierait, et ta tête a engagé un contrôleur zélé. La bonne nouvelle, c'est que ce contrôleur est un allié mal employé. Apprivoisé, il forge une pensée si mûrie qu'à sa sortie elle a déjà désarmé toutes les objections, une rigueur que beaucoup t'envieront."
+  },
+  "mercure_saturne_sextile-trigone": {
+   "en_bref": "Ta tête structure toute seule, une clarté posée qui n'attend qu'un vrai défi.",
+   "texte": "Tu structures sans y penser. Ta tête tient la durée, tu apprends pour de bon, tu retiens, tu construis un raisonnement pierre par pierre sans t'agacer. Ce calme mental est rare et il te sert partout. Le seul point à surveiller, c'est de ne pas t'en contenter. Une rigueur qu'on n'a pas eu à conquérir, on peut oublier de la pousser plus loin. Cette tête solide n'attend qu'une chose pour révéler toute sa portée, qu'on lui donne enfin du gros à mâcher. Cherche exprès les sujets qui te dépassent un peu : c'est là que ta clarté tranquille devient une vraie force de frappe."
+  },
+  "venus_mars_conjonction": {
+   "en_bref": "Ce qui te plaît et ton élan ne font qu'un, tu désires et tu fonces d'un même geste.",
+   "texte": "Tu veux et tu vas, sans temps mort entre les deux. Ce qui t'attire, tu t'en approches, tu ne tournes pas longtemps autour. Ce franc-parler du désir a du charme et de la chaleur. Il peut aussi brûler les étapes. Tu prends parfois l'envie pour un feu vert, tu confonds vouloir et devoir avoir. On t'a peut-être appris à saisir vite avant que ça t'échappe, alors tu n'attends pas. Cet élan est vivant et il ne s'excusera pas d'exister. Il gagne seulement à laisser un battement entre l'envie et la main qui se tend."
+  },
+  "venus_mars_carre-opposition": {
+   "en_bref": "Ce qui te plaît et ta façon d'agir se contrarient, un apprentissage qui clarifie ce que tu veux.",
+   "texte": "Tu cherches l'accord, ce qui plaît, la douceur, et tu t'y prends d'une manière qui l'éloigne. Une part de toi veut foncer, trancher, en découdre, et elle passe devant sans prévenir. Le rapport au désir se fait par à-coups, trop mou puis trop vif. Ou tu retiens ton élan pour ne pas déplaire, et il ressort de travers plus tard. Aucune maladresse de fond là-dessous. On t'a donné deux consignes contraires, sois aimable et bats-toi, et démêler les deux devient ton propre chantier. Ce décalage est un excellent professeur, il t'apprend, mieux que n'importe quelle facilité, à ne plus confondre vouloir plaire et savoir ce que tu veux vraiment."
+  },
+  "venus_mars_sextile-trigone": {
+   "en_bref": "Tu obtiens ce qui te plaît sans lutter, vise plus haut pour en tirer toute la saveur.",
+   "texte": "Ce qui te plaît et la manière d'aller le chercher marchent ensemble. Tu séduis sans forcer, tu obtiens souvent ce que tu vises, ton désir trouve son chemin sans drame. Cette fluidité rend les choses agréables autour de toi. Le seul point à travailler, c'est la cible. Quand obtenir vient facilement, on peut se contenter de ce qui passe plutôt que de viser ce qu'on veut vraiment. Cette facilité n'est pas un défaut, c'est un accélérateur puissant. Pointe-la vers quelque chose qui te tient réellement à cœur plutôt que vers ce qui est juste à portée, et regarde comme elle t'y emmène vite."
+  },
+  "venus_neptune_conjonction": {
+   "en_bref": "Tu aimes à travers un voile, tout ce qui te plaît prend des couleurs de rêve.",
+   "texte": "Tu embellis ce que tu aimes. Un être, une œuvre, un lien prend chez toi des couleurs de rêve, plus douces que le réel. Cette sensibilité fait de toi quelqu'un de tendre, capable de voir le beau partout. Elle brouille aussi les contours. Tu peux tomber amoureux d'une image, prêter à l'autre ce que tu rêves plutôt que ce qu'il est. On t'a peut-être appris que le réel était rêche, alors tu le repeins. Cette part rêveuse est précieuse, ne la range pas. Apprends juste à regarder de temps en temps ce qui est là, sous le voile."
+  },
+  "venus_neptune_carre-opposition": {
+   "en_bref": "Ce que tu aimes vraiment et ce que tu rêves d'aimer ne coïncident pas, un écart qui affine ton regard.",
+   "texte": "Tu veux du concret, un lien qu'on touche, un plaisir réel, et tu rêves en même temps d'un absolu qu'aucune chose vraie n'égale. L'écart te déçoit souvent. Tu idéalises, puis tu tombes de haut, et tu ne sais plus si c'est l'autre ou ton rêve qui a menti. Tu peux te sacrifier pour une image, ou fuir ce qui est bien parce que ça manque de magie. Rien à voir avec de la naïveté. On t'a fait miroiter tôt un amour parfait qui n'existe pas. Ce grand écart est un vrai maître. Traversé plutôt qu'évité, il t'apprend à aimer ce qui est vraiment là, avec une justesse que ceux qui n'ont jamais rêvé aussi grand n'atteignent pas."
+  },
+  "venus_neptune_sextile-trigone": {
+   "en_bref": "Tu perçois le beau et le subtil sans effort, un don qui ne demande qu'à prendre forme.",
+   "texte": "Tu perçois le beau et le subtil sans y penser. Une musique te touche juste, tu sens l'ambiance d'un lieu, tu devines ce que l'autre ne dit pas. Cette sensibilité te rend tendre et souvent inspiré. Le seul point à surveiller. Un don qui vient tout seul, on peut le vivre sans jamais le cultiver, et il finit par s'assoupir. Cette part rêveuse ne demande rien pour exister, mais elle donne infiniment plus dès qu'on lui offre une forme, un mot, une image, un geste créatif. Mets-y les mains, et ce que tu perçois déjà si bien se met à rayonner pour de vrai."
+  },
+  "mars_uranus_conjonction": {
+   "en_bref": "Agir et secouer sont chez toi le même geste, vif et sans préavis.",
+   "texte": "Tu agis par à-coups, souvent d'un coup. Une envie te prend, tu ne la mûris pas, tu la fais, quitte à tout bousculer. Cette vivacité te rend libre et parfois génial dans l'urgence. Elle peut aussi te faire casser ce qui marchait, juste parce que l'immobilité t'insupporte. On t'a peut-être appris que rester tranquille, c'était s'éteindre, alors tu provoques du mouvement. Cette énergie ne se laissera pas mettre en cage. Elle demande des terrains où l'imprévu est bienvenu, sinon elle fait sauter les plombs de la maison où elle vit."
+  },
+  "mars_uranus_carre-opposition": {
+   "en_bref": "Ton élan et ton besoin de rupture se cognent, et ça forge une énergie que rien ne dompte.",
+   "texte": "Agir droit te va, jusqu'à ce que la routine te prenne et que tu casses la trajectoire. Une part de toi veut tenir un cap, une autre déteste le cadre et rue dès qu'elle le sent. Tu démarres fort puis tu bifurques, tu t'engages puis tu te braques. La contrainte te fait sortir de tes gonds plus vite qu'un autre. Aucune inconstance gratuite là-dedans. On t'a peut-être serré tôt dans des règles trop étroites, et ton corps a gardé le réflexe de ruer. Ces à-coups sont le prix d'une énergie rare, et ils forgent quelqu'un qu'aucun système ne mate longtemps, une fois que tu choisis toi-même où et quand tes ruades font le plus de bien."
+  },
+  "mars_uranus_sextile-trigone": {
+   "en_bref": "Tu rebondis vite face à l'imprévu, une audace prête à jouer beaucoup plus gros.",
+   "texte": "Tu réagis vite et bien à l'imprévu. Une situation change, tu t'adaptes, tu trouves l'issue par un côté que personne n'avait vu. Cette agilité te sert dans l'action sans te coûter de nerfs. Le seul point à travailler, c'est la mise. Une audace qui vient facilement, on peut la garder pour les petites occasions et la laisser là sans y penser. Cette liberté d'action donne son plein potentiel dès qu'on la met dans des paris qui comptent vraiment. Ose la sortir de sa réserve pour un vrai enjeu, et ce ressort inventif change d'échelle."
+  },
+  "jupiter_uranus_conjonction": {
+   "en_bref": "Aller plus loin et tout changer se rejoignent chez toi, et chez toute une génération.",
+   "texte": "Ta génération a grandi avec l'idée que l'ouverture passe par le neuf, la rupture, le saut. Chez toi, l'envie d'aller plus loin et le besoin de secouer marchent ensemble. Tu flaires les occasions dans ce qui bouge, tu te sens vivant quand quelque chose s'ouvre d'un coup. C'est une belle énergie de changement, elle pousse à tenter. Elle peut aussi te rendre allergique à la lenteur, comme si seul le brusque valait la peine. Ce goût du neuf t'appartient et il vous relie. Il gagne à se rappeler que certaines ouvertures prennent le temps qu'elles prennent."
+  },
+  "jupiter_uranus_carre-opposition": {
+   "en_bref": "Grandir et tout casser se disputent la place, une tension qui affûte ton discernement.",
+   "texte": "Bâtir large d'un côté, tout renverser de l'autre. Une part de toi veut construire, s'ouvrir, avancer. Une autre veut rompre, repartir de zéro. Ta génération porte ce tiraillement entre édifier et casser, et chez toi il se joue en direct. Tu lances un grand projet, puis l'envie de tout foutre en l'air te reprend. Tu confonds parfois progrès et rupture, comme s'il fallait détruire pour avancer. Tu ne t'agites pas pour rien. On vous a promis un monde à réinventer sans vous montrer comment le tenir. Cette tension est une vraie école. Elle vous apprend, à toi et à toute une génération, la différence entre changer pour de bon et changer pour changer, un discernement précieux, une fois acquis."
+  },
+  "jupiter_uranus_sextile-trigone": {
+   "en_bref": "Viser large et faire autrement s'entendent, une chance collective à saisir à pleines mains.",
+   "texte": "Ta génération a reçu une facilité à marier l'ouverture et l'invention. Chez toi, viser large et faire autrement vont dans le même sens, sans se contrarier. Les nouveautés te font moins peur qu'à d'autres, tu vois la chance là où ça se réinvente. Cette aisance est une vraie ressource. Le seul point à travailler, c'est de vraiment s'en saisir. Un progrès offert, on peut le tenir pour acquis et le laisser filer sans y toucher. Cette ouverture n'attend qu'une chose pour se transformer en élan concret, que tu l'actives, que tu la mettes en mouvement pour de bon plutôt que de la laisser en simple promesse."
+  },
+  "saturne_neptune_conjonction": {
+   "en_bref": "Tes limites et ton rêve se superposent, le réel et l'imaginaire se tiennent la main.",
+   "texte": "Chez toi, le rêve et le réel ne vivent pas séparés. Ta génération a appris à douter des grands idéaux tout en continuant d'en avoir besoin. Tu donnes volontiers une forme concrète à ce que tu imagines, ou tu te désoles que le monde ne ressemble pas à ton rêve. Les deux se mélangent sans cesse. Cette part de toi peut bâtir du solide à partir d'une vision, ou se décourager quand la vision se cogne au mur du réel. Ce mariage du rêve et de la limite est fécond. Il demande juste de ne renoncer ni à l'un ni à l'autre."
+  },
+  "saturne_neptune_carre-opposition": {
+   "en_bref": "Le réel et le rêve négocient sans cesse en toi, et ça t'apprend à rêver avec les pieds sur terre.",
+   "texte": "Le solide te rassure, le rêve te fait vivre, et les deux se cherchent en permanence. Ton rêve se heurte au réel et se dégonfle, ou ta rigueur assèche ce qui te faisait vibrer. Ta génération connaît bien ce va-et-vient entre l'idéal et la gueule de bois. Tu doutes de tes rêves et tu manques à tes règles, tour à tour. Aucun défaut de caractère là-dedans. On vous a vendu des idéaux puis leur démenti, et il vous revient d'inventer autre chose. Ce va-et-vient constant est un vrai apprentissage. Il enseigne à rêver sans se mentir et à tenir sans jamais éteindre ce qui te fait vibrer."
+  },
+  "saturne_neptune_sextile-trigone": {
+   "en_bref": "Ton rêve et ta rigueur savent coopérer, un pont rare, prêt à être traversé pour de bon.",
+   "texte": "Chez toi, le rêve et le sérieux savent coopérer. Ta génération a hérité de cette possibilité de donner corps à l'imaginaire sans le trahir. Tu peux tenir une vision dans la durée, poser patiemment les pierres d'un projet un peu fou. Cet accord entre rêver et bâtir est précieux et rare. Le seul point à surveiller, c'est de l'activer vraiment : une ressource offerte, on peut la laisser en réserve sans y toucher. Ce pont entre le concret et le rêve n'attend qu'une chose pour prendre tout son sens. Un projet à sa mesure, que tu choisis de traverser plutôt que d'admirer de loin."
+  },
+  "neptune_pluton_conjonction": {
+   "en_bref": "Rêver et se transformer se fondent, une vague qui porte ta génération.",
+   "texte": "Cette rencontre bouge trop lentement pour n'être qu'à toi, elle marque toute une génération. Chez vous, l'imaginaire et les forces qui transforment en profondeur ne font qu'un. Vous rêvez de mondes autres et vous sentez, sous la surface, ce qui meurt et renaît d'une époque. Cette part de toi te relie à quelque chose de plus grand que ta seule vie. Elle peut nourrir une vraie profondeur, ou te perdre dans des brumes où le réel n'a plus de prise. Ce courant sourd te traverse. Il gagne à être ancré dans du concret plutôt que rêvé dans le vide."
+  },
+  "neptune_pluton_carre-opposition": {
+   "en_bref": "Rêver et tout retourner tirent chacun de leur côté, un trouble qui, nommé, devient lucidité.",
+   "texte": "Chez toi, le rêve et ce qui bouleverse en profondeur ne s'accordent pas toujours. Ce désaccord travaille toute une génération, en sourdine, plus qu'il ne te vise seul. Une part de toi veut fuir dans l'imaginaire, une autre veut tout retourner, mettre au jour ce qui se cache. Les deux se cherchent, et ça peut donner un fond d'inquiétude diffuse, la sensation que quelque chose gronde sans nom. Rien d'une fêlure qui t'appartiendrait : vous portez ensemble les remous d'une époque qui se transforme sans plan tout tracé. Ce trouble sourd n'attend qu'à être regardé en face. Nommé, il cesse d'inquiéter et se change en une lucidité rare, que peu savent porter."
+  },
+  "neptune_pluton_sextile-trigone": {
+   "en_bref": "Rêve et profondeur coulent dans le même sens, une ressource de génération à faire naître.",
+   "texte": "Chez toi, le rêve et les forces qui transforment travaillent dans le même sens. Cet accord dépasse ta seule personne, il traverse toute une génération, doucement. Tu peux puiser dans un imaginaire profond pour sentir ce qui vient, ce qui change en dessous. Cette part relie ta sensibilité à des courants plus vastes. Le seul point à travailler, c'est de ne pas la laisser inemployée simplement parce qu'elle vient sans effort. Cette ressource collective attend une forme concrète pour se révéler, un mot, une œuvre, un geste. Donne-lui cette forme, et cette profondeur cesse d'être un potentiel pour devenir quelque chose de bien réel."
+  }
+ }
+}
