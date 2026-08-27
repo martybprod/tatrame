@@ -53,8 +53,22 @@ html,body{overflow-x:hidden}
    perte visible. Format .webp : supporté par tous les navigateurs modernes
    ciblés par cette PWA, aucun repli nécessaire. Le fichier source
    (metier2.png) reste sur disque pour référence, mais n'est plus servi.
-   → Depuis le 2026-08-27, remplacée par fils_tendus.png (choix de Martin) :
-   tuile recompressée fils_tendus.webp, 720px, 108 Ko (16× plus léger).
+   → 2026-08-27 (1er remplacement) : fils_tendus.png (choix de Martin), tuile
+   fils_tendus.webp, miroir vertical construit à partir d'une bande 1024×320
+   (la photo, en éventail convergent vers la galaxie, n'avait aucune bande à
+   raccord naturel simple — le miroir garantit une couture pixel-identique
+   par construction).
+   → 2026-08-27 (2e remplacement, même jour) : Martin a fourni une image
+   PENSÉE pour le défilement continu — Ta-Trame-fond-defilement.png, déjà
+   portrait (960×1728), fils verticaux PARALLÈLES (pas d'éventail) et galaxie
+   centrée à 49 % de la hauteur, loin des bords. Mesure de couture BRUTE
+   (avant tout traitement) : 11,96 (haut/bas) et 1,28 (gauche/droite) — déjà
+   bien plus propre que fils_tendus (43,48/22,38 bruts). Un simple polissage
+   (offset 50 % + fondu, bande étroite de 34px — pas besoin du miroir cette
+   fois) suffit : couture finale 4,74/1,22, quasi imperceptible. Toute
+   l'image sert de tuile (pas de bande découpée : la galaxie centrée ne gêne
+   aucune couture). Recompressée fond-defilement.webp, 860×1548 (2× l'affichage
+   430×774), 128 Ko contre 1 622 Ko pour le PNG source — 12,7× plus léger.
    L'en-tête (.bandeau-marque, plus bas) N'EST PAS touché : sa propre image
    (trame-bandeau.jpg, déjà un JPEG léger) et sa propre
    `background-color:#141110` opaque le protègent déjà entièrement de ce
@@ -64,15 +78,12 @@ body{
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
-    url('/static/img/fils_tendus.webp');
+    url('/static/img/fond-defilement.webp');
   background-position:0 0, top left;
-  /* Tuile 720×450 (ratio 1024:640, PAS carrée — voir le commentaire plus haut :
-     miroir vertical construit à partir d'une bande 1024×320). Hauteur EXPLICITE
-     (225px), jamais `auto` : `auto` préserverait le ratio du FICHIER (720×450),
-     pas celui voulu à l'affichage — ici les deux coïncident (360/720 = 225/450),
-     mais l'expliciter évite qu'un futur remplacement d'image, à un autre ratio,
-     étire silencieusement la tuile en `auto`. */
-  background-size:auto, 360px 225px;
+  /* Tuile 860×1548 (ratio 5:9, portrait — un seul grand défilé de fils plutôt
+     qu'une petite texture dense). Hauteur EXPLICITE (774px), jamais `auto` —
+     voir la note historique ci-dessus sur ce piège. */
+  background-size:auto, 430px 774px;
   background-repeat:no-repeat, repeat;
   color:var(--encre); font-family:var(--sans);
   line-height:1.62; -webkit-font-smoothing:antialiased;
