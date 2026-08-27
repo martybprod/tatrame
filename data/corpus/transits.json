@@ -455,9 +455,9 @@
    "pensee_soir": "Tu as su nommer précisément ce qui te touchait aujourd'hui, chose rare. Retiens cette clarté-là avant qu'elle ne redevienne le flou habituel."
   },
   "mercure_carre-opposition_venus": {
-   "miroir": "Tu cherches tes mots pour parler d'argent ou d'un cadeau, et rien ne sort comme prévu. Une remarque sur le prix ou le goût de l'autre tombe mal, sans que tu l'aies voulu ainsi.",
-   "geste": "Avant de commenter le goût ou le prix de quelque chose aujourd'hui, laisse passer une phrase. Reformule une fois dans ta tête. Ça évite le mot qui blesse sans le vouloir.",
-   "pensee_soir": "Une remarque sur un prix ou un goût est tombée de travers aujourd'hui, sans que tu l'aies voulu. Repense à ce que tu voulais vraiment dire."
+   "miroir": "Tu cherches tes mots dès qu'il s'agit de dire ce que tu aimes ou ce que tu apprécies, et rien ne sort comme prévu. Un mot qui se voulait aimable tombe de travers, sans que tu l'aies voulu ainsi.",
+   "geste": "Avant de donner ton avis sur ce que quelqu'un aime ou a choisi aujourd'hui, laisse passer une phrase. Reformule une fois dans ta tête. Ça évite le mot qui blesse sans le vouloir.",
+   "pensee_soir": "Un mot qui se voulait aimable est tombé de travers aujourd'hui, sans que tu l'aies voulu. Repense à ce que tu voulais vraiment dire."
   },
   "mercure_sextile-trigone_venus": {
    "miroir": "Parler de ce que tu aimes aujourd'hui se fait sans effort. Les compliments passent bien, les goûts se partagent facilement, et la conversation glisse vers ce qui plaît sans jamais forcer.",
@@ -925,14 +925,14 @@
     "geste": "Remarque la prochaine fois où tu ajustes ton attitude en entrant dans un groupe. Tu n'as rien à décider, juste à observer ce tiraillement qui s'installe."
    },
    "coeur": {
-    "miroir": "La tension est vive. Le rôle qu'on te lit et celui que tu te sens être ne collent pas. Entrer quelque part te met devant un choix conscient : te montrer, ou te faire discret.",
+    "miroir": "La tension est vive. La façon dont on te voit et la personne que tu te sens être ne collent pas. Entrer quelque part te met devant un choix : te montrer, ou rester discret.",
     "geste": "Décide à l'avance comment tu veux entrer dans la prochaine pièce. Ce simple choix t'évite de flotter entre les deux options au moment critique."
    },
    "retrait": {
     "miroir": "Le tiraillement se desserre, et il a mis en lumière un écart précis. Tu ajustes ta présentation selon le public parfois bien plus que tu ne le crois.",
     "geste": "Repasse en tête la façon dont tu t'y prenais ces derniers jours. Ce que tu en retiens vaut pour les prochaines fois où tu choisiras ta posture."
    },
-   "pensee_soir": "Le rôle qu'on t'a lu aujourd'hui et celui que tu te sentais être ne collaient pas tout à fait. Repense au choix que tu as fait, entre te montrer et te faire discret."
+   "pensee_soir": "La façon dont on t'a vu aujourd'hui et la personne que tu te sentais être ne collaient pas tout à fait. Repense au choix que tu as fait, entre te montrer et rester discret."
   },
   "soleil_sextile-trigone_asc": {
    "miroir": "La place se donne d'elle-même aujourd'hui, tu n'as rien à réclamer pour l'obtenir. Ta façon d'entrer quelque part attire l'attention doucement, sans effort ni calcul de ta part.",
