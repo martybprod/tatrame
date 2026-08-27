@@ -985,6 +985,7 @@ function ouvrirFormulaire(profil = null) {
 
     <button class="bouton" id="f-valider">${profil ? 'Enregistrer' : 'Calculer'}</button>
     ${profil || profils.length ? '<button class="bouton discret" id="f-annuler">Annuler</button>' : ''}
+    ${!profil && !profils.length ? '<button class="bouton discret" id="f-connexion">J\'ai déjà un compte</button>' : ''}
     <div id="f-erreur" class="avis cacher" style="margin-top:14px"></div>
   </div>`;
   montrer('accueil');
@@ -995,6 +996,7 @@ function ouvrirFormulaire(profil = null) {
      choix — plutôt que d'échouer sur un message incompréhensible. */
   lieuChoisi = profil && n.lieu_id ? {id: n.lieu_id, nom: n.lieu} : null;
   câblerFormulaire(profil);
+  if ($('#f-connexion')) $('#f-connexion').onclick = vueConnexion;
   if (profil && !n.lieu_id) {
     $('#f-erreur').innerHTML = `<b>Le lieu est à confirmer</b> — ce profil a été créé
       avec une version antérieure. Retape et rechoisis « ${T(n.lieu || '')} » dans la liste.`;
