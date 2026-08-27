@@ -662,6 +662,12 @@ details.aide p{font-size:13px;color:var(--encre3);margin-top:8px;line-height:1.6
    première lecture se fait sans rien ouvrir. */
 .jour-section{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--encre3);font-weight:600;margin:24px 0 8px}
 .jour-groupe{background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+/* Le Fil du jour, PROMU (Martin, 2026-08-27) : liseré doré translucide + un
+   peu d'air au-dessus pour le détacher, sans crier — c'est le seul élément
+   doré de la liste, donc l'œil s'y pose (Von Restorff). Replié, ça reste une
+   seule ligne : l'épure tient. */
+.jour-groupe-fil{border-color:rgba(233,212,148,.55);margin-top:20px}
+.jour-groupe-fil .tiroir-nom{color:var(--accent-doux)}
 details.tiroir{border-bottom:1px solid var(--bord)}
 details.tiroir:last-child{border-bottom:0}
 details.tiroir>summary{
@@ -2048,10 +2054,18 @@ async function chargerJour() {
      autres. `t.fil` reste utilisé comme simple GARDE (si le jour ne résout
      rien du tout côté ciel, improbable depuis que les 12 domaines sont
      complets, on ne montre pas un tiroir vide). */
+  // Le Fil du jour est PROMU (Martin, 2026-08-27) : sorti d'« Explorer » où il
+  // se noyait, il devient un bloc à part, remonté juste après « Tes cartes du
+  // jour » (donc visible dès l'ouverture) et distingué par un liseré doré
+  // (.jour-groupe-fil) — c'est LE contenu riche du jour, on veut que l'œil s'y
+  // pose (Von Restorff : un seul élément saillant). Calculé ici, inséré plus
+  // bas dans `html` AVANT le groupe Explorer. Le tiroir DÉPLIÉ ne change pas
+  // (Martin : « déplié, c'est parfait »).
+  let filDuJour = '';
   if (t.fil && t.fil.miroir) {
-    angles += tiroir({
+    filDuJour = tiroir({
       nom: 'Le fil du jour',
-      resume: 'Choisis un domaine de vie à explorer aujourd\'hui.',
+      resume: 'Douze domaines, douze motifs — choisis quel fil suivre aujourd\'hui.',
       ico: icono(ICONES_JOUR.fil),
       corps: `
         ${DOMAINES_JOUR.map(([d, l]) => domaineCarte(d, l)).join('')}
@@ -2134,6 +2148,13 @@ async function chargerJour() {
      son propre tiroir. Fusionne les ex-« angles du jour » et « fond du temps »
      — moins de repères de premier niveau (Miller), une seule grammaire de
      divulgation textuelle. ═══ */
+  // Le Fil du jour, PROMU : inséré ICI (juste après « Tes cartes du jour »,
+  // avant « Explorer ») pour être vu dès l'ouverture. Son propre groupe au
+  // liseré doré (.jour-groupe-fil) le distingue des tiroirs neutres d'Explorer.
+  if (filDuJour) {
+    html += `<div class="jour-groupe jour-groupe-fil">${filDuJour}</div>`;
+  }
+
   if (angles || cycles) {
     const fondDuTemps = cycles ? tiroir({
       nom: 'Le fond du temps',
