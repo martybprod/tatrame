@@ -712,6 +712,20 @@ let editionDe = null;  // null = création, sinon l'id du profil qu'on modifie
 // lui, aucune notification push n'est possible (voir static/sw.js).
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 
+// ⚠️ En PWA installée (« mode appli », iOS surtout), le système garde
+// souvent l'app SUSPENDUE en mémoire entre deux ouvertures plutôt que de la
+// recharger depuis le réseau — comme un onglet Safari mis en pause, pas
+// fermé. Toucher l'icône ne re-télécharge alors RIEN : le code (HTML/JS/CSS,
+// tout inline ici) reste celui de la dernière vraie visite, parfois vieux de
+// plusieurs jours — d'où « mes changements ne semblent pas pris en compte »
+// (Martin, 2026-08-27), alors qu'ils sont bien en ligne (un compte vierge,
+// qui force un chargement réseau frais, les voit tout de suite).
+// `pageshow` avec `event.persisted` signale PRÉCISÉMENT ce cas — une page
+// restaurée depuis ce cache de navigation, pas un chargement réseau — sans
+// se déclencher à chaque changement d'onglet ordinaire. On force alors un
+// rechargement complet pour repartir sur le code à jour.
+window.addEventListener('pageshow', e => { if (e.persisted) location.reload(); });
+
 /* ═══════════════════════════════════════════════════════════
    VULGARISATION — aucun terme technique n'atteint l'écran nu.
    Chaque helper traduit une clé en français clair.
