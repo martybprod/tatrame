@@ -36,6 +36,7 @@ from moteur import numerologie as NUM
 from moteur import tarot as TAR
 from moteur import mineurs as MIN
 from moteur import synthese
+from moteur import temps as TEMPS
 from moteur.corpus import Corpus
 from moteur.geo import ATTRIBUTION, Lieux
 from moteur.numerologie import (annee_personnelle, mois_personnel,
@@ -44,6 +45,13 @@ from moteur.tarot import carte_de_l_annee, carte_du_jour
 from moteur.theme import Moteur
 
 RACINE = pathlib.Path(__file__).resolve().parent
+
+# Le fuseau de l'AUDIENCE d'Align (Québec/Est canadien), pas celui du serveur.
+# `date.today()` suit l'horloge système du processus : sur un poste local
+# c'est déjà l'heure du Québec, mais un conteneur déployé tourne en UTC —
+# passé 20h locale, il croirait déjà être demain. Voir `_date_demandee()`.
+FUSEAU_APP = "America/Toronto"
+
 PROFILS = RACINE / "data" / "profils"
 PROFILS.mkdir(parents=True, exist_ok=True)
 CONTACTS = RACINE / "data" / "contacts"
@@ -1448,11 +1456,15 @@ def _date_demandee():
     `datetime.now()` vit ICI, dans la couche transport — jamais dans le
     moteur, qui reçoit toujours l'instant en paramètre. C'est ce qui rend
     chaque lecture rejouable : `?date=2026-07-16` redonne exactement la même.
+
+    Le « aujourd'hui » par défaut se calcule dans `FUSEAU_APP`, jamais dans
+    le fuseau système du processus — `date.today()` suivrait l'UTC du
+    conteneur déployé et basculerait au jour suivant 4-5h avant le Québec.
     """
     q = request.args.get("date")
     if q:
         return dt.date.fromisoformat(q)
-    return dt.date.today()
+    return dt.datetime.now(TEMPS.fuseau(FUSEAU_APP)).date()
 
 
 def bloc_univers(jour, mois, annee_civile):
