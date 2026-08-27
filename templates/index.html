@@ -1234,13 +1234,17 @@ const CLE_ACCUEIL_VU = 'trame.accueil.vu';
 const ACCUEIL_TEST_TOUJOURS = true;
 let fermetureAccueilEnCours = false;
 
-// À partir de 20h (heure locale de l'appareil, pas un fuseau serveur — c'est
-// le moment où LA PERSONNE ouvre l'app qui compte), l'écran d'accueil montre
-// « À méditer » plutôt que « Aujourd'hui » : demande de Martin (2026-08-27),
-// pour clore la journée sur une pensée plutôt que de rouvrir le message du
-// matin, déjà lu. Voir chargerJour() pour la construction du contenu.
+// De 20h à 3h du matin (heure locale de l'appareil, pas un fuseau serveur —
+// c'est le moment où LA PERSONNE ouvre l'app qui compte), l'écran d'accueil
+// montre « À méditer » plutôt que « Aujourd'hui » : demande de Martin
+// (2026-08-27), pour clore la journée sur une pensée plutôt que de rouvrir
+// le message du matin, déjà lu. La fenêtre traverse minuit — Martin l'a
+// voulue ainsi : quelqu'un qui ouvre l'app à 1h ou 2h du matin (couché
+// tard) vit encore « ce soir-là », pas déjà le lendemain. Voir chargerJour()
+// pour la construction du contenu.
 function estSoir() {
-  return new Date().getHours() >= 20;
+  const h = new Date().getHours();
+  return h >= 20 || h < 3;
 }
 
 // La clé « déjà vu » distingue maintenant JOUR et SOIR (date + période) : les
