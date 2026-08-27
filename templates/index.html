@@ -88,7 +88,7 @@ body{
    x=564 y=488 sur 1024×1024). */
 .bandeau-marque{
   position:absolute; top:0; left:0; right:0;
-  height:230px; z-index:-1;
+  height:200px; z-index:-1;
   background-color:#141110;
   /* Le dégradé fait DEUX choses à des rythmes différents : un voile sombre
      (rgba(20,17,16,…)) s'épaissit tôt pour garder le texte de l'en-tête
@@ -116,7 +116,7 @@ body{
    photo, son texte ne doit jamais s'inverser sous peine de devenir
    illisible, même si un thème clair devait revenir un jour. */
 header{margin-bottom:26px; position:relative}
-.rangee-haut{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.rangee-haut{display:flex;align-items:center;justify-content:space-between;gap:14px}
 .marque{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:24px;letter-spacing:.16em;font-weight:400;color:#ece0bd}
 .marque-ico{flex:none;color:#e9d494}
 .marque-texte::after{content:'';display:block;width:24px;height:1px;background:#e9d494;margin-top:6px}
@@ -156,34 +156,39 @@ nav button .ico{flex:none;opacity:.85}
 nav button:hover{color:#e9d494;background:rgba(255,255,255,.08)}
 nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 
-/* Les Règles, sorti du menu principal : une icône seule en haut à droite,
-   son nom apparaît en étiquette au survol (ou au focus clavier). Mêmes
-   teintes fixes claires que le reste de l'en-tête, pour la même raison
-   (repose sur la photo, ne s'inverse pas avec le thème). */
-.outils-haut{display:flex;align-items:center;gap:10px}
-.bouton-survol{
-  position:relative; background:none; border:0; cursor:pointer;
-  color:#b3a68a; padding:7px; border-radius:8px; display:flex; transition:.15s;
+/* ═══ La barre d'outils de l'en-tête (refonte 2026-08-27) ═══
+   Les TROIS outils — Règles, Commentaire, Profil — partagent UNE seule famille
+   de pastille (`.outil`), au lieu de deux icônes nues orphelines + une grosse
+   pilule dorée qui écrasait le titre. Objectif (Fiche 1 du guide UX) : le titre
+   reste le seul pic ; les outils forment un groupe discret, aligné, dés-accentué.
+   Teintes fixes claires (repose sur la photo, ne s'inverse pas avec le thème). */
+.outils-haut{display:flex;align-items:center;gap:8px}
+.outil{
+  position:relative;
+  display:flex;align-items:center;gap:7px;height:34px;padding:0 12px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);
+  border-radius:17px;color:#cdbf9a;font:inherit;font-size:13px;cursor:pointer;
+  white-space:nowrap;transition:.15s;
 }
-.bouton-survol:hover, .bouton-survol:focus-visible{color:#e9d494;background:rgba(255,255,255,.08)}
+.outil.ico-seule{width:34px;padding:0;justify-content:center}   /* Règles, Commentaire */
+/* Taille uniforme des 3 icônes (Règles 19, Commentaire 18, Profil 17 à
+   l'injection) : on force 17 ici pour qu'elles pèsent pareil dans le groupe. */
+.outil .ico{flex:none;width:17px;height:17px}
+.outil .fleche{font-size:9px;color:var(--encre3);margin-left:1px}
+.outil:hover, .outil:focus-visible{
+  color:#f4ecd8;border-color:var(--accent-doux);background:rgba(255,255,255,.1);
+}
+/* Le nom de l'outil-icône (Règles, Commentaire) au survol/focus clavier —
+   inchangé dans son principe, juste rattaché à `.outil` plutôt qu'au bouton. */
 .etiquette-survol{
   position:absolute; top:100%; right:0; margin-top:8px;
   font-size:12px; white-space:nowrap; background:#141110; color:#f4ecd8;
   border:1px solid rgba(255,255,255,.15); border-radius:6px; padding:4px 10px;
   opacity:0; transform:translateY(-4px); pointer-events:none; transition:.15s;
 }
-.bouton-survol:hover .etiquette-survol, .bouton-survol:focus-visible .etiquette-survol{
+.outil:hover .etiquette-survol, .outil:focus-visible .etiquette-survol{
   opacity:1; transform:translateY(0);
 }
-
-/* pastille de profil */
-.puce-profil{
-  display:flex;align-items:center;gap:8px;background:var(--papier2);
-  border:1px solid var(--bord);border-radius:20px;padding:5px 12px;
-  cursor:pointer;font-size:13px;color:var(--encre2);transition:.15s;
-}
-.puce-profil:hover{border-color:var(--accent-doux);color:var(--encre)}
-.puce-profil .fleche{font-size:9px;color:var(--encre3)}
 
 /* blocs */
 .carte{
@@ -671,7 +676,11 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
 .cacher{display:none}
 
 @media (max-width:480px){
-  .rangee-haut{flex-direction:column;align-items:flex-start;gap:12px}
+  /* Titre sur sa ligne, barre d'outils juste dessous ALIGNÉE À DROITE (refonte
+     en-tête 2026-08-27) — plus les deux icônes orphelines calées à gauche : le
+     groupe d'outils est posé à droite, en un seul bloc net. */
+  .rangee-haut{flex-direction:column;align-items:stretch;gap:14px}
+  .outils-haut{justify-content:flex-end}
   /* `width:100%` retiré : la nav est désormais en pleine largeur d'écran
      par elle-même (voir la règle de base, marges négatives) — imposer
      100% ici annulerait ce débordement volontaire. */
@@ -679,7 +688,9 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
      les petits téléphones. */
   nav button{padding:6px 5px;gap:3px;font-size:11.5px}
   nav button .ico{width:14px;height:14px}
-  .bandeau-marque{height:260px}
+  /* Bandeau resserré (260 → 210) : titre + outils tiennent dans le tiers haut,
+     l'image respire dessous au lieu d'un grand vide au milieu. */
+  .bandeau-marque{height:210px}
   .enveloppe{padding:22px 0 70px}
   .carte{padding:20px}
   .miroir{font-size:19px}
@@ -704,13 +715,13 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
         <span class="marque-texte">TA TRAME</span>
       </div>
       <div class="outils-haut">
-        <button id="bouton-regles" class="bouton-survol cacher" data-vue="regles" aria-label="Les Règles">
+        <button id="bouton-regles" class="outil ico-seule cacher" data-vue="regles" aria-label="Les Règles">
           <span class="etiquette-survol">Les Règles</span>
         </button>
-        <button id="bouton-feedback" class="bouton-survol cacher" aria-label="Un commentaire pour Martin ?">
+        <button id="bouton-feedback" class="outil ico-seule cacher" aria-label="Un commentaire pour Martin ?">
           <span class="etiquette-survol">Un commentaire ?</span>
         </button>
-        <div id="puce-profil" class="puce-profil cacher"></div>
+        <div id="puce-profil" class="outil cacher"></div>
       </div>
     </div>
     <nav id="nav" class="cacher">
@@ -839,7 +850,13 @@ function dessinerPuce() {
   const puce = $('#puce-profil');
   if (!p) { puce.classList.add('cacher'); return; }
   puce.classList.remove('cacher');
-  puce.innerHTML = `<span>${T(p.nom_affiche)}</span><span class="fleche">▼</span>`;
+  // Icône « personne » + nom : le profil rejoint la famille visuelle des deux
+  // autres outils (Règles, Commentaire) — même pastille, plus la grosse pilule
+  // dorée qui écrasait le titre (refonte en-tête, 2026-08-27).
+  puce.innerHTML = `<svg class="ico" viewBox="0 0 24 24" width="17" height="17" fill="none"
+      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"/></svg>
+    <span>${T(p.nom_affiche)}</span><span class="fleche">▼</span>`;
   puce.onclick = () => montrer('profils');
 }
 

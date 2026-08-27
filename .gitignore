@@ -32,3 +32,13 @@ data/journal/
 
 # Extraction de textes sources pour distillation (textes sous copyright, hors produit)
 _distillation/sources/
+
+# Fichiers de travail/vérification visuelle (jamais versionnés)
+_chrome_profile/
+_chrome_p*/
+_verif_*
+_maquette_*
+_gen_verif.py
+_src_thumb.png
+_grille_seamless.png
+_http.log
