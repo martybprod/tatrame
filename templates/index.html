@@ -53,6 +53,8 @@ html,body{overflow-x:hidden}
    perte visible. Format .webp : supporté par tous les navigateurs modernes
    ciblés par cette PWA, aucun repli nécessaire. Le fichier source
    (metier2.png) reste sur disque pour référence, mais n'est plus servi.
+   → Depuis le 2026-08-27, remplacée par fils_tendus.png (choix de Martin) :
+   tuile recompressée fils_tendus.webp, 720px, 108 Ko (16× plus léger).
    L'en-tête (.bandeau-marque, plus bas) N'EST PAS touché : sa propre image
    (trame-bandeau.jpg, déjà un JPEG léger) et sa propre
    `background-color:#141110` opaque le protègent déjà entièrement de ce
@@ -62,7 +64,7 @@ body{
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
-    url('/static/img/metier2.webp');
+    url('/static/img/fils_tendus.webp');
   background-position:0 0, top left;
   background-size:auto, 360px auto;
   background-repeat:no-repeat, repeat;
