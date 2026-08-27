@@ -11,23 +11,25 @@
 <title>Ta Trame</title>
 <style>
 /* Align — sobre, chaud, sans kitsch ésotérique.
-   Le ton visuel EST le positionnement : on n'est pas un oracle anxiogène. */
+   Le ton visuel EST le positionnement : on n'est pas un oracle anxiogène.
+   ⚠️ THÈME SOMBRE TOUJOURS, PAR DÉFAUT (Martin, 2026-08-26) : ne dépend plus
+   de `prefers-color-scheme`. Sur un appareil réglé en thème clair système,
+   les couleurs de l'app basculaient vers le jeu clair (fond de carte pâle
+   au lieu de brun foncé, etc.) — non voulu, l'app n'a pas de bascule de
+   thème manuelle et n'est pensée que pour le sombre (voile sur les images
+   de fond, contrastes du bandeau…). Les valeurs sombres (ex-media query)
+   sont maintenant les valeurs PAR DÉFAUT de :root, point final. Les
+   anciennes valeurs claires ne sont plus utilisées nulle part — si un
+   thème clair redevient souhaité un jour, ce sera une bascule volontaire
+   (bouton + localStorage), pas une media query système subie. */
 :root{
-  --encre:#2a2521; --encre2:#6b6058; --encre3:#9a8f85;
-  --papier:#f6f2ec; --papier2:#efe9e0; --bord:#e2d9cd;
-  --accent:#8a6d2f; --accent-doux:#c9a858;
-  --resonance:#5f7a52; --tension:#a86a4a; --neutre:#8a8078;
+  --encre:#ece0bd; --encre2:#b3a68a; --encre3:#86795f;
+  --papier:#141110; --papier2:#1e1a16; --bord:#372e1e;
+  --accent:#d9b95c; --accent-doux:#e9d494;
+  --resonance:#9db383; --tension:#dfa277; --neutre:#8a8078;
   --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;
   --r:14px;
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --encre:#ece0bd; --encre2:#b3a68a; --encre3:#86795f;
-    --papier:#141110; --papier2:#1e1a16; --bord:#372e1e;
-    --accent:#d9b95c; --accent-doux:#e9d494;
-    --resonance:#9db383; --tension:#dfa277; --neutre:#8a8078;
-  }
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden}
@@ -101,10 +103,10 @@ body{
    outils du haut sur mobile (colonne, pas ligne), donc reste un peu plus
    haut qu'au bureau. */
 
-/* en-tête — repose sur le bandeau, donc toujours en teintes claires
-   (celles du mode sombre) quel que soit le thème choisi : le bandeau est
-   une photo, elle ne s'inverse pas avec le thème, le texte ne doit donc
-   pas s'inverser non plus sous peine de devenir illisible en mode clair. */
+/* en-tête — repose sur le bandeau, donc toujours en teintes claires fixes
+   (celles du thème sombre, le seul thème de l'app) : le bandeau est une
+   photo, son texte ne doit jamais s'inverser sous peine de devenir
+   illisible, même si un thème clair devait revenir un jour. */
 header{margin-bottom:26px; position:relative}
 .rangee-haut{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
 .marque{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:24px;letter-spacing:.16em;font-weight:400;color:#ece0bd}
