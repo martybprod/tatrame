@@ -187,6 +187,32 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .miroir{font-family:var(--serif);font-size:21px;line-height:1.5;margin-bottom:18px}
 .geste{border-left:2px solid var(--accent-doux);padding-left:16px;color:var(--encre2);font-size:15px}
 .geste strong{color:var(--encre);font-weight:600}
+.crayon-journal{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;margin-left:6px;vertical-align:-5px;
+  border:0;background:none;padding:0;border-radius:50%;
+  color:var(--encre3);opacity:.6;cursor:pointer;
+  transition:opacity .15s,color .15s,background-color .15s;
+}
+.crayon-journal:hover,.crayon-journal:focus-visible{opacity:1;color:var(--accent);background:var(--papier2)}
+
+/* ═══ JOURNAL — ouvert dans #angle-plein (voir plus bas), même carte papier2
+   que tout le reste. Rien de plus qu'une liste + un textarea. ═══ */
+.journal-compose{margin-bottom:22px}
+.journal-compose textarea{margin-bottom:0}
+.journal-liste{display:flex;flex-direction:column;gap:14px}
+.journal-entree{border-top:1px solid var(--bord);padding-top:14px}
+.journal-entree:first-child{border-top:0;padding-top:0}
+.journal-entree-tete{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.journal-date{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--encre3)}
+.journal-texte-lu{font-family:var(--serif);font-size:16px;line-height:1.55;white-space:pre-wrap}
+.journal-suppr{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border:0;background:none;padding:0;border-radius:50%;
+  color:var(--encre3);opacity:.5;cursor:pointer;font-size:12px;line-height:1;flex:none;
+  transition:opacity .15s,color .15s,background-color .15s;
+}
+.journal-suppr:hover,.journal-suppr:focus-visible{opacity:1;color:var(--tension);background:var(--papier2)}
 
 .entete-jour{text-align:center;padding:6px 0 22px}
 .date{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--encre3)}
@@ -1420,6 +1446,81 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') fermerAnglePlein();
 });
 
+/* ═══════════════════════════════════════════════════════════
+   LE JOURNAL — un petit espace perso pour écrire, ouvert dans LE MÊME plein
+   écran que les angles du jour (#angle-plein, ouvrirAnglePlein/fermerAnglePlein
+   ci-dessus) : c'est déjà le geste « contempler un objet seul », le journal en
+   est un de plus, pas une raison d'inventer un second mécanisme d'overlay.
+   Accessible de deux façons : le crayon à côté de chaque « En action »
+   (blocGeste, plus haut) et un lien « Écrire » sur Le jour. Zéro corpus, zéro
+   calcul — juste des notes horodatées, voir /api/journal côté serveur. */
+function formaterDateJournal(iso) {
+  const d = new Date(iso);
+  const h = String(d.getHours()).padStart(2, '0');
+  const m = String(d.getMinutes()).padStart(2, '0');
+  return `${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()} · ${h}h${m}`;
+}
+
+function rangeeJournal(e) {
+  return `<div class="journal-entree">
+    <div class="journal-entree-tete">
+      <span class="journal-date">${formaterDateJournal(e.cree_le)}</span>
+      <button type="button" class="journal-suppr" id="journal-suppr-${e.id}"
+        title="Supprimer" aria-label="Supprimer cette note">✕</button>
+    </div>
+    <p class="journal-texte-lu">${T(e.texte)}</p>
+  </div>`;
+}
+
+async function chargerEntreesJournal() {
+  const liste = $('#journal-liste');
+  if (!liste) return;
+  const entrees = await (await fetch(`/api/journal/${profilId}`)).json();
+  liste.innerHTML = entrees.length
+    ? entrees.map(rangeeJournal).join('')
+    : `<p class="quoi">Rien pour l'instant — le premier mot t'attend.</p>`;
+  entrees.forEach(e => {
+    const bouton = document.getElementById(`journal-suppr-${e.id}`);
+    if (bouton) bouton.onclick = () => supprimerEntreeJournal(e.id);
+  });
+}
+
+async function ajouterEntreeJournal() {
+  const champ = $('#journal-texte');
+  const texte = champ.value.trim();
+  if (!texte) return;
+  const bouton = $('#journal-ajouter');
+  bouton.disabled = true;
+  try {
+    const r = await (await fetch(`/api/journal/${profilId}`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({texte}),
+    })).json();
+    if (r.erreur) { alert(r.erreur); return; }
+    champ.value = '';
+    await chargerEntreesJournal();
+  } finally {
+    bouton.disabled = false;
+  }
+}
+
+async function supprimerEntreeJournal(id) {
+  if (!confirm('Supprimer cette note ?')) return;
+  await fetch(`/api/journal/${profilId}/${id}`, {method: 'DELETE'});
+  await chargerEntreesJournal();
+}
+
+function ouvrirJournal() {
+  ouvrirAnglePlein('Ton journal', `
+    <div class="journal-compose">
+      <textarea id="journal-texte" placeholder="Écris ce qui te passe par la tête…"></textarea>
+      <button class="bouton" id="journal-ajouter">Ajouter au journal</button>
+    </div>
+    <div id="journal-liste" class="journal-liste"><p class="quoi">Chargement…</p></div>`);
+  $('#journal-ajouter').onclick = ajouterEntreeJournal;
+  chargerEntreesJournal();
+}
+
 /* Une carte cliquable d'angle du jour : même bloc .pont que partout
    ailleurs (icône + titre + résumé), mais un clic ouvre le PLEIN ÉCRAN
    (titre + corps complet) au lieu de déplier un tiroir. */
@@ -1458,6 +1559,24 @@ function angleCarte({nom, resume, ico, corpsHTML}) {
    cette constante.
    Le miroir (l'observation du jour) n'a plus de libellé : le texte se lit seul. */
 const LBL_ACTION = 'En action';
+
+/* Le trait du crayon du journal — même grammaire monoligne que ICONES_NAV/
+   ICONES_JOUR plus bas (icono() est défini après, mais tout le script est
+   évalué avant qu'aucune fonction ne s'exécute réellement : la référence
+   ci-dessous, dans blocGeste(), est donc sûre). */
+const ICONE_CRAYON = `<path d="M4 20l0.9-4.1L15.6 5.5a1.8 1.8 0 0 1 2.5 0l0.5 0.5a1.8 1.8 0 0 1 0 2.5L8.2 19.1 4 20Z"/>
+  <path d="M13.7 7.3l3.1 3.1"/>`;
+
+/* Le bloc « En action », PARTOUT où le corpus propose un geste (8 endroits :
+   Aujourd'hui, Ce qui domine, la Lune, la phase, un domaine, le mois, l'année,
+   la carte d'accueil). Un seul endroit pour ajouter le crayon du journal —
+   discret, à côté du texte, jamais un bouton séparé qui surchargerait. */
+function blocGeste(texte) {
+  if (!texte) return '';
+  return `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(texte)}
+    <button type="button" class="crayon-journal" title="Écrire dans le journal"
+      aria-label="Écrire dans le journal" onclick="event.stopPropagation(); ouvrirJournal();">${icono(ICONE_CRAYON, 14)}</button></div>`;
+}
 
 /* Un tiroir du jour : la pensée reste visible dans l'en-tête (resume), l'action
    et le détail se déploient au clic. `resume` et `corps` sont du HTML déjà sûr
@@ -1677,7 +1796,7 @@ async function ouvrirDomainePlein(domaine, label) {
     const c = r.texte;
     _cacheDomaines[domaine] = c
       ? `<div class="miroir" style="font-size:16px;margin-bottom:8px">${T(c.miroir)}</div>
-         ${c.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(c.geste)}</div>` : ''}
+         ${blocGeste(c.geste)}
          ${aide("D'où vient ce conseil ?", "Une strate de coaching distillée de nombreux ouvrages de développement personnel, réécrite dans la voix de Ta Trame. Tu choisis le domaine ; le transit dominant du jour et la phase ou la tonalité choisissent l'entrée à l'intérieur. C'est le ciel qui décide — reviens demain, ce ne sera pas la même.")}`
       : `<p class="quoi">Le corpus n'a pas encore d'entrée pour cette configuration du ciel, ${T(label).toLowerCase()}.</p>`;
   }
@@ -1770,7 +1889,7 @@ async function chargerJour() {
       ${cielMene && dom ? `<p style="font-size:15px;color:var(--encre2)">${domPhrase}</p>
       <p class="quoi" style="margin:4px 0 12px">${domTempo}</p>` : ''}
       <div class="miroir">${T(titre.miroir)}</div>
-      ${titre.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(titre.geste)}</div>` : ''}
+      ${blocGeste(titre.geste)}
       ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
       ${cielMene ? domRetourAide : ''}
     </div>`;
@@ -1837,7 +1956,7 @@ async function chargerJour() {
       // geste restent visibles, eux.
       corps: `<details class="aide"><summary>Dans le ciel</summary><p>${domPhrase}</p></details>
         <p class="quoi">${domTempo}</p>
-        ${t.transit?.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(t.transit.geste)}</div>` : ''}
+        ${blocGeste(t.transit?.geste)}
         ${domCalc}${domRetourAide}`
     });
   }
@@ -1853,7 +1972,7 @@ async function chargerJour() {
         <span class="lib" style="display:block;font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--encre3);margin-bottom:4px">Le moment du cycle</span>
         <div class="miroir" style="font-size:16px">${T(ph.miroir)}</div>
         <p class="quoi" style="margin:4px 0 10px">${nomPhase(phase)} — ${quoiPhase(phase)}</p>
-        ${ph.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(ph.geste)}</div>` : ''}
+        ${blocGeste(ph.geste)}
         ${aide("D'où vient la phase ?", "L'écart entre la Lune et le Soleil dans le ciel du jour, divisé en huit parts égales — un calcul purement astronomique, le même pour tout le monde, qui donne les huit phases classiques (nouvelle, premier quartier, pleine…).")}
       </div>` : '';
     angles += angleCarte({
@@ -1863,7 +1982,7 @@ async function chargerJour() {
       corpsHTML: `${(lm && lm.miroir) ? `
         <details class="aide"><summary>Dans le ciel</summary><p>La Lune traverse ta maison ${lune.maison} aujourd'hui.</p></details>
         <p class="quoi" style="margin:4px 0 12px">${nomMaison(lune.maison)} — ${quoiMaison(lune.maison)}</p>
-        ${lm.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(lm.geste)}</div>` : ''}
+        ${blocGeste(lm.geste)}
         ${aide("D'où vient ce calcul ?", "La Lune du jour traverse une maison de ton thème de naissance — précise à ta carte, elle seule dit sur quel terrain de ta vie ça se joue aujourd'hui. Elle change de maison environ tous les deux jours et demi.")}` : ''}
         ${blocPhase}`
     });
@@ -1924,7 +2043,7 @@ async function chargerJour() {
       nom: `Ton mois ${j.jour.mois_personnel}${m.en_un_mot ? ' · ' + T(m.en_un_mot) : ''}`,
       resume: T(m.miroir || ''),
       ico: icono(ICONES_JOUR.cycle),
-      corps: `${m.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(m.geste)}</div>` : ''}
+      corps: `${blocGeste(m.geste)}
         <span class="tout-lire" data-cible="mois">tout lire →</span>
         ${aide("C'est quoi, « ton mois » ?", terme('mois_personnel').quoi, terme('mois_personnel').quand)}`
     });
@@ -1937,7 +2056,7 @@ async function chargerJour() {
       nom: `Ton année ${j.jour.annee_personnelle}${motcle ? ' · ' + T(motcle) : ''}`,
       resume: T(t.annee_perso.miroir || ''),
       ico: icono(ICONES_JOUR.cycle),
-      corps: `${t.annee_perso.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(t.annee_perso.geste)}</div>` : ''}
+      corps: `${blocGeste(t.annee_perso.geste)}
         ${t.annee_perso.univers ? `<div class="pont" style="margin-top:14px">
           <span>Le monde, lui, est en année <span class="cible">${t.annee_perso.univers.universelle}</span>${t.annee_perso.univers.titre ? ` — ${T(t.annee_perso.univers.titre.toLowerCase())}` : ''}.</span></div>` : ''}
         <div class="pont carte-annee" style="margin-top:14px;display:flex;align-items:center;gap:14px">
@@ -1994,6 +2113,17 @@ async function chargerJour() {
     })}</div>`;
   }
 
+  /* ═══ TON JOURNAL — même registre utilitaire/dés-accentué que Rappels
+     ci-dessous : l'app suggère souvent d'écrire (les « En action »), ce lien
+     est le point d'entrée permanent vers cet espace, pas juste le crayon à
+     côté de chaque geste (blocGeste). ═══ */
+  html += `<div class="jour-pied" id="c-journal">
+    <div class="chapo"><span class="chapo-ico">${icono(ICONE_CRAYON, 15)}</span>Ton journal</div>
+    <p class="quoi" style="margin:-4px 0 14px">Un petit espace à toi pour écrire ce que
+      la journée t'inspire.</p>
+    <button class="bouton discret" id="bouton-journal">Écrire</button>
+  </div>`;
+
   /* ═══ RAPPELS — un utilitaire, PAS du contenu : sorti du flux de lecture, en
      pied de page discret et dés-accentué. Un matin (l'observation), un soir (le
      geste), aux mêmes heures pour tout le monde — jamais réglés pour maximiser
@@ -2012,6 +2142,7 @@ async function chargerJour() {
   }
 
   $('#vue-jour').innerHTML = html;
+  $('#bouton-journal').onclick = ouvrirJournal;
 
   /* Le contenu de l'écran d'accueil : l'essentiel seulement (date, chapô,
      miroir, éventuellement En action) — les dépliants secondaires restent
@@ -2039,7 +2170,7 @@ async function chargerJour() {
         <div class="chapo">Aujourd'hui</div>
         ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
         <div class="miroir">${T(titre.miroir)}</div>
-        ${titre.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(titre.geste)}</div>` : ''}
+        ${blocGeste(titre.geste)}
       </div>`;
     } else {
       delete carteAccueil.dataset.jour;   // rien à montrer, ni jour ni soir

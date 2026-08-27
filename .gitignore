@@ -27,6 +27,8 @@ data/profils/
 data/vapid/
 # ── Abonnements et préférences de notifications (données utilisateur) ──
 data/notifications/
+# ── Notes du journal personnel (données utilisateur, les plus intimes) ──
+data/journal/
 
 # Extraction de textes sources pour distillation (textes sous copyright, hors produit)
 _distillation/sources/

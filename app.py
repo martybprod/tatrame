@@ -56,6 +56,8 @@ PROFILS = RACINE / "data" / "profils"
 PROFILS.mkdir(parents=True, exist_ok=True)
 CONTACTS = RACINE / "data" / "contacts"
 CONTACTS.mkdir(parents=True, exist_ok=True)
+JOURNAL = RACINE / "data" / "journal"
+JOURNAL.mkdir(parents=True, exist_ok=True)
 
 # Les libellés français des 12 domaines du Fil du jour (Explorer). Pure
 # présentation : les slugs et leur correspondance aux maisons vivent dans
@@ -682,6 +684,67 @@ def api_activer_profil(profil_id):
     mdp = body.get("mot_de_passe") or ""
     if not auth.definir_mot_de_passe(PROFILS, profil_id, mdp):
         return jsonify({"erreur": "introuvable ou mot de passe vide"}), 400
+    return jsonify({"ok": True})
+
+
+# --------------------------------------------------------------- journal
+
+# L'app suggère souvent d'écrire (les « en action ») — un petit espace perso
+# pour le faire, à côté. Zéro corpus, zéro calcul : juste une note horodatée,
+# rangée à part du profil pour la même raison que les abonnements push (voir
+# moteur/notifications.py) — une donnée opérationnelle, pas une donnée
+# d'identité, écrasée sinon à chaque sauvegarde du profil.
+MAX_JOURNAL_TEXTE = 8000
+
+
+def _chemin_journal(profil_id):
+    sur = "".join(c for c in profil_id if c.isalnum() or c in "-_")
+    if not sur:
+        raise ValueError("identifiant de profil invalide")
+    return JOURNAL / f"{sur}.json"
+
+
+def _lire_journal(profil_id):
+    chemin = _chemin_journal(profil_id)
+    if not chemin.exists():
+        return []
+    return json.loads(chemin.read_text(encoding="utf-8"))
+
+
+@app.get("/api/journal/<profil_id>")
+def api_journal(profil_id):
+    """Les notes du profil, la plus récente d'abord."""
+    entrees = _lire_journal(profil_id)
+    return jsonify(sorted(entrees, key=lambda e: e["cree_le"], reverse=True))
+
+
+@app.post("/api/journal/<profil_id>")
+def api_journal_ajouter(profil_id):
+    texte = ((request.get_json(silent=True) or {}).get("texte") or "").strip()
+    if not texte:
+        return jsonify({"erreur": "La note ne peut pas être vide."}), 400
+    if len(texte) > MAX_JOURNAL_TEXTE:
+        return jsonify({"erreur": f"Trop long ({MAX_JOURNAL_TEXTE} caractères maximum)."}), 400
+    entrees = _lire_journal(profil_id)
+    entree = {
+        "id": secrets.token_hex(6),
+        "texte": texte,
+        # Horodaté dans le fuseau de l'app (Québec), pas celui du serveur —
+        # même raison que _date_demandee() : voir FUSEAU_APP plus haut.
+        "cree_le": dt.datetime.now(TEMPS.fuseau(FUSEAU_APP)).isoformat(),
+    }
+    entrees.append(entree)
+    _ecrire(_chemin_journal(profil_id), entrees)
+    return jsonify(entree)
+
+
+@app.delete("/api/journal/<profil_id>/<entree_id>")
+def api_journal_supprimer(profil_id, entree_id):
+    entrees = _lire_journal(profil_id)
+    restantes = [e for e in entrees if e["id"] != entree_id]
+    if len(restantes) == len(entrees):
+        return jsonify({"erreur": "introuvable"}), 404
+    _ecrire(_chemin_journal(profil_id), restantes)
     return jsonify({"ok": True})
 
 
