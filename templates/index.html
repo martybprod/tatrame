@@ -112,7 +112,33 @@ header{margin-bottom:26px; position:relative}
 .marque{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:24px;letter-spacing:.16em;font-weight:400;color:#ece0bd}
 .marque-ico{flex:none;color:#e9d494}
 .marque-texte::after{content:'';display:block;width:24px;height:1px;background:#e9d494;margin-top:6px}
-nav{display:flex;gap:2px;margin-top:16px;flex-wrap:wrap}
+/* La barre d'onglets — BANDE OPAQUE plein écran (Martin, 2026-08-26).
+   L'image du bandeau (hauteur FIXE, 230/260px) et le fond de page en tuile
+   (voile semi-transparent partout, jamais 100% opaque) ne couvrent, à eux
+   deux, JAMAIS toute la hauteur réelle du header — sur mobile surtout, le
+   logo et le sélecteur de profil s'empilent en colonne et dépassent
+   largement la hauteur du bandeau. La nav retombait donc SUR le motif de
+   fond, jamais sur du noir plein : « tout est dans l'image ».
+   Plutôt qu'une bande de hauteur FIXE en px ajoutée au fond de page
+   (fragile — un nombre à deviner, qui casse dès que le header change de
+   hauteur : nom de profil plus long, police système agrandie…), la nav
+   porte SON PROPRE fond opaque. La bande s'ajuste donc AUTOMATIQUEMENT à
+   la hauteur réelle du header, quel que soit son contenu — jamais besoin
+   de recalculer un chiffre.
+   Étirée d'un bord à l'autre de l'écran (« full-bleed » : marges négatives
+   égales à l'écart entre la largeur du viewport et celle du parent
+   contraint .enveloppe, 660px), pas seulement la largeur du contenu —
+   `overflow-x:hidden` sur html/body (déjà en place) protège contre tout
+   débordement d'arrondi. Transition NETTE (demande de Martin) : le
+   padding-top interne remplace l'ancien margin-top externe, pour que le
+   fond opaque commence collé au contenu du dessus, sans zone transparente
+   intermédiaire. */
+nav{
+  display:flex; gap:2px; flex-wrap:wrap;
+  background:var(--papier);
+  width:auto; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  padding:14px 20px 10px;
+}
 nav button{
   background:none;border:0;font:inherit;font-size:13px;color:#b3a68a;
   padding:7px 11px;border-radius:8px;cursor:pointer;transition:.15s;
@@ -608,7 +634,9 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
 
 @media (max-width:480px){
   .rangee-haut{flex-direction:column;align-items:flex-start;gap:12px}
-  nav{width:100%}
+  /* `width:100%` retiré : la nav est désormais en pleine largeur d'écran
+     par elle-même (voir la règle de base, marges négatives) — imposer
+     100% ici annulerait ce débordement volontaire. */
   /* Compacté pour que les 4 boutons tiennent sur une seule ligne même sur
      les petits téléphones. */
   nav button{padding:6px 5px;gap:3px;font-size:11.5px}
