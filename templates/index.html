@@ -1234,12 +1234,29 @@ const CLE_ACCUEIL_VU = 'trame.accueil.vu';
 const ACCUEIL_TEST_TOUJOURS = true;
 let fermetureAccueilEnCours = false;
 
+// À partir de 20h (heure locale de l'appareil, pas un fuseau serveur — c'est
+// le moment où LA PERSONNE ouvre l'app qui compte), l'écran d'accueil montre
+// « À méditer » plutôt que « Aujourd'hui » : demande de Martin (2026-08-27),
+// pour clore la journée sur une pensée plutôt que de rouvrir le message du
+// matin, déjà lu. Voir chargerJour() pour la construction du contenu.
+function estSoir() {
+  return new Date().getHours() >= 20;
+}
+
+// La clé « déjà vu » distingue maintenant JOUR et SOIR (date + période) : les
+// deux cartes d'accueil sont deux moments distincts, chacun montré une fois —
+// avoir déjà vu « Aujourd'hui » le matin ne doit pas bloquer « À méditer » le
+// soir. `carteAccueil.dataset.periode` est posé par chargerJour().
+function cleAccueil(carte) {
+  return carte.dataset.jour + '-' + (carte.dataset.periode || 'jour');
+}
+
 function montrerAccueilJour() {
   const acc = $('#accueil-jour');
   const carte = $('#accueil-jour .accueil-carte');
   const jour = carte && carte.dataset.jour;
-  if (!jour) return;                                  // rien d'écrit pour ce jour
-  if (!ACCUEIL_TEST_TOUJOURS && localStorage.getItem(CLE_ACCUEIL_VU) === jour) return;  // déjà vu aujourd'hui
+  if (!jour) return;                                  // rien d'écrit pour ce moment
+  if (!ACCUEIL_TEST_TOUJOURS && localStorage.getItem(CLE_ACCUEIL_VU) === cleAccueil(carte)) return;  // déjà vu
   fermetureAccueilEnCours = false;
   acc.classList.remove('fermant');
   acc.classList.add('ouvert');
@@ -1252,7 +1269,7 @@ function fermerAccueilJour() {
   if (!acc.classList.contains('ouvert') || fermetureAccueilEnCours) return;
   fermetureAccueilEnCours = true;
   const carte = $('#accueil-jour .accueil-carte');
-  if (carte && carte.dataset.jour) localStorage.setItem(CLE_ACCUEIL_VU, carte.dataset.jour);
+  if (carte && carte.dataset.jour) localStorage.setItem(CLE_ACCUEIL_VU, cleAccueil(carte));
   acc.classList.add('fermant');
   // On retire `ouvert` après l'animation (même logique que la lightbox : ça
   // absorbe le clic fantôme post-touchend et rend la sortie douce).
@@ -1976,14 +1993,27 @@ async function chargerJour() {
 
   $('#vue-jour').innerHTML = html;
 
-  /* Le contenu de l'écran d'accueil du jour : l'essentiel seulement (date,
-     chapô, miroir, En action) — les dépliants secondaires restent dans la
-     vue Jour ci-dessus. Rempli ici tant qu'on a les données ; l'affichage
-     (une fois par jour) est décidé par montrerAccueilJour(). */
+  /* Le contenu de l'écran d'accueil : l'essentiel seulement (date, chapô,
+     miroir, éventuellement En action) — les dépliants secondaires restent
+     dans la vue Jour ci-dessus. Rempli ici tant qu'on a les données ;
+     l'affichage (une fois par moment, jour OU soir) est décidé par
+     montrerAccueilJour(). À partir de 20h (estSoir()), « À méditer »
+     remplace « Aujourd'hui » — SI le corpus a une pensée du soir pour le
+     transit dominant ; sinon on retombe sur « Aujourd'hui » (jamais un
+     écran d'accueil vide faute de contenu du soir). */
   const carteAccueil = $('#accueil-jour .accueil-carte');
   if (carteAccueil) {
-    if (titre && titre.miroir) {
-      carteAccueil.dataset.jour = j.date;   // clé « une fois par jour »
+    if (estSoir() && t.transit?.pensee_soir) {
+      carteAccueil.dataset.jour = j.date;
+      carteAccueil.dataset.periode = 'soir';
+      carteAccueil.innerHTML = `<div class="carte">
+        <div class="accueil-date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
+        <div class="chapo">À méditer</div>
+        <div class="miroir">${T(t.transit.pensee_soir)}</div>
+      </div>`;
+    } else if (titre && titre.miroir) {
+      carteAccueil.dataset.jour = j.date;   // clé « une fois par moment »
+      carteAccueil.dataset.periode = 'jour';
       carteAccueil.innerHTML = `<div class="carte">
         <div class="accueil-date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
         <div class="chapo">Aujourd'hui</div>
@@ -1992,7 +2022,8 @@ async function chargerJour() {
         ${titre.geste ? `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(titre.geste)}</div>` : ''}
       </div>`;
     } else {
-      delete carteAccueil.dataset.jour;   // rien à montrer ce jour-là
+      delete carteAccueil.dataset.jour;   // rien à montrer, ni jour ni soir
+      delete carteAccueil.dataset.periode;
       carteAccueil.innerHTML = '';
     }
   }
