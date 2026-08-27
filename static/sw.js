@@ -8,6 +8,31 @@
 // Servi à la racine (`/sw.js`, pas `/static/sw.js`) pour que sa portée couvre
 // toute la page — un service worker enregistré sous /static/ ne pourrait
 // contrôler que /static/, jamais l'app elle-même.
+//
+// ⚠️ PRISE DE CONTRÔLE IMMÉDIATE (Martin, 2026-08-27 : « sur mon iPhone, ça
+// ne change rien, même sur Safari, alors que ça marche pour mon ami »).
+// Par défaut, un NOUVEAU service worker reste en attente (« waiting ») tant
+// que tous les onglets/l'app contrôlés par l'ANCIEN n'ont pas été fermés —
+// et sur certains appareils, ce moment n'arrive jamais vraiment (l'app reste
+// toujours ouverte quelque part, en arrière-plan ou suspendue). Un ancien
+// service worker peut alors rester actif indéfiniment, invisible, et
+// contrôler CHAQUE visite de l'origine. `skipWaiting()` + `clients.claim()`
+// forcent CE service worker à prendre le contrôle sur-le-champ, dès qu'une
+// nouvelle version est détectée — plus besoin de fermer quoi que ce soit.
+// La purge de `caches` ci-dessous est une sécurité supplémentaire : CE
+// service worker n'en crée aucun, mais un ANCIEN (d'une itération
+// antérieure, avant ce fichier) aurait pu en laisser — on ne prend aucun
+// risque, on part toujours d'un état propre.
+self.addEventListener("install", () => self.skipWaiting());
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    Promise.all([
+      self.clients.claim(),
+      caches.keys().then((noms) => Promise.all(noms.map((n) => caches.delete(n)))),
+    ])
+  );
+});
 
 self.addEventListener("push", (event) => {
   let titre = "Ta Trame";

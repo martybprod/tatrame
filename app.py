@@ -263,6 +263,21 @@ def _pas_de_cache(reponse):
     # mise en cache, sinon un redémarrage semble « ne rien changer ».
     if request.path == "/":
         reponse.headers["Cache-Control"] = "no-store"
+    # /sw.js : servi via send_static_file (app.py::service_worker), donc
+    # caché par défaut plusieurs heures comme n'importe quel fichier statique.
+    # C'est le piège précis vécu par Martin (2026-08-27, « sur mon iPhone, ça
+    # ne change rien, même sur Safari ») : le NAVIGATEUR garde sa copie locale
+    # du fichier du service worker lui-même, et ne revérifie même pas auprès
+    # du serveur avant l'expiration du cache — un ancien service worker
+    # (d'une itération antérieure) peut alors rester actif indéfiniment,
+    # invisible, et contrôler CHAQUE visite de l'origine (PWA et Safari
+    # normal, la portée d'un SW n'est pas limitée au mode standalone).
+    # `no-cache` (pas `no-store`) est la pratique standard pour un fichier de
+    # service worker : le navigateur revalide via ETag à CHAQUE requête,
+    # sans re-télécharger si rien n'a changé — mais il ne peut plus jamais
+    # ignorer silencieusement une mise à jour.
+    if request.path == "/sw.js":
+        reponse.headers["Cache-Control"] = "no-cache"
     return reponse
 
 
