@@ -61,14 +61,21 @@ html,body{overflow-x:hidden}
    → 2026-08-27 (2e remplacement, même jour) : Martin a fourni une image
    PENSÉE pour le défilement continu — Ta-Trame-fond-defilement.png, déjà
    portrait (960×1728), fils verticaux PARALLÈLES (pas d'éventail) et galaxie
-   centrée à 49 % de la hauteur, loin des bords. Mesure de couture BRUTE
-   (avant tout traitement) : 11,96 (haut/bas) et 1,28 (gauche/droite) — déjà
-   bien plus propre que fils_tendus (43,48/22,38 bruts). Un simple polissage
-   (offset 50 % + fondu, bande étroite de 34px — pas besoin du miroir cette
-   fois) suffit : couture finale 4,74/1,22, quasi imperceptible. Toute
-   l'image sert de tuile (pas de bande découpée : la galaxie centrée ne gêne
-   aucune couture). Recompressée fond-defilement.webp, 860×1548 (2× l'affichage
-   430×774), 128 Ko contre 1 622 Ko pour le PNG source — 12,7× plus léger.
+   centrée à 49 % de la hauteur, loin des bords.
+   ⚠️ PIÈGE (Martin, 2026-08-27 : « une bande verticale complètement noire,
+   pas de fil ») : le fichier source a une VRAIE marge quasi-noire native sur
+   les bords gauche/droite (~85px/81px sur 960px) — la couture horizontale
+   « brute » mesurait 1,28 (excellente !) mais c'était noir-contre-noir, pas
+   une vraie continuité de motif : deux marges qui se rejoignent en tuile
+   forment une bande morte deux fois plus large. Corrigé en RECADRANT ces
+   marges avant tout traitement (crop 91→873, largeur 960→782), puis en
+   traitant les DEUX raccords sur le vrai contenu (offset 50 % + fondu,
+   vertical ET horizontal) : couture finale 4,45 (haut/bas) / 16,73
+   (gauche/droite, plus dur à masquer que le vertical mais sans plus aucune
+   zone vide). Recompressée fond-defilement.webp, 760×1680 (2× l'affichage
+   380×840), 132 Ko contre 1 622 Ko pour le PNG source. Toujours vérifier
+   qu'un bord d'image livrée n'a pas de marge morte AVANT de faire confiance
+   à une mesure de couture basse — elle peut mentir (noir = noir).
    L'en-tête (.bandeau-marque, plus bas) N'EST PAS touché : sa propre image
    (trame-bandeau.jpg, déjà un JPEG léger) et sa propre
    `background-color:#141110` opaque le protègent déjà entièrement de ce
@@ -80,10 +87,10 @@ body{
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
     url('/static/img/fond-defilement.webp');
   background-position:0 0, top left;
-  /* Tuile 860×1548 (ratio 5:9, portrait — un seul grand défilé de fils plutôt
-     qu'une petite texture dense). Hauteur EXPLICITE (774px), jamais `auto` —
-     voir la note historique ci-dessus sur ce piège. */
-  background-size:auto, 430px 774px;
+  /* Tuile 760×1680 (ratio ≈ 782:1728, portrait — un seul grand défilé de fils
+     plutôt qu'une petite texture dense). Hauteur EXPLICITE (840px), jamais
+     `auto` — voir la note historique ci-dessus sur ce piège. */
+  background-size:auto, 380px 840px;
   background-repeat:no-repeat, repeat;
   color:var(--encre); font-family:var(--sans);
   line-height:1.62; -webkit-font-smoothing:antialiased;
