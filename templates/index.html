@@ -466,14 +466,22 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    a sa propre transition d'opacité) : ici on anime le CONTENEUR de la vue,
    pas les images. Réappliqué à chaque `montrer()` via retrait/reflow/ajout
    de la classe. */
-@keyframes vue-entre{
-  from{opacity:0; transform:translateY(7px)}
-  to{opacity:1; transform:none}
-}
-.vue-entre{animation:vue-entre .4s cubic-bezier(.32,.72,0,1)}
+@keyframes vue-entre{ from{opacity:0} to{opacity:1} }
+.vue-entre{animation:vue-entre .32s ease}
+
+/* ═══ FONDU DES IMAGES AU CHARGEMENT (Martin, 2026-08-27) ═══
+   Ce que Martin veut vraiment : que chaque image ÉMERGE du fond sombre au
+   lieu de « popper ». L'image (ou, pour les cartes du jour, LE CONTENEUR)
+   reste invisible tant qu'elle n'est pas chargée, puis apparaît en fondu.
+   Comme le fond de l'app est déjà noir (#141110), invisible = fond noir :
+   l'image se matérialise depuis le noir. Voir fondreImages() côté JS.
+   ⚠️ Pour les cartes du jour on fond le CONTENEUR (.carte-jour), jamais les
+   images .face/.dos — celles-ci gèrent déjà leur opacité pour le flip. */
+.img-fondu{opacity:0; transition:opacity .55s ease}
+.img-fondu.chargee{opacity:1}
 @media (prefers-reduced-motion:reduce){
-  .vue-entre{animation-duration:.14s; animation-timing-function:linear}
-  @keyframes vue-entre{from{opacity:0} to{opacity:1}}
+  .vue-entre{animation-duration:.12s}
+  .img-fondu{transition-duration:.12s}
 }
 
 /* Vue plein écran d'une carte du jour (2e clic sur une carte déjà retournée) :
@@ -3365,8 +3373,38 @@ function montrer(vue) {
     el.classList.remove('vue-entre');
     void el.offsetWidth;
     el.classList.add('vue-entre');
+    fondreImages(el);
   }
   window.scrollTo(0, 0);
+}
+
+/* Fait ÉMERGER les images du fond noir au chargement (voir .img-fondu).
+   - Cartes du jour : on fond le CONTENEUR .carte-jour (ses images .face/.dos
+     gèrent déjà leur opacité pour le flip — on n'y touche pas).
+   - Autres images de contenu (vignettes…) : on fond l'image elle-même.
+   Idempotent (data-fondu) : rejouer montrer() ne re-déclenche pas un élément
+   déjà fondu. Une image déjà en cache (complete) est marquée « chargée »
+   immédiatement — le fondu joue quand même, très court, jamais de blocage. */
+function fondreImages(racine) {
+  if (!racine) return;
+  racine.querySelectorAll('.carte-jour').forEach(el =>
+    preparerFondu(el, el.querySelector('.dos')));
+  racine.querySelectorAll('img:not(.face):not(.dos)').forEach(img =>
+    preparerFondu(img, img));
+}
+function preparerFondu(el, imgSurveillee) {
+  if (!el || el.dataset.fondu) return;
+  el.dataset.fondu = '1';
+  el.classList.add('img-fondu');
+  const ok = () => el.classList.add('chargee');
+  if (imgSurveillee && imgSurveillee.complete && imgSurveillee.naturalWidth) {
+    requestAnimationFrame(ok);           // déjà en cache : fondu bref au prochain frame
+  } else if (imgSurveillee) {
+    imgSurveillee.addEventListener('load', ok, { once: true });
+    imgSurveillee.addEventListener('error', ok, { once: true });  // jamais coincé invisible
+  } else {
+    ok();
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════
