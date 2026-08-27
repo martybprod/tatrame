@@ -457,6 +457,25 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
   .accueil-indice{animation-duration:.15s; animation-timing-function:linear}
 }
 
+/* ═══ FONDU D'ENTRÉE DES VUES (Martin, 2026-08-27 : « premium ») ═══
+   Chaque vue (Le jour, Le ciel…) apparaît en fondu doux + légère montée,
+   au lieu d'un « pop » sec. Ça masque la petite latence de mise en page et
+   de chargement des images (cartes, fond) : le temps que le fondu joue, le
+   contenu s'est posé. Même courbe que l'écran d'accueil, pour un geste
+   cohérent. N'affecte PAS l'opacité des images de carte (le flip .face/.dos
+   a sa propre transition d'opacité) : ici on anime le CONTENEUR de la vue,
+   pas les images. Réappliqué à chaque `montrer()` via retrait/reflow/ajout
+   de la classe. */
+@keyframes vue-entre{
+  from{opacity:0; transform:translateY(7px)}
+  to{opacity:1; transform:none}
+}
+.vue-entre{animation:vue-entre .4s cubic-bezier(.32,.72,0,1)}
+@media (prefers-reduced-motion:reduce){
+  .vue-entre{animation-duration:.14s; animation-timing-function:linear}
+  @keyframes vue-entre{from{opacity:0} to{opacity:1}}
+}
+
 /* Vue plein écran d'une carte du jour (2e clic sur une carte déjà retournée) :
    RÉUTILISE la classe .accueil-jour (même fond métier à tisser + voile, même
    animation d'ouverture/fermeture) — « le même mode » demandé. #carte-plein
@@ -3337,6 +3356,16 @@ $('#nav').onclick = e => {
 function montrer(vue) {
   ['accueil','jour','apercu','portrait','ciel','relations','regles','profils','connexion'].forEach(v =>
     $('#vue-' + v).classList.toggle('cacher', v !== vue));
+  // Fondu d'entrée premium (voir .vue-entre) : on retire puis réajoute la
+  // classe, avec un reflow forcé entre les deux pour REJOUER l'animation à
+  // chaque navigation (sinon le navigateur, voyant la classe déjà là, ne la
+  // relance pas).
+  const el = $('#vue-' + vue);
+  if (el) {
+    el.classList.remove('vue-entre');
+    void el.offsetWidth;
+    el.classList.add('vue-entre');
+  }
   window.scrollTo(0, 0);
 }
 
