@@ -297,11 +297,18 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
      hauteur du conteneur — vrai bug, pas un souci de viewport dynamique.
      `cover` est le seul réglage qui GARANTIT une couverture totale quel que
      soit le rapport largeur/hauteur de l'écran (il choisit lui-même le facteur
-     d'agrandissement nécessaire, jamais moins). */
+     d'agrandissement nécessaire, jamais moins).
+     ⚠️ POIDS (Martin, 2026-08-26, même correctif que metier2.png) : la
+     source PNG pesait 1 888 Ko — un PNG compresse mal ce type de texture.
+     Recompressée en metierAtisser1.webp, MÊME résolution native 1024×1024
+     (contrairement à metier2 : ici l'image couvre le plein écran en
+     `cover`, donc étirée sur de grands moniteurs — réduire la résolution
+     source aurait coûté de la netteté ; seul le format change) : 254 Ko,
+     contre 1 888 Ko — 7,4× plus léger, sans perte visible. */
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
-    url('/static/img/metierAtisser1.png');
+    url('/static/img/metierAtisser1.webp');
   background-position:55% 48%; background-size:cover; background-repeat:no-repeat;
   padding-top:max(28px, env(safe-area-inset-top));
   padding-bottom:max(28px, env(safe-area-inset-bottom));
