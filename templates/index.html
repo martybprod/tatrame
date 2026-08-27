@@ -32,23 +32,35 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden}
 /* Le fond de « Le jour » (et de toute la page) : une TUILE répétée
-   (metier2.png, 1024×1024, motif conçu pour se raccorder en boucle), pas
-   une image unique recadrée en `cover` — Martin n'aimait plus le rendu
-   précédent (2026-08-26). Largeur de tuile fixée en px (pas en %) : une
-   taille de motif STABLE d'un appareil à l'autre, comme un vrai papier
-   peint — en pourcentage, la densité du motif changerait du tout au tout
-   entre mobile et bureau. Deux couches, chacune sa propre taille/répétition
-   (l'ordre des valeurs suit l'ordre des images) : le dégradé COUVRE tout
-   (`auto` = toute la boîte, jamais répété), la tuile, elle, se répète.
+   (motif conçu pour se raccorder en boucle), pas une image unique recadrée
+   en `cover` — Martin n'aimait plus le rendu précédent (2026-08-26).
+   Largeur de tuile fixée en px (pas en %) : une taille de motif STABLE
+   d'un appareil à l'autre, comme un vrai papier peint — en pourcentage, la
+   densité du motif changerait du tout au tout entre mobile et bureau.
+   Deux couches, chacune sa propre taille/répétition (l'ordre des valeurs
+   suit l'ordre des images) : le dégradé COUVRE tout (`auto` = toute la
+   boîte, jamais répété), la tuile, elle, se répète.
+   ⚠️ POIDS (Martin, 2026-08-26 : « super longue à charger », surtout en
+   web déployé) : la source livrée, metier2.png (1024×1024), pesait 1,9 Mo
+   — un PNG compresse mal une texture bruitée (fils + étoiles), et ce poids,
+   invisible tant qu'il ne chargeait qu'au clic (comme metierAtisser1.png,
+   plein écran occasionnel), devient CRITIQUE sur un fond chargé à CHAQUE
+   visite. Recompressée en metier2.webp, 720px (2× la taille d'affichage
+   réelle de 360px — largement assez pour une texture, jamais un visuel
+   net) : 127 Ko, contre 1 902 Ko pour l'original — 15× plus léger, sans
+   perte visible. Format .webp : supporté par tous les navigateurs modernes
+   ciblés par cette PWA, aucun repli nécessaire. Le fichier source
+   (metier2.png) reste sur disque pour référence, mais n'est plus servi.
    L'en-tête (.bandeau-marque, plus bas) N'EST PAS touché : sa propre image
-   (trame-bandeau.jpg) et sa propre `background-color:#141110` opaque le
-   protègent déjà entièrement de ce qu'il y a dessous. */
+   (trame-bandeau.jpg, déjà un JPEG léger) et sa propre
+   `background-color:#141110` opaque le protègent déjà entièrement de ce
+   qu'il y a dessous. */
 body{
   background-color:var(--papier);
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
-    url('/static/img/metier2.png');
+    url('/static/img/metier2.webp');
   background-position:0 0, top left;
   background-size:auto, 360px auto;
   background-repeat:no-repeat, repeat;
