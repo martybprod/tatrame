@@ -66,7 +66,13 @@ body{
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
     url('/static/img/fils_tendus.webp');
   background-position:0 0, top left;
-  background-size:auto, 360px auto;
+  /* Tuile 720×450 (ratio 1024:640, PAS carrée — voir le commentaire plus haut :
+     miroir vertical construit à partir d'une bande 1024×320). Hauteur EXPLICITE
+     (225px), jamais `auto` : `auto` préserverait le ratio du FICHIER (720×450),
+     pas celui voulu à l'affichage — ici les deux coïncident (360/720 = 225/450),
+     mais l'expliciter évite qu'un futur remplacement d'image, à un autre ratio,
+     étire silencieusement la tuile en `auto`. */
+  background-size:auto, 360px 225px;
   background-repeat:no-repeat, repeat;
   color:var(--encre); font-family:var(--sans);
   line-height:1.62; -webkit-font-smoothing:antialiased;
