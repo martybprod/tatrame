@@ -3445,8 +3445,16 @@ function montrer(vue) {
    immédiatement — le fondu joue quand même, très court, jamais de blocage. */
 function fondreImages(racine) {
   if (!racine) return;
-  racine.querySelectorAll('.carte-jour').forEach(el =>
-    preparerFondu(el, el.querySelector('.dos')));
+  racine.querySelectorAll('.carte-jour').forEach(el => {
+    // Une carte déjà DÉVOILÉE (.revelee sur sa zone) ne doit pas être re-fondue
+    // à chaque retour sur l'onglet : sinon elle disparaît brièvement (opacity:0)
+    // avant de refondre, ce qui gêne le geste « cliquer la carte retournée →
+    // plein écran » (Martin, 2026-08-27). On ne fond que la carte au dos encore
+    // visible (jamais dévoilée).
+    const zone = el.closest('.carte-jour-zone');
+    if (zone && zone.classList.contains('revelee')) return;
+    preparerFondu(el, el.querySelector('.dos'));
+  });
   racine.querySelectorAll('img:not(.face):not(.dos)').forEach(img =>
     preparerFondu(img, img));
 }
