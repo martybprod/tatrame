@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Réinitialiser mon compte — Ta Trame</title>
+<style>
+body{font-family:-apple-system,sans-serif;max-width:420px;margin:70px auto;padding:0 20px;
+  background:#141110;color:#eee}
+h2{font-weight:600;margin-bottom:6px}
+p.explication{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.5}
+label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#888;margin:14px 0 6px}
+input{width:100%;font:inherit;padding:10px 12px;border-radius:8px;border:1px solid #372e1e;
+  background:#1c1918;color:#eee;box-sizing:border-box}
+button{font:inherit;padding:11px 14px;border-radius:8px;border:none;cursor:pointer;
+  background:#e9d494;color:#141110;font-weight:600;width:100%;margin-top:20px}
+.resultat{margin-top:18px;padding:12px 14px;border-radius:8px;font-size:14px;display:none}
+.resultat.ok{display:block;background:#1e2b1e;color:#9fd49f;border:1px solid #2e4a2e}
+.resultat.err{display:block;background:#2b1e1e;color:#e0a0a0;border:1px solid #4a2e2e}
+code{background:#1c1918;padding:2px 6px;border-radius:4px;font-size:13px;color:#e9d494}
+</style>
+</head>
+<body>
+
+<h2>Réinitialiser mon compte</h2>
+<p class="explication">
+  Efface le mot de passe de ton compte <code>martin-boucher</code> sur
+  <b>tatrame.ca</b>. À ta prochaine connexion dans l'app, le mot de passe que
+  tu taperas <b>deviendra le nouveau</b>.<br><br>
+  Le mot de passe admin n'est envoyé qu'à tatrame.ca, jamais ailleurs — et
+  cette page ne quitte pas ton Mac.
+</p>
+
+<label for="admin">Mot de passe admin (celui de Coolify)</label>
+<input type="password" id="admin" autofocus autocomplete="off">
+
+<button id="go">Réinitialiser mon compte</button>
+<div id="res" class="resultat"></div>
+
+<script>
+document.getElementById('go').onclick = async () => {
+  const mdpAdmin = document.getElementById('admin').value;
+  const res = document.getElementById('res');
+  res.className = 'resultat';
+  if (!mdpAdmin) {
+    res.textContent = 'Entre le mot de passe admin.';
+    res.classList.add('err');
+    return;
+  }
+  try {
+    const r = await fetch('https://tatrame.ca/api/profil/martin-boucher/reinitialiser-mdp', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({mot_de_passe_admin: mdpAdmin}),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (r.ok) {
+      res.innerHTML = '✅ Fait ! Ton compte n\'a plus de mot de passe.<br><br>' +
+        'Ouvre maintenant <b>Ta Trame</b> sur ton iPhone : « Se connecter » avec ton nom ' +
+        '— le mot de passe que tu taperas deviendra le nouveau.';
+      res.classList.add('ok');
+    } else {
+      res.textContent = '❌ ' + (d.erreur || ('erreur ' + r.status)) +
+        ' — vérifie le mot de passe admin (celui de la variable ADMIN_PASSWORD dans Coolify).';
+      res.classList.add('err');
+    }
+  } catch (e) {
+    res.textContent = '❌ Réseau injoignable : ' + e.message;
+    res.classList.add('err');
+  }
+};
+document.getElementById('admin').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('go').click();
+});
+</script>
+</body>
+</html>
