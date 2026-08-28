@@ -731,6 +731,9 @@ details.tiroir>summary .tete{flex:1;min-width:0}
 .tiroir-nom{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--encre3);display:block}
 .tiroir-resume{font-family:var(--serif);font-size:17px;color:var(--encre);line-height:1.4;display:block;margin-top:3px}
 .tiroir-resume.compact{font-size:14.5px;color:var(--encre2);font-family:var(--sans)}
+/* La partie « … quel fil suivre » du Fil du jour se lit comme un sous-titre :
+   italique serif, légèrement dés-accentué (Martin, 2026-08-27). */
+.tiroir-resume em{font-style:italic;color:var(--encre2)}
 .tiroir-chev{flex:none;color:var(--accent-doux);font-size:18px;line-height:1;transition:transform .18s ease}
 details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
 .tiroir-corps{padding:14px 20px 18px}
@@ -2147,7 +2150,7 @@ async function chargerJour() {
   if (t.fil && t.fil.miroir) {
     filDuJour = tiroir({
       nom: 'Le fil du jour',
-      resume: 'Douze domaines, douze motifs — choisis quel fil suivre aujourd\'hui.',
+      resume: 'Douze domaines, douze motifs <em>choisis quel fil suivre aujourd\'hui.</em>',
       ico: icono(ICONES_JOUR.fil),
       corps: `
         ${DOMAINES_JOUR.map(([d, l]) => domaineCarte(d, l)).join('')}
