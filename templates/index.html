@@ -445,12 +445,15 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
      ou surchargés, la carte reste centrée quoi qu'il arrive. */
   margin:auto;
   opacity:0; transform:translateY(14px) scale(.98); will-change:opacity, transform;
-  transition:opacity .38s cubic-bezier(.32,.72,0,1),
-             transform .38s cubic-bezier(.32,.72,0,1);
+  /* Même durée que .accueil-jour (0.7s, Martin 2026-08-27) : la carte de
+     texte et le fond « métier » doivent fondre EN PHASE — désynchronisés
+     (0.38s vs 0.7s), ça se lisait comme un glitch. */
+  transition:opacity .7s cubic-bezier(.32,.72,0,1),
+             transform .7s cubic-bezier(.32,.72,0,1);
 }
 .accueil-jour.ouvert .accueil-carte{opacity:1; transform:none}
 .accueil-jour.fermant .accueil-carte{
-  opacity:0; transform:scale(1.02); transition-duration:.3s;
+  opacity:0; transform:scale(1.02); transition-duration:.7s;
 }
 /* Le chapô, le miroir et « En action » réutilisent les styles existants
    (.chapo/.miroir/.geste) ; on grossit juste le miroir sur cet écran-là. */
@@ -852,6 +855,14 @@ function precharger_fonds() {
   };
   fondre(document.getElementById('fond-app'), '/static/img/fond-defilement.webp');
   fondre(document.querySelector('.bandeau-marque'), '/static/img/trame-bandeau.jpg');
+  // Le fond « métier » de l'accueil du jour (.accueil-jour) fond déjà via sa
+  // propre transition d'opacité (.ouvert), mais celle-ci ne se déclenche
+  // qu'après le chargement des données (montrerAccueilJour(), bien plus tard)
+  // — sans préchargement, l'image pouvait « claquer » en plein milieu du
+  // fondu au lieu d'être déjà prête (Martin, 2026-08-27 : « ça fait un
+  // glitch »). Simple mise en cache anticipée, pas de classe .chargee ici :
+  // l'élément entier fond déjà correctement une fois l'image chaude.
+  new Image().src = '/static/img/metierAtisser1.webp';
 }
 precharger_fonds();
 
