@@ -82,20 +82,32 @@ html,body{overflow-x:hidden}
    qu'il y a dessous. */
 body{
   background-color:var(--papier);
+  color:var(--encre); font-family:var(--sans);
+  line-height:1.62; -webkit-font-smoothing:antialiased;
+  padding:0 20px env(safe-area-inset-bottom); min-height:100vh;
+}
+/* La tuile de fond vit sur une COUCHE fixe dédiée (#fond-app), pas sur `body`,
+   pour pouvoir la faire ÉMERGER du noir en fondu au chargement (Martin,
+   2026-08-27 : « des fondus pour l'affichage des images d'arrière-plan »). Un
+   `background-image` sur body ne peut pas être fondu ; une couche à part, si.
+   Fixe (couvre toujours le viewport), derrière tout (z-index -2, sous le
+   bandeau à -1 et le contenu). Reste à opacity:0 jusqu'à ce que la tuile soit
+   préchargée (voir precharger_fonds() côté JS), puis fond doucement. */
+#fond-app{
+  position:fixed; inset:0; z-index:-2;
+  background-color:var(--papier);
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
     url('/static/img/fond-defilement.webp');
   background-position:0 0, top left;
-  /* Tuile 760×1680 (ratio ≈ 782:1728, portrait — un seul grand défilé de fils
-     plutôt qu'une petite texture dense). Hauteur EXPLICITE (840px), jamais
-     `auto` — voir la note historique ci-dessus sur ce piège. */
+  /* Tuile 760×1680 (ratio ≈ 782:1728, portrait). Hauteur EXPLICITE (840px). */
   background-size:auto, 380px 840px;
   background-repeat:no-repeat, repeat;
-  color:var(--encre); font-family:var(--sans);
-  line-height:1.62; -webkit-font-smoothing:antialiased;
-  padding:0 20px env(safe-area-inset-bottom); min-height:100vh;
+  opacity:0; transition:opacity 1.6s ease;
 }
+#fond-app.chargee{opacity:1}
+@media (prefers-reduced-motion:reduce){ #fond-app{transition-duration:.2s} }
 .enveloppe{max-width:660px;margin:0 auto;padding:26px 0 90px}
 
 /* Le bandeau — le métier à tisser cosmique. Descend maintenant DERRIÈRE
@@ -121,7 +133,12 @@ body{
       #141110 55%, var(--papier) 100%),
     url('/static/img/trame-bandeau.jpg');
   background-position:center 44%; background-size:cover; background-repeat:no-repeat;
+  /* Émerge du noir en fondu à l'apparition (comme #fond-app) — le texte de
+     l'en-tête, lui, est dans `header` au-dessus (z-index) et reste visible. */
+  opacity:0; transition:opacity 1.6s ease;
 }
+.bandeau-marque.chargee{opacity:1}
+@media (prefers-reduced-motion:reduce){ .bandeau-marque{transition-duration:.2s} }
 /* La hauteur mobile (voir le media query plus bas) reste un peu plus
    généreuse qu'au bureau : « Les Règles » est sorti de #nav (icône seule,
    en haut à droite) et les 4 boutons restants passent en version compacte
@@ -414,10 +431,13 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
       `transition` interpole depuis l'état RÉEL courant — jamais de saut. */
 .accueil-jour{
   opacity:0; pointer-events:none; will-change:opacity;
-  transition:opacity .38s cubic-bezier(.32,.72,0,1);
+  /* Ralenti (0.38 → 0.7s, Martin 2026-08-27) : en fermant une carte plein
+     écran, le fond « métier » se dissout doucement sur le fond de l'onglet —
+     un vrai fondu entre deux images d'arrière-plan, plus un clignotement sec. */
+  transition:opacity .7s cubic-bezier(.32,.72,0,1);
 }
 .accueil-jour.ouvert{opacity:1; pointer-events:auto}
-.accueil-jour.fermant{transition-duration:.3s}
+.accueil-jour.fermant{transition-duration:.7s}
 .accueil-carte{
   width:100%; max-width:560px;
   /* Centrage blindé : `margin:auto` centre sur les DEUX axes, indépendamment
@@ -750,6 +770,7 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
 </style>
 </head>
 <body>
+<div id="fond-app" role="presentation"></div>
 <div class="bandeau-marque" role="presentation"></div>
 <div class="enveloppe">
   <header>
@@ -811,6 +832,28 @@ let editionDe = null;  // null = création, sinon l'id du profil qu'on modifie
 // Enregistré une fois par chargement de page, quelle que soit la vue — sans
 // lui, aucune notification push n'est possible (voir static/sw.js).
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+
+// Fait ÉMERGER du noir les images d'ARRIÈRE-PLAN (tuile #fond-app, bandeau) au
+// chargement (Martin, 2026-08-27) : elles restent à opacity:0 (fond papier noir
+// visible) jusqu'à ce que leur image soit préchargée, puis fondent en douceur.
+// Double rAF avant d'ajouter .chargee : garantit un frame peint à opacity:0
+// avant la transition — sinon, image en cache = saut direct à visible, sans
+// fondu (même piège que preparerFondu, voir plus bas).
+function precharger_fonds() {
+  const fondre = (el, url) => {
+    if (!el) return;
+    const marquer = () => requestAnimationFrame(() =>
+      requestAnimationFrame(() => el.classList.add('chargee')));
+    const img = new Image();
+    img.onload = marquer;
+    img.onerror = marquer;               // jamais coincé invisible si l'image échoue
+    img.src = url;
+    if (img.complete && img.naturalWidth) marquer();   // déjà en cache
+  };
+  fondre(document.getElementById('fond-app'), '/static/img/fond-defilement.webp');
+  fondre(document.querySelector('.bandeau-marque'), '/static/img/trame-bandeau.jpg');
+}
+precharger_fonds();
 
 // ⚠️ En PWA installée (« mode appli », iOS surtout), le système garde
 // souvent l'app SUSPENDUE en mémoire entre deux ouvertures plutôt que de la
@@ -1406,7 +1449,7 @@ function fermerAccueilJour() {
     fermetureAccueilEnCours = false;
   };
   const reduit = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  setTimeout(fini, reduit ? 150 : 440);
+  setTimeout(fini, reduit ? 200 : 720);  // doit couvrir le fondu .7s (voir .accueil-jour)
 }
 
 /* Délégation au niveau document (comme la lightbox) : ce script s'exécute
@@ -1460,7 +1503,7 @@ function fermerCartePlein() {
     // zone d'origine : elle est déjà réduite à l'image seule (voir ligneCarte).
   };
   const reduit = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  setTimeout(fini, reduit ? 150 : 440);
+  setTimeout(fini, reduit ? 200 : 720);  // doit couvrir le fondu .7s (voir .accueil-jour)
 }
 
 document.addEventListener('click', e => {
@@ -1510,7 +1553,7 @@ function fermerAnglePlein() {
     fermetureAnglePleinEnCours = false;
   };
   const reduit = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  setTimeout(fini, reduit ? 150 : 440);
+  setTimeout(fini, reduit ? 200 : 720);  // doit couvrir le fondu .7s (voir .accueil-jour)
 }
 
 // Contrairement à carte-plein (contenu pur affichage), ici SEUL un clic sur
