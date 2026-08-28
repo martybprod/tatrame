@@ -332,13 +332,16 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .arcane .corr{font-size:12px;color:var(--encre3)}
 .vignette{width:56px;height:98px;object-fit:cover;border-radius:6px;border:1px solid var(--bord);flex:none;box-shadow:0 1px 3px rgba(0,0,0,.12);cursor:zoom-in}
 
-/* La carte du jour affiche son DOS en grille et s'ouvre en PLEIN ÉCRAN au
-   premier clic (Martin, 2026-08-27) — plus de dévoilement en deux temps.
-   La face n'est visible que dans #carte-plein. Effet, pas oracle : la carte
-   est CALCULÉE (date du jour → arcane). */
+/* La carte du jour affiche son DOS en grille ; le premier clic l'ouvre en
+   PLEIN ÉCRAN (Martin, 2026-08-27). Une fois ouverte (.revelee), elle reste
+   DÉVOILÉE en petit dans le fil — on revoit la carte déjà consultée, pas un
+   dos vierge. Effet, pas oracle : la carte est CALCULÉE (date → arcane). */
 .carte-jour{position:relative;display:inline-block;width:60px;height:105px;flex:none;border-radius:6px;overflow:hidden;border:1px solid var(--bord);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease}
 .carte-jour .face{opacity:0}
+.carte-jour-zone.revelee .carte-jour .face{opacity:1}
+.carte-jour-zone.revelee .carte-jour .dos{opacity:0}
+.carte-jour-zone.revelee .carte-jour{cursor:zoom-in}
 /* Les deux cartes côte à côte : chacune empile son image PUIS son texte
    (au lieu d'être côte à côte l'une dans l'autre), pour que la paire tienne
    sur une seule ligne même en mobile étroit. */
@@ -1500,6 +1503,10 @@ function ouvrirCartePlein(zone) {
   vue.classList.add('ouvert');
   vue.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+  // Dès qu'on ouvre la carte en plein écran, elle est « consultée » : à la
+  // fermeture, on la revoit DÉVOILÉE en petit dans le fil, plus un dos vierge
+  // (Martin, 2026-08-27).
+  zone.classList.add('revelee');
 }
 
 function fermerCartePlein() {
@@ -3437,8 +3444,15 @@ function montrer(vue) {
    immédiatement — le fondu joue quand même, très court, jamais de blocage. */
 function fondreImages(racine) {
   if (!racine) return;
-  racine.querySelectorAll('.carte-jour').forEach(el =>
-    preparerFondu(el, el.querySelector('.dos')));
+  racine.querySelectorAll('.carte-jour').forEach(el => {
+    // Une carte déjà DÉVOILÉE (.revelee, ouverte en plein écran) ne doit pas
+    // être re-fondue à chaque retour sur l'onglet — sinon elle disparaîtrait
+    // brièvement (opacity:0) avant de refondre. On ne fond que la carte au dos
+    // encore visible.
+    const zone = el.closest('.carte-jour-zone');
+    if (zone && zone.classList.contains('revelee')) return;
+    preparerFondu(el, el.querySelector('.dos'));
+  });
   racine.querySelectorAll('img:not(.face):not(.dos)').forEach(img =>
     preparerFondu(img, img));
 }
