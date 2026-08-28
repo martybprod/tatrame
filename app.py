@@ -785,8 +785,11 @@ def api_reinitialiser_mdp(profil_id):
     """{mot_de_passe_admin} — réservé à Martin (ADMIN_PASSWORD dans .env, affiché au
     démarrage) : efface le mot de passe d'un testeur qui l'a oublié ; il sera
     réinvité à en choisir un nouveau à sa prochaine connexion. Ne déverrouille
-    PAS lui-même (le testeur repasse par « connexion »)."""
-    body = request.get_json(silent=True) or {}
+    PAS lui-même (le testeur repasse par « connexion »).
+    Accepte JSON (l'app) OU formulaire (la page locale reinitialiser_mdp.html —
+    un POST de formulaire n'est pas soumis à CORS, contrairement à fetch depuis
+    file://, qui échouait en « Load failed »)."""
+    body = request.get_json(silent=True) or request.form or {}
     if body.get("mot_de_passe_admin") != ADMIN_PASSWORD:
         return jsonify({"erreur": "mot de passe administrateur incorrect"}), 403
     if auth.reinitialiser_mot_de_passe(PROFILS, ADMIN_PASSWORD, profil_id) is None:
