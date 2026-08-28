@@ -776,7 +776,7 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
 <div id="fond-app" role="presentation"></div>
 <div class="bandeau-marque" role="presentation"></div>
 <div class="enveloppe">
-  <header class="cacher">
+  <header>
     <div class="rangee-haut">
       <div class="marque">
         <svg class="marque-ico" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor"
@@ -836,43 +836,31 @@ let editionDe = null;  // null = création, sinon l'id du profil qu'on modifie
 // lui, aucune notification push n'est possible (voir static/sw.js).
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 
-// Précharge (bytes en cache navigateur) les images d'arrière-plan SANS les
-// révéler — la révélation (.chargee / sortie de header.cacher) est décidée
-// par reveler_app_standard(), plus bas, au bon moment. Démarré tout de suite
-// pour que les images aient le temps d'être prêtes.
+// Précharge les octets des images d'arrière-plan pour qu'elles soient prêtes
+// avant les fondus, puis fait ÉMERGER du noir la tuile et le bandeau (fondu
+// 1.6s — Martin, 2026-08-27, validé : « l'animation pour le fond d'écran
+// général est parfait »). L'expérimentation « cacher header/fond jusqu'à la
+// fermeture de l'écran plein écran » (même jour) a été ANNULÉE : elle
+// cassait la barre de menu (restait cachée) — on revient au comportement
+// simple : le header est visible dès le départ, le fond fond à l'ouverture.
 function precharger_fonds() {
-  new Image().src = '/static/img/fond-defilement.webp';
-  new Image().src = '/static/img/trame-bandeau.jpg';
+  const fondre = (el, url) => {
+    if (!el) return;
+    const marquer = () => requestAnimationFrame(() =>
+      requestAnimationFrame(() => el.classList.add('chargee')));
+    const img = new Image();
+    img.onload = marquer;
+    img.onerror = marquer;               // jamais coincé invisible si l'image échoue
+    img.src = url;
+    if (img.complete && img.naturalWidth) marquer();   // déjà en cache
+  };
+  fondre(document.getElementById('fond-app'), '/static/img/fond-defilement.webp');
+  fondre(document.querySelector('.bandeau-marque'), '/static/img/trame-bandeau.jpg');
+  // Le fond « métier » de l'accueil du jour : simple mise en cache anticipée,
+  // son écran fond déjà par sa propre transition d'opacité (.ouvert).
   new Image().src = '/static/img/metierAtisser1.webp';
 }
 precharger_fonds();
-
-// ═══ CE QUE MARTIN VEUT (2026-08-27) : à l'ouverture, RIEN d'autre que
-// l'écran plein écran Aujourd'hui/À méditer (fond métier + carte, déjà en
-// fondu doux) — ni le fond d'écran standard, ni le menu/header ne doivent
-// être visibles, même furtivement en transparence pendant que l'un ou
-// l'autre fond. Avant ce correctif, `header` et `#fond-app` se révélaient
-// dès demarrer() (avant même que montrerAccueilJour() ait tranché), donc
-// apparaissaient PENDANT le fondu d'entrée de l'écran plein écran — d'où la
-// fuite visuelle. Fix : `header` démarre `cacher` (voir le HTML), `#fond-app`
-// reste à opacity:0 (déjà le cas), et reveler_app_standard() ne les révèle
-// QUE si l'écran plein écran ne s'affiche pas (rien à voir aujourd'hui), ou
-// dès l'instant où il COMMENCE à se refermer — l'overlay, encore opaque
-// pendant sa propre sortie, masque naturellement la révélation en dessous. */
-let app_standard_revelee = false;
-function reveler_app_standard() {
-  if (app_standard_revelee) return;
-  app_standard_revelee = true;
-  $('header').classList.remove('cacher');
-  const fondre = el => {
-    if (!el) return;
-    // Double rAF : garantit un frame peint à opacity:0 avant la transition —
-    // sinon, image déjà en cache = saut direct à visible, sans fondu.
-    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('chargee')));
-  };
-  fondre(document.getElementById('fond-app'));
-  fondre(document.querySelector('.bandeau-marque'));
-}
 
 // ⚠️ En PWA installée (« mode appli », iOS surtout), le système garde
 // souvent l'app SUSPENDUE en mémoire entre deux ouvertures plutôt que de la
@@ -1439,9 +1427,6 @@ function cleAccueil(carte) {
   return carte.dataset.jour + '-' + (carte.dataset.periode || 'jour');
 }
 
-// Renvoie true si l'écran plein écran s'est bien ouvert — sert à démarrer()
-// pour savoir s'il faut révéler tout de suite le reste de l'app (rien à
-// montrer aujourd'hui) ou attendre la fermeture (voir reveler_app_standard).
 function montrerAccueilJour() {
   const acc = $('#accueil-jour');
   const carte = $('#accueil-jour .accueil-carte');
@@ -1464,10 +1449,9 @@ function fermerAccueilJour() {
   if (carte && carte.dataset.jour) localStorage.setItem(CLE_ACCUEIL_VU, cleAccueil(carte));
   acc.classList.add('fermant');
   // Dès que l'écran COMMENCE à se refermer (encore opaque, en train de
-  // fondre) : c'est le moment de révéler le fond/header standard en dessous
-  // — masqué par l'overlay qui le recouvre encore, la révélation est
-  // invisible pour Martin (voir reveler_app_standard).
-  reveler_app_standard();
+  // (Révélation différée du fond/header : annulée 2026-08-27 après le retour
+  // de Martin — revenu au comportement simple, header toujours visible. Voir
+  // precharger_fonds.)
   // On retire `ouvert` après l'animation (même logique que la lightbox : ça
   // absorbe le clic fantôme post-touchend et rend la sortie douce).
   const fini = () => {
@@ -3609,13 +3593,12 @@ async function demarrer() {
     localStorage.removeItem('align.profil');
     profilId = profils.length ? profils[0].id : null;
     if (profilId) { localStorage.setItem('align.profil', profilId); }
-    // Pas d'écran plein écran « Aujourd'hui » à ces deux embranchements
-    // (connexion/création, aucun profil chargé) : révéler le header tout de
-    // suite, comme avant — seul le CAS NORMAL ci-dessous attend la fermeture
-    // de l'écran plein écran.
-    else if (connuAvant) { reveler_app_standard(); vueConnexion(); return; }
+    else if (connuAvant) { vueConnexion(); return; }
   }
-  if (!profilId) { reveler_app_standard(); ouvrirFormulaire(); return; }
+  if (!profilId) { ouvrirFormulaire(); return; }
+  $('#nav').classList.remove('cacher');
+  $('#bouton-regles').classList.remove('cacher');
+  $('#bouton-feedback').classList.remove('cacher');
   dessinerPuce();
   vueProfils();
   montrer('jour');
@@ -3625,20 +3608,7 @@ async function demarrer() {
                      chargerCiel(), chargerRegles()]);
   // Une fois la vue Jour prête dessous, l'écran d'accueil du jour par-dessus
   // (une seule fois par jour — voir montrerAccueilJour).
-  if (montrerAccueilJour()) {
-    // ⚠️ NE PAS attendre uniquement la fermeture pour révéler le reste de
-    // l'app (Martin, 2026-08-27 : « la barre de menu a disparu ») — si la
-    // fermeture ne se déclenche pas exactement comme prévu, le menu restait
-    // caché indéfiniment. Filet de sécurité GARANTI : une fois l'écran plein
-    // écran totalement opaque (fin de son fondu d'entrée .7s, +50ms de
-    // marge), il n'y a plus rien à cacher — révéler dessous est alors
-    // invisible, quoi qu'il arrive ensuite. fermerAccueilJour() appelle
-    // aussi reveler_app_standard() (idempotente) si on ferme avant ce délai.
-    setTimeout(reveler_app_standard, 750);
-  } else {
-    // Rien à montrer aujourd'hui (ou déjà vu) : révéler tout de suite.
-    reveler_app_standard();
-  }
+  montrerAccueilJour();
 }
 
 document.querySelectorAll('#nav button[data-vue], #bouton-regles[data-vue]').forEach(b => {
