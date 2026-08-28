@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<!-- Équivalent Android/Chrome de la balise Apple ci-dessus (Martin,
+     2026-08-28 : « ça marche sur Safari, pas sur Android ») : sans elle,
+     une icône lancée depuis l'écran d'accueil peut rouvrir un onglet avec
+     barre d'adresse au lieu du mode standalone du manifest. -->
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#141110">
 <link rel="manifest" href="/static/manifest.json">
 <link rel="icon" href="/static/favicon-32.png" type="image/png" sizes="32x32">
