@@ -1006,6 +1006,40 @@ function dessinerPuce() {
   puce.onclick = () => montrer('profils');
 }
 
+/* Tableau de bord bêta, affiché DANS l'app via le plein écran générique
+   (ouvrirAnglePlein) — alimenté par /api/admin/donnees (fetch = session OK).
+   Aucune navigation de page : contourne le bug cookie des PWA iOS. */
+async function ouvrirTableauBord() {
+  ouvrirAnglePlein('Tableau de bord bêta', '<p class="quoi">Chargement…</p>');
+  let d;
+  try {
+    const r = await fetch('/api/admin/donnees');
+    if (!r.ok) { $('#angle-plein-corps').innerHTML = '<p class="quoi">Accès refusé — reconnecte-toi à ton compte.</p>'; return; }
+    d = await r.json();
+  } catch {
+    $('#angle-plein-corps').innerHTML = '<p class="quoi">Impossible de charger (réseau).</p>'; return;
+  }
+  const testeurs = (d.testeurs || []).map(t =>
+    `<div class="pont" style="display:flex;align-items:center;gap:8px;justify-content:space-between">
+      <span>${t.en_ligne ? '🟢 ' : ''}<b>${T(t.nom)}</b><br><span class="quoi">${T(t.derniere)} · ${t.nb_sessions} session${t.nb_sessions > 1 ? 's' : ''}</span></span>
+      <span class="cible">${T(t.total)}</span>
+    </div>`).join('') || '<p class="quoi">Aucune activité enregistrée.</p>';
+  const sections = (d.sections || []).map(s =>
+    `<div style="margin:6px 0"><div style="display:flex;justify-content:space-between;font-size:13px">
+      <span>${T(s.nom)}</span><span class="cible">${s.n}</span></div>
+      <div style="background:var(--papier);border-radius:5px;height:8px;overflow:hidden">
+        <span style="display:block;height:100%;width:${s.pct}%;background:var(--accent-doux)"></span></div></div>`).join('')
+    || '<p class="quoi">Aucune navigation enregistrée.</p>';
+  const coms = (d.commentaires || []).map(c =>
+    `<div class="pont" style="display:block"><div class="quoi">${T(c.nom_affiche || c.profil || 'anonyme')} · ${T(c.vue || '?')}</div>
+      <div style="white-space:pre-wrap">${T(c.texte)}</div></div>`).join('')
+    || '<p class="quoi">Aucun commentaire.</p>';
+  $('#angle-plein-corps').innerHTML =
+    `<div class="chapo">Testeurs (${(d.testeurs || []).length})</div>${testeurs}
+     <div class="chapo" style="margin-top:20px">Sections les plus visitées</div>${sections}
+     <div class="chapo" style="margin-top:20px">Commentaires (${(d.commentaires || []).length})</div>${coms}`;
+}
+
 function vueProfils() {
   let html = `<div class="carte">
     <div class="chapo">Tes profils</div>`;
@@ -1051,18 +1085,11 @@ function vueProfils() {
   }
   $('#vue-profils').innerHTML = html;
 
-  // Tableau de bord admin : on demande d'abord un jeton en fetch (la session
-  // FONCTIONNE en fetch), puis on navigue vers /admin?t=<jeton> — le jeton
-  // dans l'URL contourne le bug PWA iOS où le cookie de session n'est pas
-  // transmis à la navigation de page (Martin, 2026-08-28).
+  // Tableau de bord admin : affiché DANS l'app (fetch + plein écran), pas une
+  // page à naviguer — les `fetch` transmettent la session, contrairement aux
+  // navigations de page en PWA iOS (Martin, 2026-08-28).
   const bTableau = $('#p-tableau-bord');
-  if (bTableau) bTableau.onclick = async () => {
-    try {
-      const r = await (await fetch('/api/admin/jeton')).json();
-      if (r.jeton) { window.location.href = '/admin?t=' + encodeURIComponent(r.jeton); return; }
-    } catch {}
-    window.location.href = '/admin';   // repli : la page demandera le mot de passe
-  };
+  if (bTableau) bTableau.onclick = () => ouvrirTableauBord();
 
   $('#vue-profils').querySelectorAll('[data-profil]').forEach(d => d.onclick = async () => {
     const cible = d.dataset.profil;

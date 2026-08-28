@@ -2833,6 +2833,29 @@ def admin_bord():
                                    sections=sections_v, jeton=request.args.get("t", ""))
 
 
+@app.get("/api/admin/donnees")
+def api_admin_donnees():
+    """Tableau de bord EN JSON, affiché DANS l'app (pas une page à naviguer).
+    Gardé par la session — fiable ici car les `fetch` de l'app la transmettent
+    (contrairement aux navigations de page, cassées en PWA iOS). C'est le
+    chemin robuste, sans cookie de navigation ni jeton."""
+    if not _session_est_admin():
+        return jsonify({"erreur": "non-admin"}), 403
+    testeurs, sections = _synthese_activite()
+    maxi = sections[0][1] if sections else 1
+    return jsonify({
+        "testeurs": [{
+            "nom": t["nom"], "derniere": _fmt_depuis(t["derniere"]),
+            "nb_sessions": t["nb_sessions"], "total": _fmt_duree(t["total_min"]),
+            "en_ligne": t["en_ligne"],
+        } for t in testeurs],
+        "sections": [{"nom": _LIBELLES_VUE.get(v, v), "n": n,
+                      "pct": round(100 * n / maxi)} for v, n in sections],
+        "commentaires": sorted(_lire_commentaires(),
+                               key=lambda e: e.get("cree_le", ""), reverse=True),
+    })
+
+
 @app.post("/admin/mot-de-passe")
 def admin_changer_mdp():
     """Change le mot de passe admin depuis la page elle-même — le seul moyen VOULU
