@@ -1,8 +1,0 @@
-Tableau de bord admin : affiche DANS l'app (fetch), fini la navigation
-
-Approche robuste finale : /api/admin/donnees renvoie le tableau de bord en
-JSON, affiche via le plein ecran de l'app (ouvrirTableauBord). Les fetch
-transmettent la session (contrairement aux navigations de page en PWA iOS).
-Fini les jetons/cookies/navigations. Garde par _session_est_admin.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
