@@ -3565,23 +3565,56 @@ function inviterInstallationPWA() {
   const dejaInstalle = window.matchMedia('(display-mode: standalone)').matches
     || window.navigator.standalone === true;
   if (dejaInstalle || localStorage.getItem('align.pwaVue')) return suiteApresProfilFin();
+  const fin = () => { localStorage.setItem('align.pwaVue', '1'); suiteApresProfilFin(); };
   const estIOS = /iP(hone|ad|od)/.test(navigator.userAgent);
+  // iOS/Safari : plus de texte seul (Martin, 2026-08-28) — un vrai tuto en 4
+  // images, captures réelles du geste exact. Android/Chrome garde son propre
+  // bouton (beforeinstallprompt, capté plus haut).
+  if (estIOS) { ouvrirTutoAjoutEcranAccueil(fin); return; }
   $('#vue-accueil').innerHTML = `<div class="carte">
     <div class="chapo">Garde Ta Trame à portée</div>
-    <p class="quoi" style="margin:-2px 0 12px">${estIOS
-      ? "Appuie sur le bouton de partage " + '<span aria-hidden="true">⬆️</span>' + " de Safari, puis « Sur l'écran d'accueil ». Ta Trame s'ouvre alors comme une vraie app, plein écran."
-      : "Installe Ta Trame sur ton écran d'accueil pour l'ouvrir comme une vraie app."}</p>
-    ${estIOS ? '' : '<button class="bouton" id="pwa-installer">Installer</button>'}
+    <p class="quoi" style="margin:-2px 0 12px">Installe Ta Trame sur ton écran d'accueil pour l'ouvrir comme une vraie app.</p>
+    <button class="bouton" id="pwa-installer">Installer</button>
     <button class="bouton discret" id="pwa-plus-tard">Plus tard</button>
   </div>`;
   montrer('accueil');
-  const fin = () => { localStorage.setItem('align.pwaVue', '1'); suiteApresProfilFin(); };
   $('#pwa-plus-tard').onclick = fin;
-  const bInstaller = $('#pwa-installer');
-  if (bInstaller) bInstaller.onclick = async () => {
+  $('#pwa-installer').onclick = async () => {
     if (evenementInstallPWA) { evenementInstallPWA.prompt(); await evenementInstallPWA.userChoice; }
     fin();
   };
+}
+
+/* Tuto visuel « Sur l'écran d'accueil » (iOS/Safari, nouveaux comptes
+   uniquement — voir inviterInstallationPWA) : 4 captures RÉELLES du geste
+   exact (menu ⋯ → Partager → En voir plus → Sur l'écran d'accueil), plutôt
+   qu'une phrase seule (Martin, 2026-08-28). Images recadrées/floutées pour
+   masquer les contacts personnels visibles dans le partage iOS d'origine. */
+const TUTO_PWA_ETAPES = [
+  { img: '/static/img/tuto-pwa/1.webp', legende: "Touche le bouton <b>⋯</b> en bas de Safari." },
+  { img: '/static/img/tuto-pwa/2.webp', legende: "Choisis <b>Partager</b>." },
+  { img: '/static/img/tuto-pwa/3.webp', legende: "Touche <b>En voir plus</b>." },
+  { img: '/static/img/tuto-pwa/4.webp', legende: "Puis <b>Sur l'écran d'accueil</b>." },
+];
+function ouvrirTutoAjoutEcranAccueil(fin) {
+  let etape = 0;
+  const rendre = () => {
+    const e = TUTO_PWA_ETAPES[etape];
+    const dernier = etape === TUTO_PWA_ETAPES.length - 1;
+    $('#vue-accueil').innerHTML = `<div class="carte" style="text-align:center">
+      <div class="chapo">Garde Ta Trame à portée</div>
+      <img src="${e.img}" alt="Étape ${etape + 1} sur ${TUTO_PWA_ETAPES.length} pour ajouter Ta Trame à l'écran d'accueil"
+        style="width:100%;max-width:300px;border-radius:12px;border:1px solid var(--bord);margin:0 auto 16px;display:block">
+      <p class="quoi" style="margin-bottom:6px">${e.legende}</p>
+      <div class="etat neutre" style="justify-content:center;margin-bottom:18px">${etape + 1} / ${TUTO_PWA_ETAPES.length}</div>
+      <button class="bouton" id="tuto-suivant">${dernier ? "C'est fait !" : 'Suivant'}</button>
+      <button class="bouton discret" id="pwa-plus-tard">Plus tard</button>
+    </div>`;
+    montrer('accueil');
+    $('#pwa-plus-tard').onclick = fin;
+    $('#tuto-suivant').onclick = () => { if (dernier) fin(); else { etape++; rendre(); } };
+  };
+  rendre();
 }
 
 async function suiteApresProfil() { inviterInstallationPWA(); }
