@@ -1046,8 +1046,7 @@ function vueProfils() {
   if (profilId === 'martin-boucher') {
     html += `<div class="carte">
       <div class="chapo">Administration</div>
-      <a class="bouton discret" href="/admin"
-         style="display:block;text-align:center;text-decoration:none">📊 Tableau de bord bêta</a>
+      <button class="bouton discret" id="p-tableau-bord">📊 Tableau de bord bêta</button>
     </div>`;
   }
   $('#vue-profils').innerHTML = html;

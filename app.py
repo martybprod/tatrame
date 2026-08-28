@@ -2459,10 +2459,44 @@ def _demarrer_scheduler():
 # dans l'app), ou (2) le mot de passe admin (REPLI, depuis un appareil où il
 # n'est pas connecté — voir la page de login /admin).
 
+from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
+# Jeton d'accès admin de COURTE durée, signé avec SECRET_KEY. Sert à contourner
+# un bug des PWA iOS installées : les cookies de session posés par `fetch` ne
+# sont pas toujours transmis lors d'une NAVIGATION de page (clic de lien vers
+# /admin) — la session marche pour l'API mais pas pour /admin. L'app (qui parle
+# en fetch, où la session FONCTIONNE) demande un jeton à /api/admin/jeton, puis
+# ouvre /admin?t=<jeton>. Le jeton voyage dans l'URL, indépendant du cookie.
+_admin_serializer = URLSafeTimedSerializer(SECRET_KEY, salt="admin-bord")
+_JETON_ADMIN_TTL = 600   # 10 min : le temps d'ouvrir le tableau de bord
+
+
+def _jeton_admin_valide(t):
+    if not t:
+        return False
+    try:
+        return _admin_serializer.loads(t, max_age=_JETON_ADMIN_TTL) == "ok"
+    except (BadSignature, SignatureExpired):
+        return False
+
+
+def _session_est_admin():
+    """Admin via la SESSION (cookie) — fiable pour les appels fetch de l'app."""
+    return bool(session.get("admin_ok")
+                or COMPTE_ADMIN in (session.get("deverrouilles") or []))
+
+
 def _est_admin():
-    if session.get("admin_ok"):
-        return True
-    return COMPTE_ADMIN in (session.get("deverrouilles") or [])
+    """Admin via la session OU un jeton valide en query (?t=) — voir plus haut."""
+    return _session_est_admin() or _jeton_admin_valide(request.args.get("t"))
+
+
+@app.get("/api/admin/jeton")
+def api_admin_jeton():
+    """L'app (connectée à SON compte, session fetch valide) réclame un jeton
+    d'accès au tableau de bord, à passer dans l'URL de /admin."""
+    if not _session_est_admin():
+        return jsonify({"erreur": "non-admin"}), 403
+    return jsonify({"jeton": _admin_serializer.dumps("ok")})
 
 
 # --------------------------------------------------------- journal d'activité
@@ -2638,7 +2672,7 @@ details form{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:cen
 .onglets{margin-bottom:18px}
 .onglets a{margin-right:16px}
 </style></head><body>
-<div class="onglets"><a href="/">← Ta Trame</a> · <a href="/admin">📊 Tableau de bord</a> · <b>Commentaires</b></div>
+<div class="onglets"><a href="/">← Ta Trame</a> · <a href="/admin?t={{ jeton }}">📊 Tableau de bord</a> · <b>Commentaires</b></div>
 <h2>Commentaires bêta ({{ entries|length }})</h2>
 <details{{ ' open' if maj else '' }}>
   <summary>Changer le mot de passe admin</summary>
@@ -2651,7 +2685,7 @@ details form{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:cen
 {% for e in entries %}
 <div class="c {{ 'non-lu' if not e.lu else '' }}">
   <div class="meta">{{ e.nom_affiche or e.profil or 'anonyme' }} · {{ e.vue or '?' }} · {{ e.cree_le }}
-    {% if not e.lu %} · <a href="?lu={{ e.id }}">marquer lu</a>{% endif %}</div>
+    {% if not e.lu %} · <a href="?lu={{ e.id }}&t={{ jeton }}">marquer lu</a>{% endif %}</div>
   <div class="texte">{{ e.texte }}</div>
 </div>
 {% else %}
@@ -2689,6 +2723,7 @@ def admin_commentaires():
         return redirect("/admin/commentaires")
     if not _est_admin():
         return render_template_string(_ADMIN_LOGIN_TPL), 403
+    jeton = request.args.get("t", "")
     lu_id = request.args.get("lu")
     entries = _lire_commentaires()
     if lu_id:
@@ -2696,10 +2731,10 @@ def admin_commentaires():
             if e["id"] == lu_id:
                 e["lu"] = True
         _ecrire_commentaires(entries)
-        return redirect("/admin/commentaires")
+        return redirect(f"/admin/commentaires?t={jeton}")
     entries.sort(key=lambda e: e.get("cree_le", ""), reverse=True)
     return render_template_string(_ADMIN_COMMENTAIRES_TPL, entries=entries,
-                                   maj=request.args.get("maj"))
+                                   maj=request.args.get("maj"), jeton=jeton)
 
 
 _ADMIN_BORD_TPL = """<!doctype html><html lang="fr"><head><meta charset="utf-8">
@@ -2721,7 +2756,7 @@ th{color:#999;font-weight:600;font-size:12px;text-transform:uppercase;letter-spa
 .vide{color:#888;margin:20px 0}
 .num{color:#cfc6b2;font-variant-numeric:tabular-nums}
 </style></head><body>
-<div class="onglets"><a href="/">← Ta Trame</a> · <b>Tableau de bord</b> · <a href="/admin/commentaires">💬 Commentaires</a></div>
+<div class="onglets"><a href="/">← Ta Trame</a> · <b>Tableau de bord</b> · <a href="/admin/commentaires?t={{ jeton }}">💬 Commentaires</a></div>
 <h2>Testeurs ({{ testeurs|length }})</h2>
 {% if testeurs %}
 <table><thead><tr><th>Testeur</th><th>Dernière visite</th><th class="num">Sessions</th><th class="num">Temps total</th></tr></thead>
@@ -2795,7 +2830,7 @@ def admin_bord():
     sections_v = [(_LIBELLES_VUE.get(v, v), n, round(100 * n / maxi))
                   for v, n in sections]
     return render_template_string(_ADMIN_BORD_TPL, testeurs=testeurs,
-                                   sections=sections_v)
+                                   sections=sections_v, jeton=request.args.get("t", ""))
 
 
 @app.post("/admin/mot-de-passe")
