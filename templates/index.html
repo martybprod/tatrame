@@ -3624,11 +3624,21 @@ async function demarrer() {
   await Promise.all([chargerJour(), chargerApercu(), chargerPortrait(),
                      chargerCiel(), chargerRegles()]);
   // Une fois la vue Jour prête dessous, l'écran d'accueil du jour par-dessus
-  // (une seule fois par jour — voir montrerAccueilJour). S'il ne s'ouvre pas
-  // (rien à montrer aujourd'hui, ou déjà vu), révéler tout de suite le reste
-  // de l'app — sinon reveler_app_standard() attend que l'écran se referme
-  // (voir fermerAccueilJour).
-  if (!montrerAccueilJour()) reveler_app_standard();
+  // (une seule fois par jour — voir montrerAccueilJour).
+  if (montrerAccueilJour()) {
+    // ⚠️ NE PAS attendre uniquement la fermeture pour révéler le reste de
+    // l'app (Martin, 2026-08-27 : « la barre de menu a disparu ») — si la
+    // fermeture ne se déclenche pas exactement comme prévu, le menu restait
+    // caché indéfiniment. Filet de sécurité GARANTI : une fois l'écran plein
+    // écran totalement opaque (fin de son fondu d'entrée .7s, +50ms de
+    // marge), il n'y a plus rien à cacher — révéler dessous est alors
+    // invisible, quoi qu'il arrive ensuite. fermerAccueilJour() appelle
+    // aussi reveler_app_standard() (idempotente) si on ferme avant ce délai.
+    setTimeout(reveler_app_standard, 750);
+  } else {
+    // Rien à montrer aujourd'hui (ou déjà vu) : révéler tout de suite.
+    reveler_app_standard();
+  }
 }
 
 document.querySelectorAll('#nav button[data-vue], #bouton-regles[data-vue]').forEach(b => {
