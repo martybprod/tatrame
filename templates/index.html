@@ -1036,12 +1036,17 @@ function vueProfils() {
     </p>
   </div>`;
   // Lien admin : visible UNIQUEMENT pour le compte de Martin (le serveur
-  // re-vérifie l'accès de toute façon — voir _est_admin). Ouvre le tableau de
-  // bord d'activité dans un nouvel onglet.
+  // re-vérifie l'accès de toute façon — voir _est_admin). ⚠️ MÊME fenêtre, PAS
+  // target="_blank" : en PWA iOS installée (standalone), un nouvel onglet
+  // s'ouvre dans un Safari SÉPARÉ, avec une session distincte — /admin ne
+  // reconnaissait alors plus le compte connecté et réclamait le mot de passe
+  // (Martin, 2026-08-28). En restant dans la même fenêtre, la session est
+  // conservée : pas de mot de passe à saisir. /admin est dans le scope "/" de
+  // la PWA, donc on ne quitte pas l'app ; un lien « retour » y ramène.
   if (profilId === 'martin-boucher') {
     html += `<div class="carte">
       <div class="chapo">Administration</div>
-      <a class="bouton discret" href="/admin" target="_blank" rel="noopener"
+      <a class="bouton discret" href="/admin"
          style="display:block;text-align:center;text-decoration:none">📊 Tableau de bord bêta</a>
     </div>`;
   }

@@ -2638,7 +2638,7 @@ details form{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:cen
 .onglets{margin-bottom:18px}
 .onglets a{margin-right:16px}
 </style></head><body>
-<div class="onglets"><a href="/admin">📊 Tableau de bord</a> · <b>Commentaires</b></div>
+<div class="onglets"><a href="/">← Ta Trame</a> · <a href="/admin">📊 Tableau de bord</a> · <b>Commentaires</b></div>
 <h2>Commentaires bêta ({{ entries|length }})</h2>
 <details{{ ' open' if maj else '' }}>
   <summary>Changer le mot de passe admin</summary>
@@ -2666,9 +2666,11 @@ _ADMIN_LOGIN_TPL = """<!doctype html><html lang="fr"><head><meta charset="utf-8"
 input,button{font:inherit;padding:9px 11px;border-radius:6px;border:1px solid #333;
   background:#1c1918;color:#eee;width:100%;margin-top:8px}
 button{background:#e9d494;color:#141110;border:none;cursor:pointer}</style>
-</head><body><p>Mot de passe admin</p>
+a{color:#e9d494}</style>
+</head><body><p><a href="/">← Retour à Ta Trame</a></p>
+<p>Mot de passe admin <small style="color:#999">(inutile si tu es connecté à ton compte)</small></p>
 <form method="post"><input type="password" name="mdp" autofocus>
-<button>Voir les commentaires</button></form></body></html>"""
+<button>Entrer</button></form></body></html>"""
 
 
 @app.route("/admin/commentaires", methods=["GET", "POST"])
@@ -2719,7 +2721,7 @@ th{color:#999;font-weight:600;font-size:12px;text-transform:uppercase;letter-spa
 .vide{color:#888;margin:20px 0}
 .num{color:#cfc6b2;font-variant-numeric:tabular-nums}
 </style></head><body>
-<div class="onglets"><b>Tableau de bord</b> · <a href="/admin/commentaires">💬 Commentaires</a></div>
+<div class="onglets"><a href="/">← Ta Trame</a> · <b>Tableau de bord</b> · <a href="/admin/commentaires">💬 Commentaires</a></div>
 <h2>Testeurs ({{ testeurs|length }})</h2>
 {% if testeurs %}
 <table><thead><tr><th>Testeur</th><th>Dernière visite</th><th class="num">Sessions</th><th class="num">Temps total</th></tr></thead>
