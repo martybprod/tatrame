@@ -332,21 +332,19 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .arcane .corr{font-size:12px;color:var(--encre3)}
 .vignette{width:56px;height:98px;object-fit:cover;border-radius:6px;border:1px solid var(--bord);flex:none;box-shadow:0 1px 3px rgba(0,0,0,.12);cursor:zoom-in}
 
-/* La carte du jour se présente retournée, se dévoile au clic — en FONDU
-   (crossfade), pas en 3D : leçon tirée de Francisation, où backface rendait
-   mal. Effet, pas oracle : la carte est CALCULÉE (date du jour → arcane). */
+/* La carte du jour affiche son DOS en grille et s'ouvre en PLEIN ÉCRAN au
+   premier clic (Martin, 2026-08-27) — plus de dévoilement en deux temps.
+   La face n'est visible que dans #carte-plein. Effet, pas oracle : la carte
+   est CALCULÉE (date du jour → arcane). */
 .carte-jour{position:relative;display:inline-block;width:60px;height:105px;flex:none;border-radius:6px;overflow:hidden;border:1px solid var(--bord);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease}
+.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .carte-jour .face{opacity:0}
-.carte-jour-zone.revelee .carte-jour .face{opacity:1}
-.carte-jour-zone.revelee .carte-jour .dos{opacity:0}
 /* Les deux cartes côte à côte : chacune empile son image PUIS son texte
    (au lieu d'être côte à côte l'une dans l'autre), pour que la paire tienne
    sur une seule ligne même en mobile étroit. */
 .carte-jour-paire{display:flex; gap:16px; align-items:flex-start}
 .carte-jour-zone{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; cursor:pointer}
 .carte-jour-zone .carte-jour{width:72px;height:126px}
-.carte-jour-zone.revelee .carte-jour{cursor:zoom-in}
 
 /* La visionneuse : un clic sur une carte la montre en grand, en détail.
    Ouverte par ouvrirLightbox(), fermée par clic sur le fond ou Échap. */
@@ -2043,20 +2041,17 @@ async function chargerJour() {
 
   /* Tes cartes du jour — les DEUX cartes réunies, sous le message, présentées
      CÔTE À CÔTE (« Toi » vs « Le pouls du monde »). TOUJOURS affichées, plus
-     de tiroir à déplier (demande de Martin, 2026-08-22) : chaque carte reste
-     retournée par défaut (dos), exactement comme avant — seul le clic pour
-     les dévoiler change, plus besoin d'abord déplier un tiroir pour l'atteindre. */
+     de tiroir à déplier (demande de Martin, 2026-08-22) : chaque carte affiche
+     son DOS par défaut et s'ouvre en plein écran au premier clic (2026-08-27). */
   if (j.carte_min || j.carte_jour) {
     const cm = j.carte_min, cj = j.carte_jour;
-    /* Chaque carte garde son propre dévoilement (comme avant) : dos affiché,
-       cachée tant qu'on n'a pas cliqué sur SA zone — 1er clic = dévoile (la
-       carte se retourne, image seulement, JAMAIS de texte affiché en ligne
-       — pas d'espace réservé non plus, aucun élément de texte n'existe dans
-       cette zone). Nom et invitation vivent SEULEMENT en data-attributs,
-       lus par ouvrirCartePlein : le nom/l'invitation ne sont lisibles qu'en
-       plein écran (2e clic, une fois la carte déjà retournée). */
+    /* Chaque carte affiche son dos en grille (le dos seul, jamais de texte en
+       ligne) et s'ouvre en PLEIN ÉCRAN au PREMIER clic (Martin, 2026-08-27) —
+       plus de dévoilement en deux temps. Nom et invitation vivent SEULEMENT
+       en data-attributs, lus par ouvrirCartePlein : ils ne sont lisibles
+       qu'en plein écran. */
     const ligneCarte = (zoneId, src, badge, badgeCol, nom, invitation, alt) => `
-      <div class="carte-jour-zone" id="${zoneId}" title="Clique pour la dévoiler"
+      <div class="carte-jour-zone" id="${zoneId}" title="Clique pour l'agrandir"
            data-src="${src}" data-nom="${T(nom)}" data-invitation="${T(invitation || '')}">
         <span class="carte-jour">
           <img class="face" src="${src}" alt="${alt}"
@@ -2332,16 +2327,13 @@ async function chargerJour() {
     }
   }
 
-  /* Les deux cartes du tiroir « Tes cartes du jour », chacune cachée
-     jusqu'au clic : 1er clic sur SA zone la dévoile en fondu (comme avant),
-     un clic de plus (déjà dévoilée) l'ouvre en plein écran (voir
-     ouvrirCartePlein, câblage commun car même comportement pour les deux). */
+  /* Les deux cartes du jour : le premier clic ouvre directement le plein
+     écran (Martin, 2026-08-27) — la carte est montrée agrandie d'emblée,
+     jamais dévoilée en petit dans la grille. Même câblage pour les deux
+     (voir ouvrirCartePlein). */
   [$('#z-carte-maj'), $('#z-carte-min')].forEach(zone => {
     if (!zone) return;
-    zone.onclick = () => {
-      if (zone.classList.contains('revelee')) ouvrirCartePlein(zone);
-      else zone.classList.add('revelee');
-    };
+    zone.onclick = () => ouvrirCartePlein(zone);
   });
   /* La carte de l'année : un clic sur sa vignette (dans le tiroir) la zoome. */
   const vignetteAn = $('#vue-jour .carte-annee .vignette');
@@ -3445,16 +3437,8 @@ function montrer(vue) {
    immédiatement — le fondu joue quand même, très court, jamais de blocage. */
 function fondreImages(racine) {
   if (!racine) return;
-  racine.querySelectorAll('.carte-jour').forEach(el => {
-    // Une carte déjà DÉVOILÉE (.revelee sur sa zone) ne doit pas être re-fondue
-    // à chaque retour sur l'onglet : sinon elle disparaît brièvement (opacity:0)
-    // avant de refondre, ce qui gêne le geste « cliquer la carte retournée →
-    // plein écran » (Martin, 2026-08-27). On ne fond que la carte au dos encore
-    // visible (jamais dévoilée).
-    const zone = el.closest('.carte-jour-zone');
-    if (zone && zone.classList.contains('revelee')) return;
-    preparerFondu(el, el.querySelector('.dos'));
-  });
+  racine.querySelectorAll('.carte-jour').forEach(el =>
+    preparerFondu(el, el.querySelector('.dos')));
   racine.querySelectorAll('img:not(.face):not(.dos)').forEach(img =>
     preparerFondu(img, img));
 }
