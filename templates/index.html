@@ -1051,6 +1051,19 @@ function vueProfils() {
   }
   $('#vue-profils').innerHTML = html;
 
+  // Tableau de bord admin : on demande d'abord un jeton en fetch (la session
+  // FONCTIONNE en fetch), puis on navigue vers /admin?t=<jeton> — le jeton
+  // dans l'URL contourne le bug PWA iOS où le cookie de session n'est pas
+  // transmis à la navigation de page (Martin, 2026-08-28).
+  const bTableau = $('#p-tableau-bord');
+  if (bTableau) bTableau.onclick = async () => {
+    try {
+      const r = await (await fetch('/api/admin/jeton')).json();
+      if (r.jeton) { window.location.href = '/admin?t=' + encodeURIComponent(r.jeton); return; }
+    } catch {}
+    window.location.href = '/admin';   // repli : la page demandera le mot de passe
+  };
+
   $('#vue-profils').querySelectorAll('[data-profil]').forEach(d => d.onclick = async () => {
     const cible = d.dataset.profil;
     const racineCible = d.dataset.racine;
