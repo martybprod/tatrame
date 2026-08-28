@@ -886,6 +886,27 @@ function precharger_fonds() {
 }
 precharger_fonds();
 
+/* ═══ JOURNAL D'ACTIVITÉ (tableau de bord admin, 2026-08-28) ═══
+   Envoie au serveur des événements minimaux : 'ouverture' au démarrage,
+   'nav' à chaque changement de section (popularité des sections), 'ping'
+   toutes les 60 s tant que l'app est au PREMIER PLAN (durée des sessions).
+   Fire-and-forget : jamais bloquant, les erreurs sont ignorées. Le serveur
+   n'enregistre que si une session est déverrouillée (voir /api/activite). */
+function journalActivite(type, vue) {
+  try {
+    fetch('/api/activite', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({type, vue: vue || '', profil: profilId || ''}),
+      keepalive: true,
+    }).catch(() => {});
+  } catch {}
+}
+// Battement : seulement quand l'onglet/app est VISIBLE (sinon on gonflerait la
+// durée pendant que l'app est en arrière-plan).
+setInterval(() => {
+  if (document.visibilityState === 'visible' && profilId) journalActivite('ping');
+}, 60000);
+
 // ⚠️ En PWA installée (« mode appli », iOS surtout), le système garde
 // souvent l'app SUSPENDUE en mémoire entre deux ouvertures plutôt que de la
 // recharger depuis le réseau — comme un onglet Safari mis en pause, pas
@@ -1014,6 +1035,16 @@ function vueProfils() {
       Si tu as un doute sur l'heure, tu peux la corriger ici — le thème se recalcule aussitôt.
     </p>
   </div>`;
+  // Lien admin : visible UNIQUEMENT pour le compte de Martin (le serveur
+  // re-vérifie l'accès de toute façon — voir _est_admin). Ouvre le tableau de
+  // bord d'activité dans un nouvel onglet.
+  if (profilId === 'martin-boucher') {
+    html += `<div class="carte">
+      <div class="chapo">Administration</div>
+      <a class="bouton discret" href="/admin" target="_blank" rel="noopener"
+         style="display:block;text-align:center;text-decoration:none">📊 Tableau de bord bêta</a>
+    </div>`;
+  }
   $('#vue-profils').innerHTML = html;
 
   $('#vue-profils').querySelectorAll('[data-profil]').forEach(d => d.onclick = async () => {
@@ -3641,6 +3672,7 @@ function montrerVue(vue) {
   montrer(vue);
   document.querySelectorAll('#nav button').forEach(b =>
     b.classList.toggle('actif', b.dataset.vue === vue));
+  journalActivite('nav', vue);   // popularité des sections (tableau de bord admin)
 }
 
 async function demarrer() {
@@ -3662,6 +3694,8 @@ async function demarrer() {
   $('#bouton-regles').classList.remove('cacher');
   $('#bouton-feedback').classList.remove('cacher');
   dessinerPuce();
+  journalActivite('ouverture');   // « quand » : début d'une session (tableau de bord)
+  journalActivite('nav', 'jour'); // la 1re section vue (montrer(), pas montrerVue())
   vueProfils();
   montrer('jour');
   document.querySelectorAll('#nav button').forEach(x =>

@@ -168,6 +168,11 @@ SECRET_KEY = _secret_persiste("SECRET_KEY", 32)
 # fois qu'il l'a changé (une auto-correction ici entrerait en conflit avec son choix).
 ADMIN_PASSWORD = _secret_persiste("ADMIN_PASSWORD", 4)
 
+# Le compte d'administration : Martin y accède depuis l'app (une fois connecté
+# à SON compte), sans retaper le mot de passe admin. Celui-ci reste un REPLI
+# (autre appareil, session non connectée). Voir _est_admin().
+COMPTE_ADMIN = "martin-boucher"
+
 # Code d'invitation de la bêta FERMÉE : un secret PARTAGÉ que les proches invités saisissent
 # pour créer leur compte (voir api_creer_profil). Volontairement simple — pour <20 personnes,
 # un code partagé, révocable en changeant la variable, suffit ; des codes uniques par personne
@@ -2447,6 +2452,125 @@ def _demarrer_scheduler():
     return sched
 
 
+# --------------------------------------------------------- accès admin
+#
+# Martin est admin de DEUX façons : (1) connecté à son compte dans l'app
+# (COMPTE_ADMIN déverrouillé dans la session — le cas normal, un lien apparaît
+# dans l'app), ou (2) le mot de passe admin (REPLI, depuis un appareil où il
+# n'est pas connecté — voir la page de login /admin).
+
+def _est_admin():
+    if session.get("admin_ok"):
+        return True
+    return COMPTE_ADMIN in (session.get("deverrouilles") or [])
+
+
+# --------------------------------------------------------- journal d'activité
+#
+# Qui se connecte, quand, combien de temps, et quelles SECTIONS sont visitées.
+# Données PERSONNELLES (Loi 25) : journal minimal, append-only, à part des
+# profils, jamais committé (voir .gitignore). Une ligne JSON par événement :
+#   {t, profil, nom, type: 'ouverture'|'nav'|'ping', vue}
+# Le frontend l'alimente (journalActivite) : 'ouverture' au démarrage, 'nav' à
+# chaque changement de section (pour la popularité des sections), 'ping' toutes
+# les 60 s tant que l'app est au premier plan (pour estimer la DURÉE). Le
+# serveur horodate et n'accepte que d'une session déverrouillée (pas un
+# formulaire ouvert au monde).
+
+ACTIVITE_PATH = RACINE / "data" / "activite.jsonl"
+#: Coupure de session : au-delà de ce silence, on considère une NOUVELLE session.
+SESSION_TROU_MIN = 5
+
+
+@app.post("/api/activite")
+def api_activite():
+    if not (session.get("deverrouilles") or []):
+        return ("", 204)                 # pas connecté : on ignore, sans erreur
+    body = request.get_json(silent=True) or {}
+    type_ = (body.get("type") or "").strip()[:20]
+    if type_ not in ("ouverture", "nav", "ping"):
+        return ("", 204)
+    profil = (body.get("profil") or "").strip()[:80]
+    ligne = {
+        "t": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "profil": profil,
+        "nom": (_charger(profil) or {}).get("nom_affiche", "") if profil else "",
+        "type": type_,
+        "vue": (body.get("vue") or "").strip()[:40],
+    }
+    try:
+        ACTIVITE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with ACTIVITE_PATH.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
+    except OSError:
+        pass                             # jamais bloquer l'app pour du journal
+    return ("", 204)
+
+
+def _lire_activite():
+    if not ACTIVITE_PATH.exists():
+        return []
+    lignes = []
+    for l in ACTIVITE_PATH.read_text(encoding="utf-8").splitlines():
+        l = l.strip()
+        if not l:
+            continue
+        try:
+            lignes.append(json.loads(l))
+        except json.JSONDecodeError:
+            continue
+    return lignes
+
+
+def _synthese_activite():
+    """Agrège le journal : par testeur (dernière visite, nb de sessions, temps
+    total estimé, en ligne ?) + popularité GLOBALE des sections."""
+    evts = _lire_activite()
+    par_profil = {}
+    sections = {}
+    for e in evts:
+        pid = e.get("profil") or "?"
+        par_profil.setdefault(pid, {"nom": e.get("nom") or pid, "ts": []})
+        try:
+            t = dt.datetime.fromisoformat(e["t"])
+        except (KeyError, ValueError):
+            continue
+        par_profil[pid]["ts"].append(t)
+        if e.get("nom"):
+            par_profil[pid]["nom"] = e["nom"]
+        if e.get("type") == "nav" and e.get("vue"):
+            sections[e["vue"]] = sections.get(e["vue"], 0) + 1
+
+    maintenant = dt.datetime.now(dt.timezone.utc)
+    trou = dt.timedelta(minutes=SESSION_TROU_MIN)
+    testeurs = []
+    for pid, d in par_profil.items():
+        ts = sorted(d["ts"])
+        if not ts:
+            continue
+        # Découpe en sessions : un trou > SESSION_TROU_MIN ouvre une session.
+        sessions, courant = [], [ts[0]]
+        for prec, cur in zip(ts, ts[1:]):
+            if cur - prec > trou:
+                sessions.append(courant); courant = [cur]
+            else:
+                courant.append(cur)
+        sessions.append(courant)
+        # Durée d'une session = du 1er au dernier événement (une session d'un
+        # seul événement compte comme très courte, arrondie à 1 min).
+        total_s = sum(max((s[-1] - s[0]).total_seconds(), 60) for s in sessions)
+        derniere = ts[-1]
+        testeurs.append({
+            "nom": d["nom"], "profil": pid,
+            "derniere": derniere, "nb_sessions": len(sessions),
+            "total_min": round(total_s / 60),
+            "en_ligne": (maintenant - derniere) < dt.timedelta(minutes=2),
+        })
+    testeurs.sort(key=lambda x: x["derniere"], reverse=True)
+    sections_tri = sorted(sections.items(), key=lambda kv: kv[1], reverse=True)
+    return testeurs, sections_tri
+
+
 # --------------------------------------------------------- commentaires bêta
 #
 # Un mot rapide pour Martin (bug, idée, impression), jamais visible des autres
@@ -2511,7 +2635,10 @@ button{background:#e9d494;color:#141110;border:none;cursor:pointer;padding:8px 1
 details{margin-bottom:24px;font-size:14px;color:#bbb}
 details form{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .ok{color:#9fd49f}
+.onglets{margin-bottom:18px}
+.onglets a{margin-right:16px}
 </style></head><body>
+<div class="onglets"><a href="/admin">📊 Tableau de bord</a> · <b>Commentaires</b></div>
 <h2>Commentaires bêta ({{ entries|length }})</h2>
 <details{{ ' open' if maj else '' }}>
   <summary>Changer le mot de passe admin</summary>
@@ -2558,7 +2685,7 @@ def admin_commentaires():
             session["admin_ok"] = True
             session.permanent = True
         return redirect("/admin/commentaires")
-    if not session.get("admin_ok"):
+    if not _est_admin():
         return render_template_string(_ADMIN_LOGIN_TPL), 403
     lu_id = request.args.get("lu")
     entries = _lire_commentaires()
@@ -2571,6 +2698,102 @@ def admin_commentaires():
     entries.sort(key=lambda e: e.get("cree_le", ""), reverse=True)
     return render_template_string(_ADMIN_COMMENTAIRES_TPL, entries=entries,
                                    maj=request.args.get("maj"))
+
+
+_ADMIN_BORD_TPL = """<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tableau de bord — Ta Trame</title>
+<style>
+body{font-family:-apple-system,sans-serif;max-width:760px;margin:34px auto;padding:0 20px;
+  background:#141110;color:#eee}
+a{color:#e9d494}
+.onglets{margin-bottom:18px}.onglets a{margin-right:16px}
+h2{margin:26px 0 12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid #2a2622}
+th{color:#999;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.pastille{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3a352e;margin-right:6px}
+.pastille.on{background:#7ac07a;box-shadow:0 0 6px #7ac07a}
+.barre{background:#2a2622;border-radius:5px;height:10px;overflow:hidden}
+.barre span{display:block;height:100%;background:#e9d494}
+.vide{color:#888;margin:20px 0}
+.num{color:#cfc6b2;font-variant-numeric:tabular-nums}
+</style></head><body>
+<div class="onglets"><b>Tableau de bord</b> · <a href="/admin/commentaires">💬 Commentaires</a></div>
+<h2>Testeurs ({{ testeurs|length }})</h2>
+{% if testeurs %}
+<table><thead><tr><th>Testeur</th><th>Dernière visite</th><th class="num">Sessions</th><th class="num">Temps total</th></tr></thead>
+<tbody>
+{% for t in testeurs %}
+<tr>
+  <td><span class="pastille {{ 'on' if t.en_ligne else '' }}"></span>{{ t.nom }}</td>
+  <td>{{ t.derniere_txt }}</td>
+  <td class="num">{{ t.nb_sessions }}</td>
+  <td class="num">{{ t.total_txt }}</td>
+</tr>
+{% endfor %}
+</tbody></table>
+{% else %}<p class="vide">Aucune activité enregistrée pour l'instant.</p>{% endif %}
+
+<h2>Sections les plus visitées</h2>
+{% if sections %}
+<table><tbody>
+{% for nom, n, pct in sections %}
+<tr>
+  <td style="width:30%">{{ nom }}</td>
+  <td><div class="barre"><span style="width:{{ pct }}%"></span></div></td>
+  <td class="num" style="width:60px;text-align:right">{{ n }}</td>
+</tr>
+{% endfor %}
+</tbody></table>
+{% else %}<p class="vide">Aucune navigation enregistrée pour l'instant.</p>{% endif %}
+</body></html>"""
+
+
+def _fmt_duree(minutes):
+    if minutes >= 60:
+        h, m = divmod(minutes, 60)
+        return f"{h} h {m:02d}" if m else f"{h} h"
+    return f"{minutes} min"
+
+
+def _fmt_depuis(quand):
+    """« il y a 3 min », « il y a 2 h », « hier », « il y a 4 j »."""
+    delta = dt.datetime.now(dt.timezone.utc) - quand
+    s = delta.total_seconds()
+    if s < 120:
+        return "à l'instant"
+    if s < 3600:
+        return f"il y a {int(s // 60)} min"
+    if s < 86400:
+        return f"il y a {int(s // 3600)} h"
+    j = int(s // 86400)
+    return "hier" if j == 1 else f"il y a {j} j"
+
+
+# Noms lisibles des sections (les `data-vue` techniques -> libellés de la nav).
+_LIBELLES_VUE = {
+    "jour": "Le Jour", "apercu": "Tout", "portrait": "Le Portrait",
+    "ciel": "Le Ciel", "relations": "Relations", "regles": "Les Règles",
+    "profils": "Profils",
+}
+
+
+@app.get("/admin")
+def admin_bord():
+    """Tableau de bord d'activité — réservé à l'admin (compte de Martin, ou mot
+    de passe admin en repli via /admin/commentaires)."""
+    if not _est_admin():
+        return redirect("/admin/commentaires")
+    testeurs, sections = _synthese_activite()
+    for t in testeurs:
+        t["derniere_txt"] = _fmt_depuis(t["derniere"])
+        t["total_txt"] = _fmt_duree(t["total_min"])
+    maxi = sections[0][1] if sections else 1
+    sections_v = [(_LIBELLES_VUE.get(v, v), n, round(100 * n / maxi))
+                  for v, n in sections]
+    return render_template_string(_ADMIN_BORD_TPL, testeurs=testeurs,
+                                   sections=sections_v)
 
 
 @app.post("/admin/mot-de-passe")

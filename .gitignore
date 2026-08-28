@@ -29,6 +29,9 @@ data/vapid/
 data/notifications/
 # ── Notes du journal personnel (données utilisateur, les plus intimes) ──
 data/journal/
+# ── Journal d'activité des testeurs (données personnelles, Loi 25) ──
+data/activite.jsonl
+data/commentaires.json
 
 # Extraction de textes sources pour distillation (textes sous copyright, hors produit)
 _distillation/sources/
