@@ -467,7 +467,7 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    pas les images. Réappliqué à chaque `montrer()` via retrait/reflow/ajout
    de la classe. */
 @keyframes vue-entre{ from{opacity:0} to{opacity:1} }
-.vue-entre{animation:vue-entre .32s ease}
+.vue-entre{animation:vue-entre .5s ease}
 
 /* ═══ FONDU DES IMAGES AU CHARGEMENT (Martin, 2026-08-27) ═══
    Ce que Martin veut vraiment : que chaque image ÉMERGE du fond sombre au
@@ -477,7 +477,7 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    l'image se matérialise depuis le noir. Voir fondreImages() côté JS.
    ⚠️ Pour les cartes du jour on fond le CONTENEUR (.carte-jour), jamais les
    images .face/.dos — celles-ci gèrent déjà leur opacité pour le flip. */
-.img-fondu{opacity:0; transition:opacity .55s ease}
+.img-fondu{opacity:0; transition:opacity 1.1s ease}
 .img-fondu.chargee{opacity:1}
 @media (prefers-reduced-motion:reduce){
   .vue-entre{animation-duration:.12s}
@@ -3398,7 +3398,11 @@ function preparerFondu(el, imgSurveillee) {
   el.classList.add('img-fondu');
   const ok = () => el.classList.add('chargee');
   if (imgSurveillee && imgSurveillee.complete && imgSurveillee.naturalWidth) {
-    requestAnimationFrame(ok);           // déjà en cache : fondu bref au prochain frame
+    // Déjà en cache : DOUBLE rAF obligatoire — il faut qu'un frame soit PEINT à
+    // opacity:0 avant d'ajouter .chargee, sinon le navigateur regroupe les deux
+    // dans le même recalcul de style et l'image saute à visible sans fondu (le
+    // bug qui rendait l'effet quasi invisible, Martin 2026-08-27).
+    requestAnimationFrame(() => requestAnimationFrame(ok));
   } else if (imgSurveillee) {
     imgSurveillee.addEventListener('load', ok, { once: true });
     imgSurveillee.addEventListener('error', ok, { once: true });  // jamais coincé invisible
