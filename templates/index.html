@@ -282,6 +282,21 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .etat.tension{color:var(--tension)} .etat.tension::before{background:var(--tension)}
 .etat.neutre{color:var(--neutre)} .etat.neutre::before{background:var(--neutre)}
 
+/* Capture du tuto « Sur l'écran d'accueil » (ouvrirTutoAjoutEcranAccueil) :
+   contrainte en HAUTEUR (dvh, pas en largeur) — ce sont des captures très
+   hautes (portrait plein écran), une largeur seule les ferait déborder et
+   exiger un scroll (Martin, 2026-08-28 : « il est impératif que l'on voit
+   l'image au complet »). `max-width:100%` + `height:auto` PRÉSERVENT le
+   ratio ensemble (jamais de déformation, jamais coupée) — le plus petit des
+   deux plafonds (largeur de la carte ou 46dvh) gagne. Contour vert franc
+   (#00fa00, prélevé sur les cercles d'annotation des captures elles-mêmes) :
+   signale « ceci est un tuto, pas encore l'app » (demande de Martin). */
+.tuto-pwa-img{
+  display:block; margin:0 auto 16px;
+  max-width:100%; max-height:46dvh; width:auto; height:auto;
+  border-radius:12px; border:2px solid #00fa00;
+}
+
 /* un nombre — cliquable, JAMAIS nu */
 .nombre{
   display:flex;align-items:flex-start;gap:16px;padding:16px;margin:0 -16px;
@@ -3603,8 +3618,8 @@ function ouvrirTutoAjoutEcranAccueil(fin) {
     const dernier = etape === TUTO_PWA_ETAPES.length - 1;
     $('#vue-accueil').innerHTML = `<div class="carte" style="text-align:center">
       <div class="chapo">Garde Ta Trame à portée</div>
-      <img src="${e.img}" alt="Étape ${etape + 1} sur ${TUTO_PWA_ETAPES.length} pour ajouter Ta Trame à l'écran d'accueil"
-        style="width:100%;max-width:300px;border-radius:12px;border:1px solid var(--bord);margin:0 auto 16px;display:block">
+      <img class="tuto-pwa-img" src="${e.img}"
+        alt="Étape ${etape + 1} sur ${TUTO_PWA_ETAPES.length} pour ajouter Ta Trame à l'écran d'accueil">
       <p class="quoi" style="margin-bottom:6px">${e.legende}</p>
       <div class="etat neutre" style="justify-content:center;margin-bottom:18px">${etape + 1} / ${TUTO_PWA_ETAPES.length}</div>
       <button class="bouton" id="tuto-suivant">${dernier ? "C'est fait !" : 'Suivant'}</button>
