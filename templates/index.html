@@ -575,6 +575,10 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    entièrement du sélecteur de classe partagé. */
 .carte-plein-corps{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;gap:18px}
 .carte-plein-corps img{width:100%;max-width:280px;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+/* Pendant l'échange d'image plein écran, l'image est masquée tant que la
+   nouvelle n'est pas décodée : le navigateur garderait sinon l'ancien bitmap
+   affiché, d'où un flash de la carte précédente (Martin, 2026-08-27). */
+.carte-plein-corps img.img-chargement{opacity:0}
 .carte-plein-corps .carte-plein-nom{font-family:var(--serif);font-size:22px;text-align:center}
 .carte-plein-corps .carte-plein-invitation{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--encre2);text-align:center}
 /* Angle du jour en plein écran : contenu texte (pas une carte image), donc
@@ -1670,8 +1674,17 @@ let fermetureCartePleinEnCours = false;
 
 function ouvrirCartePlein(zone) {
   const vue = $('#carte-plein');
-  $('#carte-plein-img').src = zone.dataset.src;
-  $('#carte-plein-img').alt = zone.dataset.nom;
+  const img = $('#carte-plein-img');
+  /* Flash de la carte précédente : le navigateur garde l'ancien bitmap affiché
+     tant que la nouvelle image n'est pas décodée, donc on la masque au
+     changement et on la réveille une fois chargée (ou en erreur — on ne la
+     laisse jamais invisible en silence). */
+  img.classList.add('img-chargement');
+  img.onload = () => img.classList.remove('img-chargement');
+  img.onerror = () => img.classList.remove('img-chargement');
+  img.src = zone.dataset.src;
+  if (img.complete) img.classList.remove('img-chargement'); // déjà en cache
+  img.alt = zone.dataset.nom;
   $('#carte-plein-nom').textContent = zone.dataset.nom;
   $('#carte-plein-invitation').textContent = zone.dataset.invitation || '';
   fermetureCartePleinEnCours = false;
