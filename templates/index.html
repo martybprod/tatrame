@@ -102,8 +102,15 @@ html{color-scheme:dark; background-color:var(--papier)}
    (trame-bandeau.jpg, déjà un JPEG léger) et sa propre
    `background-color:#141110` opaque le protègent déjà entièrement de ce
    qu'il y a dessous. */
+/* ⚠️ PAS de background-color ici (retiré 2026-08-28) : tant que `html` n'avait
+   pas de fond propre, celui de `body` était PROPAGÉ au canevas (règle CSS
+   standard) — invisible, toujours derrière tout. Depuis que `html{background-
+   color:...}` existe (plus haut, fix du flash blanc iOS), la propagation
+   s'arrête : un fond ICI redeviendrait le fond RÉEL de la boîte `body`, qui se
+   peint AU-DESSUS des couches à z-index négatif (#fond-app, .bandeau-marque)
+   — les recouvrant entièrement, en permanence (vécu : fond/bandeau disparus
+   partout dans l'app). Le fond de `html` suffit déjà, ne pas le dupliquer ici. */
 body{
-  background-color:var(--papier);
   color:var(--encre); font-family:var(--sans);
   line-height:1.62; -webkit-font-smoothing:antialiased;
   padding:0 20px env(safe-area-inset-bottom); min-height:100vh;
