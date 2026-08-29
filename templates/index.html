@@ -877,6 +877,16 @@ let editionDe = null;  // null = création, sinon l'id du profil qu'on modifie
 // lui, aucune notification push n'est possible (voir static/sw.js).
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 
+// Un rappel push touché pendant que l'app est DÉJÀ ouverte : le service worker
+// nous transmet la carte à montrer (voir static/sw.js, notificationclick).
+// L'app fermée, elle, lira le même choix dans l'URL au démarrage (voir demarrer).
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', e => {
+    const d = e.data || {};
+    if (d.type === 'rappel') ouvrirCartePourRappel(d.carte, d.domaine, d.profil);
+  });
+}
+
 // Précharge les octets des images d'arrière-plan pour qu'elles soient prêtes
 // avant les fondus, puis fait ÉMERGER du noir la tuile et le bandeau (fondu
 // 1.6s — Martin, 2026-08-27, validé : « l'animation pour le fond d'écran
@@ -1543,12 +1553,13 @@ function cleAccueil(carte) {
   return carte.dataset.jour + '-' + (carte.dataset.periode || 'jour');
 }
 
-function montrerAccueilJour() {
+function montrerAccueilJour(force) {
   const acc = $('#accueil-jour');
   const carte = $('#accueil-jour .accueil-carte');
   const jour = carte && carte.dataset.jour;
   if (!jour) return false;                            // rien d'écrit pour ce moment
-  if (!ACCUEIL_TEST_TOUJOURS && localStorage.getItem(CLE_ACCUEIL_VU) === cleAccueil(carte)) return false;  // déjà vu
+  // `force` (clic sur un rappel « message du jour ») rouvre même si déjà vu.
+  if (!force && !ACCUEIL_TEST_TOUJOURS && localStorage.getItem(CLE_ACCUEIL_VU) === cleAccueil(carte)) return false;  // déjà vu
   fermetureAccueilEnCours = false;
   acc.classList.remove('fermant');
   acc.classList.add('ouvert');
@@ -3736,8 +3747,50 @@ function montrerVue(vue) {
   journalActivite('nav', vue);   // popularité des sections (tableau de bord admin)
 }
 
+/* ── Rappels push : ouvrir la carte visée au clic ──────────────────────────
+   Le service worker transmet {carte, domaine, profil} — soit dans l'URL (app
+   ouverte à froid depuis la notification), soit par postMessage (app déjà
+   vivante). On rouvre la même carte plein écran que partout ailleurs : aucune
+   UI neuve, juste un point d'entrée. */
+function _lireRappelURL() {
+  const p = new URLSearchParams(location.search);
+  const carte = p.get('carte');
+  return carte ? { carte, domaine: p.get('domaine'), profil: p.get('profil') } : null;
+}
+function _nettoyerRappelURL() {
+  // Sans ça, un rechargement rouvrirait la carte en boucle.
+  history.replaceState(null, '', location.pathname);
+}
+async function ouvrirCartePourRappel(carte, domaine, profil) {
+  // Le rappel vise un compte précis : s'il est déverrouillé et différent du
+  // courant, on bascule dessus d'abord (sinon on ouvre le compte actuel).
+  if (profil && profil !== profilId && profils.find(p => p.id === profil)) {
+    profilId = profil;
+    localStorage.setItem('align.profil', profilId);
+    await chargerJour();
+  }
+  montrerVue('jour');                 // fond cohérent quand la carte se refermera
+  if (carte === 'jour') { montrerAccueilJour(true); return; }
+  if (carte === 'domaine' && domaine) {
+    const trouve = DOMAINES_JOUR.find(([k]) => k === domaine);
+    ouvrirDomainePlein(domaine, trouve ? trouve[1] : domaine);
+    return;
+  }
+  if (carte === 'mediter') {
+    // L'onclick de la carte est câblé en setTimeout(0) au rendu du Jour ; on
+    // diffère d'un tick pour cliquer une fois le câblage posé.
+    setTimeout(() => document.querySelector('#c-mediter .rangee-angle')?.click(), 0);
+  }
+}
+
 async function demarrer() {
   await chargerProfils();
+  // Un rappel peut viser un autre compte déverrouillé que le dernier ouvert.
+  const rappel = _lireRappelURL();
+  if (rappel && rappel.profil && profils.find(p => p.id === rappel.profil)) {
+    profilId = rappel.profil;
+    localStorage.setItem('align.profil', profilId);
+  }
   if (!profils.find(p => p.id === profilId)) {
     // Un id local qui ne figure plus dans les profils déverrouillés de CETTE
     // session : soit un vrai premier visiteur (localStorage vide → formulaire
@@ -3763,9 +3816,15 @@ async function demarrer() {
     x.classList.toggle('actif', x.dataset.vue === 'jour'));
   await Promise.all([chargerJour(), chargerApercu(), chargerPortrait(),
                      chargerCiel(), chargerRegles()]);
-  // Une fois la vue Jour prête dessous, l'écran d'accueil du jour par-dessus
-  // (une seule fois par jour — voir montrerAccueilJour).
-  montrerAccueilJour();
+  // Une fois la vue Jour prête dessous : soit on ouvre la carte d'un rappel
+  // (l'app vient d'être ouverte depuis une notification), soit l'écran d'accueil
+  // du jour normal (une seule fois par jour — voir montrerAccueilJour).
+  if (rappel && rappel.carte) {
+    ouvrirCartePourRappel(rappel.carte, rappel.domaine, rappel.profil);
+    _nettoyerRappelURL();
+  } else {
+    montrerAccueilJour();
+  }
 }
 
 document.querySelectorAll('#nav button[data-vue], #bouton-regles[data-vue]').forEach(b => {

@@ -2351,16 +2351,39 @@ def api_notifications_cle_publique():
 
 @app.get("/api/notifications/<profil_id>")
 def api_notifications_lire(profil_id):
-    """L'état du réglage — jamais l'abonnement brut (le client n'en a pas
-    besoin, et ce n'est pas à lui de le revoir)."""
+    """L'état du réglage — les trois créneaux et si un abonnement existe. Jamais
+    l'abonnement brut lui-même (le client n'en a pas besoin pour afficher le
+    panneau, et ce n'est pas à lui de le revoir)."""
     if not _charger(profil_id):
         return jsonify({"erreur": "profil inconnu"}), 404
-    return jsonify({"actif": notif.lire(profil_id)["actif"]})
+    prefs = notif.lire(profil_id)
+    return jsonify({"creneaux": prefs["creneaux"], "abonne": bool(prefs.get("subscription"))})
+
+
+def _valider_creneaux(brut):
+    """Ne garde que des réglages sûrs : trois créneaux, `actif` booléen, `heure`
+    entière 0-23, domaine du midi connu. Un réglage hors-bornes venu du client
+    ne doit jamais s'écrire tel quel — on part des défauts et on n'accepte que
+    ce qui est valide (états invalides impossibles à stocker)."""
+    brut = brut or {}
+    out = notif.defaut()["creneaux"]
+    domaines_ok = set(J.MAISON_DOMAINE.values())
+    for creneau in notif.CRENEAUX:
+        c = brut.get(creneau) or {}
+        if "actif" in c:
+            out[creneau]["actif"] = bool(c["actif"])
+        heure = c.get("heure")
+        if isinstance(heure, int) and 0 <= heure <= 23:
+            out[creneau]["heure"] = heure
+    dom = (brut.get("midi") or {}).get("domaine")
+    if dom in domaines_ok:
+        out["midi"]["domaine"] = dom
+    return out
 
 
 @app.put("/api/notifications/<profil_id>")
 def api_notifications_maj(profil_id):
-    """Active/désactive les rappels et stocke l'abonnement push du navigateur.
+    """Enregistre les réglages des trois rappels et l'abonnement push du navigateur.
 
     Fichier séparé de l'identité du profil (voir `moteur/notifications.py`) —
     une édition du nom ou de la date de naissance ne touche jamais ceci.
@@ -2369,20 +2392,27 @@ def api_notifications_maj(profil_id):
         return jsonify({"erreur": "profil inconnu"}), 404
     d = request.get_json(force=True) or {}
     prefs = notif.lire(profil_id)
-    prefs["actif"] = bool(d.get("actif"))
-    if prefs["actif"]:
+    prefs["creneaux"] = _valider_creneaux(d.get("creneaux"))
+    un_actif = any(prefs["creneaux"][c]["actif"] for c in notif.CRENEAUX)
+    if un_actif:
         prefs["subscription"] = d.get("subscription") or prefs.get("subscription")
         prefs["fuseau_notif"] = d.get("fuseau_notif") or prefs.get("fuseau_notif")
     else:
-        # Désactivé : on efface l'abonnement plutôt que de le garder inerte —
+        # Tout désactivé : on efface l'abonnement plutôt que de le garder inerte —
         # une réactivation redemandera la permission proprement.
         prefs["subscription"] = None
     notif.ecrire(profil_id, prefs)
-    return jsonify({"ok": True, "actif": prefs["actif"]})
+    return jsonify({"ok": True, "abonne": bool(prefs.get("subscription")),
+                    "creneaux": prefs["creneaux"]})
 
 
-def _envoyer_push(profil_id, subscription, corps):
-    """Envoie une notification, ou désactive proprement l'abonnement en cause.
+def _envoyer_push(profil_id, subscription, contenu):
+    """Envoie une notification, ou efface proprement l'abonnement en cause.
+
+    `contenu` est le dict renvoyé par `_contenu_rappel` : `{titre, corps, carte,
+    domaine?}`. `carte` (et `domaine` pour le midi) voyagent dans le payload
+    pour que le service worker, au clic, ouvre l'app DIRECTEMENT sur cette carte
+    en plein écran (`/?carte=…`) — voir static/sw.js.
 
     ⚠️ `pywebpush` peut échouer de plusieurs façons AVANT même la requête
     réseau (abonnement corrompu, clés mal encodées) — pas seulement via
@@ -2394,50 +2424,116 @@ def _envoyer_push(profil_id, subscription, corps):
     v = _vapid()
     if not v:
         return
+    payload = {"titre": contenu["titre"], "corps": contenu["corps"],
+               "carte": contenu["carte"], "domaine": contenu.get("domaine"),
+               "profil": profil_id}  # pour rouvrir le BON compte au clic (multi-profils)
     try:
         webpush(
             subscription_info=subscription,
-            data=json.dumps({"titre": "Ta Trame", "corps": corps}, ensure_ascii=False),
+            data=json.dumps(payload, ensure_ascii=False),
             vapid_private_key=v,
             vapid_claims=dict(VAPID_CLAIMS),
         )
     except Exception as e:
         print(f"[notifications] échec d'envoi pour {profil_id!r}, "
-              f"abonnement désactivé : {e!r}")
+              f"abonnement effacé : {e!r}")
         prefs = notif.lire(profil_id)
-        prefs["actif"] = False
         prefs["subscription"] = None
         notif.ecrire(profil_id, prefs)
 
 
-def _envoyer_rappels():
-    """Le job du scheduler : à chaque tick, qui doit recevoir un rappel
-    MAINTENANT (à SON heure locale), et qui ne l'a pas déjà eu aujourd'hui.
+#: Le titre affiché en tête de la notification, par créneau — ce que la personne
+#: voit d'un coup d'œil sur son écran verrouillé.
+_TITRE_RAPPEL = {"matin": "Ton jour", "midi": "Le fil du jour", "soir": "À méditer"}
+
+
+def _texte_domaine(jour_result, domaine):
+    """La perle du « fil du jour » pour un domaine choisi — même résolution que
+    la route Explorer (`api_explorer`), en process. None si le corpus n'a rien."""
+    j = jour_result["jour"]
+    for cle in J._cles_fil_domaine(domaine, j["dominante"], j["phase"]):
+        texte = corpus.lire("fil", cle)
+        if texte:
+            return texte
+    return None
+
+
+def _contenu_rappel(profil, date_loc, creneau, prefs):
+    """Le corps du rappel + le TYPE de carte à ouvrir au clic, pour ce créneau.
 
     Réutilise `_jour_pour` — le même calcul que `/api/jour` — pour que le
     contenu envoyé soit EXACTEMENT celui que l'app afficherait, jamais une
-    version divergente calculée en double.
+    version divergente calculée en double. Renvoie None si le corpus n'a rien
+    à dire ce jour-là pour ce créneau : on saute en silence, jamais de
+    notification vide ou bancale.
+    """
+    d = _jour_pour(profil, date_loc)
+    if not d.get("complet"):
+        return None
+    if creneau == "matin":                    # Message du jour = le miroir
+        corps = (d["titre"] or {}).get("miroir")
+        carte = {"carte": "jour"}
+    elif creneau == "soir":                    # À méditer = la pensée du soir du transit
+        corps = (d["textes"].get("transit") or {}).get("pensee_soir")
+        carte = {"carte": "mediter"}
+    elif creneau == "midi":                    # Fil du jour, sur le domaine choisi
+        domaine = notif.domaine_midi(prefs)
+        corps = (_texte_domaine(d, domaine) or {}).get("miroir")
+        carte = {"carte": "domaine", "domaine": domaine}
+    else:
+        return None
+    if not corps:
+        return None
+    return {"titre": _TITRE_RAPPEL[creneau], "corps": corps, **carte}
+
+
+def _a_ouvert_aujourdhui(profil_id, date_loc, fuseau):
+    """Le profil a-t-il déjà touché l'app aujourd'hui (à SON heure locale) ?
+
+    Sert au rappel du matin : inutile de notifier « voici ta carte du jour » à
+    quelqu'un qui l'a déjà ouverte. Lit le journal d'activité déjà en place
+    (data/activite.jsonl) — aucune plomberie nouvelle.
+    """
+    zone = TEMPS.fuseau(fuseau) if fuseau else dt.timezone.utc
+    for e in _lire_activite():
+        if e.get("profil") != profil_id:
+            continue
+        try:
+            t = dt.datetime.fromisoformat(e["t"])
+        except (KeyError, ValueError):
+            continue
+        if t.astimezone(zone).date() == date_loc:
+            return True
+    return False
+
+
+def _envoyer_rappels():
+    """Le job du scheduler : à chaque tick, quels créneaux doivent partir
+    MAINTENANT (à l'heure locale de chacun), sans doublon, et — pour le matin —
+    seulement si l'app n'a pas déjà été ouverte aujourd'hui.
     """
     maintenant = dt.datetime.now(dt.timezone.utc)
     for profil_id in notif.profils_actifs():
         prefs = notif.lire(profil_id)
-        fuseau = prefs.get("fuseau_notif")
-        creneau = notif.creneau_courant(maintenant, fuseau)
-        if not creneau:
+        a_envoyer = notif.creneaux_a_envoyer(profil_id, prefs, maintenant)
+        if not a_envoyer:
             continue
+        fuseau = prefs.get("fuseau_notif")
         date_loc = notif.date_locale(maintenant, fuseau)
         date_iso = date_loc.isoformat()
-        if notif.deja_envoye_aujourdhui(prefs, creneau, date_iso):
-            continue
         profil = _charger(profil_id)
         if not profil or not profil.get("complet"):
             continue
-        resultat = _jour_pour(profil, date_loc)
-        contenu = notif.contenu_notification(resultat["titre"], creneau)
-        if not contenu:
-            continue
-        _envoyer_push(profil_id, prefs["subscription"], contenu)
-        notif.ecrire(profil_id, notif.marquer_envoye(prefs, creneau, date_iso))
+        for creneau in a_envoyer:
+            # Le matin s'efface si la personne a déjà ouvert l'app aujourd'hui.
+            if creneau == "matin" and _a_ouvert_aujourdhui(profil_id, date_loc, fuseau):
+                continue
+            contenu = _contenu_rappel(profil, date_loc, creneau, prefs)
+            if not contenu:
+                continue
+            _envoyer_push(profil_id, prefs["subscription"], contenu)
+            prefs = notif.marquer_envoye(prefs, creneau, date_iso)
+            notif.ecrire(profil_id, prefs)
 
 
 def _demarrer_scheduler():
