@@ -2328,7 +2328,7 @@ async function chargerJour() {
   if (t.fil && t.fil.miroir) {
     filDuJour = tiroir({
       nom: 'Le fil du jour',
-      resume: '<em>choisis quel fil tu veux suivre aujourd\'hui.</em>',
+      resume: '<em>Choisis quel fil tu veux suivre aujourd\'hui.</em>',
       ico: icono(ICONES_JOUR.fil),
       corps: `
         ${DOMAINES_JOUR.map(([d, l]) => domaineCarte(d, l)).join('')}
