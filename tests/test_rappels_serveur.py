@@ -89,6 +89,27 @@ def test_tout_desactiver_efface_l_abonnement(client):
     assert r.get_json()["abonne"] is False
 
 
+def test_cle_publique_jamais_bloquee_par_le_verrou_profils(client):
+    """/api/notifications/cle-publique est une route GLOBALE, sans profil dans
+    son chemin (comme explorer/domaines) — un bug de parsing prenait
+    « cle-publique » pour un id de profil, jamais déverrouillé, et bloquait
+    la route en 401 pour TOUT LE MONDE (vécu : abonnement push impossible,
+    « la connexion a échoué » côté client, même permission iOS accordée)."""
+    r = client.get("/api/notifications/cle-publique")
+    assert r.status_code != 401
+
+
+def test_cle_publique_accessible_sans_aucune_session(tmp_path, monkeypatch):
+    """Même un visiteur sans profil ni session ne doit jamais être « verrouillé »
+    sur cette route — c'est elle qui permet ensuite de s'abonner."""
+    monkeypatch.setattr(application, "PROFILS", tmp_path / "profils")
+    application.PROFILS.mkdir()
+    application.app.config["TESTING"] = True
+    with application.app.test_client() as c:
+        r = c.get("/api/notifications/cle-publique")
+        assert r.status_code != 401
+
+
 # ------------------------------------------------- composition du contenu
 
 def test_contenu_matin_ouvre_la_carte_du_jour(client):

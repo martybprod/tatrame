@@ -365,7 +365,13 @@ def _verrou_profils():
         if s in ("portrait", "jour", "ciel", "apercu") and i + 1 < len(segments):
             pid = segments[i + 1]
             break
-        if s in ("profil", "relations", "notifications") and i + 1 < len(segments):
+        # notifications/cle-publique n'a pas de profil (route globale, comme
+        # explorer/domaines) — sans cette exclusion, "cle-publique" était pris
+        # pour un id de profil, jamais déverrouillé, et la route restait
+        # bloquée en 401 pour TOUT LE MONDE (bug vécu : abonnement push
+        # impossible, « la connexion a échoué » côté client).
+        if s in ("profil", "relations", "notifications") and i + 1 < len(segments) \
+                and not (s == "notifications" and segments[i + 1] == "cle-publique"):
             pid = segments[i + 1]
             break
         if s == "explorer" and i + 1 < len(segments) and segments[i + 1] != "domaines":
