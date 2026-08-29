@@ -619,6 +619,30 @@ textarea{resize:vertical;min-height:110px}
 /* accent-color reteinte le rendu NATIF (coche, remplissage) sans réinventer
    un composant — simple, cohérent sur desktop et iOS Safari 15.4+. */
 input[type=checkbox]{width:22px;height:22px;flex:none;margin:0;accent-color:var(--accent)}
+/* Menus déroulants : même boîte que les champs texte (fond/bordure/rayon), pour
+   qu'un <select> ne retombe pas sur le rendu natif minimal du navigateur (vu
+   trop petit / hors-thème sur iOS). Largeur laissée à chaque usage (certains
+   pleins, d'autres compacts). */
+select{
+  background:var(--papier);border:1px solid var(--bord);border-radius:9px;
+  padding:11px 13px;font:inherit;font-size:15px;color:var(--encre);cursor:pointer;
+}
+select:focus{outline:none;border-color:var(--accent-doux)}
+/* Puce de choix : un petit bouton pilule (icône + libellé) qui se dimensionne à
+   son contenu — remplace les gros boutons pleine largeur pour les listes de
+   choix courtes (type de lien, rôle parent-enfant). Cible ≥ 40px de haut,
+   espacées (Fitts) ; une seule emphase à la fois via .actif. */
+.chip-choix{
+  display:inline-flex;align-items:center;gap:7px;width:auto;
+  padding:9px 14px;border-radius:999px;border:1px solid var(--bord);
+  background:var(--papier);color:var(--encre2);
+  font:inherit;font-size:14px;font-weight:500;cursor:pointer;
+  transition:border-color .15s,color .15s,background .15s;
+}
+.chip-choix .ico{opacity:.85}
+.chip-choix:hover{color:var(--encre);border-color:var(--accent-doux)}
+.chip-choix.actif{background:var(--accent-doux);color:var(--papier);border-color:var(--accent-doux)}
+.chip-choix.actif .ico{opacity:1}
 .rangee{display:flex;gap:10px}
 .bouton{
   width:100%;background:var(--accent);color:var(--papier);border:0;
@@ -3392,6 +3416,27 @@ let relB = null;        // {genre:'profil'|'contact', id}
 let relType = 'amour';
 let relRole = 'parent';  // parent-enfant : 'parent' = moi (A) parent, 'enfant' = moi (A) enfant
 let lieuChoisiRC = null;  // le lieu du contact en cours de création (facultatif)
+/* Icônes des types de relation — même grammaire que le reste (trait 1.5,
+   currentColor, nœuds = petits disques pleins ; voir icono()). Métaphores
+   simples et distinctes, doublées du libellé (l'icône seule reste ambiguë). */
+const ICONES_REL = {
+  amour: `<path d="M12 20c-1-.8-8-5.2-8-10.3A3.6 3.6 0 0 1 12 7a3.6 3.6 0 0 1 8 2.7C20 14.8 13 19.2 12 20Z"/>`,
+  travail: `<rect x="3.5" y="8" width="17" height="11.3" rx="1.6"/>
+    <path d="M8.8 8V6.6A1.6 1.6 0 0 1 10.4 5h3.2a1.6 1.6 0 0 1 1.6 1.6V8"/>
+    <path d="M3.5 13.1h17"/>
+    <circle cx="12" cy="13.1" r="1" fill="currentColor" stroke="none"/>`,
+  parent_enfant: `<circle cx="8" cy="7" r="2.8"/>
+    <path d="M3.4 17.2a4.6 4.6 0 0 1 9.2 0"/>
+    <circle cx="16.6" cy="11" r="1.9"/>
+    <path d="M13.5 18.2a3.1 3.1 0 0 1 6.2 0"/>`,
+  ami: `<circle cx="7.5" cy="8.4" r="2.6"/>
+    <path d="M3.1 17.6a4.4 4.4 0 0 1 8.8 0"/>
+    <circle cx="16.5" cy="8.4" r="2.6"/>
+    <path d="M12.1 17.6a4.4 4.4 0 0 1 8.8 0"/>`,
+  famille: `<path d="M4 11.2 12 5l8 6.2"/>
+    <path d="M5.9 10v9.3h12.2V10"/>
+    <path d="M10 19.3v-4.5h4v4.5"/>`,
+};
 const REL_TYPES = [
   ['amour', 'Amour'], ['travail', 'Travail'], ['parent_enfant', 'Parent-enfant'],
   ['ami', 'Ami'], ['famille', 'Famille'],
@@ -3435,14 +3480,14 @@ async function vueRelations() {
       <button class="bouton" id="rc-creer" style="flex:none">Créer</button>
     </div>
     <label style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--encre3);margin:16px 0 6px">Quel genre de lien ?</label>
-    <div id="rel-types" style="display:flex;flex-wrap:wrap;gap:6px">
-      ${REL_TYPES.map(([v, l]) => `<button class="bouton discret rel-type-b${v===relType ? ' actif' : ''}" data-type="${v}" style="flex:none">${l}</button>`).join('')}
+    <div id="rel-types" style="display:flex;flex-wrap:wrap;gap:8px">
+      ${REL_TYPES.map(([v, l]) => `<button class="chip-choix rel-type-b${v===relType ? ' actif' : ''}" data-type="${v}">${icono(ICONES_REL[v], 16)}${l}</button>`).join('')}
     </div>
     <div id="rel-role" class="${relType==='parent_enfant' ? '' : 'cacher'}" style="margin-top:12px">
       <label style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--encre3);margin-bottom:6px">Qui est le parent&#8239;?</label>
-      <div style="display:flex;flex-wrap:wrap;gap:6px">
-        <button class="bouton discret rel-role-b${relRole==='parent' ? ' actif' : ''}" data-role="parent" style="flex:none">Je suis le parent</button>
-        <button class="bouton discret rel-role-b${relRole==='enfant' ? ' actif' : ''}" data-role="enfant" style="flex:none">Je suis l'enfant</button>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <button class="chip-choix rel-role-b${relRole==='parent' ? ' actif' : ''}" data-role="parent">Je suis le parent</button>
+        <button class="chip-choix rel-role-b${relRole==='enfant' ? ' actif' : ''}" data-role="enfant">Je suis l'enfant</button>
       </div>
     </div>
   </div>
