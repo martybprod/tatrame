@@ -600,12 +600,18 @@ td:last-child{text-align:right;color:var(--encre3);font-size:12px}
 
 /* formulaire */
 label{display:block;font-size:12px;color:var(--encre3);margin:14px 0 5px;text-transform:uppercase;letter-spacing:.1em}
-input,textarea{
+/* :not([type=checkbox]) — sinon une case à cocher hérite width:100%+padding
+   de la règle des champs texte et devient un gros rectangle noir étiré sur
+   toute la ligne (constaté sur iOS Safari, écrase le libellé à côté). */
+input:not([type=checkbox]),textarea{
   width:100%;background:var(--papier);border:1px solid var(--bord);
   border-radius:9px;padding:11px 13px;font:inherit;font-size:15px;color:var(--encre);
 }
 input:focus,textarea:focus{outline:none;border-color:var(--accent-doux)}
 textarea{resize:vertical;min-height:110px}
+/* accent-color reteinte le rendu NATIF (coche, remplissage) sans réinventer
+   un composant — simple, cohérent sur desktop et iOS Safari 15.4+. */
+input[type=checkbox]{width:22px;height:22px;flex:none;margin:0;accent-color:var(--accent)}
 .rangee{display:flex;gap:10px}
 .bouton{
   width:100%;background:var(--accent);color:var(--papier);border:0;
@@ -2587,7 +2593,8 @@ function _ligneCreneauHTML(creneau, c) {
     ? `<select id="rr-domaine" style="margin-top:8px;width:100%">${_optionsDomaine(c.domaine)}</select>`
     : '';
   return `<div class="rr-ligne" style="margin-bottom:16px">
-    <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+    <label style="display:flex;align-items:center;gap:10px;cursor:pointer;
+      text-transform:none;font-size:15px;color:var(--encre);margin:0">
       <input type="checkbox" id="rr-${creneau}-actif" ${c.actif ? 'checked' : ''}>
       <span style="flex:1">
         <strong>${LABEL_CRENEAU[creneau]}</strong>
