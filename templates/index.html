@@ -318,8 +318,24 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .tuto-pwa-img{
   display:block; margin:0 auto 16px;
   max-width:100%; max-height:46dvh; width:auto; height:auto;
-  border-radius:12px; border:2px solid #00fa00;
+  border-radius:12px; border:1px solid var(--bord);
 }
+/* Cadre volontairement SOBRE (1px, var(--bord)) et non plus le vert vif des
+   annotations : le vert cadrait la capture comme un réglage Safari actif —
+   confus à côté des vrais réglages montrés DANS l'image (Martin, 2026-08-28).
+   Les repères verts DANS les captures restent : ce sont eux qui indiquent où
+   toucher. */
+.tuto-pwa-img.cacher{display:none}
+/* Navigation du tuto : petits boutons ronds icon-only, ÉTEINTS (jamais
+   cachés) aux bornes — la rangée ne bouge pas d'une étape à l'autre. */
+.tuto-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px}
+.tuto-nav-b{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:50%;border:1px solid var(--bord);
+  background:var(--papier);color:var(--encre2);cursor:pointer;
+}
+.tuto-nav-b:hover{color:var(--encre);border-color:var(--accent-doux)}
+.tuto-nav-b.inactif{opacity:.35;pointer-events:none}
 
 /* un nombre — cliquable, JAMAIS nu */
 .nombre{
@@ -3760,7 +3776,9 @@ function fondreImages(racine) {
     if (zone && zone.classList.contains('revelee')) return;
     preparerFondu(el, el.querySelector('.dos'));
   });
-  racine.querySelectorAll('img:not(.face):not(.dos)').forEach(img =>
+  // .tuto-pwa-img exclues : un mode d'emploi se feuillette VITE — aucun fondu
+  // lent, même à la première ouverture (voir ouvrirTutoAjoutEcranAccueil).
+  racine.querySelectorAll('img:not(.face):not(.dos):not(.tuto-pwa-img)').forEach(img =>
     preparerFondu(img, img));
 }
 function preparerFondu(el, imgSurveillee) {
@@ -3899,24 +3917,47 @@ const TUTO_PWA_ETAPES = [
   { img: '/static/img/tuto-pwa/4.webp', legende: "Puis <b>Sur l'écran d'accueil</b>." },
 ];
 function ouvrirTutoAjoutEcranAccueil(fin) {
+  const n = TUTO_PWA_ETAPES.length;
   let etape = 0;
-  const rendre = () => {
-    const e = TUTO_PWA_ETAPES[etape];
-    const dernier = etape === TUTO_PWA_ETAPES.length - 1;
-    $('#vue-accueil').innerHTML = `<div class="carte" style="text-align:center">
-      <div class="chapo">Garde Ta Trame à portée</div>
-      <img class="tuto-pwa-img" src="${e.img}"
-        alt="Étape ${etape + 1} sur ${TUTO_PWA_ETAPES.length} pour ajouter Ta Trame à l'écran d'accueil">
-      <p class="quoi" style="margin-bottom:6px">${e.legende}</p>
-      <div class="etat neutre" style="justify-content:center;margin-bottom:18px">${etape + 1} / ${TUTO_PWA_ETAPES.length}</div>
-      <button class="bouton" id="tuto-suivant">${dernier ? "C'est fait !" : 'Suivant'}</button>
-      <button class="bouton discret" id="pwa-plus-tard">Plus tard</button>
-    </div>`;
-    montrer('accueil');
-    $('#pwa-plus-tard').onclick = fin;
-    $('#tuto-suivant').onclick = () => { if (dernier) fin(); else { etape++; rendre(); } };
+  /* Les 4 images sont rendues DÈS L'OUVERTURE et préchargées : le navigateur
+     les charge en parallèle pendant que la 1re est regardée ; naviguer ne
+     déclenche AUCUN chargement ni re-rendu — on bascule juste .cacher. C'est
+     ce qui rend le défilement instantané (demande de Martin : « il faut que
+     ça défile rapidement »). Pas de fondu .img-fondu ici volontairement :
+     les transitions lentes du reste de l'app (1,6 s) n'ont pas leur place
+     dans un mode d'emploi qu'on feuillette. */
+  $('#vue-accueil').innerHTML = `<div class="carte" style="text-align:center">
+    <div class="chapo">Garde Ta Trame à portée</div>
+    ${TUTO_PWA_ETAPES.map((e, i) => `
+      <img class="tuto-pwa-img${i ? ' cacher' : ''}" data-etape="${i}" src="${e.img}"
+        alt="Étape ${i + 1} sur ${n} pour ajouter Ta Trame à l'écran d'accueil">`).join('')}
+    <p class="quoi" id="tuto-legende" style="margin-bottom:6px">${TUTO_PWA_ETAPES[0].legende}</p>
+    <div class="tuto-nav">
+      <button class="tuto-nav-b inactif" id="tuto-prec" aria-label="Étape précédente">‹</button>
+      <div class="etat neutre" style="margin:0" id="tuto-compteur">1 / ${n}</div>
+      <button class="tuto-nav-b" id="tuto-suiv" aria-label="Étape suivante">›</button>
+    </div>
+    <button class="bouton" id="tuto-terminer">C'est fait !</button>
+    <button class="bouton discret" id="pwa-plus-tard">Plus tard</button>
+  </div>`;
+  montrer('accueil');
+  // Préchargement explicite : même si les <img> sont déjà dans le DOM, ceci
+  // force le décodage maintenant (utile pour les webp volumineuses).
+  TUTO_PWA_ETAPES.forEach(e => { new Image().src = e.img; });
+
+  const maj = () => {
+    document.querySelectorAll('.tuto-pwa-img').forEach(img =>
+      img.classList.toggle('cacher', +img.dataset.etape !== etape));
+    $('#tuto-legende').innerHTML = TUTO_PWA_ETAPES[etape].legende;
+    $('#tuto-compteur').textContent = `${etape + 1} / ${n}`;
+    $('#tuto-prec').classList.toggle('inactif', etape === 0);
+    $('#tuto-suiv').classList.toggle('inactif', etape === n - 1);
   };
-  rendre();
+  $('#tuto-prec').onclick = () => { if (etape > 0) { etape--; maj(); } };
+  $('#tuto-suiv').onclick = () => { if (etape < n - 1) { etape++; maj(); } };
+  $('#tuto-terminer').onclick = fin;
+  $('#pwa-plus-tard').onclick = fin;
+}
 }
 
 /* ═══════════════════════════════════════════════════════════
