@@ -2578,8 +2578,18 @@ async function _desabonnerPush() {
   if (sub) await sub.unsubscribe();
 }
 
-function _optionsHeure(heureChoisie) {
-  return Array.from({length: 24}, (_, h) =>
+/* Plages d'heures RESTREINTES par créneau (loi de Hick : moins de choix, plus
+   vite décidé) — évite aussi un réglage absurde (« le soir » à 3h du matin).
+   L'heure déjà enregistrée reste toujours proposée même si elle tombe hors
+   plage (un réglage existant ne doit jamais disparaître silencieusement). */
+const PLAGE_HEURE = { matin: [5, 11], midi: [10, 14], soir: [17, 23] };
+
+function _optionsHeure(heureChoisie, min, max) {
+  const heures = [];
+  for (let h = min; h <= max; h++) heures.push(h);
+  if (!heures.includes(heureChoisie)) heures.push(heureChoisie);
+  heures.sort((a, b) => a - b);
+  return heures.map(h =>
     `<option value="${h}"${h === heureChoisie ? ' selected' : ''}>${h} h</option>`).join('');
 }
 
@@ -2588,9 +2598,17 @@ function _optionsDomaine(domaineChoisi) {
     `<option value="${cle}"${cle === domaineChoisi ? ' selected' : ''}>${T(label)}</option>`).join('');
 }
 
+/* Le domaine du midi reçoit le MÊME langage visuel que les champs texte de
+   l'app (fond/bordure/padding/taille — voir `input,textarea` plus haut) :
+   c'est un vrai choix de CONTENU, pas un réglage accessoire comme l'heure —
+   poids visuel proportionnel à son importance (Fiche 1 du guide UX). */
+const STYLE_CHAMP = 'background:var(--papier);border:1px solid var(--bord);border-radius:9px;'
+  + 'padding:11px 13px;font:inherit;font-size:15px;color:var(--encre)';
+
 function _ligneCreneauHTML(creneau, c) {
+  const [min, max] = PLAGE_HEURE[creneau];
   const domaineHTML = creneau === 'midi'
-    ? `<select id="rr-domaine" style="margin-top:8px;width:100%">${_optionsDomaine(c.domaine)}</select>`
+    ? `<select id="rr-domaine" style="margin-top:8px;width:100%;${STYLE_CHAMP}">${_optionsDomaine(c.domaine)}</select>`
     : '';
   return `<div class="rr-ligne" style="margin-bottom:16px">
     <label style="display:flex;align-items:center;gap:10px;cursor:pointer;
@@ -2600,7 +2618,7 @@ function _ligneCreneauHTML(creneau, c) {
         <strong>${LABEL_CRENEAU[creneau]}</strong>
         <span style="display:block;font-size:13px;color:var(--encre3)">${DESCRIPTION_CRENEAU[creneau]}</span>
       </span>
-      <select id="rr-${creneau}-heure" style="flex:none">${_optionsHeure(c.heure)}</select>
+      <select id="rr-${creneau}-heure" style="flex:none">${_optionsHeure(c.heure, min, max)}</select>
     </label>
     ${domaineHTML}
   </div>`;
@@ -2658,9 +2676,11 @@ async function ouvrirReglagesRappels() {
     if (r.creneaux) creneaux = r.creneaux;
   } catch (e) { /* pas encore de réglages : les défauts suffisent */ }
 
-  $('#panneau').innerHTML = `<button class="bouton discret" id="rr-fermer" style="float:right">✕ Fermer</button>
-    <div class="chapo">Configurer les rappels</div>
-    <p class="quoi" style="margin:-2px 0 16px">Trois moments possibles, chacun réglable
+  $('#panneau').innerHTML = `<div class="panneau-haut">
+      <div class="chapo" style="margin-bottom:0">Configurer les rappels</div>
+      <button class="fermer" id="rr-fermer">✕</button>
+    </div>
+    <p class="quoi" style="margin:14px 0 16px">Trois moments possibles, chacun réglable
       séparément — jamais optimisés pour te faire ouvrir l'app plus souvent.</p>
     <div id="rr-corps">${_rappelsFormulaireHTML(creneaux)}</div>
     <button class="bouton" id="rr-enregistrer">Enregistrer</button>
