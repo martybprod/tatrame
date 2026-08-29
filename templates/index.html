@@ -2408,10 +2408,9 @@ async function chargerJour() {
      les ouvertures (sobriété plutôt que manipulation). ═══ */
   html += `<div class="jour-pied" id="c-notifs">
     <div class="chapo"><span class="chapo-ico">${icono(ICONES_JOUR.rappel, 15)}</span>Rappels du jour</div>
-    <p class="quoi" style="margin:-4px 0 14px">Un rappel le matin (le miroir du jour) et
-      un le soir (en action) — mêmes heures pour tout le monde, jamais réglés pour te faire
-      ouvrir l'app plus souvent.</p>
-    <button class="bouton discret" id="bouton-notifs">Activer les rappels</button>
+    <p class="quoi" style="margin:-4px 0 14px">Le matin, le midi, le soir — chacun réglable,
+      jamais optimisés pour te faire ouvrir l'app plus souvent.</p>
+    <button class="bouton discret" id="bouton-notifs">Configurer les rappels</button>
   </div>`;
 
   if (j.manque && j.manque.length) {
@@ -2515,66 +2514,172 @@ async function chargerJour() {
   initCarteNotifications();
 }
 
-/* ── Les rappels push : conversion de la clé VAPID, activation/désactivation,
-   câblage du bouton. Isolés ici pour ne pas alourdir chargerJour(). ── */
+/* ═══════════════════════════════════════════════════════════
+   RÉGLAGES DES RAPPELS — trois créneaux (matin/midi/soir), chacun
+   activable séparément, avec une heure de base réglable ; le midi porte en
+   plus le choix du domaine du « fil du jour ». Réutilisé tel quel par
+   l'onboarding (voir ouvrirEtapeRappels) — un seul panneau, deux points
+   d'entrée. ═══════════════════════════════════════════════════════════ */
+const CRENEAUX_ORDRE = ['matin', 'midi', 'soir'];
+const LABEL_CRENEAU = { matin: 'Le matin', midi: 'Le midi', soir: 'Le soir' };
+const DESCRIPTION_CRENEAU = {
+  matin: 'ton message du jour — seulement si tu n\'as pas déjà ouvert l\'app.',
+  midi: 'le fil du jour, sur le domaine que tu choisis.',
+  soir: 'à méditer, pour clore la journée.',
+};
+/* Les défauts d'affichage si le profil n'a encore rien réglé — mêmes valeurs
+   que moteur/notifications.py::_creneaux_defaut (dupliquées côté client :
+   pur affichage, la vérité vit côté serveur qui les applique de toute façon
+   si rien n'est envoyé). */
+function creneauxParDefaut() {
+  return {
+    matin: { actif: true, heure: 8 },
+    midi: { actif: true, heure: 12, domaine: 'soi' },
+    soir: { actif: false, heure: 20 },
+  };
+}
+
 function urlBase64VersUint8Array(base64) {
   const remplissage = '='.repeat((4 - base64.length % 4) % 4);
   const brut = atob((base64 + remplissage).replace(/-/g, '+').replace(/_/g, '/'));
   return Uint8Array.from([...brut].map(c => c.charCodeAt(0)));
 }
 
-async function activerRappels() {
+/* Demande la permission puis abonne le navigateur — ne fait RIEN d'autre
+   (pas d'appel serveur ici : l'appelant décide quoi enregistrer et quand). */
+async function _obtenirAbonnementPush() {
   if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
     alert("Ton navigateur ne supporte pas les notifications push.");
-    return false;
+    return null;
   }
   const permission = await Notification.requestPermission();
-  if (permission !== 'granted') return false;
+  if (permission !== 'granted') return null;
   const reg = await navigator.serviceWorker.ready;
+  const dejaAbonne = await reg.pushManager.getSubscription();
+  if (dejaAbonne) return dejaAbonne.toJSON();
   const { cle } = await (await fetch('/api/notifications/cle-publique')).json();
   const sub = await reg.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64VersUint8Array(cle),
   });
-  // Le fuseau détecté ICI, côté navigateur — jamais celui du lieu de
-  // naissance, qui n'a rien à voir avec où la personne vit aujourd'hui.
-  const fuseau = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  await fetch(`/api/notifications/${profilId}`, {
-    method: 'PUT', headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({actif: true, subscription: sub.toJSON(), fuseau_notif: fuseau}),
-  });
-  return true;
+  return sub.toJSON();
 }
 
-async function desactiverRappels() {
+async function _desabonnerPush() {
+  if (!('serviceWorker' in navigator)) return;
   const reg = await navigator.serviceWorker.ready;
   const sub = await reg.pushManager.getSubscription();
   if (sub) await sub.unsubscribe();
+}
+
+function _optionsHeure(heureChoisie) {
+  return Array.from({length: 24}, (_, h) =>
+    `<option value="${h}"${h === heureChoisie ? ' selected' : ''}>${h} h</option>`).join('');
+}
+
+function _optionsDomaine(domaineChoisi) {
+  return DOMAINES_JOUR.map(([cle, label]) =>
+    `<option value="${cle}"${cle === domaineChoisi ? ' selected' : ''}>${T(label)}</option>`).join('');
+}
+
+function _ligneCreneauHTML(creneau, c) {
+  const domaineHTML = creneau === 'midi'
+    ? `<select id="rr-domaine" style="margin-top:8px;width:100%">${_optionsDomaine(c.domaine)}</select>`
+    : '';
+  return `<div class="rr-ligne" style="margin-bottom:16px">
+    <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+      <input type="checkbox" id="rr-${creneau}-actif" ${c.actif ? 'checked' : ''}>
+      <span style="flex:1">
+        <strong>${LABEL_CRENEAU[creneau]}</strong>
+        <span style="display:block;font-size:13px;color:var(--encre3)">${DESCRIPTION_CRENEAU[creneau]}</span>
+      </span>
+      <select id="rr-${creneau}-heure" style="flex:none">${_optionsHeure(c.heure)}</select>
+    </label>
+    ${domaineHTML}
+  </div>`;
+}
+
+/* Construit le panneau à partir des réglages COURANTS (déjà chargés) — sert
+   à la fois au panneau générique (#voile/#panneau) et à l'étape d'onboarding. */
+function _rappelsFormulaireHTML(creneaux) {
+  return CRENEAUX_ORDRE.map(c => _ligneCreneauHTML(c, creneaux[c])).join('');
+}
+
+function _lireCreneauxDuFormulaire() {
+  const creneaux = {};
+  for (const c of CRENEAUX_ORDRE) {
+    creneaux[c] = {
+      actif: $(`#rr-${c}-actif`).checked,
+      heure: parseInt($(`#rr-${c}-heure`).value, 10),
+    };
+    if (c === 'midi') creneaux[c].domaine = $('#rr-domaine').value;
+  }
+  return creneaux;
+}
+
+async function _enregistrerRappels(etat) {
+  const creneaux = _lireCreneauxDuFormulaire();
+  const unActif = CRENEAUX_ORDRE.some(c => creneaux[c].actif);
+  let subscription = null;
+  if (unActif) {
+    subscription = await _obtenirAbonnementPush();
+    if (!subscription) {
+      if (etat) etat.textContent = 'Permission refusée — les rappels restent éteints.';
+      return false;
+    }
+  } else {
+    await _desabonnerPush();
+  }
+  const fuseau = Intl.DateTimeFormat().resolvedOptions().timeZone;
   await fetch(`/api/notifications/${profilId}`, {
     method: 'PUT', headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({actif: false}),
+    body: JSON.stringify({creneaux, subscription, fuseau_notif: fuseau}),
   });
+  return true;
 }
 
 async function initCarteNotifications() {
   const bouton = $('#bouton-notifs');
   if (!bouton) return;
-  const majLabel = actif => { bouton.textContent = actif ? 'Désactiver les rappels' : 'Activer les rappels'; };
-  try {
-    const { actif } = await (await fetch(`/api/notifications/${profilId}`)).json();
-    majLabel(actif);
-  } catch (e) { majLabel(false); }
+  bouton.onclick = ouvrirReglagesRappels;
+}
 
-  bouton.onclick = async () => {
-    bouton.disabled = true;
-    const veutDesactiver = bouton.textContent.startsWith('Désactiver');
+async function ouvrirReglagesRappels() {
+  let creneaux = creneauxParDefaut();
+  try {
+    const r = await (await fetch(`/api/notifications/${profilId}`)).json();
+    if (r.creneaux) creneaux = r.creneaux;
+  } catch (e) { /* pas encore de réglages : les défauts suffisent */ }
+
+  $('#panneau').innerHTML = `<button class="bouton discret" id="rr-fermer" style="float:right">✕ Fermer</button>
+    <div class="chapo">Configurer les rappels</div>
+    <p class="quoi" style="margin:-2px 0 16px">Trois moments possibles, chacun réglable
+      séparément — jamais optimisés pour te faire ouvrir l'app plus souvent.</p>
+    <div id="rr-corps">${_rappelsFormulaireHTML(creneaux)}</div>
+    <button class="bouton" id="rr-enregistrer">Enregistrer</button>
+    <div id="rr-etat" style="margin-top:10px;font-size:13px;color:var(--encre3)"></div>`;
+  $('#voile').classList.remove('cacher');
+  $('#voile').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  $('#rr-fermer').onclick = fermerReglagesRappels;
+  $('#rr-enregistrer').onclick = async () => {
+    const etat = $('#rr-etat');
+    $('#rr-enregistrer').disabled = true;
+    etat.textContent = 'Enregistrement…';
     try {
-      if (veutDesactiver) { await desactiverRappels(); majLabel(false); }
-      else { majLabel(await activerRappels()); }
+      const ok = await _enregistrerRappels(etat);
+      if (ok) { etat.textContent = 'C\'est enregistré.'; setTimeout(fermerReglagesRappels, 700); }
+    } catch (e) {
+      etat.textContent = 'La connexion a échoué — réessaie.';
     } finally {
-      bouton.disabled = false;
+      $('#rr-enregistrer').disabled = false;
     }
   };
+}
+
+function fermerReglagesRappels() {
+  $('#voile').classList.add('cacher');
+  document.body.style.overflow = '';
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -3735,7 +3840,36 @@ function ouvrirTutoAjoutEcranAccueil(fin) {
   rendre();
 }
 
-async function suiteApresProfil() { inviterInstallationPWA(); }
+/* ═══════════════════════════════════════════════════════════
+   ONBOARDING — Configurer tes rappels, juste après le mot de passe. Même
+   formulaire que le panneau de réglages (_rappelsFormulaireHTML,
+   _enregistrerRappels) — un seul endroit qui sait dessiner ça. Skippable en
+   un geste (« Plus tard »), et « Continuer » n'attend jamais l'issue du
+   push (permission refusée n'empêche pas d'avancer) : on ne bloque jamais
+   l'entrée dans l'app pour ça. ═══════════════════════════════════════════ */
+function ouvrirEtapeRappels() {
+  $('#vue-accueil').innerHTML = `<div class="carte">
+    <div class="chapo">Configurer tes rappels</div>
+    <p class="quoi" style="margin:-2px 0 16px">Trois moments possibles, chacun réglable
+      séparément — jamais optimisés pour te faire ouvrir l'app plus souvent. Tu pourras
+      toujours changer ça plus tard.</p>
+    <div id="rr-corps">${_rappelsFormulaireHTML(creneauxParDefaut())}</div>
+    <button class="bouton" id="rr-continuer">Continuer</button>
+    <button class="bouton discret" id="rr-plus-tard">Plus tard</button>
+    <div id="rr-etat" style="margin-top:10px;font-size:13px;color:var(--encre3)"></div>
+  </div>`;
+  montrer('accueil');
+  $('#rr-plus-tard').onclick = inviterInstallationPWA;
+  $('#rr-continuer').onclick = async () => {
+    $('#rr-continuer').disabled = true;
+    $('#rr-etat').textContent = 'Enregistrement…';
+    try { await _enregistrerRappels($('#rr-etat')); }
+    catch (e) { /* jamais bloquer l'onboarding pour un push raté */ }
+    inviterInstallationPWA();
+  };
+}
+
+async function suiteApresProfil() { ouvrirEtapeRappels(); }
 async function suiteApresProfilFin() { await demarrer(); }
 
 /* Naviguer ET mettre l'onglet à jour — sinon un saut depuis l'aperçu laisse
