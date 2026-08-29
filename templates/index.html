@@ -4012,9 +4012,11 @@ $('#bouton-feedback').onclick = ouvrirFeedback;
    ═══════════════════════════════════════════════════════════ */
 function ouvrirFeedback() {
   const p = profils.find(x => x.id === profilId);
-  $('#panneau').innerHTML = `<button class="bouton discret" id="fb-fermer" style="float:right">✕ Fermer</button>
-    <div class="chapo">Un commentaire pour Martin</div>
-    <p class="quoi" style="margin:-2px 0 12px">Un bug, une idée, une phrase qui sonne faux —
+  $('#panneau').innerHTML = `<div class="panneau-haut">
+      <div class="chapo" style="margin-bottom:0">Un commentaire pour Martin</div>
+      <button class="fermer" id="fb-fermer">✕</button>
+    </div>
+    <p class="quoi" style="margin:14px 0 12px">Un bug, une idée, une phrase qui sonne faux —
       tout est bienvenu. Seul Martin peut lire ce que tu écris ici.</p>
     <textarea id="fb-texte" placeholder="Écris ici…" autofocus></textarea>
     <button class="bouton" id="fb-envoyer" style="margin-top:12px">Envoyer</button>
