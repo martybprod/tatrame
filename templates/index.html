@@ -10,6 +10,16 @@
      barre d'adresse au lieu du mode standalone du manifest. -->
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#141110">
+<!-- ⚠️ PIÈCE MANQUANTE (Martin, 2026-08-28 : « thème clair sur iPhone en
+     thème clair système ») : les variables CSS ci-dessous fixent DÉJÀ les
+     couleurs de l'app en sombre — mais sans cette balise, le NAVIGATEUR
+     lui-même (pas l'app) continue de croire que la page supporte le clair,
+     et applique SON PROPRE style clair aux zones qu'il contrôle : la zone de
+     rebond du scroll (overscroll) en haut/bas sur iOS, les contrôles natifs
+     (menus déroulants, etc.), et le tout premier pixel peint avant même que
+     le CSS ne s'applique. `color-scheme` force le navigateur à traiter TOUTE
+     la page comme sombre, indépendamment du réglage système. -->
+<meta name="color-scheme" content="dark">
 <link rel="manifest" href="/static/manifest.json">
 <link rel="icon" href="/static/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/static/ta-trame-icone-180.png">
@@ -38,6 +48,13 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden}
+/* Doublon volontaire de la balise <meta name="color-scheme"> du <head> —
+   la propriété CSS ET la balise sont recommandées ensemble (la balise agit
+   dès le tout premier paint, avant que ce <style> ne soit lu). Fond sur
+   `html` (pas seulement `body`, déjà plus bas) : sans lui, la zone de rebond
+   du scroll (overscroll) sur iOS pouvait flasher en blanc, la couleur par
+   défaut du navigateur, avant que le fond de `body` ne prenne le relais. */
+html{color-scheme:dark; background-color:var(--papier)}
 /* Le fond de « Le jour » (et de toute la page) : une TUILE répétée
    (motif conçu pour se raccorder en boucle), pas une image unique recadrée
    en `cover` — Martin n'aimait plus le rendu précédent (2026-08-26).
