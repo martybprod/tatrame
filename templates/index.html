@@ -573,7 +573,10 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    animation d'ouverture/fermeture) — « le même mode » demandé. #carte-plein
    est un id distinct, seul l'id change le comportement JS ; le fond vient
    entièrement du sélecteur de classe partagé. */
-.carte-plein-corps{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;gap:18px}
+/* max-height + overflow-y : une invitation longue doit pouvoir défiler dans la
+   carte plutôt que déborder hors de l'écran (Martin, 2026-08-29) — même
+   recette que .angle-plein-corps plus bas. */
+.carte-plein-corps{width:100%;max-width:420px;max-height:calc(100vh - 100px);overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:18px}
 .carte-plein-corps img{width:100%;max-width:280px;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.5)}
 /* Pendant l'échange d'image plein écran, l'image est masquée tant que la
    nouvelle n'est pas décodée : le navigateur garderait sinon l'ancien bitmap
@@ -1696,6 +1699,7 @@ function ouvrirCartePlein(zone) {
   // fermeture, on la revoit DÉVOILÉE en petit dans le fil, plus un dos vierge
   // (Martin, 2026-08-27).
   zone.classList.add('revelee');
+  $('#carte-plein-fermer').onclick = fermerCartePlein;
 }
 
 function fermerCartePlein() {
@@ -1715,17 +1719,26 @@ function fermerCartePlein() {
   setTimeout(fini, reduit ? 200 : 720);  // doit couvrir le fondu .7s (voir .accueil-jour)
 }
 
+// Fermer en cliquant la carte/le texte a été retiré (Martin, 2026-08-29) :
+// ça sortait du plein écran quand on essayait juste de faire défiler un texte
+// trop long. Seuls le fond (hors .carte-plein-corps) ou le ✕ ferment
+// maintenant — même patron que angle-plein ci-dessous.
 document.addEventListener('click', e => {
   const vue = $('#carte-plein');
-  if (vue && vue.classList.contains('ouvert') && e.target.closest('#carte-plein'))
+  if (vue && vue.classList.contains('ouvert') && e.target.closest('#carte-plein')
+      && !e.target.closest('.carte-plein-corps'))
     fermerCartePlein();
 });
 document.addEventListener('touchend', e => {
   const vue = $('#carte-plein');
-  if (vue && vue.classList.contains('ouvert') && e.target.closest('#carte-plein')) {
+  if (vue && vue.classList.contains('ouvert') && e.target.closest('#carte-plein')
+      && !e.target.closest('.carte-plein-corps')) {
     e.preventDefault();
     fermerCartePlein();
   }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') fermerCartePlein();
 });
 
 /* ═══════════════════════════════════════════════════════════
@@ -4171,6 +4184,7 @@ function fermerFeedback() {
   <div class="accueil-indice">touche pour continuer</div>
 </div>
 <div id="carte-plein" class="accueil-jour" aria-hidden="true" role="dialog" aria-label="La carte en grand">
+  <button class="angle-plein-fermer" id="carte-plein-fermer" aria-label="Fermer">✕</button>
   <div class="accueil-carte"><div class="carte carte-plein-corps">
     <img id="carte-plein-img" src="" alt="">
     <div class="carte-plein-nom" id="carte-plein-nom"></div>
