@@ -39,16 +39,25 @@ Changer le mot de passe admin via `/admin/mot-de-passe` en conteneur n'est pas d
 ## 2. Volumes persistants (LE piège n°1)
 
 Le conteneur a un système de fichiers **éphémère** : sans volumes, chaque redéploiement
-efface profils et abonnements push. Monter des volumes persistants sur ces sous-dossiers
-**précis** (surtout PAS sur `/app/data`, qui masquerait le corpus versionné et les
-données de référence construites dans l'image) :
+efface profils, abonnements push, activité et commentaires bêta. Monter des volumes
+persistants sur ces sous-dossiers **précis** (surtout PAS sur `/app/data`, qui masquerait
+le corpus versionné et les données de référence construites dans l'image) :
 
 ```
 /app/data/profils
 /app/data/contacts
 /app/data/vapid
 /app/data/notifications
+/app/data/activite
+/app/data/commentaires
 ```
+
+⚠️ **Vécu le 2026-08-29** : `data/activite.jsonl` et `data/commentaires.json` vivaient en
+fichiers NUS directement sous `data/` (pas de sous-dossier à eux) — impossible d'y monter
+un volume Coolify. Plusieurs déploiements le même jour les ont donc effacés en silence
+(l'activité des testeurs et un commentaire disparus). D'où leurs sous-dossiers dédiés
+maintenant : toute nouvelle donnée persistante DOIT vivre dans son propre sous-dossier de
+`data/`, jamais en fichier nu — sinon rien à monter dessus.
 
 ## 3. Clés VAPID (notifications push)
 
@@ -81,6 +90,8 @@ docker run --rm -p 8000:8000 \
   -v tatrame_contacts:/app/data/contacts \
   -v tatrame_vapid:/app/data/vapid \
   -v tatrame_notifications:/app/data/notifications \
+  -v tatrame_activite:/app/data/activite \
+  -v tatrame_commentaires:/app/data/commentaires \
   tatrame
 # puis http://localhost:8000/health
 ```

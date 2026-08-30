@@ -50,9 +50,10 @@ RUN mkdir -p data/geo \
 COPY . .
 
 # Les données utilisateur MUTABLES (data/profils, data/contacts, data/vapid,
-# data/notifications) doivent être montées en VOLUMES PERSISTANTS dans Coolify — sur ces
-# sous-dossiers précis, PAS sur /app/data (ce qui masquerait data/corpus versionné et les
-# données de référence construites ci-dessus). Sans ces volumes, chaque redéploiement
+# data/notifications, data/activite, data/commentaires) doivent être montées en VOLUMES
+# PERSISTANTS dans Coolify — sur ces sous-dossiers précis, PAS sur /app/data (ce qui
+# masquerait data/corpus versionné et les données de référence construites ci-dessus).
+# Sans ces volumes, chaque redéploiement
 # efface profils et abonnements push. Voir le README de déploiement.
 
 EXPOSE 8000

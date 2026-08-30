@@ -29,7 +29,14 @@ data/vapid/
 data/notifications/
 # ── Notes du journal personnel (données utilisateur, les plus intimes) ──
 data/journal/
-# ── Journal d'activité des testeurs (données personnelles, Loi 25) ──
+# ── Journal d'activité des testeurs (données personnelles, Loi 25) — dossiers
+# dédiés (pas des fichiers nus dans data/) pour pouvoir monter un volume Coolify
+# PERSISTANT dessus (voir DEPLOIEMENT.md) : sans ça, un fichier nu directement
+# sous data/ n'a pas de sous-dossier à monter et se fait effacer à chaque
+# redéploiement (vécu — commentaires et activité perdus le 2026-08-29). ──
+data/activite/
+data/commentaires/
+# Ancien emplacement (fichiers nus) — au cas où il traînerait encore localement
 data/activite.jsonl
 data/commentaires.json
 

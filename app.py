@@ -2616,7 +2616,11 @@ def api_admin_jeton():
 # serveur horodate et n'accepte que d'une session déverrouillée (pas un
 # formulaire ouvert au monde).
 
-ACTIVITE_PATH = RACINE / "data" / "activite.jsonl"
+# Dans son propre sous-dossier (pas un fichier nu sous data/) pour pouvoir
+# monter un volume Coolify PERSISTANT dessus (voir DEPLOIEMENT.md) — sans ça,
+# chaque redéploiement efface le journal (vécu, 2026-08-29 : activité et
+# commentaires disparus après plusieurs déploiements le même jour).
+ACTIVITE_PATH = RACINE / "data" / "activite" / "activite.jsonl"
 #: Coupure de session : au-delà de ce silence, on considère une NOUVELLE session.
 SESSION_TROU_MIN = 5
 
@@ -2716,7 +2720,9 @@ def _synthese_activite():
 # utilisateurs — lu uniquement via /admin/commentaires, gardé par le mot de
 # passe admin (même secret que /activer et /reinitialiser-mdp).
 
-COMMENTAIRES_PATH = RACINE / "data" / "commentaires.json"
+# Même raison que ACTIVITE_PATH ci-dessus : sous-dossier dédié pour le volume
+# Coolify persistant, pas un fichier nu sous data/.
+COMMENTAIRES_PATH = RACINE / "data" / "commentaires" / "commentaires.json"
 
 
 def _lire_commentaires():
@@ -2729,6 +2735,7 @@ def _lire_commentaires():
 
 
 def _ecrire_commentaires(entries):
+    COMMENTAIRES_PATH.parent.mkdir(parents=True, exist_ok=True)
     _ecrire(COMMENTAIRES_PATH, {"entries": entries})
 
 
