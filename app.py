@@ -2797,7 +2797,8 @@ details form{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:cen
 {% for e in entries %}
 <div class="c {{ 'non-lu' if not e.lu else '' }}">
   <div class="meta">{{ e.nom_affiche or e.profil or 'anonyme' }} · {{ e.vue or '?' }} · {{ e.cree_le }}
-    {% if not e.lu %} · <a href="?lu={{ e.id }}&t={{ jeton }}">marquer lu</a>{% endif %}</div>
+    {% if not e.lu %} · <a href="?lu={{ e.id }}&t={{ jeton }}">marquer lu</a>{% endif %}
+    · <a href="?supprimer={{ e.id }}&t={{ jeton }}" onclick="return confirm('Supprimer ce commentaire ?')">supprimer</a></div>
   <div class="texte">{{ e.texte }}</div>
 </div>
 {% else %}
@@ -2837,12 +2838,16 @@ def admin_commentaires():
         return render_template_string(_ADMIN_LOGIN_TPL), 403
     jeton = request.args.get("t", "")
     lu_id = request.args.get("lu")
+    supprimer_id = request.args.get("supprimer")
     entries = _lire_commentaires()
     if lu_id:
         for e in entries:
             if e["id"] == lu_id:
                 e["lu"] = True
         _ecrire_commentaires(entries)
+        return redirect(f"/admin/commentaires?t={jeton}")
+    if supprimer_id:
+        _ecrire_commentaires([e for e in entries if e.get("id") != supprimer_id])
         return redirect(f"/admin/commentaires?t={jeton}")
     entries.sort(key=lambda e: e.get("cree_le", ""), reverse=True)
     return render_template_string(_ADMIN_COMMENTAIRES_TPL, entries=entries,
@@ -2966,6 +2971,20 @@ def api_admin_donnees():
         "commentaires": sorted(_lire_commentaires(),
                                key=lambda e: e.get("cree_le", ""), reverse=True),
     })
+
+
+@app.delete("/api/admin/commentaire/<cid>")
+def api_admin_supprimer_commentaire(cid):
+    """Supprime un commentaire bêta (le problème signalé est réglé, plus besoin
+    de le garder) — même garde que le reste du tableau de bord."""
+    if not _session_est_admin():
+        return jsonify({"erreur": "non-admin"}), 403
+    entries = _lire_commentaires()
+    restants = [e for e in entries if e.get("id") != cid]
+    if len(restants) == len(entries):
+        return jsonify({"erreur": "introuvable"}), 404
+    _ecrire_commentaires(restants)
+    return jsonify({"ok": True})
 
 
 @app.post("/admin/mot-de-passe")

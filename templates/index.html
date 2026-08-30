@@ -1118,13 +1118,27 @@ async function ouvrirTableauBord() {
         <span style="display:block;height:100%;width:${s.pct}%;background:var(--accent-doux)"></span></div></div>`).join('')
     || '<p class="quoi">Aucune navigation enregistrée.</p>';
   const coms = (d.commentaires || []).map(c =>
-    `<div class="pont" style="display:block"><div class="quoi">${T(c.nom_affiche || c.profil || 'anonyme')} · ${T(c.vue || '?')}</div>
+    `<div class="pont" style="display:block">
+      <div class="quoi" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+        <span>${T(c.nom_affiche || c.profil || 'anonyme')} · ${T(c.vue || '?')}</span>
+        <button class="bouton discret" data-suppr-commentaire="${T(c.id)}"
+          style="width:auto;margin:0;padding:4px 10px;font-size:12px">Supprimer</button>
+      </div>
       <div style="white-space:pre-wrap">${T(c.texte)}</div></div>`).join('')
     || '<p class="quoi">Aucun commentaire.</p>';
   $('#angle-plein-corps').innerHTML =
     `<div class="chapo">Testeurs (${(d.testeurs || []).length})</div>${testeurs}
      <div class="chapo" style="margin-top:20px">Sections les plus visitées</div>${sections}
      <div class="chapo" style="margin-top:20px">Commentaires (${(d.commentaires || []).length})</div>${coms}`;
+  // Suppression : le problème signalé est réglé, plus besoin de le garder —
+  // confirmation d'abord (friction volontaire sur une action destructive).
+  document.querySelectorAll('[data-suppr-commentaire]').forEach(b => b.onclick = async () => {
+    if (!confirm('Supprimer ce commentaire ?')) return;
+    b.disabled = true;
+    await fetch(`/api/admin/commentaire/${encodeURIComponent(b.dataset.supprCommentaire)}`,
+      {method: 'DELETE'});
+    ouvrirTableauBord();
+  });
 }
 
 function vueProfils() {
