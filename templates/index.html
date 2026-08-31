@@ -611,10 +611,13 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 /* max-height + overflow-y : une invitation longue doit pouvoir défiler dans la
    carte plutôt que déborder hors de l'écran (Martin, 2026-08-29) — même
    recette que .angle-plein-corps plus bas. */
-/* padding-bottom plus généreux que le 24px hérité de .carte : en bas d'une
-   carte plein écran (conteneur scrollable), la dernière ligne collait au bord
-   alors que le haut respirait (Martin, 2026-08-30). */
-.carte-plein-corps{width:100%;max-width:420px;max-height:calc(100vh - 100px);overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:18px;padding-bottom:36px}
+/* padding-bottom bien plus généreux que le 24px hérité de .carte : en bas
+   d'une carte plein écran (conteneur scrollable), la dernière ligne collait
+   au bord alors que le haut respirait (Martin, 2026-08-30). Un premier essai
+   à 36px était trop subtil pour se voir clairement — 64px, net et volontaire.
+   max-height allégé (120px de marge au lieu de 100px) pour laisser plus de
+   place avant que le défilement interne ne s'active et n'avale ce padding. */
+.carte-plein-corps{width:100%;max-width:420px;max-height:calc(100vh - 120px);overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:18px;padding-bottom:64px}
 .carte-plein-corps img{width:100%;max-width:280px;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.5);cursor:pointer}
 /* Pendant l'échange d'image plein écran, l'image est masquée tant que la
    nouvelle n'est pas décodée : le navigateur garderait sinon l'ancien bitmap
