@@ -2,22 +2,22 @@
  "_charte": "data/corpus/CHARTE.md",
  "_note": "Les 56 arcanes mineurs -- carte MINEURE PERSONNELLE du jour (en plus de la carte du jour universelle, un majeur, voir arcanes.json). Nom et correspondance sont CALCULES par moteur/mineurs.py, jamais dupliques ici : seule l'invitation (le texte du jour, meme fonction que celle des majeurs) est ecrite, 100% originale. Convention Ta Trame (2 axes independants : couleur = element de la Lune transit, rang = ecart Soleil transit -> Ascendant natal / 14) -- voir moteur/mineurs.py pour le detail et le piege mathematique evite.",
  "batons_as": {
-  "invitation": "Une étincelle peut se lever aujourd'hui, avant même d'avoir un projet précis. Repère l'envie de tout planifier d'abord, elle vient d'une peur ancienne de se tromper de direction. Laisse cette énergie exister sans la nommer tout de suite, juste pour sentir qu'elle est là."
+  "invitation": "Une étincelle peut s'éveiller en toi aujourd'hui, avant même que tu aies un projet précis. Tu as envie de tout planifier d'abord. C'est qu'on t'a appris à avoir peur de te tromper de direction. Laisse cette énergie exister un moment, juste pour sentir qu'elle est là."
  },
  "batons_2": {
-  "invitation": "Une décision de partir peut se préciser aujourd'hui, le moment juste avant d'agir. Remarque l'envie de tout attendre pour être sûr, elle vient d'une prudence apprise plutôt que d'un vrai doute. Choisis un seul geste qui engage un peu, sans attendre une certitude totale."
+  "invitation": "Aujourd'hui, une envie de te lancer dans quelque chose de nouveau se précise, juste avant de passer à l'action. Tu voudrais d'abord être sûr de tout. Cette prudence-là, tu l'as apprise il y a longtemps, ce n'est pas un vrai doute. Fais un seul petit pas qui t'engage, sans attendre d'être certain à cent pour cent."
  },
  "batons_3": {
   "invitation": "Un premier effort commence à donner des résultats aujourd'hui. C'est petit, mais c'est vrai. Tu as envie de dire que ce n'est rien. C'est qu'on t'a appris à attendre la fin pour être fier de toi. Prends un instant pour voir le chemin déjà fait."
  },
  "batons_4": {
-  "invitation": "Une étape franchie peut se montrer aujourd'hui, quelque chose qui mérite d'être reconnu. Observe l'envie de passer vite à la suite sans t'arrêter, elle vient d'un pli pris à ne jamais s'arrêter avant la fin. Offre-toi une petite pause aujourd'hui, même courte, pour marquer ce qui est fait."
+  "invitation": "Une étape est franchie aujourd'hui, quelque chose qui mérite d'être reconnu. Tu as envie de passer vite à la suite sans t'arrêter. C'est qu'on t'a appris à ne jamais t'arrêter avant la fin. Offre-toi une petite pause aujourd'hui, même courte, pour fêter ce qui est fait."
  },
  "batons_5": {
-  "invitation": "Un frottement entre plusieurs envies ou plusieurs personnes peut se montrer aujourd'hui, chacune tirant vers sa direction. Remarque le besoin d'avoir raison tout de suite, il vient d'une vieille peur de perdre sa place. Choisis d'écouter une voix différente de la tienne, juste un moment."
+  "invitation": "Aujourd'hui, tu es tiraillé entre plusieurs envies, plusieurs personnes. Tu as besoin de décider tout de suite. C'est qu'on t'a appris à avoir peur de perdre ta place. Écoute une voix différente de la tienne, juste un moment."
  },
  "batons_6": {
-  "invitation": "Une reconnaissance méritée peut se présenter aujourd'hui, un signe que l'effort a été vu. Remarque le réflexe de la minimiser ou de la partager trop vite, il vient d'une gêne apprise face aux compliments. Laisse-toi porter un instant par ce que les autres te renvoient."
+  "invitation": "Une reconnaissance méritée peut arriver aujourd'hui, le signe que ton effort a été vu. Tu as le réflexe de la minimiser, ou de la refiler trop vite aux autres. C'est qu'on t'a appris à être mal à l'aise avec les compliments. Laisse-toi porter un instant par ce qu'on te renvoie."
  },
  "batons_7": {
   "invitation": "Une position à défendre peut se présenter aujourd'hui, face à une pression réelle ou sentie. Remarque l'envie de céder pour avoir la paix tout de suite, elle vient d'une habitude à éviter le conflit à tout prix. Tiens ta position sur un seul point aujourd'hui, sans chercher à tout gagner."
