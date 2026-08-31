@@ -41,6 +41,7 @@
   --encre:#ece0bd; --encre2:#b3a68a; --encre3:#86795f;
   --papier:#141110; --papier2:#1e1a16; --bord:#372e1e;
   --accent:#d9b95c; --accent-doux:#e9d494;
+  --page:#241f18; /* teinte « page de carnet » — un papier à peine plus chaud (journal) */
   --resonance:#9db383; --tension:#dfa277; --neutre:#8a8078;
   --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;
@@ -284,23 +285,50 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .crayon-journal:hover,.crayon-journal:focus-visible{transform:translateY(42%) scale(1.08);background:#241f19;color:var(--accent)}
 .crayon-journal:active{transform:translateY(42%) scale(.96)}
 
-/* ═══ JOURNAL — ouvert dans #angle-plein (voir plus bas), même carte papier2
-   que tout le reste. Rien de plus qu'une liste + un textarea. ═══ */
-.journal-compose{margin-bottom:22px}
-.journal-compose textarea{margin-bottom:0}
-.journal-liste{display:flex;flex-direction:column;gap:14px}
-.journal-entree{border-top:1px solid var(--bord);padding-top:14px}
-.journal-entree:first-child{border-top:0;padding-top:0}
-.journal-entree-tete{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.journal-date{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--encre3)}
-.journal-texte-lu{font-family:var(--serif);font-size:16px;line-height:1.55;white-space:pre-wrap}
-.journal-suppr{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:22px;height:22px;border:0;background:none;padding:0;border-radius:50%;
-  color:var(--encre3);opacity:.5;cursor:pointer;font-size:12px;line-height:1;flex:none;
-  transition:opacity .15s,color .15s,background-color .15s;
+/* ═══ JOURNAL — « un carnet du soir » (Martin, 2026-08-30). Ouvert dans
+   #angle-plein, même carte papier2, mais rhabillé pour la douceur : titre
+   serif, zone d'écriture « page » à filet doré (pas de bordure dure), bouton
+   effacé en lien-texte, entrées en petites pages qui s'empilent. ═══ */
+#angle-plein-titre:empty{display:none}  /* le journal pose son propre titre serif */
+.journal-tete{margin-bottom:18px}
+.journal-titre{font-family:var(--serif);font-size:24px;line-height:1.1;margin:0;color:var(--encre)}
+.journal-invite{font-family:var(--serif);font-style:italic;color:var(--encre2);font-size:15px;margin:6px 0 0}
+.journal-aujourdhui{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--encre3);margin-top:12px}
+/* la zone d'écriture façon page : fond chaud, filet doré en bas au lieu d'une bordure */
+.journal-page{position:relative;background:var(--page);border-radius:14px 14px 4px 4px;padding:16px 18px 18px}
+.journal-page::after{content:'';position:absolute;left:18px;right:18px;bottom:10px;height:1px;
+  background:linear-gradient(to right,transparent,var(--accent-doux),transparent);opacity:.5}
+.journal-page textarea{
+  width:100%;background:none;border:0;outline:none;resize:none;padding:0;
+  font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--encre);min-height:120px;
 }
-.journal-suppr:hover,.journal-suppr:focus-visible{opacity:1;color:var(--tension);background:var(--papier2)}
+.journal-page textarea::placeholder{font-family:var(--serif);font-style:italic;color:var(--encre3)}
+.journal-pied{display:flex;align-items:center;justify-content:flex-end;margin-top:14px}
+/* le bouton s'efface : un lien-texte doux (variante A) */
+.journal-deposer{
+  background:none;border:0;cursor:pointer;font-family:var(--serif);font-size:16px;
+  color:var(--accent-doux);padding:6px 4px;display:inline-flex;align-items:center;gap:8px;
+  transition:color .15s,gap .15s;
+}
+.journal-deposer:hover,.journal-deposer:focus-visible{color:var(--accent);gap:11px}
+.journal-deposer[disabled]{opacity:.45;cursor:default}
+.journal-deposer .fl{font-family:var(--sans);font-size:14px;opacity:.8}
+/* les pages passées : petites cartes douces qui s'empilent */
+.journal-liste{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.journal-pages-titre{font-family:var(--serif);font-style:italic;color:var(--encre3);font-size:13px;text-align:center;margin:2px 0}
+.journal-entree{position:relative;background:var(--page);border-radius:12px;padding:13px 15px;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+.journal-date{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--encre3);margin-bottom:5px}
+.journal-texte-lu{font-family:var(--serif);font-size:16px;line-height:1.55;color:var(--encre);white-space:pre-wrap}
+.journal-suppr{
+  position:absolute;top:10px;right:12px;border:0;background:none;padding:0;
+  color:var(--encre3);opacity:.45;font-size:14px;line-height:1;cursor:pointer;
+  transition:opacity .15s,color .15s;
+}
+.journal-entree:hover .journal-suppr,.journal-suppr:focus-visible{opacity:.9;color:var(--tension)}
+/* état vide chaleureux */
+.journal-vide{text-align:center;padding:20px 10px 4px}
+.journal-vide .plume{font-size:22px;color:var(--accent-doux);opacity:.75}
+.journal-vide p{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--encre2);margin:8px 0 0}
 
 .entete-jour{text-align:center;padding:6px 0 22px}
 .date{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--encre3)}
@@ -1827,13 +1855,27 @@ function formaterDateJournal(iso) {
   return `${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()} · ${h}h${m}`;
 }
 
+/* L'en-tête chaleureux du journal : « ce soir · vendredi 30 août ». Le moment
+   du jour s'adapte à l'heure — c'est cosmétique (pas un calcul astral), donc
+   l'horloge locale de l'appareil convient, et colle même mieux au ressenti. */
+function momentDuJour() {
+  const h = new Date().getHours();
+  if (h < 5) return 'cette nuit';
+  if (h < 12) return 'ce matin';
+  if (h < 18) return 'cet après-midi';
+  return 'ce soir';
+}
+function dateDuJourJournal() {
+  const JOURS = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  const d = new Date();
+  return `${momentDuJour()} · ${JOURS[d.getDay()]} ${d.getDate()} ${MOIS[d.getMonth()]}`;
+}
+
 function rangeeJournal(e) {
   return `<div class="journal-entree">
-    <div class="journal-entree-tete">
-      <span class="journal-date">${formaterDateJournal(e.cree_le)}</span>
-      <button type="button" class="journal-suppr" id="journal-suppr-${e.id}"
-        title="Supprimer" aria-label="Supprimer cette note">✕</button>
-    </div>
+    <button type="button" class="journal-suppr" id="journal-suppr-${e.id}"
+      title="Retirer" aria-label="Retirer cette note">✕</button>
+    <div class="journal-date">${formaterDateJournal(e.cree_le)}</div>
     <p class="journal-texte-lu">${T(e.texte)}</p>
   </div>`;
 }
@@ -1843,8 +1885,8 @@ async function chargerEntreesJournal() {
   if (!liste) return;
   const entrees = await (await fetch(`/api/journal/${profilId}`)).json();
   liste.innerHTML = entrees.length
-    ? entrees.map(rangeeJournal).join('')
-    : `<p class="quoi">Rien pour l'instant — le premier mot t'attend.</p>`;
+    ? `<div class="journal-pages-titre">tes pages</div>` + entrees.map(rangeeJournal).join('')
+    : `<div class="journal-vide"><div class="plume">✎</div><p>Rien encore — le premier mot t'attend.</p></div>`;
   entrees.forEach(e => {
     const bouton = document.getElementById(`journal-suppr-${e.id}`);
     if (bouton) bouton.onclick = () => supprimerEntreeJournal(e.id);
@@ -1877,10 +1919,18 @@ async function supprimerEntreeJournal(id) {
 }
 
 function ouvrirJournal() {
-  ouvrirAnglePlein('Ton journal', `
-    <div class="journal-compose">
-      <textarea id="journal-texte" placeholder="Écris ce qui te passe par la tête…"></textarea>
-      <button class="bouton" id="journal-ajouter">Ajouter au journal</button>
+  // Titre vide : le journal pose son propre en-tête serif (voir #angle-plein-titre:empty).
+  ouvrirAnglePlein('', `
+    <div class="journal-tete">
+      <h2 class="journal-titre">Ton journal</h2>
+      <p class="journal-invite">Un espace à toi, rien qu'à toi.</p>
+      <div class="journal-aujourdhui">${dateDuJourJournal()}</div>
+    </div>
+    <div class="journal-page">
+      <textarea id="journal-texte" placeholder="Dépose ici ce qui te traverse…"></textarea>
+    </div>
+    <div class="journal-pied">
+      <button class="journal-deposer" id="journal-ajouter">Déposer ces mots <span class="fl">↵</span></button>
     </div>
     <div id="journal-liste" class="journal-liste"><p class="quoi">Chargement…</p></div>`);
   $('#journal-ajouter').onclick = ajouterEntreeJournal;
