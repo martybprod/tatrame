@@ -49,6 +49,22 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden}
+/* Barre de défilement invisible sur mobile (Martin, 2026-08-31) : visible sur
+   iOS Safari dans chaque section (Le jour, Tout, Le portrait…), inutile sur
+   tactile où on scrolle au doigt. Desktop la garde (utile à la souris). Le
+   scroll reste fonctionnel partout — seule la barre disparaît. Couvre le
+   document lui-même ET les sous-panneaux qui défilent en interne. */
+@media (max-width:480px){
+  html,body,.carte-plein-corps,.angle-plein-corps,.voile{
+    scrollbar-width:none;        /* Firefox */
+    -ms-overflow-style:none;     /* anciens Edge/IE */
+  }
+  html::-webkit-scrollbar,body::-webkit-scrollbar,
+  .carte-plein-corps::-webkit-scrollbar,.angle-plein-corps::-webkit-scrollbar,
+  .voile::-webkit-scrollbar{
+    display:none;                /* Chrome/Safari/WebKit — la cible sur iOS */
+  }
+}
 /* Doublon volontaire de la balise <meta name="color-scheme"> du <head> —
    la propriété CSS ET la balise sont recommandées ensemble (la balise agit
    dès le tout premier paint, avant que ce <style> ne soit lu). Fond sur
