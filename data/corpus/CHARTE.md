@@ -184,6 +184,48 @@ pas comme quelqu'un qui écrit.**
 
 **On ne réécrit pas ce qui est dit. On réécrit la façon de le dire.**
 
+---
+
+## Le ton positif — de la privation vers la ressource (chantier 2026-08-30)
+
+> Retour de Martin, en particulier sur **les messages du jour** : le ton penche trop souvent
+> vers le manque. On le retourne vers la ressource — **sans jamais sacrifier la lucidité**.
+
+**On retourne la FORME, jamais le fond.** La substance (le constat juste, la boussole, la clarté
+d'énergie) reste intacte ; seule la façon de la présenter passe de la privation à la ressource.
+
+### Les quatre mouvements
+
+| # | Le tic | ❌ | ✅ |
+|---|---|---|---|
+| **A. Le bon état dit par l'absence du mauvais** | « l'argent **ne te pèse pas** » | « **tu es plus tranquille** avec l'argent » |
+| **B. Instruire par l'interdit** (dire quoi NE PAS faire) | « **Tu n'as pas à** suivre un rythme… », « écoutée, **pas dépassée** » | « **Écoute** ton rythme, **avance** à ta mesure » |
+| **C. Le qualificatif à revers** (sous-entend que la norme est mauvaise) | « …aujourd'hui, **pour une fois** » | *(on le supprime — il vole la bonne nouvelle qu'il annonce)* |
+| **D. Cadrer autour d'un manque** plutôt qu'une ouverture | « mérite d'être écoutée, **pas dépassée par principe** » | « **mérite toute ton attention** » |
+
+### Le garde-fou — pas de positivisme toxique
+
+- **On ne nie JAMAIS une vraie tension.** Pour un transit dur (carré/opposition), le positif =
+  « voici l'ouverture, voici ce sur quoi tu as prise » (règle 3 : *la tension est l'endroit
+  intéressant*), **jamais** « tout va bien ».
+- **On garde les négations honnêtes et utiles** : « Rien de grave », « sans forcer »,
+  « celui qui te laisse tranquille ». Ce n'est **pas** un chercher-remplacer de tous les « ne… pas ».
+
+### Pense à Ginette
+
+La lectrice-cible : peu d'éducation, mais elle aime qu'on lui parle d'elle et d'astrologie
+**clairement**. Tout doit lui être compréhensible du premier coup, **sans sacrifier le style**.
+Un mot qui demande de l'éducation ou un décodage (« optimale », « porter l'argent ») → du courant.
+Quand Martin dit **« Pense à Ginette »**, c'est le rappel de relire de son point de vue.
+
+### Le modèle de référence (validé avec Martin)
+
+- **Métier** — ✅ « …**Écoute ton propre rythme et avance à la mesure de ton énergie. Cette clarté
+  mérite toute ton attention.** »
+- **Argent** — ✅ « Aujourd'hui, **tu es plus tranquille avec l'argent.** Pour savoir si une décision
+  te convient, une question suffit souvent : est-ce qu'elle te laisse **dormir en paix** ? Ce que tu
+  ressens compte parfois plus qu'un calcul parfait sur papier. »
+
 ### Comprendre à la première lecture (langage clair)
 
 > Retour de bêta-testeurs (2026-08-19) : *les phrases sont parfois trop difficiles, trop

@@ -243,6 +243,29 @@ def test_le_tutoiement_domine_l_abstraction():
     assert tu > abstrait * 20, f"« tu » {tu} vs abstractions {abstrait}"
 
 
+# ------------------------------------------------- le ton positif (chantier)
+
+# Les fichiers du « message du jour » — là où le ton positif compte le plus
+# (voir CHARTE.md « Le ton positif — de la privation vers la ressource »).
+FICHIERS_DU_JOUR = ("fil", "transits", "ciel")
+
+
+def test_pas_de_pour_une_fois():
+    """« pour une fois » est un qualificatif à revers : il sous-entend que la
+    norme est mauvaise et vole la bonne nouvelle qu'il annonce (mouvement C du
+    chantier « ton positif »). C'est le SEUL marqueur de privation fiable à
+    tester mécaniquement — « tu n'as pas à / rien à » ne l'est pas (« Tu n'as
+    rien à décider, juste à observer » est au contraire la bonne voix d'Align),
+    il se traite au jugement à la lecture."""
+    for stem in FICHIERS_DU_JOUR:
+        texte = (CORPUS / f"{stem}.json").read_text(encoding="utf-8")
+        n = len(re.findall(r"pour une fois", texte, re.I))
+        assert n == 0, (
+            f"{stem} : {n} « pour une fois » — qualificatif à revers, à retourner "
+            f"vers la ressource (CHARTE.md, ton positif)."
+        )
+
+
 def test_l_inventaire_de_style_est_publiable():
     """Un tableau de bord plutôt qu'une assertion — pour piloter les passes.
 

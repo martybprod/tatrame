@@ -1799,7 +1799,7 @@
    "rythme",
    "ecoute"
   ],
-  "miroir": "Tu sens plus clairement aujourd'hui ce que ton énergie peut vraiment porter dans ton travail. Tu n'as pas à suivre un rythme qui n'est pas le tien. Cette clarté-là mérite d'être écoutée, pas dépassée par principe.",
+  "miroir": "Tu sens plus clairement aujourd'hui ce que ton énergie peut vraiment porter dans ton travail. Écoute ton propre rythme et avance à la mesure de ton énergie. Cette clarté mérite toute ton attention.",
   "geste": "Cale la tâche la plus exigeante du jour sur le moment où tu te sens le plus disponible. Laisse le reste attendre ce créneau."
  },
  "metier_transit_lune_carre-opposition": {
@@ -3173,7 +3173,7 @@
    "controle"
   ],
   "miroir": "Un rapport de force se joue aujourd'hui autour de ton travail, qui décide, qui a le dernier mot. Tu as droit à ton travail, pas aux fruits de ton travail, et ça suffit pour tenir même quand le contrôle t'échappe.",
-  "geste": "Fais aujourd'hui ta part le mieux possible, et laisse la question du contrôle de côté pour une fois."
+  "geste": "Fais aujourd'hui ta part le mieux possible, et laisse la question du contrôle de côté."
  },
  "metier_transit_pluton_sextile-trigone": {
   "source_livre": "d'après les concepts de Pressfield — au-delà du blocage",
@@ -3442,8 +3442,8 @@
    "ressources",
    "serenite"
   ],
-  "miroir": "L'argent ne te pèse pas émotionnellement aujourd'hui, pour une fois. La meilleure boussole en argent reste souvent est-ce que ça m'aide à bien dormir la nuit, plus qu'un calcul parfait sur papier.",
-  "geste": "Choisis aujourd'hui, entre deux options d'argent, celle qui te laisse le plus tranquille, pas la plus optimale."
+  "miroir": "Aujourd'hui, tu es plus tranquille avec l'argent. Pour savoir si une décision te convient, une question suffit souvent : est-ce qu'elle te laisse dormir en paix ? Ce que tu ressens compte parfois plus qu'un calcul parfait sur papier.",
+  "geste": "Entre deux choix à propos d'argent aujourd'hui, prends celui qui te laisse l'esprit tranquille."
  },
  "ressources_transit_uranus_conjonction": {
   "source_livre": "d'après les concepts de Housel — le monde est surprenant",
