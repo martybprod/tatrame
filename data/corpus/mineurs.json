@@ -8,7 +8,7 @@
   "invitation": "Une décision de partir peut se préciser aujourd'hui, le moment juste avant d'agir. Remarque l'envie de tout attendre pour être sûr, elle vient d'une prudence apprise plutôt que d'un vrai doute. Choisis un seul geste qui engage un peu, sans attendre une certitude totale."
  },
  "batons_3": {
-  "invitation": "Un premier élan peut commencer à porter ses fruits aujourd'hui, un signe discret que ça avance. Remarque le réflexe de minimiser ce début, il vient d'une habitude à ne célébrer que les résultats finis. Prends un instant pour regarder plus loin, sans forcer la suite."
+  "invitation": "Un premier effort commence à donner des résultats aujourd'hui, un petit signe que ça avance. Tu as peut-être envie de dire que ce n'est pas grand-chose, par habitude de n'être content qu'une fois tout terminé. Prends un instant pour regarder plus loin devant toi, sans presser la suite."
  },
  "batons_4": {
   "invitation": "Une étape franchie peut se montrer aujourd'hui, quelque chose qui mérite d'être reconnu. Observe l'envie de passer vite à la suite sans t'arrêter, elle vient d'un pli pris à ne jamais s'arrêter avant la fin. Offre-toi une petite pause aujourd'hui, même courte, pour marquer ce qui est fait."
@@ -29,7 +29,7 @@
   "invitation": "Une fatigue après une longue série d'efforts peut se faire sentir aujourd'hui, même si tu tiens encore debout. Remarque l'envie de prouver que tout va bien, elle vient d'un vieux réflexe qui ignore les limites du corps. Accorde-toi un geste de repos aujourd'hui, même petit."
  },
  "batons_10": {
-  "invitation": "Une charge lourde peut se faire sentir aujourd'hui, quelque chose que tu portes depuis un moment déjà. Remarque l'envie de tout finir d'un coup pour t'en libérer, elle vient d'un vieux pli qui confond effort et valeur personnelle. Pose une petite partie du poids aujourd'hui, juste pour respirer un peu."
+  "invitation": "Une charge lourde peut se faire sentir aujourd'hui, quelque chose que tu portes depuis un moment déjà. Remarque l'envie de tout finir d'un coup pour t'en libérer, elle vient d'une vieille croyance, celle qu'on ne vaut que par tout ce qu'on fait. Pose une petite partie du poids aujourd'hui, juste pour respirer un peu."
  },
  "batons_valet": {
   "invitation": "Une idée encore jeune peut se montrer aujourd'hui, une curiosité qui n'a pas encore été mise à l'épreuve. Remarque l'envie de la juger tout de suite trop sérieuse ou trop naïve, elle vient d'un besoin ancien de certitudes rapides. Laisse cette idée exister un moment sans lui demander de preuve."
@@ -95,7 +95,7 @@
   "invitation": "Une déception peut se montrer aujourd'hui, une vérité qui fait mal en étant dite ou entendue. Regarde cette peine sans la repousser trop vite, elle n'est pas un échec, juste la trace d'une chose qui comptait. Accorde-lui un moment, même bref, avant de passer à autre chose."
  },
  "epees_4": {
-  "invitation": "Une fatigue mentale peut se faire sentir aujourd'hui, comme un trop-plein après une période de tension. Repère l'idée que s'arrêter serait une faiblesse, elle vient d'une habitude de confondre valeur et rendement constant. Offre-toi une vraie pause, sans culpabilité ni chronomètre."
+  "invitation": "Une fatigue mentale peut se faire sentir aujourd'hui, comme un trop-plein après une période de tension. Repère l'idée que s'arrêter serait une faiblesse, elle vient d'une habitude, celle de croire qu'on ne vaut que si on reste toujours occupé. Offre-toi une vraie pause, sans culpabilité ni chronomètre."
  },
  "epees_5": {
   "invitation": "Un conflit peut se présenter aujourd'hui, avec l'envie d'avoir raison à tout prix. Observe ce besoin de gagner, il vient d'une vieille peur de compter pour rien si tu perds. Demande-toi ce que cette victoire coûterait vraiment, avant de t'y accrocher."
@@ -155,7 +155,7 @@
   "invitation": "Un confort gagné par tes propres moyens peut se remarquer aujourd'hui, petit ou installé depuis longtemps. Repère l'envie de minimiser ce que tu as bâti seul, une modestie parfois trop bien apprise. Prends un moment pour savourer ça sans le partager ni le justifier."
  },
  "deniers_10": {
-  "invitation": "Quelque chose qui dépasse ta seule personne peut se montrer aujourd'hui, un héritage, une stabilité construite avant toi. Remarque le réflexe de vouloir tout mesurer à ton échelle immédiate. Regarde ce qui se transmet plus loin que ta propre vie, et la place que tu y tiens."
+  "invitation": "Quelque chose qui dépasse ta seule personne peut se montrer aujourd'hui, un héritage, une stabilité construite avant toi. Remarque l'envie de tout ramener à ta seule vie, à ton présent. Regarde ce qui se transmet plus loin que toi, et la place que tu y tiens."
  },
  "deniers_valet": {
   "invitation": "Un projet concret peut vouloir démarrer aujourd'hui, encore fragile et pas tout à fait certain. Remarque l'envie de tout savoir avant le premier pas, elle vient d'un sérieux appris plutôt que d'une peur. Autorise-toi à étudier la chose un peu, puis à avancer quand même."
