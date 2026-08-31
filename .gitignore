@@ -52,3 +52,7 @@ _gen_verif.py
 _src_thumb.png
 _grille_seamless.png
 _http.log
+# Profil temporaire de Chrome headless (rendu de maquettes) — jamais versionné
+.chrome_tmp/
+# Maquettes visuelles (fichiers de travail, ouverts à la main) — non versionnées
+maquette_*
