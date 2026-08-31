@@ -615,7 +615,7 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    carte plein écran (conteneur scrollable), la dernière ligne collait au bord
    alors que le haut respirait (Martin, 2026-08-30). */
 .carte-plein-corps{width:100%;max-width:420px;max-height:calc(100vh - 100px);overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:18px;padding-bottom:36px}
-.carte-plein-corps img{width:100%;max-width:280px;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.carte-plein-corps img{width:100%;max-width:280px;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.5);cursor:pointer}
 /* Pendant l'échange d'image plein écran, l'image est masquée tant que la
    nouvelle n'est pas décodée : le navigateur garderait sinon l'ancien bitmap
    affiché, d'où un flash de la carte précédente (Martin, 2026-08-27). */
@@ -1771,20 +1771,22 @@ function fermerCartePlein() {
   setTimeout(fini, reduit ? 200 : 720);  // doit couvrir le fondu .7s (voir .accueil-jour)
 }
 
-// Fermer en cliquant la carte/le texte a été retiré (Martin, 2026-08-29) :
-// ça sortait du plein écran quand on essayait juste de faire défiler un texte
-// trop long. Seuls le fond (hors .carte-plein-corps) ou le ✕ ferment
-// maintenant — même patron que angle-plein ci-dessous.
-document.addEventListener('click', e => {
+// Fermeture du plein écran carte : le fond, le ✕, ET l'image de tarot ferment.
+// Le TEXTE (nom + invitation) ne ferme PAS : il peut être long et scrollable, et
+// fermer en essayant juste de le faire défiler agaçait (retiré le 2026-08-29).
+// L'image, elle, n'est jamais du texte à lire — cliquer dessus pour sortir est
+// naturel (Martin, 2026-08-30).
+function cartePleinDoitFermer(e) {
   const vue = $('#carte-plein');
-  if (vue && vue.classList.contains('ouvert') && e.target.closest('#carte-plein')
-      && !e.target.closest('.carte-plein-corps'))
-    fermerCartePlein();
+  if (!vue || !vue.classList.contains('ouvert') || !e.target.closest('#carte-plein')) return false;
+  // ferme sur le fond (hors corps) OU sur l'image ; jamais sur le texte
+  return !e.target.closest('.carte-plein-corps') || !!e.target.closest('#carte-plein-img');
+}
+document.addEventListener('click', e => {
+  if (cartePleinDoitFermer(e)) fermerCartePlein();
 });
 document.addEventListener('touchend', e => {
-  const vue = $('#carte-plein');
-  if (vue && vue.classList.contains('ouvert') && e.target.closest('#carte-plein')
-      && !e.target.closest('.carte-plein-corps')) {
+  if (cartePleinDoitFermer(e)) {
     e.preventDefault();
     fermerCartePlein();
   }
