@@ -260,17 +260,17 @@
     "geste": "Repère l'instant précis où une habitude te résiste aujourd'hui. Ne la corrige pas, contente-toi de la nommer : premier signe que ton rythme interne et le calendrier extérieur se décalent."
    },
    "coeur": {
-    "miroir": "À son sommet, la tension entre l'élan que tu déploies et celui que tu porterais naturellement est franche. Tu forces un peu ton tempo, comme un musicien légèrement hors de sa mesure. Ce n'est pas une baisse de forme : c'est un décalage de rythme.",
+    "miroir": "Aujourd'hui, tu sens clairement que tu en fais un peu plus que ce qui te vient naturellement. Tu forces un peu ton tempo. Ce n'est pas un manque d'énergie : c'est simplement un décalage de rythme.",
     "geste": "Fais une seule chose à ton vrai rythme aujourd'hui, même si l'urgence pousse à accélérer. Ce décalage se supporte ; il ne se corrige pas en forçant."
    },
    "retrait": {
-    "miroir": "La crispation lâche, en laissant un enseignement. À cette saison précise de ton année, tu te raidis contre un calendrier qui ne colle pas au tien.",
+    "miroir": "La tension commence à se relâcher, et elle t'a appris quelque chose. En ce moment, tu te crispes parce que le rythme des choses ne correspond pas au tien.",
     "geste": "Note la période où ce décalage t'a pris cette fois-ci. La prochaine, tu ne le confondras plus avec une baisse de régime."
    },
    "pensee_soir": "Tu as forcé un peu ton tempo aujourd'hui, comme un instrument légèrement décalé. Ce décalage n'était pas un échec, juste un ajustement en cours."
   },
   "soleil_sextile-trigone_soleil": {
-   "miroir": "On te voit aujourd'hui à peu près comme tu te vois toi-même, ce qui n'arrive pas si souvent. Être remarqué ne coûte rien en ce moment, et ta place semble aller de soi aux yeux des autres.",
+   "miroir": "On te voit aujourd'hui à peu près comme tu te vois toi-même, ce qui n'arrive pas si souvent. Être remarqué ne te demande aucun effort en ce moment, et ta place semble aller de soi aux yeux des autres.",
    "geste": "Montre-toi là où tu hésitais à te montrer, un projet, une idée, une candidature en attente. La reconnaissance vient facilement en ce moment. Autant t'en servir tant que la porte reste ouverte.",
    "pensee_soir": "Aujourd'hui, on t'a vu à peu près comme tu te vois. Repense à ce que ça fait, cette rareté, avant que demain ne brouille à nouveau l'image."
   },
@@ -655,9 +655,9 @@
    "pensee_soir": "Une idée que tu portais discrètement a pris de la place aujourd'hui. Repense à ce qui a changé dans la façon dont on t'a écouté."
   },
   "soleil_carre-opposition_mercure": {
-   "miroir": "Tu tiens aujourd'hui à être compris exactement comme tu le penses, et ça demande plus d'énergie que d'habitude. Répéter, préciser, reformuler, ça t'épuise plus que ça ne convainc qui t'écoute.",
+   "miroir": "Aujourd'hui, tu tiens à être compris exactement comme tu le penses, et cela te demande plus d'énergie que d'habitude. Répéter, préciser, reformuler : tu t'épuises plus que tu ne convaincs la personne qui t'écoute.",
    "geste": "Laisse quelqu'un finir sa phrase avant de répondre, une fois aujourd'hui, même si tu sais déjà où il veut en venir. Cette pause suffira souvent à faire passer ton idée mieux qu'insister.",
-   "pensee_soir": "Vouloir être compris exactement comme tu le pensais aujourd'hui a coûté plus d'énergie que ça n'a convaincu. Repense à ce qui aurait suffi, plus simplement."
+   "pensee_soir": "Aujourd'hui, tu as dépensé beaucoup d'énergie à vouloir être compris exactement comme tu le pensais, sans que cela apporte vraiment le résultat espéré. Demande-toi plutôt ce qui aurait pu suffire, tout simplement."
   },
   "soleil_sextile-trigone_mercure": {
    "miroir": "Présenter une idée aujourd'hui demande moins d'effort que d'habitude, elle se comprend vite et sans que tu aies à insister dessus. Tu parles clair, et ça se voit sans que tu forces le trait.",
@@ -1030,7 +1030,7 @@
     "geste": "Repère le moment où une décision liée à ta trajectoire te laisse un arrière-goût d'à-peu-près. Tu n'as rien à trancher, juste à voir la pression s'installer."
    },
    "coeur": {
-    "miroir": "Maintenant, la tension est nette. Ton ambition tire d'un côté, l'image que tu dois incarner de l'autre. Tu te sens exposé sur une scène que tu n'as pas tout à fait choisie.",
+    "miroir": "Aujourd'hui, la tension est nette. Ton ambition tire d'un côté, l'image que tu dois incarner de l'autre. Tu te sens exposé sur une scène que tu n'as pas tout à fait choisie.",
     "geste": "Choisis une seule tâche visible et mène-la à ton rythme, sans te presser pour l'audience. Ta direction reste la tienne même à demi-visible."
    },
    "retrait": {
