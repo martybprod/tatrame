@@ -172,7 +172,7 @@
     "miroir": "Le rôle que tu tiens aujourd'hui pèse un peu moins qu'il y a deux ou trois jours. L'écart entre ce que tu ressens et ce qu'on attend de toi se referme doucement, sans que tu aies eu à forcer.",
     "geste": "Remarque ce qui a changé depuis le début de la semaine, dans ta manière de tenir ce rôle. Note-le, même juste dans ta tête. C'est la preuve que ça bouge, pas seulement que ça pèse."
    },
-   "pensee_soir": "Le rôle que tu as tenu aujourd'hui a coûté de l'énergie que personne n'a vue. Reconnais-le ce soir, même si personne d'autre ne l'a fait."
+   "pensee_soir": "Le rôle que tu as tenu aujourd'hui t'a demandé une énergie que personne n'a vue. Reconnais-le ce soir, même si personne d'autre ne l'a fait."
   },
   "lune_sextile-trigone_soleil": {
    "approche": {
@@ -180,7 +180,7 @@
     "geste": "Saisis le premier moment aujourd'hui où une action coule plus facilement. Note-le sans en faire plus : il annonce la couleur du passage."
    },
    "coeur": {
-    "miroir": "Quand le passage culmine, ton humeur et ta vitalité sont alignées, ce qui est rare. Tu te sens plein, disponible, et ce que tu entreprends te renvoie de l'énergie au lieu de t'en coûter.",
+    "miroir": "Aujourd'hui, ton humeur et ta vitalité sont naturellement alignées, ce qui est rare. Tu te sens plein, disponible, et ce que tu entreprends te redonne de l'énergie au lieu de t'en demander.",
     "geste": "Lance ce que tu repoussais par manque d'élan. Aujourd'hui le moteur est là, la fenêtre est courte : dépense ce surplus pendant qu'il tient."
    },
    "retrait": {
@@ -760,14 +760,14 @@
    "pensee_soir": "Tu t'es senti capable de beaucoup aujourd'hui, peut-être un peu plus que ce que la journée pouvait vraiment tenir. Repense à l'écart, sans le juger."
   },
   "lune_carre-opposition_jupiter": {
-   "miroir": "Tu sens un doute traîner pile là où tu voudrais croire large aujourd'hui. L'écart entre ce que tu ressens et ce que tu espères se fait sentir, sans drame.",
+   "miroir": "Aujourd'hui, un doute peut apparaître justement là où tu aimerais voir grand. Tu ressens l'écart entre ce que tu espères et ce que tu ressens, sans que cela soit forcément grave.",
    "geste": "Choisis une seule chose à laquelle tu tiens vraiment aujourd'hui, et laisse le reste de côté. Ta confiance n'a pas besoin de convaincre l'humeur, juste de tenir un point.",
-   "pensee_soir": "Un doute a traîné aujourd'hui pile là où tu voulais croire large. Repense à ce que cet écart entre l'espoir et le ressenti a dit de vrai."
+   "pensee_soir": "Un doute a traîné aujourd'hui pile là où tu voulais voir grand. Repense à ce que cet écart entre l'espoir et le ressenti a dit de vrai."
   },
   "lune_sextile-trigone_jupiter": {
-   "miroir": "L'humeur du jour et ta confiance marchent dans le même sens sans effort. Voir grand te coûte moins cher que d'habitude, presque naturellement.",
-   "geste": "Propose l'idée un peu ambitieuse que tu gardes pour toi depuis un moment. Le climat s'y prête aujourd'hui, profites en pour la dire à voix haute.",
-   "pensee_soir": "Voir grand n'a presque rien coûté aujourd'hui. Repense à ce moment où l'humeur et la confiance ont marché ensemble, sans effort."
+   "miroir": "Aujourd'hui, ton humeur et ta confiance vont dans le même sens sans que tu aies besoin de forcer. Voir grand te demande moins d'effort que d'habitude, c'est presque naturel.",
+   "geste": "Propose l'idée un peu ambitieuse que tu gardes pour toi depuis un moment. Le climat s'y prête aujourd'hui, profites-en pour la dire à voix haute.",
+   "pensee_soir": "Voir grand ne t'a presque rien demandé aujourd'hui. Repense à ce moment où l'humeur et la confiance ont marché ensemble, sans effort."
   },
   "mercure_conjonction_jupiter": {
    "miroir": "Tes pensées tournent en boucle autour d'une idée qui te semble immense. Les mots grossissent tout seuls, et ta confiance s'en mêle sans que tu le décides vraiment.",
