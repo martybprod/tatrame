@@ -537,7 +537,7 @@
   "mercure_conjonction_mars": {
    "miroir": "Tes mots et tes gestes marchent au même pas aujourd'hui. Ce que tu dis, tu le fais dans la foulée, presque avant d'avoir fini la phrase qui l'annonçait.",
    "geste": "Dis ce que tu comptes faire à voix haute, puis fais-le tout de suite après. Ne laisse pas la phrase refroidir entre l'idée qui vient et le mouvement qui suit.",
-   "pensee_soir": "Tu as fait ce que tu disais presque avant d'avoir fini la phrase aujourd'hui. Repense à ce que cette vitesse-là t'a évité, ou t'a coûté."
+   "pensee_soir": "Aujourd'hui, tu as agi presque avant d'avoir fini de dire ce que tu allais faire. Repense à ce que cette rapidité t'a permis d'éviter, mais aussi à ce qu'elle a pu te faire perdre."
   },
   "mercure_carre-opposition_mars": {
    "miroir": "Les mots te viennent plus vite que la mesure aujourd'hui. Dès que l'élan du moment s'en mêle, ça peut sortir plus sec que prévu.",
@@ -627,7 +627,7 @@
   "mercure_carre-opposition_mercure": {
    "miroir": "Tes pensées partent dans deux sens à la fois aujourd'hui, et choisir laquelle dire en premier demande plus d'effort que d'habitude. Ce n'est pas le sujet qui coince, c'est le tri.",
    "geste": "Choisis une seule idée à exprimer aujourd'hui et laisse les autres de côté pour l'instant. Répète-la une fois dans ta tête avant de la dire, ça évitera qu'elle se perde en chemin.",
-   "pensee_soir": "Tes pensées sont parties dans deux sens aujourd'hui, et choisir laquelle dire en premier a coûté un effort. Repense à ce que le tri a révélé."
+   "pensee_soir": "Aujourd'hui, tes pensées sont parties dans deux directions, et choisir laquelle exprimer en premier t'a demandé un effort. Repense à ce que ce tri t'a permis de comprendre."
   },
   "mercure_sextile-trigone_mercure": {
    "miroir": "Les idées s'enchaînent aujourd'hui sans que tu aies à forcer, une phrase amène la suivante presque toute seule. Expliquer, comprendre, relier deux bouts d'une même histoire, tout ça coule plus facilement.",
@@ -880,7 +880,7 @@
     "geste": "Saisis la première phrase qui te sort claire alors qu'elle patine d'habitude. Tu n'as rien à en faire, juste à la remarquer."
    },
    "coeur": {
-    "miroir": "À son intensité, tu te présentes sans préparation, et ça sonne juste. Les mots épousent l'idée au moment où tu la penses. C'est idéal pour une intro, un entretien, un mail où il faut te présenter.",
+    "miroir": "Aujourd'hui, tu peux te présenter sans avoir besoin de tout préparer, et cela sonne juste. Les mots viennent naturellement au moment où tu penses à ce que tu veux dire. C'est un bon jour pour une présentation, un entretien ou un courriel où tu dois parler de toi.",
     "geste": "Dis la chose que tu n'arrivais pas à formuler, sur toi, sur un projet, sur un désaccord. Aujourd'hui elle sortira nette, et la fenêtre est courte."
    },
    "retrait": {
