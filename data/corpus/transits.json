@@ -73,9 +73,9 @@
    "pensee_soir": "Repense à ce qui t'a irrité en premier ce matin. Maintenant que la journée est passée, à quoi ça ressemblait vraiment ?"
   },
   "mars_sextile-trigone": {
-   "miroir": "Agir demande peu aujourd'hui. L'obstacle qui te bloquait la semaine dernière a la même taille, mais il pèse moins. Et rien ne te le signalera.",
-   "geste": "Fais la chose que tu repousses parce qu'elle t'ennuie. Pas la grande, la pénible. Le coût est bas aujourd'hui, c'est tout l'intérêt de la journée.",
-   "pensee_soir": "Cette chose que tu repoussais et que tu as finalement faite aujourd'hui — remarque comme elle a coûté moins cher que prévu. Une information à garder."
+   "miroir": "Agir est facile aujourd'hui. L'obstacle qui te bloquait la semaine dernière est toujours là, mais il semble moins lourd. Et rien ne te le fera vraiment remarquer.",
+   "geste": "Fais simplement la chose que tu repousses parce qu'elle t'ennuie. Aujourd'hui, elle te demandera moins d'effort que d'habitude. C'est tout l'intérêt de cette journée.",
+   "pensee_soir": "Une fois que tu l'auras faite, remarque simplement qu'elle était moins difficile que prévu. Garde cette information en tête."
   },
   "jupiter_conjonction": {
    "miroir": "Tout paraît plus grand ces temps-ci. Les projets, les promesses, la certitude que ça va marcher. L'ampleur est réelle. La mesure, elle, n'est pas venue avec.",
@@ -83,14 +83,14 @@
    "pensee_soir": "Une promesse ou un projet a grandi aujourd'hui dans ta tête. Tiendrait-il encore, une fois l'enthousiasme du jour retombé ?"
   },
   "jupiter_carre-opposition": {
-   "miroir": "Ce qui s'ouvre coûte plus cher qu'annoncé. La période mesure moins ta chance que ta capacité à refuser une bonne occasion.",
+   "miroir": "Ce que tu commences aujourd'hui peut te demander plus d'efforts que prévu. Cette période ne teste pas tant ta chance que ta capacité à dire non, même face à une bonne occasion.",
    "geste": "Décline une proposition intéressante. Pas mauvaise, intéressante. Une seule. Puis regarde ce que la place libérée fait à la semaine suivante.",
    "pensee_soir": "Ce que tu as décliné aujourd'hui, la place qu'elle a laissée libre — qu'est-ce qu'elle a fait à ta soirée ?"
   },
   "jupiter_sextile-trigone": {
    "miroir": "Les portes ne résistent pas en ce moment. Les coups de pouce arrivent, les gens disent oui. Rien ne t'oblige à t'en servir, et c'est précisément le risque.",
    "geste": "Demande une chose disproportionnée à quelqu'un qui peut la donner. La saison est courte, et personne ne te préviendra le jour où elle se referme.",
-   "pensee_soir": "Une porte s'est ouverte aujourd'hui, peut-être sans que tu la pousses. Repense à ce que ça t'a coûté de ne pas t'en servir."
+   "pensee_soir": "Une porte s'est ouverte aujourd'hui, peut-être sans que tu aies eu besoin de la pousser. Prends un moment pour réfléchir à ce que tu pourrais perdre en ne saisissant pas cette occasion."
   },
   "saturne_conjonction": {
    "miroir": "C'est une saison où tout demande sa preuve. Ce qui tenait par habitude est prié de justifier sa place, et plusieurs choses ne survivront pas à l'examen.",
@@ -143,13 +143,13 @@
    "pensee_soir": "Repense à une chose que tu ne fais plus, et qui te définissait il y a quelques années. La nommer ce soir, c'est déjà commencer à s'en détacher."
   },
   "pluton_carre-opposition": {
-   "miroir": "Tu contrôles moins de choses qu'avant, ces temps-ci. Ce qui marchait par volonté ne répond plus, et l'instinct est de serrer plus fort. Ça coûte cher pour rien.",
+   "miroir": "Tu contrôles moins de choses qu'avant ces temps-ci. Ce qui marchait par la volonté ne répond plus, et ton réflexe, c'est de vouloir tout contrôler encore plus fort. Cela t'épuise, pour rien.",
    "geste": "Repère un endroit où tu tiens tout à bout de bras et lâche une prise sans conséquence. Délègue une tâche, laisse une chose se faire moins bien. Puis regarde ce qui s'effondre. Rien.",
    "pensee_soir": "Ce que tu as lâché aujourd'hui, même un peu, regarde ce qui s'est vraiment effondré. Souvent, rien."
   },
   "pluton_sextile-trigone": {
    "miroir": "Le fond bouge sans violence en ce moment. Ce qui doit finir peut finir proprement, ce qui doit changer change sans qu'il faille tout casser. La porte est entrouverte.",
-   "geste": "Termine une chose que tu prolonges par habitude. Un abonnement, un dossier, une politesse. Le moment coûte peu. Ce n'est pas toujours le cas.",
+   "geste": "Mets fin à une chose que tu prolonges par habitude. Un abonnement, un dossier, une politesse. Aujourd'hui, ça demande peu d'effort, profites-en.",
    "pensee_soir": "Cette chose prolongée par habitude que tu as terminée aujourd'hui — remarque comme la porte s'est refermée sans bruit."
   }
  },
