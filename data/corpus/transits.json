@@ -345,7 +345,7 @@
     "geste": "Repère la première chose qui te ramollit le cœur aujourd'hui, sans la juger. C'est le transit qui s'installe, pas une faiblesse de ton côté."
    },
    "coeur": {
-    "miroir": "Quand il culmine, ce que tu aimes et ce dont tu as besoin ne font qu'un. Tu te sens nourri par des choses simples, un repas, une présence, une chaleur, sans exigence ni manque.",
+    "miroir": "Aujourd'hui, ce que tu aimes et ce dont tu as besoin ne font qu'un. Tu te sens nourri par des choses simples, un repas, une présence, une chaleur, sans exigence ni manque.",
     "geste": "Accorde-toi le petit confort que tu te refuses d'habitude par « pas le moment ». Aujourd'hui c'est exactement le moment."
    },
    "retrait": {
@@ -360,7 +360,7 @@
     "geste": "Repère la première tentation d'aujourd'hui qui t'excite sans te calmer. Ne cède pas encore, observe le tiraillement qui s'installe."
    },
    "coeur": {
-    "miroir": "Au sommet du passage, le conflit est net : ce qui te plaît ne te nourrit pas. Tu peux être tenté de combler un manque affectif par du superficiel : un achat, une flatterie, du sucre. Mais ça ne marche pas.",
+    "miroir": "Aujourd'hui, le conflit est net : ce qui te plaît ne te nourrit pas vraiment. Tu peux être tenté de combler un manque affectif par quelque chose de superficiel, un achat, une flatterie, une gâterie. Mais cela ne fonctionne pas.",
     "geste": "Avant de céder à la tentation du jour, demande-toi si elle comble un goût ou un manque. Choisis en conséquence, une seule fois suffit."
    },
    "retrait": {
@@ -471,8 +471,8 @@
   },
   "venus_carre-opposition_venus": {
    "miroir": "Deux choses que tu aimes tirent aujourd'hui chacune de leur côté. Un plaisir et une économie, un lien et un autre, et tu sens qu'il va falloir laisser filer l'un pour garder l'autre.",
-   "geste": "Choisis un seul plaisir aujourd'hui plutôt que d'essayer de tout garder à la fois. Renonce à voix haute à l'autre option, même si ça pince un peu. Le choix libère plus qu'il ne coûte.",
-   "pensee_soir": "Deux choses que tu aimes ont tiré chacune de leur côté aujourd'hui. Laquelle as-tu fini par laisser filer, et est-ce que ça t'a vraiment coûté ?"
+   "geste": "Aujourd'hui, choisis un seul plaisir plutôt que d'essayer de tout faire en même temps. Renonce au reste à voix haute. Même si ça pince un peu. Ce choix te libère plus qu'il te prive.",
+   "pensee_soir": "Deux choses que tu aimes ont tiré chacune de son côté aujourd'hui. Laquelle as-tu fini par laisser filer, et est-ce que cela t'a vraiment manqué ?"
   },
   "venus_sextile-trigone_venus": {
    "miroir": "Ce que tu aimes et les gens que tu aimes s'accordent aujourd'hui sans qu'il y ait rien à négocier. Un moment agréable en attire un autre, et le plaisir circule sans que tu aies à le provoquer.",
@@ -895,7 +895,7 @@
     "geste": "Note la première interaction agréable de la journée, même minuscule. C'est elle qui annonce la couleur de ce passage."
    },
    "coeur": {
-    "miroir": "Ces jours-ci, tu es simplement plus agréable à fréquenter. Pas par effort : c'est que ce qui te plaît et ce que tu projettes s'alignent. Les autres le sentent, et ils répondent.",
+    "miroir": "Aujourd'hui, tu es simplement plus agréable à fréquenter, sans que tu aies à fournir un effort particulier. Ce qui te plaît et ce que tu projettes s'alignent, et les autres le sentent.",
     "geste": "Va vers la rencontre ou la démarche que tu repoussais par gêne. Aujourd'hui elle passe toute seule, et cette fenêtre ne dure pas."
    },
    "retrait": {
