@@ -22,11 +22,11 @@
 <body>
 <div class="wrap">
   <h1>Le motif tissé en fils d'or</h1>
-  <p class="sous">Fils d'or lumineux · nœuds aux croisements · laine en tons contrastés · zones non tissées ouvertes sur le cosmos.</p>
-  <p class="exemple">14/07/1985, « Martin Boucher ». Le 7 (chantier) reste ouvert ; centre sobre = le Cap.</p>
+  <p class="sous">Chaque ligne brille selon son importance dans le thème · laine en tons contrastés · chantiers ouverts sur le cosmos.</p>
+  <p class="exemple">14/07/1985, « Martin Boucher ». Le 7 (chantier) : rayon éteint, zone ouverte. Centre sobre = le Cap.</p>
   <canvas id="c" width="1240" height="1240"></canvas>
   <div class="notes">
-    <p>À chaque <b>croisement rayon × anneau</b>, un petit nœud tissé (brin clair + brin sombre). Le remplissage varie du <b>plus sombre au plus clair</b> de chaque élément (même famille par section). Les <b>9 qualités</b> sont numérotées ; un chantier reste ouvert sur le ciel.</p>
+    <p><b>Lignes liées au thème :</b> les 9 rayons brillent selon la <b>force de chaque qualité</b> ; les arêtes des étoiles selon la <b>force des deux qualités reliées</b> ; les anneaux restent discrets (structurels). Un chantier a son rayon quasi éteint et reste ouvert sur le ciel.</p>
   </div>
   <p id="err"></p>
 </div>
@@ -36,12 +36,10 @@ try{
 const cv=document.getElementById('c'), W=cv.width, H=cv.height, ctx=cv.getContext('2d',{willReadFrequently:true});
 const CX=W/2, CY=H/2, S=W/620;
 const CLIP=290*S, SPAN=40, MAX=3;
-const PHI=1.6180339887;
 const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'terre',9:'feu'};
-// palette par élément : du plus sombre au plus clair (même famille) -> contraste interne
 const DARK ={feu:[86,24,20], eau:[18,46,68], air:[92,70,26], terre:[28,60,38]};
 const LIGHT={feu:[212,112,72],eau:[96,152,188],air:[226,192,112],terre:[112,162,98]};
-const emid=e=>[ (DARK[e][0]+LIGHT[e][0])/2,(DARK[e][1]+LIGHT[e][1])/2,(DARK[e][2]+LIGHT[e][2])/2 ];
+const emid=e=>[(DARK[e][0]+LIGHT[e][0])/2,(DARK[e][1]+LIGHT[e][1])/2,(DARK[e][2]+LIGHT[e][2])/2];
 const p={seed:14071985, jour:5, cap:8,voix:3,foyer:3,elan:5,
   counts:{1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3}};
 function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
@@ -49,28 +47,50 @@ const rng=mulberry32(p.seed);
 const rot=(p.jour*23)*Math.PI/180, rotDeg=p.jour*23;
 const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const cf=n=>{const c=p.counts[n];return c<=0?0:0.5+0.5*(c/MAX);};
+const force=n=>{const c=p.counts[n];return c<=0?0:c/MAX;};   // 0..1 : importance de la qualité
 
-// anneaux (rayons collectés pour les nœuds de croisement)
+// géométrie (partagée) : anneaux, 18 rayons, sommets qualités
 const RINGS=[]; {let r=40*S; while(r<CLIP-4*S){RINGS.push(r);r*=1.34;}}
-const RAYS=[...Array(18)].map((_,i)=>i*20*Math.PI/180+rot);
+const RAYS=[...Array(18)].map((_,i)=>((i*20-90)*Math.PI/180)+rot);
+const V=[...Array(9)].map((_,i)=>{const a=((i*SPAN-90)*Math.PI/180)+rot;return[CX+(CLIP-14*S)*Math.cos(a),CY+(CLIP-14*S)*Math.sin(a)];});
 
-function drawGeom(g){
+// murs (uniforme) : sert au découpage des cellules
+function drawMask(g){
   RINGS.forEach(r=>{g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();});
-  const V=[...Array(9)].map((_,i)=>{const a=(i*SPAN-90)*Math.PI/180+rot;return[CX+(CLIP-14*S)*Math.cos(a),CY+(CLIP-14*S)*Math.sin(a)];});
+  RAYS.forEach(a=>{g.beginPath();g.moveTo(CX,CY);g.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));g.stroke();});
   [2,3,4].forEach(step=>{const seen=new Set();
     for(let s=0;s<9;s++){if(seen.has(s))continue;let i=s;g.beginPath();let f=true;
       do{const[x,y]=V[i];f?(g.moveTo(x,y),f=false):g.lineTo(x,y);seen.add(i);i=(i+step)%9;}while(i!==s);g.closePath();g.stroke();}});
-  RAYS.forEach(a=>{g.beginPath();g.moveTo(CX,CY);g.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));g.stroke();});
   g.beginPath();g.arc(CX,CY,CLIP,0,7);g.stroke();
 }
 
-// masque des fils
+// or : chaque ligne stylée selon son IMPORTANCE (0..1)
+function strokeImp(g,imp,draw){
+  const alpha=0.10+0.75*imp, w=(0.55+1.6*imp)*S, c=mix([204,166,98],[255,240,208],imp);
+  g.save();
+  if(imp>0.45){g.shadowColor=`rgba(255,210,140,${0.25+0.35*imp})`;g.shadowBlur=(3+7*imp)*S;}
+  g.strokeStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${alpha})`;g.lineWidth=w;g.lineCap='round';g.lineJoin='round';
+  g.beginPath();draw(g);g.stroke();g.restore();
+}
+function drawGold(g){
+  RINGS.forEach(r=>strokeImp(g,0.12,gg=>gg.arc(CX,CY,r,0,7)));                 // anneaux : discrets
+  RAYS.forEach((a,i)=>{                                                        // rayons : 9 = qualités
+    const imp = (i%2===0) ? 0.12+0.72*force(i/2+1) : 0.08;
+    strokeImp(g,imp,gg=>{gg.moveTo(CX,CY);gg.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));});
+  });
+  [2,3,4].forEach(step=>{for(let i=0;i<9;i++){const b=(i+step)%9;             // étoiles : force des 2 reliées
+    const imp=0.08+0.72*((force(i+1)+force(b+1))/2);
+    strokeImp(g,imp,gg=>{gg.moveTo(V[i][0],V[i][1]);gg.lineTo(V[b][0],V[b][1]);});}});
+  strokeImp(g,0.42,gg=>gg.arc(CX,CY,CLIP,0,7));                               // bornage
+}
+
+// masque des murs
 const wc=document.createElement('canvas');wc.width=W;wc.height=H;const wg=wc.getContext('2d');
-wg.strokeStyle='#000';wg.lineWidth=2*S;wg.lineCap='round';wg.lineJoin='round';drawGeom(wg);
+wg.strokeStyle='#000';wg.lineWidth=2*S;wg.lineCap='round';wg.lineJoin='round';drawMask(wg);
 const wd=wg.getImageData(0,0,W,H).data, wall=new Uint8Array(W*H);
 for(let i=0;i<W*H;i++) wall[i]=wd[i*4+3]>40?1:0;
 
-// fond cosmos sobre
+// cosmos sobre
 ctx.fillStyle='#050409';ctx.fillRect(0,0,W,H);
 [['#221a34',0],['#0f2230',1]].forEach(([c,k])=>{const gx=CX+(k?-1:1)*90*S,gy=CY+(k?70:-60)*S;
   const gr=ctx.createRadialGradient(gx,gy,0,gx,gy,240*S);gr.addColorStop(0,c);gr.addColorStop(1,'rgba(5,4,9,0)');
@@ -103,64 +123,38 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
 }
 ctx.putImageData(img,0,0);
 
-// POINTS CHEVRON : tons TRÈS variés dans la même famille (contraste interne)
+// points chevron : tons très variés dans la même famille
 const step=6.5*S;ctx.lineCap='round';
 for(let y=0;y<H;y+=step){const row=Math.round(y/step);
   for(let x=0;x<W;x+=step){
     const rc=Math.hypot(x-CX,y-CY); if(rc>CLIP||rc<0.15*CLIP)continue;
-    const {n1,n2,t}=sectorAt(x,y);
-    const n = t<0.5?n1:n2; if(cf(n)<=0)continue;
-    const e=elemNombre[n];
-    const f=rng();                                   // du plus sombre au plus clair
-    let col=mix(DARK[e],LIGHT[e],f);
-    if(rng()<0.10) col=mix(col,[236,222,182],0.45);  // quelques brins très clairs
-    const dir=(row%2===0)?1:-1, a=dir*30*Math.PI/180+rot*0.12;
-    const len=4.0*S, jx=(rng()-0.5)*2*S, jy=(rng()-0.5)*2*S;
+    const {n1,n2,t}=sectorAt(x,y);const n=t<0.5?n1:n2;if(cf(n)<=0)continue;
+    const e=elemNombre[n],f=rng();let col=mix(DARK[e],LIGHT[e],f);
+    if(rng()<0.10)col=mix(col,[236,222,182],0.45);
+    const dir=(row%2===0)?1:-1,a=dir*30*Math.PI/180+rot*0.12,len=4.0*S,jx=(rng()-0.5)*2*S,jy=(rng()-0.5)*2*S;
     ctx.strokeStyle=`rgb(${col[0]|0},${col[1]|0},${col[2]|0})`;ctx.lineWidth=2.5*S;
-    ctx.beginPath();
-    ctx.moveTo(x-Math.cos(a)*len+jx,y-Math.sin(a)*len+jy);
-    ctx.lineTo(x+Math.cos(a)*len+jx,y+Math.sin(a)*len+jy);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(x-Math.cos(a)*len+jx,y-Math.sin(a)*len+jy);ctx.lineTo(x+Math.cos(a)*len+jx,y+Math.sin(a)*len+jy);ctx.stroke();
   }
 }
 
-// FILS D'OR (tracé sacré) avec lueur discrète
-ctx.save();
-ctx.shadowColor='rgba(255,205,120,0.4)';ctx.shadowBlur=5*S;
-ctx.strokeStyle='rgba(226,186,108,0.72)';ctx.lineWidth=1.2*S;ctx.lineCap='round';ctx.lineJoin='round';drawGeom(ctx);
-ctx.restore();
+// fils d'or (luminosité selon l'importance)
+drawGold(ctx);
 
-// NŒUDS AUX CROISEMENTS rayon × anneau (impression de tissage)
-RINGS.forEach(r=>{ if(r>CLIP-2*S)return;
-  RAYS.forEach(a=>{
-    const x=CX+r*Math.cos(a), y=CY+r*Math.sin(a); if(Math.hypot(x-CX,y-CY)>CLIP)return;
-    const ux=Math.cos(a),uy=Math.sin(a), px=-uy,py=ux, L=3.2*S;
-    // brin de trame (tangentiel, sombre) — passe "dessous"
-    ctx.strokeStyle='rgba(20,14,8,0.8)';ctx.lineWidth=2.6*S;ctx.lineCap='round';
-    ctx.beginPath();ctx.moveTo(x-px*L,y-py*L);ctx.lineTo(x+px*L,y+py*L);ctx.stroke();
-    // brin de chaîne (radial, clair) — passe "dessus"
-    ctx.strokeStyle='rgba(245,214,140,0.95)';ctx.lineWidth=2.2*S;
-    ctx.beginPath();ctx.moveTo(x-ux*L,y-uy*L);ctx.lineTo(x+ux*L,y+uy*L);ctx.stroke();
-    // reflet
-    ctx.fillStyle='rgba(255,244,210,0.85)';ctx.beginPath();ctx.arc(x-ux*L*0.4,y-uy*L*0.4,0.9*S,0,7);ctx.fill();
-  });
-});
-
-// CENTRE sobre : petit médaillon + Cap (pas de "soleil")
+// centre sobre : petit médaillon + Cap
 ctx.beginPath();ctx.arc(CX,CY,24*S,0,7);ctx.fillStyle='#0b0913';ctx.fill();
 ctx.lineWidth=1.4*S;ctx.strokeStyle='rgba(226,186,108,0.85)';ctx.stroke();
 ctx.beginPath();ctx.arc(CX,CY,17*S,0,7);ctx.lineWidth=0.8*S;ctx.strokeStyle='rgba(226,186,108,0.4)';ctx.stroke();
 ctx.fillStyle='#e9e1d2';ctx.font=`${20*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(p.cap,CX,CY);
 
-// LES 9 QUALITÉS numérotées (tous les chiffres)
+// les 9 qualités numérotées
 const RQ=CLIP+20*S;
-for(let n=1;n<=9;n++){const a=((n-1)*SPAN-90)*Math.PI/180+rot, x=CX+RQ*Math.cos(a), y=CY+RQ*Math.sin(a);
+for(let n=1;n<=9;n++){const a=((n-1)*SPAN-90)*Math.PI/180+rot,x=CX+RQ*Math.cos(a),y=CY+RQ*Math.sin(a);
   const c=p.counts[n],e=elemNombre[n],erg=c>0?LIGHT[e]:[176,70,58];
   ctx.beginPath();ctx.arc(x,y,13*S,0,7);
   ctx.fillStyle=c>0?`rgba(${DARK[e][0]},${DARK[e][1]},${DARK[e][2]},0.9)`:'rgba(12,9,15,0.95)';ctx.fill();
   ctx.lineWidth=1.6*S;ctx.strokeStyle=`rgba(${erg[0]},${erg[1]},${erg[2]},0.95)`;
   if(c<=0)ctx.setLineDash([3*S,3*S]);ctx.stroke();ctx.setLineDash([]);
-  ctx.fillStyle=c>0?'#f0ead9':'#d0705e';ctx.font=`${13*S}px Georgia`;ctx.fillText(n,x,y);
-}
+  ctx.fillStyle=c>0?'#f0ead9':'#d0705e';ctx.font=`${13*S}px Georgia`;ctx.fillText(n,x,y);}
 
 }catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
 </script>
