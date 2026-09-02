@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — Le tissage en cours (maquette)</title>
+<style>
+  :root{
+    --fond:#14110d; --carte:#1d1913; --trait:#3a3226;
+    --texte:#e9e1d2; --doux:#9a8f78; --accent:#c9a35e;
+    --feu:#c0603a; --terre:#7a8a4e; --air:#cdb06a; --eau:#5f86a8;
+    --chaine:#6a5c42;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fond);color:var(--texte);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;padding:28px 18px 60px}
+  h1{font-weight:500;font-size:22px;margin:0 0 4px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 6px}
+  .exemple{color:var(--doux);font-size:13px;margin:0 0 24px;font-style:italic}
+  .grille-cartes{display:grid;gap:22px;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    max-width:800px;margin:0 auto}
+  .carte{background:var(--carte);border:1px solid var(--trait);
+    border-radius:14px;padding:22px 20px;display:flex;flex-direction:column}
+  .carte h2{font-weight:500;font-size:17px;margin:0 0 2px}
+  .carte .tag{color:var(--accent);font-size:12px;letter-spacing:.04em;
+    text-transform:uppercase;margin:0 0 14px}
+  .carte svg{display:block;margin:6px auto 14px;width:100%;height:auto;max-width:360px}
+  .carte p{font-size:13.5px;color:var(--doux);margin:0 0 8px}
+  .legende{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--doux);margin:2px 0 10px}
+  .legende span{display:inline-flex;align-items:center;gap:5px}
+  .pastille{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .num{font-family:Georgia,serif;text-anchor:middle;dominant-baseline:central}
+</style>
+</head>
+<body>
+<h1>La Trame en cours de tissage</h1>
+<p class="sous">Le portrait comme une étoffe sur le métier : dense là où tu as de la force, <b>ouverte là où il reste à tisser</b>.</p>
+<p class="exemple">14/07/1985, « Martin Boucher ». 9 secteurs = les 9 qualités · densité du tissu = ta force · le 7 (absent) = une zone encore ouverte, fils de chaîne nus.</p>
+
+<div class="grille-cartes">
+  <div class="carte">
+    <h2>V1 — Le métier à tisser</h2>
+    <div class="tag">chaîne tendue, trame en cours</div>
+    <svg id="s1" viewBox="0 0 340 340"></svg>
+    <div class="legende">
+      <span><i class="pastille" style="background:var(--feu)"></i>Feu</span>
+      <span><i class="pastille" style="background:var(--terre)"></i>Terre</span>
+      <span><i class="pastille" style="background:var(--air)"></i>Air</span>
+      <span><i class="pastille" style="background:var(--eau)"></i>Eau</span>
+    </div>
+    <p>Les fils de chaîne (rayons) sont tous tendus dès le départ. La trame (anneaux, couleur = élément) se tisse par-dessus, dessus/dessous, plus ou moins loin selon ta force. Le 7 : chaîne nue, tissu à faire. Le fil libre = le tissage en cours.</p>
+  </div>
+
+  <div class="carte">
+    <h2>V2 — La tresse (base C2)</h2>
+    <div class="tag">fils entrelacés, maille manquante</div>
+    <svg id="s2" viewBox="0 0 340 340"></svg>
+    <p>Les qualités reliées par des fils tressés en rosace. Là où c'est un chantier, la tresse s'ouvre : une maille reste défaite, à reprendre.</p>
+  </div>
+</div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const C=getComputedStyle(document.documentElement);
+const col=n=>C.getPropertyValue('--'+n).trim();
+const ELEM={feu:col('feu'),terre:col('terre'),air:col('air'),eau:col('eau')};
+const polar=(cx,cy,r,deg)=>{const a=(deg-90)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];};
+function txt(svg,x,y,s,o={}){const t=el('text',{x,y,class:'num','font-size':o.size||18,fill:o.fill||col('texte')});t.textContent=s;svg.appendChild(t);}
+function lab(svg,x,y,s,c){const t=el('text',{x,y,'text-anchor':'middle','font-size':8.5,fill:c||col('doux'),'font-family':'sans-serif'});t.textContent=s;svg.appendChild(t);}
+const rnd=(a,b)=>a+Math.random()*(b-a);
+
+const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'terre',9:'feu'};
+const counts={1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3};
+const MAX=3;
+const CX=170,CY=170;
+const R0=34, R1=152, NR=11;               // anneaux de trame
+const ringR=[...Array(NR)].map((_,k)=>R0+(R1-R0)*k/(NR-1));
+
+/* ===== V1 : le métier à tisser ===== */
+(function(){
+  const svg=document.getElementById('s1');
+  const SPAN=40, warpsPerSec=4;
+  // --- fils de chaîne : tous tendus jusqu'au bord (toujours complets) ---
+  const warpAngles=[];
+  for(let n=1;n<=9;n++){const c0=(n-1)*SPAN;
+    for(let w=0;w<warpsPerSec;w++){
+      const ang=c0-SPAN/2 + SPAN*(w+0.5)/warpsPerSec;
+      warpAngles.push(ang);
+      const[x,y]=polar(CX,CY,R1+6,ang);
+      svg.appendChild(el('line',{x1:CX,y1:CY,x2:x,y2:y,stroke:col('chaine'),'stroke-width':0.9,opacity:0.5}));
+    }
+  }
+  // --- trame tissée par secteur (polylignes organiques + dessus/dessous par anneau) ---
+  function weftArc(k,a0,a1,tint,op,over){
+    let d='';const step=2.2;
+    for(let a=a0;a<=a1+0.01;a+=step){
+      const rr=ringR[k]+Math.sin(a*0.6)*1.3;      // léger flottement = organique
+      const[x,y]=polar(CX,CY,rr,a);
+      d+=(d===''?'M':'L')+x.toFixed(1)+' '+y.toFixed(1)+' ';
+    }
+    svg.appendChild(el('path',{d,fill:'none',stroke:tint,'stroke-width':over?2.6:2.6,
+      opacity:op,'stroke-linecap':'round'}));
+  }
+  const woven={};
+  for(let n=1;n<=9;n++){
+    const c=counts[n], e=elemNombre[n], c0=(n-1)*SPAN;
+    const a0=c0-SPAN/2+1.5, a1=c0+SPAN/2-1.5;
+    // hauteur tissée = force ; petit bord irrégulier pour l'effet "en cours"
+    let hi = c>0 ? Math.round((NR-1)*c/MAX) : -1;
+    if(c>0) hi = Math.max(1, hi - (Math.random()<0.5?1:0));   // bord de progression inégal
+    woven[n]=hi;
+    for(let k=0;k<=hi;k++){
+      const op=0.85 - k*0.02;
+      weftArc(k,a0,a1,ELEM[e],op,false);                       // trame (sous)
+    }
+  }
+  // --- chaîne redessinée par-dessus sur zones tissées -> impression dessus/dessous ---
+  warpAngles.forEach(ang=>{
+    const n=Math.floor(((ang+SPAN/2)%360)/SPAN)+1; const hi=woven[n]??-1;
+    if(hi<0)return;
+    const rMax=ringR[Math.max(0,hi)];
+    const[x,y]=polar(CX,CY,rMax,ang);
+    svg.appendChild(el('line',{x1:CX,y1:CY,x2:x,y2:y,stroke:col('chaine'),'stroke-width':0.9,opacity:0.7}));
+  });
+  // --- trame redessinée : un anneau sur deux repasse DESSUS la chaîne ---
+  for(let n=1;n<=9;n++){
+    const c=counts[n],e=elemNombre[n],c0=(n-1)*SPAN,a0=c0-SPAN/2+1.5,a1=c0+SPAN/2-1.5,hi=woven[n];
+    for(let k=0;k<=hi;k++) if(k%2===1) weftArc(k,a0,a1,ELEM[e],0.9,true);
+  }
+  // --- chantier (7) : fils de trame libres, non tissés (le "à faire") ---
+  for(let n=1;n<=9;n++){ if(counts[n]>0) continue;
+    const c0=(n-1)*SPAN, e=elemNombre[n];
+    for(let t=0;t<3;t++){
+      const ang=c0-8+t*8, r=R0+18+t*6;
+      let d='';for(let s=0;s<=6;s++){const[x,y]=polar(CX,CY,R0+s*(r-R0)/6, ang+Math.sin(s)*3.2);d+=(s===0?'M':'L')+x.toFixed(1)+' '+y.toFixed(1)+' ';}
+      svg.appendChild(el('path',{d,fill:'none',stroke:ELEM[e],'stroke-width':1.4,opacity:0.5,'stroke-linecap':'round','stroke-dasharray':'1 3'}));
+    }
+    const[lx,ly]=polar(CX,CY,R1-30,c0);
+    lab(svg,lx,ly,'à tisser',col('doux'));
+  }
+  // --- la navette : le tissage en cours, sur le secteur le plus avancé ---
+  let best=1;for(let n=1;n<=9;n++) if((woven[n]??-1)>(woven[best]??-1)) best=n;
+  const bc=(best-1)*SPAN, br=ringR[woven[best]];
+  const[sx,sy]=polar(CX,CY,br,bc+SPAN/2);
+  const[ex,ey]=polar(CX,CY,br+22,bc+SPAN/2+10);
+  svg.appendChild(el('line',{x1:sx,y1:sy,x2:ex,y2:ey,stroke:col('accent'),'stroke-width':1.6,opacity:0.9,'stroke-linecap':'round'}));
+  svg.appendChild(el('ellipse',{cx:ex,cy:ey,rx:6,ry:2.6,fill:col('accent'),
+    transform:`rotate(${bc+SPAN/2+55} ${ex} ${ey})`}));
+  // --- étiquettes des qualités au bord ---
+  for(let n=1;n<=9;n++){const[x,y]=polar(CX,CY,R1+18,(n-1)*SPAN);
+    txt(svg,x,y,n,{size:11,fill:counts[n]>0?col('doux'):col('feu')});}
+  // --- cœur : Cap ---
+  svg.appendChild(el('circle',{cx:CX,cy:CY,r:20,fill:col('fond'),stroke:col('accent'),'stroke-width':1.5}));
+  svg.appendChild(el('circle',{cx:CX,cy:CY,r:15,fill:col('accent')}));
+  txt(svg,CX,CY,8,{size:18,fill:col('fond')});
+})();
+
+/* ===== V2 : la tresse (base C2) avec maille manquante ===== */
+(function(){
+  const svg=document.getElementById('s2');
+  const P=9,R=150;
+  const pts=[...Array(P)].map((_,i)=>polar(CX,CY,R,i*360/P));
+  const chantiers=new Set([7-1]); // index du 7 (n-1)
+  function tresse(step,tint,op){
+    for(let i=0;i<P;i++){
+      const j=(i+step)%P;
+      if(chantiers.has(i)||chantiers.has(j)) continue;  // maille défaite près d'un chantier
+      const[x1,y1]=pts[i],[x2,y2]=pts[j];
+      // légère courbure vers le centre = fil tendu
+      const mx=(x1+x2)/2, my=(y1+y2)/2;
+      const cx=CX+(mx-CX)*0.55, cy=CY+(my-CY)*0.55;
+      svg.appendChild(el('path',{d:`M${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`,fill:'none',
+        stroke:tint,'stroke-width':1.3,opacity:op,'stroke-linecap':'round'}));
+    }
+  }
+  tresse(2,col('chaine'),0.6);
+  tresse(3,ELEM.eau,0.3);
+  tresse(4,ELEM.terre,0.28);
+  // sommets = qualités
+  for(let n=1;n<=9;n++){const[x,y]=pts[n-1],c=counts[n],e=elemNombre[n];
+    if(c>0){svg.appendChild(el('circle',{cx:x,cy:y,r:6+c*2,fill:ELEM[e],'fill-opacity':0.35,stroke:ELEM[e],'stroke-width':1.4}));
+      txt(svg,x,y,n,{size:12});}
+    else{ // maille défaite : fils libres qui pendent
+      for(let t=0;t<3;t++){svg.appendChild(el('path',{d:`M${x} ${y} q ${rnd(-6,6)} 10 ${rnd(-4,4)} 20`,fill:'none',stroke:col('feu'),'stroke-width':1.2,opacity:0.55,'stroke-linecap':'round'}));}
+      svg.appendChild(el('circle',{cx:x,cy:y,r:9,fill:col('fond'),stroke:col('feu'),'stroke-width':1,'stroke-dasharray':'2 3'}));
+      txt(svg,x,y,n,{size:12,fill:col('feu')});
+      lab(svg,x,y-15,'défait',col('feu'));
+    }
+  }
+  // cœur
+  svg.appendChild(el('circle',{cx:CX,cy:CY,r:19,fill:col('fond'),stroke:col('accent'),'stroke-width':1.5}));
+  svg.appendChild(el('circle',{cx:CX,cy:CY,r:14,fill:col('accent')}));
+  txt(svg,CX,CY,8,{size:18,fill:col('fond')});
+})();
+</script>
+</body>
+</html>
