@@ -100,6 +100,10 @@ function proxStrong(mx,my){let best=0;
     const v=s.imp*(1-dd/FALLSTR);if(v>best)best=v;}
   return best;}
 const clamp=v=>Math.max(0,Math.min(255,v));
+/* étendue radiale = compte : la qualité se tisse d'autant plus loin qu'elle est nommée */
+const refMax=Math.max(3,...Object.values(p.counts));
+const RSTART=0.17*CLIP;
+const rayonTisse=n=>RSTART+(CLIP-RSTART)*(p.counts[n]/refMax);
 
 /* ---- pétales ---- */
 function arcPts(cx,cy,r,a1,a2){const dA=norm(a2-a1),n=Math.max(3,Math.ceil(Math.abs(dA)/(Math.PI/26))),o=[];
@@ -126,9 +130,12 @@ for(let a=0;a<FOL.length;a++)for(let b=a+1;b<FOL.length;b++){
   const dd=Math.hypot(FOL[a][0]-FOL[b][0],FOL[a][1]-FOL[b][1]);if(Math.abs(dd-RFOL)>1)continue;
   const pet=petale(FOL[a],FOL[b],RFOL);if(!pet)continue;
   const n=qualiteAt(pet.cx,pet.cy),e=elemNombre[n],f=force(n);
+  const rc=Math.hypot(pet.cx-CX,pet.cy-CY);
   const path=new Path2D();pet.pts.forEach(([x,y],i)=>i?path.lineTo(x,y):path.moveTo(x,y));path.closePath();
   if(f<=0){ // chantier : quasi vide, grisé, transparent
     ctx.strokeStyle='rgba(150,130,90,0.14)';ctx.lineWidth=0.8*S;ctx.stroke(path);continue;}
+  if(rc>rayonTisse(n)){ // au-delà de l'étendue tissée : pétale non tissé (contour ténu)
+    ctx.strokeStyle=`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},0.10)`;ctx.lineWidth=0.7*S;ctx.stroke(path);continue;}
   const prox=proxStrong(pet.cx,pet.cy);
   const V=Math.min(1, 0.14 + 0.5*f + 0.9*prox);            // vigueur de la case
   const vivid=mix(DARK[e],LIGHT[e],0.30+0.52*V);
