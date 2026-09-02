@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Align — Portrait à positions sémantiques</title>
+<title>Align — Portrait sémantique (cliquable)</title>
 <style>
   :root{--doux:#9a8f78;--texte:#e9e1d2}
   *{box-sizing:border-box}
@@ -12,27 +12,56 @@
   .wrap{max-width:780px;margin:0 auto;text-align:center}
   h1{font-weight:500;font-size:23px;margin:0 0 6px}
   .sous{color:var(--doux);font-size:14px;margin:0 0 4px}
-  .exemple{color:var(--doux);font-size:12.5px;margin:0 0 18px;font-style:italic}
-  canvas{display:block;margin:0 auto;width:100%;height:auto;max-width:700px;border-radius:8px}
-  .notes{text-align:left;max-width:600px;margin:16px auto 0;color:var(--doux);font-size:12.5px}
-  .notes b{color:var(--texte);font-weight:500}
+  .exemple{color:var(--doux);font-size:12.5px;margin:0 0 14px;font-style:italic}
+  canvas{display:block;margin:0 auto;width:100%;height:auto;max-width:700px;border-radius:8px;cursor:pointer}
+  #panneau{max-width:600px;margin:14px auto 0;background:#12100c;border:1px solid #33291b;border-radius:12px;
+    padding:16px 18px;text-align:left;min-height:78px}
+  #panneau .titre{font-size:16px;color:#f0d9a6;font-weight:500;margin:0 0 6px}
+  #panneau .corps{font-size:14px;color:var(--texte);margin:0 0 8px}
+  #panneau .dou{font-size:12px;color:var(--doux);font-style:italic;margin:0}
+  #panneau .vide{color:var(--doux);font-size:13px;font-style:italic}
   #err{color:#c06a5a;font-size:12px;margin-top:12px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Portrait — positions sémantiques</h1>
-  <p class="sous">Chaque nombre a une place fixe qui porte son sens : on lit son thème au premier coup d'œil.</p>
-  <p class="exemple">Martin Boucher, 6 avril 1980 (données réelles). Cap 1 au centre · Héritage 19 en bas · Année 2 en haut.</p>
+  <h1>Portrait sémantique — cliquable</h1>
+  <p class="sous">Positions fixes qui portent le sens · <b>clique sur n'importe quel chiffre</b> pour lire son texte.</p>
+  <p class="exemple">Martin Boucher, 6 avril 1980 (données réelles).</p>
   <canvas id="c" width="1400" height="1400"></canvas>
-  <div class="notes">
-    <p><b>Lecture fixe :</b> <b>centre</b> = Cap (ta direction) ; <b>bas</b> = Héritage (racines) ; <b>haut</b> = Ton année (horizon), entre les 2 Défis. <b>Gauche</b> = Tempérament (Foyer, Élan, Reflet, de ta date) ; <b>droite</b> = Expression (Source→Voix→Trace, de ton nom). Les <b>9 qualités</b> en couronne, par plan : Esprit (haut), Âme (droite), Matière (bas). Personnalisation par les couleurs/forces, plus par l'orientation.</p>
-  </div>
+  <div id="panneau"><span class="vide">Clique sur un chiffre du dessin (Cap, un nombre de la graine, une qualité, un Défi, l'Héritage, l'Année) pour lire ce qu'il raconte.</span></div>
   <p id="err"></p>
 </div>
 
 <script>
 try{
+/* ===== textes du corpus (extraits réels de lexique.json) ===== */
+const TEXTS={
+ termes:{
+  cap:{nom:"Le Cap",quoi:"Ta direction de fond — ce vers quoi tu tends sans avoir eu à le décider.",dou:"Il se calcule à partir de ta date de naissance complète."},
+  voix:{nom:"La Voix",quoi:"Ce qui s'exprime de toi vers l'extérieur — la façon dont tu te fais entendre.",dou:"Elle se calcule à partir de toutes les lettres de ton état civil."},
+  foyer:{nom:"Le Foyer",quoi:"Ton centre intérieur — ce vers quoi tu reviens quand personne ne regarde.",dou:"Il se calcule à partir de ton jour et de ton mois de naissance."},
+  elan:{nom:"L'Élan",quoi:"L'énergie qui se dégage de l'ensemble — la résultante des trois autres.",dou:"Il combine ton Cap, ta Voix et ton Foyer."},
+  reflet:{nom:"Le Reflet",quoi:"L'image que tu renvoies aux autres, avant même d'avoir parlé.",dou:"Il se calcule à partir de ton jour de naissance."},
+  source:{nom:"La Source",quoi:"Ce qui te nourrit affectivement — ce dont tu as besoin pour tenir.",dou:"Elle se calcule à partir des voyelles de ton nom."},
+  trace:{nom:"La Trace",quoi:"Ce que tu cherches à accomplir, ce que tu voudrais laisser.",dou:"Elle se calcule à partir des consonnes de ton nom."},
+  heritages:{nom:"Les Héritages",quoi:"Des schémas reçus — de ta famille, de ton milieu — que tu n'as pas choisis mais qui te traversent.",dou:"Quatre nombres particuliers (13, 14, 16, 19) qui apparaissent dans tes calculs."},
+  frictions:{nom:"Un Défi",quoi:"Un écart entre deux parties de toi qui ne tirent pas dans le même sens.",dou:"Les Frictions se calculent par les différences entre les morceaux de ta date de naissance."},
+  annee_personnelle:{nom:"Ton année",quoi:"Le climat de l'année en cours pour toi. Elle tourne sur un cycle de neuf ans, puis recommence.",dou:"Elle combine ton jour et ton mois de naissance avec l'année du calendrier."}
+ },
+ qualites:{
+  1:{nom:"Action",quoi:"Décider, initier, prendre les devants — ce n'est pas un réflexe chez toi. Tu attends parfois que la vie tranche à ta place. Ce chantier se bâtit petit : une décision modeste, puis une autre."},
+  2:{nom:"Regard",quoi:"Voir l'autre pour de vrai, et te sentir vu en retour — ça ne va pas de soi. Tu fusionnes avec qui t'entoure, ou tu t'effaces devant lui. S'arrêter, écouter, regarder : ça s'apprivoise avec le temps."},
+  3:{nom:"Communication",quoi:"Dire ce qui se passe en toi, avec justesse — ce n'est pas naturel chez toi. Les mots restent bloqués, ou sortent plus durs que prévu. Ce chantier se travaille en petit comité, avant les grandes scènes."},
+  4:{nom:"Travail",quoi:"La régularité, la discipline, tenir un cadre — ça te coûte plus qu'à d'autres. Tu fuis la contrainte, ou tu t'y noies entièrement. Un cadre choisi, plutôt que subi, aide à l'apprivoiser."},
+  5:{nom:"Liberté",quoi:"Savoir qui tu es et gérer ta liberté — ce chantier ne va pas de soi. Tu t'enfermes dans une routine, ou tu t'emballes sans mesurer la suite. Le terrain à bâtir : une liberté qui tient dans la durée."},
+  6:{nom:"Lien",quoi:"Te reconnaître dans tes liens proches — amoureux, familiaux, amicaux — demande du travail. Tu attends beaucoup de l'autre, ou tu contrôles pour éviter d'être blessé. Lâcher un peu, sans tout lâcher : voilà le chantier."},
+  7:{nom:"Confiance",quoi:"La confiance en toi, et l'ouverture à ce qui te dépasse — ce n'est pas acquis d'avance. Tu doutes de toi, ou tu compenses en jouant celui qui sait tout. Ce chantier se nourrit de tout ce qui t'aide à mieux te connaître."},
+  8:{nom:"Réalisation",quoi:"Prendre ta place et t'y sentir légitime — ce chantier demande du temps. Tu te vis en victime, ou tu bouscules pour exister. Te faire respecter, sans violence, ouvre la voie."},
+  9:{nom:"Groupe",quoi:"Trouver ta place parmi les autres, ni trop loin ni fondu dedans — ça ne va pas de soi. Tu t'isoles, ou tu t'oublies à force de te dévouer. S'ouvrir au monde, à ton rythme : voilà le chantier."}
+ }
+};
+
 const cv=document.getElementById('c'), W=cv.width, H=cv.height, ctx=cv.getContext('2d',{willReadFrequently:true});
 const CX=W/2, CY=H/2, S=W/700;
 const CLIP=248*S, RFOL=66*S, SPAN=40, MAX=3;
@@ -41,8 +70,7 @@ const NOM={1:'Action',2:'Regard',3:'Communication',4:'Travail',5:'Liberté',6:'L
 const DARK ={feu:[74,22,18], eau:[16,42,62], air:[80,60,22], terre:[24,54,34]};
 const LIGHT={feu:[214,116,74],eau:[100,158,192],air:[228,196,116],terre:[116,168,102]};
 const p={seed:6041980, jour:6, cap:1,voix:3,foyer:1,elan:5,reflet:6,source:6,trace:6,geste:1,
-  counts:{1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3},
-  frictions:[2,3], heritages:[19], annee:2};
+  counts:{1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3}, frictions:[2,3], heritages:[19], annee:2};
 function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 const rng=mulberry32(p.seed);
 const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
@@ -50,13 +78,15 @@ const force=n=>{const c=p.counts[n];return c<=0?0:c/MAX;};
 const impNb=v=>v>=11?1:v/9;
 const norm=a=>{while(a>Math.PI)a-=2*Math.PI;while(a<=-Math.PI)a+=2*Math.PI;return a;};
 const dg=d=>d*Math.PI/180;
+const clamp=v=>Math.max(0,Math.min(255,v));
+const TARGETS=[];   // zones cliquables
 
-/* ---- 9 qualités groupées par plan (fixe) : Esprit(3,6,9) haut, Âme(2,5,8) droite, Matière(1,4,7) bas ---- */
-const ORDER=[6,9,2,5,8,1,4,7,3];             // secteur k (centre = -90+40k) -> quantité
+/* 9 qualités par plan */
+const ORDER=[6,9,2,5,8,1,4,7,3];
 function sectorK(aDeg){const d=((aDeg+110)%360+360)%360;return Math.floor(d/SPAN)%9;}
 function qualiteAt(mx,my){const a=Math.atan2(my-CY,mx-CX)*180/Math.PI;return ORDER[sectorK(a)];}
 
-/* ---- fleur de vie ---- */
+/* fleur de vie */
 function folCenters(){const dy=RFOL*Math.sqrt(3)/2,seen=new Set(),list=[];
   for(let row=-2;row<=2;row++)for(let i=-2;i<=2;i++){
     const x=CX+i*RFOL+(row&1?RFOL/2:0),y=CY+row*dy,k=Math.round(x)+','+Math.round(y);
@@ -71,41 +101,33 @@ function nearest(list,used,targetDeg){let best=null,bd=1e9;const tt=dg(targetDeg
   list.forEach(c=>{if(used.has(c.idx))return;const df=Math.abs(norm(c.a-tt));if(df<bd){bd=df;best=c;}});
   if(best)used.add(best.idx);return best;}
 
-/* ---- graine : Cap centre + 6 nombres à positions fixes ---- */
+/* graine : Cap centre + 6 nombres */
 const usedI=new Set();
 const GRAINE=[
-  {nom:'Source',val:p.source,deg:-60},{nom:'Voix',val:p.voix,deg:0},{nom:'Trace',val:p.trace,deg:60},
-  {nom:'Foyer',val:p.foyer,deg:-120},{nom:'Élan',val:p.elan,deg:180},{nom:'Reflet',val:p.reflet,deg:120},
+  {key:'source',nom:'Source',val:p.source,deg:-60},{key:'voix',nom:'Voix',val:p.voix,deg:0},{key:'trace',nom:'Trace',val:p.trace,deg:60},
+  {key:'foyer',nom:'Foyer',val:p.foyer,deg:-120},{key:'elan',nom:'Élan',val:p.elan,deg:180},{key:'reflet',nom:'Reflet',val:p.reflet,deg:120},
 ].map(it=>{const c=nearest(inner,usedI,it.deg);return c?{...it,x:c.x,y:c.y,idx:c.idx}:it;});
 const graineIdx=new Map();GRAINE.forEach(g=>graineIdx.set(g.idx,g.val));
 
-/* ---- anneau extérieur : Année haut, Défis flancs haut, Héritage bas ---- */
+/* anneau extérieur */
 const usedO=new Set();
 const OUTER=[
-  {lab:'Année',val:p.annee,kind:'an',deg:-90},
-  {lab:'Défi',val:p.frictions[0],kind:'defi',deg:-142},
-  {lab:'Défi',val:p.frictions[1],kind:'defi',deg:-38},
-  ...(p.heritages.length?[{lab:'Héritage',val:p.heritages[0],kind:'her',deg:90}]:[]),
+  {key:'annee_personnelle',lab:'Année',val:p.annee,kind:'an',deg:-90},
+  {key:'frictions',lab:'Défi',val:p.frictions[0],kind:'defi',deg:-142},
+  {key:'frictions',lab:'Défi',val:p.frictions[1],kind:'defi',deg:-38},
+  ...(p.heritages.length?[{key:'heritages',lab:'Héritage',val:p.heritages[0],kind:'her',deg:90}]:[]),
 ].map(it=>{const c=nearest(outer,usedO,it.deg);return c?{...it,x:c.x,y:c.y,idx:c.idx}:it;}).filter(o=>o.x);
 const outerIdx=new Set(OUTER.map(o=>o.idx));
 
-/* ---- carte de proximité aux LIGNES FORTES (cercles à nombre élevé + nœuds extérieurs) ---- */
+/* proximité aux lignes fortes */
 const STRONG=[];
 GRAINE.forEach(g=>{if(g.x!==undefined)STRONG.push({x:g.x,y:g.y,imp:impNb(g.val)});});
 OUTER.forEach(o=>STRONG.push({x:o.x,y:o.y,imp:0.5}));
 STRONG.push({x:CX,y:CY,imp:impNb(p.cap)});
 const FALLSTR=RFOL*1.7;
-function proxStrong(mx,my){let best=0;
-  for(const s of STRONG){const dd=Math.hypot(mx-s.x,my-s.y);if(dd>FALLSTR)continue;
-    const v=s.imp*(1-dd/FALLSTR);if(v>best)best=v;}
-  return best;}
-const clamp=v=>Math.max(0,Math.min(255,v));
-/* étendue radiale = compte : la qualité se tisse d'autant plus loin qu'elle est nommée */
-const refMax=Math.max(3,...Object.values(p.counts));
-const RSTART=0.17*CLIP;
-const rayonTisse=n=>RSTART+(CLIP-RSTART)*(p.counts[n]/refMax);
+function proxStrong(mx,my){let best=0;for(const s of STRONG){const dd=Math.hypot(mx-s.x,my-s.y);if(dd>FALLSTR)continue;const v=s.imp*(1-dd/FALLSTR);if(v>best)best=v;}return best;}
 
-/* ---- pétales ---- */
+/* pétales */
 function arcPts(cx,cy,r,a1,a2){const dA=norm(a2-a1),n=Math.max(3,Math.ceil(Math.abs(dA)/(Math.PI/26))),o=[];
   for(let i=0;i<=n;i++){const a=a1+dA*i/n;o.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}return o;}
 function petale(A,B,r){const dx=B[0]-A[0],dy=B[1]-A[1],dd=Math.hypot(dx,dy);if(dd<1||dd>2*r)return null;
@@ -119,71 +141,74 @@ function petale(A,B,r){const dx=B[0]-A[0],dy=B[1]-A[1],dd=Math.hypot(dx,dy);if(d
 ctx.fillStyle='#070609';ctx.fillRect(0,0,W,H);
 for(let i=0;i<80;i++){const x=rng()*W,y=rng()*H,a=0.08+rng()*0.24;
   ctx.beginPath();ctx.arc(x,y,0.7*S,0,7);ctx.fillStyle=`rgba(210,210,232,${a})`;ctx.fill();}
-// axes discrets (croix de lecture)
 ctx.strokeStyle='rgba(150,140,110,0.10)';ctx.lineWidth=1*S;
 ctx.beginPath();ctx.moveTo(CX,CY-CLIP-40*S);ctx.lineTo(CX,CY+CLIP+40*S);ctx.stroke();
 ctx.beginPath();ctx.moveTo(CX-CLIP-40*S,CY);ctx.lineTo(CX+CLIP+40*S,CY);ctx.stroke();
 
-/* ---- pétales tissés (couleur = qualité du secteur, force = compte) ---- */
+/* ---- pétales tissés (saturation contrastée par vigueur) ---- */
 ctx.save();ctx.beginPath();ctx.arc(CX,CY,CLIP,0,7);ctx.clip();
 for(let a=0;a<FOL.length;a++)for(let b=a+1;b<FOL.length;b++){
   const dd=Math.hypot(FOL[a][0]-FOL[b][0],FOL[a][1]-FOL[b][1]);if(Math.abs(dd-RFOL)>1)continue;
   const pet=petale(FOL[a],FOL[b],RFOL);if(!pet)continue;
   const n=qualiteAt(pet.cx,pet.cy),e=elemNombre[n],f=force(n);
-  const rc=Math.hypot(pet.cx-CX,pet.cy-CY);
   const path=new Path2D();pet.pts.forEach(([x,y],i)=>i?path.lineTo(x,y):path.moveTo(x,y));path.closePath();
-  if(f<=0){ // chantier : quasi vide, grisé, transparent
-    ctx.strokeStyle='rgba(150,130,90,0.14)';ctx.lineWidth=0.8*S;ctx.stroke(path);continue;}
-  if(rc>rayonTisse(n)){ // au-delà de l'étendue tissée : pétale non tissé (contour ténu)
-    ctx.strokeStyle=`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},0.10)`;ctx.lineWidth=0.7*S;ctx.stroke(path);continue;}
+  if(f<=0){ctx.strokeStyle='rgba(150,130,90,0.14)';ctx.lineWidth=0.8*S;ctx.stroke(path);continue;}
   const prox=proxStrong(pet.cx,pet.cy);
-  const V=Math.min(1, 0.14 + 0.5*f + 0.9*prox);            // vigueur de la case
+  const V=Math.min(1, 0.14 + 0.5*f + 0.9*prox);
   const vivid=mix(DARK[e],LIGHT[e],0.30+0.52*V);
   const lum=vivid[0]*0.3+vivid[1]*0.5+vivid[2]*0.2;
-  const sat=0.28+1.15*V;                                    // terne (gris) -> sursaturé
+  const sat=0.28+1.15*V;
   let col=vivid.map(v=>clamp(lum+(v-lum)*sat));
-  col=mix(col,[240,214,150],0.16*prox);                    // chaleur dorée près des fils forts
+  col=mix(col,[240,214,150],0.16*prox);
   const jit=(rng()-0.5)*10; col=col.map(v=>clamp(v+jit));
-  const alpha=0.16+0.72*V;                                  // transparent (faible) -> opaque (fort)
+  const alpha=0.16+0.72*V;
   ctx.fillStyle=`rgba(${col[0]|0},${col[1]|0},${col[2]|0},${alpha})`;ctx.fill(path);
   ctx.strokeStyle=`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},${0.12+0.28*V})`;ctx.lineWidth=0.6*S;ctx.stroke(path);}
 ctx.restore();
 
-/* ---- fils d'or ---- */
+/* ---- fils d'or (luminosité AMPLIFIÉE pour les forts) ---- */
 function strokeImp(imp,draw){
-  const alpha=0.12+0.7*imp, w=(0.6+1.8*imp)*S, c=mix([196,158,92],[255,244,214],imp);
-  ctx.save();if(imp>0.4){ctx.shadowColor=`rgba(255,214,144,${0.3+0.45*imp})`;ctx.shadowBlur=(4+9*imp)*S;}
+  const alpha=0.12+0.85*imp, w=(0.6+2.6*imp)*S, c=mix([196,158,92],[255,248,222],imp);
+  ctx.save();
+  if(imp>0.3){ctx.shadowColor=`rgba(255,216,150,${0.35+0.5*imp})`;ctx.shadowBlur=(5+16*imp)*S;}
   ctx.strokeStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${alpha})`;ctx.lineWidth=w;
-  ctx.beginPath();draw();ctx.stroke();ctx.restore();}
+  ctx.beginPath();draw();ctx.stroke();ctx.restore();
+  if(imp>0.55){ // deuxième passe : cœur blanc lumineux sur les très forts
+    ctx.save();ctx.strokeStyle=`rgba(255,252,238,${0.3*imp})`;ctx.lineWidth=Math.max(0.4,w*0.4);
+    ctx.beginPath();draw();ctx.stroke();ctx.restore();}
+}
 FOL.forEach(([x,y],idx)=>{const gv=graineIdx.get(idx);
-  strokeImp(gv!==undefined?impNb(gv):(outerIdx.has(idx)?0.3:0.12),()=>ctx.arc(x,y,RFOL,0,7));});
-strokeImp(0.4,()=>ctx.arc(CX,CY,CLIP,0,7));
+  strokeImp(gv!==undefined?impNb(gv):(outerIdx.has(idx)?0.35:0.12),()=>ctx.arc(x,y,RFOL,0,7));});
+strokeImp(0.45,()=>ctx.arc(CX,CY,CLIP,0,7));
 
-/* ---- cœur : Cap ---- */
+/* ---- cœur : Cap (cliquable) ---- */
 ctx.beginPath();ctx.arc(CX,CY,27*S,0,7);ctx.fillStyle='#0b0913';ctx.fill();
-strokeImp(0.14+0.66*impNb(p.cap),()=>ctx.arc(CX,CY,27*S,0,7));
+strokeImp(0.2+0.7*impNb(p.cap),()=>ctx.arc(CX,CY,27*S,0,7));
 ctx.textAlign='center';ctx.textBaseline='middle';
 ctx.fillStyle='#f2ead8';ctx.font=`${30*S}px Georgia`;ctx.fillText(p.cap,CX,CY-3*S);
 ctx.fillStyle='rgba(233,225,210,0.6)';ctx.font=`${11*S}px sans-serif`;ctx.fillText('Cap',CX,CY+17*S);
+TARGETS.push({x:CX,y:CY,r:30*S,type:'terme',key:'cap',val:p.cap});
 
-/* ---- graine : 6 nombres ---- */
-GRAINE.forEach(({x,y,val,nom})=>{if(x===undefined)return;
+/* ---- graine : 6 nombres (cliquables) ---- */
+GRAINE.forEach(({x,y,val,nom,key})=>{if(x===undefined)return;
   ctx.beginPath();ctx.arc(x,y,15*S,0,7);ctx.fillStyle='rgba(11,9,19,0.85)';ctx.fill();
-  ctx.lineWidth=1.4*S;ctx.strokeStyle=`rgba(240,214,150,${0.5+0.4*impNb(val)})`;ctx.stroke();
+  strokeImp(0.25+0.6*impNb(val),()=>ctx.arc(x,y,15*S,0,7));
   ctx.fillStyle='#f2ead8';ctx.font=`${16*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(val,x,y);
-  ctx.fillStyle='rgba(233,225,210,0.6)';ctx.font=`${9.5*S}px sans-serif`;ctx.fillText(nom,x,y+22*S);});
+  ctx.fillStyle='rgba(233,225,210,0.6)';ctx.font=`${9.5*S}px sans-serif`;ctx.fillText(nom,x,y+22*S);
+  TARGETS.push({x,y,r:20*S,type:'terme',key,val});});
 
-/* ---- anneau extérieur : Année / Défis / Héritage ---- */
+/* ---- anneau extérieur (cliquable) ---- */
 const KTINT={defi:[210,110,90], her:[240,200,120], an:[150,175,195]};
-OUTER.forEach(({x,y,val,lab,kind})=>{const tint=KTINT[kind];
-  ctx.save();ctx.shadowColor=`rgba(${tint[0]},${tint[1]},${tint[2]},0.4)`;ctx.shadowBlur=6*S;
+OUTER.forEach(({x,y,val,lab,kind,key})=>{const tint=KTINT[kind];
+  ctx.save();ctx.shadowColor=`rgba(${tint[0]},${tint[1]},${tint[2]},0.5)`;ctx.shadowBlur=8*S;
   ctx.beginPath();ctx.arc(x,y,14*S,0,7);ctx.fillStyle='rgba(11,9,19,0.9)';ctx.fill();
-  ctx.lineWidth=1.5*S;ctx.strokeStyle=`rgba(${tint[0]},${tint[1]},${tint[2]},0.9)`;
+  ctx.lineWidth=1.6*S;ctx.strokeStyle=`rgba(${tint[0]},${tint[1]},${tint[2]},0.95)`;
   if(kind==='defi')ctx.setLineDash([4*S,3*S]);ctx.stroke();ctx.setLineDash([]);ctx.restore();
   ctx.fillStyle='#f2ead8';ctx.font=`${15*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(val,x,y);
-  ctx.fillStyle=`rgba(${tint[0]},${tint[1]},${tint[2]},0.95)`;ctx.font=`${9.5*S}px sans-serif`;ctx.fillText(lab,x,y+21*S);});
+  ctx.fillStyle=`rgba(${tint[0]},${tint[1]},${tint[2]},0.95)`;ctx.font=`${9.5*S}px sans-serif`;ctx.fillText(lab,x,y+21*S);
+  TARGETS.push({x,y,r:20*S,type:'terme',key,val});});
 
-/* ---- noms des 9 qualités (par plan) + pastilles = compte ---- */
+/* ---- noms des 9 qualités (cliquables) ---- */
 ctx.font=`${12.5*S}px sans-serif`;
 for(let k=0;k<9;k++){const n=ORDER[k],a=dg(-90+k*SPAN),x=CX+(CLIP+36*S)*Math.cos(a),y=CY+(CLIP+36*S)*Math.sin(a);
   const c=p.counts[n],e=elemNombre[n];
@@ -191,19 +216,35 @@ for(let k=0;k<9;k++){const n=ORDER[k],a=dg(-90+k*SPAN),x=CX+(CLIP+36*S)*Math.cos
   ctx.textAlign=Math.abs(Math.cos(a))<0.3?'center':(Math.cos(a)>0?'left':'right');
   ctx.textBaseline=Math.sin(a)>0.3?'top':(Math.sin(a)<-0.3?'bottom':'middle');
   ctx.fillText(NOM[n],x,y);
-  if(c>0){for(let j=0;j<c;j++){const px=x+(j-(c-1)/2)*7*S,py=y+(Math.sin(a)>0?1:-1)*13*S;
-    ctx.beginPath();ctx.arc(px,py,2.2*S,0,7);ctx.fillStyle=`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},0.9)`;ctx.fill();}}}
+  TARGETS.push({x,y,r:52*S,type:'qualite',n,val:c});}
 
-/* ---- libellés de zones (la carte mentale) ---- */
+/* ---- libellés de zones ---- */
 ctx.fillStyle='rgba(154,143,120,0.7)';ctx.font=`italic ${12*S}px Georgia`;
 ctx.textAlign='center';ctx.textBaseline='middle';
-const RZ=CLIP+72*S;
+const RZ=CLIP+74*S;
 ctx.fillText('Esprit', CX, CY-RZ);
 ctx.fillText('Matière', CX-RZ*0.72, CY+RZ*0.72);
 ctx.fillText('Âme', CX+RZ*0.80, CY+RZ*0.55);
 ctx.fillStyle='rgba(154,143,120,0.55)';ctx.font=`italic ${11.5*S}px Georgia`;
 ctx.save();ctx.translate(CX-RZ,CY);ctx.rotate(-Math.PI/2);ctx.fillText('Tempérament (ta date)',0,0);ctx.restore();
 ctx.save();ctx.translate(CX+RZ,CY);ctx.rotate(Math.PI/2);ctx.fillText('Expression (ton nom)',0,0);ctx.restore();
+
+/* ===== interaction : clic -> texte ===== */
+const pan=document.getElementById('panneau');
+function showPanel(t){
+  let titre,corps,dou='';
+  if(t.type==='terme'){const d=TEXTS.termes[t.key];titre=d.nom+' — '+t.val;corps=d.quoi;dou=d.dou;}
+  else{const q=TEXTS.qualites[t.n];titre=q.nom+(t.val>0?' — présent '+t.val+'×':' — chantier (absent)');corps=q.quoi;
+    dou='Qualité de la grille — le compte dit à quel point elle est déjà tissée en toi.';}
+  pan.innerHTML=`<div class="titre">${titre}</div><div class="corps">${corps}</div><div class="dou">${dou}</div>`;
+}
+cv.addEventListener('click',e=>{const rect=cv.getBoundingClientRect();
+  const sx=cv.width/rect.width, sy=cv.height/rect.height;
+  const mx=(e.clientX-rect.left)*sx, my=(e.clientY-rect.top)*sy;
+  let best=null,bd=1e9;
+  TARGETS.forEach(t=>{const dd=Math.hypot(mx-t.x,my-t.y);if(dd<t.r&&dd<bd){bd=dd;best=t;}});
+  if(best)showPanel(best);
+});
 
 }catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
 </script>
