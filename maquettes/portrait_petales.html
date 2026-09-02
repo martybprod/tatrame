@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — Pétales tissés sur la Fleur de Vie</title>
+<style>
+  :root{
+    --fond:#120f0b; --carte:#1b1712; --trait:#3a3226;
+    --texte:#e9e1d2; --doux:#9a8f78; --accent:#d0a95f;
+    --feu:#c86a42; --terre:#88964f; --air:#d8bd70; --eau:#5f8fb0;
+    --fil:#c9a86a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(circle at 50% 40%,#191510,#0c0a07 80%);
+    color:var(--texte);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.55;padding:30px 18px 70px}
+  .wrap{max-width:720px;margin:0 auto;text-align:center}
+  h1{font-weight:500;font-size:23px;margin:0 0 6px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 4px}
+  .exemple{color:var(--doux);font-size:12.5px;margin:0 0 18px;font-style:italic}
+  svg{display:block;margin:0 auto;width:100%;height:auto;max-width:600px;
+    filter:drop-shadow(0 0 26px rgba(208,169,95,.12))}
+  .legende{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
+    font-size:12px;color:var(--doux);margin:16px 0 0}
+  .legende span{display:inline-flex;align-items:center;gap:6px}
+  .pastille{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .num{font-family:Georgia,serif;text-anchor:middle;dominant-baseline:central}
+  #err{color:#c06a5a;font-size:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pétales tissés sur la Fleur de Vie</h1>
+  <p class="sous">Chaque zone fermée du motif est un pétale « tissé » (teinté). Un chantier reste nu : pas encore tissé.</p>
+  <p class="exemple">14/07/1985, « Martin Boucher ». Feu dominant · le 7 = zone non tissée.</p>
+  <svg id="m" viewBox="0 0 600 600" role="img" aria-label="Mandala pétales"></svg>
+  <div class="legende">
+    <span><i class="pastille" style="background:var(--feu)"></i>Feu</span>
+    <span><i class="pastille" style="background:var(--terre)"></i>Terre</span>
+    <span><i class="pastille" style="background:var(--air)"></i>Air</span>
+    <span><i class="pastille" style="background:var(--eau)"></i>Eau</span>
+    <span><i class="pastille" style="background:var(--fil)"></i>fils du motif</span>
+  </div>
+  <p id="err"></p>
+</div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const add=(p,n,a)=>{const e=el(n,a);p.appendChild(e);return e;};
+const C=getComputedStyle(document.documentElement);
+const col=n=>C.getPropertyValue('--'+n).trim();
+const ELEM={feu:col('feu'),terre:col('terre'),air:col('air'),eau:col('eau')};
+const polar=(cx,cy,r,deg)=>{const a=(deg-90)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];};
+function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+const norm=a=>{while(a>Math.PI)a-=2*Math.PI;while(a<=-Math.PI)a+=2*Math.PI;return a;};
+
+const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'terre',9:'feu'};
+const p={seed:14071985, jour:5, cap:8,voix:3,foyer:3,elan:5,
+  counts:{1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3}};
+
+const CX=300,CY=300,RFOL=66,CLIP=250,RQ=240,SPAN=40,MAX=3;
+const rng=mulberry32(p.seed);
+
+function elementDominant(counts){const t={feu:0,terre:0,air:0,eau:0};
+  for(let n=1;n<=9;n++)t[elemNombre[n]]+=counts[n];
+  return Object.entries(t).sort((a,b)=>b[1]-a[1])[0][0];}
+
+// centres de la fleur (maillage hexagonal)
+function folCenters(r){const dy=r*Math.sqrt(3)/2,seen=new Set(),list=[];
+  for(let row=-3;row<=3;row++)for(let i=-3;i<=3;i++){
+    const x=CX+i*r+(row&1?r/2:0),y=CY+row*dy,k=x.toFixed(1)+','+y.toFixed(1);
+    if(seen.has(k))continue;seen.add(k);
+    if(Math.hypot(x-CX,y-CY)<=2*r+0.5)list.push([x,y]);}
+  return list;}
+
+// échantillonne l'arc mineur d'un cercle entre deux angles
+function arcPts(cx,cy,r,a1,a2){const d=norm(a2-a1),n=Math.max(3,Math.ceil(Math.abs(d)/(Math.PI/28))),out=[];
+  for(let i=0;i<=n;i++){const a=a1+d*i/n;out.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}return out;}
+
+// pétale (vesica) = zone d'intersection de deux cercles adjacents
+function petale(A,B,r){
+  const dx=B[0]-A[0],dy=B[1]-A[1],d=Math.hypot(dx,dy);
+  if(d<1||d>2*r)return null;
+  const ux=dx/d,uy=dy/d, mx=(A[0]+B[0])/2,my=(A[1]+B[1])/2, h=Math.sqrt(Math.max(0,r*r-(d/2)*(d/2)));
+  const P1=[mx-uy*h,my+ux*h], P2=[mx+uy*h,my-ux*h];
+  const aA1=Math.atan2(P1[1]-A[1],P1[0]-A[0]), aA2=Math.atan2(P2[1]-A[1],P2[0]-A[0]);
+  const aB1=Math.atan2(P1[1]-B[1],P1[0]-B[0]), aB2=Math.atan2(P2[1]-B[1],P2[0]-B[0]);
+  const pts=[...arcPts(A[0],A[1],r,aA1,aA2), ...arcPts(B[0],B[1],r,aB2,aB1)];
+  let dd='';pts.forEach((q,i)=>dd+=(i===0?'M':'L')+q[0].toFixed(1)+' '+q[1].toFixed(1)+' ');dd+='Z';
+  const cx=(A[0]+B[0])/2,cy=(A[1]+B[1])/2;
+  return {d:dd,cx,cy};
+}
+
+function secteur(x,y){let deg=Math.atan2(y-CY,x-CX)*180/Math.PI+90;deg=(deg+360)%360;
+  return Math.floor(((deg+SPAN/2)%360)/SPAN)+1;}
+
+function render(svg){
+  const dom=elementDominant(p.counts), rot=(p.jour*23)%360;
+  const defs=add(svg,'defs',{});
+  const grad=add(defs,'radialGradient',{id:'gc'});
+  add(grad,'stop',{offset:'0%','stop-color':'#f0d493'});add(grad,'stop',{offset:'100%','stop-color':col('accent')});
+  const clip=add(defs,'clipPath',{id:'cl'});add(clip,'circle',{cx:CX,cy:CY,r:CLIP});
+  const filt=add(defs,'filter',{id:'fib',x:'-5%',y:'-5%',width:'110%',height:'110%'});
+  add(filt,'feTurbulence',{type:'turbulence',baseFrequency:'0.012 0.012',numOctaves:2,seed:7,result:'n'});
+  add(filt,'feDisplacementMap',{in:'SourceGraphic',in2:'n',scale:3});
+
+  const gRoot=add(svg,'g',{transform:`rotate(${rot} ${CX} ${CY})`,'clip-path':'url(#cl)'});
+  const gFill=add(gRoot,'g',{}), gThread=add(gRoot,'g',{filter:'url(#fib)'});
+  const gFront=add(svg,'g',{});
+
+  const centers=folCenters(RFOL);
+
+  /* ---- PÉTALES TISSÉS : chaque vesica reçoit une teinte ---- */
+  for(let a=0;a<centers.length;a++)for(let b=a+1;b<centers.length;b++){
+    const d=Math.hypot(centers[a][0]-centers[b][0],centers[a][1]-centers[b][1]);
+    if(Math.abs(d-RFOL)>1)continue;                 // seulement les cercles adjacents
+    const pet=petale(centers[a],centers[b],RFOL);if(!pet)continue;
+    const n=secteur(pet.cx,pet.cy), c=p.counts[n], e=elemNombre[n];
+    if(c<=0){ // chantier : zone NON tissée -> juste un contour ténu
+      add(gFill,'path',{d:pet.d,fill:'none',stroke:col('trait'),'stroke-width':0.6,opacity:0.5});
+      continue;
+    }
+    // teinte tissée : opacité selon la force + légère variation par zone
+    const base=0.30+0.16*(c/MAX), jitter=(rng()-0.5)*0.12;
+    add(gFill,'path',{d:pet.d,fill:ELEM[e],'fill-opacity':Math.max(0.12,base+jitter),
+      stroke:ELEM[e],'stroke-width':0.5,'stroke-opacity':0.5});
+  }
+
+  /* ---- LES FILS DU MOTIF : les cercles, façon fils tissés ---- */
+  centers.forEach(([x,y])=>{const dd=Math.hypot(x-CX,y-CY);
+    add(gThread,'circle',{cx:x,cy:y,r:RFOL,fill:'none',stroke:col('fil'),
+      'stroke-width':1.1,opacity:0.55-Math.min(0.35,dd/CLIP*0.5)});});
+  add(gThread,'circle',{cx:CX,cy:CY,r:198,fill:'none',stroke:col('fil'),'stroke-width':1.1,opacity:0.5});
+
+  /* ---- bornage + sceau personnel (hors rotation du fond ? -> gardé dans gFront) ---- */
+  add(gFront,'circle',{cx:CX,cy:CY,r:CLIP,fill:'none',stroke:col('fil'),'stroke-width':1.2,opacity:0.6});
+  add(gFront,'circle',{cx:CX,cy:CY,r:CLIP+8,fill:'none',stroke:col('fil'),'stroke-width':0.7,opacity:0.4});
+
+  /* ---- sommets des 9 qualités (repères) ---- */
+  const V=[...Array(9)].map((_,i)=>polar(CX,CY,RQ,i*SPAN));
+  for(let n=1;n<=9;n++){const[x,y]=V[n-1],c=p.counts[n],e=elemNombre[n];
+    if(c>0){add(gFront,'circle',{cx:x,cy:y,r:12,fill:ELEM[e],'fill-opacity':0.35,stroke:ELEM[e],'stroke-width':1.6});
+      const t=el('text',{x,y,class:'num','font-size':13,fill:col('texte')});t.textContent=n;gFront.appendChild(t);}
+    else{add(gFront,'circle',{cx:x,cy:y,r:13,fill:col('fond'),stroke:col('feu'),'stroke-width':1.2,'stroke-dasharray':'2 3'});
+      const t=el('text',{x,y,class:'num','font-size':13,fill:col('feu')});t.textContent=n;gFront.appendChild(t);
+      const tl=el('text',{x,y:y-20,'text-anchor':'middle','font-size':9,fill:col('feu'),'font-family':'sans-serif'});tl.textContent='à tisser';gFront.appendChild(tl);}}
+
+  /* ---- cœur : Cap ---- */
+  const o=10;
+  add(gFront,'circle',{cx:CX-o,cy:CY,r:30,fill:'none',stroke:col('accent'),'stroke-width':0.8,opacity:0.5});
+  add(gFront,'circle',{cx:CX+o,cy:CY,r:30,fill:'none',stroke:col('accent'),'stroke-width':0.8,opacity:0.5});
+  add(gFront,'circle',{cx:CX,cy:CY,r:25,fill:col('fond'),stroke:col('accent'),'stroke-width':1.5});
+  add(gFront,'circle',{cx:CX,cy:CY,r:20,fill:'url(#gc)'});
+  const t=el('text',{x:CX,y:CY,class:'num','font-size':24,fill:col('fond'),'font-weight':600});t.textContent=p.cap;gFront.appendChild(t);
+}
+
+try{ render(document.getElementById('m')); }
+catch(e){ document.getElementById('err').textContent='Erreur JS : '+e.message; }
+</script>
+</body>
+</html>
