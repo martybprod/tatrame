@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — Le Motif d'Or (géométrie sacrée enrichie)</title>
+<style>
+  :root{
+    --fond:#120f0b; --carte:#1b1712; --trait:#3a3226;
+    --texte:#e9e1d2; --doux:#9a8f78; --accent:#d0a95f;
+    --feu:#c86a42; --terre:#88964f; --air:#d8bd70; --eau:#5f8fb0;
+    --fil:#c9a86a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(circle at 50% 40%,#191510,#0c0a07 82%);
+    color:var(--texte);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.55;padding:30px 18px 70px}
+  .wrap{max-width:760px;margin:0 auto;text-align:center}
+  h1{font-weight:500;font-size:23px;margin:0 0 6px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 4px}
+  .exemple{color:var(--doux);font-size:12.5px;margin:0 0 18px;font-style:italic}
+  svg{display:block;margin:0 auto;width:100%;height:auto;max-width:640px;
+    filter:drop-shadow(0 0 30px rgba(208,169,95,.14))}
+  .legende{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
+    font-size:12px;color:var(--doux);margin:16px 0 0}
+  .legende span{display:inline-flex;align-items:center;gap:6px}
+  .pastille{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .notes{text-align:left;max-width:600px;margin:18px auto 0;color:var(--doux);font-size:12.5px}
+  .notes b{color:var(--texte);font-weight:500}
+  .num{font-family:Georgia,serif;text-anchor:middle;dominant-baseline:central}
+  #err{color:#c06a5a;font-size:12px;margin-top:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Le Motif d'Or</h1>
+  <p class="sous">Plusieurs formes sacrées calculées (φ, angle d'or, Fibonacci, π) s'entrelacent en un motif unique et teinté.</p>
+  <p class="exemple">14/07/1985, « Martin Boucher ». Feu dominant · le 7 reste à tisser.</p>
+  <svg id="m" viewBox="0 0 640 640" role="img" aria-label="Le Motif d'Or"></svg>
+  <div class="legende">
+    <span><i class="pastille" style="background:var(--feu)"></i>Feu</span>
+    <span><i class="pastille" style="background:var(--terre)"></i>Terre</span>
+    <span><i class="pastille" style="background:var(--air)"></i>Air</span>
+    <span><i class="pastille" style="background:var(--eau)"></i>Eau</span>
+    <span><i class="pastille" style="background:var(--fil)"></i>fils du motif</span>
+  </div>
+  <div class="notes">
+    <p><b>Les couches (chaque constante pilote une forme) :</b></p>
+    <p>• <b>Cœur</b> — pétales de la Fleur de Vie, teintés (tissés).<br>
+    • <b>Anneaux φ</b> — bandes espacées selon le nombre d'or, tissées vers l'extérieur selon ta force (le 7 reste nu).<br>
+    • <b>Spirale d'or</b> — croissance φ par quart de tour, orientée par le Jour.<br>
+    • <b>Phyllotaxie</b> — graines à l'angle d'or 137,5° ; leur nombre vient de Fibonacci (via la Voix).<br>
+    • <b>Rosace π</b> — pétales de la courbe cos(kθ), k = le Foyer.<br>
+    • <b>Étoile + sceau</b> — pas de l'étoile = le Cap ; le sceau relie des cercles choisis par Cap/Voix/Foyer/Élan.</p>
+  </div>
+  <p id="err"></p>
+</div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const add=(p,n,a)=>{const e=el(n,a);p.appendChild(e);return e;};
+const C=getComputedStyle(document.documentElement);
+const col=n=>C.getPropertyValue('--'+n).trim();
+const ELEM={feu:col('feu'),terre:col('terre'),air:col('air'),eau:col('eau')};
+const polar=(cx,cy,r,deg)=>{const a=(deg-90)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];};
+function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+const norm=a=>{while(a>Math.PI)a-=2*Math.PI;while(a<=-Math.PI)a+=2*Math.PI;return a;};
+
+const PHI=1.6180339887, GOLD=137.50776405; // angle d'or en degrés
+const FIB=[1,2,3,5,8,13,21,34,55,89,144,233,377];
+const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'terre',9:'feu'};
+const p={seed:14071985, jour:5, cap:8,voix:3,foyer:3,elan:5,
+  counts:{1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3}};
+
+const CX=320,CY=320,RFOL=64,CLIP=280,RQ=272,SPAN=40,MAX=3;
+const rng=mulberry32(p.seed);
+
+function elementDominant(counts){const t={feu:0,terre:0,air:0,eau:0};
+  for(let n=1;n<=9;n++)t[elemNombre[n]]+=counts[n];
+  return Object.entries(t).sort((a,b)=>b[1]-a[1])[0][0];}
+function secteur(x,y){let d=Math.atan2(y-CY,x-CX)*180/Math.PI+90;d=(d+360)%360;return Math.floor(((d+SPAN/2)%360)/SPAN)+1;}
+function folCenters(r){const dy=r*Math.sqrt(3)/2,seen=new Set(),list=[];
+  for(let row=-3;row<=3;row++)for(let i=-3;i<=3;i++){
+    const x=CX+i*r+(row&1?r/2:0),y=CY+row*dy,k=x.toFixed(1)+','+y.toFixed(1);
+    if(seen.has(k))continue;seen.add(k);
+    if(Math.hypot(x-CX,y-CY)<=2*r+0.5)list.push([x,y]);}return list;}
+function arcPts(cx,cy,r,a1,a2){const d=norm(a2-a1),n=Math.max(3,Math.ceil(Math.abs(d)/(Math.PI/28))),o=[];
+  for(let i=0;i<=n;i++){const a=a1+d*i/n;o.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}return o;}
+function poly(pts){let d='';pts.forEach((q,i)=>d+=(i===0?'M':'L')+q[0].toFixed(1)+' '+q[1].toFixed(1)+' ');return d;}
+function petale(A,B,r){const dx=B[0]-A[0],dy=B[1]-A[1],d=Math.hypot(dx,dy);if(d<1||d>2*r)return null;
+  const ux=dx/d,uy=dy/d,mx=(A[0]+B[0])/2,my=(A[1]+B[1])/2,h=Math.sqrt(Math.max(0,r*r-(d/2)*(d/2)));
+  const P1=[mx-uy*h,my+ux*h],P2=[mx+uy*h,my-ux*h];
+  const aA1=Math.atan2(P1[1]-A[1],P1[0]-A[0]),aA2=Math.atan2(P2[1]-A[1],P2[0]-A[0]);
+  const aB1=Math.atan2(P1[1]-B[1],P1[0]-B[0]),aB2=Math.atan2(P2[1]-B[1],P2[0]-B[0]);
+  const pts=[...arcPts(A[0],A[1],r,aA1,aA2),...arcPts(B[0],B[1],r,aB2,aB1)];
+  return {d:poly(pts)+'Z',cx:(A[0]+B[0])/2,cy:(A[1]+B[1])/2};}
+
+function render(svg){
+  const dom=elementDominant(p.counts), rot=(p.jour*23)%360;
+  const defs=add(svg,'defs',{});
+  const grad=add(defs,'radialGradient',{id:'gc'});
+  add(grad,'stop',{offset:'0%','stop-color':'#f0d493'});add(grad,'stop',{offset:'100%','stop-color':col('accent')});
+  const clip=add(defs,'clipPath',{id:'cl'});add(clip,'circle',{cx:CX,cy:CY,r:CLIP});
+  const filt=add(defs,'filter',{id:'fib',x:'-6%',y:'-6%',width:'112%',height:'112%'});
+  add(filt,'feTurbulence',{type:'turbulence',baseFrequency:'0.012 0.012',numOctaves:2,seed:7,result:'n'});
+  add(filt,'feDisplacementMap',{in:'SourceGraphic',in2:'n',scale:3});
+
+  const gRoot=add(svg,'g',{'clip-path':'url(#cl)'});
+  const gRot=add(gRoot,'g',{transform:`rotate(${rot} ${CX} ${CY})`});
+  const gFillP=add(gRot,'g',{}), gFillR=add(gRot,'g',{}),
+        gThread=add(gRot,'g',{filter:'url(#fib)'}), gGold=add(gRot,'g',{}), gPhyllo=add(gRot,'g',{});
+  const gForm=add(svg,'g',{}), gFront=add(svg,'g',{});
+
+  const centers=folCenters(RFOL);
+
+  /* ---- CŒUR : pétales de la Fleur de Vie teintés ---- */
+  for(let a=0;a<centers.length;a++)for(let b=a+1;b<centers.length;b++){
+    const d=Math.hypot(centers[a][0]-centers[b][0],centers[a][1]-centers[b][1]);
+    if(Math.abs(d-RFOL)>1)continue;
+    const pet=petale(centers[a],centers[b],RFOL);if(!pet)continue;
+    if(Math.hypot(pet.cx-CX,pet.cy-CY)>150)continue;    // pétales = zone cœur
+    const n=secteur(pet.cx,pet.cy),c=p.counts[n],e=elemNombre[n];
+    if(c<=0){add(gFillP,'path',{d:pet.d,fill:'none',stroke:col('trait'),'stroke-width':0.6,opacity:0.5});continue;}
+    const base=0.30+0.16*(c/MAX)+(rng()-0.5)*0.12;
+    add(gFillP,'path',{d:pet.d,fill:ELEM[e],'fill-opacity':Math.max(0.12,base),stroke:ELEM[e],'stroke-width':0.5,'stroke-opacity':0.45});
+  }
+
+  /* ---- ANNEAUX φ : bandes tissées vers l'extérieur selon la force ---- */
+  // frontières espacées selon le nombre d'or (gaps × φ) dans [150, CLIP-30]
+  const inner=150, outer=CLIP-24, g0=(outer-inner)/(1+PHI+PHI*PHI);
+  const bands=[inner, inner+g0, inner+g0*(1+PHI), outer];   // 3 bandes
+  for(let n=1;n<=9;n++){const c=p.counts[n],e=elemNombre[n],a0=(n-1)*SPAN-SPAN/2+1,a1=(n-1)*SPAN+SPAN/2-1;
+    const wov=c>0?Math.round(3*c/MAX):0;
+    for(let k=0;k<3;k++){
+      const cell=poly([...arcPts2(bands[k+1],a0,a1),...arcPts2(bands[k],a1,a0)])+'Z';
+      if(k<wov){const op=0.16+0.10*(c/MAX)+(rng()-0.5)*0.06;
+        add(gFillR,'path',{d:cell,fill:ELEM[e],'fill-opacity':Math.max(0.08,op),stroke:ELEM[e],'stroke-width':0.4,'stroke-opacity':0.4});}
+      else add(gFillR,'path',{d:cell,fill:'none',stroke:col('trait'),'stroke-width':0.4,opacity:0.35});
+    }
+  }
+  function arcPts2(r,d0,d1){const s=Math.sign(d1-d0)||1,o=[];for(let d=d0;s>0?d<=d1:d>=d1;d+=s*3){const[x,y]=polar(CX,CY,r,d);o.push([x,y]);}const[x,y]=polar(CX,CY,r,d1);o.push([x,y]);return o;}
+
+  /* ---- FILS DU MOTIF : cercles de la fleur ---- */
+  centers.forEach(([x,y])=>{const dd=Math.hypot(x-CX,y-CY);
+    add(gThread,'circle',{cx:x,cy:y,r:RFOL,fill:'none',stroke:col('fil'),'stroke-width':1.0,opacity:0.5-Math.min(0.32,dd/CLIP*0.5)});});
+
+  /* ---- SPIRALE D'OR (φ) ×2 ---- */
+  const b=Math.log(PHI)/(Math.PI/2);
+  for(let s=0;s<2;s++){let d='';for(let t=0;t<=140;t++){const th=t*0.12;const r=2.2*Math.exp(b*th);
+    if(r>outer)break;const a=th+ s*Math.PI + rot*Math.PI/180;
+    const x=CX+r*Math.cos(a),y=CY+r*Math.sin(a);d+=(t===0?'M':'L')+x.toFixed(1)+' '+y.toFixed(1)+' ';}
+    add(gGold,'path',{d,fill:'none',stroke:col('accent'),'stroke-width':0.9,opacity:0.4});}
+
+  /* ---- PHYLLOTAXIE (angle d'or) — nb ← Fibonacci via Voix ---- */
+  const N=FIB[(p.voix%4)+7];                 // ~34..144
+  for(let i=1;i<=N;i++){const r=(outer)*Math.sqrt(i/N);const a=i*GOLD*Math.PI/180;
+    const x=CX+r*Math.cos(a),y=CY+r*Math.sin(a);
+    add(gPhyllo,'circle',{cx:x,cy:y,r:1.3,fill:col('fil'),opacity:0.35});}
+
+  /* ---- ROSACE π : cos(kθ), k ← Foyer ---- */
+  const k=Math.max(2,p.foyer);let dr='';const Rr=outer;
+  for(let t=0;t<=360;t++){const th=t*Math.PI/180;const rr=Rr*Math.abs(Math.cos(k*th));
+    const x=CX+rr*Math.cos(th),y=CY+rr*Math.sin(th);dr+=(t===0?'M':'L')+x.toFixed(1)+' '+y.toFixed(1)+' ';}
+  add(gGold,'path',{d:dr,fill:'none',stroke:col('accent'),'stroke-width':0.7,opacity:0.28});
+
+  /* ---- ÉTOILE (pas ← Cap) + SCEAU (hors rotation) ---- */
+  const V=[...Array(9)].map((_,i)=>polar(CX,CY,RQ-24,i*SPAN));
+  const step=2+(p.cap%3),seen=new Set();
+  for(let s=0;s<9;s++){if(seen.has(s))continue;let i=s,pp=[];do{pp.push(i);seen.add(i);i=(i+step)%9;}while(i!==s);
+    if(pp.length>2){add(gForm,'path',{d:poly(pp.map(q=>V[q]))+'Z',fill:'none',stroke:col('accent'),'stroke-width':0.9,opacity:0.3,'stroke-linejoin':'round'});}}
+  const keys=[p.cap,p.voix,p.foyer,p.elan],pts=keys.map(kk=>centers[kk%centers.length]);
+  add(gForm,'path',{d:poly(pts)+'Z',fill:col('accent'),'fill-opacity':0.05,stroke:col('accent'),'stroke-width':1.6,opacity:0.85,'stroke-linejoin':'round'});
+  pts.forEach(([x,y])=>add(gForm,'circle',{cx:x,cy:y,r:3,fill:col('accent')}));
+
+  /* ---- bornage + sommets + cœur ---- */
+  add(gFront,'circle',{cx:CX,cy:CY,r:CLIP,fill:'none',stroke:col('fil'),'stroke-width':1.2,opacity:0.6});
+  for(let n=1;n<=9;n++){const[x,y]=polar(CX,CY,RQ,(n-1)*SPAN),c=p.counts[n],e=elemNombre[n];
+    if(c>0){add(gFront,'circle',{cx:x,cy:y,r:12,fill:ELEM[e],'fill-opacity':0.35,stroke:ELEM[e],'stroke-width':1.6});
+      const t=el('text',{x,y,class:'num','font-size':13,fill:col('texte')});t.textContent=n;gFront.appendChild(t);}
+    else{add(gFront,'circle',{cx:x,cy:y,r:13,fill:col('fond'),stroke:col('feu'),'stroke-width':1.2,'stroke-dasharray':'2 3'});
+      const t=el('text',{x,y,class:'num','font-size':13,fill:col('feu')});t.textContent=n;gFront.appendChild(t);}}
+  const o=10;
+  add(gFront,'circle',{cx:CX-o,cy:CY,r:30,fill:'none',stroke:col('accent'),'stroke-width':0.8,opacity:0.5});
+  add(gFront,'circle',{cx:CX+o,cy:CY,r:30,fill:'none',stroke:col('accent'),'stroke-width':0.8,opacity:0.5});
+  add(gFront,'circle',{cx:CX,cy:CY,r:25,fill:col('fond'),stroke:col('accent'),'stroke-width':1.5});
+  add(gFront,'circle',{cx:CX,cy:CY,r:20,fill:'url(#gc)'});
+  const t=el('text',{x:CX,y:CY,class:'num','font-size':24,fill:col('fond'),'font-weight':600});t.textContent=p.cap;gFront.appendChild(t);
+}
+
+try{ render(document.getElementById('m')); }
+catch(e){ document.getElementById('err').textContent='Erreur JS : '+e.message; }
+</script>
+</body>
+</html>
