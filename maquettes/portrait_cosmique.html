@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — Le Métier cosmique</title>
+<style>
+  :root{
+    --doux:#9a8f78; --texte:#e9e1d2; --accent:#d0a95f;
+    --feu:#c86a42; --terre:#88964f; --air:#d8bd70; --eau:#5f8fb0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(circle at 50% 40%,#141026,#07060c 82%);
+    color:var(--texte);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.55;padding:30px 18px 70px}
+  .wrap{max-width:720px;margin:0 auto;text-align:center}
+  h1{font-weight:500;font-size:23px;margin:0 0 6px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 4px}
+  .exemple{color:var(--doux);font-size:12.5px;margin:0 0 18px;font-style:italic}
+  canvas{display:block;margin:0 auto;width:100%;height:auto;max-width:600px;border-radius:10px;
+    filter:drop-shadow(0 0 34px rgba(150,120,220,.18))}
+  .legende{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
+    font-size:12px;color:var(--doux);margin:16px 0 0}
+  .legende span{display:inline-flex;align-items:center;gap:6px}
+  .pastille{width:11px;height:11px;border-radius:50%;display:inline-block}
+  #err{color:#c06a5a;font-size:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Le Métier cosmique</h1>
+  <p class="sous">L'entrelacs des fils sacrés tissé dans un ciel : cellules teintées de couleurs mêlées, cœur doré, bord indigo.</p>
+  <p class="exemple">14/07/1985, « Martin Boucher ». Feu dominant · le 7 = secteur laissé nu.</p>
+  <canvas id="c" width="1200" height="1200"></canvas>
+  <div class="legende">
+    <span><i class="pastille" style="background:var(--feu)"></i>Feu</span>
+    <span><i class="pastille" style="background:var(--terre)"></i>Terre</span>
+    <span><i class="pastille" style="background:var(--air)"></i>Air</span>
+    <span><i class="pastille" style="background:var(--eau)"></i>Eau</span>
+    <span>+ teintes mêlées &amp; glissement cosmique</span>
+  </div>
+  <p id="err"></p>
+</div>
+
+<script>
+try{
+const cv=document.getElementById('c'), W=cv.width, H=cv.height;
+const ctx=cv.getContext('2d',{willReadFrequently:true});
+const CX=W/2, CY=H/2, S=W/600;
+const CLIP=280*S, RFOL=64*S, SPAN=40, MAX=3;
+const PHI=1.6180339887, GOLD=137.50776405, FIB=[1,2,3,5,8,13,21,34,55,89,144,233,377];
+const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'terre',9:'feu'};
+const RGB={feu:[200,106,66],terre:[136,150,79],air:[216,189,112],eau:[95,143,176]};
+const CORE=[248,226,158], OUTER=[74,54,120];        // cœur doré -> bord indigo (cosmique)
+const p={seed:14071985, jour:5, cap:8,voix:3,foyer:3,elan:5,
+  counts:{1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3}};
+function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+const rng=mulberry32(p.seed);
+const rot=(p.jour*23)*Math.PI/180, rotDeg=p.jour*23;
+const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+const cf=n=>{const c=p.counts[n];return c<=0?0:0.5+0.5*(c/MAX);};
+
+function folCenters(r){const dy=r*Math.sqrt(3)/2,seen=new Set(),list=[];
+  for(let row=-3;row<=3;row++)for(let i=-3;i<=3;i++){
+    const x=CX+i*r+(row&1?r/2:0),y=CY+row*dy,k=Math.round(x)+','+Math.round(y);
+    if(seen.has(k))continue;seen.add(k);
+    if(Math.hypot(x-CX,y-CY)<=2*r+0.5)list.push([x,y]);}return list;}
+const centers=folCenters(RFOL);
+
+function drawCurves(g){
+  centers.forEach(([x,y])=>{g.beginPath();g.arc(x,y,RFOL,0,7);g.stroke();});
+  let r=34*S; while(r<CLIP-4*S){g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();r*=1.27;}   // + d'anneaux φ
+  const b=Math.log(PHI)/(Math.PI/2);
+  for(let s=0;s<3;s++){g.beginPath();let f=true;                                        // 3 spirales
+    for(let t=0;t<=200;t++){const th=t*0.1, rr=2.4*S*Math.exp(b*th);if(rr>CLIP)break;
+      const a=th+s*2*Math.PI/3+rot,x=CX+rr*Math.cos(a),y=CY+rr*Math.sin(a);f?(g.moveTo(x,y),f=false):g.lineTo(x,y);}g.stroke();}
+  const k=Math.max(2,p.foyer);g.beginPath();
+  for(let t=0;t<=360;t++){const th=t*Math.PI/180,rr=(CLIP-6*S)*Math.abs(Math.cos(k*th));
+    const x=CX+rr*Math.cos(th+rot),y=CY+rr*Math.sin(th+rot);t?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();
+  for(let i=0;i<24;i++){const a=i*15*Math.PI/180+rot;g.beginPath();g.moveTo(CX,CY);   // 24 rayons
+    g.lineTo(CX+(CLIP-2*S)*Math.cos(a),CY+(CLIP-2*S)*Math.sin(a));g.stroke();}
+  const step=2+(p.cap%3),V=[...Array(9)].map((_,i)=>{const a=(i*SPAN-90)*Math.PI/180+rot;return[CX+(CLIP-30*S)*Math.cos(a),CY+(CLIP-30*S)*Math.sin(a)];});
+  const seen=new Set();
+  for(let s=0;s<9;s++){if(seen.has(s))continue;let i=s;g.beginPath();let f=true;
+    do{const[x,y]=V[i];f?(g.moveTo(x,y),f=false):g.lineTo(x,y);seen.add(i);i=(i+step)%9;}while(i!==s);g.closePath();g.stroke();}
+  g.beginPath();g.arc(CX,CY,CLIP,0,7);g.stroke();
+}
+
+// 1) masque des murs
+const wc=document.createElement('canvas');wc.width=W;wc.height=H;const wg=wc.getContext('2d');
+wg.strokeStyle='#000';wg.lineWidth=2*S;wg.lineCap='round';wg.lineJoin='round';drawCurves(wg);
+const wd=wg.getImageData(0,0,W,H).data, wall=new Uint8Array(W*H);
+for(let i=0;i<W*H;i++) wall[i]=wd[i*4+3]>40?1:0;
+
+// 2) ciel : nébuleuse + étoiles
+const gr=ctx.createRadialGradient(CX,CY,0,CX,CY,CLIP*1.15);
+gr.addColorStop(0,'#241a3a');gr.addColorStop(0.55,'#140f24');gr.addColorStop(1,'#07060c');
+ctx.fillStyle=gr;ctx.fillRect(0,0,W,H);
+for(let i=0;i<420;i++){const x=rng()*W,y=rng()*H,a=0.2+rng()*0.6,rr=(0.5+rng()*1.4)*S;
+  ctx.beginPath();ctx.arc(x,y,rr,0,7);ctx.fillStyle=`rgba(230,225,255,${a})`;ctx.fill();}
+const img=ctx.getImageData(0,0,W,H), d=img.data;
+
+// 3) flood fill : chaque région -> teinte mêlée + cosmique
+const visited=new Uint8Array(W*H), stack=new Int32Array(W*H);
+function couleurCellule(mx,my,rc){
+  let ang=(Math.atan2(my-CY,mx-CX)*180/Math.PI+90 - rotDeg);ang=((ang%360)+360)%360;
+  const pos=ang/SPAN, i1=Math.floor(pos)%9, n1=i1+1, n2=(i1+1)%9+1, t=pos-Math.floor(pos);
+  const colElem=mix(RGB[elemNombre[n1]],RGB[elemNombre[n2]],t);   // teinte intermédiaire par angle
+  const strength=cf(n1)*(1-t)+cf(n2)*t;
+  const rr=rc/CLIP;
+  let tint = rr<0.5 ? mix(colElem,CORE,(0.5-rr)/0.5*0.45)         // vers cœur doré
+                    : mix(colElem,OUTER,(rr-0.5)/0.5*0.55);       // vers bord indigo
+  return {tint,strength,rr};
+}
+for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  const idx=y*W+x;if(visited[idx])continue;
+  if(wall[idx]||Math.hypot(x-CX,y-CY)>CLIP){visited[idx]=1;continue;}
+  let sp=0;stack[sp++]=idx;visited[idx]=1;let sx=0,sy=0,cnt=0;const px=[];
+  while(sp>0){const cur=stack[--sp];const cy2=(cur/W)|0,cx2=cur-cy2*W;px.push(cur);sx+=cx2;sy+=cy2;cnt++;
+    const nb=[cur-1,cur+1,cur-W,cur+W];
+    for(const nn of nb){if(nn<0||nn>=W*H)continue;
+      if((nn===cur-1&&cx2===0)||(nn===cur+1&&cx2===W-1))continue;
+      if(visited[nn])continue; if(wall[nn]){visited[nn]=1;continue;} visited[nn]=1;stack[sp++]=nn;}}
+  if(cnt<3)continue;
+  const mx=sx/cnt,my=sy/cnt,rc=Math.hypot(mx-CX,my-CY);
+  const {tint,strength,rr}=couleurCellule(mx,my,rc);
+  const jit=0.72+rng()*0.56;
+  let alpha = strength<=0 ? 0.06 : Math.max(0.10,Math.min(0.82,(0.20+0.20*strength)*(1.05-0.32*rr)*jit));
+  let base=tint;
+  if(strength>0 && rng()<0.09){ base=mix(tint,[255,244,210],0.5); alpha=Math.min(0.9,alpha*1.5); } // cellules "allumées"
+  for(const q of px){const o=q*4;
+    d[o]  =d[o]  +(base[0]-d[o]  )*alpha;
+    d[o+1]=d[o+1]+(base[1]-d[o+1])*alpha;
+    d[o+2]=d[o+2]+(base[2]-d[o+2])*alpha;}
+}
+ctx.putImageData(img,0,0);
+
+// 4) fils dorés avec halo (bloom cosmique)
+ctx.lineCap='round';ctx.lineJoin='round';
+ctx.strokeStyle='rgba(201,168,106,0.10)';ctx.lineWidth=3.4*S;drawCurves(ctx);
+ctx.strokeStyle='rgba(214,190,130,0.5)';ctx.lineWidth=1*S;drawCurves(ctx);
+
+// 5) graines de phyllotaxie (angle d'or, nb ← Fibonacci via Voix) = poussière d'étoiles
+const N=FIB[(p.voix%4)+7];
+for(let i=1;i<=N;i++){const r=(CLIP-8*S)*Math.sqrt(i/N),a=i*GOLD*Math.PI/180+rot;
+  const x=CX+r*Math.cos(a),y=CY+r*Math.sin(a);
+  ctx.beginPath();ctx.arc(x,y,2.4*S,0,7);ctx.fillStyle='rgba(245,235,200,0.16)';ctx.fill();
+  ctx.beginPath();ctx.arc(x,y,1.1*S,0,7);ctx.fillStyle='rgba(255,250,235,0.8)';ctx.fill();}
+
+// 6) sommets des 9 qualités + cœur
+const RQ=272*S;
+for(let n=1;n<=9;n++){const a=((n-1)*SPAN-90)*Math.PI/180,x=CX+RQ*Math.cos(a),y=CY+RQ*Math.sin(a);
+  const c=p.counts[n],e=elemNombre[n],erg=c>0?RGB[e]:RGB.feu;
+  ctx.beginPath();ctx.arc(x,y,12*S,0,7);
+  ctx.fillStyle=c>0?`rgba(${erg[0]},${erg[1]},${erg[2]},0.4)`:'rgba(16,12,22,1)';ctx.fill();
+  ctx.lineWidth=1.6*S;ctx.strokeStyle=`rgba(${erg[0]},${erg[1]},${erg[2]},0.9)`;ctx.stroke();
+  ctx.fillStyle=c>0?'#e9e1d2':'#c86a42';ctx.font=`${13*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(n,x,y);}
+ctx.beginPath();ctx.arc(CX,CY,26*S,0,7);ctx.fillStyle='#0c0a14';ctx.fill();
+ctx.lineWidth=1.6*S;ctx.strokeStyle='rgba(214,190,130,0.95)';ctx.stroke();
+const cg=ctx.createRadialGradient(CX,CY,0,CX,CY,21*S);cg.addColorStop(0,'#f6dc93');cg.addColorStop(1,'#d0a95f');
+ctx.beginPath();ctx.arc(CX,CY,21*S,0,7);ctx.fillStyle=cg;ctx.fill();
+ctx.fillStyle='#100b06';ctx.font=`bold ${24*S}px Georgia`;ctx.fillText(p.cap,CX,CY);
+
+}catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
+</script>
+</body>
+</html>
