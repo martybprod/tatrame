@@ -22,12 +22,11 @@
 <body>
 <div class="wrap">
   <h1>Vitrail + lignes lumineuses</h1>
-  8
   <p class="sous">La lumière des fils teinte la laine voisine : cellules près des lignes fortes = saturées et riches · chantier presque vide et désaturé.</p>
   <p class="exemple">14/07/1985, « Martin Boucher ». Le 7 (chantier) : rayon éteint, secteur quasi nu. Centre sobre = le Cap.</p>
   <canvas id="c" width="1240" height="1240"></canvas>
   <div class="notes">
-    <p>Chaque cellule mesure sa <b>distance aux lignes fortes</b> (rayons selon la force de leur qualité, arêtes des étoiles selon la moyenne des deux). Près = couleurs <b>saturées et riches</b> ; loin = plus sombres/ternes. Le secteur <b>chantier</b> est presque vide : cases désaturées,Contours gris seulement.</p>
+    <p>Chaque cellule mesure sa <b>distance aux lignes fortes</b> (rayons selon la force de leur qualité, arêtes des étoiles selon la moyenne des deux, anneaux selon Foyer/Élan/Voix/Cap). Près = couleurs <b>saturées et riches</b> ; loin = plus sombres/ternes. Le secteur <b>chantier</b> est presque vide : cases désaturées, contours gris seulement.</p>
   </div>
   <p id="err"></p>
 </div>
@@ -53,6 +52,22 @@ const RINGS=[]; {let r=40*S; while(r<CLIP-4*S){RINGS.push(r);r*=1.34;}}
 const RAYS=[...Array(18)].map((_,i)=>((i*20-90)*Math.PI/180)+rot);
 const V=[...Array(9)].map((_,i)=>{const a=((i*SPAN-90)*Math.PI/180)+rot;return[CX+(CLIP-14*S)*Math.cos(a),CY+(CLIP-14*S)*Math.sin(a)];});
 
+/* --- anneaux mappés : Foyer (près du cœur) -> Élan -> Voix -> Cap (vers le bord) --- */
+const impAnneau=r=>{
+  const t=(r-RINGS[0])/(RINGS[RINGS.length-1]-RINGS[0]);   // 0=centre, 1=bord
+  const cles=[                                        // repères à 4 positions de l'intérieur vers l'extérieur
+    {t:0.16,nom:'foyer',v:p.foyer},{t:0.42,nom:'elan',v:p.elan},
+    {t:0.68,nom:'voix',v:p.voix},{t:0.95,nom:'cap',v:p.cap}];
+  let best=null;
+  cles.forEach(c=>{ if(best===null||Math.abs(t-c.t)<Math.abs(t-best.t))best=c; });
+  // importance = valeur du nombre (maîtres 11/22/33 -> pleine intensité)
+  const v=best.v, imp=v>=11?1:v/9;
+  // fondu entre anneaux adjacents pour éviter les marches brutes
+  const dt=Math.abs(t-best.t)/0.27;
+  return imp*Math.max(0.25,1-Math.max(0,dt-0.35));
+};
+const RINGIMP=RINGS.map(impAnneau);
+
 /* --- segments des lignes PORTÉES par le thème, avec leur importance --- */
 const SEGS=[];
 RAYS.forEach((a,i)=>{ if(i%2!==0)return;                      // 9 rayons = qualités
@@ -61,6 +76,11 @@ RAYS.forEach((a,i)=>{ if(i%2!==0)return;                      // 9 rayons = qual
 [2,3,4].forEach(step=>{for(let i=0;i<9;i++){const b=(i+step)%9;
   const imp=(force(i+1)+force(b+1))/2;
   SEGS.push({x1:V[i][0],y1:V[i][1],x2:V[b][0],y2:V[b][1],imp});}});
+// anneaux mappés -> approximés en polygones pour la carte de proximité
+RINGS.forEach((r,k)=>{ const imp=RINGIMP[k]; if(imp<0.3)return;
+  const m=48, pts=[];
+  for(let i=0;i<=m;i++){const a=i/m*2*Math.PI;pts.push([CX+r*Math.cos(a),CY+r*Math.sin(a)]);}
+  for(let i=0;i<m;i++)SEGS.push({x1:pts[i][0],y1:pts[i][1],x2:pts[i+1][0],y2:pts[i+1][1],imp});});
 function distSeg(px,py,s){const vx=s.x2-s.x1,vy=s.y2-s.y1,wx=px-s.x1,wy=py-s.y1;
   const L2=vx*vx+vy*vy; let t=L2?Math.max(0,Math.min(1,(wx*vx+wy*vy)/L2)):0;
   return Math.hypot(px-(s.x1+t*vx),py-(s.y1+t*vy));}
@@ -89,7 +109,7 @@ function strokeImp(g,imp,draw){
   g.beginPath();draw(g);g.stroke();g.restore();
 }
 function drawGold(g){
-  RINGS.forEach(r=>strokeImp(g,0.12,gg=>gg.arc(CX,CY,r,0,7)));
+  RINGS.forEach((r,k)=>strokeImp(g,0.10+0.62*RINGIMP[k],gg=>gg.arc(CX,CY,r,0,7)));
   RAYS.forEach((a,i)=>{const imp=(i%2===0)?0.12+0.72*force(i/2+1):0.08;
     strokeImp(g,imp,gg=>{gg.moveTo(CX,CY);gg.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));});});
   [2,3,4].forEach(step=>{for(let i=0;i<9;i++){const b=(i+step)%9;const imp=0.08+0.72*((force(i+1)+force(b+1))/2);
