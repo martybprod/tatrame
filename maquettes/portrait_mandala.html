@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — Portrait mandala (géométrie sacrée, maquette)</title>
+<style>
+  :root{
+    --fond:#14110d; --carte:#1d1913; --trait:#3a3226;
+    --texte:#e9e1d2; --doux:#9a8f78; --accent:#c9a35e;
+    --feu:#c0603a; --terre:#7a8a4e; --air:#cdb06a; --eau:#5f86a8;
+    --reson:#7fa87a; --tension:#c06a5a; --neutre:#6f6656;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fond);color:var(--texte);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;padding:28px 18px 60px}
+  h1{font-weight:500;font-size:22px;margin:0 0 4px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 6px}
+  .exemple{color:var(--doux);font-size:13px;margin:0 0 24px;font-style:italic}
+  .grille-cartes{display:grid;gap:22px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    max-width:1080px;margin:0 auto}
+  .carte{background:var(--carte);border:1px solid var(--trait);
+    border-radius:14px;padding:22px 20px;display:flex;flex-direction:column}
+  .carte h2{font-weight:500;font-size:17px;margin:0 0 2px}
+  .carte .tag{color:var(--accent);font-size:12px;letter-spacing:.04em;
+    text-transform:uppercase;margin:0 0 14px}
+  .carte svg{display:block;margin:6px auto 14px;width:100%;height:auto;max-width:320px}
+  .carte p{font-size:13.5px;color:var(--doux);margin:0 0 8px}
+  .pour b{color:var(--reson)} .contre b{color:var(--tension)}
+  .legende{display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--doux);margin:2px 0 10px}
+  .legende span{display:inline-flex;align-items:center;gap:5px}
+  .pastille{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .num{font-family:Georgia,serif;text-anchor:middle;dominant-baseline:central}
+</style>
+</head>
+<body>
+<h1>Portrait mandala — géométrie sacrée</h1>
+<p class="sous">Trois façons d'élever la proposition 3 (numérologie × ciel) vers un mandala fondé sur tes données.</p>
+<p class="exemple">Exemple : 14/07/1985, « Martin Boucher ». Cap 8 · Voix 3 · Foyer 3 · Élan 5. Qualités présentes : 1×1, 2×2, 3×2, 4×1, 5×2, 6×1, 8×1, 9×3 · le 7 manque.</p>
+
+<div class="grille-cartes">
+  <div class="carte">
+    <h2>A — Fleur de Vie (le noyau)</h2>
+    <div class="tag">identité + trame de cercles</div>
+    <svg id="svgA" viewBox="0 0 300 300"></svg>
+    <div class="legende">
+      <span><i class="pastille" style="background:var(--feu)"></i>Feu</span>
+      <span><i class="pastille" style="background:var(--terre)"></i>Terre</span>
+      <span><i class="pastille" style="background:var(--air)"></i>Air</span>
+      <span><i class="pastille" style="background:var(--eau)"></i>Eau</span>
+    </div>
+    <p>La trame de cercles entrelacés (domaine public) porte, sur son 1er anneau, tes 6 nombres secondaires colorés par leur élément. Au centre, le Cap.</p>
+    <p class="pour"><b>+</b> le plus « fleur de vie », très sur-marque (« Ta Trame »).</p>
+    <p class="contre"><b>–</b> 6 pétales = on force un peu les données dans une symétrie à 6.</p>
+  </div>
+
+  <div class="carte">
+    <h2>B — Mandala à 9 pétales</h2>
+    <div class="tag">les 9 qualités, données réelles</div>
+    <svg id="svgB" viewBox="0 0 300 300"></svg>
+    <div class="legende">
+      <span>pétale plein = force</span>
+      <span><i class="pastille" style="background:transparent;border:1px dashed var(--tension)"></i>pâle = chantier</span>
+    </div>
+    <p>Neuf pétales = les 9 qualités. Taille = à quel point elle est présente ; couleur = son élément ; un pétale pâle = un chantier (ici le 7). Cap au cœur.</p>
+    <p class="pour"><b>+</b> le plus honnête : chaque trait vient d'un calcul déjà fait.</p>
+    <p class="contre"><b>–</b> 9-fold, moins « fleur de vie » pure — plutôt une rosace.</p>
+  </div>
+
+  <div class="carte">
+    <h2>C — La Trame complète</h2>
+    <div class="tag">recommandée : tout en couches</div>
+    <svg id="svgC" viewBox="0 0 300 300"></svg>
+    <div class="legende">
+      <span><i class="pastille" style="background:var(--reson)"></i>ciel appuie</span>
+      <span><i class="pastille" style="background:var(--tension)"></i>ciel tend</span>
+      <span><i class="pastille" style="background:var(--neutre)"></i>neutre</span>
+    </div>
+    <p>Fond : trame de fleur de vie. Anneau extérieur : les 9 qualités (élément + intensité). Cœur : le Cap, relié par des fils à Voix/Foyer/Élan, colorés selon l'appui du ciel.</p>
+    <p class="pour"><b>+</b> raconte tout le portrait d'un seul regard, en profondeur.</p>
+    <p class="contre"><b>–</b> le plus dense : à tenir à l'œil côté épure.</p>
+  </div>
+</div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const C=getComputedStyle(document.documentElement);
+const col=n=>C.getPropertyValue('--'+n).trim();
+const ELEM={feu:col('feu'),terre:col('terre'),air:col('air'),eau:col('eau')};
+const polar=(cx,cy,r,deg)=>{const a=(deg-90)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];};
+function txt(svg,x,y,s,o={}){const t=el('text',{x,y,class:'num','font-size':o.size||18,fill:o.fill||col('texte')});t.textContent=s;svg.appendChild(t);}
+function lab(svg,x,y,s){const t=el('text',{x,y,'text-anchor':'middle','font-size':8.5,fill:col('doux'),'font-family':'sans-serif'});t.textContent=s;svg.appendChild(t);}
+
+// -- élément par nombre (illustratif, alignable sur COULEUR_NOMBRE) --
+const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'terre',9:'feu'};
+
+/* ============ A : Fleur de Vie ============ */
+(function(){
+  const svg=document.getElementById('svgA'),cx=150,cy=150,r=27;
+  // trame : 19 cercles
+  const rings=[[0,0]];
+  for(let i=0;i<6;i++)rings.push(polar(cx,cy,r,i*60).map((v,k)=>v-[cx,cy][k]));
+  for(let i=0;i<6;i++)rings.push(polar(cx,cy,r*Math.sqrt(3),30+i*60).map((v,k)=>v-[cx,cy][k]));
+  for(let i=0;i<6;i++)rings.push(polar(cx,cy,2*r,i*60).map((v,k)=>v-[cx,cy][k]));
+  rings.forEach(([dx,dy])=>svg.appendChild(el('circle',{cx:cx+dx,cy:cy+dy,r,fill:'none',stroke:col('trait'),'stroke-width':0.7,opacity:0.7})));
+  // 6 nombres secondaires sur l'anneau 1
+  const sec=[['Voix',3,'feu'],['Foyer',3,'feu'],['Élan',5,'air'],['Reflet',5,'air'],['Source',6,'terre'],['Trace',6,'terre']];
+  sec.forEach(([nom,val,e],i)=>{const[x,y]=polar(cx,cy,r,i*60);
+    svg.appendChild(el('circle',{cx:x,cy:y,r:15,fill:col('carte'),stroke:ELEM[e],'stroke-width':2}));
+    txt(svg,x,y,val,{size:16,fill:ELEM[e]});
+    const[lx,ly]=polar(cx,cy,r+30,i*60);lab(svg,lx,ly,nom);});
+  // centre : Cap
+  svg.appendChild(el('circle',{cx,cy,r:19,fill:col('accent')}));
+  txt(svg,cx,cy,8,{size:20,fill:col('fond')});
+  lab(svg,cx,cy+34,'Le Cap');
+})();
+
+/* ============ B : Mandala à 9 pétales ============ */
+(function(){
+  const svg=document.getElementById('svgB'),cx=150,cy=150;
+  const counts={1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3};
+  for(let n=1;n<=9;n++){
+    const ang=(n-1)*40, c=counts[n], e=elemNombre[n];
+    const dist=95, [x,y]=polar(cx,cy,dist,ang);
+    const rp=c>0?(11+c*4):10;
+    // fil
+    svg.appendChild(el('line',{x1:cx,y1:cy,x2:x,y2:y,stroke:col('trait'),'stroke-width':0.8,opacity:0.6}));
+    // pétale
+    if(c>0){svg.appendChild(el('circle',{cx:x,cy:y,r:rp,fill:ELEM[e],'fill-opacity':0.28,stroke:ELEM[e],'stroke-width':1.6}));}
+    else{svg.appendChild(el('circle',{cx:x,cy:y,r:rp,fill:'none',stroke:col('tension'),'stroke-width':1,'stroke-dasharray':'3 3',opacity:0.7}));}
+    txt(svg,x,y,n,{size:15,fill:c>0?col('texte'):col('tension')});
+  }
+  // centre : Cap
+  svg.appendChild(el('circle',{cx,cy,r:20,fill:col('accent')}));
+  txt(svg,cx,cy,8,{size:20,fill:col('fond')});
+  lab(svg,cx,cy+33,'Le Cap');
+})();
+
+/* ============ C : La Trame complète ============ */
+(function(){
+  const svg=document.getElementById('svgC'),cx=150,cy=150,r=22;
+  // fond fleur de vie (faible)
+  const rings=[[0,0]];
+  for(let i=0;i<6;i++)rings.push(polar(cx,cy,r,i*60).map((v,k)=>v-[cx,cy][k]));
+  for(let i=0;i<6;i++)rings.push(polar(cx,cy,r*Math.sqrt(3),30+i*60).map((v,k)=>v-[cx,cy][k]));
+  rings.forEach(([dx,dy])=>svg.appendChild(el('circle',{cx:cx+dx,cy:cy+dy,r,fill:'none',stroke:col('trait'),'stroke-width':0.6,opacity:0.4})));
+  // anneau extérieur : 9 qualités
+  const counts={1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3};
+  for(let n=1;n<=9;n++){
+    const ang=(n-1)*40,c=counts[n],e=elemNombre[n],[x,y]=polar(cx,cy,120,ang);
+    const rp=c>0?(7+c*3):8;
+    if(c>0)svg.appendChild(el('circle',{cx:x,cy:y,r:rp,fill:ELEM[e],'fill-opacity':0.3,stroke:ELEM[e],'stroke-width':1.4}));
+    else svg.appendChild(el('circle',{cx:x,cy:y,r:rp,fill:'none',stroke:col('tension'),'stroke-width':0.9,'stroke-dasharray':'3 3',opacity:0.7}));
+    txt(svg,x,y,n,{size:11,fill:c>0?col('texte'):col('tension')});
+  }
+  // cœur + fils accord vers Voix/Foyer/Élan
+  const keys=[['Voix',3,'reson',0],['Foyer',3,'neutre',120],['Élan',5,'tension',240]];
+  keys.forEach(([nom,val,acc,ang])=>{const[x,y]=polar(cx,cy,58,ang);
+    svg.appendChild(el('line',{x1:cx,y1:cy,x2:x,y2:y,stroke:col(acc),'stroke-width':2,opacity:0.9}));
+    svg.appendChild(el('circle',{cx:x,cy:y,r:15,fill:col('carte'),stroke:col(acc),'stroke-width':1.6}));
+    txt(svg,x,y,val,{size:15});
+    const[lx,ly]=polar(cx,cy,58,ang);lab(svg,lx,ly+22,nom);});
+  svg.appendChild(el('circle',{cx,cy,r:18,fill:col('accent')}));
+  txt(svg,cx,cy,8,{size:19,fill:col('fond')});
+})();
+</script>
+</body>
+</html>
