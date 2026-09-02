@@ -88,6 +88,9 @@ function qualiteAt(mx,my){const a=Math.atan2(my-CY,mx-CX)*180/Math.PI;return ORD
 const angleOf={};ORDER.forEach((n,k)=>angleOf[n]=dg(-90+k*SPAN));
 const refMax=Math.max(3,...Object.values(p.counts));
 const LINES=[[3,6,9],[2,5,8],[1,4,7],[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7]];
+// frontière tissée : chaque secteur est tissé jusqu'à une distance = son compte
+const RSTART=0.16*CLIP;
+const rayonTisse=n=>RSTART+(p.counts[n]/refMax)*(CLIP-RSTART);
 
 /* fleur de vie */
 function folCenters(){const dy=RFOL*Math.sqrt(3)/2,seen=new Set(),list=[];
@@ -155,7 +158,10 @@ for(let a=0;a<FOL.length;a++)for(let b=a+1;b<FOL.length;b++){
   const pet=petale(FOL[a],FOL[b],RFOL);if(!pet)continue;
   const n=qualiteAt(pet.cx,pet.cy),e=elemNombre[n],f=force(n);
   const path=new Path2D();pet.pts.forEach(([x,y],i)=>i?path.lineTo(x,y):path.moveTo(x,y));path.closePath();
-  if(f<=0){ctx.strokeStyle='rgba(150,130,90,0.14)';ctx.lineWidth=0.8*S;ctx.stroke(path);continue;}
+  if(f<=0){ctx.strokeStyle='rgba(150,130,90,0.10)';ctx.lineWidth=0.7*S;ctx.stroke(path);continue;}
+  const rc=Math.hypot(pet.cx-CX,pet.cy-CY);
+  if(rc>rayonTisse(n)){ // au-delà du bord tissé : non tissé (fil très faible), le bord épouse les pétales
+    ctx.strokeStyle=`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},0.07)`;ctx.lineWidth=0.7*S;ctx.stroke(path);continue;}
   const prox=proxStrong(pet.cx,pet.cy);
   const V=Math.min(1, 0.14 + 0.5*f + 0.9*prox);
   const vivid=mix(DARK[e],LIGHT[e],0.30+0.52*V);
@@ -184,24 +190,10 @@ FOL.forEach(([x,y],idx)=>{const gv=graineIdx.get(idx);
   strokeImp(gv!==undefined?impNb(gv):(outerIdx.has(idx)?0.35:0.12),()=>ctx.arc(x,y,RFOL,0,7));});
 strokeImp(0.45,()=>ctx.arc(CX,CY,CLIP,0,7));
 
-/* ---- lignes de force (flèches d'or) : lignes pythagoriciennes complètes ---- */
-const RARR=CLIP*0.82;
+/* ---- lignes de force : des FILS du mandala qui s'allument (même matière dorée) ---- */
+const RARR=CLIP*0.80;
 LINES.forEach(L=>{if(!L.every(n=>p.counts[n]>0))return;
-  ctx.save();ctx.shadowColor='rgba(255,216,150,0.55)';ctx.shadowBlur=11*S;
-  ctx.strokeStyle='rgba(255,232,175,0.5)';ctx.lineWidth=1.8*S;ctx.lineCap='round';ctx.lineJoin='round';
-  ctx.beginPath();L.forEach((n,i)=>{const a=angleOf[n],x=CX+RARR*Math.cos(a),y=CY+RARR*Math.sin(a);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.stroke();ctx.restore();});
-
-/* ---- silhouette d'équilibre : contour reliant les 9 comptes ---- */
-const R0s=0.18*CLIP, VS=[];
-for(let k=0;k<9;k++){const n=ORDER[k],c=p.counts[n],r=R0s+(c/refMax)*(CLIP*0.97-R0s),a=angleOf[n];
-  VS.push([CX+r*Math.cos(a),CY+r*Math.sin(a)]);}
-ctx.beginPath();VS.forEach((v,i)=>i?ctx.lineTo(v[0],v[1]):ctx.moveTo(v[0],v[1]));ctx.closePath();
-ctx.fillStyle='rgba(245,238,220,0.05)';ctx.fill();
-ctx.save();ctx.shadowColor='rgba(245,238,220,0.5)';ctx.shadowBlur=8*S;
-ctx.strokeStyle='rgba(246,240,224,0.82)';ctx.lineWidth=2*S;ctx.lineJoin='round';ctx.stroke();ctx.restore();
-// petits sommets sur la silhouette
-VS.forEach((v,k)=>{const n=ORDER[k];if(p.counts[n]<=0)return;
-  ctx.beginPath();ctx.arc(v[0],v[1],3*S,0,7);ctx.fillStyle='rgba(246,240,224,0.9)';ctx.fill();});
+  strokeImp(0.8,()=>{L.forEach((n,i)=>{const a=angleOf[n],x=CX+RARR*Math.cos(a),y=CY+RARR*Math.sin(a);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});});});
 
 /* ---- cœur : Cap (cliquable) ---- */
 ctx.beginPath();ctx.arc(CX,CY,27*S,0,7);ctx.fillStyle='#0b0913';ctx.fill();
