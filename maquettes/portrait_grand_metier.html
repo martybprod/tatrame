@@ -9,7 +9,7 @@
     --fond:#120f0b; --carte:#1b1712; --trait:#3a3226;
     --texte:#e9e1d2; --doux:#9a8f78; --accent:#d0a95f;
     --feu:#c86a42; --terre:#88964f; --air:#d8bd70; --eau:#5f8fb0;
-    --chaine:#7a6a4d;
+    --chaine:#7a6a4d; --fdv:#4a4130;
   }
   *{box-sizing:border-box}
   body{margin:0;background:radial-gradient(circle at 50% 42%,#1a1610,#0d0b08 78%);
@@ -51,7 +51,7 @@
     <p>① <b>Cœur (Vesica Piscis)</b> — le Cap, la matrice d'où tout part.<br>
     ② <b>Le tissu</b> — chaîne (rayons) tendue, trame (anneaux, couleur = élément) tissée dessus/dessous, plus ou moins loin selon ta force. Le <b>7</b> reste chaîne nue : une zone à tisser.<br>
     ③ <b>Ennéagramme</b> — 3 triangles entrelacés (3-6-9) + deux toiles à 9 branches reliant tes 9 qualités : la structure qui lie le tout.<br>
-    ④ <b>Halo Fleur de Vie</b> — le champ de cercles entrelacés (la trame-substrat).<br>
+    ④ <b>Fleur de Vie</b> — la vraie (19 cercles en maillage hexagonal), tout au fond, discrète : le champ, la trame-substrat.<br>
     ⑤ <b>Couronne de lotus</b> + bordure — les pétales et l'anneau du mandala.</p>
     <p style="font-style:italic;margin-top:12px">Composition figée par une graine (ici fixe) — en prod, dérivée de la date de naissance : même personne = même motif, toujours.</p>
   </div>
@@ -76,26 +76,45 @@ const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'t
 const counts={1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3};
 const MAX=3, SPAN=40;
 const RQ=176;                       // sommets des qualités
-const gFond=add(svg,'g',{}), gTissu=add(svg,'g',{}), gEnnea=add(svg,'g',{}), gAvant=add(svg,'g',{});
+const gBack=add(svg,'g',{}), gFond=add(svg,'g',{}), gTissu=add(svg,'g',{}), gEnnea=add(svg,'g',{}), gAvant=add(svg,'g',{});
 
-/* ===== défs : dégradé du cœur ===== */
+/* ===== défs : dégradé du cœur + masque de la Fleur de Vie ===== */
 const defs=add(svg,'defs',{});
 const grad=add(defs,'radialGradient',{id:'coeur'});
 add(grad,'stop',{offset:'0%','stop-color':'#f0d493'});
 add(grad,'stop',{offset:'100%','stop-color':col('accent')});
+// clip circulaire pour borner proprement la fleur (comme la vraie, bornée par un cercle)
+const clip=add(defs,'clipPath',{id:'fdvClip'});
+add(clip,'circle',{cx:CX,cy:CY,r:186});
 
-/* ===== ⑤ bordure + halo Fleur de Vie + lotus (fond) ===== */
-// halo fleur de vie : anneau de cercles entrelacés
+/* ===== ④ LA VRAIE FLEUR DE VIE (fond discret) ===== */
 (function(){
-  const n=18, rr=204, rc=30;
-  for(let i=0;i<n;i++){const[x,y]=polar(CX,CY,rr,i*360/n);
-    add(gFond,'circle',{cx:x,cy:y,r:rc,fill:'none',stroke:col('trait'),'stroke-width':0.8,opacity:0.55});}
-  // deux anneaux de bordure
+  const g=add(gBack,'g',{'clip-path':'url(#fdvClip)'});
+  const r=62;                                   // rayon des cercles = espacement du maillage
+  const dy=r*Math.sqrt(3)/2;
+  const centres=new Set(); const list=[];
+  // maillage triangulaire (hexagonal) : on couvre au-delà du clip puis on borne
+  for(let row=-4;row<=4;row++){
+    for(let i=-4;i<=4;i++){
+      const x=CX + i*r + (row&1? r/2:0);
+      const y=CY + row*dy;
+      const key=x.toFixed(1)+','+y.toFixed(1);
+      if(centres.has(key))continue;centres.add(key);
+      // ne garder que le cœur canonique de la fleur (centres à <= 2r du centre)
+      const d=Math.hypot(x-CX,y-CY);
+      if(d<=2*r+0.5) list.push([x,y]);
+    }
+  }
+  list.forEach(([x,y])=>add(g,'circle',{cx:x,cy:y,r,fill:'none',stroke:col('fdv'),'stroke-width':0.7,opacity:0.5}));
+  // deux cercles de bornage (tradition de la Fleur de Vie), très discrets
+  add(gBack,'circle',{cx:CX,cy:CY,r:186,fill:'none',stroke:col('fdv'),'stroke-width':0.8,opacity:0.55});
+  add(gBack,'circle',{cx:CX,cy:CY,r:194,fill:'none',stroke:col('fdv'),'stroke-width':0.5,opacity:0.4});
+})();
+
+/* ===== ⑤ couronne de lotus + bordure ===== */
+(function(){
   add(gFond,'circle',{cx:CX,cy:CY,r:238,fill:'none',stroke:col('trait'),'stroke-width':1});
   add(gFond,'circle',{cx:CX,cy:CY,r:246,fill:'none',stroke:col('trait'),'stroke-width':0.6,opacity:0.6});
-})();
-// couronne de lotus
-(function(){
   const n=18, ri=210, ro=236;
   for(let i=0;i<n;i++){const a=i*360/n;
     const[bx1,by1]=polar(CX,CY,ri,a-8),[bx2,by2]=polar(CX,CY,ri,a+8);
@@ -103,16 +122,14 @@ add(grad,'stop',{offset:'100%','stop-color':col('accent')});
     const[c1x,c1y]=polar(CX,CY,ro-6,a-6),[c2x,c2y]=polar(CX,CY,ro-6,a+6);
     add(gFond,'path',{d:`M${bx1} ${by1} Q ${c1x} ${c1y} ${tx} ${ty} Q ${c2x} ${c2y} ${bx2} ${by2}`,
       fill:col('accent'),'fill-opacity':0.05,stroke:col('accent'),'stroke-width':0.7,opacity:0.5});}
+  for(let q=1;q<=9;q++){const[x,y]=polar(CX,CY,238,(q-1)*SPAN);
+    add(gFond,'circle',{cx:x,cy:y,r:2.4,fill:col('accent'),opacity:0.7});}
 })();
-// points marqueurs des 9 secteurs sur la bordure
-for(let n=1;n<=9;n++){const[x,y]=polar(CX,CY,238,(n-1)*SPAN);
-  add(gFond,'circle',{cx:x,cy:y,r:2.4,fill:col('accent'),opacity:0.7});}
 
 /* ===== ② LE TISSU (chaîne + trame, 9 secteurs) ===== */
 const R0=40, R1=RQ-14, NR=12;
 const ringR=[...Array(NR)].map((_,k)=>R0+(R1-R0)*k/(NR-1));
 const warpsPerSec=4, warpAngles=[];
-// chaîne (tendue jusqu'au sommet de qualité)
 for(let n=1;n<=9;n++){const c0=(n-1)*SPAN;
   for(let w=0;w<warpsPerSec;w++){const ang=c0-SPAN/2+SPAN*(w+0.5)/warpsPerSec;
     warpAngles.push({ang,n});const[x,y]=polar(CX,CY,RQ,ang);
@@ -127,14 +144,11 @@ for(let n=1;n<=9;n++){const c=counts[n],e=elemNombre[n],c0=(n-1)*SPAN,a0=c0-SPAN
   if(c>0)hi=Math.max(1,hi-(R()<0.5?1:0));
   woven[n]=hi;
   for(let k=0;k<=hi;k++) weft(k,a0,a1,ELEM[e],0.85-k*0.015);}
-// chaîne redessinée sur zone tissée -> dessus/dessous
 warpAngles.forEach(({ang,n})=>{const hi=woven[n];if(hi<0)return;
   const[x,y]=polar(CX,CY,ringR[hi],ang);
   add(gTissu,'line',{x1:CX,y1:CY,x2:x,y2:y,stroke:col('chaine'),'stroke-width':0.8,opacity:0.6});});
-// un anneau sur deux repasse dessus
 for(let n=1;n<=9;n++){const c=counts[n],e=elemNombre[n],c0=(n-1)*SPAN,a0=c0-SPAN/2+1.5,a1=c0+SPAN/2-1.5,hi=woven[n];
   for(let k=0;k<=hi;k++) if(k%2===1) weft(k,a0,a1,ELEM[e],0.9);}
-// chantier : fils de trame libres (le 7)
 for(let n=1;n<=9;n++){if(counts[n]>0)continue;const c0=(n-1)*SPAN,e=elemNombre[n];
   for(let t=0;t<3;t++){const ang=c0-8+t*8;let d='';
     for(let s=0;s<=7;s++){const[x,y]=polar(CX,CY,R0+s*13,ang+Math.sin(s)*3.4+jit(1));d+=(s===0?'M':'L')+x.toFixed(1)+' '+y.toFixed(1)+' ';}
@@ -142,45 +156,33 @@ for(let n=1;n<=9;n++){if(counts[n]>0)continue;const c0=(n-1)*SPAN,e=elemNombre[n
 
 /* ===== ③ ENNÉAGRAMME (3 triangles + toiles {9/2},{9/4}) ===== */
 const V=[...Array(9)].map((_,i)=>polar(CX,CY,RQ,i*SPAN));
-function polygonPath(step,startSet){
-  // parcourt en sautant "step" ; renvoie liste de chemins fermés
-  const paths=[],seen=new Set();
+function polygonPath(step){const paths=[],seen=new Set();
   for(let s=0;s<9;s++){if(seen.has(s))continue;let idx=s,pts=[];
     do{pts.push(idx);seen.add(idx);idx=(idx+step)%9;}while(idx!==s);
-    if(pts.length>2)paths.push(pts);}
-  return paths;
-}
-function drawCompound(step,tint,w,op){
-  polygonPath(step).forEach(pts=>{let d='';pts.forEach((p,i)=>{d+=(i===0?'M':'L')+V[p][0]+' '+V[p][1]+' ';});d+='Z';
-    add(gEnnea,'path',{d,fill:'none',stroke:tint,'stroke-width':w,opacity:op,'stroke-linejoin':'round'});});
-}
-drawCompound(3,col('accent'),1.4,0.5);   // 3 triangles 3-6-9
-drawCompound(2,col('accent'),0.8,0.32);  // toile {9/2}
-drawCompound(4,ELEM.eau,0.8,0.24);       // toile {9/4}
+    if(pts.length>2)paths.push(pts);}return paths;}
+function drawCompound(step,tint,w,op){polygonPath(step).forEach(pts=>{let d='';
+  pts.forEach((p,i)=>{d+=(i===0?'M':'L')+V[p][0]+' '+V[p][1]+' ';});d+='Z';
+  add(gEnnea,'path',{d,fill:'none',stroke:tint,'stroke-width':w,opacity:op,'stroke-linejoin':'round'});});}
+drawCompound(3,col('accent'),1.4,0.5);
+drawCompound(2,col('accent'),0.8,0.32);
+drawCompound(4,ELEM.eau,0.8,0.24);
 
-/* ===== sommets de qualité (par-dessus) ===== */
+/* ===== sommets de qualité ===== */
 for(let n=1;n<=9;n++){const[x,y]=V[n-1],c=counts[n],e=elemNombre[n];
   add(gAvant,'line',{x1:CX,y1:CY,x2:x,y2:y,stroke:col('trait'),'stroke-width':0.5,opacity:0.3});
-  if(c>0){
-    add(gAvant,'circle',{cx:x,cy:y,r:9+c*2.4,fill:ELEM[e],'fill-opacity':0.32,stroke:ELEM[e],'stroke-width':1.6});
-    const t=el('text',{x,y,class:'num','font-size':13,fill:col('texte')});t.textContent=n;gAvant.appendChild(t);
-  }else{
-    // maille ouverte
-    add(gAvant,'circle',{cx:x,cy:y,r:12,fill:col('fond'),stroke:col('feu'),'stroke-width':1.2,'stroke-dasharray':'2 3'});
+  if(c>0){add(gAvant,'circle',{cx:x,cy:y,r:9+c*2.4,fill:ELEM[e],'fill-opacity':0.32,stroke:ELEM[e],'stroke-width':1.6});
+    const t=el('text',{x,y,class:'num','font-size':13,fill:col('texte')});t.textContent=n;gAvant.appendChild(t);}
+  else{add(gAvant,'circle',{cx:x,cy:y,r:12,fill:col('fond'),stroke:col('feu'),'stroke-width':1.2,'stroke-dasharray':'2 3'});
     const t=el('text',{x,y,class:'num','font-size':13,fill:col('feu')});t.textContent=n;gAvant.appendChild(t);
-    const tl=el('text',{x,y:y-19,'text-anchor':'middle','font-size':8.5,fill:col('feu'),'font-family':'sans-serif'});tl.textContent='à tisser';gAvant.appendChild(tl);
-  }
-}
+    const tl=el('text',{x,y:y-19,'text-anchor':'middle','font-size':8.5,fill:col('feu'),'font-family':'sans-serif'});tl.textContent='à tisser';gAvant.appendChild(tl);}}
 
 /* ===== ① CŒUR : Vesica Piscis + Cap ===== */
-(function(){
-  const o=9;
+(function(){const o=9;
   add(gAvant,'circle',{cx:CX-o,cy:CY,r:26,fill:'none',stroke:col('accent'),'stroke-width':0.7,opacity:0.5});
   add(gAvant,'circle',{cx:CX+o,cy:CY,r:26,fill:'none',stroke:col('accent'),'stroke-width':0.7,opacity:0.5});
   add(gAvant,'circle',{cx:CX,cy:CY,r:22,fill:col('fond'),stroke:col('accent'),'stroke-width':1.4});
   add(gAvant,'circle',{cx:CX,cy:CY,r:17,fill:'url(#coeur)'});
-  const t=el('text',{x:CX,y:CY,class:'num','font-size':20,fill:col('fond'),'font-weight':600});t.textContent=8;gAvant.appendChild(t);
-})();
+  const t=el('text',{x:CX,y:CY,class:'num','font-size':20,fill:col('fond'),'font-weight':600});t.textContent=8;gAvant.appendChild(t);})();
 </script>
 </body>
 </html>
