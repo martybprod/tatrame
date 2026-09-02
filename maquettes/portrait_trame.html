@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — La Trame tissée (textures, maquette)</title>
+<style>
+  :root{
+    --fond:#14110d; --carte:#1d1913; --trait:#3a3226;
+    --texte:#e9e1d2; --doux:#9a8f78; --accent:#c9a35e;
+    --feu:#c0603a; --terre:#7a8a4e; --air:#cdb06a; --eau:#5f86a8;
+    --reson:#7fa87a; --tension:#c06a5a; --neutre:#6f6656;
+    --fil:#5a4d38;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fond);color:var(--texte);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;padding:28px 18px 60px}
+  h1{font-weight:500;font-size:22px;margin:0 0 4px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 6px}
+  .exemple{color:var(--doux);font-size:13px;margin:0 0 24px;font-style:italic}
+  .grille-cartes{display:grid;gap:22px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    max-width:1080px;margin:0 auto}
+  .carte{background:var(--carte);border:1px solid var(--trait);
+    border-radius:14px;padding:22px 20px;display:flex;flex-direction:column}
+  .carte h2{font-weight:500;font-size:17px;margin:0 0 2px}
+  .carte .tag{color:var(--accent);font-size:12px;letter-spacing:.04em;
+    text-transform:uppercase;margin:0 0 14px}
+  .carte svg{display:block;margin:6px auto 14px;width:100%;height:auto;max-width:330px}
+  .carte p{font-size:13.5px;color:var(--doux);margin:0 0 8px}
+  .pour b{color:var(--reson)} .contre b{color:var(--tension)}
+  .legende{display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--doux);margin:2px 0 10px}
+  .legende span{display:inline-flex;align-items:center;gap:5px}
+  .pastille{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .num{font-family:Georgia,serif;text-anchor:middle;dominant-baseline:central}
+</style>
+</head>
+<body>
+<h1>La Trame — trois textures tissées</h1>
+<p class="sous">Même structure que la variante C. Seul le <b>fond</b> change : trois façons d'évoquer le tissu.</p>
+<p class="exemple">14/07/1985, « Martin Boucher ». Cap 8 au cœur · 9 qualités en anneau · fils Voix/Foyer/Élan colorés par l'appui du ciel.</p>
+
+<div class="grille-cartes">
+  <div class="carte">
+    <h2>C1 — Chaîne &amp; trame</h2>
+    <div class="tag">le vrai tissage (dessus/dessous)</div>
+    <svg id="s1" viewBox="0 0 320 320"></svg>
+    <p>Rayons = fils de chaîne, anneaux = fils de trame. À chaque croisement, un fil passe dessus, l'autre dessous — comme sur un métier à tisser.</p>
+    <p class="pour"><b>+</b> le plus littéralement « tissu », et le plus sur-marque.</p>
+    <p class="contre"><b>–</b> demande un rendu fin pour ne pas charger.</p>
+  </div>
+
+  <div class="carte">
+    <h2>C2 — Rosace entrelacée</h2>
+    <div class="tag">fils tressés entre tes qualités</div>
+    <svg id="s2" viewBox="0 0 320 320"></svg>
+    <p>Les 9 points de qualité sont reliés par des cordes qui s'entrelacent en étoile tressée — un nœud de fils entre tout ce qui te compose.</p>
+    <p class="pour"><b>+</b> élégant, « guilloché » (comme un sceau/filigrane).</p>
+    <p class="contre"><b>–</b> plus abstrait : on lit moins vite « tissu ».</p>
+  </div>
+
+  <div class="carte">
+    <h2>C3 — Dentelle (rosaces)</h2>
+    <div class="tag">courbes en fil, effet broderie</div>
+    <svg id="s3" viewBox="0 0 320 320"></svg>
+    <p>Des courbes-fils superposées et tournées dessinent une dentelle fine en fond, comme une broderie circulaire.</p>
+    <p class="pour"><b>+</b> le plus doux/organique, chaleureux.</p>
+    <p class="contre"><b>–</b> décoratif : moins « données », plus ambiance.</p>
+  </div>
+</div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const C=getComputedStyle(document.documentElement);
+const col=n=>C.getPropertyValue('--'+n).trim();
+const ELEM={feu:col('feu'),terre:col('terre'),air:col('air'),eau:col('eau')};
+const polar=(cx,cy,r,deg)=>{const a=(deg-90)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];};
+function txt(svg,x,y,s,o={}){const t=el('text',{x,y,class:'num','font-size':o.size||18,fill:o.fill||col('texte')});t.textContent=s;svg.appendChild(t);}
+function lab(svg,x,y,s){const t=el('text',{x,y,'text-anchor':'middle','font-size':8.5,fill:col('doux'),'font-family':'sans-serif'});t.textContent=s;svg.appendChild(t);}
+const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'terre',9:'feu'};
+const counts={1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3};
+const CX=160,CY=160;
+
+// couche de données commune (posée par-dessus le fond)
+function couchesDonnees(svg){
+  // anneau des 9 qualités
+  for(let n=1;n<=9;n++){
+    const ang=(n-1)*40,c=counts[n],e=elemNombre[n],[x,y]=polar(CX,CY,120,ang);
+    const rp=c>0?(7+c*3):8;
+    if(c>0)svg.appendChild(el('circle',{cx:x,cy:y,r:rp,fill:ELEM[e],'fill-opacity':0.32,stroke:ELEM[e],'stroke-width':1.5}));
+    else svg.appendChild(el('circle',{cx:x,cy:y,r:rp,fill:col('fond'),stroke:col('tension'),'stroke-width':1,'stroke-dasharray':'3 3',opacity:0.8}));
+    txt(svg,x,y,n,{size:12,fill:c>0?col('texte'):col('tension')});
+  }
+  // fils d'accord vers Voix/Foyer/Élan
+  const keys=[['Voix',3,'reson',0],['Foyer',3,'neutre',120],['Élan',5,'tension',240]];
+  keys.forEach(([nom,val,acc,ang])=>{const[x,y]=polar(CX,CY,60,ang);
+    svg.appendChild(el('line',{x1:CX,y1:CY,x2:x,y2:y,stroke:col(acc),'stroke-width':2.2,opacity:0.92}));
+    svg.appendChild(el('circle',{cx:x,cy:y,r:15,fill:col('carte'),stroke:col(acc),'stroke-width':1.7}));
+    txt(svg,x,y,val,{size:14});
+    lab(svg,x,y+23,nom);});
+  // cœur : Cap
+  svg.appendChild(el('circle',{cx:CX,cy:CY,r:18,fill:col('accent')}));
+  txt(svg,CX,CY,8,{size:19,fill:col('fond')});
+}
+
+/* ===== C1 : chaîne & trame tissées ===== */
+(function(){
+  const svg=document.getElementById('s1');
+  const rays=12, ringR=[38,64,90,116,142];
+  // trame (anneaux) d'abord
+  ringR.forEach(r=>svg.appendChild(el('circle',{cx:CX,cy:CY,r,fill:'none',stroke:col('fil'),'stroke-width':1.1,opacity:0.55})));
+  // chaîne (rayons) par-dessus -> rayon "dessus" par défaut
+  for(let i=0;i<rays;i++){const[x,y]=polar(CX,CY,150,i*360/rays);
+    svg.appendChild(el('line',{x1:CX,y1:CY,x2:x,y2:y,stroke:col('fil'),'stroke-width':1.1,opacity:0.55}));}
+  // entrelacs : à un croisement sur deux, l'anneau repasse dessus
+  for(let i=0;i<rays;i++){for(let k=0;k<ringR.length;k++){
+    if((i+k)%2===0){const[x,y]=polar(CX,CY,ringR[k],i*360/rays);
+      // trou dans le rayon
+      svg.appendChild(el('circle',{cx:x,cy:y,r:3,fill:col('fond')}));
+      // petit arc d'anneau redessiné dessus
+      const a0=i*360/rays-4,a1=i*360/rays+4;
+      const[px,py]=polar(CX,CY,ringR[k],a0),[qx,qy]=polar(CX,CY,ringR[k],a1);
+      svg.appendChild(el('path',{d:`M${px} ${py} A ${ringR[k]} ${ringR[k]} 0 0 1 ${qx} ${qy}`,fill:'none',stroke:col('fil'),'stroke-width':1.1,opacity:0.7}));
+    }
+  }}
+  couchesDonnees(svg);
+})();
+
+/* ===== C2 : rosace entrelacée (étoiles superposées) ===== */
+(function(){
+  const svg=document.getElementById('s2');
+  const P=12,R=148;
+  function star(step,tint,op){let d='';for(let i=0;i<=P;i++){const idx=(i*step)%P;const[x,y]=polar(CX,CY,R,idx*360/P);d+=(i===0?'M':'L')+x+' '+y+' ';}
+    svg.appendChild(el('path',{d,fill:'none',stroke:tint,'stroke-width':1.2,opacity:op,'stroke-linejoin':'round'}));}
+  star(5,col('fil'),0.6);
+  star(4,ELEM.eau,0.28);
+  star(3,ELEM.terre,0.24);
+  // petits nœuds aux sommets
+  for(let i=0;i<P;i++){const[x,y]=polar(CX,CY,R,i*360/P);svg.appendChild(el('circle',{cx:x,cy:y,r:1.6,fill:col('fil'),opacity:0.7}));}
+  couchesDonnees(svg);
+})();
+
+/* ===== C3 : dentelle (rosaces superposées) ===== */
+(function(){
+  const svg=document.getElementById('s3');
+  function rose(k,R,rot,tint,op){let d='';const N=360;
+    for(let t=0;t<=N;t++){const th=t*Math.PI/180;const rr=R*Math.abs(Math.cos(k*th));
+      const a=th+rot*Math.PI/180;const x=CX+rr*Math.cos(a),y=CY+rr*Math.sin(a);d+=(t===0?'M':'L')+x.toFixed(1)+' '+y.toFixed(1)+' ';}
+    svg.appendChild(el('path',{d,fill:'none',stroke:tint,'stroke-width':0.9,opacity:op}));}
+  rose(6,150,0,col('fil'),0.5);
+  rose(6,150,30,col('fil'),0.35);
+  rose(12,150,0,ELEM.air,0.16);
+  couchesDonnees(svg);
+})();
+</script>
+</body>
+</html>
