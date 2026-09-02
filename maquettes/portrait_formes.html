@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — 3 formes pour le portrait (maquette de test)</title>
+<style>
+  :root{
+    --fond:#14110d;
+    --carte:#1d1913;
+    --trait:#3a3226;
+    --texte:#e9e1d2;
+    --doux:#9a8f78;
+    --accent:#c9a35e;      /* or chaud */
+    --reson:#7fa87a;       /* résonance */
+    --tension:#c06a5a;     /* tension */
+    --neutre:#6f6656;      /* neutre */
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--fond); color:var(--texte);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5; padding:28px 18px 60px;
+  }
+  h1{font-weight:500; font-size:22px; margin:0 0 4px}
+  .sous{color:var(--doux); font-size:14px; margin:0 0 28px}
+  .exemple{color:var(--doux); font-size:13px; margin:0 0 24px; font-style:italic}
+  .grille-cartes{
+    display:grid; gap:22px;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    max-width:1050px; margin:0 auto;
+  }
+  .carte{
+    background:var(--carte); border:1px solid var(--trait);
+    border-radius:14px; padding:22px 20px; display:flex; flex-direction:column;
+  }
+  .carte h2{font-weight:500; font-size:17px; margin:0 0 2px}
+  .carte .tag{color:var(--accent); font-size:12px; letter-spacing:.04em; text-transform:uppercase; margin:0 0 14px}
+  .carte svg{display:block; margin:6px auto 14px; width:100%; height:auto; max-width:300px}
+  .carte p{font-size:13.5px; color:var(--doux); margin:0 0 8px}
+  .carte .pour, .carte .contre{font-size:12.5px; margin:2px 0}
+  .pour b{color:var(--reson)} .contre b{color:var(--tension)}
+  /* mots de la figure */
+  text{font-family:Georgia,"Times New Roman",serif}
+  .num{fill:var(--texte); font-size:20px; text-anchor:middle; dominant-baseline:central}
+  .num-o{fill:var(--fond); font-size:20px; text-anchor:middle; dominant-baseline:central; font-weight:600}
+  .lab{fill:var(--doux); font-size:9px; text-anchor:middle; font-family:-apple-system,sans-serif; letter-spacing:.03em}
+  .coeur{fill:var(--accent); font-size:17px; text-anchor:middle; dominant-baseline:central; font-weight:600}
+  .legende{display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--doux); margin-top:2px}
+  .legende span{display:inline-flex; align-items:center; gap:5px}
+  .pastille{width:11px; height:3px; border-radius:2px; display:inline-block}
+</style>
+</head>
+<body>
+
+<h1>Portrait — trois formes à tester</h1>
+<p class="sous">Maquette statique. Rien n'est branché ; les chiffres servent juste à voir le rendu.</p>
+<p class="exemple">Exemple : naissance 14 / 07 / 1985 &nbsp;·&nbsp; nom « Martin Boucher ». &nbsp; J = 5, M = 7, A = 5.</p>
+
+<div class="grille-cartes">
+
+  <!-- ============ FORME 1 : TRIANGLE NICHÉ ============ -->
+  <div class="carte">
+    <h2>1 — Le triangle niché</h2>
+    <div class="tag">ta forme préférée, recadrée</div>
+    <svg viewBox="0 0 300 290" role="img" aria-label="Triangle niché">
+      <!-- grand triangle pointe en bas -->
+      <polygon points="30,55 270,55 150,265" fill="none" stroke="var(--trait)" stroke-width="1.5"/>
+      <!-- petit triangle pointe en haut, à l'intérieur -->
+      <polygon points="150,120 85,218 215,218" fill="none" stroke="var(--accent)" stroke-width="1.3" opacity="0.85"/>
+
+      <!-- sommets extérieurs : incarnation (J/M/A) -->
+      <circle cx="30" cy="55" r="17" fill="var(--accent)"/>
+      <text class="num-o" x="30" y="55">5</text>
+      <text class="lab" x="30" y="30">Jour</text>
+
+      <circle cx="270" cy="55" r="17" fill="var(--accent)"/>
+      <text class="num-o" x="270" y="55">7</text>
+      <text class="lab" x="270" y="30">Mois</text>
+
+      <circle cx="150" cy="265" r="17" fill="var(--accent)"/>
+      <text class="num-o" x="150" y="265">5</text>
+      <text class="lab" x="150" y="288">Année</text>
+
+      <!-- sommets intérieurs : les 3 axes -->
+      <circle cx="150" cy="120" r="15" fill="var(--carte)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="num" x="150" y="120">3</text>
+      <text class="lab" x="150" y="100">vers où tu vises</text>
+
+      <circle cx="85" cy="218" r="15" fill="var(--carte)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="num" x="85" y="218">1</text>
+      <text class="lab" x="72" y="238">ce que tu portes</text>
+
+      <circle cx="215" cy="218" r="15" fill="var(--carte)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="num" x="215" y="218">3</text>
+      <text class="lab" x="228" y="238">ce que tu travailles</text>
+
+      <!-- cœur -->
+      <circle cx="150" cy="185" r="13" fill="none" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="2 3"/>
+      <text class="coeur" x="150" y="185">7</text>
+    </svg>
+    <p>Grand triangle ▽ = ta naissance (Jour / Mois / Année). Petit triangle △ dedans = tes 3 axes : ce que tu portes déjà, ce que tu travailles, vers où tu vises. Cœur = synthèse.</p>
+    <p class="pour"><b>+</b> exactement la forme que tu aimes, sans jargon d'âme / vie antérieure.</p>
+    <p class="contre"><b>–</b> 7 nombres : c'est la plus dense des trois (tension avec l'épure).</p>
+  </div>
+
+  <!-- ============ FORME 2 : GRILLE 3×3 ============ -->
+  <div class="carte">
+    <h2>2 — La grille (Ta Trame)</h2>
+    <div class="tag">données déjà calculées</div>
+    <svg viewBox="0 0 300 290" role="img" aria-label="Grille 3 par 3">
+      <!-- cadre 3x3 -->
+      <g stroke="var(--trait)" stroke-width="1.2">
+        <rect x="45" y="35" width="210" height="210" fill="none" rx="6"/>
+        <line x1="115" y1="35" x2="115" y2="245"/>
+        <line x1="185" y1="35" x2="185" y2="245"/>
+        <line x1="45" y1="105" x2="255" y2="105"/>
+        <line x1="45" y1="175" x2="255" y2="175"/>
+      </g>
+      <!-- rangée haute : 3 6 9 -->
+      <text class="num" x="80"  y="70">33</text>
+      <text class="num" x="150" y="70">6</text>
+      <text class="num" x="220" y="70" fill="var(--accent)">999</text>
+      <!-- rangée milieu : 2 5 8 -->
+      <text class="num" x="80"  y="140">22</text>
+      <text class="num" x="150" y="140">55</text>
+      <text class="num" x="220" y="140">8</text>
+      <!-- rangée basse : 1 4 7 -->
+      <text class="num" x="80"  y="210">1</text>
+      <text class="num" x="150" y="210">4</text>
+      <!-- case 7 vide = chantier -->
+      <text class="lab" x="220" y="208" fill="var(--tension)">chantier</text>
+      <text class="lab" x="220" y="222" fill="var(--tension)">·7·</text>
+    </svg>
+    <p>Le carré des 9 qualités (comptage des lettres du nom). Le chiffre répété = ta force sur cette qualité ; une case vide = un chantier. Ici le 9 est très présent, le 7 manque.</p>
+    <p class="pour"><b>+</b> le plus original (ni matrice karmique, ni arbre) et la donnée existe déjà.</p>
+    <p class="contre"><b>–</b> plus sobre, moins « spectaculaire » qu'un triangle.</p>
+  </div>
+
+  <!-- ============ FORME 3 : ÉTOILE RADIALE ============ -->
+  <div class="carte">
+    <h2>3 — L'étoile-trame</h2>
+    <div class="tag">numérologie × ton ciel</div>
+    <svg viewBox="0 0 300 290" role="img" aria-label="Étoile radiale">
+      <!-- fils, couleur = accord avec le ciel -->
+      <g stroke-width="2" opacity="0.9">
+        <line x1="150" y1="150" x2="150" y2="55"  stroke="var(--reson)"/>
+        <line x1="150" y1="150" x2="248" y2="150" stroke="var(--tension)"/>
+        <line x1="150" y1="150" x2="150" y2="245" stroke="var(--neutre)"/>
+        <line x1="150" y1="150" x2="52"  y2="150" stroke="var(--reson)"/>
+      </g>
+      <!-- noyau -->
+      <circle cx="150" cy="150" r="7" fill="var(--accent)"/>
+      <!-- 4 nombres-clés -->
+      <circle cx="150" cy="55" r="18" fill="var(--carte)" stroke="var(--reson)" stroke-width="1.6"/>
+      <text class="num" x="150" y="55">8</text>
+      <text class="lab" x="150" y="28">Le Cap</text>
+
+      <circle cx="248" cy="150" r="18" fill="var(--carte)" stroke="var(--tension)" stroke-width="1.6"/>
+      <text class="num" x="248" y="150">9</text>
+      <text class="lab" x="248" y="123">La Voix</text>
+
+      <circle cx="150" cy="245" r="18" fill="var(--carte)" stroke="var(--neutre)" stroke-width="1.6"/>
+      <text class="num" x="150" y="245">3</text>
+      <text class="lab" x="150" y="273">Le Foyer</text>
+
+      <circle cx="52" cy="150" r="18" fill="var(--carte)" stroke="var(--reson)" stroke-width="1.6"/>
+      <text class="num" x="52" y="150">4</text>
+      <text class="lab" x="52" y="123">L'Élan</text>
+    </svg>
+    <div class="legende">
+      <span><i class="pastille" style="background:var(--reson)"></i> ton ciel appuie</span>
+      <span><i class="pastille" style="background:var(--tension)"></i> ton ciel tend</span>
+      <span><i class="pastille" style="background:var(--neutre)"></i> neutre</span>
+    </div>
+    <p style="margin-top:10px">Tes 4 nombres-clés autour d'un cœur. La couleur du fil dit si ton ciel appuie ou tend ce nombre (Align le calcule déjà).</p>
+    <p class="pour"><b>+</b> le plus « signature » : croise numérologie et astro, unique à Align.</p>
+    <p class="contre"><b>–</b> proche d'un diagramme radar si on n'est pas très sobre.</p>
+  </div>
+
+</div>
+</body>
+</html>
