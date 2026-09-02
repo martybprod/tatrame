@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — Profil-étoile + lignes de force</title>
+<style>
+  :root{--doux:#9a8f78;--texte:#e9e1d2}
+  *{box-sizing:border-box}
+  body{margin:0;background:#060810;color:var(--texte);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.55;padding:30px 18px 70px}
+  .wrap{max-width:760px;margin:0 auto;text-align:center}
+  h1{font-weight:500;font-size:23px;margin:0 0 6px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 4px}
+  .exemple{color:var(--doux);font-size:12.5px;margin:0 0 16px;font-style:italic}
+  canvas{display:block;margin:0 auto;width:100%;height:auto;max-width:680px;border-radius:8px}
+  .notes{text-align:left;max-width:600px;margin:16px auto 0;color:var(--doux);font-size:12.5px}
+  .notes b{color:var(--texte);font-weight:500}
+  #err{color:#c06a5a;font-size:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Profil-étoile + lignes de force</h1>
+  <p class="sous">La silhouette = ton équilibre (pointu = fort, rentré = chantier). Les flèches d'or = tes lignes de force complètes.</p>
+  <p class="exemple">Martin Boucher, 6 avril 1980. Élément dominant : Eau. Seul chantier : Confiance (7).</p>
+  <canvas id="c" width="1360" height="1360"></canvas>
+  <div class="notes">
+    <p><b>Lecture d'un coup d'œil :</b> la forme pleine montre où tu es fort (les pointes) et où tu es en creux (les rentrées). Les <b>flèches lumineuses</b> relient les nombres d'une même ligne quand elle est complète (force de structure). Le fond dit ton <b>tempérament</b> (élément dominant). Positions fixes → même grille de lecture pour tous.</p>
+  </div>
+  <p id="err"></p>
+</div>
+
+<script>
+try{
+const cv=document.getElementById('c'), W=cv.width, H=cv.height, ctx=cv.getContext('2d',{willReadFrequently:true});
+const CX=W/2, CY=H/2, S=W/680;
+const R0=70*S, RMAX=250*S, SPAN=40;
+const elemNombre={1:'feu',2:'eau',3:'feu',4:'terre',5:'air',6:'terre',7:'eau',8:'terre',9:'eau'};
+const NOM={1:'Action',2:'Regard',3:'Communication',4:'Travail',5:'Liberté',6:'Lien',7:'Confiance',8:'Réalisation',9:'Groupe'};
+const DARK ={feu:[74,22,18], eau:[16,42,62], air:[80,60,22], terre:[24,54,34]};
+const LIGHT={feu:[214,116,74],eau:[100,158,192],air:[228,196,116],terre:[116,168,102]};
+const p={jour:6, cap:1, counts:{1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3}};
+const dg=d=>d*Math.PI/180;
+const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+const clamp=v=>Math.max(0,Math.min(255,v));
+
+/* 9 positions fixes, groupées par plan : Esprit(3,6,9) haut, Âme(2,5,8) droite, Matière(1,4,7) bas */
+const ORDER=[6,9,2,5,8,1,4,7,3];
+const angleOf={}, kOf={};
+ORDER.forEach((n,k)=>{angleOf[n]=dg(-90+k*SPAN);kOf[n]=k;});
+const refMax=Math.max(3,...Object.values(p.counts));
+const vertexOf=n=>{const c=p.counts[n],r=R0+(c/refMax)*(RMAX-R0),a=angleOf[n];return [CX+r*Math.cos(a),CY+r*Math.sin(a)];};
+const skelOf=n=>{const a=angleOf[n];return [CX+RMAX*Math.cos(a),CY+RMAX*Math.sin(a)];};
+
+/* empreinte élémentaire */
+const ew={feu:0,eau:0,air:0,terre:0};
+for(let n=1;n<=9;n++)ew[elemNombre[n]]+=p.counts[n];
+const domElem=Object.entries(ew).sort((a,b)=>b[1]-a[1])[0][0];
+
+/* lignes de force pythagoriciennes */
+const LINES=[[3,6,9],[2,5,8],[1,4,7],[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7]];
+const complete=L=>L.every(n=>p.counts[n]>0);
+
+/* ---- fond : lavis de l'élément dominant ---- */
+const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,RMAX*1.5);
+const de=mix([6,8,16],DARK[domElem],0.5);
+bg.addColorStop(0,`rgb(${de[0]|0},${de[1]|0},${de[2]|0})`);bg.addColorStop(1,'#050509');
+ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+
+/* ---- squelette fixe : 9 rayons + anneaux de repère (discrets) ---- */
+ctx.strokeStyle='rgba(150,140,110,0.14)';ctx.lineWidth=1*S;
+for(let n=1;n<=9;n++){const a=angleOf[n];ctx.beginPath();ctx.moveTo(CX,CY);ctx.lineTo(CX+RMAX*Math.cos(a),CY+RMAX*Math.sin(a));ctx.stroke();}
+[0.5,0.75,1].forEach(f=>{ctx.beginPath();
+  for(let n=1;n<=9;n++){const a=angleOf[n],x=CX+(R0+f*(RMAX-R0))*Math.cos(a),y=CY+(R0+f*(RMAX-R0))*Math.sin(a);n===1?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+  ctx.closePath();ctx.strokeStyle='rgba(150,140,110,0.10)';ctx.stroke();});
+
+/* ---- silhouette (le profil d'équilibre) ---- */
+const verts=[];for(let k=0;k<9;k++)verts.push(vertexOf(ORDER[k]));
+ctx.beginPath();verts.forEach((v,i)=>i?ctx.lineTo(v[0],v[1]):ctx.moveTo(v[0],v[1]));ctx.closePath();
+const fillC=mix(DARK[domElem],LIGHT[domElem],0.5);
+const gfill=ctx.createRadialGradient(CX,CY,R0*0.5,CX,CY,RMAX);
+gfill.addColorStop(0,`rgba(${LIGHT[domElem][0]},${LIGHT[domElem][1]},${LIGHT[domElem][2]},0.32)`);
+gfill.addColorStop(1,`rgba(${DARK[domElem][0]},${DARK[domElem][1]},${DARK[domElem][2]},0.30)`);
+ctx.fillStyle=gfill;ctx.fill();
+ctx.strokeStyle=`rgba(${LIGHT[domElem][0]},${LIGHT[domElem][1]},${LIGHT[domElem][2]},0.85)`;ctx.lineWidth=2*S;
+ctx.save();ctx.shadowColor=`rgba(${LIGHT[domElem][0]},${LIGHT[domElem][1]},${LIGHT[domElem][2]},0.5)`;ctx.shadowBlur=10*S;ctx.stroke();ctx.restore();
+
+/* ---- lignes de force complètes (flèches d'or lumineuses) ---- */
+LINES.forEach(L=>{if(!complete(L))return;
+  ctx.save();ctx.shadowColor='rgba(255,216,150,0.6)';ctx.shadowBlur=12*S;
+  ctx.strokeStyle='rgba(255,232,170,0.9)';ctx.lineWidth=2.4*S;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();L.forEach((n,i)=>{const s=skelOf(n);i?ctx.lineTo(s[0],s[1]):ctx.moveTo(s[0],s[1]);});ctx.stroke();ctx.restore();});
+
+/* ---- nœuds des 9 nombres + noms ---- */
+for(let k=0;k<9;k++){const n=ORDER[k],c=p.counts[n],e=elemNombre[n],[sx,sy]=skelOf(n);
+  const lit=c>0;
+  ctx.beginPath();ctx.arc(sx,sy,13*S,0,7);
+  ctx.fillStyle=lit?`rgba(${DARK[e][0]},${DARK[e][1]},${DARK[e][2]},0.95)`:'rgba(12,10,16,0.95)';ctx.fill();
+  ctx.lineWidth=1.6*S;ctx.strokeStyle=lit?`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},0.95)`:'rgba(176,90,78,0.8)';
+  if(!lit)ctx.setLineDash([3*S,3*S]);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=lit?'#f2ead8':'#d0705e';ctx.font=`${13*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(c,sx,sy);
+  // nom à l'extérieur
+  const a=angleOf[n],lx=CX+(RMAX+30*S)*Math.cos(a),ly=CY+(RMAX+30*S)*Math.sin(a);
+  ctx.fillStyle=lit?`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},0.9)`:'rgba(176,90,78,0.8)';
+  ctx.font=`${12*S}px sans-serif`;
+  ctx.textAlign=Math.abs(Math.cos(a))<0.3?'center':(Math.cos(a)>0?'left':'right');
+  ctx.textBaseline=Math.sin(a)>0.3?'top':(Math.sin(a)<-0.3?'bottom':'middle');
+  ctx.fillText(NOM[n],lx,ly);}
+
+/* ---- cœur : Cap ---- */
+ctx.beginPath();ctx.arc(CX,CY,24*S,0,7);ctx.fillStyle='#0b0e16';ctx.fill();
+ctx.lineWidth=1.5*S;ctx.strokeStyle='rgba(226,196,120,0.9)';ctx.stroke();
+ctx.fillStyle='#f2ead8';ctx.font=`${24*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(p.cap,CX,CY-2*S);
+ctx.fillStyle='rgba(233,225,210,0.6)';ctx.font=`${10*S}px sans-serif`;ctx.fillText('Cap',CX,CY+15*S);
+
+/* ---- libellés de zones + tempérament ---- */
+ctx.fillStyle='rgba(154,143,120,0.7)';ctx.font=`italic ${12*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';
+const RZ=RMAX+72*S;
+ctx.fillText('Esprit',CX,CY-RZ);
+ctx.fillText('Matière',CX-RZ*0.7,CY+RZ*0.7);
+ctx.fillText('Âme',CX+RZ*0.8,CY+RZ*0.5);
+ctx.fillStyle=`rgba(${LIGHT[domElem][0]},${LIGHT[domElem][1]},${LIGHT[domElem][2]},0.75)`;
+ctx.font=`italic ${13*S}px Georgia`;ctx.textAlign='left';ctx.textBaseline='top';
+ctx.fillText('Tempérament : '+domElem, 20*S, 20*S);
+
+}catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
+</script>
+</body>
+</html>
