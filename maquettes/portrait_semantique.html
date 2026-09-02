@@ -89,6 +89,18 @@ const OUTER=[
 ].map(it=>{const c=nearest(outer,usedO,it.deg);return c?{...it,x:c.x,y:c.y,idx:c.idx}:it;}).filter(o=>o.x);
 const outerIdx=new Set(OUTER.map(o=>o.idx));
 
+/* ---- carte de proximité aux LIGNES FORTES (cercles à nombre élevé + nœuds extérieurs) ---- */
+const STRONG=[];
+GRAINE.forEach(g=>{if(g.x!==undefined)STRONG.push({x:g.x,y:g.y,imp:impNb(g.val)});});
+OUTER.forEach(o=>STRONG.push({x:o.x,y:o.y,imp:0.5}));
+STRONG.push({x:CX,y:CY,imp:impNb(p.cap)});
+const FALLSTR=RFOL*1.7;
+function proxStrong(mx,my){let best=0;
+  for(const s of STRONG){const dd=Math.hypot(mx-s.x,my-s.y);if(dd>FALLSTR)continue;
+    const v=s.imp*(1-dd/FALLSTR);if(v>best)best=v;}
+  return best;}
+const clamp=v=>Math.max(0,Math.min(255,v));
+
 /* ---- pétales ---- */
 function arcPts(cx,cy,r,a1,a2){const dA=norm(a2-a1),n=Math.max(3,Math.ceil(Math.abs(dA)/(Math.PI/26))),o=[];
   for(let i=0;i<=n;i++){const a=a1+dA*i/n;o.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}return o;}
@@ -115,10 +127,19 @@ for(let a=0;a<FOL.length;a++)for(let b=a+1;b<FOL.length;b++){
   const pet=petale(FOL[a],FOL[b],RFOL);if(!pet)continue;
   const n=qualiteAt(pet.cx,pet.cy),e=elemNombre[n],f=force(n);
   const path=new Path2D();pet.pts.forEach(([x,y],i)=>i?path.lineTo(x,y):path.moveTo(x,y));path.closePath();
-  if(f<=0){ctx.strokeStyle='rgba(150,130,90,0.16)';ctx.lineWidth=0.8*S;ctx.stroke(path);continue;}
-  const jit=(rng()-0.5)*0.14, col=mix(DARK[e],LIGHT[e],0.40+0.45*f+jit);
-  ctx.fillStyle=`rgba(${col[0]|0},${col[1]|0},${col[2]|0},${0.30+0.42*f})`;ctx.fill(path);
-  ctx.strokeStyle=`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},${0.18+0.2*f})`;ctx.lineWidth=0.6*S;ctx.stroke(path);}
+  if(f<=0){ // chantier : quasi vide, grisé, transparent
+    ctx.strokeStyle='rgba(150,130,90,0.14)';ctx.lineWidth=0.8*S;ctx.stroke(path);continue;}
+  const prox=proxStrong(pet.cx,pet.cy);
+  const V=Math.min(1, 0.14 + 0.5*f + 0.9*prox);            // vigueur de la case
+  const vivid=mix(DARK[e],LIGHT[e],0.30+0.52*V);
+  const lum=vivid[0]*0.3+vivid[1]*0.5+vivid[2]*0.2;
+  const sat=0.28+1.15*V;                                    // terne (gris) -> sursaturé
+  let col=vivid.map(v=>clamp(lum+(v-lum)*sat));
+  col=mix(col,[240,214,150],0.16*prox);                    // chaleur dorée près des fils forts
+  const jit=(rng()-0.5)*10; col=col.map(v=>clamp(v+jit));
+  const alpha=0.16+0.72*V;                                  // transparent (faible) -> opaque (fort)
+  ctx.fillStyle=`rgba(${col[0]|0},${col[1]|0},${col[2]|0},${alpha})`;ctx.fill(path);
+  ctx.strokeStyle=`rgba(${LIGHT[e][0]},${LIGHT[e][1]},${LIGHT[e][2]},${0.12+0.28*V})`;ctx.lineWidth=0.6*S;ctx.stroke(path);}
 ctx.restore();
 
 /* ---- fils d'or ---- */
