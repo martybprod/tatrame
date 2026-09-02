@@ -140,11 +140,10 @@ wg.strokeStyle='#000';wg.lineWidth=2*S;wg.lineCap='round';wg.lineJoin='round';dr
 const wd=wg.getImageData(0,0,W,H).data, wall=new Uint8Array(W*H);
 for(let i=0;i<W*H;i++) wall[i]=wd[i*4+3]>40?1:0;
 
-// fond sobre
-const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,CLIP*1.2);
-bg.addColorStop(0,'#131020');bg.addColorStop(1,'#08060d');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-for(let i=0;i<70;i++){const x=rng()*W,y=rng()*H,a=0.1+rng()*0.28;
-  ctx.beginPath();ctx.arc(x,y,0.7*S,0,7);ctx.fillStyle=`rgba(210,210,235,${a})`;ctx.fill();}
+// fond : noir profond, neutre (aucune teinte)
+ctx.fillStyle='#050507';ctx.fillRect(0,0,W,H);
+for(let i=0;i<90;i++){const x=rng()*W,y=rng()*H,a=0.12+rng()*0.34;
+  ctx.beginPath();ctx.arc(x,y,0.7*S,0,7);ctx.fillStyle=`rgba(215,215,232,${a})`;ctx.fill();}
 
 // flood fill
 const img=ctx.getImageData(0,0,W,H), d=img.data;
@@ -160,16 +159,16 @@ function couleurCellule(mx,my,rc){
   let col=mix(dblend,lblend,f);
   let alpha;
   if(chantier){
-    // zone à travailler : la plupart des cases COMPLÈTEMENT transparentes
-    alpha = rng()<0.75 ? 0 : 0.07;
+    // zone à travailler : cases COMPLÈTEMENT transparentes (à 90%)
+    alpha = rng()<0.90 ? 0 : 0.05;
     const g0=(col[0]*0.3+col[1]*0.5+col[2]*0.2);
     col=[g0+10,g0+10,g0+16];
   }else{
-    // l'opacité dit la force : près des lignes fortes = opaque et riche,
-    // loin = presque transparent (le cosmos transparaît)
-    alpha = 0.13 + 0.85*Math.pow(prox,0.85);
-    const target=mix(col,[236,214,150],0.30*prox);
-    col=target.map(v=>Math.min(255,v*(1+0.45*prox)));
+    // l'opacité dit la force : seuil dur — sous 0.28 de proximité, TOUT est transparent
+    const proxS = prox<0.28 ? 0 : (prox-0.28)/0.72;
+    alpha = proxS<=0 ? 0 : 0.08 + 0.92*Math.pow(proxS,0.8);
+    const target=mix(col,[236,214,150],0.30*proxS);
+    col=target.map(v=>Math.min(255,v*(1+0.45*proxS)));
   }
   col=col.map(v=>v*(0.82+0.28*(1-rc/CLIP)));
   return {col,alpha};
