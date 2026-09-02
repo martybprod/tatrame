@@ -85,7 +85,7 @@ function distSeg(px,py,s){const vx=s.x2-s.x1,vy=s.y2-s.y1,wx=px-s.x1,wy=py-s.y1;
   const L2=vx*vx+vy*vy; let t=L2?Math.max(0,Math.min(1,(wx*vx+wy*vy)/L2)):0;
   return Math.hypot(px-(s.x1+t*vx),py-(s.y1+t*vy));}
 // champ de proximité = importance du segment fort le plus proche (fenêtre ~90px*S)
-const FALLOFF=95*S;
+const FALLOFF=130*S;
 function proximity(mx,my){let best=0;
   for(const s of SEGS){ if(s.imp<0.25)continue;
     const dd=distSeg(mx,my,s); if(dd>FALLOFF)continue;
@@ -102,14 +102,14 @@ function drawMask(g){
   g.beginPath();g.arc(CX,CY,CLIP,0,7);g.stroke();
 }
 function strokeImp(g,imp,draw){
-  const alpha=0.10+0.78*imp, w=(0.55+1.7*imp)*S, c=mix([202,164,96],[255,242,210],imp);
+  const alpha=0.12+0.85*imp, w=(0.55+2.1*imp)*S, c=mix([206,168,100],[255,246,216],imp);
   g.save();
-  if(imp>0.45){g.shadowColor=`rgba(255,212,140,${0.25+0.4*imp})`;g.shadowBlur=(3+8*imp)*S;}
+  if(imp>0.3){g.shadowColor=`rgba(255,214,144,${0.30+0.5*imp})`;g.shadowBlur=(4+12*imp)*S;}
   g.strokeStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${alpha})`;g.lineWidth=w;g.lineCap='round';g.lineJoin='round';
   g.beginPath();draw(g);g.stroke();g.restore();
 }
 function drawGold(g){
-  RINGS.forEach((r,k)=>strokeImp(g,0.10+0.62*RINGIMP[k],gg=>gg.arc(CX,CY,r,0,7)));
+  RINGS.forEach((r,k)=>strokeImp(g,0.10+0.80*RINGIMP[k],gg=>gg.arc(CX,CY,r,0,7)));
   RAYS.forEach((a,i)=>{const imp=(i%2===0)?0.12+0.72*force(i/2+1):0.08;
     strokeImp(g,imp,gg=>{gg.moveTo(CX,CY);gg.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));});});
   [2,3,4].forEach(step=>{for(let i=0;i<9;i++){const b=(i+step)%9;const imp=0.08+0.72*((force(i+1)+force(b+1))/2);
@@ -142,10 +142,10 @@ function couleurCellule(mx,my,rc){
   const f=Math.min(1,Math.max(0,0.25+0.75*rng()));     // variance sombre->clair
   let col=mix(dblend,lblend,f);
   if(!chantier){
-    // près des lignes fortes : saturer + enrichir
-    const sat=prox;                                    // 0..1
-    const lumBoost=1+0.45*sat;
-    const target=mix(col,[236,214,150],0.30*sat);      // tire vers le doré chaud
+    // près des lignes fortes : saturer franchement + enrichir vers le doré chaud
+    const sat=Math.pow(prox,0.75);                     // courbe plus punchy
+    const lumBoost=1+0.85*sat;
+    const target=mix(col,[240,216,140],0.55*sat);      // fort tirage doré
     col=target.map(v=>Math.min(255,v*lumBoost));
   } else {
     // chantier : désaturé, presque vide
