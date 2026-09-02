@@ -23,7 +23,7 @@
    "pensee_soir": "Relis les trois mots notés ce matin. L'écart avec ce que tu ressens maintenant dit plus sur ta journée que n'importe quelle conclusion tirée sur le coup."
   },
   "lune_carre-opposition": {
-   "miroir": "Ton dedans et ton agenda ne vont pas dans le même sens. C'est le dedans qui encaisse, en silence, sans rien réclamer.",
+   "miroir": "Ton humeur et ton agenda ne vont pas dans le même sens. C'est ton humeur qui encaisse, en silence, sans rien réclamer.",
    "geste": "Retire une chose de ta journée. Une seule, la moins nécessaire. Tu fais de la place à ton besoin de repos. Il en demande peu, mais il en demande.",
    "pensee_soir": "Ce que tu as retiré aujourd'hui, est-ce que ça a vraiment manqué ? Le silence de ce soir a la réponse, si tu prends le temps de l'écouter."
   },
@@ -465,9 +465,9 @@
    "pensee_soir": "Les compliments et les goûts partagés ont coulé sans effort aujourd'hui. Repense à celui qui a le plus sonné vrai, pour toi ou pour l'autre."
   },
   "venus_conjonction_venus": {
-   "miroir": "Une fois par an, ton goût propre revient exactement là où il était à ta naissance. Ce que tu aimes vraiment, sans influence de personne, se sent plus clairement aujourd'hui que tout le reste de l'année.",
+   "miroir": "Une fois par an, ton goût propre revient exactement là où il était à ta naissance. Aujourd'hui, tu sens plus clairement que le reste de l'année ce que tu aimes vraiment, sans l'influence de personne.",
    "geste": "Offre-toi aujourd'hui quelque chose qui te plaît vraiment, sans penser à l'utilité ni au regard des autres. Un achat, un moment, une visite. Ce jour-là se prête bien à choisir pour toi seul.",
-   "pensee_soir": "Une fois par an, ce que tu aimes vraiment se sent plus clairement. Repense à ce qui s'est montré aujourd'hui, sans influence de personne — c'est celui-là qu'il faut garder."
+   "pensee_soir": "Une fois par an, tu sens plus clairement ce que tu aimes vraiment. Repense à ce qui s'est montré aujourd'hui, sans l'influence de personne : c'est celui-là qu'il faut garder."
   },
   "venus_carre-opposition_venus": {
    "miroir": "Deux choses que tu aimes tirent aujourd'hui chacune de leur côté. Un plaisir et une économie, un lien et un autre, et tu sens qu'il va falloir laisser filer l'un pour garder l'autre.",
@@ -620,9 +620,9 @@
    "pensee_soir": "Dire ce qui se passait en toi n'a presque rien demandé aujourd'hui. Repense à la phrase qui est sortie sans l'embarras habituel."
   },
   "mercure_conjonction_mercure": {
-   "miroir": "Il y a des jours où ta façon propre de penser se sent nettement, sans que rien d'autre ne vienne la couvrir. Aujourd'hui en fait partie, et tu peux presque l'entendre penser.",
+   "miroir": "Il y a des jours où ta façon bien à toi de penser se fait plus claire, sans rien pour la brouiller. Aujourd'hui en fait partie : tu peux presque entendre tes pensées.",
    "geste": "Prends une idée qui te trotte en tête. Dis-la à voix haute, avec tes mots à toi, sans emprunter ceux de personne d'autre. Écoute-toi la formuler : c'est rare de s'entendre penser aussi nettement.",
-   "pensee_soir": "Ta façon propre de penser s'est fait sentir nettement aujourd'hui, sans rien pour la couvrir. Repense à ce qu'elle a dit de toi, une fois entendue clairement."
+   "pensee_soir": "Aujourd'hui, tu as clairement senti ta façon bien à toi de penser, sans rien pour la brouiller. Repense à ce qu'elle révèle de toi, maintenant que tu as pu l'entendre pleinement."
   },
   "mercure_carre-opposition_mercure": {
    "miroir": "Tes pensées partent dans deux sens à la fois aujourd'hui, et choisir laquelle dire en premier demande plus d'effort que d'habitude. Ce n'est pas le sujet qui coince, c'est le tri.",
@@ -862,7 +862,7 @@
     "miroir": "L'aisance à aborder les gens redescend doucement vers ta normale. Ça reste plus facile qu'un jour ordinaire, mais tu sens que l'énergie des derniers jours commence à se retirer.",
     "geste": "Profite de ce qui reste de facilité pour finir une approche commencée ces derniers jours. La fenêtre se referme tranquillement, mais elle n'est pas encore fermée."
    },
-   "pensee_soir": "Entrer quelque part aujourd'hui s'est fait tout seul, sans effort de ta part. Repense à ce moment où ton dedans et ta façon d'arriver ont coïncidé."
+   "pensee_soir": "Entrer quelque part aujourd'hui s'est fait tout seul, sans effort de ta part. Repense à ce moment où ton humeur et ta façon d'arriver ont coïncidé."
   },
   "mercure_conjonction_asc": {
    "miroir": "Les premiers mots que tu dis à quelqu'un de nouveau sortent tout seuls aujourd'hui, avant même que tu aies eu le temps d'y réfléchir. Ta présentation, ce sont tes mots.",
@@ -965,7 +965,7 @@
     "geste": "Écris en une ligne ce que tu penses vraiment de ta direction professionnelle, avant que le doute prenne toute la place. Tu la reliras plus tard, quand l'humeur sera passée."
    },
    "coeur": {
-    "miroir": "Une lourdeur du dedans vient peser sur l'image que tu donnes au travail. Tu doutes soudain de la direction choisie, pour des raisons qui tiennent plus au moral bas qu'à un vrai désaccord.",
+    "miroir": "Une lourdeur d'humeur vient peser sur l'image que tu donnes au travail. Tu doutes soudain de la direction choisie, pour des raisons qui tiennent plus au moral bas qu'à un vrai désaccord.",
     "geste": "Repousse d'un jour toute décision qui touche ta carrière ou ta réputation. Laisse la lourdeur redescendre seule. Ce que tu construis mérite mieux qu'un jugement rendu un jour de grand vent."
    },
    "retrait": {
@@ -976,15 +976,15 @@
   },
   "lune_sextile-trigone_mc": {
    "approche": {
-    "miroir": "Ton dedans commence à s'accorder avec l'image que tu donnes au monde. L'harmonie n'est pas encore complète, mais elle s'installe déjà un peu dans ta façon de te présenter.",
+    "miroir": "Ton humeur commence à s'accorder avec l'image que tu donnes au monde. L'harmonie n'est pas encore complète, mais elle s'installe déjà un peu dans ta façon de te présenter.",
     "geste": "Observe un moment aujourd'hui où ce que tu montres colle un peu mieux que d'habitude à ce que tu ressens. Note-le simplement, sans en faire plus."
    },
    "coeur": {
-    "miroir": "Ton dedans et l'image que tu donnes au monde marchent enfin ensemble. Ce que tu montres professionnellement ressemble à ce que tu portes vraiment en toi ce matin.",
+    "miroir": "Ton humeur et l'image que tu donnes au monde marchent enfin ensemble. Ce que tu montres professionnellement ressemble à ce que tu portes vraiment en toi ce matin.",
     "geste": "Parle à quelqu'un d'un projet qui te tient à cœur, sans l'habiller ni le réduire. La justesse de l'instant porte tes mots plus loin qu'un jour ordinaire ne le ferait."
    },
    "retrait": {
-    "miroir": "L'accord entre ton dedans et ton image publique commence à se relâcher tranquillement. Ce qui coulait tout seul ces derniers jours demande à nouveau un peu plus d'ajustement.",
+    "miroir": "L'accord entre ton humeur et ton image publique commence à se relâcher tranquillement. Ce qui coulait tout seul ces derniers jours demande à nouveau un peu plus d'ajustement.",
     "geste": "Note ce que tu as réussi à montrer clairement de toi ces derniers jours. Cette justesse reviendra, même si ce n'est pas aujourd'hui."
    },
    "pensee_soir": "Ce que tu as montré professionnellement aujourd'hui ressemblait à ce que tu portais vraiment en toi. Repense à ce moment rare où les deux se sont accordés."
