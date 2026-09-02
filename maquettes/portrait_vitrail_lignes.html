@@ -84,28 +84,30 @@ for(const k in KEYCIRC)CIRCIMP.set(KEYCIRC[k].idx,impCercle(p[k==='cap'?'cap':k]
 const RAYS=[...Array(18)].map((_,i)=>((i*20-90)*Math.PI/180)+rot);
 const V=[...Array(9)].map((_,i)=>{const a=((i*SPAN-90)*Math.PI/180)+rot;return[CX+(CLIP-14*S)*Math.cos(a),CY+(CLIP-14*S)*Math.sin(a)];});
 
-/* ---- SPIRALE DE FIBONACCI (croissance φ par quart de tour, orientée par le Jour) ---- */
-const PHI=1.6180339887;
-const SPIRAL=[];
-{ const b=Math.log(PHI)/(Math.PI/2);      // log-spirale : r = a·e^(bθ), b tel que r ×φ à chaque 90°
-  const a0=3.2*S;
-  for(let t=0;t<=260;t++){
-    const th=t*0.09, r=a0*Math.exp(b*th);
-    if(r>CLIP-6*S)break;
-    const a=th+rot;
-    SPIRAL.push([CX+r*Math.cos(a), CY+r*Math.sin(a), r]);
-  }
-}
-function drawSpiral(g){g.beginPath();SPIRAL.forEach(([x,y],i)=>i?g.lineTo(x,y):g.moveTo(x,y));g.stroke();}
+/* ---- géométrie organique : chaque fil est légèrement ondulé (la main du tisserand) ---- */
+const ph0=i=>((i*2.399963)%6.28318);
+function pathCircle(g,cx,cy,r,seed){const p1=ph0(seed),p2=ph0(seed+57),n=110;
+  for(let k=0;k<=n;k++){const a=k/n*2*Math.PI;
+    const rr=r+Math.sin(3*a+p1)*1.15*S+Math.sin(7*a+p2)*0.55*S;
+    const x=cx+rr*Math.cos(a),y=cy+rr*Math.sin(a);
+    k?g.lineTo(x,y):g.moveTo(x,y);}}
+function pathLine(g,x1,y1,x2,y2,seed){const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy)||1;
+  const ux=dx/L,uy=dy/L,px=-uy,py=ux,p=ph0(seed);
+  const n=Math.max(10,Math.ceil(L/(7*S)));
+  for(let k=0;k<=n;k++){const t=k/n,o=(Math.sin(t*9+p)*1.05+Math.sin(t*23+p*2.7)*0.5)*S;
+    const x=x1+dx*t+px*o,y=y1+dy*t+py*o;k?g.lineTo(x,y):g.moveTo(x,y);}}
 
 function drawMask(g){
-  FOL.forEach(([x,y])=>{g.beginPath();g.arc(x,y,RFOL,0,7);g.stroke();});   // fleur de vie
-  RAYS.forEach(a=>{g.beginPath();g.moveTo(CX,CY);g.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));g.stroke();});
+  FOL.forEach(([x,y],idx)=>{g.beginPath();pathCircle(g,x,y,RFOL,idx+1);g.stroke();});   // fleur de vie
+  RAYS.forEach((a,i)=>{g.beginPath();
+    pathLine(g,CX,CY,CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a),i+31);g.stroke();});
   [2,3,4].forEach(step=>{const seen=new Set();
-    for(let s=0;s<9;s++){if(seen.has(s))continue;let i=s;g.beginPath();let f=true;
-      do{const[x,y]=V[i];f?(g.moveTo(x,y),f=false):g.lineTo(x,y);seen.add(i);i=(i+step)%9;}while(i!==s);g.closePath();g.stroke();}});
-  drawSpiral(g);                                                          // spirale de Fibonacci
-  g.beginPath();g.arc(CX,CY,CLIP,0,7);g.stroke();
+    for(let s=0;s<9;s++){if(seen.has(s))continue;let i=s;g.beginPath();
+      do{const j=(i+step)%9;
+        pathLine(g,V[i][0],V[i][1],V[j][0],V[j][1],step*13+i+101);
+        seen.add(i);i=j;}while(i!==s);
+      g.stroke();}});
+  g.beginPath();pathCircle(g,CX,CY,CLIP,999);g.stroke();
 }
 
 /* ---- segments portés par le thème (proximité) ---- */
@@ -121,11 +123,6 @@ for(const k in KEYCIRC){const {x,y,idx}=KEYCIRC[k],imp=CIRCIMP.get(idx);if(imp<0
   const m=48,pts=[];
   for(let i=0;i<=m;i++){const a=i/m*2*Math.PI;pts.push([x+RFOL*Math.cos(a),y+RFOL*Math.sin(a)]);}
   for(let i=0;i<m;i++)SEGS.push({x1:pts[i][0],y1:pts[i][1],x2:pts[i+1][0],y2:pts[i+1][1],imp});}
-// spirale de Fibonacci -> segments, importance forte au cœur, décroissante vers le bord
-for(let i=0;i<SPIRAL.length-1;i++){
-  const rAvg=(SPIRAL[i][2]+SPIRAL[i+1][2])/2;
-  const imp=0.85*(1-0.55*(rAvg/CLIP));              // 0.85 au centre -> ~0.38 au bord
-  SEGS.push({x1:SPIRAL[i][0],y1:SPIRAL[i][1],x2:SPIRAL[i+1][0],y2:SPIRAL[i+1][1],imp});}
 function distSeg(px,py,s){const vx=s.x2-s.x1,vy=s.y2-s.y1,wx=px-s.x1,wy=py-s.y1;
   const L2=vx*vx+vy*vy;let t=L2?Math.max(0,Math.min(1,(wx*vx+wy*vy)/L2)):0;
   return Math.hypot(px-(s.x1+t*vx),py-(s.y1+t*vy));}
@@ -136,26 +133,28 @@ function proximity(mx,my){let best=0;
     const val=s.imp*(1-dd/FALLOFF); if(val>best)best=val;}
   return best;}
 
-/* ---- style or ---- */
+/* ---- style or : brin torsadé (cœur clair sur la crête) + importance ---- */
 function strokeImp(g,imp,draw){
   const alpha=0.10+0.78*imp, w=(0.55+1.7*imp)*S, c=mix([202,164,96],[255,242,210],imp);
   g.save();
   if(imp>0.45){g.shadowColor=`rgba(255,212,140,${0.25+0.4*imp})`;g.shadowBlur=(3+8*imp)*S;}
   g.strokeStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${alpha})`;g.lineWidth=w;g.lineCap='round';g.lineJoin='round';
   g.beginPath();draw(g);g.stroke();g.restore();
+  // crête claire = le fil paraît rond (brin torsadé)
+  g.save();
+  g.strokeStyle=`rgba(255,250,232,${0.14+0.34*imp})`;g.lineWidth=Math.max(0.35,w*0.30);
+  g.lineCap='round';g.lineJoin='round';
+  g.beginPath();draw(g);g.stroke();g.restore();
 }
 function drawGold(g){
   // fleur de vie : cercles porteurs brillent selon leur clé
   FOL.forEach(([x,y],idx)=>{const imp=CIRCIMP.get(idx)||0.12;
-    strokeImp(g,imp,gg=>gg.arc(x,y,RFOL,0,7));});
-  // spirale de Fibonacci (forte au cœur)
-  const impSpir=0.55;
-  strokeImp(g,impSpir,gg=>drawSpiral(gg));
+    strokeImp(g,imp,gg=>pathCircle(gg,x,y,RFOL,idx+1));});
   RAYS.forEach((a,i)=>{const imp=(i%2===0)?0.12+0.72*force(i/2+1):0.08;
-    strokeImp(g,imp,gg=>{gg.moveTo(CX,CY);gg.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));});});
+    strokeImp(g,imp,gg=>pathLine(gg,CX,CY,CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a),i+31));});
   [2,3,4].forEach(step=>{for(let i=0;i<9;i++){const b=(i+step)%9;const imp=0.08+0.72*((force(i+1)+force(b+1))/2);
-    strokeImp(g,imp,gg=>{gg.moveTo(V[i][0],V[i][1]);gg.lineTo(V[b][0],V[b][1]);});}});
-  strokeImp(g,0.42,gg=>gg.arc(CX,CY,CLIP,0,7));
+    strokeImp(g,imp,gg=>pathLine(gg,V[i][0],V[i][1],V[b][0],V[b][1],step*13+i+101));}});
+  strokeImp(g,0.42,gg=>pathCircle(gg,CX,CY,CLIP,999));
 }
 
 // masque
@@ -220,6 +219,23 @@ ctx.putImageData(img,0,0);
 
 // fils d'or
 drawGold(ctx);
+
+// grain de trame : fins brins radiaux DANS les cases colorées seulement (le poil du tissu)
+{ const stepG=9*S;
+  for(let y=stepG/2;y<H;y+=stepG)for(let x=stepG/2;x<W;x+=stepG){
+    const rc=Math.hypot(x-CX,y-CY); if(rc>CLIP-8*S||rc<0.06*CLIP)continue;
+    const o=(Math.round(y)*W+Math.round(x))*4;
+    const rr=d[o],gg=d[o+1],bb=d[o+2];
+    if(rr+gg+bb<80)continue;                       // seulement les cases réellement teintées
+    const a=Math.atan2(y-CY,x-CX), len=3.4*S;
+    const jx=(rng()-0.5)*1.6*S, jy=(rng()-0.5)*1.6*S;
+    ctx.strokeStyle=`rgba(${Math.min(255,rr+26)|0},${Math.min(255,gg+22)|0},${Math.min(255,bb+18)|0},${0.22+rng()*0.18})`;
+    ctx.lineWidth=1.1*S;ctx.lineCap='round';
+    ctx.beginPath();
+    ctx.moveTo(x-Math.cos(a)*len+jx,y-Math.sin(a)*len+jy);
+    ctx.lineTo(x+Math.cos(a)*len+jx,y+Math.sin(a)*len+jy);ctx.stroke();
+  }
+}
 
 // centre sobre + Cap
 ctx.beginPath();ctx.arc(CX,CY,24*S,0,7);ctx.fillStyle='#0b0913';ctx.fill();
