@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Align — Vitrail + lignes lumineuses par importance</title>
+<title>Align — Vitrail + Fleur de Vie porteuse</title>
 <style>
   :root{--doux:#9a8f78;--texte:#e9e1d2}
   *{box-sizing:border-box}
@@ -21,12 +21,12 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Vitrail + lignes lumineuses</h1>
-  <p class="sous">La lumière des fils teinte la laine voisine : cellules près des lignes fortes = saturées et riches · chantier presque vide et désaturé.</p>
+  <h1>Vitrail + Fleur de Vie porteuse</h1>
+  <p class="sous">La Fleur de Vie remplace les anneaux : cercles reliés où brillent Foyer, Élan, Voix, Cap · rayons et étoiles gardent leur hiérarchie.</p>
   <p class="exemple">14/07/1985, « Martin Boucher ». Le 7 (chantier) : rayon éteint, secteur quasi nu. Centre sobre = le Cap.</p>
   <canvas id="c" width="1240" height="1240"></canvas>
   <div class="notes">
-    <p>Chaque cellule mesure sa <b>distance aux lignes fortes</b> (rayons selon la force de leur qualité, arêtes des étoiles selon la moyenne des deux, anneaux selon Foyer/Élan/Voix/Cap). Près = couleurs <b>saturées et riches</b> ; loin = plus sombres/ternes. Le secteur <b>chantier</b> est presque vide : cases désaturées, contours gris seulement.</p>
+    <p><b>Fleur de Vie porteuse :</b> 19 cercles en maillage hexagonal. Les <b>4 cercles cardinaux-pairs</b> (haut, droite, bas, gauche, tournés par le Jour) portent <b>Foyer, Élan, Voix, Cap</b> et brillent selon leur valeur. Les rayons = les 9 qualités, les arêtes des étoiles = la force des deux qualités reliées. Cellules près des fils forts = teintes enrichies (glow doux, réglages précédents).</p>
   </div>
   <p id="err"></p>
 </div>
@@ -48,68 +48,85 @@ const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const cf=n=>{const c=p.counts[n];return c<=0?0:0.5+0.5*(c/MAX);};
 const force=n=>{const c=p.counts[n];return c<=0?0:c/MAX;};
 
-const RINGS=[]; {let r=40*S; while(r<CLIP-4*S){RINGS.push(r);r*=1.34;}}
+/* ---- FLEUR DE VIE : 19 cercles en maillage hexagonal ---- */
+const RFOL=58*S;
+function folCenters(){const dy=RFOL*Math.sqrt(3)/2,seen=new Set(),list=[];
+  for(let row=-2;row<=2;row++)for(let i=-2;i<=2;i++){
+    const x=CX+i*RFOL+(row&1?RFOL/2:0),y=CY+row*dy,k=Math.round(x)+','+Math.round(y);
+    if(seen.has(k))continue;seen.add(k);
+    if(Math.hypot(x-CX,y-CY)<=2*RFOL+0.5)list.push([x,y]);}
+  list.sort((a,b)=>{const da=Math.hypot(a[0]-CX,a[1]-CY),db=Math.hypot(b[0]-CX,b[1]-CY);
+    if(Math.abs(da-db)>0.5)return da-db;
+    return Math.atan2(a[1]-CY,a[0]-CX)-Math.atan2(b[1]-CY,b[0]-CX);});
+  return list;}
+const FOL=folCenters();
+
+/* ---- mapping clé -> cercle de la fleur (4 directions cardinales, tournées par le Jour) ---- */
+// index après tri (par distance puis angle) : 0=centre, 1..6=premier anneau, 7..18=deuxième anneau
+// directions principales en angle absolu : 0°,60°,...,300° + rot
+const KEYRING={foyer:[0.34,0.66],elan:[0.75,1.05],voix:[1.16,1.49],cap:[1.60,1.90]}; // plages de rayon (×CLIP)
+// 4 cercles porteurs : positions cardinales après rotation
+const CARD=[0,90,180,270].map(deg=>deg*Math.PI/180+rot);
+const KEYCIRC={};
+{ const assign={foyer:0,elan:1,voix:2,cap:3};        // foyer=haut, elan=droite, voix=bas, cap=gauche (tournés)
+  for(const k in assign){const a=CARD[assign[k]];
+    // trouver le cercle du 1er anneau (distance RFOL) le plus proche de cette direction
+    let best=null,bd=1e9;
+    FOL.forEach(([x,y],idx)=>{const d=Math.hypot(x-CX,y-CY);if(Math.abs(d-RFOL)>1)return;
+      const aa=Math.atan2(y-CY,x-CX);let diff=Math.abs(aa-a);diff=Math.min(diff,2*Math.PI-diff);
+      if(diff<bd){bd=diff;best={x,y,idx};}});
+    if(best)KEYCIRC[k]=best;} }
+const impCercle=x=>x>=11?1:x/9;
+const CIRCIMP=new Map();
+for(const k in KEYCIRC)CIRCIMP.set(KEYCIRC[k].idx,impCercle(p[k==='cap'?'cap':k]));
+
+/* ---- lignes du masque ---- */
 const RAYS=[...Array(18)].map((_,i)=>((i*20-90)*Math.PI/180)+rot);
 const V=[...Array(9)].map((_,i)=>{const a=((i*SPAN-90)*Math.PI/180)+rot;return[CX+(CLIP-14*S)*Math.cos(a),CY+(CLIP-14*S)*Math.sin(a)];});
-
-/* --- anneaux mappés : Foyer (près du cœur) -> Élan -> Voix -> Cap (vers le bord) --- */
-const impAnneau=r=>{
-  const t=(r-RINGS[0])/(RINGS[RINGS.length-1]-RINGS[0]);   // 0=centre, 1=bord
-  const cles=[                                        // repères à 4 positions de l'intérieur vers l'extérieur
-    {t:0.16,nom:'foyer',v:p.foyer},{t:0.42,nom:'elan',v:p.elan},
-    {t:0.68,nom:'voix',v:p.voix},{t:0.95,nom:'cap',v:p.cap}];
-  let best=null;
-  cles.forEach(c=>{ if(best===null||Math.abs(t-c.t)<Math.abs(t-best.t))best=c; });
-  // importance = valeur du nombre (maîtres 11/22/33 -> pleine intensité)
-  const v=best.v, imp=v>=11?1:v/9;
-  // fondu entre anneaux adjacents pour éviter les marches brutes
-  const dt=Math.abs(t-best.t)/0.27;
-  return imp*Math.max(0.25,1-Math.max(0,dt-0.35));
-};
-const RINGIMP=RINGS.map(impAnneau);
-
-/* --- segments des lignes PORTÉES par le thème, avec leur importance --- */
-const SEGS=[];
-RAYS.forEach((a,i)=>{ if(i%2!==0)return;                      // 9 rayons = qualités
-  const n=i/2+1, imp=force(n);
-  SEGS.push({x1:CX,y1:CY,x2:CX+(CLIP-6*S)*Math.cos(a),y2:CY+(CLIP-6*S)*Math.sin(a),imp});});
-[2,3,4].forEach(step=>{for(let i=0;i<9;i++){const b=(i+step)%9;
-  const imp=(force(i+1)+force(b+1))/2;
-  SEGS.push({x1:V[i][0],y1:V[i][1],x2:V[b][0],y2:V[b][1],imp});}});
-// anneaux mappés -> approximés en polygones pour la carte de proximité
-RINGS.forEach((r,k)=>{ const imp=RINGIMP[k]; if(imp<0.3)return;
-  const m=48, pts=[];
-  for(let i=0;i<=m;i++){const a=i/m*2*Math.PI;pts.push([CX+r*Math.cos(a),CY+r*Math.sin(a)]);}
-  for(let i=0;i<m;i++)SEGS.push({x1:pts[i][0],y1:pts[i][1],x2:pts[i+1][0],y2:pts[i+1][1],imp});});
-function distSeg(px,py,s){const vx=s.x2-s.x1,vy=s.y2-s.y1,wx=px-s.x1,wy=py-s.y1;
-  const L2=vx*vx+vy*vy; let t=L2?Math.max(0,Math.min(1,(wx*vx+wy*vy)/L2)):0;
-  return Math.hypot(px-(s.x1+t*vx),py-(s.y1+t*vy));}
-// champ de proximité = importance du segment fort le plus proche (fenêtre ~90px*S)
-const FALLOFF=130*S;
-function proximity(mx,my){let best=0;
-  for(const s of SEGS){ if(s.imp<0.25)continue;
-    const dd=distSeg(mx,my,s); if(dd>FALLOFF)continue;
-    const val=s.imp*(1-dd/FALLOFF); if(val>best)best=val;}
-  return best;}
-
-/* --- géométrie du masque (toutes lignes) --- */
 function drawMask(g){
-  RINGS.forEach(r=>{g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();});
+  FOL.forEach(([x,y])=>{g.beginPath();g.arc(x,y,RFOL,0,7);g.stroke();});   // fleur de vie
   RAYS.forEach(a=>{g.beginPath();g.moveTo(CX,CY);g.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));g.stroke();});
   [2,3,4].forEach(step=>{const seen=new Set();
     for(let s=0;s<9;s++){if(seen.has(s))continue;let i=s;g.beginPath();let f=true;
       do{const[x,y]=V[i];f?(g.moveTo(x,y),f=false):g.lineTo(x,y);seen.add(i);i=(i+step)%9;}while(i!==s);g.closePath();g.stroke();}});
   g.beginPath();g.arc(CX,CY,CLIP,0,7);g.stroke();
 }
+
+/* ---- segments portés par le thème (proximité) ---- */
+const SEGS=[];
+RAYS.forEach((a,i)=>{ if(i%2!==0)return;
+  const n=i/2+1, imp=force(n);
+  SEGS.push({x1:CX,y1:CY,x2:CX+(CLIP-6*S)*Math.cos(a),y2:CY+(CLIP-6*S)*Math.sin(a),imp});});
+[2,3,4].forEach(step=>{for(let i=0;i<9;i++){const b=(i+step)%9;
+  const imp=(force(i+1)+force(b+1))/2;
+  SEGS.push({x1:V[i][0],y1:V[i][1],x2:V[b][0],y2:V[b][1],imp});}});
+// cercles porteurs -> polygones
+for(const k in KEYCIRC){const {x,y,idx}=KEYCIRC[k],imp=CIRCIMP.get(idx);if(imp<0.3)continue;
+  const m=48,pts=[];
+  for(let i=0;i<=m;i++){const a=i/m*2*Math.PI;pts.push([x+RFOL*Math.cos(a),y+RFOL*Math.sin(a)]);}
+  for(let i=0;i<m;i++)SEGS.push({x1:pts[i][0],y1:pts[i][1],x2:pts[i+1][0],y2:pts[i+1][1],imp});}
+function distSeg(px,py,s){const vx=s.x2-s.x1,vy=s.y2-s.y1,wx=px-s.x1,wy=py-s.y1;
+  const L2=vx*vx+vy*vy;let t=L2?Math.max(0,Math.min(1,(wx*vx+wy*vy)/L2)):0;
+  return Math.hypot(px-(s.x1+t*vx),py-(s.y1+t*vy));}
+const FALLOFF=95*S;
+function proximity(mx,my){let best=0;
+  for(const s of SEGS){ if(s.imp<0.25)continue;
+    const dd=distSeg(mx,my,s); if(dd>FALLOFF)continue;
+    const val=s.imp*(1-dd/FALLOFF); if(val>best)best=val;}
+  return best;}
+
+/* ---- style or ---- */
 function strokeImp(g,imp,draw){
-  const alpha=0.12+0.85*imp, w=(0.55+2.1*imp)*S, c=mix([206,168,100],[255,246,216],imp);
+  const alpha=0.10+0.78*imp, w=(0.55+1.7*imp)*S, c=mix([202,164,96],[255,242,210],imp);
   g.save();
-  if(imp>0.3){g.shadowColor=`rgba(255,214,144,${0.30+0.5*imp})`;g.shadowBlur=(4+12*imp)*S;}
+  if(imp>0.45){g.shadowColor=`rgba(255,212,140,${0.25+0.4*imp})`;g.shadowBlur=(3+8*imp)*S;}
   g.strokeStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${alpha})`;g.lineWidth=w;g.lineCap='round';g.lineJoin='round';
   g.beginPath();draw(g);g.stroke();g.restore();
 }
 function drawGold(g){
-  RINGS.forEach((r,k)=>strokeImp(g,0.10+0.80*RINGIMP[k],gg=>gg.arc(CX,CY,r,0,7)));
+  // fleur de vie : cercles porteurs brillent selon leur clé
+  FOL.forEach(([x,y],idx)=>{const imp=CIRCIMP.get(idx)||0.12;
+    strokeImp(g,imp,gg=>gg.arc(x,y,RFOL,0,7));});
   RAYS.forEach((a,i)=>{const imp=(i%2===0)?0.12+0.72*force(i/2+1):0.08;
     strokeImp(g,imp,gg=>{gg.moveTo(CX,CY);gg.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));});});
   [2,3,4].forEach(step=>{for(let i=0;i<9;i++){const b=(i+step)%9;const imp=0.08+0.72*((force(i+1)+force(b+1))/2);
@@ -137,18 +154,16 @@ function sectorAt(mx,my){let ang=(Math.atan2(my-CY,mx-CX)*180/Math.PI+90-rotDeg)
 function couleurCellule(mx,my,rc){
   const {n1,n2,t}=sectorAt(mx,my), e1=elemNombre[n1], e2=elemNombre[n2];
   const chantier=(cf(n1)<=0&&cf(n2)<=0);
-  const prox=proximity(mx,my);                         // 0..1 : proximité aux lignes fortes
+  const prox=proximity(mx,my);
   const dblend=mix(DARK[e1],DARK[e2],t), lblend=mix(LIGHT[e1],LIGHT[e2],t);
-  const f=Math.min(1,Math.max(0,0.25+0.75*rng()));     // variance sombre->clair
+  const f=Math.min(1,Math.max(0,0.25+0.75*rng()));
   let col=mix(dblend,lblend,f);
   if(!chantier){
-    // près des lignes fortes : saturer franchement + enrichir vers le doré chaud
-    const sat=Math.pow(prox,0.75);                     // courbe plus punchy
-    const lumBoost=1+0.85*sat;
-    const target=mix(col,[240,216,140],0.55*sat);      // fort tirage doré
+    const sat=prox;
+    const lumBoost=1+0.45*sat;
+    const target=mix(col,[236,214,150],0.30*sat);
     col=target.map(v=>Math.min(255,v*lumBoost));
   } else {
-    // chantier : désaturé, presque vide
     const g0=(col[0]*0.3+col[1]*0.5+col[2]*0.2);
     col=[g0*0.9+8,g0*0.9+8,g0*0.9+12];
   }
@@ -172,7 +187,7 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
 }
 ctx.putImageData(img,0,0);
 
-// fils d'or (luminosité selon l'importance)
+// fils d'or
 drawGold(ctx);
 
 // centre sobre + Cap
@@ -190,6 +205,13 @@ for(let n=1;n<=9;n++){const a=((n-1)*SPAN-90)*Math.PI/180+rot,x=CX+RQ*Math.cos(a
   ctx.lineWidth=1.6*S;ctx.strokeStyle=`rgba(${erg[0]},${erg[1]},${erg[2]},0.95)`;
   if(c<=0)ctx.setLineDash([3*S,3*S]);ctx.stroke();ctx.setLineDash([]);
   ctx.fillStyle=c>0?'#f0ead9':'#d0705e';ctx.font=`${13*S}px Georgia`;ctx.fillText(n,x,y);}
+
+// étiquettes des 4 cercles porteurs
+ctx.font=`${11*S}px sans-serif`;ctx.textAlign='center';
+for(const k in KEYCIRC){const {x,y,idx}=KEYCIRC[k],imp=CIRCIMP.get(idx);
+  const lx=x+(x>CX?1:-1)*RFOL*0.95, ly=y+(y>CY?1:-1)*RFOL*0.30;
+  ctx.fillStyle=`rgba(233,225,210,${0.35+0.45*imp})`;
+  ctx.fillText(k==='cap'?'Cap':k[0].toUpperCase()+k.slice(1),lx,ly);}
 
 }catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
 </script>
