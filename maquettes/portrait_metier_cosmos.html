@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — Le motif tissé en fils d'or (essence)</title>
+<style>
+  :root{--doux:#9a8f78;--texte:#e9e1d2}
+  *{box-sizing:border-box}
+  body{margin:0;background:#050409;color:var(--texte);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.55;padding:30px 18px 70px}
+  .wrap{max-width:720px;margin:0 auto;text-align:center}
+  h1{font-weight:500;font-size:23px;margin:0 0 6px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 4px}
+  .exemple{color:var(--doux);font-size:12.5px;margin:0 0 18px;font-style:italic}
+  canvas{display:block;margin:0 auto;width:100%;height:auto;max-width:620px;border-radius:8px}
+  .notes{text-align:left;max-width:560px;margin:16px auto 0;color:var(--doux);font-size:12.5px}
+  .notes b{color:var(--texte);font-weight:500}
+  #err{color:#c06a5a;font-size:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Le motif tissé en fils d'or</h1>
+  <p class="sous">Géométrie sacrée en fils d'or lumineux · laine en points chevron · zones non tissées ouvertes sur le cosmos.</p>
+  <p class="exemple">14/07/1985, « Martin Boucher ». Le 7 (chantier) reste ouvert sur les étoiles ; le cœur brille (Cap).</p>
+  <canvas id="c" width="1240" height="1240"></canvas>
+  <div class="notes">
+    <p><b>Essence de ton image, en génératif :</b> le tracé sacré est en <b>fils d'or</b> (lignes lumineuses) ; les qualités présentes sont <b>tissées en laine</b> (petits points chevron, tons joyaux) ; les chantiers restent <b>ouverts</b> — on voit le ciel à travers. Cœur doré = le Cap. Déterministe : même personne, même motif.</p>
+  </div>
+  <p id="err"></p>
+</div>
+
+<script>
+try{
+const cv=document.getElementById('c'), W=cv.width, H=cv.height, ctx=cv.getContext('2d',{willReadFrequently:true});
+const CX=W/2, CY=H/2, S=W/620;
+const CLIP=290*S, SPAN=40, MAX=3;
+const PHI=1.6180339887;
+const elemNombre={1:'feu',2:'eau',3:'feu',4:'air',5:'air',6:'terre',7:'eau',8:'terre',9:'feu'};
+// palette joyau (sombre, pas néon)
+const JEWEL={feu:[150,46,40], eau:[34,78,104], air:[150,116,44], terre:[48,92,62]};
+const p={seed:14071985, jour:5, cap:8,voix:3,foyer:3,elan:5,
+  counts:{1:1,2:2,3:2,4:1,5:2,6:1,7:0,8:1,9:3}};
+function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+const rng=mulberry32(p.seed);
+const rot=(p.jour*23)*Math.PI/180, rotDeg=p.jour*23;
+const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+
+// --- géométrie sacrée (fils) : étoiles à 9, anneaux, rayons ---
+function drawGeom(g){
+  // anneaux
+  let r=40*S; while(r<CLIP-4*S){g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();r*=1.34;}
+  // étoiles {9/2},{9/3},{9/4}
+  const V=[...Array(9)].map((_,i)=>{const a=(i*SPAN-90)*Math.PI/180+rot;return[CX+(CLIP-14*S)*Math.cos(a),CY+(CLIP-14*S)*Math.sin(a)];});
+  [2,3,4].forEach(step=>{const seen=new Set();
+    for(let s=0;s<9;s++){if(seen.has(s))continue;let i=s;g.beginPath();let f=true;
+      do{const[x,y]=V[i];f?(g.moveTo(x,y),f=false):g.lineTo(x,y);seen.add(i);i=(i+step)%9;}while(i!==s);g.closePath();g.stroke();}});
+  // rayons (18)
+  for(let i=0;i<18;i++){const a=i*20*Math.PI/180+rot;g.beginPath();g.moveTo(CX,CY);
+    g.lineTo(CX+(CLIP-6*S)*Math.cos(a),CY+(CLIP-6*S)*Math.sin(a));g.stroke();}
+  g.beginPath();g.arc(CX,CY,CLIP,0,7);g.stroke();
+}
+
+// --- masque des fils (murs) ---
+const wc=document.createElement('canvas');wc.width=W;wc.height=H;const wg=wc.getContext('2d');
+wg.strokeStyle='#000';wg.lineWidth=2*S;wg.lineCap='round';wg.lineJoin='round';drawGeom(wg);
+const wd=wg.getImageData(0,0,W,H).data, wall=new Uint8Array(W*H);
+for(let i=0;i<W*H;i++) wall[i]=wd[i*4+3]>40?1:0;
+
+// --- fond cosmos SOBRE ---
+ctx.fillStyle='#050409';ctx.fillRect(0,0,W,H);
+// nébuleuse discrète (2 taches très douces)
+[['#241a3a',0.5],['#0f2436',0.4]].forEach(([c,rf],k)=>{
+  const gx=CX+(k?-1:1)*90*S, gy=CY+(k?70:-60)*S;
+  const gr=ctx.createRadialGradient(gx,gy,0,gx,gy,240*S);
+  gr.addColorStop(0,c);gr.addColorStop(1,'rgba(5,4,9,0)');
+  ctx.globalAlpha=0.5;ctx.fillStyle=gr;ctx.fillRect(0,0,W,H);ctx.globalAlpha=1;});
+// étoiles fines
+for(let i=0;i<220;i++){const x=rng()*W,y=rng()*H,a=0.15+rng()*0.5,rr=(0.4+rng()*1.1)*S;
+  ctx.beginPath();ctx.arc(x,y,rr,0,7);ctx.fillStyle=`rgba(220,220,245,${a})`;ctx.fill();}
+
+// --- flood fill : couleur plate par région tissée (chantier = laissé au cosmos) ---
+const img=ctx.getImageData(0,0,W,H), d=img.data;
+const visited=new Uint8Array(W*H), stack=new Int32Array(W*H);
+const cf=n=>{const c=p.counts[n];return c<=0?0:0.5+0.5*(c/MAX);};
+function couleur(mx,my,rc){
+  let ang=(Math.atan2(my-CY,mx-CX)*180/Math.PI+90 - rotDeg);ang=((ang%360)+360)%360;
+  const pos=ang/SPAN, i1=Math.floor(pos)%9, n1=i1+1, n2=(i1+1)%9+1, t=pos-Math.floor(pos);
+  if(cf(n1)<=0 && cf(n2)<=0) return null;           // chantier -> pas de laine
+  const col=mix(JEWEL[elemNombre[n1]],JEWEL[elemNombre[n2]],t);
+  const rr=rc/CLIP;
+  return col.map(v=>v*(0.85+0.25*(1-rr)));           // un peu plus vif vers le centre
+}
+for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  const idx=y*W+x;if(visited[idx])continue;
+  if(wall[idx]||Math.hypot(x-CX,y-CY)>CLIP){visited[idx]=1;continue;}
+  let sp=0;stack[sp++]=idx;visited[idx]=1;let sx=0,sy=0,cnt=0;const px=[];
+  while(sp>0){const cur=stack[--sp];const cy2=(cur/W)|0,cx2=cur-cy2*W;px.push(cur);sx+=cx2;sy+=cy2;cnt++;
+    const nb=[cur-1,cur+1,cur-W,cur+W];
+    for(const nn of nb){if(nn<0||nn>=W*H)continue;
+      if((nn===cur-1&&cx2===0)||(nn===cur+1&&cx2===W-1))continue;
+      if(visited[nn])continue;if(wall[nn]){visited[nn]=1;continue;}visited[nn]=1;stack[sp++]=nn;}}
+  if(cnt<4)continue;
+  const mx=sx/cnt,my=sy/cnt,rc=Math.hypot(mx-CX,my-CY);
+  if(rc<0.14*CLIP) continue;                          // cœur laissé ouvert (brille)
+  const col=couleur(mx,my,rc); if(!col)continue;
+  for(const q of px){const o=q*4; d[o]=col[0];d[o+1]=col[1];d[o+2]=col[2];}
+}
+ctx.putImageData(img,0,0);
+
+// --- POINTS CHEVRON (la laine) sur les zones tissées ---
+const step=7*S;
+ctx.lineCap='round';
+for(let y=0;y<H;y+=step){const row=Math.round(y/step);
+  for(let x=0;x<W;x+=step){
+    if(Math.hypot(x-CX,y-CY)>CLIP)continue;
+    const o=(Math.round(y)*W+Math.round(x))*4;
+    const rr=d[o],gg=d[o+1],bb=d[o+2];
+    // "woven" si nettement au-dessus du fond cosmos
+    if(rr+gg+bb < 70) continue;
+    const dir=(row%2===0)?1:-1;                       // chevron : sens alterné par rangée
+    const a=dir*30*Math.PI/180 + rot*0.15;
+    const len=(4.2)*S, jx=(rng()-0.5)*2*S, jy=(rng()-0.5)*2*S;
+    const lift=18;                                    // point de laine un peu plus clair
+    ctx.strokeStyle=`rgb(${Math.min(255,rr+lift)|0},${Math.min(255,gg+lift)|0},${Math.min(255,bb+lift)|0})`;
+    ctx.lineWidth=2.4*S;
+    ctx.beginPath();
+    ctx.moveTo(x-Math.cos(a)*len+jx, y-Math.sin(a)*len+jy);
+    ctx.lineTo(x+Math.cos(a)*len+jx, y+Math.sin(a)*len+jy);
+    ctx.stroke();
+  }
+}
+
+// --- FILS D'OR lumineux (le tracé sacré) par-dessus ---
+ctx.save();
+ctx.shadowColor='rgba(255,205,120,0.55)';ctx.shadowBlur=6*S;
+ctx.strokeStyle='rgba(230,190,110,0.75)';ctx.lineWidth=1.2*S;ctx.lineCap='round';ctx.lineJoin='round';
+drawGeom(ctx);
+ctx.shadowBlur=10*S;ctx.strokeStyle='rgba(255,225,150,0.5)';ctx.lineWidth=0.7*S;drawGeom(ctx);
+ctx.restore();
+
+// --- cœur lumineux (Cap) ---
+const cg=ctx.createRadialGradient(CX,CY,0,CX,CY,46*S);
+cg.addColorStop(0,'rgba(255,244,210,0.95)');cg.addColorStop(0.4,'rgba(240,200,120,0.6)');cg.addColorStop(1,'rgba(240,200,120,0)');
+ctx.fillStyle=cg;ctx.beginPath();ctx.arc(CX,CY,46*S,0,7);ctx.fill();
+ctx.fillStyle='#100b06';ctx.font=`bold ${22*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';
+ctx.fillText(p.cap,CX,CY);
+
+// --- repères des 9 qualités (discrets) ---
+for(let n=1;n<=9;n++){const a=((n-1)*SPAN-90)*Math.PI/180+rot, x=CX+(CLIP+2*S)*Math.cos(a), y=CY+(CLIP+2*S)*Math.sin(a);
+  const c=p.counts[n];
+  ctx.beginPath();ctx.arc(x,y,3.5*S,0,7);
+  ctx.fillStyle=c>0?'rgba(230,190,110,0.9)':'rgba(150,60,50,0.9)';ctx.fill();}
+
+}catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
+</script>
+</body>
+</html>
