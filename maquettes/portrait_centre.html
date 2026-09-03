@@ -39,6 +39,12 @@ const CX=W/2, CY=H/2, S=W/680, R=290*S;
 const SPECTRE={1:[192,69,62],2:[208,122,60],3:[217,178,62],4:[95,160,106],5:[79,134,176],6:[75,94,168],7:[125,90,166]};
 const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 const clamp=v=>Math.max(0,Math.min(255,v));
+/* distance d'un point au SEGMENT [a,b] (pas à la droite infinie) : sert à
+   savoir à quel point une cellule « longe » un fil. */
+function distSeg(px,py,a,b){const vx=b[0]-a[0],vy=b[1]-a[1],L=vx*vx+vy*vy;
+  if(L<1e-6)return Math.hypot(px-a[0],py-a[1]);
+  let t=((px-a[0])*vx+(py-a[1])*vy)/L;t=Math.max(0,Math.min(1,t));
+  return Math.hypot(px-(a[0]+t*vx),py-(a[1]+t*vy));}
 function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 const rng=mulberry32(6041980);
 const dg=d=>d*Math.PI/180;
@@ -57,6 +63,7 @@ const FORCE=forceRaw.map(f=>f/fMax);   // 0..1
 const seats=CORE.map(([nom,ch,val,her],i)=>{const a=dg(-90+i*360/NS);
   return {a,x:CX+R*0.62*Math.cos(a),y:CY+R*0.62*Math.sin(a),hue:SPECTRE[ch],f:FORCE[i],nom,val};});
 const SCALE=R*0.36;
+const TSIG=R*0.075;   // portée du rayonnement d'un fil sur les cellules qu'il longe
 
 /* paires de RÉSONANCE : deux nombres qui se réduisent à la MÊME valeur se
    répondent (c'est déjà ce qui nourrit la force, via rep()). On les relie par
@@ -65,6 +72,17 @@ const SCALE=R*0.36;
 const RESO=[];
 for(let i=0;i<NS;i++)for(let j=i+1;j<NS;j++)
   if(seats[i].val===seats[j].val)RESO.push([i,j]);
+
+/* UN SEUL tableau décrit chaque fil et son intensité (0..1) : il sert à la fois
+   au tracé doré ET au « boost » des cellules voisines — jamais deux valeurs qui
+   divergeraient. Toile (heptagrammes, ténue, selon le plus FAIBLE des deux
+   bouts) d'abord, résonances (vives) ensuite : l'ordre du tableau = l'ordre de
+   tracé, donc les résonances passent par-dessus la toile. */
+const pt=i=>[CX+R*Math.cos(seats[i].a),CY+R*Math.sin(seats[i].a)];
+const THREADS=[];
+[2,3].forEach(step=>{for(let i=0;i<NS;i++){const j=(i+step)%NS;
+  THREADS.push({a:pt(i),b:pt(j),i:0.10+0.34*Math.min(seats[i].f,seats[j].f)});}});
+RESO.forEach(([i,j])=>THREADS.push({a:pt(i),b:pt(j),i:0.72+0.22*(seats[i].f+seats[j].f)/2}));
 
 /* --- géométrie du vitrail (7-fold) --- */
 const rays=seats.map(s=>s.a);
@@ -121,7 +139,15 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
     wsum+=infl;cr+=infl*s.hue[0];cg+=infl*s.hue[1];cb+=infl*s.hue[2];tot+=infl;}
   if(wsum<1e-5)continue;
   let col=[cr/wsum,cg/wsum,cb/wsum];
-  const v=mirror ? Math.min(1,1.9*Math.min(1,tot/1.05)) : Math.min(1,tot/1.05);  // miroir : vivacité réhaussée (réflexion pleine)
+  // BOOST par les fils : une cellule qui longe un fil lumineux gagne en vivacité
+  // (et l'inverse — un fil terne ne donne presque rien). On retient le fil le
+  // plus fort du voisinage (max), avec une décroissance gaussienne : seules les
+  // cellules qui TOUCHENT vraiment le fil en profitent.
+  let tb=0;
+  for(const t of THREADS){const dd=distSeg(mx,my,t.a,t.b);
+    tb=Math.max(tb,t.i*Math.exp(-(dd*dd)/(2*TSIG*TSIG)));}
+  let v=mirror ? Math.min(1,1.9*Math.min(1,tot/1.05)) : Math.min(1,tot/1.05);  // miroir : vivacité réhaussée (réflexion pleine)
+  v=Math.min(1,v+0.55*tb);   // les fils lumineux réhaussent leurs cellules (saturation + éclat + opacité suivent v)
   const lum=col[0]*0.3+col[1]*0.5+col[2]*0.2;
   const sat=0.22+1.1*v; col=col.map(c=>clamp(lum+(c-lum)*sat));   // faible -> gris, fort -> saturé
   col=col.map(c=>clamp(c*(0.55+0.5*v)));              // faible -> sombre, fort -> lumineux
@@ -149,20 +175,10 @@ function strokeGlow(i,draw){
 RINGS.forEach(r=>strokeGlow(0.30,()=>ctx.arc(CX,CY,r,0,7)));                                  // anneaux : modérés
 // (cercles-pétales retirés du tracé doré aussi — essai)
 seats.forEach(s=>strokeGlow(0.18+0.72*s.f,()=>{ctx.moveTo(CX,CY);ctx.lineTo(CX+R*Math.cos(s.a),CY+R*Math.sin(s.a));})); // rayon : selon sa force
-// TOILE de fond : chaque corde de l'heptagramme porte la force de ses DEUX
-// bouts (le min des deux). Une corde entre deux nombres forts brille ; une qui
-// touche un nombre discret s'efface. La toile respire la même donnée que les
-// rayons, en plus ténu (c'est le socle, pas la vedette).
-const P=i=>[CX+R*Math.cos(seats[i].a),CY+R*Math.sin(seats[i].a)];
-const corde=(i,j)=>{const[ax,ay]=P(i),[bx,by]=P(j);ctx.moveTo(ax,ay);ctx.lineTo(bx,by);};
-[2,3].forEach(step=>{for(let i=0;i<NS;i++){const j=(i+step)%NS;
-  const f=Math.min(seats[i].f,seats[j].f);
-  strokeGlow(0.10+0.34*f,()=>corde(i,j));}});
-// FILS DE RÉSONANCE : par-dessus la toile, les nombres de même valeur reliés
-// par un fil franchement lumineux — « ils vibrent sur la même note ». Un peu
-// plus vif quand les deux nombres sont eux-mêmes forts.
-RESO.forEach(([i,j])=>{const f=(seats[i].f+seats[j].f)/2;
-  strokeGlow(0.72+0.22*f,()=>corde(i,j));});
+// TOILE + FILS DE RÉSONANCE : on trace THREADS dans l'ordre (toile ténue selon
+// la force des deux bouts, puis résonances vives par-dessus) — la MÊME intensité
+// qui a réhaussé les cellules voisines plus haut, donc fil et vitrail s'accordent.
+THREADS.forEach(t=>strokeGlow(t.i,()=>{ctx.moveTo(t.a[0],t.a[1]);ctx.lineTo(t.b[0],t.b[1]);}));
 strokeGlow(0.40,()=>ctx.arc(CX,CY,R,0,7));                                                    // bornage
 
 /* graine de vie au centre : petite, sobre — teintée par la SYNTHÈSE des 7 (blend pondéré par la force) */
