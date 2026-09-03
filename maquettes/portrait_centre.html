@@ -62,12 +62,11 @@ const rays=seats.map(s=>s.a);
 const rosette=seats.map(s=>[CX+R*0.5*Math.cos(s.a),CY+R*0.5*Math.sin(s.a)]);
 const RINGS=[R*0.36,R];    // cercle intérieur agrandi : circonférence sur les sommets des pointes internes de l'étoile
 function drawGeom(g){
-  rosette.forEach(([x,y])=>{g.beginPath();g.arc(x,y,R*0.5,0,7);g.stroke();});
+  // (cercles-pétales de la fleur de vie retirés — pour essai)
   RINGS.forEach(r=>{g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();});
   rays.forEach(a=>{g.beginPath();g.moveTo(CX,CY);g.lineTo(CX+R*Math.cos(a),CY+R*Math.sin(a));g.stroke();});
   [2,3].forEach(step=>{const V=seats.map(s=>[CX+R*Math.cos(s.a),CY+R*Math.sin(s.a)]);
     let idx=0;g.beginPath();for(let s=0;s<=NS;s++){const[x,y]=V[idx%NS];s?g.lineTo(x,y):g.moveTo(x,y);idx+=step;}g.stroke();});
-  g.beginPath();g.arc(CX,CY,R,0,7);g.stroke();
 }
 
 /* masque */
@@ -139,7 +138,7 @@ function strokeGlow(i,draw){
   ctx.beginPath();draw();ctx.stroke();ctx.restore();
 }
 RINGS.forEach(r=>strokeGlow(0.30,()=>ctx.arc(CX,CY,r,0,7)));                                  // anneaux : modérés
-seats.forEach(s=>strokeGlow(0.22+0.66*s.f,()=>ctx.arc(CX+R*0.5*Math.cos(s.a),CY+R*0.5*Math.sin(s.a),R*0.5,0,7))); // cercle du nombre : selon sa force
+// (cercles-pétales retirés du tracé doré aussi — essai)
 seats.forEach(s=>strokeGlow(0.18+0.72*s.f,()=>{ctx.moveTo(CX,CY);ctx.lineTo(CX+R*Math.cos(s.a),CY+R*Math.sin(s.a));})); // rayon : selon sa force
 [2,3].forEach(step=>strokeGlow(0.32,()=>{const V=seats.map(s=>[CX+R*Math.cos(s.a),CY+R*Math.sin(s.a)]);
   let idx=0;for(let s=0;s<=NS;s++){const[x,y]=V[idx%NS];s?ctx.lineTo(x,y):ctx.moveTo(x,y);idx+=step;}}));   // heptagrammes : modérés
