@@ -60,7 +60,7 @@ const SCALE=R*0.36;
 /* --- géométrie du vitrail (7-fold) --- */
 const rays=seats.map(s=>s.a);
 const rosette=seats.map(s=>[CX+R*0.5*Math.cos(s.a),CY+R*0.5*Math.sin(s.a)]);
-const RINGS=[R*0.30,R*0.58,R*0.82];
+const RINGS=[R*0.30,R*0.58,R*0.92];   // le 2e anneau (extérieur) touche exactement les pointes de l'étoile
 function drawGeom(g){
   rosette.forEach(([x,y])=>{g.beginPath();g.arc(x,y,R*0.5,0,7);g.stroke();});
   RINGS.forEach(r=>{g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();});
