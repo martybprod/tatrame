@@ -60,7 +60,7 @@ const SCALE=R*0.36;
 /* --- géométrie du vitrail (7-fold) --- */
 const rays=seats.map(s=>s.a);
 const rosette=seats.map(s=>[CX+R*0.5*Math.cos(s.a),CY+R*0.5*Math.sin(s.a)]);
-const RINGS=[R*0.227,R*0.58,R*0.92];  // bord intérieur = sommets de la petite étoile {7/3} née des croisements au centre (0.247×0.92R)
+const RINGS=[R*0.51,R*0.58,R*0.92];  // bord intérieur = sommets de l'étoile interne de l'heptagramme (≈0.555×0.92R)
 function drawGeom(g){
   rosette.forEach(([x,y])=>{g.beginPath();g.arc(x,y,R*0.5,0,7);g.stroke();});
   RINGS.forEach(r=>{g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();});
