@@ -27,6 +27,7 @@
   <canvas id="c" width="1200" height="1200"></canvas>
   <div class="notes">
     <p><b>Force = ce qui intensifie une vibration</b> (pas sa valeur) : répétition sur plusieurs nombres, nombre maître (11/22/33), héritage (13/14/16/19). Chaque nombre « siège » sur sa pointe et rayonne sa couleur d'autant plus loin qu'il est fort. Chiffres aux 7 pointes (cercle = couleur chakra, chiffre blanc). Au centre : la graine, teintée par la synthèse des 7.</p>
+    <p><b>Les fils entre les pointes</b> disent maintenant deux choses. La <b>toile</b> (fils ténus) porte la force : une corde entre deux nombres forts brille, une qui touche un nombre discret s'efface. Par-dessus, les <b>fils de résonance</b> (nettement lumineux) relient les nombres de <b>même valeur</b> — ils vibrent sur la même note (ex. ici Trace, Source et Reflet, tous des 6).</p>
   </div>
   <p id="err"></p>
 </div>
@@ -56,6 +57,14 @@ const FORCE=forceRaw.map(f=>f/fMax);   // 0..1
 const seats=CORE.map(([nom,ch,val,her],i)=>{const a=dg(-90+i*360/NS);
   return {a,x:CX+R*0.62*Math.cos(a),y:CY+R*0.62*Math.sin(a),hue:SPECTRE[ch],f:FORCE[i],nom,val};});
 const SCALE=R*0.36;
+
+/* paires de RÉSONANCE : deux nombres qui se réduisent à la MÊME valeur se
+   répondent (c'est déjà ce qui nourrit la force, via rep()). On les relie par
+   un fil lumineux — même « note », peu importe la distance sur la roue, voisins
+   compris (Martin, 2026-09-03 : « pas de problème pour une corde entre voisins »). */
+const RESO=[];
+for(let i=0;i<NS;i++)for(let j=i+1;j<NS;j++)
+  if(seats[i].val===seats[j].val)RESO.push([i,j]);
 
 /* --- géométrie du vitrail (7-fold) --- */
 const rays=seats.map(s=>s.a);
@@ -140,8 +149,20 @@ function strokeGlow(i,draw){
 RINGS.forEach(r=>strokeGlow(0.30,()=>ctx.arc(CX,CY,r,0,7)));                                  // anneaux : modérés
 // (cercles-pétales retirés du tracé doré aussi — essai)
 seats.forEach(s=>strokeGlow(0.18+0.72*s.f,()=>{ctx.moveTo(CX,CY);ctx.lineTo(CX+R*Math.cos(s.a),CY+R*Math.sin(s.a));})); // rayon : selon sa force
-[2,3].forEach(step=>strokeGlow(0.32,()=>{const V=seats.map(s=>[CX+R*Math.cos(s.a),CY+R*Math.sin(s.a)]);
-  let idx=0;for(let s=0;s<=NS;s++){const[x,y]=V[idx%NS];s?ctx.lineTo(x,y):ctx.moveTo(x,y);idx+=step;}}));   // heptagrammes : modérés
+// TOILE de fond : chaque corde de l'heptagramme porte la force de ses DEUX
+// bouts (le min des deux). Une corde entre deux nombres forts brille ; une qui
+// touche un nombre discret s'efface. La toile respire la même donnée que les
+// rayons, en plus ténu (c'est le socle, pas la vedette).
+const P=i=>[CX+R*Math.cos(seats[i].a),CY+R*Math.sin(seats[i].a)];
+const corde=(i,j)=>{const[ax,ay]=P(i),[bx,by]=P(j);ctx.moveTo(ax,ay);ctx.lineTo(bx,by);};
+[2,3].forEach(step=>{for(let i=0;i<NS;i++){const j=(i+step)%NS;
+  const f=Math.min(seats[i].f,seats[j].f);
+  strokeGlow(0.10+0.34*f,()=>corde(i,j));}});
+// FILS DE RÉSONANCE : par-dessus la toile, les nombres de même valeur reliés
+// par un fil franchement lumineux — « ils vibrent sur la même note ». Un peu
+// plus vif quand les deux nombres sont eux-mêmes forts.
+RESO.forEach(([i,j])=>{const f=(seats[i].f+seats[j].f)/2;
+  strokeGlow(0.72+0.22*f,()=>corde(i,j));});
 strokeGlow(0.40,()=>ctx.arc(CX,CY,R,0,7));                                                    // bornage
 
 /* graine de vie au centre : petite, sobre — teintée par la SYNTHÈSE des 7 (blend pondéré par la force) */
