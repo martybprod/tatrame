@@ -50,6 +50,7 @@ le corpus versionné et les données de référence construites dans l'image) :
 /app/data/notifications
 /app/data/activite
 /app/data/commentaires
+/app/data/journal
 ```
 
 ⚠️ **Vécu le 2026-08-29** : `data/activite.jsonl` et `data/commentaires.json` vivaient en
@@ -92,6 +93,7 @@ docker run --rm -p 8000:8000 \
   -v tatrame_notifications:/app/data/notifications \
   -v tatrame_activite:/app/data/activite \
   -v tatrame_commentaires:/app/data/commentaires \
+  -v tatrame_journal:/app/data/journal \
   tatrame
 # puis http://localhost:8000/health
 ```

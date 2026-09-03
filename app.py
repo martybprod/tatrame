@@ -706,6 +706,11 @@ def api_activer_profil(profil_id):
 # moteur/notifications.py) — une donnée opérationnelle, pas une donnée
 # d'identité, écrasée sinon à chaque sauvegarde du profil.
 MAX_JOURNAL_TEXTE = 8000
+# Le message d'origine (d'où vient le crayon cliqué) : un instantané figé au
+# moment de l'écriture, pas un lien vers la page — le contenu du jour change
+# chaque jour, un lien casserait ; l'instantané, lui, reste lisible plus tard.
+MAX_JOURNAL_SOURCE_NOM = 120
+MAX_JOURNAL_SOURCE_TEXTE = 4000
 
 
 def _chemin_journal(profil_id):
@@ -731,7 +736,8 @@ def api_journal(profil_id):
 
 @app.post("/api/journal/<profil_id>")
 def api_journal_ajouter(profil_id):
-    texte = ((request.get_json(silent=True) or {}).get("texte") or "").strip()
+    body = request.get_json(silent=True) or {}
+    texte = (body.get("texte") or "").strip()
     if not texte:
         return jsonify({"erreur": "La note ne peut pas être vide."}), 400
     if len(texte) > MAX_JOURNAL_TEXTE:
@@ -744,6 +750,11 @@ def api_journal_ajouter(profil_id):
         # même raison que _date_demandee() : voir FUSEAU_APP plus haut.
         "cree_le": dt.datetime.now(TEMPS.fuseau(FUSEAU_APP)).isoformat(),
     }
+    source_nom = (body.get("source_nom") or "").strip()[:MAX_JOURNAL_SOURCE_NOM]
+    source_texte = (body.get("source_texte") or "").strip()[:MAX_JOURNAL_SOURCE_TEXTE]
+    if source_nom and source_texte:
+        entree["source_nom"] = source_nom
+        entree["source_texte"] = source_texte
     entrees.append(entree)
     _ecrire(_chemin_journal(profil_id), entrees)
     return jsonify(entree)
