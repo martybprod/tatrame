@@ -839,6 +839,7 @@ details.aide p{font-size:13px;color:var(--encre3);margin-top:8px;line-height:1.6
 .jour-entete{text-align:center; color:var(--encre3); margin-bottom:22px;
   padding-bottom:18px; border-bottom:1px solid var(--bord)}
 .jour-entete .date{font-size:11px; letter-spacing:.16em; text-transform:uppercase}
+.jour-entete .date .jour-lune-ico{width:15px;height:15px;vertical-align:-2px;margin-right:5px;color:var(--encre3)}
 .jour-entete .lune{font-family:var(--serif); font-size:14px; color:var(--encre2); margin-top:7px}
 .carte-jour-hero .miroir{font-size:21px; line-height:1.62}
 
@@ -2347,6 +2348,29 @@ async function chargerJour() {
       "Un retour se calcule sur l'instant exact de ta naissance, pas sur la date civile seule. Si tu es né tard en soirée, cet instant peut tomber, une fois ramené au temps universel, sur le jour civil suivant. Le calcul reste précis — il peut juste sembler décalé d'un jour par rapport à ton anniversaire.") : '';
   }
 
+  /* La mini-lune du jour dans l'en-tête — deux arcs SVG, la technique du
+     gh-pages « moon-phase » (limbe + terminateur elliptique), mais dessinée
+     depuis l'écart Lune-Soleil que le SERVEUR fournit déjà (j.jour.phase) :
+     l'icône ne peut jamais contredire le nom de phase écrit juste dessous.
+     rx = |cos écart| × 10 : 10 aux nouvelles/pleines lunes (terminateur
+     rabattu sur le limbe), 0 aux quartiers (terminateur droit). Éclairée à
+     droite en croissante (hémisphère nord), à gauche en décroissante. */
+  const miniLune = (ecart => {
+    if (ecart == null) return '';
+    const rx = Math.abs(Math.cos(ecart * Math.PI / 180)) * 10;
+    const croissante = ecart <= 180, croissant = ecart <= 90 || ecart > 270;
+    // Limbe du haut vers le bas du côté éclairé (sens horaire à droite),
+    // puis terminateur qui remonte : bombé vers le côté éclairé si croissant,
+    // à l'opposé si gibbeux — le path fermé est la zone éclairée.
+    const limbSweep = croissante ? 1 : 0;
+    const termSweep = (croissante !== croissant) ? 1 : 0;
+    return `<svg class="jour-lune-ico" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M12,2 A10,10 0 0 ${limbSweep} 12,22 A${rx.toFixed(2)},10 0 0 ${termSweep} 12,2 Z"
+        fill="var(--accent-doux)" opacity=".8"/>
+    </svg>`;
+  })(j.jour.phase?.ecart);
+
   /* ═══ AUJOURD'HUI — le héros de la page. Le bandeau de synthèse d'avant est
      FONDU ici : date + Lune deviennent une fine ligne d'en-tête, dés-accentuée,
      à l'intérieur même de la carte du message. Un seul bloc primaire, un seul
@@ -2354,7 +2378,7 @@ async function chargerJour() {
      cette carte quand le ciel mène, ou dans « Explorer » quand le chinois mène
      — plus jamais dupliqués dans un bandeau. ═══ */
   const enteteJour = `<div class="jour-entete">
-      <div class="date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
+      <div class="date">${miniLune}${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
       <div class="lune">La Lune éclaire ${T(nomMaison(lune.maison))} · ${T(nomPhase(phase))}</div>
     </div>`;
 
@@ -2376,7 +2400,7 @@ async function chargerJour() {
        sans le trait ni l'air du dessous, pour ne pas ouvrir sur du vide. */
     html += `<div class="carte carte-jour-hero"><div class="jour-entete"
         style="margin-bottom:0;padding-bottom:0;border-bottom:0">
-        <div class="date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
+        <div class="date">${miniLune}${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
         <div class="lune">La Lune éclaire ${T(nomMaison(lune.maison))} · ${T(nomPhase(phase))}</div>
       </div></div>`;
   }

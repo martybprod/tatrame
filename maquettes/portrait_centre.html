@@ -22,7 +22,7 @@
 <body>
 <div class="wrap">
   <h1>Centre — vitrail des 7 nombres</h1>
-  <p class="sous">Mandala sacré à 7 branches ; les couleurs sont dans les cellules entre les lignes (vitrail). Teinte = chakra du nombre, vivacité = sa valeur.</p>
+  <p class="sous">Chaque cellule de l'entrelacs prend une couleur CALCULÉE : mélange des 7 chakras selon la force de chaque nombre et sa proximité. Un nombre fort rayonne loin, un faible teinte à peine.</p>
   <p class="exemple">Martin Boucher, 6 avril 1980. Secteurs forts (Reflet 6, Source 6, Trace 6) = vifs ; Cap 1 / Foyer 1 = pâles.</p>
   <canvas id="c" width="1200" height="1200"></canvas>
   <div class="notes">
@@ -45,7 +45,10 @@ const dg=d=>d*Math.PI/180;
 /* 7 nombres identitaires -> chakra + valeur (Martin) ; secteur k=0 en haut (Cap/couronne) */
 const CORE=[['Cap',7,1],['Trace',6,6],['Voix',5,3],['Foyer',4,1],['Élan',3,5],['Source',2,6],['Reflet',1,6]];
 const NS=7, maxV=Math.max(...CORE.map(c=>c[2]));
-function secteur(a){const d=((a+90)/(360/NS));return ((Math.floor(d)%NS)+NS)%NS;} // a en deg, 0 en haut
+/* chaque nombre a un "siège" (point d'émission de sa couleur) le long de son rayon ; force = valeur */
+const seats=CORE.map(([nom,ch,val],i)=>{const a=dg(-90+i*360/NS);
+  return {x:CX+R*0.60*Math.cos(a),y:CY+R*0.60*Math.sin(a),hue:SPECTRE[ch],f:val/maxV,nom,val};});
+const SCALE=R*0.42;   // portée du rayonnement d'une couleur
 
 /* --- géométrie du vitrail (7-fold riche) --- */
 const rays=[...Array(NS)].map((_,i)=>dg(-90+i*360/NS));
@@ -84,17 +87,19 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
       if((nn===cur-1&&cx2===0)||(nn===cur+1&&cx2===W-1))continue;
       if(visited[nn])continue;if(wall[nn]){visited[nn]=1;continue;}visited[nn]=1;stack[sp++]=nn;}}
   if(cnt<3)continue;
-  const mx=sx/cnt,my=sy/cnt,rc=Math.hypot(mx-CX,my-CY);
-  const a=Math.atan2(my-CY,mx-CX)*180/Math.PI, k=secteur(a), [nom,ch,val]=CORE[k], hue=SPECTRE[ch];
-  const f=val/maxV;                                   // 0..1 vivacité selon la valeur
-  const dark=hue.map(v=>v*0.34);
-  const vivid=mix(dark,hue,0.30+0.55*f);
-  const lum=vivid[0]*0.3+vivid[1]*0.5+vivid[2]*0.2;
-  const sat=0.4+0.9*f;
-  let col=vivid.map(v=>clamp(lum+(v-lum)*sat));
-  col=col.map(v=>clamp(v*(0.86+0.2*(1-rc/R))));       // un peu plus vif vers le centre
-  const jit=(rng()-0.5)*10; col=col.map(v=>clamp(v+jit));
-  const alpha=0.40+0.5*f;
+  const mx=sx/cnt,my=sy/cnt;
+  // couleur = mélange pondéré des 7 chakras selon (force × proximité) -> répartition calculée
+  let wsum=0,cr=0,cg=0,cb=0,tot=0;
+  for(const s of seats){const dx=mx-s.x,dy=my-s.y;const infl=s.f*Math.exp(-(dx*dx+dy*dy)/(SCALE*SCALE));
+    wsum+=infl;cr+=infl*s.hue[0];cg+=infl*s.hue[1];cb+=infl*s.hue[2];tot+=infl;}
+  if(wsum<1e-5)continue;
+  let col=[cr/wsum,cg/wsum,cb/wsum];
+  const v=Math.min(1,tot/1.25);                        // intensité = combien de force rayonne ici
+  const lum=col[0]*0.3+col[1]*0.5+col[2]*0.2;
+  const sat=0.35+0.95*v; col=col.map(c=>clamp(lum+(c-lum)*sat));
+  col=col.map(c=>clamp(c*(0.68+0.36*v)));
+  const jit=(rng()-0.5)*9; col=col.map(c=>clamp(c+jit));
+  const alpha=0.40+0.5*v;
   for(const q of px){const o=q*4;
     d[o]=d[o]+(col[0]-d[o])*alpha;d[o+1]=d[o+1]+(col[1]-d[o+1])*alpha;d[o+2]=d[o+2]+(col[2]-d[o+2])*alpha;}
 }
