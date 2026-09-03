@@ -110,12 +110,18 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
 }
 ctx.putImageData(img,0,0);
 
-/* plomb du vitrail : luminosité VARIABLE selon la force pointée */
+/* fil tissé : couleur UNIFORME sur toute la longueur (opaque), halo séparé autour */
 function strokeGlow(i,draw){
-  const a=0.20+0.58*i, w=(0.6+1.5*i)*S, c=mix([188,150,92],[255,250,236],i);
+  const w=(0.6+1.5*i)*S, c=mix([176,140,86],[255,250,236],i);
+  const col=`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`;
+  // halo translucide (peut se mêler au fond, c'est voulu : la lueur)
   ctx.save();ctx.lineCap='round';ctx.lineJoin='round';
-  ctx.shadowColor=`rgba(255,212,142,${0.12+0.4*i})`;ctx.shadowBlur=(2+7*i)*S;
-  ctx.strokeStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${a})`;ctx.lineWidth=w;
+  ctx.shadowColor=`rgba(255,212,142,${0.10+0.35*i})`;ctx.shadowBlur=(3+8*i)*S;
+  ctx.strokeStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${0.10+0.20*i})`;ctx.lineWidth=w*2.1;
+  ctx.beginPath();draw();ctx.stroke();ctx.restore();
+  // cœur du fil : quasi opaque -> couleur uniforme, pas de "rivière" qui change de teinte
+  ctx.save();ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.strokeStyle=col;ctx.globalAlpha=0.94;ctx.lineWidth=w;
   ctx.beginPath();draw();ctx.stroke();ctx.restore();
 }
 RINGS.forEach(r=>strokeGlow(0.30,()=>ctx.arc(CX,CY,r,0,7)));                                  // anneaux : modérés
