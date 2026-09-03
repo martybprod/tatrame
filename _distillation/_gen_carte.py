@@ -1,6 +1,7 @@
-import json, urllib.request, base64, time, sys
+import json, urllib.request, base64, time
 
-url = "http://127.0.0.1:7860/sdapi/v1/txt2img"
+URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
+OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
 positive = ("A single solitary young man captured mid-stride, in the very act of stepping his leading foot "
 "off the edge of a high cliff into empty air, one leg extended forward over the abyss with no ground "
@@ -19,43 +20,34 @@ negative = ("two people, twins, duplicate person, multiple figures, extra limbs,
 "fingers, text, letters, numbers, watermark, signature, photorealistic, 3d render, oversaturated, candy "
 "colors, childish, cartoonish")
 
-payload = {
-    "prompt": positive,
-    "negative_prompt": negative,
-    "seed": -1,
-    "steps": 4,
-    "cfg_scale": 1,
-    "width": 1024,
-    "height": 1536,
-    "sampler_name": "Euler A Trailing",
-    "guidance_embed": 3.5,
-    "shift": 3,
-    "batch_size": 1,
-}
+STEPS = 8
+SEEDS = [101, 202, 303]
 
-data = json.dumps(payload).encode("utf-8")
-req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
-t0 = time.time()
-try:
-    with urllib.request.urlopen(req, timeout=180) as resp:
-        body = resp.read()
-    print("HTTP OK, temps:", round(time.time()-t0,1), "s, taille reponse:", len(body))
-    out = json.loads(body)
-    print("Cles de la reponse:", list(out.keys()))
+def gen(seed, steps):
+    payload = {
+        "prompt": positive, "negative_prompt": negative,
+        "seed": seed, "steps": steps, "cfg_scale": 1,
+        "width": 1024, "height": 1536,
+        "sampler_name": "Euler A Trailing",
+        "guidance_embed": 3.5, "shift": 3, "batch_size": 1,
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(URL, data=data, headers={"Content-Type": "application/json"})
+    t0 = time.time()
+    with urllib.request.urlopen(req, timeout=200) as resp:
+        out = json.loads(resp.read())
     imgs = out.get("images", [])
-    print("Nombre d'images:", len(imgs))
-    if imgs:
-        raw = base64.b64decode(imgs[0])
-        path = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/tarot_previews_00_confiance_mucha_lora.png"
-        with open(path, "wb") as f:
-            f.write(raw)
-        print("Image sauvegardee:", path, len(raw), "octets")
-    info = out.get("info")
-    if info:
-        try:
-            info_d = json.loads(info) if isinstance(info,str) else info
-            print("Seed utilise:", info_d.get("seed") if isinstance(info_d,dict) else info)
-        except Exception as e:
-            print("info brute:", str(info)[:300])
-except Exception as e:
-    print("ERREUR:", repr(e))
+    if not imgs:
+        return None
+    raw = base64.b64decode(imgs[0])
+    path = OUTDIR + f"preview_00_confiance_st{steps}_seed{seed}.png"
+    with open(path, "wb") as f:
+        f.write(raw)
+    return path, round(time.time()-t0,1), len(raw)
+
+for s in SEEDS:
+    r = gen(s, STEPS)
+    if r:
+        print(f"seed={s} steps={STEPS} -> {r[0]}  ({r[1]}s, {r[2]} o)")
+    else:
+        print(f"seed={s} -> ECHEC (pas d'image)")
