@@ -822,6 +822,10 @@ details.aide summary::before{content:'⌄ ';color:var(--accent-doux);font-weight
 details.aide[open] summary::before{content:'⌃ '}
 details.aide summary:hover{color:var(--encre2)}
 details.aide p{font-size:13px;color:var(--encre3);margin-top:8px;line-height:1.6}
+/* Le tiroir « Dans le ciel » du titre Aujourd'hui : collé au chapo, discret,
+   déplie la description du ciel sans ouvrir la carte sur elle (Martin, 2026-09-03). */
+details.aide.ciel-titre{margin-top:-6px;margin-bottom:10px}
+details.aide.ciel-titre summary{font-size:10px}
 
 .lien[data-lien]{cursor:pointer;padding:8px;margin:0 -8px;border-radius:8px;transition:.15s}
 .lien[data-lien]:hover{background:var(--papier)}
@@ -2403,8 +2407,9 @@ async function chargerJour() {
       ${enteteJour}
       <div class="chapo">Aujourd'hui</div>
       ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
-      ${cielMene && dom ? `<p style="font-size:15px;color:var(--encre2)">${domPhrase}</p>
-      <p class="quoi" style="margin:4px 0 12px">${domTempo}</p>` : ''}
+      ${cielMene && dom ? `<details class="aide ciel-titre"><summary>Dans le ciel</summary>
+        <p style="font-size:15px;color:var(--encre2);margin:8px 0 4px">${domPhrase}</p>
+        <p class="quoi" style="margin:4px 0 12px">${domTempo}</p></details>` : ''}
       <div class="miroir">${T(titre.miroir)}</div>
       ${blocGeste(titre.geste, "Aujourd'hui")}
       ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
