@@ -63,7 +63,12 @@ const FORCE=forceRaw.map(f=>f/fMax);   // 0..1
 const seats=CORE.map(([nom,ch,val,her],i)=>{const a=dg(-90+i*360/NS);
   return {a,x:CX+R*0.62*Math.cos(a),y:CY+R*0.62*Math.sin(a),hue:SPECTRE[ch],f:FORCE[i],nom,val};});
 const SCALE=R*0.36;
-const TSIG=R*0.075;   // portée du rayonnement d'un fil sur les cellules qu'il longe
+// Portée du rayonnement d'un fil sur les cellules qu'il longe. LARGE À DESSEIN
+// (Martin, 2026-09-03) : trop court, seule la cellule dont le CENTRE touche le
+// fil s'allumait — et ces centres tombent presque tous du même côté d'une corde,
+// d'où un liseré unilatéral. Une portée large étale la décroissance sur
+// plusieurs cellules DES DEUX CÔTÉS → dégradé doux vers les zones sombres.
+const TSIG=R*0.15;
 
 /* paires de RÉSONANCE : deux nombres qui se réduisent à la MÊME valeur se
    répondent (c'est déjà ce qui nourrit la force, via rep()). On les relie par
