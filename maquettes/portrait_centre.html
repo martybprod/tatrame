@@ -60,12 +60,12 @@ const SCALE=R*0.36;
 /* --- géométrie du vitrail (7-fold) --- */
 const rays=seats.map(s=>s.a);
 const rosette=seats.map(s=>[CX+R*0.5*Math.cos(s.a),CY+R*0.5*Math.sin(s.a)]);
-const RINGS=[R*0.328,R*0.58,R*0.92];  // bord intérieur = POINTES de l'étoile centrale née des croisements de l'heptagramme {7/3} (0.357×0.92R)
+const RINGS=[R*0.328,R*0.58,R];  // anneau extérieur = R pile : sommets de l'étoile ET cercle extérieur fusionnés ; pastilles centrées dessus
 function drawGeom(g){
   rosette.forEach(([x,y])=>{g.beginPath();g.arc(x,y,R*0.5,0,7);g.stroke();});
   RINGS.forEach(r=>{g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();});
   rays.forEach(a=>{g.beginPath();g.moveTo(CX,CY);g.lineTo(CX+R*Math.cos(a),CY+R*Math.sin(a));g.stroke();});
-  [2,3].forEach(step=>{const V=seats.map(s=>[CX+R*0.92*Math.cos(s.a),CY+R*0.92*Math.sin(s.a)]);
+  [2,3].forEach(step=>{const V=seats.map(s=>[CX+R*Math.cos(s.a),CY+R*Math.sin(s.a)]);
     let idx=0;g.beginPath();for(let s=0;s<=NS;s++){const[x,y]=V[idx%NS];s?g.lineTo(x,y):g.moveTo(x,y);idx+=step;}g.stroke();});
   g.beginPath();g.arc(CX,CY,R,0,7);g.stroke();
 }
@@ -132,7 +132,7 @@ function strokeGlow(i,draw){
 RINGS.forEach(r=>strokeGlow(0.30,()=>ctx.arc(CX,CY,r,0,7)));                                  // anneaux : modérés
 seats.forEach(s=>strokeGlow(0.22+0.66*s.f,()=>ctx.arc(CX+R*0.5*Math.cos(s.a),CY+R*0.5*Math.sin(s.a),R*0.5,0,7))); // cercle du nombre : selon sa force
 seats.forEach(s=>strokeGlow(0.18+0.72*s.f,()=>{ctx.moveTo(CX,CY);ctx.lineTo(CX+R*Math.cos(s.a),CY+R*Math.sin(s.a));})); // rayon : selon sa force
-[2,3].forEach(step=>strokeGlow(0.32,()=>{const V=seats.map(s=>[CX+R*0.92*Math.cos(s.a),CY+R*0.92*Math.sin(s.a)]);
+[2,3].forEach(step=>strokeGlow(0.32,()=>{const V=seats.map(s=>[CX+R*Math.cos(s.a),CY+R*Math.sin(s.a)]);
   let idx=0;for(let s=0;s<=NS;s++){const[x,y]=V[idx%NS];s?ctx.lineTo(x,y):ctx.moveTo(x,y);idx+=step;}}));   // heptagrammes : modérés
 strokeGlow(0.40,()=>ctx.arc(CX,CY,R,0,7));                                                    // bornage
 
@@ -148,7 +148,7 @@ strokeGlow(0.40,()=>ctx.arc(CX,CY,R,0,7));                                      
 })();
 
 /* chiffres aux 7 pointes : cercle = couleur chakra, chiffre blanc uniforme */
-seats.forEach((s)=>{const rr=R*0.92,x=CX+rr*Math.cos(s.a),y=CY+rr*Math.sin(s.a);
+seats.forEach((s)=>{const rr=R,x=CX+rr*Math.cos(s.a),y=CY+rr*Math.sin(s.a);
   ctx.save();ctx.shadowColor=`rgba(${s.hue[0]},${s.hue[1]},${s.hue[2]},0.8)`;ctx.shadowBlur=10*S;
   ctx.beginPath();ctx.arc(x,y,17*S,0,7);ctx.fillStyle=`rgba(${s.hue[0]},${s.hue[1]},${s.hue[2]},0.92)`;ctx.fill();
   ctx.lineWidth=1.4*S;ctx.strokeStyle='rgba(255,250,235,0.7)';ctx.stroke();ctx.restore();
