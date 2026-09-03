@@ -11,12 +11,17 @@
 | Réglage | Valeur |
 |---|---|
 | Résolution | **1024 × 1536** (2:3) |
-| Échantillonneur | **Euler A Trailing** (ou Euler) |
-| Étapes | **8** (ajuster 6–12) |
-| Guidage du texte (CFG) | **1.0** |
-| Guidage Flux | **≈ 3.0** (ajuster 2.5–4.0) |
-| Décalage (Shift) | auto / défaut |
-| Graine | **notée par carte** (pour retoucher plus tard) |
+| Modèle | **Flux.2 Klein 9B** (`flux_2_klein_9b_q8p.ckpt`) |
+| LoRA | **Mucha** (`mucha_style_f29b_...`) poids **0.55** |
+| Échantillonneur | **Euler A Trailing** |
+| Étapes | **20** (indispensable pour l'anatomie — 8 steps = pieds/mains/ailes ratés) |
+| Guidage du texte (CFG) | **1.0** (ne PAS monter : double le temps, durcit le style, n'améliore pas l'anatomie — testé) |
+| Guidage Flux (guidance_embed) | **3.5** |
+| Décalage (Shift) | **3** |
+| Graine | **explicite et notée par carte** (l'API ne renvoie pas le seed aléatoire) |
+
+**Pilotage** : via l'API HTTP Draw Things (`http://127.0.0.1:7860/sdapi/v1/txt2img`), script `_distillation/_gen_carte.py`. ~145 s/carte à 20 steps.
+**Workflow anti-raté** : générer 1 image/carte, vérifier l'anatomie de PRÈS (pieds, mains, ailes, doublons), régénérer avec un autre seed uniquement les cartes défaillantes.
 
 ⚠️ **CFG à 1.0 = prompt négatif ignoré.** → **Tout se pilote dans le prompt POSITIF.** On ne décrit JAMAIS ce qui ne doit pas être là (pas de « no luggage » → dessine une valise).
 

@@ -16,17 +16,22 @@ positive = ("A single solitary young man captured mid-stride, in the very act of
 "with the full rainbow spectrum woven softly throughout in varying proportions, subtle gold linework, "
 "soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
-negative = ("two people, twins, duplicate person, multiple figures, extra limbs, deformed hands, extra "
-"fingers, text, letters, numbers, watermark, signature, photorealistic, 3d render, oversaturated, candy "
-"colors, childish, cartoonish")
+neg_base = ("two people, twins, duplicate person, multiple figures, text, watermark, photorealistic, 3d render")
+neg_anat = ("extra leg, third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, "
+"extra arm, malformed hands, fused fingers, extra finger, extra wing, three wings, deformed wing, "
+"malformed anatomy, bad anatomy, disfigured, mutated, " + neg_base)
 
-STEPS = 8
-SEEDS = [101, 202, 303]
+SEED = 202  # seed connu pour son defaut (pied manquant a 8 steps)
 
-def gen(seed, steps):
+variants = [
+    {"tag": "V1_st20_cfg1", "steps": 20, "cfg": 1,   "neg": neg_base},
+    {"tag": "V2_st20_cfg3", "steps": 20, "cfg": 3.0, "neg": neg_anat},
+]
+
+def gen(v):
     payload = {
-        "prompt": positive, "negative_prompt": negative,
-        "seed": seed, "steps": steps, "cfg_scale": 1,
+        "prompt": positive, "negative_prompt": v["neg"],
+        "seed": SEED, "steps": v["steps"], "cfg_scale": v["cfg"],
         "width": 1024, "height": 1536,
         "sampler_name": "Euler A Trailing",
         "guidance_embed": 3.5, "shift": 3, "batch_size": 1,
@@ -34,20 +39,20 @@ def gen(seed, steps):
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(URL, data=data, headers={"Content-Type": "application/json"})
     t0 = time.time()
-    with urllib.request.urlopen(req, timeout=200) as resp:
+    with urllib.request.urlopen(req, timeout=400) as resp:
         out = json.loads(resp.read())
     imgs = out.get("images", [])
     if not imgs:
         return None
     raw = base64.b64decode(imgs[0])
-    path = OUTDIR + f"preview_00_confiance_st{steps}_seed{seed}.png"
+    path = OUTDIR + f"exp_00_confiance_seed{SEED}_{v['tag']}.png"
     with open(path, "wb") as f:
         f.write(raw)
-    return path, round(time.time()-t0,1), len(raw)
+    return path, round(time.time()-t0,1)
 
-for s in SEEDS:
-    r = gen(s, STEPS)
-    if r:
-        print(f"seed={s} steps={STEPS} -> {r[0]}  ({r[1]}s, {r[2]} o)")
-    else:
-        print(f"seed={s} -> ECHEC (pas d'image)")
+for v in variants:
+    try:
+        r = gen(v)
+        print(f"{v['tag']} -> {r[0]}  ({r[1]}s)" if r else f"{v['tag']} -> ECHEC")
+    except Exception as e:
+        print(f"{v['tag']} -> ERREUR {repr(e)}")
