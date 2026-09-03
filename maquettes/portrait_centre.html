@@ -145,9 +145,9 @@ function fieldColorAt(mx,my){
   return {col,v};
 }
 
-/* graine de vie au centre : chaque pétale capte la couleur du POINT OPPOSÉ du grand cercle (écho yin-yang) */
+/* graine de vie au centre : remplit tout le premier anneau (RINGS[0]) ; chaque pétale capte la couleur du POINT OPPOSÉ du grand cercle (écho yin-yang) */
 (function(){
-  const rg=30*S, rc=rg*0.52;
+  const rc=RINGS[0]*0.52;   // rayon des pétales = la graine occupe tout l'anneau intérieur
   // 6 pétales : miroir à 180° -> le pétale d'un côté hérite de la couleur qui domine de l'autre côté
   ctx.save();ctx.globalCompositeOperation='lighter';
   for(let i=0;i<6;i++){const a=dg(i*60);
