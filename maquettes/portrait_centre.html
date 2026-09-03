@@ -27,7 +27,7 @@
   <canvas id="c" width="1200" height="1200"></canvas>
   <div class="notes">
     <p><b>Force = ce qui intensifie une vibration</b> (pas sa valeur) : répétition sur plusieurs nombres, nombre maître (11/22/33), héritage (13/14/16/19). Chaque nombre « siège » sur sa pointe et rayonne sa couleur d'autant plus loin qu'il est fort. Chiffres aux 7 pointes (cercle = couleur chakra, chiffre blanc). Au centre : la graine, teintée par la synthèse des 7.</p>
-    <p><b>Les fils entre les pointes</b> disent maintenant deux choses. La <b>toile</b> (fils ténus) porte la force : une corde entre deux nombres forts brille, une qui touche un nombre discret s'efface. Par-dessus, les <b>fils de résonance</b> (nettement lumineux) relient les nombres de <b>même valeur</b> — ils vibrent sur la même note (ex. ici Trace, Source et Reflet, tous des 6).</p>
+    <p><b>Les fils entre les pointes</b> disent maintenant deux choses. La <b>toile</b> (fils ténus) porte la force : une corde entre deux nombres forts brille, une qui touche un nombre discret s'efface. Par-dessus, les <b>fils de résonance</b> (nettement lumineux) relient les nombres de <b>même valeur</b> — ils vibrent sur la même note (ex. ici Trace, Source et Reflet, tous des 6). Plus un nombre revient, plus son fil est vif ; et <b>dès trois occurrences</b>, la constellation ne fait plus que se relier — elle <b>illumine son aire</b> : le nombre dominant occupe un vrai territoire du vitrail, dans ses propres couleurs (ici, le triangle du 6).</p>
   </div>
   <p id="err"></p>
 </div>
@@ -45,6 +45,12 @@ function distSeg(px,py,a,b){const vx=b[0]-a[0],vy=b[1]-a[1],L=vx*vx+vy*vy;
   if(L<1e-6)return Math.hypot(px-a[0],py-a[1]);
   let t=((px-a[0])*vx+(py-a[1])*vy)/L;t=Math.max(0,Math.min(1,t));
   return Math.hypot(px-(a[0]+t*vx),py-(a[1]+t*vy));}
+/* point dans un polygone (lancer de rayon) : sert à illuminer l'AIRE d'une
+   constellation dominante, pas seulement ses côtés. */
+function inPoly(x,y,pts){let c=false;
+  for(let a=0,b=pts.length-1;a<pts.length;b=a++){const[xi,yi]=pts[a],[xj,yj]=pts[b];
+    if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))c=!c;}
+  return c;}
 function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 const rng=mulberry32(6041980);
 const dg=d=>d*Math.PI/180;
@@ -87,7 +93,20 @@ const pt=i=>[CX+R*Math.cos(seats[i].a),CY+R*Math.sin(seats[i].a)];
 const THREADS=[];
 [2,3].forEach(step=>{for(let i=0;i<NS;i++){const j=(i+step)%NS;
   THREADS.push({a:pt(i),b:pt(j),i:0.10+0.34*Math.min(seats[i].f,seats[j].f)});}});
-RESO.forEach(([i,j])=>THREADS.push({a:pt(i),b:pt(j),i:0.72+0.22*(seats[i].f+seats[j].f)/2}));
+// (B) L'intensité d'un fil de résonance monte avec le NOMBRE d'occurrences du
+// nombre partagé (rep), pas seulement avec la force : un 3× écrase un 2×.
+RESO.forEach(([i,j])=>{const r=rep(seats[i].val),mf=(seats[i].f+seats[j].f)/2;
+  THREADS.push({a:pt(i),b:pt(j),i:Math.min(1,0.42+0.19*r+0.05*mf)});});
+
+/* (A) CONSTELLATIONS dominantes : un nombre présent 3 fois ou plus dessine un
+   polygone (ses sommets) dont on illuminera l'AIRE — « ce nombre occupe une
+   part de toi », pas juste trois traits. Un 2× n'a pas d'aire (deux points = une
+   ligne), c'est voulu : deux occurrences = un lien, pas un territoire. La force
+   du remplissage monte avec le nombre d'occurrences (B, encore). */
+const POLYS=[];
+{const parVal={};seats.forEach((s,i)=>{(parVal[s.val]=parVal[s.val]||[]).push(i);});
+ for(const v in parVal){const idx=parVal[v];
+   if(idx.length>=3)POLYS.push({pts:idx.map(pt),force:Math.min(0.6,0.15*idx.length)});}}
 
 /* --- géométrie du vitrail (7-fold) --- */
 const rays=seats.map(s=>s.a);
@@ -151,8 +170,15 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
   let tb=0;
   for(const t of THREADS){const dd=distSeg(mx,my,t.a,t.b);
     tb=Math.max(tb,t.i*Math.exp(-(dd*dd)/(2*TSIG*TSIG)));}
+  // (A) AIRE d'une constellation dominante : les cellules DEDANS gagnent aussi
+  // en vivacité — le nombre récurrent illumine tout son territoire, pas que ses
+  // arêtes. On combine par max avec le longé des fils (tb) : près d'un côté,
+  // c'est le fil qui domine (bord le plus vif) ; au cœur de l'aire, c'est le
+  // remplissage — la transition à travers le bord reste continue, sans couture.
+  let pb=0;
+  for(const P of POLYS)if(inPoly(mx,my,P.pts))pb=Math.max(pb,P.force);
   let v=mirror ? Math.min(1,1.9*Math.min(1,tot/1.05)) : Math.min(1,tot/1.05);  // miroir : vivacité réhaussée (réflexion pleine)
-  v=Math.min(1,v+0.55*tb);   // les fils lumineux réhaussent leurs cellules (saturation + éclat + opacité suivent v)
+  v=Math.min(1,v+0.55*Math.max(tb,pb));   // fils + aire réhaussent les cellules (saturation + éclat + opacité suivent v)
   const lum=col[0]*0.3+col[1]*0.5+col[2]*0.2;
   const sat=0.22+1.1*v; col=col.map(c=>clamp(lum+(c-lum)*sat));   // faible -> gris, fort -> saturé
   col=col.map(c=>clamp(c*(0.55+0.5*v)));              // faible -> sombre, fort -> lumineux
