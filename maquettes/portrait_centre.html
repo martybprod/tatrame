@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align — Centre : vitrail des 7 nombres</title>
+<style>
+  :root{--doux:#9a8f78;--texte:#e9e1d2}
+  *{box-sizing:border-box}
+  body{margin:0;background:#05050a;color:var(--texte);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.55;padding:30px 18px 70px}
+  .wrap{max-width:760px;margin:0 auto;text-align:center}
+  h1{font-weight:500;font-size:23px;margin:0 0 6px}
+  .sous{color:var(--doux);font-size:14px;margin:0 0 4px}
+  .exemple{color:var(--doux);font-size:12.5px;margin:0 0 16px;font-style:italic}
+  canvas{display:block;margin:0 auto;width:100%;height:auto;max-width:680px;border-radius:8px}
+  .notes{text-align:left;max-width:600px;margin:16px auto 0;color:var(--doux);font-size:12.5px}
+  .notes b{color:var(--texte);font-weight:500}
+  #err{color:#c06a5a;font-size:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Centre — vitrail des 7 nombres</h1>
+  <p class="sous">Mandala sacré à 7 branches ; les couleurs sont dans les cellules entre les lignes (vitrail). Teinte = chakra du nombre, vivacité = sa valeur.</p>
+  <p class="exemple">Martin Boucher, 6 avril 1980. Secteurs forts (Reflet 6, Source 6, Trace 6) = vifs ; Cap 1 / Foyer 1 = pâles.</p>
+  <canvas id="c" width="1200" height="1200"></canvas>
+  <div class="notes">
+    <p><b>Ce sous-mandala = le Noyau identitaire.</b> 7 secteurs (un par nombre), chacun sa couleur de chakra ; les <b>cellules</b> nées des cercles/étoiles se teintent, d'autant plus vives que le nombre est fort. Les <b>fils d'or</b> = le plomb du vitrail. Il ira au centre de la grande composition.</p>
+  </div>
+  <p id="err"></p>
+</div>
+
+<script>
+try{
+const cv=document.getElementById('c'), W=cv.width, H=cv.height, ctx=cv.getContext('2d',{willReadFrequently:true});
+const CX=W/2, CY=H/2, S=W/680, R=290*S;
+const SPECTRE={1:[192,69,62],2:[208,122,60],3:[217,178,62],4:[95,160,106],5:[79,134,176],6:[75,94,168],7:[125,90,166]};
+const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+const clamp=v=>Math.max(0,Math.min(255,v));
+function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+const rng=mulberry32(6041980);
+const dg=d=>d*Math.PI/180;
+
+/* 7 nombres identitaires -> chakra + valeur (Martin) ; secteur k=0 en haut (Cap/couronne) */
+const CORE=[['Cap',7,1],['Trace',6,6],['Voix',5,3],['Foyer',4,1],['Élan',3,5],['Source',2,6],['Reflet',1,6]];
+const NS=7, maxV=Math.max(...CORE.map(c=>c[2]));
+function secteur(a){const d=((a+90)/(360/NS));return ((Math.floor(d)%NS)+NS)%NS;} // a en deg, 0 en haut
+
+/* --- géométrie du vitrail (7-fold riche) --- */
+const rays=[...Array(NS)].map((_,i)=>dg(-90+i*360/NS));
+const rosette=[...Array(NS)].map((_,i)=>{const a=dg(-90+i*360/NS);return[CX+R*0.5*Math.cos(a),CY+R*0.5*Math.sin(a)];});
+const RINGS=[R*0.30,R*0.58,R*0.82];
+function drawGeom(g){
+  rosette.forEach(([x,y])=>{g.beginPath();g.arc(x,y,R*0.5,0,7);g.stroke();});   // 7 cercles (fleur 7-fold)
+  RINGS.forEach(r=>{g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();});
+  rays.forEach(a=>{g.beginPath();g.moveTo(CX,CY);g.lineTo(CX+R*Math.cos(a),CY+R*Math.sin(a));g.stroke();});
+  // heptagrammes {7/2} et {7/3}
+  [2,3].forEach(step=>{const V=[...Array(NS)].map((_,i)=>{const a=dg(-90+i*360/NS);return[CX+R*0.92*Math.cos(a),CY+R*0.92*Math.sin(a)];});
+    let idx=0;g.beginPath();for(let s=0;s<=NS;s++){const[x,y]=V[idx%NS];s?g.lineTo(x,y):g.moveTo(x,y);idx+=step;}g.stroke();});
+  g.beginPath();g.arc(CX,CY,R,0,7);g.stroke();
+}
+
+/* masque des murs */
+const wc=document.createElement('canvas');wc.width=W;wc.height=H;const wg=wc.getContext('2d');
+wg.strokeStyle='#000';wg.lineWidth=2*S;wg.lineCap='round';wg.lineJoin='round';drawGeom(wg);
+const wd=wg.getImageData(0,0,W,H).data, wall=new Uint8Array(W*H);
+for(let i=0;i<W*H;i++)wall[i]=wd[i*4+3]>40?1:0;
+
+/* fond */
+ctx.fillStyle='#05050a';ctx.fillRect(0,0,W,H);
+for(let i=0;i<50;i++){const x=rng()*W,y=rng()*H;ctx.beginPath();ctx.arc(x,y,0.6*S,0,7);ctx.fillStyle=`rgba(210,210,235,${0.06+rng()*0.16})`;ctx.fill();}
+
+/* flood fill : chaque cellule teintée par le chakra de son secteur, vivacité = valeur */
+const img=ctx.getImageData(0,0,W,H), d=img.data;
+const visited=new Uint8Array(W*H), stack=new Int32Array(W*H);
+for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  const idx=y*W+x;if(visited[idx])continue;
+  if(wall[idx]||Math.hypot(x-CX,y-CY)>R){visited[idx]=1;continue;}
+  let sp=0;stack[sp++]=idx;visited[idx]=1;let sx=0,sy=0,cnt=0;const px=[];
+  while(sp>0){const cur=stack[--sp];const cy2=(cur/W)|0,cx2=cur-cy2*W;px.push(cur);sx+=cx2;sy+=cy2;cnt++;
+    const nb=[cur-1,cur+1,cur-W,cur+W];
+    for(const nn of nb){if(nn<0||nn>=W*H)continue;
+      if((nn===cur-1&&cx2===0)||(nn===cur+1&&cx2===W-1))continue;
+      if(visited[nn])continue;if(wall[nn]){visited[nn]=1;continue;}visited[nn]=1;stack[sp++]=nn;}}
+  if(cnt<3)continue;
+  const mx=sx/cnt,my=sy/cnt,rc=Math.hypot(mx-CX,my-CY);
+  const a=Math.atan2(my-CY,mx-CX)*180/Math.PI, k=secteur(a), [nom,ch,val]=CORE[k], hue=SPECTRE[ch];
+  const f=val/maxV;                                   // 0..1 vivacité selon la valeur
+  const dark=hue.map(v=>v*0.34);
+  const vivid=mix(dark,hue,0.30+0.55*f);
+  const lum=vivid[0]*0.3+vivid[1]*0.5+vivid[2]*0.2;
+  const sat=0.4+0.9*f;
+  let col=vivid.map(v=>clamp(lum+(v-lum)*sat));
+  col=col.map(v=>clamp(v*(0.86+0.2*(1-rc/R))));       // un peu plus vif vers le centre
+  const jit=(rng()-0.5)*10; col=col.map(v=>clamp(v+jit));
+  const alpha=0.40+0.5*f;
+  for(const q of px){const o=q*4;
+    d[o]=d[o]+(col[0]-d[o])*alpha;d[o+1]=d[o+1]+(col[1]-d[o+1])*alpha;d[o+2]=d[o+2]+(col[2]-d[o+2])*alpha;}
+}
+ctx.putImageData(img,0,0);
+
+/* plomb du vitrail : fils d'or */
+ctx.save();ctx.shadowColor='rgba(255,214,150,0.4)';ctx.shadowBlur=5*S;
+ctx.strokeStyle='rgba(226,196,130,0.7)';ctx.lineWidth=1.3*S;ctx.lineCap='round';ctx.lineJoin='round';drawGeom(ctx);
+ctx.restore();
+
+/* étiquettes des 7 secteurs + valeur */
+ctx.textAlign='center';ctx.textBaseline='middle';
+CORE.forEach(([nom,ch,val],k)=>{const a=dg(-90+k*360/NS),x=CX+R*0.72*Math.cos(a),y=CY+R*0.72*Math.sin(a),hue=SPECTRE[ch];
+  ctx.fillStyle=`rgba(245,240,225,0.92)`;ctx.font=`${12*S}px sans-serif`;ctx.fillText(nom,x,y-8*S);
+  ctx.fillStyle=`rgba(${hue[0]},${hue[1]},${hue[2]},0.95)`;ctx.font=`${16*S}px Georgia`;ctx.fillText(val,x,y+9*S);});
+
+/* cœur : petit noyau lumineux */
+ctx.beginPath();ctx.arc(CX,CY,20*S,0,7);ctx.fillStyle='rgba(9,9,14,0.9)';ctx.fill();
+ctx.save();ctx.shadowColor='rgba(236,227,200,0.5)';ctx.shadowBlur=10*S;
+ctx.lineWidth=1.4*S;ctx.strokeStyle='rgba(236,227,200,0.85)';ctx.stroke();ctx.restore();
+
+}catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
+</script>
+</body>
+</html>
