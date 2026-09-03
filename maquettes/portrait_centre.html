@@ -97,7 +97,7 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
   // cercle central = MIROIR VRAI 180° : chaque cellule reflète la zone du chiffre EN FACE,
   // échantillonnée SUR le cercle des pastilles (R*0.92) -> même saturation que la source, vivacité pleine.
   const rc0=Math.hypot(mx-CX,my-CY);
-  const mirror = rc0<RINGS[0];
+  const mirror = rc0<RINGS[0] && rc0>0.5;
   let sampleX=mx, sampleY=my;
   if(mirror){const refR=R*0.92;
     sampleX = CX-(mx-CX)/rc0*refR;
@@ -105,8 +105,6 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
   let wsum=0,cr=0,cg=0,cb=0,tot=0;
   for(const s of seats){const dx=sampleX-s.x,dy=sampleY-s.y;
     const infl=Math.pow(s.f,1.4)*Math.exp(-(dx*dx+dy*dy)/(SCALE*SCALE));
-  let wsum=0,cr=0,cg=0,cb=0,tot=0;
-  for(const s of seats){const dx=sampleX-s.x,dy=sampleY-s.y;const infl=Math.pow(s.f,1.4)*Math.exp(-(dx*dx+dy*dy)/(SCALE*SCALE));
     wsum+=infl;cr+=infl*s.hue[0];cg+=infl*s.hue[1];cb+=infl*s.hue[2];tot+=infl;}
   if(wsum<1e-5)continue;
   let col=[cr/wsum,cg/wsum,cb/wsum];
