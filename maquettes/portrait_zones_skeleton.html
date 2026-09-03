@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Align — Squelette des sous-mandalas</title>
+<title>Align — Squelette des sous-mandalas (v2)</title>
 <style>
   :root{--doux:#9a8f78;--texte:#e9e1d2}
   *{box-sizing:border-box}
@@ -21,12 +21,12 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Squelette — carte des 6 sous-mandalas</h1>
-  <p class="sous">Cadre-maître (étoile à 9 + Fleur de Vie) · 6 emplacements de zones · fils de relation. Détail interne à venir.</p>
-  <p class="exemple">Martin Boucher, 6 avril 1980. Le centre montre déjà les 7 nombres en colonne de couleurs (chakra) avec leurs vraies valeurs.</p>
+  <h1>Squelette — Graine de Vie équilibrée</h1>
+  <p class="sous">Centre (rosace à 7 pointes = noyau) + 6 satellites en hexagone · fils densifiés · cadre étoile à 9.</p>
+  <p class="exemple">Martin Boucher, 6 avril 1980. Centre : les 7 nombres en rosace chakra (taille = valeur).</p>
   <canvas id="c" width="1400" height="1400"></canvas>
   <div class="notes">
-    <p><b>Ce squelette valide la composition</b>, pas le détail : chaque cercle est un futur sous-mandala. Centre = Noyau identitaire (les 7 nombres, colonne rouge→violet, taille = valeur). Autour : Qualités (haut), Héritages (bas), Ciel (haut-dr.), Cycles (haut-g.), Frictions (bas-dr.), + une respiration (bas-g.). Les <b>fils arc-en-ciel</b> = les relations entre zones (placeholders). Fond : étoile à 9 branches + Fleur de Vie discrètes.</p>
+    <p><b>Équilibré, identique pour tous :</b> 6 zones sur un hexagone (Qualités haut, Héritages bas exacts) + centre dominant = 7 cercles, la Graine de Vie. 6ᵉ satellite ajouté : <b>Ta carte</b> (l'arcane). Centre = rosace des 7 nombres (rouge→violet, taille = valeur). Fils arc-en-ciel densifiés (rayons + anneau courbe). Cadre : étoile à 9 + Fleur de Vie.</p>
   </div>
   <p id="err"></p>
 </div>
@@ -39,87 +39,90 @@ const dg=d=>d*Math.PI/180;
 const rgba=(c,a)=>`rgba(${c[0]},${c[1]},${c[2]},${a})`;
 function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 const rng=mulberry32(6041980);
-
-/* spectre à 9 (chakra étendu) */
 const SPECTRE={1:[192,69,62],2:[208,122,60],3:[217,178,62],4:[95,160,106],5:[79,134,176],6:[75,94,168],7:[125,90,166],8:[169,79,134],9:[236,227,200]};
+const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
 
-/* --- fond : cosmos sobre --- */
+/* fond cosmos */
 ctx.fillStyle='#05050a';ctx.fillRect(0,0,W,H);
-for(let i=0;i<110;i++){const x=rng()*W,y=rng()*H;ctx.beginPath();ctx.arc(x,y,(0.4+rng()*0.9)*S,0,7);ctx.fillStyle=`rgba(210,210,235,${0.06+rng()*0.2})`;ctx.fill();}
+for(let i=0;i<120;i++){const x=rng()*W,y=rng()*H;ctx.beginPath();ctx.arc(x,y,(0.4+rng()*0.9)*S,0,7);ctx.fillStyle=`rgba(210,210,235,${0.06+rng()*0.2})`;ctx.fill();}
 
-const RMASTER=270*S;
+const RMASTER=272*S;
 
-/* --- Fleur de Vie discrète (substrat) --- */
+/* Fleur de Vie discrète */
 const RFOL=46*S,dy=RFOL*Math.sqrt(3)/2,seen=new Set();
 ctx.save();ctx.beginPath();ctx.arc(CX,CY,RMASTER,0,7);ctx.clip();
-ctx.strokeStyle='rgba(150,145,120,0.08)';ctx.lineWidth=1*S;
+ctx.strokeStyle='rgba(150,145,120,0.07)';ctx.lineWidth=1*S;
 for(let row=-3;row<=3;row++)for(let i=-3;i<=3;i++){const x=CX+i*RFOL+(row&1?RFOL/2:0),y=CY+row*dy,k=Math.round(x)+','+Math.round(y);
-  if(seen.has(k))continue;seen.add(k);if(Math.hypot(x-CX,y-CY)<=2.2*RFOL){ctx.beginPath();ctx.arc(x,y,RFOL,0,7);ctx.stroke();}}
+  if(seen.has(k))continue;seen.add(k);if(Math.hypot(x-CX,y-CY)<=2.4*RFOL){ctx.beginPath();ctx.arc(x,y,RFOL,0,7);ctx.stroke();}}
 ctx.restore();
 
-/* --- étoile à 9 branches (cadre-maître) --- */
+/* étoile à 9 branches (cadre) */
 const V9=[...Array(9)].map((_,i)=>{const a=dg(-90+i*40);return[CX+RMASTER*Math.cos(a),CY+RMASTER*Math.sin(a)];});
-function star(step,alpha){const seen=new Set();
-  for(let s=0;s<9;s++){if(seen.has(s))continue;let i=s;ctx.beginPath();let f=true;
-    do{const[x,y]=V9[i];f?(ctx.moveTo(x,y),f=false):ctx.lineTo(x,y);seen.add(i);i=(i+step)%9;}while(i!==s);ctx.closePath();
-    ctx.strokeStyle=`rgba(200,180,130,${alpha})`;ctx.lineWidth=0.8*S;ctx.stroke();}}
-ctx.save();ctx.shadowColor='rgba(230,200,140,0.3)';ctx.shadowBlur=6*S;
-star(2,0.22);star(4,0.16);
-ctx.restore();
-ctx.beginPath();ctx.arc(CX,CY,RMASTER,0,7);ctx.strokeStyle='rgba(200,180,130,0.28)';ctx.lineWidth=1*S;ctx.stroke();
+function star(step,alpha){const sn=new Set();for(let s=0;s<9;s++){if(sn.has(s))continue;let i=s;ctx.beginPath();let f=true;
+  do{const[x,y]=V9[i];f?(ctx.moveTo(x,y),f=false):ctx.lineTo(x,y);sn.add(i);i=(i+step)%9;}while(i!==s);ctx.closePath();
+  ctx.strokeStyle=`rgba(200,180,130,${alpha})`;ctx.lineWidth=0.8*S;ctx.stroke();}}
+ctx.save();ctx.shadowColor='rgba(230,200,140,0.28)';ctx.shadowBlur=6*S;star(2,0.2);star(4,0.14);ctx.restore();
+ctx.beginPath();ctx.arc(CX,CY,RMASTER,0,7);ctx.strokeStyle='rgba(200,180,130,0.26)';ctx.lineWidth=1*S;ctx.stroke();
 
-/* --- 6 zones sur un anneau hexagonal (positions fixes) --- */
-const Rz=150*S;
+/* 6 zones sur hexagone (équilibré, haut/bas exacts) */
+const Rz=158*S;
 const ZONES=[
-  {nom:'Qualités',    deg:-90, hue:SPECTRE[4], r:52*S},
-  {nom:'Ciel',        deg:-30, hue:SPECTRE[6], r:46*S},
-  {nom:'Frictions',   deg: 30, hue:SPECTRE[2], r:46*S},
-  {nom:'Héritages',   deg: 90, hue:SPECTRE[1], r:46*S},
-  {nom:'Cycles',      deg:210, hue:SPECTRE[5], r:46*S},
-  // bas-gauche (150°) laissé en respiration
-].map(z=>({...z, x:CX+Rz*Math.cos(dg(z.deg)), y:CY+Rz*Math.sin(dg(z.deg))}));
-const CENTER={nom:'Noyau', x:CX, y:CY, hue:SPECTRE[9], r:70*S};
+  {nom:'Qualités', deg:-90, hue:SPECTRE[4], r:50*S},
+  {nom:'Ciel',     deg:-30, hue:SPECTRE[6], r:48*S},
+  {nom:'Frictions',deg: 30, hue:SPECTRE[2], r:48*S},
+  {nom:'Héritages',deg: 90, hue:SPECTRE[1], r:48*S},
+  {nom:'Ta carte', deg:150, hue:SPECTRE[8], r:48*S},
+  {nom:'Cycles',   deg:210, hue:SPECTRE[5], r:48*S},
+].map(z=>({...z,x:CX+Rz*Math.cos(dg(z.deg)),y:CY+Rz*Math.sin(dg(z.deg))}));
+const CENTER={x:CX,y:CY,hue:SPECTRE[9],r:74*S};
 
-/* --- fils de relation (arc-en-ciel) : centre <-> zones --- */
-ZONES.forEach(z=>{
-  const g=ctx.createLinearGradient(CENTER.x,CENTER.y,z.x,z.y);
+/* fils densifiés : anneau courbe entre zones adjacentes + rayons vers le centre */
+for(let i=0;i<ZONES.length;i++){const A=ZONES[i],B=ZONES[(i+1)%ZONES.length];
+  const mx=(A.x+B.x)/2,my=(A.y+B.y)/2,cx=CX+(mx-CX)*0.42,cy=CY+(my-CY)*0.42; // bombe vers le centre
+  const g=ctx.createLinearGradient(A.x,A.y,B.x,B.y);g.addColorStop(0,rgba(A.hue,0.55));g.addColorStop(1,rgba(B.hue,0.55));
+  ctx.save();ctx.shadowColor=rgba(A.hue,0.35);ctx.shadowBlur=6*S;
+  ctx.strokeStyle=g;ctx.lineWidth=1.8*S;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.quadraticCurveTo(cx,cy,B.x,B.y);ctx.stroke();ctx.restore();}
+ZONES.forEach(z=>{const g=ctx.createLinearGradient(CENTER.x,CENTER.y,z.x,z.y);
   g.addColorStop(0,rgba(CENTER.hue,0.5));g.addColorStop(1,rgba(z.hue,0.6));
-  ctx.save();ctx.shadowColor=rgba(z.hue,0.4);ctx.shadowBlur=7*S;
+  ctx.save();ctx.shadowColor=rgba(z.hue,0.35);ctx.shadowBlur=6*S;
   ctx.strokeStyle=g;ctx.lineWidth=2*S;ctx.beginPath();ctx.moveTo(CENTER.x,CENTER.y);ctx.lineTo(z.x,z.y);ctx.stroke();ctx.restore();});
-// quelques liens inter-zones (placeholders) : Qualités-Ciel, Frictions-Héritages, Cycles-Qualités
-[['Qualités','Ciel'],['Frictions','Héritages'],['Cycles','Qualités']].forEach(([a,b])=>{
-  const A=ZONES.find(z=>z.nom===a),B=ZONES.find(z=>z.nom===b);if(!A||!B)return;
-  const g=ctx.createLinearGradient(A.x,A.y,B.x,B.y);g.addColorStop(0,rgba(A.hue,0.4));g.addColorStop(1,rgba(B.hue,0.4));
-  ctx.strokeStyle=g;ctx.lineWidth=1.2*S;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();});
+/* liens croisés (densité) : chaque zone vers la 2e voisine, courbés vers le centre */
+for(let i=0;i<ZONES.length;i++){const A=ZONES[i],B=ZONES[(i+2)%ZONES.length];
+  const g=ctx.createLinearGradient(A.x,A.y,B.x,B.y);g.addColorStop(0,rgba(A.hue,0.25));g.addColorStop(1,rgba(B.hue,0.25));
+  ctx.strokeStyle=g;ctx.lineWidth=1*S;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.quadraticCurveTo(CX,CY,B.x,B.y);ctx.stroke();}
 
-/* --- placeholders des zones-satellites --- */
+/* placeholders satellites */
 ctx.textAlign='center';ctx.textBaseline='middle';
-ZONES.forEach(z=>{
-  ctx.save();ctx.shadowColor=rgba(z.hue,0.5);ctx.shadowBlur=10*S;
+ZONES.forEach(z=>{ctx.save();ctx.shadowColor=rgba(z.hue,0.5);ctx.shadowBlur=10*S;
   ctx.beginPath();ctx.arc(z.x,z.y,z.r,0,7);ctx.fillStyle='rgba(10,10,16,0.85)';ctx.fill();
   ctx.lineWidth=1.6*S;ctx.strokeStyle=rgba(z.hue,0.85);ctx.stroke();ctx.restore();
   ctx.fillStyle=rgba(z.hue,0.95);ctx.font=`${13*S}px sans-serif`;ctx.fillText(z.nom,z.x,z.y);});
 
-/* --- centre : noyau identitaire = colonne de 7 chakras (vraies valeurs) --- */
+/* CENTRE : rosace à 7 pointes = noyau identitaire */
 ctx.save();ctx.shadowColor='rgba(236,227,200,0.4)';ctx.shadowBlur=14*S;
-ctx.beginPath();ctx.arc(CENTER.x,CENTER.y,CENTER.r,0,7);ctx.fillStyle='rgba(9,9,14,0.9)';ctx.fill();
+ctx.beginPath();ctx.arc(CENTER.x,CENTER.y,CENTER.r,0,7);ctx.fillStyle='rgba(9,9,14,0.92)';ctx.fill();
 ctx.lineWidth=1.8*S;ctx.strokeStyle='rgba(236,227,200,0.85)';ctx.stroke();ctx.restore();
-// 7 niveaux (bas=racine -> haut=couronne), taille = valeur
-const NIV=[['Reflet',1,6],['Source',2,6],['Élan',3,5],['Foyer',4,1],['Voix',5,3],['Trace',6,6],['Cap',7,1]];
-const colH=CENTER.r*1.55, top=CENTER.y-colH/2, gap=colH/6;
-NIV.forEach(([nom,ch,val],i)=>{const y=CENTER.y+colH/2 - i*gap, hue=SPECTRE[ch], rr=(3.5+val*1.6)*S;
-  ctx.beginPath();ctx.arc(CENTER.x,y,rr,0,7);ctx.fillStyle=rgba(hue,0.92);
-  ctx.save();ctx.shadowColor=rgba(hue,0.6);ctx.shadowBlur=6*S;ctx.fill();ctx.restore();
-  ctx.fillStyle='rgba(240,235,220,0.85)';ctx.font=`${8.5*S}px sans-serif`;ctx.textAlign='left';ctx.textBaseline='middle';
-  ctx.fillText(nom+' '+val, CENTER.x+rr+4*S, y);});
+// 7 nombres (chakra crown->root autour), rosace {7/3}
+const CORE=[['Cap',7,1],['Trace',6,6],['Voix',5,3],['Foyer',4,1],['Élan',3,5],['Source',2,6],['Reflet',1,6]];
+const rh=CENTER.r*0.60;
+const pts7=CORE.map((_,i)=>{const a=dg(-90+i*(360/7));return[CENTER.x+rh*Math.cos(a),CENTER.y+rh*Math.sin(a)];});
+// lignes de rosace {7/3}
+ctx.save();ctx.shadowColor='rgba(230,210,160,0.4)';ctx.shadowBlur=5*S;
+ctx.strokeStyle='rgba(226,206,150,0.5)';ctx.lineWidth=0.9*S;
+let idx=0;ctx.beginPath();for(let s=0;s<=7;s++){const[x,y]=pts7[idx%7];s?ctx.lineTo(x,y):ctx.moveTo(x,y);idx+=3;}ctx.stroke();ctx.restore();
+// noeuds chakra (taille = valeur)
+CORE.forEach(([nom,ch,val],i)=>{const[x,y]=pts7[i],hue=SPECTRE[ch],rr=(3+val*1.7)*S;
+  ctx.beginPath();ctx.arc(x,y,rr,0,7);ctx.fillStyle=rgba(hue,0.95);
+  ctx.save();ctx.shadowColor=rgba(hue,0.6);ctx.shadowBlur=6*S;ctx.fill();ctx.restore();});
+// petit coeur
+ctx.beginPath();ctx.arc(CENTER.x,CENTER.y,5*S,0,7);ctx.fillStyle='rgba(236,227,200,0.9)';ctx.fill();
 ctx.fillStyle='rgba(233,225,210,0.6)';ctx.font=`${10*S}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='top';
-ctx.fillText('Noyau', CENTER.x, CENTER.y+CENTER.r+8*S);
+ctx.fillText('Noyau',CENTER.x,CENTER.y+CENTER.r+8*S);
 
-/* --- légende spectre --- */
+/* légende spectre */
 ctx.textAlign='left';ctx.textBaseline='middle';ctx.font=`${10*S}px sans-serif`;
-const lx=20*S; let ly=24*S;
-ctx.fillStyle='rgba(154,143,120,0.8)';ctx.fillText('Spectre 1→9 :',lx,ly);
-for(let n=1;n<=9;n++){const bx=lx+70*S+(n-1)*20*S;ctx.beginPath();ctx.arc(bx,ly,6*S,0,7);ctx.fillStyle=rgba(SPECTRE[n],0.95);ctx.fill();
+const lx=20*S,ly=24*S;ctx.fillStyle='rgba(154,143,120,0.8)';ctx.fillText('Spectre 1→9 :',lx,ly);
+for(let n=1;n<=9;n++){const bx=lx+72*S+(n-1)*20*S;ctx.beginPath();ctx.arc(bx,ly,6*S,0,7);ctx.fillStyle=rgba(SPECTRE[n],0.95);ctx.fill();
   ctx.fillStyle='rgba(200,200,210,0.7)';ctx.font=`${8*S}px sans-serif`;ctx.textAlign='center';ctx.fillText(n,bx,ly+12*S);ctx.textAlign='left';ctx.font=`${10*S}px sans-serif`;}
 
 }catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
