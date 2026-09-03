@@ -15,12 +15,13 @@
 | LoRA | **Mucha** (`mucha_style_f29b_...`) poids **0.55** |
 | Échantillonneur | **Euler A Trailing** |
 | Étapes | **20** (indispensable pour l'anatomie — 8 steps = pieds/mains/ailes ratés) |
-| Guidage du texte (CFG) | **1.0** (ne PAS monter : double le temps, durcit le style, n'améliore pas l'anatomie — testé) |
+| Guidage du texte (CFG) | **3.0** (choix de Martin pour la qualité ; à CFG 3 le négatif REDEVIENT actif → garde-fous anatomie utiles) |
+| Négatif anatomie | **actif** : `extra leg, third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, extra arm, malformed hands, fused fingers, extra finger, extra wing, three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, two people, twins, duplicate person, multiple figures, text, watermark, photorealistic, 3d render` |
 | Guidage Flux (guidance_embed) | **3.5** |
 | Décalage (Shift) | **3** |
 | Graine | **explicite et notée par carte** (l'API ne renvoie pas le seed aléatoire) |
 
-**Pilotage** : via l'API HTTP Draw Things (`http://127.0.0.1:7860/sdapi/v1/txt2img`), script `_distillation/_gen_carte.py`. ~145 s/carte à 20 steps.
+**Pilotage** : via l'API HTTP Draw Things (`http://127.0.0.1:7860/sdapi/v1/txt2img`), script `_distillation/_gen_carte.py`. **~325 s/carte** à 20 steps + CFG 3 (le CFG>1 double le temps, assumé pour la qualité). Validée sur 2 cartes (0 Confiance, II Voix intérieure).
 **Workflow anti-raté** : générer 1 image/carte, vérifier l'anatomie de PRÈS (pieds, mains, ailes, doublons), régénérer avec un autre seed uniquement les cartes défaillantes.
 
 ⚠️ **CFG à 1.0 = prompt négatif ignoré.** → **Tout se pilote dans le prompt POSITIF.** On ne décrit JAMAIS ce qui ne doit pas être là (pas de « no luggage » → dessine une valise).
