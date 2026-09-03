@@ -94,21 +94,26 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
       if(visited[nn])continue;if(wall[nn]){visited[nn]=1;continue;}visited[nn]=1;stack[sp++]=nn;}}
   if(cnt<3)continue;
   const mx=sx/cnt,my=sy/cnt;
-  // cercle central = MIROIR VRAI 180° : chaque cellule reflète la zone du chiffre EN FACE,
-  // échantillonnée SUR le cercle des pastilles (R*0.92) -> même saturation que la source, vivacité pleine.
+  // cercle central = MIROIR VRAI 180°, pleine vivacité :
+  // chaque cellule reflète la zone du chiffre EN FACE échantillonnée près du SIÈGE de ce nombre
+  // (le point de son rayon à même distance relative) — la couleur part donc d'une zone
+  // encore saturée, et on lui rend l'intensité maximale de sa source (v réhaussé).
   const rc0=Math.hypot(mx-CX,my-CY);
   const mirror = rc0<RINGS[0] && rc0>0.5;
   let sampleX=mx, sampleY=my;
-  if(mirror){const refR=R*0.92;
-    sampleX = CX-(mx-CX)/rc0*refR;
-    sampleY = CY-(my-CY)/rc0*refR;}
+  if(mirror){
+    // point correspondant du grand cercle, AUSSI PROCHE DU SIÈGE que la cellule l'est du centre :
+    // on garde la distance relative (rc0/RINGS[0] x rayon siège) mais direction opposée.
+    const seatR=R*0.62, k=(rc0/RINGS[0])*seatR;
+    sampleX = CX-(mx-CX)/rc0*k;
+    sampleY = CY-(my-CY)/rc0*k;}
   let wsum=0,cr=0,cg=0,cb=0,tot=0;
   for(const s of seats){const dx=sampleX-s.x,dy=sampleY-s.y;
     const infl=Math.pow(s.f,1.4)*Math.exp(-(dx*dx+dy*dy)/(SCALE*SCALE));
     wsum+=infl;cr+=infl*s.hue[0];cg+=infl*s.hue[1];cb+=infl*s.hue[2];tot+=infl;}
   if(wsum<1e-5)continue;
   let col=[cr/wsum,cg/wsum,cb/wsum];
-  const v=Math.min(1,tot/1.05);                       // intensité (force qui rayonne ici)
+  const v=mirror ? Math.min(1,1.9*Math.min(1,tot/1.05)) : Math.min(1,tot/1.05);  // miroir : vivacité réhaussée (réflexion pleine)
   const lum=col[0]*0.3+col[1]*0.5+col[2]*0.2;
   const sat=0.22+1.1*v; col=col.map(c=>clamp(lum+(c-lum)*sat));   // faible -> gris, fort -> saturé
   col=col.map(c=>clamp(c*(0.55+0.5*v)));              // faible -> sombre, fort -> lumineux
