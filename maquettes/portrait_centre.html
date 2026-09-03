@@ -22,11 +22,11 @@
 <body>
 <div class="wrap">
   <h1>Centre — vitrail des 7 nombres</h1>
-  <p class="sous">Chaque cellule de l'entrelacs prend une couleur CALCULÉE : mélange des 7 chakras selon la force de chaque nombre et sa proximité. Un nombre fort rayonne loin, un faible teinte à peine.</p>
-  <p class="exemple">Martin Boucher, 6 avril 1980. Secteurs forts (Reflet 6, Source 6, Trace 6) = vifs ; Cap 1 / Foyer 1 = pâles.</p>
+  <p class="sous">Couleur de chaque cellule = mélange des 7 chakras selon la FORCE (répétition + maître + héritage) et la proximité.</p>
+  <p class="exemple">Martin Boucher, 6 avril 1980. Le 6 (×3 : Reflet, Source, Trace) domine ; le 1 (×2, + héritage 19 sur le Cap) fort ; Élan/Voix discrets.</p>
   <canvas id="c" width="1200" height="1200"></canvas>
   <div class="notes">
-    <p><b>Ce sous-mandala = le Noyau identitaire.</b> 7 secteurs (un par nombre), chacun sa couleur de chakra ; les <b>cellules</b> nées des cercles/étoiles se teintent, d'autant plus vives que le nombre est fort. Les <b>fils d'or</b> = le plomb du vitrail. Il ira au centre de la grande composition.</p>
+    <p><b>Force = ce qui intensifie une vibration</b> (pas sa valeur) : répétition sur plusieurs nombres, nombre maître (11/22/33), héritage (13/14/16/19). Chaque nombre « siège » sur sa pointe et rayonne sa couleur d'autant plus loin qu'il est fort. Chiffres aux 7 pointes (cercle = couleur chakra, chiffre blanc). Au centre : la graine, teintée par la synthèse des 7.</p>
   </div>
   <p id="err"></p>
 </div>
@@ -42,29 +42,35 @@ function mulberry32(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s
 const rng=mulberry32(6041980);
 const dg=d=>d*Math.PI/180;
 
-/* 7 nombres identitaires -> chakra + valeur (Martin) ; secteur k=0 en haut (Cap/couronne) */
-const CORE=[['Cap',7,1],['Trace',6,6],['Voix',5,3],['Foyer',4,1],['Élan',3,5],['Source',2,6],['Reflet',1,6]];
-const NS=7, maxV=Math.max(...CORE.map(c=>c[2]));
-/* chaque nombre a un "siège" (point d'émission de sa couleur) le long de son rayon ; force = valeur */
-const seats=CORE.map(([nom,ch,val],i)=>{const a=dg(-90+i*360/NS);
-  return {x:CX+R*0.60*Math.cos(a),y:CY+R*0.60*Math.sin(a),hue:SPECTRE[ch],f:val/maxV,nom,val};});
-const SCALE=R*0.42;   // portée du rayonnement d'une couleur
+/* 7 nombres : [nom, niveau chakra, valeur, héritage?] ; secteur 0 en haut (Cap/couronne) */
+const CORE=[['Cap',7,1,true],['Trace',6,6,false],['Voix',5,3,false],['Foyer',4,1,false],['Élan',3,5,false],['Source',2,6,false],['Reflet',1,6,false]];
+const NS=7;
+/* FORCE calculée : base + répétition + maître + héritage (PAS la valeur brute) */
+const vals=CORE.map(c=>c[2]);
+const rep=v=>vals.filter(x=>x===v).length;
+const forceRaw=CORE.map(([nom,ch,val,her])=> 0.32 + 0.5*(rep(val)-1) + (val>=11?0.8:0) + (her?0.30:0));
+const fMax=Math.max(...forceRaw);
+const FORCE=forceRaw.map(f=>f/fMax);   // 0..1
 
-/* --- géométrie du vitrail (7-fold riche) --- */
-const rays=[...Array(NS)].map((_,i)=>dg(-90+i*360/NS));
-const rosette=[...Array(NS)].map((_,i)=>{const a=dg(-90+i*360/NS);return[CX+R*0.5*Math.cos(a),CY+R*0.5*Math.sin(a)];});
+/* sièges (émission de couleur) sur chaque pointe */
+const seats=CORE.map(([nom,ch,val,her],i)=>{const a=dg(-90+i*360/NS);
+  return {a,x:CX+R*0.62*Math.cos(a),y:CY+R*0.62*Math.sin(a),hue:SPECTRE[ch],f:FORCE[i],nom,val};});
+const SCALE=R*0.36;
+
+/* --- géométrie du vitrail (7-fold) --- */
+const rays=seats.map(s=>s.a);
+const rosette=seats.map(s=>[CX+R*0.5*Math.cos(s.a),CY+R*0.5*Math.sin(s.a)]);
 const RINGS=[R*0.30,R*0.58,R*0.82];
 function drawGeom(g){
-  rosette.forEach(([x,y])=>{g.beginPath();g.arc(x,y,R*0.5,0,7);g.stroke();});   // 7 cercles (fleur 7-fold)
+  rosette.forEach(([x,y])=>{g.beginPath();g.arc(x,y,R*0.5,0,7);g.stroke();});
   RINGS.forEach(r=>{g.beginPath();g.arc(CX,CY,r,0,7);g.stroke();});
   rays.forEach(a=>{g.beginPath();g.moveTo(CX,CY);g.lineTo(CX+R*Math.cos(a),CY+R*Math.sin(a));g.stroke();});
-  // heptagrammes {7/2} et {7/3}
-  [2,3].forEach(step=>{const V=[...Array(NS)].map((_,i)=>{const a=dg(-90+i*360/NS);return[CX+R*0.92*Math.cos(a),CY+R*0.92*Math.sin(a)];});
+  [2,3].forEach(step=>{const V=seats.map(s=>[CX+R*0.92*Math.cos(s.a),CY+R*0.92*Math.sin(s.a)]);
     let idx=0;g.beginPath();for(let s=0;s<=NS;s++){const[x,y]=V[idx%NS];s?g.lineTo(x,y):g.moveTo(x,y);idx+=step;}g.stroke();});
   g.beginPath();g.arc(CX,CY,R,0,7);g.stroke();
 }
 
-/* masque des murs */
+/* masque */
 const wc=document.createElement('canvas');wc.width=W;wc.height=H;const wg=wc.getContext('2d');
 wg.strokeStyle='#000';wg.lineWidth=2*S;wg.lineCap='round';wg.lineJoin='round';drawGeom(wg);
 const wd=wg.getImageData(0,0,W,H).data, wall=new Uint8Array(W*H);
@@ -74,7 +80,7 @@ for(let i=0;i<W*H;i++)wall[i]=wd[i*4+3]>40?1:0;
 ctx.fillStyle='#05050a';ctx.fillRect(0,0,W,H);
 for(let i=0;i<50;i++){const x=rng()*W,y=rng()*H;ctx.beginPath();ctx.arc(x,y,0.6*S,0,7);ctx.fillStyle=`rgba(210,210,235,${0.06+rng()*0.16})`;ctx.fill();}
 
-/* flood fill : chaque cellule teintée par le chakra de son secteur, vivacité = valeur */
+/* flood fill : mélange pondéré (force × proximité), contraste fort/faible amplifié */
 const img=ctx.getImageData(0,0,W,H), d=img.data;
 const visited=new Uint8Array(W*H), stack=new Int32Array(W*H);
 for(let y=0;y<H;y++)for(let x=0;x<W;x++){
@@ -88,38 +94,53 @@ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
       if(visited[nn])continue;if(wall[nn]){visited[nn]=1;continue;}visited[nn]=1;stack[sp++]=nn;}}
   if(cnt<3)continue;
   const mx=sx/cnt,my=sy/cnt;
-  // couleur = mélange pondéré des 7 chakras selon (force × proximité) -> répartition calculée
   let wsum=0,cr=0,cg=0,cb=0,tot=0;
-  for(const s of seats){const dx=mx-s.x,dy=my-s.y;const infl=s.f*Math.exp(-(dx*dx+dy*dy)/(SCALE*SCALE));
+  for(const s of seats){const dx=mx-s.x,dy=my-s.y;const infl=Math.pow(s.f,1.4)*Math.exp(-(dx*dx+dy*dy)/(SCALE*SCALE));
     wsum+=infl;cr+=infl*s.hue[0];cg+=infl*s.hue[1];cb+=infl*s.hue[2];tot+=infl;}
   if(wsum<1e-5)continue;
   let col=[cr/wsum,cg/wsum,cb/wsum];
-  const v=Math.min(1,tot/1.25);                        // intensité = combien de force rayonne ici
+  const v=Math.min(1,tot/1.05);                       // intensité (force qui rayonne ici)
   const lum=col[0]*0.3+col[1]*0.5+col[2]*0.2;
-  const sat=0.35+0.95*v; col=col.map(c=>clamp(lum+(c-lum)*sat));
-  col=col.map(c=>clamp(c*(0.68+0.36*v)));
+  const sat=0.22+1.1*v; col=col.map(c=>clamp(lum+(c-lum)*sat));   // faible -> gris, fort -> saturé
+  col=col.map(c=>clamp(c*(0.55+0.5*v)));              // faible -> sombre, fort -> lumineux
   const jit=(rng()-0.5)*9; col=col.map(c=>clamp(c+jit));
-  const alpha=0.40+0.5*v;
+  const alpha=0.32+0.6*v;                             // faible -> transparent, fort -> opaque
   for(const q of px){const o=q*4;
     d[o]=d[o]+(col[0]-d[o])*alpha;d[o+1]=d[o+1]+(col[1]-d[o+1])*alpha;d[o+2]=d[o+2]+(col[2]-d[o+2])*alpha;}
 }
 ctx.putImageData(img,0,0);
 
-/* plomb du vitrail : fils d'or */
-ctx.save();ctx.shadowColor='rgba(255,214,150,0.4)';ctx.shadowBlur=5*S;
-ctx.strokeStyle='rgba(226,196,130,0.7)';ctx.lineWidth=1.3*S;ctx.lineCap='round';ctx.lineJoin='round';drawGeom(ctx);
-ctx.restore();
+/* plomb du vitrail : fils d'or TRÈS lumineux + halo (triple passe) */
+function leading(){
+  ctx.save();ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.strokeStyle='rgba(255,210,140,0.20)';ctx.lineWidth=4.5*S;ctx.shadowColor='rgba(255,205,130,0.7)';ctx.shadowBlur=14*S;drawGeom(ctx); // halo large
+  ctx.strokeStyle='rgba(240,206,140,0.85)';ctx.lineWidth=1.5*S;ctx.shadowBlur=6*S;drawGeom(ctx);                                       // trait
+  ctx.strokeStyle='rgba(255,250,235,0.6)';ctx.lineWidth=0.6*S;ctx.shadowBlur=0;drawGeom(ctx);                                          // crête blanche
+  ctx.restore();
+}
+leading();
 
-/* étiquettes des 7 secteurs + valeur */
-ctx.textAlign='center';ctx.textBaseline='middle';
-CORE.forEach(([nom,ch,val],k)=>{const a=dg(-90+k*360/NS),x=CX+R*0.72*Math.cos(a),y=CY+R*0.72*Math.sin(a),hue=SPECTRE[ch];
-  ctx.fillStyle=`rgba(245,240,225,0.92)`;ctx.font=`${12*S}px sans-serif`;ctx.fillText(nom,x,y-8*S);
-  ctx.fillStyle=`rgba(${hue[0]},${hue[1]},${hue[2]},0.95)`;ctx.font=`${16*S}px Georgia`;ctx.fillText(val,x,y+9*S);});
+/* graine de vie au centre : teintée par la SYNTHÈSE des 7 (blend pondéré par la force) */
+(function(){let ws=0,cr=0,cg=0,cb=0;seats.forEach(s=>{ws+=s.f;cr+=s.f*s.hue[0];cg+=s.f*s.hue[1];cb+=s.f*s.hue[2];});
+  const blend=[cr/ws,cg/ws,cb/ws], rg=28*S, rc=rg*0.5;
+  ctx.save();ctx.shadowColor=`rgba(${blend[0]|0},${blend[1]|0},${blend[2]|0},0.8)`;ctx.shadowBlur=16*S;
+  // 1 + 6 petits cercles (graine de vie)
+  ctx.strokeStyle=`rgba(255,248,232,0.8)`;ctx.lineWidth=1.1*S;
+  ctx.beginPath();ctx.arc(CX,CY,rc,0,7);ctx.stroke();
+  for(let i=0;i<6;i++){const a=dg(i*60);ctx.beginPath();ctx.arc(CX+rc*Math.cos(a),CY+rc*Math.sin(a),rc,0,7);ctx.stroke();}
+  ctx.restore();
+  ctx.beginPath();ctx.arc(CX,CY,rc*0.7,0,7);ctx.fillStyle=`rgba(${blend[0]|0},${blend[1]|0},${blend[2]|0},0.55)`;ctx.fill();
+})();
 
-/* cœur : petit noyau lumineux */
-ctx.beginPath();ctx.arc(CX,CY,20*S,0,7);ctx.fillStyle='rgba(9,9,14,0.9)';ctx.fill();
-ctx.save();ctx.shadowColor='rgba(236,227,200,0.5)';ctx.shadowBlur=10*S;
-ctx.lineWidth=1.4*S;ctx.strokeStyle='rgba(236,227,200,0.85)';ctx.stroke();ctx.restore();
+/* chiffres aux 7 pointes : cercle = couleur chakra, chiffre blanc uniforme */
+seats.forEach((s)=>{const rr=R*0.92,x=CX+rr*Math.cos(s.a),y=CY+rr*Math.sin(s.a);
+  ctx.save();ctx.shadowColor=`rgba(${s.hue[0]},${s.hue[1]},${s.hue[2]},0.8)`;ctx.shadowBlur=10*S;
+  ctx.beginPath();ctx.arc(x,y,17*S,0,7);ctx.fillStyle=`rgba(${s.hue[0]},${s.hue[1]},${s.hue[2]},0.92)`;ctx.fill();
+  ctx.lineWidth=1.4*S;ctx.strokeStyle='rgba(255,250,235,0.7)';ctx.stroke();ctx.restore();
+  ctx.fillStyle='#fbf6ec';ctx.font=`bold ${17*S}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(s.val,x,y);
+  ctx.fillStyle='rgba(240,235,222,0.7)';ctx.font=`${9.5*S}px sans-serif`;
+  const lx=CX+(rr+22*S)*Math.cos(s.a),ly=CY+(rr+22*S)*Math.sin(s.a);
+  ctx.textAlign=Math.abs(Math.cos(s.a))<0.3?'center':(Math.cos(s.a)>0?'left':'right');ctx.fillText(s.nom,lx,ly);});
 
 }catch(e){document.getElementById('err').textContent='Erreur JS : '+e.message;}
 </script>
