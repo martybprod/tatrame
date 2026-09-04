@@ -3,21 +3,24 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_14_Equilibre"
+NAME = "major_14_Equilibre_v2"
 SEED = 777036
 
 positive = ("An eagle and a swan intertwined mid-flight over calm water, at the exact threshold where "
 "night meets day — one half of the sky still deep indigo with stars, the other half warming into "
 "golden dawn. The eagle dips one talon lightly into the water, while the swan rests one foot on the "
 "grassy shore — each briefly touching the other's element. The eagle's powerful wings and the swan's "
-"graceful curve merge into a single balanced, flowing shape. Their reflection in the still water "
-"below completes the union. In the distance, a luminous path winds toward far mountains crowned by a "
-"radiant rising sun. No human figure. Flat decorative Art Nouveau illustration style, bold elegant "
-"clean contour lines, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted "
-"watercolor on textured paper, visible paper grain and pigment bleeds, mystical dreamlike mood, a "
-"rich complete color palette spanning the full range of warm and cool hues, harmoniously balanced and "
-"distributed naturally across the scene according to its mood, muted jewel tones, subtle gold "
-"linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
+"graceful curve merge into a single balanced, flowing shape. In the still water below, their "
+"reflections are crossed and exchanged — the eagle's reflection appears in the water directly beneath "
+"the swan, and the swan's reflection appears in the water directly beneath the eagle, each creature "
+"dreaming itself as the other, deepening the union of opposites. In the distance, a luminous path "
+"winds toward far mountains crowned by a radiant rising sun. No human figure. Flat decorative Art "
+"Nouveau illustration style, bold elegant clean contour lines, flat areas of soft watercolor pigment, "
+"minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment "
+"bleeds, mystical dreamlike mood, a rich complete color palette spanning the full range of warm and "
+"cool hues, harmoniously balanced and distributed naturally across the scene according to its mood, "
+"muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not "
+"airbrushed.")
 
 negative = ("human figure, person, people, extra leg, third leg, two left legs, duplicated limb, "
 "missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, "
