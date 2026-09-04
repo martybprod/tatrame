@@ -3,34 +3,27 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_04_Liberte_v4"
-SEED = 777004
+NAME = "major_05_Vide"
+SEED = 777005
 
-positive = ("A powerful young man standing atop a wind-swept mountain peak at the break of dawn, wearing "
-"a flowing knee-length tunic with a sash, his legs and feet completely bare — no trousers, no boots, no "
-"shoes — no wings on his own body, one bare foot resting on a broken chain lying shattered on the rock, a "
-"sun emblem embroidered on his shoulder, holding a lit torch out to his side at chest height rather than "
-"raised overhead, its flame streaming sideways in the wind, a golden signet ring visible on his other "
-"hand. Behind him stands a weathered ancient stone monolith carved in the likeness of a winged guardian "
-"statue — ram-head motifs on its base and two great stone wings spreading outward from its sides like an "
-"ancient winged monument, now cracked and overtaken by climbing green vines, the old authority reclaimed "
-"by nature. Far above, high in the open sky, an eagle circles at a distance, a bridge between earth and "
-"heaven. His posture is proud, three-quarter view, self-possessed rather than defiant. The figure drawn "
-"in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, stylized idealized "
-"features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal shading. Entirely "
+positive = ("A single small human silhouette suspended weightless in a vast, dark, boundless empty space, "
+"arms loosely open, utterly at ease with having nothing to hold onto. Nearby floats a delicate cracked "
+"eggshell, faintly luminous, and a soft spiral of stardust drifting like a seed of something sacred about "
+"to be born. The composition is spare and minimal, mostly open darkness around the tiny figure. The "
+"figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, "
+"stylized idealized features, flat areas of soft watercolor pigment, minimal shading. Entirely "
 "hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical "
-"dreamlike mood, a rich complete color palette spanning the full range of warm and cool hues, "
-"harmoniously balanced and distributed naturally across the scene according to its mood, muted jewel "
-"tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
+"dreamlike mood, a rich complete color palette used sparingly and with restraint, muted jewel tones, "
+"subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
-negative = ("wings on his body, feathered wings on man, angel wings, organic wings, trousers, pants, "
-"boots, shoes, modern clothing, extra leg, third leg, two left legs, duplicated limb, missing foot, "
-"missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating "
-"hand, malformed hands, fused fingers, extra finger, malformed anatomy, bad anatomy, disfigured, mutated, "
-"rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, "
-"random occult symbols, magic circles, alchemical sigils, mystical glyphs, decorative rune circles, "
-"meaningless icons, esoteric patterns, embroidered symbols, medallion patterns, circular emblems, two "
-"people, twins, duplicate person, multiple figures, text, watermark, photorealistic, 3d render")
+negative = ("trousers, pants, boots, shoes, modern clothing, extra leg, third leg, two left legs, "
+"duplicated limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, "
+"disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, "
+"three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, "
+"rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, "
+"magic circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
+"patterns, embroidered symbols, medallion patterns, circular emblems, two people, twins, duplicate "
+"person, multiple figures, text, watermark, photorealistic, 3d render, cluttered, busy composition")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
