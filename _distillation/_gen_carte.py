@@ -5,47 +5,51 @@ import io
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_12_Perspective_v13"
-SEED = 777029
+NAME = "major_12_Perspective_v14"
+SEED = 777030
 
-positive = ("A young man emerging upward and outward from a small rectangular frame shaped like a "
-"miniature version of a tarot card (proportioned tall like 2 by 3), right side up, richly decorated "
-"with ornate flowing Art Nouveau border details — gold linework, elegant curling flourishes — "
-"containing a small ordinary landscape of gentle hills and a single tree. This small ornamental frame "
-"is centered in the middle of the image, modestly sized, roughly one quarter of the composition. The "
-"man's body is clearly and fully emerging well beyond the frame's upper edge — his entire torso, both "
-"arms, and head extend far above and outside the frame, unmistakably breaking free of its boundary — "
-"only his hips and legs remain inside or just behind the frame. He reaches upward and outward with "
-"both arms in a slow, gentle, wonder-filled ascension, not an athletic leap, not a triumphant pose. "
-"There is absolutely no other frame, border, or edge decoration anywhere else in the entire image — "
-"everywhere outside this one small ornate frame is open luminous sky with soft radiant light, "
-"completely borderless. Exactly three small glowing geometric shapes float nearby: one square (soft "
-"green), one circle (soft blue), one triangle (soft gold) — these three only. High on his upper back, "
-"precisely at the shoulder blades, two minuscule wing-buds are attached — each no bigger than a "
-"thumb, just a few small downy feathers, barely noticeable, symmetrically placed one on each shoulder "
-"blade. He wears simple timeless clothing, a loose shirt, no jacket, no modern clothing. His "
-"expression is serene, quietly awed, absorbed in wonder — not smiling triumphantly, not heroic. The "
-"figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, "
-"stylized idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal "
-"shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, "
-"Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full range of warm "
-"and cool hues, harmoniously balanced and distributed naturally across the scene according to its "
-"mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not "
-"airbrushed.")
+positive = ("A young man swimming forward through open air in a graceful breaststroke-like motion, both "
+"arms extended forward and slightly downward together as if parting the air ahead of him — not raised "
+"overhead, not looking skyward, no gesture of worship or adoration. His gaze is directed forward "
+"toward the unknown horizon ahead of him, not upward. His torso leans forward in the direction of this "
+"swimming motion, emerging from a small rectangular frame shaped like a miniature version of a tarot "
+"card (proportioned tall like 2 by 3), right side up, richly decorated with ornate flowing Art Nouveau "
+"border details — gold linework, elegant curling flourishes — containing a small ordinary landscape of "
+"gentle hills and a single tree. This small ornamental frame is centered in the middle of the image, "
+"modestly sized, roughly one quarter of the composition. His torso, both arms and head extend well "
+"beyond the frame's edge into the open space. One of his legs kicks outward to the side, clearly "
+"extending beyond the frame's edge into the open space, while his other leg remains inside the frame, "
+"planted on the small landscape within it — one leg unmistakably in each world. He wears a knitted "
+"vest and 1920s-1930s style plus-four knickerbocker trousers — loose knee-length trousers gathered "
+"just below the knee, paired with tall ribbed socks. There is absolutely no other frame, border, or "
+"edge decoration anywhere else in the entire image — everywhere outside this one small ornate frame is "
+"open luminous sky with soft radiant light, completely borderless. Exactly three small glowing "
+"geometric shapes float nearby: one square (soft green), one circle (soft blue), one triangle (soft "
+"gold) — these three only. High on his upper back, precisely at the shoulder blades, two minuscule "
+"wing-buds are attached — each no bigger than a thumb, just a few small downy feathers, barely "
+"noticeable, symmetrically placed one on each shoulder blade. His expression is serene, focused, "
+"quietly determined, swimming forward with calm purpose into the unknown. The figure drawn in the flat "
+"decorative style of Alphonse Mucha — bold elegant clean contour lines, stylized idealized features, "
+"flowing ornamental hair, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted "
+"watercolor on textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical dreamlike "
+"mood, a rich complete color palette spanning the full range of warm and cool hues, harmoniously "
+"balanced and distributed naturally across the scene according to its mood, muted jewel tones, subtle "
+"gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
-negative = ("superhero pose, heroic pose, triumphant pose, action pose, diving pose, athletic leap, "
-"cape, figure still fully inside frame, small figure, outer border, image border, full-image card "
-"frame, border around entire image, second frame, double frame, plain frame, undecorated frame, large "
-"wings, big wings, medium wings, wings at armpits, asymmetric wings, feathered wings, angel wings, "
-"diamond shape, rhombus, two triangles, multiple triangles, two squares, two circles, four shapes, "
-"extra geometric shapes, jeans, modern clothing, jacket, blazer, sneakers, boots, extra leg, third "
-"leg, two left legs, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, "
-"disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra finger, deformed "
-"wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, "
-"rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, magic circles, "
-"alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric patterns, "
-"embroidered symbols, medallion patterns, two people, twins, duplicate person, multiple figures, "
-"text, watermark, photorealistic, 3d render")
+negative = ("arms raised overhead, arms straight up, looking upward, looking skyward, worship pose, "
+"adoration pose, religious ecstasy, both legs inside frame, both legs fully inside, figure entirely "
+"inside frame, outer border, image border, full-image card frame, border around entire image, second "
+"frame, double frame, plain frame, undecorated frame, large wings, big wings, medium wings, wings at "
+"armpits, asymmetric wings, feathered wings, angel wings, diamond shape, rhombus, two triangles, "
+"multiple triangles, two squares, two circles, four shapes, extra geometric shapes, jeans, modern "
+"clothing, jacket, blazer, sneakers, boots, extra leg, third leg, two left legs, missing foot, missing "
+"leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, "
+"malformed hands, fused fingers, extra finger, deformed wing, malformed anatomy, bad anatomy, "
+"disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, prismatic "
+"streak, spectrum band, random occult symbols, magic circles, alchemical sigils, mystical glyphs, "
+"decorative rune circles, meaningless icons, esoteric patterns, embroidered symbols, medallion "
+"patterns, two people, twins, duplicate person, multiple figures, text, watermark, photorealistic, 3d "
+"render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
@@ -68,7 +72,6 @@ try:
         upright_path = OUTDIR + f"CARTE_{NAME}_UPRIGHT_seed{SEED}.png"
         with open(upright_path, "wb") as f:
             f.write(raw)
-        # pivoter 180 degres pour obtenir la version finale tete en bas
         im = Image.open(io.BytesIO(raw))
         im_flipped = im.rotate(180)
         final_path = OUTDIR + f"CARTE_{NAME}_seed{SEED}.png"
