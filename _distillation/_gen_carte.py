@@ -3,36 +3,37 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_06_Union_v6"
-SEED = 777009
+NAME = "major_06_Union_v7"
+SEED = 777010
 
-positive = ("Two men who are close friends, clearly different from each other in appearance — one with "
-"short dark curly hair and a short beard, sturdy build; the other with longer light wavy hair, "
-"clean-shaven, leaner build — not look-alikes, not twins. They stand together firmly clasping each "
-"other's forearm in a warrior's grip of trust and loyalty, each resting their other hand on the other's "
-"shoulder, looking at each other with mutual respect and quiet confidence rather than romantic longing. "
-"Both wearing flowing ancient-style robes, their feet bare, no modern clothing. Rising slightly off the "
-"ground together. Surrounded by a soft gradient of light that shifts from warm earthen tones below to "
-"luminous pale sky tones above. Behind them stand two trees — one heavy with ripe fruit, the other bare "
-"and graceful — with a small serpent coiled peacefully at the base of one, a symbol of wisdom rather "
-"than danger. A radiant sun glows softly off to one side in the background sky. Delicate wings of light "
-"unfold from each of their backs as they rise together. The figures drawn in the flat decorative style "
-"of Alphonse Mucha — bold elegant clean contour lines, stylized idealized features, flowing ornamental "
-"hair, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on "
-"textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich "
-"complete color palette spanning the full range of warm and cool hues, harmoniously balanced and "
-"distributed naturally across the scene according to its mood, muted jewel tones, subtle gold linework, "
-"soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
+positive = ("A man and a woman standing a comfortable distance apart from each other, each in their own "
+"natural, relaxed stance — not touching, not gazing into each other's eyes, not facing each other "
+"intimately. Between their hearts stretches a single luminous golden thread of light, connecting them "
+"across the distance — the invisible thread of deep friendship and destiny. Both wearing flowing "
+"ancient-style robes, their feet bare, no modern clothing. Both rising gently off the ground, each "
+"looking outward in their own direction with quiet contentment. Surrounded by a soft gradient of light "
+"that shifts from warm earthen tones below to luminous pale sky tones above. Between them in the middle "
+"distance stand two trees — one heavy with ripe fruit, the other bare and graceful — with a small "
+"serpent coiled peacefully at the base of one, a symbol of wisdom rather than danger. A radiant sun "
+"glows softly in the background sky. Delicate wings of light unfold from each of their backs. The "
+"figures drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, "
+"stylized idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal "
+"shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, "
+"Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full range of warm and "
+"cool hues, harmoniously balanced and distributed naturally across the scene according to its mood, "
+"muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not "
+"airbrushed.")
 
-negative = ("twins, identical faces, identical appearance, look-alike, same face, clones, romantic "
-"couple, embracing, hugging, kissing, wedding pose, gazing longingly, trousers, pants, boots, shoes, "
-"modern clothing, jeans, extra leg, third leg, two left legs, duplicated limb, missing foot, missing "
-"leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, "
-"malformed hands, fused fingers, extra finger, extra wing, three wings, deformed wing, malformed "
-"anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, "
-"rainbow sky, prismatic streak, spectrum band, random occult symbols, magic circles, alchemical sigils, "
-"mystical glyphs, decorative rune circles, meaningless icons, esoteric patterns, embroidered symbols, "
-"medallion patterns, circular emblems, text, watermark, photorealistic, 3d render")
+negative = ("touching, embracing, hugging, kissing, holding hands, forearm clasp, arm around shoulder, "
+"gazing into each others eyes, romantic pose, romantic couple, wedding pose, close physical contact, "
+"trousers, pants, boots, shoes, modern clothing, jeans, extra leg, third leg, two left legs, duplicated "
+"limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, "
+"extra hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, three wings, "
+"deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow "
+"gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, magic "
+"circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
+"patterns, embroidered symbols, medallion patterns, circular emblems, text, watermark, photorealistic, "
+"3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
@@ -57,6 +58,6 @@ try:
             f.write(raw)
         print(f"OK -> {path}  seed={SEED}  ({round(time.time()-t0,1)}s)")
     else:
-        print("ECHEC: pas d'image. Cles reponse:", list(out.keys()), "contenu:", str(out)[:500])
+        print("ECHEC: pas d'image. contenu:", str(out)[:300])
 except Exception as e:
     print("ERREUR:", repr(e))
