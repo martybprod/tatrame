@@ -3,39 +3,31 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_10_Changement_v5"
-SEED = 777018
+NAME = "major_11_Justesse"
+SEED = 777019
 
-positive = ("A vast cosmic wheel filling the composition, its spokes woven like threads on a great loom "
-"radiating out from a still center marked by a yin-yang symbol. A still sphinx sits perched at the very "
-"top of the wheel, seen in a slight three-quarter profile, its body naturally proportioned with a "
-"single tail curving gracefully behind it — not perfectly symmetrical, not doubled, silent guardian of "
-"destiny's riddle. A single small and discreet serpent, only one serpent, winds elegantly around the "
-"outer ring of the wheel itself, coiled within the wheel's outer circumference, its body following the "
-"circular rim in smooth, sinuous curves, small in scale and subdued in color so it blends into the "
-"wheel rather than standing out. Galaxies and stars spin around the wheel's outer rim, the twelve "
-"zodiac signs etched along its circumference, faint I Ching trigrams nested just inside them, and four "
-"soft glowing compass-point markers indicating the cardinal directions closer to the center — small, "
-"elegant, diamond-like points of light, not lightning bolts, not zigzag shapes. An upward-pointing "
-"triangle glows faintly at the hub. No human figure — the wheel itself is the subject, vast and "
-"turning. Flat decorative Art Nouveau illustration style, bold elegant clean contour lines, flat areas "
-"of soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, "
-"visible paper grain and pigment bleeds, mystical dreamlike mood, a rich complete color palette "
+positive = ("A woman standing with arms flung wide in a burst of triumphant energy, holding a raised "
+"sword of clarity in one hand, wearing a flowing timeless robe with bare feet, no modern clothing, a "
+"brilliant red-gold glow radiating outward from her solar plexus, old restrictive walls and bindings "
+"visibly shattering and falling away around her in fragments, an ancient pair of scales lying broken "
+"among the debris at her feet — the old rigid judgment finally giving way to something truer. A "
+"flowing red cloth trails behind her in the wind. Her posture is exuberant, alive, determined — the "
+"moment of finally breaking free. The figure drawn in the flat decorative style of Alphonse Mucha — "
+"bold elegant clean contour lines, stylized idealized features, flowing ornamental hair, flat areas of "
+"soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible "
+"paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette "
 "spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally across "
 "the scene according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
 "photorealistic, not 3d, not airbrushed.")
 
-negative = ("lightning, thunderbolt, lightning bolt, zigzag bolt, zigzag shape, lightning rod, two "
-"serpents, two snakes, multiple snakes, serpents on spokes, serpent on spoke, large serpent, prominent "
-"snake, oversized snake, bold serpent, two tails, double tail, symmetrical sphinx, perfectly mirrored "
-"sphinx, duplicated body, human figure, person, people, extra leg, third leg, two left legs, duplicated "
-"limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, "
-"extra hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, three wings, "
-"deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow "
-"gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, magic "
-"circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
-"patterns, embroidered symbols, medallion patterns, circular emblems, text, watermark, photorealistic, "
-"3d render")
+negative = ("trousers, pants, jeans, boots, shoes, sneakers, modern clothing, jacket, blazer, extra leg, "
+"third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, extra arm, third "
+"arm, phantom hand, disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra "
+"finger, extra wing, three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, "
+"rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, "
+"random occult symbols, magic circles, alchemical sigils, mystical glyphs, decorative rune circles, "
+"meaningless icons, esoteric patterns, embroidered symbols, medallion patterns, circular emblems, two "
+"people, twins, duplicate person, multiple figures, text, watermark, photorealistic, 3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
