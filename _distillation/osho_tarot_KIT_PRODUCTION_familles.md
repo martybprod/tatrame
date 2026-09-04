@@ -321,5 +321,8 @@ Fond : lotus à la main, symboles discrets des 4 éléments convergeant autour d
 
 ---
 
+## 4.5 RICHESSE SYMBOLIQUE (règle 11b du kit majeurs — s'applique ici aussi)
+⚠️ Avant d'écrire les prompts des 56 mineurs, enrichir chaque fiche ci-dessus qui semble mince avec des symboles Rider-Waite (Bâtons/Coupes/Épées/Pentacles) ou du glossaire universel (carte de concepts §8) — TOUJOURS justifiés, jamais des glyphes inventés sans sens. Une carte de tarot doit rester dense en symboles. Suivre le même procédé que pour les majeurs (voir `osho_tarot_PROMPTS_majeurs.md`, révisions IV-XXI).
+
 ## 5. CE QU'IL RESTE À FAIRE (pour l'exécutant)
 Pour chaque carte ci-dessus : rédiger le **PROMPT positif EN** (règles §1-2 du kit majeurs + identité de famille §0.1 + gérer l'exception arc-en-ciel §0.2 le cas échéant), terminé par l'ANCRE DE STYLE. **Texte de lecture FR** dans l'esprit Align (clair, non-fataliste, tutoiement). Utiliser le **nom français officiel** de `noms_cartes.json` comme titre de la carte (jamais le nom Osho anglais). Générer via `_gen_carte.py` (recette V2), noter le seed, vérifier l'anatomie de PRÈS avant validation.
