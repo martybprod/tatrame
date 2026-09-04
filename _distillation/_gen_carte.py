@@ -1,62 +1,35 @@
 import json, urllib.request, base64, time
-from PIL import Image
-import io
 
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_12_Perspective_v17"
-SEED = 777030
+NAME = "major_13_Transformation"
+SEED = 777031
 
-positive = ("A young man diving forward through open air, both arms extended together forward and "
-"slightly upward ahead of his head in a streamlined diving position, hands close together — not "
-"spread wide to the sides, not overhead in a worship gesture, a purposeful forward dive rather than a "
-"static pose. His gaze is directed forward toward the unknown horizon ahead of him. His torso leans "
-"forward in the direction of this diving motion, emerging close to a small rectangular frame shaped "
-"like a miniature version of a tarot card (proportioned tall like 2 by 3), right side up, richly "
-"decorated with ornate flowing Art Nouveau border details — gold linework, elegant curling flourishes "
-"— containing a small ordinary landscape of gentle hills, a single tree, and a small discreet "
-"neoclassical town nestled among the hills with elegant columned buildings and a dome. This small "
-"ornamental frame is centered in the middle of the image, modestly sized, roughly one quarter of the "
-"composition. His torso and head extend just beyond the frame's edge, still close to it, into the "
-"open space right around the frame. One of his feet has just stepped across the frame's lower edge, "
-"planted right at the boundary, clearly crossing the frame's border line but staying close to the "
-"frame itself — while his other leg remains inside the frame, planted on the small landscape within it "
-"— the unmistakable moment of climbing out, one foot in each world, right at the threshold. He wears a "
-"knitted vest and 1920s-1930s style plus-four knickerbocker trousers — loose knee-length trousers "
-"gathered just below the knee — with his calves and feet completely bare, no socks, no shoes. There is "
-"absolutely no other frame, border, or edge decoration anywhere else in the entire image — everywhere "
-"outside this one small ornate frame is a breathtaking sky rendered in a rich, varied, gently "
-"desaturated palette — soft blues blending with warm golds, dusty pinks and gentle violets, painterly "
-"and atmospheric rather than a flat solid blue. Exactly three small glowing geometric shapes float "
-"nearby: one square (soft green), one circle (soft blue), one triangle (soft gold) — these three only. "
-"High on his upper back, precisely at the shoulder blades, two minuscule wing-buds are attached — each "
-"no bigger than a thumb, just a few small downy feathers, barely noticeable, symmetrically placed one "
-"on each shoulder blade. His expression is serene, focused, quietly determined, diving forward with "
-"calm purpose into the unknown. The figure drawn in the flat decorative style of Alphonse Mucha — bold "
-"elegant clean contour lines, stylized idealized features, flowing ornamental hair, flat areas of soft "
-"watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible "
-"paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette "
-"spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally across "
-"the scene according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
-"photorealistic, not 3d, not airbrushed.")
+positive = ("A serene woman seated cross-legged atop an immense flower of the void, wearing flowing "
+"timeless robes with bare feet, no modern clothing, holding the symbols of transformation around her "
+"— a sword that cuts through illusion resting near her side, a snake coiled and shedding its skin, a "
+"broken chain, a small yin-yang symbol glowing softly, and a single white rose resting near her hand. "
+"In the misty distance behind her, the pale silhouette of a white horse can just be glimpsed, a quiet "
+"passage rather than anything macabre. One of her hands rests open and receptive on her lap, the other "
+"reaches gently down to touch the closed mouth of a sleeping face resting below her in stillness. Her "
+"expression is peaceful, accepting, fully letting go. The figure drawn in the flat decorative style of "
+"Alphonse Mucha — bold elegant clean contour lines, stylized idealized features, flowing ornamental "
+"hair, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on "
+"textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich "
+"complete color palette spanning the full range of warm and cool hues, harmoniously balanced and "
+"distributed naturally across the scene according to its mood, muted jewel tones, subtle gold linework, "
+"soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
-negative = ("flat solid blue sky, plain blue sky, arms spread to the sides, T-pose, arms raised "
-"overhead, worship pose, adoration pose, religious ecstasy, flying far from frame, floating away from "
-"frame, distant from frame, leg far from frame, leg detached from frame, socks, shoes, boots, leg "
-"barely visible outside frame, leg mostly inside frame, both legs inside frame, both legs fully "
-"inside, figure entirely inside frame, outer border, image border, full-image card frame, border "
-"around entire image, second frame, double frame, plain frame, undecorated frame, large wings, big "
-"wings, medium wings, wings at armpits, asymmetric wings, feathered wings, angel wings, diamond shape, "
-"rhombus, two triangles, multiple triangles, two squares, two circles, four shapes, extra geometric "
-"shapes, jeans, modern clothing, jacket, blazer, sneakers, extra leg, third leg, two left legs, "
-"missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra "
-"hand, floating hand, malformed hands, fused fingers, extra finger, deformed wing, malformed anatomy, "
-"bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, "
-"prismatic streak, spectrum band, random occult symbols, magic circles, alchemical sigils, mystical "
-"glyphs, decorative rune circles, meaningless icons, esoteric patterns, embroidered symbols, medallion "
-"patterns, two people, twins, duplicate person, multiple figures, text, watermark, photorealistic, 3d "
-"render")
+negative = ("trousers, pants, jeans, boots, shoes, sneakers, modern clothing, jacket, blazer, skeleton, "
+"skull, grim reaper, macabre, death imagery, scary, extra leg, third leg, two left legs, duplicated "
+"limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, "
+"extra hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, three wings, "
+"deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow "
+"gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, magic "
+"circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
+"patterns, embroidered symbols, medallion patterns, two people, twins, duplicate person, multiple "
+"figures, text, watermark, photorealistic, 3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
@@ -76,15 +49,10 @@ try:
     imgs = out.get("images", [])
     if imgs:
         raw = base64.b64decode(imgs[0])
-        upright_path = OUTDIR + f"CARTE_{NAME}_UPRIGHT_seed{SEED}.png"
-        with open(upright_path, "wb") as f:
+        path = OUTDIR + f"CARTE_{NAME}_seed{SEED}.png"
+        with open(path, "wb") as f:
             f.write(raw)
-        im = Image.open(io.BytesIO(raw))
-        im_flipped = im.rotate(180)
-        final_path = OUTDIR + f"CARTE_{NAME}_seed{SEED}.png"
-        im_flipped.save(final_path)
-        print(f"OK -> endroit: {upright_path}")
-        print(f"OK -> pivote 180 (FINAL): {final_path}  seed={SEED}  ({round(time.time()-t0,1)}s)")
+        print(f"OK -> {path}  seed={SEED}  ({round(time.time()-t0,1)}s)")
     else:
         print("ECHEC: pas d'image. contenu:", str(out)[:300])
 except Exception as e:
