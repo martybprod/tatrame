@@ -3,17 +3,17 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_10_Changement_v3"
+NAME = "major_10_Changement_v4"
 SEED = 777018
 
 positive = ("A vast cosmic wheel filling the composition, its spokes woven like threads on a great loom "
 "radiating out from a still center marked by a yin-yang symbol. A still sphinx sits perched at the very "
 "top of the wheel, seen in a slight three-quarter profile, its body naturally proportioned with a "
 "single tail curving gracefully behind it — not perfectly symmetrical, not doubled, silent guardian of "
-"destiny's riddle. On the opposite side, a small and discreet slender serpent winds elegantly and "
-"smoothly downward along one of the spokes, its body small in scale, subdued in color so it blends into "
-"the wheel rather than standing out, gracefully following the line of the wheel with fluid, sinuous "
-"curves rather than a rigid descent. Galaxies and stars spin around the wheel's outer rim, the twelve "
+"destiny's riddle. A single small and discreet serpent, only one serpent, winds elegantly around the "
+"outer ring of the wheel itself, coiled within the wheel's outer circumference, its body following the "
+"circular rim in smooth, sinuous curves, small in scale and subdued in color so it blends into the "
+"wheel rather than standing out. Galaxies and stars spin around the wheel's outer rim, the twelve "
 "zodiac signs etched along its circumference, faint I Ching trigrams nested just inside them, and four "
 "bolts of lightning marking the cardinal directions closer to the center. An upward-pointing triangle "
 "glows faintly at the hub. No human figure — the wheel itself is the subject, vast and turning. Flat "
@@ -24,15 +24,16 @@ positive = ("A vast cosmic wheel filling the composition, its spokes woven like 
 "according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
 "photorealistic, not 3d, not airbrushed.")
 
-negative = ("two tails, double tail, symmetrical sphinx, perfectly mirrored sphinx, duplicated body, "
-"large serpent, prominent snake, oversized snake, bold serpent, human figure, person, people, extra "
-"leg, third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, extra arm, "
-"third arm, phantom hand, disembodied hand, extra hand, floating hand, malformed hands, fused fingers, "
-"extra finger, extra wing, three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, "
-"mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum "
-"band, random occult symbols, magic circles, alchemical sigils, mystical glyphs, decorative rune "
-"circles, meaningless icons, esoteric patterns, embroidered symbols, medallion patterns, circular "
-"emblems, text, watermark, photorealistic, 3d render")
+negative = ("two serpents, two snakes, multiple snakes, serpents on spokes, large serpent, prominent "
+"snake, oversized snake, bold serpent, two tails, double tail, symmetrical sphinx, perfectly mirrored "
+"sphinx, duplicated body, human figure, person, people, extra leg, third leg, two left legs, duplicated "
+"limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, "
+"extra hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, three wings, "
+"deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow "
+"gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, magic "
+"circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
+"patterns, embroidered symbols, medallion patterns, circular emblems, text, watermark, photorealistic, "
+"3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
