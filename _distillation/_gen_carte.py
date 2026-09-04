@@ -3,34 +3,33 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_06_Union_v3"
-SEED = 777006
+NAME = "major_06_Union_v4"
+SEED = 777007
 
-positive = ("A man and a woman standing at arm's length facing each other, each firmly clasping the "
-"other's forearm in a gesture of solidarity and trust — like two allies or old friends sealing a bond, "
-"not a romantic embrace. Both stand upright and confident, slowly rising off the ground together. Both "
-"wearing flowing ancient-style robes, their feet bare, no modern clothing. Surrounded by a soft gradient "
-"of light that shifts from warm earthen tones at their feet to luminous pale sky tones above their "
-"heads. Behind them stand two trees — one heavy with ripe fruit, the other bare and graceful — with a "
-"small serpent coiled peacefully at the base of one, a symbol of wisdom rather than danger. A radiant "
-"sun glows softly off to one side in the background sky, not centered between them. Delicate wings of "
-"light unfold from their backs as they lift higher. The figures drawn in the flat decorative style of "
-"Alphonse Mucha — bold elegant clean contour lines, stylized idealized features, flowing ornamental "
-"hair, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on "
-"textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich "
-"complete color palette spanning the full range of warm and cool hues, harmoniously balanced and "
-"distributed naturally across the scene according to its mood, muted jewel tones, subtle gold linework, "
-"soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
+positive = ("A circle of several people — men and women of different ages — standing in a ring, each "
+"firmly clasping the forearm of the person beside them, rising together off the ground in joyful unity, "
+"a grounded sense of shared connection and belonging rather than romance. All wear flowing ancient-style "
+"robes, their feet bare, no modern clothing. Surrounded by a soft gradient of light that shifts from "
+"warm earthen tones below to luminous pale sky tones above. On either side of the circle stand two "
+"trees — one heavy with ripe fruit, the other bare and graceful — with a small serpent coiled peacefully "
+"near the roots of one, a symbol of wisdom rather than danger. A radiant sun glows softly in the "
+"background sky above the circle. Delicate wings of light unfold from each person's back as they rise "
+"together. The figures drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour "
+"lines, stylized idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, "
+"minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment "
+"bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full range of "
+"warm and cool hues, harmoniously balanced and distributed naturally across the scene according to its "
+"mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not "
+"airbrushed.")
 
-negative = ("embracing, hugging, foreheads touching, romantic couple pose, wedding pose, kissing, holding "
-"hands, sun centered between faces, trousers, pants, boots, shoes, modern clothing, jeans, extra leg, "
-"third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, extra arm, third "
-"arm, phantom hand, disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra "
-"finger, extra wing, three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, "
-"rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, "
-"random occult symbols, magic circles, alchemical sigils, mystical glyphs, decorative rune circles, "
-"meaningless icons, esoteric patterns, embroidered symbols, medallion patterns, circular emblems, text, "
-"watermark, photorealistic, 3d render")
+negative = ("two people only, couple, romantic pose, embracing, hugging, kissing, wedding pose, trousers, "
+"pants, boots, shoes, modern clothing, jeans, extra leg, third leg, two left legs, duplicated limb, "
+"missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra "
+"hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, three wings, deformed "
+"wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, "
+"rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, magic circles, "
+"alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric patterns, "
+"embroidered symbols, medallion patterns, circular emblems, text, watermark, photorealistic, 3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
