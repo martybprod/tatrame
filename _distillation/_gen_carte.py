@@ -3,29 +3,31 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_05_Vide_v2"
-SEED = 777005
+NAME = "major_06_Union"
+SEED = 777006
 
-positive = ("A single small human silhouette suspended weightless in a vast, dark, boundless empty space, "
-"arms loosely open, utterly at ease with having nothing to hold onto. Nearby floats a delicate cracked "
-"eggshell with the gently rounded, softly oval shape of a real bird's egg — smooth curves, not pointed or "
-"conical — faintly luminous, and a soft spiral of stardust drifting like a seed of something sacred about "
-"to be born. The composition is spare and minimal, mostly open darkness around the tiny figure. The "
-"figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, "
-"stylized idealized features, flat areas of soft watercolor pigment, minimal shading. Entirely "
-"hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical "
-"dreamlike mood, a rich complete color palette used sparingly and with restraint, muted jewel tones, "
-"subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
+positive = ("A man and a woman dancing together in a gentle embrace, slowly rising off the ground, both "
+"wearing flowing ancient-style robes, no modern clothing, their feet bare, surrounded by a soft gradient "
+"of light that shifts from warm earthen tones at their feet to luminous pale sky tones above their "
+"heads. Each seems to see their own reflection in the other's eyes. Behind them stand two trees — one "
+"heavy with ripe fruit, the other bare and graceful — with a small serpent coiled peacefully at the base "
+"of one, a symbol of wisdom rather than danger. A radiant sun rises exactly between the couple on the "
+"horizon. Delicate wings of light unfold from their backs as they lift higher. The figures drawn in the "
+"flat decorative style of Alphonse Mucha — bold elegant clean contour lines, stylized idealized features, "
+"flowing ornamental hair, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted "
+"watercolor on textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical dreamlike "
+"mood, a rich complete color palette spanning the full range of warm and cool hues, harmoniously balanced "
+"and distributed naturally across the scene according to its mood, muted jewel tones, subtle gold "
+"linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
-negative = ("pointed egg, conical shape, teardrop shape, elongated point, trousers, pants, boots, shoes, "
-"modern clothing, extra leg, third leg, two left legs, duplicated limb, missing foot, missing leg, "
-"missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, malformed "
-"hands, fused fingers, extra finger, extra wing, three wings, deformed wing, malformed anatomy, bad "
-"anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, "
-"prismatic streak, spectrum band, random occult symbols, magic circles, alchemical sigils, mystical "
-"glyphs, decorative rune circles, meaningless icons, esoteric patterns, embroidered symbols, medallion "
-"patterns, circular emblems, two people, twins, duplicate person, multiple figures, text, watermark, "
-"photorealistic, 3d render, cluttered, busy composition")
+negative = ("trousers, pants, boots, shoes, modern clothing, jeans, extra leg, third leg, two left legs, "
+"duplicated limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, "
+"disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, "
+"three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, "
+"rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, "
+"magic circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
+"patterns, embroidered symbols, medallion patterns, circular emblems, text, watermark, photorealistic, "
+"3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
