@@ -3,7 +3,7 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_12_Perspective_v7"
+NAME = "major_12_Perspective_v8"
 SEED = 777024
 
 positive = ("A single small ornamental Art Nouveau frame, rotated a full 180 degrees upside down "
@@ -19,30 +19,31 @@ positive = ("A single small ornamental Art Nouveau frame, rotated a full 180 deg
 "unknown like a careful explorer. Exactly three glowing geometric shapes float around him, one of each "
 "only: a single square (the physical, the known, soft green light), a single circle (the unmanifest, "
 "pure spirit, soft blue light), and a single upward-pointing triangle (the threefold nature of "
-"existence, soft golden light) — no other geometric shapes of any kind anywhere. Tiny, barely visible "
-"miniature wings, no larger than a small bird's, sprout from his shoulders. All around, filling the "
-"rest of the image to its very edges with no border: boundless luminous freedom, soft radiant light, "
-"open sky. His expression is calm and curious. He wears simple timeless clothing, a loose shirt, no "
-"jacket, no modern clothing. The figure drawn in the flat decorative style of Alphonse Mucha — bold "
-"elegant clean contour lines, stylized idealized features, flowing ornamental hair, flat areas of soft "
-"watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible "
-"paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette "
-"spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally across "
-"the scene according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
-"photorealistic, not 3d, not airbrushed.")
+"existence, soft golden light) — no other geometric shapes of any kind anywhere. Two minuscule "
+"nascent wing-buds, barely more than small downy feather tufts the size of a sparrow's closed wing, "
+"grow directly attached to his shoulder blades — tiny, subtle, easily overlooked, clearly just "
+"beginning to form. All around, filling the rest of the image to its very edges with no border: "
+"boundless luminous freedom, soft radiant light, open sky. His expression is calm and curious. He "
+"wears simple timeless clothing, a loose shirt, no jacket, no modern clothing. The figure drawn in the "
+"flat decorative style of Alphonse Mucha — bold elegant clean contour lines, stylized idealized "
+"features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal shading. Entirely "
+"hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, Art Nouveau, "
+"mystical dreamlike mood, a rich complete color palette spanning the full range of warm and cool hues, "
+"harmoniously balanced and distributed naturally across the scene according to its mood, muted jewel "
+"tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
-negative = ("diamond shape, rhombus, two triangles, two squares, two circles, four shapes, extra "
-"geometric shapes, double frame, second frame, outer border, image border, right side up frame, upright "
-"frame, upright landscape, large wings, big wings, limp arms, arms hanging down, dangling arms, "
-"invisible leg, hidden leg, missing leg, extra limbs, duplicated limbs, hanged man, rope around ankle, "
-"jeans, modern clothing, jacket, blazer, sneakers, boots, extra leg, third leg, two left legs, missing "
-"foot, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, "
-"malformed hands, fused fingers, extra finger, deformed wing, malformed anatomy, bad anatomy, "
-"disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, prismatic "
-"streak, spectrum band, random occult symbols, magic circles, alchemical sigils, mystical glyphs, "
-"decorative rune circles, meaningless icons, esoteric patterns, embroidered symbols, medallion "
-"patterns, two people, twins, duplicate person, multiple figures, text, watermark, photorealistic, 3d "
-"render")
+negative = ("large wings, big wings, medium wings, wings spread, feathered wings, angel wings, "
+"diamond shape, rhombus, two triangles, two squares, two circles, four shapes, extra geometric shapes, "
+"double frame, second frame, outer border, image border, right side up frame, upright frame, upright "
+"landscape, limp arms, arms hanging down, dangling arms, invisible leg, hidden leg, missing leg, extra "
+"limbs, duplicated limbs, hanged man, rope around ankle, jeans, modern clothing, jacket, blazer, "
+"sneakers, boots, extra leg, third leg, two left legs, missing foot, missing limb, extra arm, third "
+"arm, phantom hand, disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra "
+"finger, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, "
+"rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, "
+"magic circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, "
+"esoteric patterns, embroidered symbols, medallion patterns, two people, twins, duplicate person, "
+"multiple figures, text, watermark, photorealistic, 3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
