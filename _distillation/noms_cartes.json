@@ -74,6 +74,21 @@
       "nuages_reine":     { "rang": "Reine",     "osho": "Morality",      "nom": "Éthique" },
       "nuages_roi":       { "rang": "Roi",       "osho": "Control",       "nom": "Contrôle" }
     },
-    "arc_en_ciel": {}
+    "arc_en_ciel": {
+      "arc_as":        { "rang": "As",        "osho": "Maturity",         "nom": "Maturité" },
+      "arc_02":        { "rang": "2",         "osho": "Moment to Moment", "nom": "Présence" },
+      "arc_03":        { "rang": "3",         "osho": "Guidance",         "nom": "Guidance" },
+      "arc_04":        { "rang": "4",         "osho": "The Miser",        "nom": "Avarice" },
+      "arc_05":        { "rang": "5",         "osho": "Outsider",         "nom": "Marginalité" },
+      "arc_06":        { "rang": "6",         "osho": "Compromise",       "nom": "Compromis" },
+      "arc_07":        { "rang": "7",         "osho": "Patience",         "nom": "Patience" },
+      "arc_08":        { "rang": "8",         "osho": "Ordinariness",     "nom": "Simplicité" },
+      "arc_09":        { "rang": "9",         "osho": "Ripeness",         "nom": "Plénitude" },
+      "arc_10":        { "rang": "10",        "osho": "We Are the World", "nom": "Communauté" },
+      "arc_page":      { "rang": "Page",      "osho": "Adventure",        "nom": "Aventure" },
+      "arc_chevalier": { "rang": "Chevalier", "osho": "Slowing Down",     "nom": "Ralentir" },
+      "arc_reine":     { "rang": "Reine",     "osho": "Flowering",        "nom": "Épanouissement" },
+      "arc_roi":       { "rang": "Roi",       "osho": "Abundance",        "nom": "Abondance" }
+    }
   }
 }
