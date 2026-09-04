@@ -3,31 +3,36 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_11_Justesse"
+NAME = "major_11_Justesse_v2"
 SEED = 777019
 
-positive = ("A woman standing with arms flung wide in a burst of triumphant energy, holding a raised "
-"sword of clarity in one hand, wearing a flowing timeless robe with bare feet, no modern clothing, a "
-"brilliant red-gold glow radiating outward from her solar plexus, old restrictive walls and bindings "
-"visibly shattering and falling away around her in fragments, an ancient pair of scales lying broken "
-"among the debris at her feet — the old rigid judgment finally giving way to something truer. A "
-"flowing red cloth trails behind her in the wind. Her posture is exuberant, alive, determined — the "
-"moment of finally breaking free. The figure drawn in the flat decorative style of Alphonse Mucha — "
-"bold elegant clean contour lines, stylized idealized features, flowing ornamental hair, flat areas of "
-"soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible "
-"paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette "
-"spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally across "
-"the scene according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
-"photorealistic, not 3d, not airbrushed.")
+positive = ("A wide shot with the figure at medium scale within the frame, ample room around her for a "
+"rich setting. A calm, resolute woman stands at the center of a serene open colonnade at dawn, holding "
+"a straight double-edged sword perfectly upright before her like a vertical axis of clarity — the "
+"precise moment a true decision settles. From her solar plexus radiates a steady, warm red-gold glow, "
+"like a small sunrise within her, illuminating the columns around her. Beside her feet, resting "
+"peacefully on the ground, an old pair of balance scales lies gently set down — no longer needed, not "
+"broken, simply released. A long flowing red cloth trails from her shoulder in the morning wind. Her "
+"expression is clear-eyed, precise, quietly certain — discernment rather than fury, no destruction, "
+"nothing shattering anywhere. She wears a flowing timeless robe with bare feet, no modern clothing. "
+"The figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, "
+"stylized idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal "
+"shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, "
+"Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full range of warm "
+"and cool hues, harmoniously balanced and distributed naturally across the scene according to its "
+"mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not "
+"airbrushed.")
 
-negative = ("trousers, pants, jeans, boots, shoes, sneakers, modern clothing, jacket, blazer, extra leg, "
-"third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, extra arm, third "
-"arm, phantom hand, disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra "
-"finger, extra wing, three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, "
-"rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, "
-"random occult symbols, magic circles, alchemical sigils, mystical glyphs, decorative rune circles, "
-"meaningless icons, esoteric patterns, embroidered symbols, medallion patterns, circular emblems, two "
-"people, twins, duplicate person, multiple figures, text, watermark, photorealistic, 3d render")
+negative = ("destruction, explosion, shattering walls, debris, rubble, crumbling architecture, chaos, "
+"broken scales, close-up, figure filling the frame, trousers, pants, jeans, boots, shoes, sneakers, "
+"modern clothing, jacket, blazer, extra leg, third leg, two left legs, duplicated limb, missing foot, "
+"missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating "
+"hand, malformed hands, fused fingers, extra finger, extra wing, three wings, deformed wing, malformed "
+"anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, "
+"rainbow sky, prismatic streak, spectrum band, random occult symbols, magic circles, alchemical "
+"sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric patterns, embroidered "
+"symbols, medallion patterns, circular emblems, two people, twins, duplicate person, multiple figures, "
+"text, watermark, photorealistic, 3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
