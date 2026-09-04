@@ -58,7 +58,22 @@
       "eau_reine":     { "rang": "Reine",     "osho": "Receptivity",         "nom": "Réceptivité" },
       "eau_roi":       { "rang": "Roi",       "osho": "Healing",             "nom": "Guérison" }
     },
-    "nuages": {},
+    "nuages": {
+      "nuages_as":        { "rang": "As",        "osho": "Consciousness", "nom": "Conscience" },
+      "nuages_02":        { "rang": "2",         "osho": "Schizophrenia", "nom": "Dualité" },
+      "nuages_03":        { "rang": "3",         "osho": "Ice-olation",   "nom": "Isolement" },
+      "nuages_04":        { "rang": "4",         "osho": "Postponement",  "nom": "Procrastination" },
+      "nuages_05":        { "rang": "5",         "osho": "Comparison",    "nom": "Comparaison" },
+      "nuages_06":        { "rang": "6",         "osho": "The Burden",    "nom": "Fardeau" },
+      "nuages_07":        { "rang": "7",         "osho": "Politics",      "nom": "Manipulation" },
+      "nuages_08":        { "rang": "8",         "osho": "Guilt",         "nom": "Culpabilité" },
+      "nuages_09":        { "rang": "9",         "osho": "Sorrow",        "nom": "Tristesse" },
+      "nuages_10":        { "rang": "10",        "osho": "Rebirth",       "nom": "Renaissance" },
+      "nuages_page":      { "rang": "Page",      "osho": "Mind",          "nom": "Dispersion" },
+      "nuages_chevalier": { "rang": "Chevalier", "osho": "Fighting",      "nom": "Lutte" },
+      "nuages_reine":     { "rang": "Reine",     "osho": "Morality",      "nom": "Éthique" },
+      "nuages_roi":       { "rang": "Roi",       "osho": "Control",       "nom": "Contrôle" }
+    },
     "arc_en_ciel": {}
   }
 }
