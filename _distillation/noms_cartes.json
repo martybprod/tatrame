@@ -1,7 +1,7 @@
 {
   "_note": "Source unique de verite des noms de cartes du tarot personnel (base Osho+Rider). Le champ 'nom' est celui inscrit sur la carte (cartouche). Modifier ici -> relancer la composition du cartouche.",
   "majeurs": {
-    "major_00": { "roman": "0",    "trad": "Le Fou",              "osho": "Trust",          "nom": "Confiance" },
+    "major_00": { "roman": "0",    "trad": "Le Fou",              "osho": "Trust",          "nom": "Foi" },
     "major_01": { "roman": "I",    "trad": "Le Magicien",         "osho": "Existence",      "nom": "Existence" },
     "major_02": { "roman": "II",   "trad": "La Grande Prêtresse", "osho": "Inner Voice",    "nom": "Intuition" },
     "major_03": { "roman": "III",  "trad": "L'Impératrice",       "osho": "Creativity",     "nom": "Créativité" },
@@ -42,7 +42,22 @@
       "feu_reine":     { "rang": "Reine",     "osho": "Sharing",        "nom": "Partage" },
       "feu_roi":       { "rang": "Roi",       "osho": "The Creator",    "nom": "Le Créateur" }
     },
-    "eau": {},
+    "eau": {
+      "eau_as":        { "rang": "As",        "osho": "Going With The Flow", "nom": "Suivre le mouvement" },
+      "eau_02":        { "rang": "2",         "osho": "Friendliness",        "nom": "Amitié" },
+      "eau_03":        { "rang": "3",         "osho": "Celebration",         "nom": "Célébration" },
+      "eau_04":        { "rang": "4",         "osho": "Turning In",          "nom": "Recueillement" },
+      "eau_05":        { "rang": "5",         "osho": "Clinging to the Past", "nom": "Attachement" },
+      "eau_06":        { "rang": "6",         "osho": "The Dream",           "nom": "Illusion" },
+      "eau_07":        { "rang": "7",         "osho": "Projections",         "nom": "Projections" },
+      "eau_08":        { "rang": "8",         "osho": "Letting Go",          "nom": "Lâcher-prise" },
+      "eau_09":        { "rang": "9",         "osho": "Laziness",            "nom": "Paresse" },
+      "eau_10":        { "rang": "10",        "osho": "Harmony",             "nom": "Harmonie" },
+      "eau_page":      { "rang": "Page",      "osho": "Understanding",       "nom": "Compréhension" },
+      "eau_chevalier": { "rang": "Chevalier", "osho": "Trust",               "nom": "Confiance" },
+      "eau_reine":     { "rang": "Reine",     "osho": "Receptivity",         "nom": "Réceptivité" },
+      "eau_roi":       { "rang": "Roi",       "osho": "Healing",             "nom": "Guérison" }
+    },
     "nuages": {},
     "arc_en_ciel": {}
   }
