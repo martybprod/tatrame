@@ -74,7 +74,9 @@ Seed : (à remplir après génération)
 
 ## 4. EXEMPLE VALIDÉ (le « gold standard » à imiter) — 0 · FOI
 
-**Carte finale retenue** : `CARTE_major_00_Foi_seed2575052125_v2_manteau_sobre.png` — seed **2575052125**, recette V2 (20 steps, CFG 3). Anatomie parfaite, manteau en 4 blocs de couleur élémentaires SOBRES (rouge/blanc/bleu/brun, sans motif illustratif ni glyphe). Version précédente (`..._seed2575052125.png`, sans suffixe) ABANDONNÉE : avait des glyphes pseudo-mystiques inventés sans signification sur le manteau — cf. règle 11.
+**Note de préférence de Martin (à revoir plus tard, pas urgent)** : il préfère globalement les proportions/traits du personnage de la toute première itération (`..._seed2575052125.png`, celle avec les faux glyphes) — notamment le **pantalon golf (knickerbockers) avec bas montants**, qu'il aimait bien. À ré-explorer quand on affinera le style final : reprendre cette silhouette/tenue en gardant le manteau sans glyphes inventés (v4).
+
+**Carte finale retenue (temporaire, validée « pour le moment »)** : `CARTE_major_00_Foi_seed2575052125_v4_minimal.png`. Autres versions conservées pour comparaison : `..._seed2575052125.png` (glyphes à corriger mais silhouette/pantalon préférés), `..._v2_manteau_sobre.png` — seed **2575052125**, recette V2 (20 steps, CFG 3). Anatomie parfaite, manteau en 4 blocs de couleur élémentaires SOBRES (rouge/blanc/bleu/brun, sans motif illustratif ni glyphe). Version précédente (`..._seed2575052125.png`, sans suffixe) ABANDONNÉE : avait des glyphes pseudo-mystiques inventés sans signification sur le manteau — cf. règle 11.
 
 
 **PROMPT positif :**
