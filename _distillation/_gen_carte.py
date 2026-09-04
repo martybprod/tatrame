@@ -3,22 +3,20 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_02_Intuition"
-SEED = 777001  # graine explicite notee pour regeneration future
+NAME = "major_03_Creativite"
+SEED = 777002  # graine explicite notee
 
-positive = ("A single serene young woman seated at the center of the scene, alone, the only person, her "
-"face calm, alert and watchful, gazing softly forward like an inner oracle. She holds a clear luminous "
-"crystal cupped between her two hands — her left hand in shadow, her right hand in light — expressing "
-"acceptance of both dark and light. She wears a flowing kimono-like robe adorned with green leaves, and a "
-"delicate crescent-moon crown rests on her brow. Behind her rises a deep starry night cosmos; below her, "
-"two dolphins dance and dive through luminous rippling water. She is framed by two slender pillars, one "
-"dark and one pale. The figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean "
-"contour lines, stylized idealized features, flowing ornamental hair, flat areas of soft watercolor "
-"pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and "
-"pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full "
-"range of warm and cool hues, harmoniously balanced and distributed naturally across the scene according "
-"to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, "
-"not airbrushed.")
+positive = ("A woman with her arms raised, eyes closed in surrender, standing where a swirl of fire and "
+"water merge beneath her feet and a beam of soft divine light descends from above onto her upturned "
+"hands. Between her fingers, luminous threads of light weave and cross like she is spinning raw creative "
+"energy into form, as if working an unseen loom of pure light. Her expression is one of total abandon to "
+"the mystery moving through her. The figure drawn in the flat decorative style of Alphonse Mucha — bold "
+"elegant clean contour lines, stylized idealized features, flowing ornamental hair, flat areas of soft "
+"watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible paper "
+"grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning "
+"the full range of warm and cool hues, harmoniously balanced and distributed naturally across the scene "
+"according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, "
+"not 3d, not airbrushed.")
 
 negative = ("extra leg, third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, "
 "extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, malformed hands, fused "
