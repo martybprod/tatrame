@@ -1,0 +1,34 @@
+{
+  "_note": "Source unique de verite des noms de cartes du tarot personnel (base Osho+Rider). Le champ 'nom' est celui inscrit sur la carte (cartouche). Modifier ici -> relancer la composition du cartouche.",
+  "majeurs": {
+    "major_00": { "roman": "0",    "trad": "Le Fou",              "osho": "Trust",          "nom": "Confiance" },
+    "major_01": { "roman": "I",    "trad": "Le Magicien",         "osho": "Existence",      "nom": "Existence" },
+    "major_02": { "roman": "II",   "trad": "La Grande Prêtresse", "osho": "Inner Voice",    "nom": "Intuition" },
+    "major_03": { "roman": "III",  "trad": "L'Impératrice",       "osho": "Creativity",     "nom": "Créativité" },
+    "major_04": { "roman": "IV",   "trad": "L'Empereur",          "osho": "The Rebel",      "nom": "Liberté" },
+    "major_05": { "roman": "V",    "trad": "Le Pape",             "osho": "No-Thingness",   "nom": "Néant" },
+    "major_06": { "roman": "VI",   "trad": "Les Amoureux",        "osho": "The Lovers",     "nom": "Amour" },
+    "major_07": { "roman": "VII",  "trad": "Le Chariot",          "osho": "Awareness",      "nom": "Volonté" },
+    "major_08": { "roman": "VIII", "trad": "La Force",            "osho": "Courage",        "nom": "Courage" },
+    "major_09": { "roman": "IX",   "trad": "L'Ermite",            "osho": "Aloneness",      "nom": "Solitude" },
+    "major_10": { "roman": "X",    "trad": "La Roue de Fortune",  "osho": "Change",         "nom": "Changement" },
+    "major_11": { "roman": "XI",   "trad": "La Justice",          "osho": "Breakthrough",   "nom": "Percée" },
+    "major_12": { "roman": "XII",  "trad": "Le Pendu",            "osho": "New Vision",     "nom": "Perspective" },
+    "major_13": { "roman": "XIII", "trad": "La Mort",             "osho": "Transformation", "nom": "Transformation" },
+    "major_14": { "roman": "XIV",  "trad": "Tempérance",          "osho": "Integration",    "nom": "Équilibre" },
+    "major_15": { "roman": "XV",   "trad": "Le Diable",           "osho": "Conditioning",   "nom": "Conditionnement" },
+    "major_16": { "roman": "XVI",  "trad": "La Maison-Dieu",      "osho": "Thunderbolt",    "nom": "Rupture" },
+    "major_17": { "roman": "XVII", "trad": "L'Étoile",            "osho": "Silence",        "nom": "Silence" },
+    "major_18": { "roman": "XVIII","trad": "La Lune",             "osho": "Past Lives",     "nom": "L'Invisible" },
+    "major_19": { "roman": "XIX",  "trad": "Le Soleil",           "osho": "Innocence",      "nom": "Rayonnement" },
+    "major_20": { "roman": "XX",   "trad": "Le Jugement",         "osho": "Beyond Illusion","nom": "Vérité" },
+    "major_21": { "roman": "XXI",  "trad": "Le Monde",            "osho": "Completion",     "nom": "Accomplissement" },
+    "master":   { "roman": "—",    "trad": "(hors cycle)",        "osho": "The Master",     "nom": "Maîtrise" }
+  },
+  "familles": {
+    "feu": {},
+    "eau": {},
+    "nuages": {},
+    "arc_en_ciel": {}
+  }
+}
