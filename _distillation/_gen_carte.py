@@ -3,23 +3,23 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_03_Creativite_v2"
-SEED = 777002  # meme graine que v1, prompt corrige
+NAME = "major_03_Creativite_v3"
+SEED = 777002
 
-positive = ("A woman with her arms raised, eyes closed in surrender, standing at the center of a soft beam "
-"of divine light descending from above onto her upturned hands. Below and around her feet, in a "
-"decorative stylized ornamental spiral entirely separate from her body and clothing — like a painted "
-"mandala on the ground, never touching or rising up her dress — swirling shapes of fire and water "
-"interweave together. Between her raised fingers, luminous threads of many vivid colors — crimson, gold, "
-"emerald, azure, violet — weave and cross like she is spinning the full rainbow spectrum of raw creative "
-"energy into form, as if working an unseen loom of colored light. Her expression is one of total abandon "
-"to the mystery moving through her. The figure drawn in the flat decorative style of Alphonse Mucha — "
-"bold elegant clean contour lines, stylized idealized features, flowing ornamental hair, flat areas of "
-"soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible "
-"paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette "
-"spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally across "
-"the scene according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
-"photorealistic, not 3d, not airbrushed.")
+positive = ("A woman actively weaving with vivid multicolored threads of light stretched between her two "
+"hands, visibly shaping and guiding them into an emerging pattern — a blossoming mandala-like form of "
+"color taking shape in the air in front of her, still incomplete, threads crossing and curving with "
+"dynamic motion. Her eyes are open, alive with focus, joy and creative energy; her body leans into the "
+"act of creation, one arm raised higher than the other, her hair and the fabric of her dress caught "
+"mid-movement as if stirred by a gust of creative energy. Below and around her feet, in a decorative "
+"stylized ornamental spiral entirely separate from her body and clothing — like a painted mandala on the "
+"ground, never touching or rising up her dress — swirling shapes of fire and water interweave together. "
+"The figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, "
+"stylized idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal "
+"shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, Art "
+"Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full range of warm and cool "
+"hues, harmoniously balanced and distributed naturally across the scene according to its mood, muted jewel "
+"tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
 negative = ("extra leg, third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, "
 "extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, malformed hands, fused "
