@@ -66,7 +66,10 @@ Seed : (à remplir après génération)
 
 ---
 
-## 4. EXEMPLE VALIDÉ (le « gold standard » à imiter) — 0 · CONFIANCE
+## 4. EXEMPLE VALIDÉ (le « gold standard » à imiter) — 0 · FOI
+
+**Carte finale retenue** : `CARTE_major_00_Foi_seed2575052125.png` — seed **2575052125**, recette V2 (20 steps, CFG 3). Anatomie parfaite, veste montrant les 4 symboles élémentaires distincts (flammes=Feu, vagues=Eau, motifs blancs=Air, panneau brun=Terre).
+
 
 **PROMPT positif :**
 > *A single solitary young man captured mid-stride, in the very act of stepping his leading foot off the edge of a high cliff into empty air, one leg extended forward over the abyss with no ground beneath it, body leaning into the open void, his face refined and serene, gently holding one white rose. He wears a long flowing coat softly patterned with the four traditional elemental colors — red for fire, blue for water, white for air, brown for earth. A single small white dog stands alert at the cliff edge behind him. Below, a luminous winding river flows through misty valleys, a pale dawn sun glows through haze, a single white bird drifts across the sky, distant mountains fade into mist. The figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, stylized idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally across the scene according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.*
