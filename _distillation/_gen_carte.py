@@ -3,12 +3,13 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_05_Vide"
+NAME = "major_05_Vide_v2"
 SEED = 777005
 
 positive = ("A single small human silhouette suspended weightless in a vast, dark, boundless empty space, "
 "arms loosely open, utterly at ease with having nothing to hold onto. Nearby floats a delicate cracked "
-"eggshell, faintly luminous, and a soft spiral of stardust drifting like a seed of something sacred about "
+"eggshell with the gently rounded, softly oval shape of a real bird's egg — smooth curves, not pointed or "
+"conical — faintly luminous, and a soft spiral of stardust drifting like a seed of something sacred about "
 "to be born. The composition is spare and minimal, mostly open darkness around the tiny figure. The "
 "figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, "
 "stylized idealized features, flat areas of soft watercolor pigment, minimal shading. Entirely "
@@ -16,14 +17,15 @@ positive = ("A single small human silhouette suspended weightless in a vast, dar
 "dreamlike mood, a rich complete color palette used sparingly and with restraint, muted jewel tones, "
 "subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
-negative = ("trousers, pants, boots, shoes, modern clothing, extra leg, third leg, two left legs, "
-"duplicated limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, "
-"disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, "
-"three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, "
-"rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random occult symbols, "
-"magic circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
-"patterns, embroidered symbols, medallion patterns, circular emblems, two people, twins, duplicate "
-"person, multiple figures, text, watermark, photorealistic, 3d render, cluttered, busy composition")
+negative = ("pointed egg, conical shape, teardrop shape, elongated point, trousers, pants, boots, shoes, "
+"modern clothing, extra leg, third leg, two left legs, duplicated limb, missing foot, missing leg, "
+"missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, malformed "
+"hands, fused fingers, extra finger, extra wing, three wings, deformed wing, malformed anatomy, bad "
+"anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, rainbow sky, "
+"prismatic streak, spectrum band, random occult symbols, magic circles, alchemical sigils, mystical "
+"glyphs, decorative rune circles, meaningless icons, esoteric patterns, embroidered symbols, medallion "
+"patterns, circular emblems, two people, twins, duplicate person, multiple figures, text, watermark, "
+"photorealistic, 3d render, cluttered, busy composition")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
