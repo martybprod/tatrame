@@ -3,28 +3,31 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_08_Courage"
-SEED = 777016
+NAME = "major_09_Solitude"
+SEED = 777017
 
-positive = ("A single small wildflower growing directly out of a crack between harsh grey stones, its "
-"petals fully open toward the light, surrounded by a bright golden halo of glow as if it shone as "
-"brightly as the sun itself. A small wildcat lies peacefully asleep right beside the flower, utterly "
-"calm, not tamed by force but gentled by presence. A delicate ribbon of light curls into an infinity "
-"shape floating just above the halo. The rocks around it are rugged and unforgiving, but the flower "
-"stands unashamed and luminous. No human figure, close-up nature composition. Flat decorative Art "
-"Nouveau illustration style, bold elegant clean contour lines, flat areas of soft watercolor pigment, "
-"minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment "
-"bleeds, mystical dreamlike mood, a rich complete color palette spanning the full range of warm and cool "
-"hues, harmoniously balanced and distributed naturally across the scene according to its mood, muted "
-"jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
+positive = ("A humble solitary man walking alone along a dark, snow-dusted mountain path at night, "
+"wearing a long hooded grey cloak over simple timeless robes, no modern clothing, and leaning gently on "
+"a gnarled wooden walking staff. No lantern in his hand — instead, a soft warm light glows gently from "
+"within his own chest and skin, lighting his way from the inside, its glow faintly forming the shape of "
+"a six-pointed star. The surrounding darkness is vast and quiet, snowy peaks faintly visible, stars "
+"faint overhead, no other path or companion in sight. His expression is calm, self-sufficient, unafraid "
+"of the dark. The figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean "
+"contour lines, stylized idealized features, flowing ornamental hair, flat areas of soft watercolor "
+"pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and "
+"pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full "
+"range of warm and cool hues, harmoniously balanced and distributed naturally across the scene according "
+"to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, "
+"not airbrushed.")
 
-negative = ("human figure, person, people, extra leg, third leg, two left legs, duplicated limb, missing "
-"foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, "
-"floating hand, malformed hands, fused fingers, extra finger, extra wing, three wings, deformed wing, "
-"malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow "
-"river, rainbow sky, prismatic streak, spectrum band, random occult symbols, magic circles, alchemical "
-"sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric patterns, embroidered "
-"symbols, medallion patterns, circular emblems, text, watermark, photorealistic, 3d render")
+negative = ("trousers, pants, jeans, boots, shoes, sneakers, modern clothing, jacket, blazer, other "
+"people, companion, extra leg, third leg, two left legs, duplicated limb, missing foot, missing leg, "
+"missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, "
+"malformed hands, fused fingers, extra finger, extra wing, three wings, deformed wing, malformed "
+"anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, "
+"rainbow sky, prismatic streak, spectrum band, random occult symbols, magic circles, alchemical sigils, "
+"mystical glyphs, decorative rune circles, meaningless icons, esoteric patterns, embroidered symbols, "
+"medallion patterns, circular emblems, two people, text, watermark, photorealistic, 3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
