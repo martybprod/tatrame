@@ -3,14 +3,14 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_11_Justesse_v2"
+NAME = "major_11_Justesse_v3"
 SEED = 777019
 
 positive = ("A wide shot with the figure at medium scale within the frame, ample room around her for a "
 "rich setting. A calm, resolute woman stands at the center of a serene open colonnade at dawn, holding "
 "a straight double-edged sword perfectly upright before her like a vertical axis of clarity — the "
-"precise moment a true decision settles. From her solar plexus radiates a steady, warm red-gold glow, "
-"like a small sunrise within her, illuminating the columns around her. Beside her feet, resting "
+"precise moment a true decision settles. Soft golden dawn light streams through the columns and gently "
+"illuminates her from the side, nothing glowing on her body itself. Beside her feet, resting "
 "peacefully on the ground, an old pair of balance scales lies gently set down — no longer needed, not "
 "broken, simply released. A long flowing red cloth trails from her shoulder in the morning wind. Her "
 "expression is clear-eyed, precise, quietly certain — discernment rather than fury, no destruction, "
@@ -23,7 +23,8 @@ positive = ("A wide shot with the figure at medium scale within the frame, ample
 "mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not "
 "airbrushed.")
 
-negative = ("destruction, explosion, shattering walls, debris, rubble, crumbling architecture, chaos, "
+negative = ("glowing chest, glowing heart, red glow on body, light from solar plexus, energy from "
+"chest, destruction, explosion, shattering walls, debris, rubble, crumbling architecture, chaos, "
 "broken scales, close-up, figure filling the frame, trousers, pants, jeans, boots, shoes, sneakers, "
 "modern clothing, jacket, blazer, extra leg, third leg, two left legs, duplicated limb, missing foot, "
 "missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating "
