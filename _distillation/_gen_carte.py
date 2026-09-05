@@ -3,22 +3,29 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_15_Emprise"
-SEED = 777039
+NAME = "major_15_Emprise_v2"
+SEED = 777040
 
-positive = ("A lion standing timidly within a flock of sheep, head lowered, moving and grazing exactly "
-"like them, unaware of its own nature, a loose iron chain draped around its neck without truly "
-"binding it — conditioning that could be shed the moment it is noticed. Nearby, a still pond flanked "
-"by two softly burning torches reflects back not a sheep but a proud, powerful lion — the truth the "
-"flock-raised lion has yet to recognize about itself. Soft late-afternoon light. No human figure. "
-"Flat decorative Art Nouveau illustration style, bold elegant clean contour lines, flat areas of "
-"soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, "
-"visible paper grain and pigment bleeds, mystical dreamlike mood, a rich complete color palette "
-"spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally "
-"across the scene according to its mood, muted jewel tones, subtle gold linework, soft misty "
-"atmosphere, not photorealistic, not 3d, not airbrushed.")
+positive = ("A single person standing on a small low pedestal, held like a puppet: fine threads descend "
+"from a faint, indistinct hand and source high above, attaching to the person's wrists, shoulders and "
+"head, controlling them from outside. These same threads have woven a dull, drab grey costume all "
+"around the person's body, an imposed second skin spun over them — yet a warm radiant inner light "
+"clearly shines through the woven costume, the person's true luminous nature glowing through the drab "
+"weave, impossible to fully hide. A loose iron chain lies slack on the ground at the pedestal's base, "
+"its links open and unlocked, binding nothing — a servitude that could be shed at any moment. Nearby, "
+"a single torch burns turned upside down, its flame pointing downward, light misdirected toward the "
+"ground. At the person's feet, a still reflective pool shows their true reflection: the very same "
+"person, but fully radiant, free, without any threads or drab costume, glowing with rich vivid color. "
+"The figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, "
+"stylized idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal "
+"shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, "
+"Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full range of warm "
+"and cool hues, harmoniously balanced and distributed naturally across the scene according to its "
+"mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, "
+"not airbrushed.")
 
-negative = ("human figure, person, people, extra leg, third leg, two left legs, duplicated limb, "
+negative = ("horned devil, demon, baphomet, satanic, inverted pentagram, scary monster, two people "
+"different, twins, duplicate person unrelated, extra leg, third leg, two left legs, duplicated limb, "
 "missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, "
 "extra hand, floating hand, malformed hands, fused fingers, extra finger, extra wing, three wings, "
 "deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow "
