@@ -3,7 +3,7 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_15_Emprise_v5"
+NAME = "major_15_Emprise_v6"
 SEED = 777040
 
 positive = ("A single person standing on a small low black pedestal, held like a puppet: fine threads "
@@ -16,11 +16,13 @@ positive = ("A single person standing on a small low black pedestal, held like a
 "with quiet melancholy — eyes widening as they recognize their own true radiant nature for the first "
 "time, the exact moment the conditioning begins to loosen, awakening to who they truly are. A loose "
 "iron chain lies slack on the ground at the pedestal's base, its links open and unlocked, binding "
-"nothing — a servitude that could be shed at any moment. Nearby, a single torch is held completely "
-"upside down — its handle pointing straight up, its flame burning downward toward the ground, "
-"clearly inverted, unmistakably not in its normal upright position. At the person's feet, a still "
-"reflective pool shows something entirely different from the person above: not a detailed figure, "
-"but a pure luminous silhouette of light in the vague shape of a being, glowing in rich "
+"nothing — a servitude that could be shed at any moment. Nearby, a single torch hangs completely "
+"upside down, suspended from above by one of the fine threads — the thread passes down through the "
+"person's own hand, and from there holds the inverted torch — its handle pointing straight up, its "
+"flame burning downward toward the ground, clearly inverted, a strong striking image: the person's "
+"own puppet threads holding the very light that is turned against them. At the person's feet, a "
+"still reflective pool shows something entirely different from the person above: not a detailed "
+"figure, but a pure luminous silhouette of light in the vague shape of a being, glowing in rich "
 "multicolored light — no distinct facial features, no visible anatomy, no threads, no chains, no "
 "drab costume, just a radiant abstract glow of many colors in a humanoid shape, free and shining. "
 "The figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour "
@@ -31,18 +33,18 @@ positive = ("A single person standing on a small low black pedestal, held like a
 "according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
 "photorealistic, not 3d, not airbrushed.")
 
-negative = ("peaceful face, serene face, blank expression, calm face, relaxed face, looking straight "
-"ahead, looking up, strain, grimace, clenched jaw, detailed face in reflection, anatomy in "
-"reflection, chains in reflection, threads in reflection, costume in reflection, upright torch, "
-"torch standing upright, flame pointing up, grey pedestal, white pedestal, horned devil, demon, "
-"baphomet, satanic, inverted pentagram, scary monster, extra leg, third leg, two left legs, "
-"duplicated limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, "
-"disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra finger, extra "
-"wing, three wings, deformed wing, malformed anatomy, bad anatomy, disfigured, mutated, rainbow, "
-"rainbow arc, rainbow gradient, rainbow river, rainbow sky, prismatic streak, spectrum band, random "
-"occult symbols, magic circles, alchemical sigils, mystical glyphs, decorative rune circles, "
-"meaningless icons, esoteric patterns, embroidered symbols, medallion patterns, circular emblems, "
-"text, watermark, photorealistic, 3d render")
+negative = ("torch on ground, torch standing on floor, torch held directly in hand without thread, "
+"peaceful face, serene face, blank expression, calm face, relaxed face, looking straight ahead, "
+"looking up, strain, grimace, clenched jaw, detailed face in reflection, anatomy in reflection, "
+"chains in reflection, threads in reflection, costume in reflection, upright torch, flame pointing "
+"up, grey pedestal, white pedestal, horned devil, demon, baphomet, satanic, inverted pentagram, "
+"scary monster, extra leg, third leg, two left legs, duplicated limb, missing foot, missing leg, "
+"missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, floating hand, "
+"malformed hands, fused fingers, extra finger, extra wing, three wings, deformed wing, malformed "
+"anatomy, bad anatomy, disfigured, mutated, rainbow, rainbow arc, rainbow gradient, rainbow river, "
+"rainbow sky, prismatic streak, spectrum band, random occult symbols, magic circles, alchemical "
+"sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric patterns, embroidered "
+"symbols, medallion patterns, circular emblems, text, watermark, photorealistic, 3d render")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
