@@ -264,6 +264,8 @@ Symboles Rider (appoint, enrichissement) : sept petites étoiles scintillant aut
 
 **Lecture (FR)** : Rien à faire, nulle part où aller. Laisse-toi descendre dans ce silence-là — c'est un moment précieux où tu peux enfin t'entendre toi-même.
 
+**VALIDÉ FINAL par Martin (v1, seed 777042)** — validée du premier coup. Avec bordure Art Nouveau (norme du deck depuis XVI). Script archivé : `_gen_carte_Silence_v1_validee.py`. Fichier : `cartes_validees/CARTE_major_17_Silence_validee.png` (à déposer depuis Draw Things).
+
 ---
 
 ### XVIII · L'INVISIBLE (La Lune / Past Lives) ⚠️ EXCEPTION arc-en-ciel autorisée (lézards)
