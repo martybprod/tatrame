@@ -289,15 +289,14 @@ Symboles Rider (appoint, enrichissement) : sept petites étoiles scintillant aut
 **VALIDÉ FINAL par Martin (v1, seed 777045)** — validée du premier coup. Script archivé : `_gen_carte_Rayonnement_v1_validee.py`. Fichier : `cartes_validees/CARTE_major_19_Rayonnement_validee.png` (à déposer depuis Draw Things).
 
 ### XX · VÉRITÉ (Le Jugement / Beyond Illusion)
-Symboles Osho : un papillon devant (l'extérieur, l'illusion mouvante) · derrière lui, un grand visage de conscience tourné vers l'intérieur · l'espace entre les deux yeux s'ouvre, révélant un lotus et un soleil levant (le troisième œil).
-Genre : femme.
-Symboles Rider (appoint, enrichissement) : au loin, dans la vallée en contrebas, de minuscules silhouettes se redressent doucement hors de la brume matinale (écho discret du réveil/de la résurrection de Rider, en arrière-plan seulement) · une trompette dorée stylisée et discrète évoquant l'appel, posée près d'elle plutôt que soufflée.
 
-**PROMPT** : *A delicate butterfly hovering in the foreground, representing the ever-changing, illusory outer world. Behind it, the large serene face of a woman looks inward with closed outer eyes, while the space between her brows opens to reveal a small glowing lotus flower and a rising sun — her awakening third eye. Soft radiant light emanates from that point outward. Far below in a misty valley, tiny distant silhouettes gently rise and stretch out of the morning fog, quietly awakening. A small ornamental golden trumpet rests near her, symbolic rather than sounded. Flat decorative Art Nouveau illustration style, bold elegant clean contour lines, stylized idealized features, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, mystical dreamlike mood, a rich complete color palette spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally across the scene according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.*
+⚠️ **CONCEPT ENTIÈREMENT RETRAVAILLÉ "Ta Trame" — LA LAMPE ALLUMÉE** (abandon des versions Osho ET Rider : dans Ta Trame, l'appel ne vient pas du ciel — il vient de ce qu'on a soi-même allumé, et il se propage par contagion, pas par jugement).
 
-**Lecture (FR)** : Arrête de chercher la vérité à l'extérieur, dans ce qui bouge et change sans cesse. Ferme les yeux un instant, et regarde plutôt ce qui se lève déjà en toi.
+**Symboles du concept validé** : une femme debout au sommet d'un vieil escalier de pierre à la nuit tombante, tenant une petite lampe à huile allumée dont la flamme dorée vivante éclaire toute la scène · visage serein, YEUX OUVERTS tournés vers le village (lucidité, pas extase) · à la lumière de sa lampe, ses propres vêtements se révèlent tissés d'or et de couleurs profondes (la vérité révèle d'abord sa propre richesse) · en contrebas, les fenêtres et porches du village S'ALLUMENT D'ELLES-MÊMES une à une en réponse — personne ne porte la flamme (l'appel de Rider transposé : une lumière vue de loin rappelle à chacun la sienne) · derrière elle sur les marches hautes, l'obscurité reste épaisse — ce qui n'est pas encore éclairé attend, sans être jugé · UN SEUL papillon de nuit tourne autour de la lampe (l'écho retourné d'Osho : l'illusion attirée par la lumière = le début du chemin, pas l'erreur) · bordure Art Nouveau ajourée.
 
----
+**Correspondances** : sens-noyau intact (l'appel, le réveil, le levé du voile) mais source inversée (de soi, pas d'en haut). Colonne lumineuse du deck : XVI faille-lumière → XIX fleur-soleil → XX lampe. Enchaînement XIX→XX : le soleil cultivé hier éclaire le village.
+
+**VALIDÉ FINAL par Martin (v1, seed 777046)** — validée du premier coup. Script archivé : `_gen_carte_Verite_v1_validee.py`. Fichier : `cartes_validees/CARTE_major_20_Verite_validee.png` (à déposer depuis Draw Things).
 
 ### XXI · ACCOMPLISSEMENT (Le Monde / Completion)
 Symboles Osho : la dernière pièce d'un puzzle mise en place à l'emplacement du troisième œil · l'image entière enfin révélée · gratitude, fin et commencement.
