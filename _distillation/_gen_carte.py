@@ -3,7 +3,7 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_16_Rupture_v6"
+NAME = "major_16_Rupture_v7"
 SEED = 777041
 
 positive = ("A huge medieval woven tapestry on a tall wooden loom dominates the scene, and its surface "
@@ -20,10 +20,12 @@ positive = ("A huge medieval woven tapestry on a tall wooden loom dominates the 
 "brightness through which true light floods into the scene. Along the tear, the weave is coming "
 "undone: loose threads free themselves from the fabric and drift through the air, some floating "
 "gently toward the ground, and the edges of the tear glow softly with small orange embers — a "
-"quiet fire of purification, subtle and contained. Two small woven figures have come loose from "
-"the unravelling weave and fall upside down through the open air beside the tear — head first, "
-"heads pointing straight toward the ground, legs up, clearly outside the band of light, at a "
-"distance from it, two separate falling figures not one, tumbling freely like discarded puppets. "
+"quiet fire of purification, subtle and contained. Exactly two small woven figures have come "
+"loose from the unravelling weave and fall upside down through the open air beside the tear, one "
+"on each side of the tear — both head first, heads pointing straight toward the ground, legs up, "
+"a pair of two, two of them, one figure on the left of the light and one figure on the right of "
+"the light, clearly outside the band of light, at a distance from it, two separate falling "
+"figures not one, tumbling freely like discarded puppets. "
 "The scene contains only these elements: the tapestry, the loom, the falling woven figures, and "
 "one real woman standing before the loom — nothing in the upper corners, no angels, no cherubs, "
 "no decorative figures anywhere else. The woman wears a long robe woven of the same coarse grey "
