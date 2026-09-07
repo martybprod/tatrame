@@ -3,7 +3,7 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_16_Rupture_v5"
+NAME = "major_16_Rupture_v6"
 SEED = 777041
 
 positive = ("A huge medieval woven tapestry on a tall wooden loom dominates the scene, and its surface "
@@ -21,22 +21,26 @@ positive = ("A huge medieval woven tapestry on a tall wooden loom dominates the 
 "undone: loose threads free themselves from the fabric and drift through the air, some floating "
 "gently toward the ground, and the edges of the tear glow softly with small orange embers — a "
 "quiet fire of purification, subtle and contained. Two small woven figures have come loose from "
-"the unravelling weave and tumble head over heels through the open air beside the tear — clearly "
-"outside the band of light, at a distance from it, two separate falling figures not one, falling "
-"freely like discarded puppets. The scene contains only these elements: the tapestry, the loom, "
-"the falling woven figures, and one real woman standing before the loom — nothing in the upper "
-"corners, no angels, no cherubs, no decorative figures anywhere else. The woman stands calm and "
-"still, rendered in smooth watercolor in deliberate contrast with the coarse threaded tapestry, "
-"bathed in the true light streaming through the tear, watching the weaving come undone without "
-"fear. The whole image is framed by an ornate Art Nouveau golden border with flowing organic "
-"whiplash lines and delicate ornamental corners, enclosing the entire card. The woman drawn in "
-"the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, stylized "
-"idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal "
-"shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment "
-"bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full "
-"range of warm and cool hues, harmoniously balanced and distributed naturally across the scene "
-"according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
-"photorealistic, not 3d, not airbrushed.")
+"the unravelling weave and fall upside down through the open air beside the tear — head first, "
+"heads pointing straight toward the ground, legs up, clearly outside the band of light, at a "
+"distance from it, two separate falling figures not one, tumbling freely like discarded puppets. "
+"The scene contains only these elements: the tapestry, the loom, the falling woven figures, and "
+"one real woman standing before the loom — nothing in the upper corners, no angels, no cherubs, "
+"no decorative figures anywhere else. The woman wears a long robe woven of the same coarse grey "
+"threads as the tapestry, but her robe is coming undone from its lower hem upward: the grey weave "
+"loosens, frees itself and dissolves into flowing threads of luminous gold and soft warm light "
+"that drift gently around her legs like released ribbons — she is dressed in the rupture itself, "
+"the old weaving unraveling into light. She stands calm and still, rendered in smooth watercolor "
+"in deliberate contrast with the coarse threaded tapestry, bathed in the true light streaming "
+"through the tear, watching the weaving come undone without fear. The whole image is framed by "
+"an ornate Art Nouveau golden border with flowing organic whiplash lines and delicate ornamental "
+"corners, enclosing the entire card. The woman drawn in the flat decorative style of Alphonse "
+"Mucha — bold elegant clean contour lines, stylized idealized features, flowing ornamental hair, "
+"flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on "
+"textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a "
+"rich complete color palette spanning the full range of warm and cool hues, harmoniously balanced "
+"and distributed naturally across the scene according to its mood, muted jewel tones, subtle gold "
+"linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.")
 
 negative = ("angels, cherubs, putti, angelots, winged figures in corners, corner figures, decorative "
 "figures in upper corners, clouds with figures, rainbow, rainbow arc, rainbow gradient, rainbow "
@@ -45,10 +49,11 @@ negative = ("angels, cherubs, putti, angelots, winged figures in corners, corner
 "missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, "
 "floating hand, malformed hands, fused fingers, extra finger, malformed anatomy, bad anatomy, "
 "disfigured, mutated, two women, couple, romantic pair, lovers embracing, figures inside the "
-"light beam, single falling figure, crown outside the tapestry, crown falling, crown unravelling, "
-"random occult symbols, magic circles, alchemical sigils, mystical glyphs, decorative rune "
-"circles, meaningless icons, esoteric patterns, embroidered symbols, medallion patterns, circular "
-"emblems, real people inside the tapestry, photorealistic, 3d render, text, watermark")
+"light beam, single falling figure, figures falling feet first, figures upright, crown outside "
+"the tapestry, crown falling, crown unravelling, random occult symbols, magic circles, "
+"alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
+"patterns, embroidered symbols, medallion patterns, circular emblems, real people inside the "
+"tapestry, photorealistic, 3d render, text, watermark")
 
 payload = {
     "prompt": positive, "negative_prompt": negative,
