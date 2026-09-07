@@ -3,33 +3,37 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_18_Invisible_v1"
-SEED = 777043
+NAME = "major_18_Invisible_v2_arbre"
+SEED = 777044
 
-# XVIII · L'INVISIBLE — EXCEPTION arc-en-ciel AUTORISÉE (les deux lézards only)
-positive = ("A softly glowing oval portal of light hovering in a starry twilight sky, its swirling "
-"threshold subtly suggesting an ancient, cosmic origin point (treated abstractly and tastefully, "
-"not explicit), with faint ghostly faces from other times drifting gently within its glow. On "
-"either side of the portal rest two small rainbow-colored lizards, one on each side, still and "
-"watchful, guardians of what is known and unknown. In the distance, two twin stone towers stand "
-"as silent sentinels, and a winding path leads from the foreground toward the horizon, vanishing "
-"into mist. A crescent moon glows above. No human figure anywhere in the scene. The whole image "
-"is framed by an ornate Art Nouveau golden border with flowing organic whiplash lines and "
-"delicate ornamental corners, enclosing the entire card. Flat decorative Art Nouveau "
-"illustration style, bold elegant clean contour lines, flat areas of soft watercolor pigment, "
-"minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and "
-"pigment bleeds, mystical dreamlike mood, a rich complete color palette spanning the full range "
-"of warm and cool hues, harmoniously balanced and distributed naturally across the scene "
-"according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
-"photorealistic, not 3d, not airbrushed.")
+# XVIII · L'INVISIBLE — concept v2 "L'ARBRE ET SES RACINES" (remplace le portail+lézards)
+positive = ("A single great tree at night under a crescent moon, its dark slender crown rising into "
+"a starry twilight sky. The image shows the earth in cross-section: below the ground line, the "
+"tree's vast root network spreads much wider and deeper than the crown above, glowing softly "
+"with subdued golden light like a luminous underground web, far larger than the visible part of "
+"the tree. Nestled here and there within the glowing roots, the earth holds small distinct "
+"objects from lives long past: a ring, an old key, a tiny crown, a small hourglass — each one "
+"separate and clearly different, held gently in the root network like keepsakes. In the far "
+"distance on the horizon, two standing stones rise side by side, silent and discreet. No human "
+"figure anywhere in the scene. The visible world above ground is quiet, dim and small; the "
+"hidden world below is vast, radiant and alive. The whole image is framed by an ornate Art "
+"Nouveau golden border with flowing organic whiplash lines and delicate ornamental corners, "
+"enclosing the entire card. Flat decorative Art Nouveau illustration style, bold elegant clean "
+"contour lines, stylized idealized forms, flat areas of soft watercolor pigment, minimal "
+"shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment "
+"bleeds, mystical dreamlike mood, a rich complete color palette spanning the full range of warm "
+"and cool hues, harmoniously balanced and distributed naturally across the scene according to "
+"its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, "
+"not 3d, not airbrushed.")
 
-# Négatif SPÉCIAL : sans les termes rainbow (exception de cette carte)
+# Retour au négatif standard (plus d'exception arc-en-ciel : les lézards ont disparu avec le concept v1)
 negative = ("angels, cherubs, putti, angelots, winged figures in corners, corner figures, decorative "
-"figures in upper corners, clouds with figures, more than two lizards, three lizards, extra leg, "
-"third leg, two left legs, duplicated limb, missing foot, missing leg, missing limb, extra arm, "
-"third arm, phantom hand, disembodied hand, extra hand, floating hand, malformed hands, fused "
-"fingers, extra finger, malformed anatomy, bad anatomy, disfigured, mutated, human figure, "
-"person standing in the path, multiple portals, more than two towers, random occult symbols, "
+"figures in upper corners, clouds with figures, rainbow, rainbow arc, rainbow gradient, rainbow "
+"river, rainbow sky, prismatic streak, spectrum band, extra leg, third leg, two left legs, "
+"duplicated limb, missing foot, missing leg, missing limb, extra arm, third arm, phantom hand, "
+"disembodied hand, extra hand, floating hand, malformed hands, fused fingers, extra finger, "
+"malformed anatomy, bad anatomy, disfigured, mutated, human figure, person, face in the roots, "
+"faces in the ground, skulls, bones, two trees, several trees, forest, random occult symbols, "
 "magic circles, alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, "
 "esoteric patterns, embroidered symbols, medallion patterns, circular emblems, photorealistic, "
 "3d render, text, watermark")
