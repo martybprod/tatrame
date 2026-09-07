@@ -3,7 +3,7 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_18_Invisible_v4_arbre"
+NAME = "major_18_Invisible_v5_arbre"
 SEED = 777044
 
 # v4 : racines BOTANIQUEMENT RÉALISTES — système ramifié complexe, densément détaillé (garde la grâce v3)
@@ -27,8 +27,11 @@ positive = ("A single graceful tree at night under a slender crescent moon, its 
 "standing stones rise side by side, silent and discreet. No human figure anywhere in the "
 "scene. The visible world above ground is quiet, dim and small; the hidden world below is "
 "vast, radiant and alive. The whole image is framed by an ornate Art Nouveau golden border "
-"with flowing organic whiplash lines and delicate ornamental corners, enclosing the entire "
-"card. Flat decorative Art Nouveau illustration style, bold elegant clean contour lines, "
+"with flowing organic whiplash lines and delicate ornamental corners — the corner ornaments "
+"are openwork: the scene's own sky, stars and landscape show through them, no white or solid "
+"fill inside the border or corners, the artwork continues seamlessly behind the golden "
+"linework everywhere. Flat decorative Art Nouveau illustration style, bold elegant clean "
+"contour lines, "
 "stylized idealized forms, flat areas of soft watercolor pigment, minimal shading. Entirely "
 "hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, mystical "
 "dreamlike mood, a rich complete color palette spanning the full range of warm and cool hues, "
@@ -47,7 +50,9 @@ negative = ("angels, cherubs, putti, angelots, winged figures in corners, corner
 "disfigured, mutated, human figure, person, face in the roots, faces in the ground, skulls, "
 "bones, two trees, several trees, forest, random occult symbols, magic circles, alchemical "
 "sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric patterns, "
-"embroidered symbols, medallion patterns, circular emblems, photorealistic, 3d render, text, "
+"embroidered symbols, medallion patterns, circular emblems, white corners, white medallions "
+"in the corners, solid filled corners, blank corner roundels, white circles in corners, "
+"photorealistic, 3d render, text, "
 "watermark")
 
 payload = {
