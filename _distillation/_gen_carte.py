@@ -3,7 +3,7 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_18_Invisible_v6_arbre"
+NAME = "major_18_Invisible_v7_arbre"
 SEED = 777044
 
 # v4 : racines BOTANIQUEMENT RÉALISTES — système ramifié complexe, densément détaillé (garde la grâce v3)
@@ -20,8 +20,8 @@ positive = ("A single graceful tree at night under a slender crescent moon, its 
 "fine precise linework, glowing with a subdued golden light from within, spreading much wider "
 "and deeper than the crown. Suspended within this intricate luminous rootwork, like precious "
 "gems set in a necklace, hang a "
-"few small treasures from lives long past — one single ring, one old key, one tiny crown, each "
-"appearing exactly once — each one "
+"few small treasures from lives long past — exactly three objects in total, no more: one ring, "
+"one key, one tiny crown, and nothing else — each one "
 "separate and distinct, cradled and encircled by the curved roots themselves, perfectly "
 "composed like jewels in a display, never scattered or buried. The roots and the ground fade "
 "into one another in soft watercolor gradients. In the far distance on the horizon, two "
@@ -44,7 +44,9 @@ negative = ("angels, cherubs, putti, angelots, winged figures in corners, corner
 "figures in upper corners, clouds with figures, rainbow, rainbow arc, rainbow gradient, rainbow "
 "river, rainbow sky, prismatic streak, spectrum band, hard straight ground line, sharp cut "
 "between ground and underground, sparse simple roots, few roots, schematic roots, symmetrical "
-"root pattern, two rings, multiple rings, several rings, duplicated objects, objects scattered "
+"root pattern, two rings, multiple rings, several rings, two keys, multiple keys, several "
+"keys, two crowns, more than three objects, four objects, five objects, many objects, "
+"duplicated objects, objects scattered "
 "on the ground, objects buried in dirt, "
 "cluttered objects, extra leg, third leg, two left legs, duplicated limb, missing foot, "
 "missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, "
