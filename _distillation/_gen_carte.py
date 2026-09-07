@@ -3,7 +3,7 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_16_Rupture_v7"
+NAME = "major_16_Rupture_v8"
 SEED = 777041
 
 positive = ("A huge medieval woven tapestry on a tall wooden loom dominates the scene, and its surface "
@@ -28,7 +28,10 @@ positive = ("A huge medieval woven tapestry on a tall wooden loom dominates the 
 "figures not one, tumbling freely like discarded puppets. "
 "The scene contains only these elements: the tapestry, the loom, the falling woven figures, and "
 "one real woman standing before the loom — nothing in the upper corners, no angels, no cherubs, "
-"no decorative figures anywhere else. The woman wears a long robe woven of the same coarse grey "
+"no decorative figures anywhere else. The woman stands to one side of the tapestry, off to the "
+"left, clearly apart from the vertical band of light — the tear and its light never touch her, "
+"they pass through the tapestry behind her, away from her body. She wears a long robe woven of "
+"the same coarse grey "
 "threads as the tapestry, but her robe is coming undone from its lower hem upward: the grey weave "
 "loosens, frees itself and dissolves into flowing threads of luminous gold and soft warm light "
 "that drift gently around her legs like released ribbons — she is dressed in the rupture itself, "
@@ -51,7 +54,8 @@ negative = ("angels, cherubs, putti, angelots, winged figures in corners, corner
 "missing leg, missing limb, extra arm, third arm, phantom hand, disembodied hand, extra hand, "
 "floating hand, malformed hands, fused fingers, extra finger, malformed anatomy, bad anatomy, "
 "disfigured, mutated, two women, couple, romantic pair, lovers embracing, figures inside the "
-"light beam, single falling figure, figures falling feet first, figures upright, crown outside "
+"light beam, single falling figure, figures falling feet first, figures upright, light beam "
+"crossing the woman, beam overlapping the woman, tear crossing the standing woman, crown outside "
 "the tapestry, crown falling, crown unravelling, random occult symbols, magic circles, "
 "alchemical sigils, mystical glyphs, decorative rune circles, meaningless icons, esoteric "
 "patterns, embroidered symbols, medallion patterns, circular emblems, real people inside the "
