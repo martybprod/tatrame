@@ -3,14 +3,15 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_10_Changement_v10_ete_riche_cercle"
+NAME = "major_10_Changement_v10_saisons_fluides"
 SEED = 777086
 
 # X · CHANGEMENT — v9 : ordre des saisons reussi ("ca s'en vient tres bien"). v10 : (a)
-# enrichir les couleurs du printemps et SURTOUT de l'ete — l'ete doit montrer toute sa
-# richesse, fleurs de toutes les couleurs tissees ; (b) roue encore legerement ovale
-# (allongee verticalement) -> consigne de rondeur absolue renforcee en tete de prompt ;
-# (c) roue trop pres des bords -> marge d'air explicite tout autour.
+# chaque saison divisee en TROIS etapes distinctes qui s'enchainent en fluide (debut /
+# plein / fin de saison — ex. l'ete : roses+coquelicots -> pleine abondance multicolore ->
+# tournesols murs et bles d'or) ; (b) roue encore legerement ovale (allongee verticalement)
+# -> consigne de rondeur absolue renforcee en tete de prompt ; (c) roue trop pres des bords
+# -> marge d'air explicite tout autour.
 positive = ("A circular tapestry loom of absolute perfect roundness — drawn with a "
 "compass, a mathematically true circle whose width and height are exactly identical, never "
 "oval, never elongated vertically, never stretched, never elliptical, never tilted, seen "
@@ -23,20 +24,34 @@ positive = ("A circular tapestry loom of absolute perfect roundness — drawn wi
 "across them. At the still wooden hub sits a small yin-yang symbol, perfectly motionless "
 "while the great round loom slowly turns. Reading the loom like a clock face, the four "
 "seasons are woven as four continuous blocks of three hours each, progressing clockwise in "
-"one single unbroken cycle: spring occupies the top-right quarter of the circle, from noon "
-"to three o'clock — fresh varied greens with blossom threads in soft pink, white and coral "
-"woven among them; summer occupies the right-to-bottom quarter, from three to six o'clock — "
-"the richest quarter of the whole wheel, deep green foliage alive with woven flowers of "
-"every color, red poppies, blue cornflowers, yellow sunflowers, purple lupins, orange "
-"butterflies' flowers, white daisies, the full abundance and richness of high summer "
-"blooming all together under bright sun-gold threads; autumn occupies the bottom-left quarter, "
-"from six to nine o'clock — amber, russet and copper threads with falling leaves woven in; "
-"winter occupies the left-to-top quarter, from nine to noon — white and silver-blue threads "
-"with delicate snowflake patterns, closing the cycle back into spring at the top. Each "
+"one single unbroken cycle, and within each season the three sectors show three distinct "
+"successive stages of that season's evolution, flowing into each other like a gradual "
+"gradient: spring occupies the top-right quarter of the circle, from noon to three o'clock "
+"— its first sector is very early spring, snowdrops and pale crocuses emerging from "
+"half-frozen pale ground; its second sector is full blossom, pink and white cherry-blossom "
+"threads on fresh varied greens; its third sector is late spring, coral tulips and lush "
+"young meadow greens growing rich and deep. Summer occupies the right-to-bottom quarter, "
+"from three to six o'clock, the richest quarter of the whole wheel — its first sector is "
+"early summer, wild roses and red poppies opening among fresh green; its second sector is "
+"high summer at its fullest abundance, deep green foliage alive with woven flowers of "
+"every color, blue cornflowers, yellow sunflowers, purple lupins, white daisies, orange "
+"butterfly flowers, all blooming together under bright sun-gold threads; its third sector "
+"is late summer, the greens turning warm and golden, heavy sunflower heads bowing ripe "
+"with seeds, wheat turning amber at the edge of the field. Autumn occupies the "
+"bottom-left quarter, from six to nine o'clock — its first sector is early autumn, harvest "
+"grapes and golden wheat woven in; its second sector is full autumn, amber, russet and "
+"copper threads with falling leaves woven in; its third sector is late autumn, nearly bare "
+"dark branches, last stubborn leaves in muted brown, thin morning mist. Winter occupies "
+"the left-to-top quarter, from nine to noon — its first sector is early winter, the first "
+"delicate snowflakes falling on frozen dark earth; its second sector is deep winter, white "
+"and silver-blue threads with intricate snowflake and ice-crystal patterns; its third "
+"sector is late winter, the very first hint of returning light, one or two tiny snowdrop "
+"buds woven into the white, closing the cycle back into spring at the top. Each "
 "season is one single continuous block of cloth — never repeated, never mirrored, never "
 "alternated: spring appears exactly once, summer exactly once, autumn exactly once, winter "
-"exactly once, each season's three sectors always adjacent to each other in the order "
-"spring then summer then autumn then winter, going clockwise around the wheel. The weaving "
+"exactly once, each season's three sectors always adjacent in the order "
+"spring then summer then autumn then winter, going clockwise around the wheel, each "
+"season itself opening, flourishing and fading across its own three sectors. The weaving "
 "is rich, intricate and fully accomplished, "
 "a magnificent progression of cloth. Galaxies and stars swirl faintly around the loom's "
 "outer wooden rim, the twelve zodiac signs etched discreetly along the rim's circumference, "
