@@ -8,7 +8,7 @@ SEED = 777077
 
 # IV · LIBERTÉ — v11 "magnifique". Deux dernieres touches : (a) l'aigle deformé en "moche
 # oiseau generique" -> description concrete renforcee (envergure large, ailes planees en V
-// peu profond, queue eployee, tete crochue blanche — l'anatomie d'un vrai aigle) ; (b) des
+# peu profond, queue eployee, tete crochue blanche — l'anatomie d'un vrai aigle) ; (b) des
 # fleurs doivent pousser DIRECTEMENT sous le talon releve du pied avant — le moment exact ou
 # le pas touche le sol fait naitre la fleur.
 
