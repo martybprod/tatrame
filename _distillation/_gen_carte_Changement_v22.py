@@ -9,10 +9,11 @@ SEEDS = [777098, 777099, 777100, 777101]
 # X · CHANGEMENT — v21 : meme echec que v20 malgre deux formulations differentes (tranches
 # dupliquees courges/crocus, hiver absent) ET ouroboros toujours errant en arriere-plan
 # malgre l'ancrage renforce. Deux essais differents, meme echec -> limite structurelle
-# probable, pas un probleme de mots. v22 : (a) ouroboros ABANDONNE (accord initial "on
-# essaie, sinon on retire") ; (b) steps monte a 32 (Martin) pour un meilleur respect de la
-# structure ; (c) lot de 4 graines avec le MEME prompt pour voir si une graine s'en tire
-# mieux — le probleme peut etre en partie une question de chance de graine.
+# probable, pas un probleme de mots. v22 : (a) ouroboros CONSERVE (Martin veut continuer a
+# essayer), texte inchange depuis v21 ; (b) steps monte a 32 (Martin) pour un meilleur
+# respect de la structure ; (c) lot de 4 graines avec le MEME prompt pour voir si une
+# graine s'en tire mieux — le probleme peut etre en partie une question de chance de
+# graine, deux formulations differentes ayant echoue de la meme facon.
 positive = ("A circular tapestry loom perfectly round — as perfectly round as a full moon "
 "seen dead-on, as round as a coin lying flat face-up, as round as a cathedral rose window "
 "seen straight-on — a true circle whose width and height are exactly identical, never "
@@ -118,29 +119,29 @@ negative = ("four sections, four quarters, divided in four, quartered wheel, "
 "white solid border, plain white frame, solid filled border, no border, text, watermark, "
 "photorealistic, 3d render")
 
-payload = {
-    "prompt": positive, "negative_prompt": negative,
-    "seed": SEED, "steps": 20, "cfg_scale": 3.0,
-    "width": 1024, "height": 1536,
-    "sampler_name": "Euler A Trailing",
-    "guidance_embed": 3.5, "shift": 3, "batch_size": 1,
-}
-
-data = json.dumps(payload).encode("utf-8")
-req = urllib.request.Request(URL, data=data, headers={"Content-Type": "application/json"})
-t0 = time.time()
-try:
-    with urllib.request.urlopen(req, timeout=500) as resp:
-        body = resp.read()
-    out = json.loads(body)
-    imgs = out.get("images", [])
-    if imgs:
-        raw = base64.b64decode(imgs[0])
-        path = OUTDIR + f"CARTE_{NAME}_seed{SEED}.png"
-        with open(path, "wb") as f:
-            f.write(raw)
-        print(f"OK -> {path}  seed={SEED}  ({round(time.time()-t0,1)}s)")
-    else:
-        print("ECHEC: pas d'image. contenu:", str(out)[:300])
-except Exception as e:
-    print("ERREUR:", repr(e))
+for seed in SEEDS:
+    payload = {
+        "prompt": positive, "negative_prompt": negative,
+        "seed": seed, "steps": 32, "cfg_scale": 3.0,
+        "width": 1024, "height": 1536,
+        "sampler_name": "Euler A Trailing",
+        "guidance_embed": 3.5, "shift": 3, "batch_size": 1,
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(URL, data=data, headers={"Content-Type": "application/json"})
+    t0 = time.time()
+    try:
+        with urllib.request.urlopen(req, timeout=500) as resp:
+            body = resp.read()
+        out = json.loads(body)
+        imgs = out.get("images", [])
+        if imgs:
+            raw = base64.b64decode(imgs[0])
+            path = OUTDIR + f"CARTE_{NAME}_seed{seed}.png"
+            with open(path, "wb") as f:
+                f.write(raw)
+            print(f"OK -> {path}  seed={seed}  ({round(time.time()-t0,1)}s)")
+        else:
+            print(f"ECHEC seed={seed}: pas d'image. contenu:", str(out)[:300])
+    except Exception as e:
+        print(f"ERREUR seed={seed}:", repr(e))
