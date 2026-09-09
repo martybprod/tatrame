@@ -3,14 +3,20 @@ import json, urllib.request, base64, time
 URL = "http://127.0.0.1:7860/sdapi/v1/txt2img"
 OUTDIR = "/Users/martinboucher/Documents/PROJETS_IA/ATRO_PLUS/ASTRO_PLUS_APP/_distillation/"
 
-NAME = "major_10_Changement_v10_ete_riche"
+NAME = "major_10_Changement_v10_ete_riche_cercle"
 SEED = 777086
 
-# X · CHANGEMENT — v9 : ordre des saisons reussi ("ca s'en vient tres bien"). v10 : enrichir
-# les couleurs du printemps et SURTOUT de l'ete — l'ete doit montrer toute sa richesse,
-# fleurs de toutes les couleurs tissees dans le tissu (pas seulement des verts et de l'or).
-positive = ("A vast circular tapestry loom seen perfectly frontal and perfectly circular — "
-"a flawless geometric circle, never oval, never elliptical, never tilted — a real weaver's "
+# X · CHANGEMENT — v9 : ordre des saisons reussi ("ca s'en vient tres bien"). v10 : (a)
+# enrichir les couleurs du printemps et SURTOUT de l'ete — l'ete doit montrer toute sa
+# richesse, fleurs de toutes les couleurs tissees ; (b) roue encore legerement ovale
+# (allongee verticalement) -> consigne de rondeur absolue renforcee en tete de prompt ;
+# (c) roue trop pres des bords -> marge d'air explicite tout autour.
+positive = ("A circular tapestry loom of absolute perfect roundness — drawn with a "
+"compass, a mathematically true circle whose width and height are exactly identical, never "
+"oval, never elongated vertically, never stretched, never elliptical, never tilted, seen "
+"perfectly frontal and centered — surrounded by a generous margin of open sky all around "
+"its rim, breathing space between the loom and the edges of the image on every side, the "
+"loom never touching the border. A real weaver's "
 "loom built in the shape of a great round wheel, its carved wooden rim, exactly twelve "
 "wooden spokes evenly spaced like a clock face, and its wooden hub clearly the frame of an "
 "actual round loom, with warp threads strung taut from hub to rim and weft being woven "
@@ -50,8 +56,10 @@ positive = ("A vast circular tapestry loom seen perfectly frontal and perfectly 
 "to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not "
 "photorealistic, not 3d, not airbrushed.")
 
-negative = ("oval wheel, elliptical wheel, tilted wheel, wheel seen at an angle, "
-"perspective view of wheel, distorted circle, squashed circle, "
+negative = ("oval wheel, vertically elongated wheel, wheel taller than wide, wheel "
+"stretched vertically, elliptical wheel, tilted wheel, wheel seen at an angle, "
+"perspective view of wheel, distorted circle, squashed circle, wheel touching the border, "
+"wheel cropped by the edge, wheel too close to the edges, no margin around the wheel, "
 "eight spokes, eight sections, six spokes, sixteen spokes, uneven spokes, mirrored "
 "seasons, symmetrical seasons, same season twice, repeated season, autumn facing autumn, "
 "seasons out of "
