@@ -10,7 +10,8 @@ SEED = 777084
 # PARFAIT explicite (frontal, pas de perspective inclinee, parfaitement circulaire). (b) 8
 # sections -> 12 rayons, chaque saison = 3 sections (printemps 1-2-3, ete 4-5-6, automne
 # 7-8-9, hiver 10-11-12), ordre absolu. (c) Tissage encore plus abouti (progression tres
-# belle a conserver/rehausser). (d) Serpent plus discret encore.
+# belle a conserver/rehausser). (d) Serpent ELIMINE completement de cette carte (decision
+# Martin : ni reduit a un fil, ni present).
 positive = ("A vast circular tapestry loom seen perfectly frontal and perfectly circular — "
 "a flawless geometric circle, never oval, never elliptical, never tilted — a real weaver's "
 "loom built in the shape of a great round wheel, its carved wooden rim, exactly twelve "
@@ -30,10 +31,8 @@ positive = ("A vast circular tapestry loom seen perfectly frontal and perfectly 
 "one aligned with each spoke, faint I Ching trigrams nested just inside them. At a "
 "respectful distance from the loom, seated calmly on a low outcrop of rock, a sphinx in "
 "slight three-quarter profile with a single tail curving naturally behind it watches the "
-"great round loom turn, the silent riddle observing time pass without touching it. A "
-"single very small and subtle serpent of golden thread, barely noticeable, quietly slips "
-"down along one spoke — letting go made visible as one thin golden strand working loose "
-"from the pattern, discreet and understated. No human figure — the circular loom itself is "
+"great round loom turn, the silent riddle observing time pass without touching it. No "
+"human figure, no serpent, no snake anywhere — the circular loom itself is "
 "the subject, vast, turning, weaving the seasons. The whole image framed by an ornate Art "
 "Nouveau golden border with flowing organic whiplash lines and delicate openwork corners — "
 "the scene's own sky and stars show through the corner ornaments, no white or solid fill "
@@ -50,7 +49,8 @@ negative = ("oval wheel, elliptical wheel, tilted wheel, wheel seen at an angle,
 "eight spokes, eight sections, six spokes, sixteen spokes, uneven spokes, seasons out of "
 "order, seasons mixed up, winter next to summer, autumn next to spring, "
 "abstract wheel, plain wheel without loom structure, cartwheel, ferris wheel, "
-"steering wheel, two serpents, second serpent, multiple serpents, snake attacking, "
+"steering wheel, serpent, snake, two serpents, second serpent, multiple serpents, "
+"snake attacking, "
 "threatening serpent, prominent large serpent, sphinx on top of the loom, sphinx touching "
 "the loom, sphinx perfectly symmetrical, two tails, doubled sphinx, lightning bolts, zigzag "
 "marks, static loom, loom not weaving, human figure, person at the loom, weaver, hands, "
