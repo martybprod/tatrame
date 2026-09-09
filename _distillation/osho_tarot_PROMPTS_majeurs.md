@@ -56,6 +56,24 @@ Symboles Rider (appoint, enrichissement) : un monolithe de pierre gravé de têt
 
 **PROMPT (v5)** : *A powerful young man walking calmly away from an ancient stone monolith carved with ram-head motifs at its base, weathered and deeply cracked, overtaken by climbing green vines — the old authority reclaimed by nature, standing behind him as he moves forward. He wears a flowing knee-length tunic with a sash, his legs and feet completely bare, no trousers, no boots, no shoes. A small sun emblem is embroidered discreetly on his shoulder. He holds a lit torch low at his side, close to his body, its flame small and warm, lighting his own next step rather than raised overhead in triumph. With every bare footstep on the bare rock behind him, wildflowers of every color burst directly up out of the solid stone, a living trail of blooming color growing in his wake — most abundant and vivid right behind his most recent footprint, gradually thinning back into plain bare rock further back near the old monolith. Far above, high in the open sky, an eagle circles at a distance, a silent messenger between earth and heaven. His posture is calm and forward-moving, three-quarter view, walking purposefully rather than defiantly, self-possessed. The whole image framed by an ornate Art Nouveau golden border with flowing organic whiplash lines and delicate openwork corners — the scene's own sky and mountains show through the corner ornaments, no white or solid fill anywhere in the border. The figure drawn in the flat decorative style of Alphonse Mucha — bold elegant clean contour lines, stylized idealized features, flowing ornamental hair, flat areas of soft watercolor pigment, minimal shading. Entirely hand-painted watercolor on textured paper, visible paper grain and pigment bleeds, Art Nouveau, mystical dreamlike mood, a rich complete color palette spanning the full range of warm and cool hues, harmoniously balanced and distributed naturally across the scene according to its mood, muted jewel tones, subtle gold linework, soft misty atmosphere, not photorealistic, not 3d, not airbrushed.*
 
+**v5 aimée**, mais bataille récurrente sur un seul point : des fleurs apparaissaient DEVANT le personnage (là où il n'a pas encore marché), malgré des consignes de plus en plus explicites.
+
+**v6/v7 (retour terrain)** : consignes « ahead/behind » puis « gauche/droite » ajoutées en vue de profil — les deux interrompues par Martin, fleurs toujours présentes devant lui. La vue de profil place structurellement le sentier à côté du marcheur, des deux côtés.
+
+**v8 (retour terrain)** : tentative d'ancrage gauche/droite explicite (marche vers la gauche, monolithe à droite) — encore interrompue, même défaut.
+
+**v9 (retour terrain)** : changement d'angle créatif — au lieu d'interdire « devant », le sentier est décrit comme naissant sous ses pas (référence directe aux traces d'un marcheur solitaire sur la plage). Toujours interrompue : Martin demande de repenser le prompt en entier plutôt que de patcher.
+
+**v10 (retour terrain) — refonte complète** : abandon de la vue de profil (cause structurelle du problème) pour une vue frontale trois-quarts : l'homme grand au premier plan bas-gauche marche vers le coin du cadre, le sentier fleuri fuit en perspective derrière lui vers le monolithe en haut à droite. Ajouts : ailes de pierre sur le monolithe (symbole « ailes déployées », jamais sur l'homme, préférence confirmée en v4), aube dorée entrant par la gauche (il marche vers sa lumière), monolithe en ombre bleue. **Succès : plus aucune fleur devant lui.**
+
+**v11 (retour terrain)** : composition à rééquilibrer, aigle trop proche de la stèle → déplacé loin en haut-ciel séparé de toute structure ; regard précisé « doux et confiant ». Validé dans l'esprit (« magnifique »).
+
+**v12 (retour terrain)** : l'aigle avait dérivé vers un oiseau générique difforme → anatomie d'aigle explicite (envergure, ailes en V, queue éployée, tête blanche crochue). Fleur voulue directement sous le talon qui se pose — apparue légèrement à côté, pas alignée.
+
+**v13 (retour terrain)** : simplification de la consigne fleur (résultat statique plutôt que mécanisme de mouvement) — mieux mais pas encore parfait.
+
+**v14 (VALIDÉ FINAL par Martin, seed 777079)** : fleur ancrée physiquement sous la plante du pied (touche la peau, pousse entre les orteils) ; flamme de la torche rehaussée en « lumière de phare » chaude et radieuse sans être éblouissante. Script archivé : `_gen_carte_Liberte_v14_validee.py`. Fichier : à déposer dans `cartes_validees/` (remplace `CARTE_major_04_Liberte_validee.png`).
+
 **Lecture (FR)** : La vraie liberté n'est pas de te battre contre quelque chose — c'est d'avoir trouvé ta propre vérité et de la vivre sans t'excuser. Les chaînes que tu as brisées ne servaient plus à rien : avance.
 
 ---
