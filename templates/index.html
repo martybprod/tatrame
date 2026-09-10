@@ -1207,7 +1207,7 @@ async function ouvrirTableauBord() {
   const coms = (d.commentaires || []).map(c =>
     `<div class="pont" style="display:block">
       <div class="quoi" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-        <span>${T(c.nom_affiche || c.profil || 'anonyme')} · ${T(c.vue || '?')}</span>
+        <span>${T(c.nom_affiche || c.profil || 'anonyme')} · ${T(c.vue || '?')} · ${formaterDateJournal(c.cree_le)}</span>
         <button class="bouton discret" data-suppr-commentaire="${T(c.id)}"
           style="width:auto;margin:0;padding:4px 10px;font-size:12px">Supprimer</button>
       </div>
