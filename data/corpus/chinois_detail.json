@@ -56,6 +56,101 @@
       "en_bref": "Une journée où l'entente est solide, et ça fait du bien.",
       "miroir": "Aujourd'hui, tes relations proches te soutiennent. Quelqu'un peut t'offrir son aide sans que tu aies à la demander, une personne que tu connais depuis longtemps peut être là au bon moment, et une promesse peut être tenue sans discussion. Tu as le sentiment d'être sur un terrain solide avec les gens que tu aimes, et c'est reposant. Cette stabilité ne se voit pas toujours, mais aujourd'hui, tu peux t'en servir pour avancer.",
       "geste": "Si quelqu'un t'a aidé aujourd'hui, tu peux le remercier simplement, avec tes propres mots. Tu peux aussi écrire à une personne qui compte pour toi, juste pour prendre de ses nouvelles. Les relations solides se construisent avec des gestes simples comme celui-là."
+    },
+    "harmonie_metal": {
+      "en_bref": "Une journée où les mots clairs rapprochent.",
+      "miroir": "Aujourd'hui, les mots passent bien. Une conversation peut être claire dès le départ, quelqu'un peut te donner son avis franchement et avec respect, et vous pouvez vous entendre rapidement sur ce qui compte. Tu as l'impression d'être sur la même longueur que les personnes autour de toi, et c'est agréable. Quand les choses se disent clairement comme aujourd'hui, ça renforce ce qui va bien.",
+      "geste": "S'il y a une chose claire à dire à quelqu'un, tu peux la dire aujourd'hui, par exemple remercier une personne pour quelque chose de précis. Tu peux nommer exactement ce qui t'a aidé ou fait plaisir. Un mot précis dit aujourd'hui peut compter longtemps."
+    },
+    "harmonie_bois": {
+      "en_bref": "Une journée où les idées grandissent mieux à deux.",
+      "miroir": "Aujourd'hui, les bonnes idées peuvent venir à deux. Une personne peut t'encourager au bon moment, un projet commun peut démarrer plus facilement que prévu, et une relation peut faire un pas en avant, comme une amitié qui devient plus proche. Tu sens que ça avance et que tu n'es pas seul pour le faire grandir. Le fait de commencer quelque chose à deux donne de l'élan.",
+      "geste": "S'il y a une idée que tu gardes pour toi depuis un moment, tu peux la partager aujourd'hui avec quelqu'un de confiance. Vous pouvez en parler simplement, sans plan précis, juste pour la voir grandir. C'est souvent à deux que les idées commencent vraiment à pousser."
+    },
+    "harmonie_eau": {
+      "en_bref": "Une journée où l'entente coule de soi, sans efforts.",
+      "miroir": "Aujourd'hui, l'entente peut venir toute seule. Une personne peut te comprendre à demi-mot, un malentendu vieux de plusieurs jours peut se dissoudre en une phrase, et vous pouvez passer du bon temps sans organiser grand-chose. Tu as l'impression que les choses circulent, et c'est reposant. Le fait de ne rien forcer laisse l'entente venir à toi.",
+      "geste": "Si tu repousses un appel ou un message, tu peux le faire aujourd'hui, en quelques mots simples. Ça peut être une nouvelle, une question, ou juste des nouvelles. Les relations se sentent proches quand on leur laisse couler un petit moment ensemble."
+    },
+    "harmonie_feu": {
+      "en_bref": "Une journée où l'entente se vit avec plaisir et chaleur.",
+      "miroir": "Aujourd'hui, les liens se réchauffent. Une rencontre peut être plus joyeuse que prévu, un moment simple peut devenir un bon souvenir, et les gens peuvent se montrer plus ouverts que d'habitude. Tu sens qu'il fait bon être avec les gens aujourd'hui, et ça se partage tout seul. Le fait de dire oui à une invitation peut rendre ta journée tout à fait différente.",
+      "geste": "Propose un moment léger à quelqu'un, un café, une marche, un appel qui ne sert à rien qu'à se faire plaisir. Tu peux choisir la personne qui te met de bonne humeur. La chaleur, ça se transmet, et tu peux commencer aujourd'hui."
+    },
+    "trine_terre": {
+      "en_bref": "Une journée où ce qui est solide chez toi te porte.",
+      "miroir": "Aujourd'hui, ce que tu sais déjà faire te porte. Une habitude que tu suis depuis longtemps peut se révéler très utile, une tâche familière peut avancer sans effort, et les gens autour de toi peuvent compter sur toi sans même le dire. Tu es sur ton terrain, et ça se sent. Le fait de partir de ce que tu maîtrises déjà te donne une base solide pour le reste de la journée.",
+      "geste": "Commence ta journée par la chose que tu sais le mieux faire, même si elle semble banale. Ce premier pas facile peut te mettre en confiance pour le reste. Les grandes journées commencent souvent par un geste que tu connais déjà par cœur."
+    },
+    "trine_metal": {
+      "en_bref": "Une journée où tout devient plus clair et plus facile à organiser.",
+      "miroir": "Aujourd'hui, tu peux voir clair dans ce qui s'accumule. Une liste de choses à faire peut se trier rapidement, une décision compliquée peut devenir simple, et tu peux mettre de l'ordre là où c'était embrouillé. Tu aimes quand c'est bien fait, et aujourd'hui, ça se fait presque tout seul. Le fait de ranger une chose à la fois peut alléger ta tête autant que tes étagères.",
+      "geste": "Choisis une petite chose à remettre en ordre, un tiroir, une liste, un courriel resté en attente. Quelques minutes suffisent aujourd'hui. Tu peux constater tout de suite la différence que ça fait, dans ta tête autant que dans la pièce."
+    },
+    "trine_bois": {
+      "en_bref": "Une journée où ce que tu commences peut pousser vite.",
+      "miroir": "Aujourd'hui, ce que tu commences peut avancer plus vite que prévu. Une idée peut trouver sa forme rapidement, un projet peut démarrer sans obstacle, et ton corps peut te demander de bouger, de créer, de faire. Cette envie d'avancer est à toi, et elle est bonne. Le fait de commencer aujourd'hui donne une longueur d'avance à ce qui compte pour toi.",
+      "geste": "Mets en marche une chose que tu gardais en attente, même en petit. Un premier mot écrit, un premier appel, un premier pas dehors. Ce qui pousse aujourd'hui peut continuer à pousser dans les jours qui viennent."
+    },
+    "trine_eau": {
+      "en_bref": "Une journée où les choses viennent à toi sans effort.",
+      "miroir": "Aujourd'hui, tu peux avancer sans forcer. Les conversations peuvent partir d'elles-mêmes, les personnes peuvent se montrer disponibles, et une solution peut arriver pendant que tu fais autre chose. Tu n'as pas à tout contrôler pour que ça aille. Le fait de laisser un peu de place permet aux bonnes choses de se présenter.",
+      "geste": "Laisse une plage libre dans ta journée, même une demi-heure, sans plan dedans. Tu peux marcher, regarder par la fenêtre, écouter ce qui t'entoure. C'est souvent quand tu ne cherches pas que les bonnes idées arrivent."
+    },
+    "trine_feu": {
+      "en_bref": "Une journée où ta joie se voit et se partage.",
+      "miroir": "Aujourd'hui, ta bonne humeur peut se propager. Un mot gai peut dérider une journée, un rire peut faire baisser la pression, et les gens peuvent aimer être avec toi sans raison précise. Tu n'as pas à faire d'efforts pour plaire, il suffit que tu sois toi. Cette chaleur-là est réelle, et elle fait du bien autour de toi.",
+      "geste": "Partage ce qui te fait plaisir aujourd'hui, une chanson, une photo, une nouvelle qui te réjouit. Tu peux l'envoyer à quelqun qui aura de la joie à le recevoir. Ce qui est partagé aujourd'hui peut éclairer la journée de plus d'une personne."
+    },
+    "nuisance_terre": {
+      "en_bref": "De petites lenteurs s'invitent dans la journée, rien de grave.",
+      "miroir": "Aujourd'hui, les choses peuvent aller plus lentement que tu ne l'aimerais. Un déplacement peut prendre du retard, une personne peut tarder à répondre, et tes projets du jour peuvent demander plus de temps que prévu. Ça peut te sembler lourd, et tu peux avoir envie de tout pousser. Ces lenteurs ne durent pas, et elles ne remettent rien en question de ce que tu as bâti.",
+      "geste": "Prévois plus de temps que tu ne crois nécessaire entre deux choses, et laisse les retards exister sans les poursuivre. Tu peux utiliser ces moments d'attente pour respirer ou pour te lever et bouger. La journée avance quand même, à son rythme."
+    },
+    "nuisance_metal": {
+      "en_bref": "De petits accrocs de précision aujourd'hui, à prendre avec patience.",
+      "miroir": "Aujourd'hui, les détails peuvent coincer un peu. Un mot peut être mal compris dans un message, un chiffre peut se glisser de travers, et une consigne peut prêter à confusion. Ça peut t'agacer, surtout si tu aimes que ce soit clair. Ce sont des petits riens, et le fait de vérifier une fois de plus évite presque tous les problèmes.",
+      "geste": "Relis une seule chose avant de l'envoyer ou de la signer, la plus importante de ta journée. Tu peux aussi poser une question au lieu de deviner, quand quelque chose n'est pas clair. Un mot de plus vérifié vaut mieux qu'un malentendu."
+    },
+    "nuisance_bois": {
+      "en_bref": "Trop de choses en même temps peuvent se cogner aujourd'hui.",
+      "miroir": "Aujourd'hui, tes envies peuvent se marcher dessus. Deux rendez-vous peuvent se rapprocher de trop près, plusieurs personnes peuvent te demander la même chose, et tu peux avoir l'impression de courir dans tous les sens. Ça peut te donner une impression de dispersion, et c'est ça qui fatigue, plus que le travail lui-même. Le fait de choisir une direction à la fois rend la journée beaucoup plus simple.",
+      "geste": "Avant d'accepter une nouvelle demande, regarde ce que ta journée contient déjà. Tu peux reporter une chose sans te sentir coupable, elle t'attendra. Une chose à la fois, et la journée redevient respirable."
+    },
+    "nuisance_eau": {
+      "en_bref": "Des petits changements de plan peuvent bousculer la journée.",
+      "miroir": "Aujourd'hui, les plans peuvent changer sans prévenir. Une heure peut se déplacer, une personne peut annuler à la dernière minute, et tu peux avoir l'impression de réorganiser sans arrêt. Ça peut te sembler flou, et tu peux préférer quand c'est clair et écrit. Ces changements-là ne viennent pas de toi, et ils ne disent rien de ta journée entière. Le fait de t'adapter une fois à la fois suffit largement.",
+      "geste": "Garde ton plan de départ, mais tiens-le à bout de bras, avec de la place pour les changements. Tu peux choisir la seule chose qui doit vraiment rester fixe aujourd'hui, et laisser le reste suivre. Ce qui bouge un peu n'empêche rien d'arriver."
+    },
+    "nuisance_feu": {
+      "en_bref": "De petites tensions peuvent monter aujourd'hui, rien de grave.",
+      "miroir": "Aujourd'hui, de petites tensions peuvent monter plus vite que d'habitude. Une remarque peut tomber mal, une attente peut se prolonger, et ton impatience peut se faire sentir avant même que tu la remarques. Ça peut te surprendre, parce que ce n'est pas ton habitude. Ces étincelles-là s'éteignent vite quand tu les prends au bon moment.",
+      "geste": "Quand quelque chose t'irrite, laisse passer quelques secondes avant de répondre, et détends tes épaules au passage. Tu peux aussi t'éloigner quelques minutes de ce qui chauffe, sans en faire toute une histoire. La plupart de ces petites tensions retombent toutes seules."
+    },
+    "identique_terre": {
+      "en_bref": "Ton côté solide et fidèle ressort plus fort aujourd'hui.",
+      "miroir": "Aujourd'hui, ce qui te ressemble le plus, c'est ta constance. Ta manière de tenir tes engagements peut se voir, ton besoin de choses réelles peut guider tes choix, et les gens peuvent venir te chercher quand il leur faut quelqu'un de fiable. Tu es comme ça tous les jours, mais aujourd'hui, ça se remarque. Le fait de le voir toi aussi vaut le détour.",
+      "geste": "Remarque une fois aujourd'hui où tu es la personne stable du groupe, celle qui écoute ou qui tient le rythme. Tu peux le noter dans un coin, sans en faire toute une analyse. C'est une de tes forces, et la voir clairement permet de mieux t'en servir."
+    },
+    "identique_metal": {
+      "en_bref": "Ton côté droit et précis ressort plus fort aujourd'hui.",
+      "miroir": "Aujourd'hui, ton goût des choses bien faites se voit. Ta manière de dire les choses nettement peut se faire remarquer, ton besoin de clarté peut guider tes échanges, et tu peux avoir peu de temps pour les demi-mesures. C'est une partie réelle de qui tu es, et les gens peuvent compter dessus. Ce qui rend ce côté-là encore plus fort, c'est quand il vient avec de la douceur.",
+      "geste": "Choisis une chose à faire aujourd'hui à ta manière, c'est-à-dire bien, du début à la fin. Tu peux la faire à ton rythme, sans te comparer. C'est comme ça que tu te reconnais toi-même."
+    },
+    "identique_bois": {
+      "en_bref": "Ton côté partant et plein d'idées ressort plus fort aujourd'hui.",
+      "miroir": "Aujourd'hui, ton énergie de départ est plus forte que d'habitude. Ton envie de commencer peut se faire sentir dès le matin, tes idées peuvent arriver en grand nombre, et les gens peuvent suivre ton élan sans savoir pourquoi. Tu es quelqu'un qui démarre, et aujourd'hui, ça se voit encore plus. Le fait de choisir où mettre cette énergie fait toute la différence.",
+      "geste": "Note tes trois premières idées du jour, même celles qui te semblent farfelues. Tu peux en choisir une seule à faire avancer aujourd'hui. Ton énergie fonctionne mieux quand elle a une direction."
+    },
+    "identique_eau": {
+      "en_bref": "Ton côté sensible et adaptable ressort plus fort aujourd'hui.",
+      "miroir": "Aujourd'hui, ta sensibilité aux choses est plus vive. Tu peux remarquer les humeurs autour de toi avant même les mots, tes envies peuvent changer de forme en cours de journée, et tu peux ressentir les choses plus profondément que d'habitude. C'est une manière à toi d'être attentif au monde, et elle est précieuse. Le fait de la connaître te permet de prendre soin de toi quand c'est trop.",
+      "geste": "Si tu sens que ça déborde un peu, tu peux t'accorder un moment tranquille, dans un endroit calme ou avec une personne qui te fait du bien. Tu peux aussi écrire ce que tu ressens, deux lignes suffisent. C'est ta manière à toi de revenir au calme."
+    },
+    "identique_feu": {
+      "en_bref": "Ton côté chaleureux et expressif ressort plus fort aujourd'hui.",
+      "miroir": "Aujourd'hui, ta chaleur naturelle se fait voir. Ton rire peut arriver plus facilement, tes opinions peuvent se dire avec plus d'éclat, et les gens peuvent se sentir plus vivants quand ils sont avec toi. C'est ta manière à toi de réchauffer une pièce, et ça marche sans effort. Le fait de le savoir te permet d'en profiter sans te forcer.",
+      "geste": "Laisse sortir ce qui est bon aujourd'hui, un compliment, un souvenir drôle, une invitation. Tu peux le dire à la première personne qui passe par ta tête. Ta manière d'être là égaye plus de journées que tu ne le crois."
     }
   }
 }
