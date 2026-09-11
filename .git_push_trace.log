@@ -1,0 +1,225 @@
+21:19:47.110792 git.c:502               trace: built-in: git push
+21:19:47.111707 run-command.c:673       trace: run_command: GIT_DIR=.git git remote-https origin https://github.com/martybprod/tatrame.git
+21:19:47.111725 run-command.c:765       trace: start_command: /opt/homebrew/opt/git/libexec/git-core/git remote-https origin https://github.com/martybprod/tatrame.git
+21:19:47.118323 git.c:811               trace: exec: git-remote-https origin https://github.com/martybprod/tatrame.git
+21:19:47.118512 run-command.c:673       trace: run_command: git-remote-https origin https://github.com/martybprod/tatrame.git
+21:19:47.118527 run-command.c:765       trace: start_command: /opt/homebrew/opt/git/libexec/git-core/git-remote-https origin https://github.com/martybprod/tatrame.git
+21:19:47.126639 http.c:994              == Info: Couldn't find host github.com in the .netrc file; using defaults
+21:19:47.703720 http.c:994              == Info: Host github.com:443 was resolved.
+21:19:47.703760 http.c:994              == Info: IPv6: (none)
+21:19:47.703765 http.c:994              == Info: IPv4: 140.82.113.3
+21:19:47.703789 http.c:994              == Info:   Trying 140.82.113.3:443...
+21:19:47.770948 http.c:994              == Info: Connected to github.com (140.82.113.3) port 443
+21:19:47.771032 http.c:994              == Info: ALPN: curl offers h2,http/1.1
+21:19:47.771163 http.c:994              == Info: (304) (OUT), TLS handshake, Client hello (1):
+21:19:47.773957 http.c:994              == Info:  CAfile: /etc/ssl/cert.pem
+21:19:47.773966 http.c:994              == Info:  CApath: none
+21:19:48.447495 http.c:994              == Info: (304) (IN), TLS handshake, Server hello (2):
+21:19:48.447589 http.c:994              == Info: (304) (IN), TLS handshake, Unknown (8):
+21:19:48.447604 http.c:994              == Info: (304) (IN), TLS handshake, Certificate (11):
+21:19:48.448861 http.c:994              == Info: (304) (IN), TLS handshake, CERT verify (15):
+21:19:48.448956 http.c:994              == Info: (304) (IN), TLS handshake, Finished (20):
+21:19:48.449011 http.c:994              == Info: (304) (OUT), TLS handshake, Finished (20):
+21:19:48.449019 http.c:994              == Info: SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+21:19:48.449023 http.c:994              == Info: ALPN: server accepted h2
+21:19:48.449027 http.c:994              == Info: Server certificate:
+21:19:48.449032 http.c:994              == Info:  subject: CN=github.com
+21:19:48.449036 http.c:994              == Info:  start date: Sep  1 00:00:00 2026 GMT
+21:19:48.449039 http.c:994              == Info:  expire date: Nov 29 23:59:59 2026 GMT
+21:19:48.449043 http.c:994              == Info:  subjectAltName: host "github.com" matched cert's "github.com"
+21:19:48.449048 http.c:994              == Info:  issuer: C=GB; O=Sectigo Limited; CN=Sectigo Public Server Authentication CA DV E36
+21:19:48.449051 http.c:994              == Info:  SSL certificate verify ok.
+21:19:48.449074 http.c:994              == Info: using HTTP/2
+21:19:48.449092 http.c:994              == Info: [HTTP/2] [1] OPENED stream for https://github.com/martybprod/tatrame.git/info/refs?service=git-receive-pack
+21:19:48.449096 http.c:994              == Info: [HTTP/2] [1] [:method: GET]
+21:19:48.449098 http.c:994              == Info: [HTTP/2] [1] [:scheme: https]
+21:19:48.449100 http.c:994              == Info: [HTTP/2] [1] [:authority: github.com]
+21:19:48.449103 http.c:994              == Info: [HTTP/2] [1] [:path: /martybprod/tatrame.git/info/refs?service=git-receive-pack]
+21:19:48.449105 http.c:994              == Info: [HTTP/2] [1] [user-agent: git/2.55.0]
+21:19:48.449107 http.c:994              == Info: [HTTP/2] [1] [accept: */*]
+21:19:48.449109 http.c:994              == Info: [HTTP/2] [1] [accept-encoding: deflate, gzip]
+21:19:48.449111 http.c:994              == Info: [HTTP/2] [1] [accept-language: fr-CA, *;q=0.9]
+21:19:48.449113 http.c:994              == Info: [HTTP/2] [1] [pragma: no-cache]
+21:19:48.449126 http.c:941              => Send header, 0000000211 bytes (0x000000d3)
+21:19:48.449137 http.c:953              => Send header: GET /martybprod/tatrame.git/info/refs?service=git-receive-pack HTTP/2
+21:19:48.449139 http.c:953              => Send header: Host: github.com
+21:19:48.449141 http.c:953              => Send header: User-Agent: git/2.55.0
+21:19:48.449142 http.c:953              => Send header: Accept: */*
+21:19:48.449144 http.c:953              => Send header: Accept-Encoding: deflate, gzip
+21:19:48.449145 http.c:953              => Send header: Accept-Language: fr-CA, *;q=0.9
+21:19:48.449147 http.c:953              => Send header: Pragma: no-cache
+21:19:48.449148 http.c:953              => Send header:
+21:19:48.449152 http.c:994              == Info: Request completely sent off
+21:19:49.136425 http.c:941              <= Recv header, 0000000013 bytes (0x0000000d)
+21:19:49.136467 http.c:953              <= Recv header: HTTP/2 401
+21:19:49.136474 http.c:941              <= Recv header, 0000000026 bytes (0x0000001a)
+21:19:49.136476 http.c:953              <= Recv header: server: GitHub-Babel/3.0
+21:19:49.136480 http.c:941              <= Recv header, 0000000054 bytes (0x00000036)
+21:19:49.136484 http.c:953              <= Recv header: content-security-policy: default-src 'none'; sandbox
+21:19:49.136487 http.c:941              <= Recv header, 0000000041 bytes (0x00000029)
+21:19:49.136489 http.c:953              <= Recv header: content-type: text/plain; charset=UTF-8
+21:19:49.136491 http.c:941              <= Recv header, 0000000045 bytes (0x0000002d)
+21:19:49.136493 http.c:953              <= Recv header: strict-transport-security: max-age=31536000
+21:19:49.136496 http.c:941              <= Recv header, 0000000040 bytes (0x00000028)
+21:19:49.136497 http.c:953              <= Recv header: www-authenticate: Basic realm="GitHub"
+21:19:49.136501 http.c:941              <= Recv header, 0000000020 bytes (0x00000014)
+21:19:49.136502 http.c:953              <= Recv header: content-length: 26
+21:19:49.136504 http.c:941              <= Recv header, 0000000037 bytes (0x00000025)
+21:19:49.136506 http.c:953              <= Recv header: date: Fri, 11 Sep 2026 00:19:50 GMT
+21:19:49.136508 http.c:941              <= Recv header, 0000000056 bytes (0x00000038)
+21:19:49.136509 http.c:953              <= Recv header: x-github-request-id: 9D3F:47B05:193185:20C186:6AA34925
+21:19:49.136511 http.c:941              <= Recv header, 0000000027 bytes (0x0000001b)
+21:19:49.136513 http.c:953              <= Recv header: x-github-edge-region: iad
+21:19:49.136514 http.c:941              <= Recv header, 0000000023 bytes (0x00000017)
+21:19:49.136516 http.c:953              <= Recv header: x-frame-options: DENY
+21:19:49.136517 http.c:941              <= Recv header, 0000000002 bytes (0x00000002)
+21:19:49.136519 http.c:953              <= Recv header:
+21:19:49.136529 http.c:994              == Info: Connection #0 to host github.com left intact
+21:19:49.136565 run-command.c:673       trace: run_command: 'git credential-osxkeychain get'
+21:19:49.136569 run-command.c:765       trace: start_command: /bin/sh -c 'git credential-osxkeychain get' 'git credential-osxkeychain get'
+21:19:49.146404 git.c:811               trace: exec: git-credential-osxkeychain get
+21:19:49.146544 run-command.c:673       trace: run_command: git-credential-osxkeychain get
+21:19:49.146556 run-command.c:765       trace: start_command: /opt/homebrew/opt/git/libexec/git-core/git-credential-osxkeychain get
+21:19:54.713364 http.c:994              == Info: Found bundle for host: 0x1052a8060 [can multiplex]
+21:19:54.713399 http.c:994              == Info: Re-using existing connection with host github.com
+21:19:54.713412 http.c:994              == Info: Server auth using Basic with user 'martybprod'
+21:19:54.713434 http.c:994              == Info: [HTTP/2] [3] OPENED stream for https://github.com/martybprod/tatrame.git/info/refs?service=git-receive-pack
+21:19:54.713439 http.c:994              == Info: [HTTP/2] [3] [:method: GET]
+21:19:54.713441 http.c:994              == Info: [HTTP/2] [3] [:scheme: https]
+21:19:54.713444 http.c:994              == Info: [HTTP/2] [3] [:authority: github.com]
+21:19:54.713460 http.c:994              == Info: [HTTP/2] [3] [:path: /martybprod/tatrame.git/info/refs?service=git-receive-pack]
+21:19:54.713462 http.c:994              == Info: [HTTP/2] [3] [authorization: Basic <redacted>]
+21:19:54.713464 http.c:994              == Info: [HTTP/2] [3] [user-agent: git/2.55.0]
+21:19:54.713466 http.c:994              == Info: [HTTP/2] [3] [accept: */*]
+21:19:54.713468 http.c:994              == Info: [HTTP/2] [3] [accept-encoding: deflate, gzip]
+21:19:54.713470 http.c:994              == Info: [HTTP/2] [3] [accept-language: fr-CA, *;q=0.9]
+21:19:54.713472 http.c:994              == Info: [HTTP/2] [3] [pragma: no-cache]
+21:19:54.713541 http.c:941              => Send header, 0000000302 bytes (0x0000012e)
+21:19:54.713545 http.c:953              => Send header: GET /martybprod/tatrame.git/info/refs?service=git-receive-pack HTTP/2
+21:19:54.713548 http.c:953              => Send header: Host: github.com
+21:19:54.713549 http.c:953              => Send header: Authorization: Basic <redacted>
+21:19:54.713551 http.c:953              => Send header: User-Agent: git/2.55.0
+21:19:54.713553 http.c:953              => Send header: Accept: */*
+21:19:54.713554 http.c:953              => Send header: Accept-Encoding: deflate, gzip
+21:19:54.713556 http.c:953              => Send header: Accept-Language: fr-CA, *;q=0.9
+21:19:54.713557 http.c:953              => Send header: Pragma: no-cache
+21:19:54.713559 http.c:953              => Send header:
+21:19:54.713568 http.c:994              == Info: Request completely sent off
+21:19:55.057473 http.c:941              <= Recv header, 0000000013 bytes (0x0000000d)
+21:19:55.057515 http.c:953              <= Recv header: HTTP/2 200
+21:19:55.057523 http.c:941              <= Recv header, 0000000026 bytes (0x0000001a)
+21:19:55.057526 http.c:953              <= Recv header: server: GitHub-Babel/3.0
+21:19:55.057530 http.c:941              <= Recv header, 0000000060 bytes (0x0000003c)
+21:19:55.057532 http.c:953              <= Recv header: content-type: application/x-git-receive-pack-advertisement
+21:19:55.057536 http.c:941              <= Recv header, 0000000054 bytes (0x00000036)
+21:19:55.057538 http.c:953              <= Recv header: content-security-policy: default-src 'none'; sandbox
+21:19:55.057549 http.c:941              <= Recv header, 0000000040 bytes (0x00000028)
+21:19:55.057552 http.c:953              <= Recv header: expires: Fri, 01 Jan 1980 00:00:00 GMT
+21:19:55.057558 http.c:941              <= Recv header, 0000000018 bytes (0x00000012)
+21:19:55.057560 http.c:953              <= Recv header: pragma: no-cache
+21:19:55.057563 http.c:941              <= Recv header, 0000000053 bytes (0x00000035)
+21:19:55.057564 http.c:953              <= Recv header: cache-control: no-cache, max-age=0, must-revalidate
+21:19:55.057568 http.c:941              <= Recv header, 0000000023 bytes (0x00000017)
+21:19:55.057570 http.c:953              <= Recv header: vary: Accept-Encoding
+21:19:55.057572 http.c:941              <= Recv header, 0000000045 bytes (0x0000002d)
+21:19:55.057574 http.c:953              <= Recv header: strict-transport-security: max-age=31536000
+21:19:55.057576 http.c:941              <= Recv header, 0000000037 bytes (0x00000025)
+21:19:55.057577 http.c:953              <= Recv header: date: Fri, 11 Sep 2026 00:19:56 GMT
+21:19:55.057579 http.c:941              <= Recv header, 0000000056 bytes (0x00000038)
+21:19:55.057581 http.c:953              <= Recv header: x-github-request-id: 9D3F:47B05:1942E0:20D86B:6AA34926
+21:19:55.057583 http.c:941              <= Recv header, 0000000027 bytes (0x0000001b)
+21:19:55.057584 http.c:953              <= Recv header: x-github-edge-region: iad
+21:19:55.057586 http.c:941              <= Recv header, 0000000023 bytes (0x00000017)
+21:19:55.057587 http.c:953              <= Recv header: x-frame-options: DENY
+21:19:55.057590 http.c:941              <= Recv header, 0000000002 bytes (0x00000002)
+21:19:55.057591 http.c:953              <= Recv header:
+21:19:55.057610 http.c:994              == Info: Connection #0 to host github.com left intact
+21:19:55.057639 run-command.c:673       trace: run_command: 'git credential-osxkeychain store'
+21:19:55.057643 run-command.c:765       trace: start_command: /bin/sh -c 'git credential-osxkeychain store' 'git credential-osxkeychain store'
+21:19:55.067796 git.c:811               trace: exec: git-credential-osxkeychain store
+21:19:55.067943 run-command.c:673       trace: run_command: git-credential-osxkeychain store
+21:19:55.067954 run-command.c:765       trace: start_command: /opt/homebrew/opt/git/libexec/git-core/git-credential-osxkeychain store
+21:19:55.073221 run-command.c:673       trace: run_command: git send-pack --stateless-rpc --helper-status --thin --no-progress https://github.com/martybprod/tatrame.git/ --stdin
+21:19:55.073238 run-command.c:765       trace: start_command: /opt/homebrew/opt/git/libexec/git-core/git send-pack --stateless-rpc --helper-status --thin --no-progress https://github.com/martybprod/tatrame.git/ --stdin
+21:19:55.078340 git.c:502               trace: built-in: git send-pack --stateless-rpc --helper-status --thin --no-progress https://github.com/martybprod/tatrame.git/ --stdin
+21:19:55.080172 run-command.c:673       trace: run_command: git pack-objects --all-progress-implied --revs --stdout --thin --delta-base-offset -q
+21:19:55.080184 run-command.c:765       trace: start_command: /opt/homebrew/opt/git/libexec/git-core/git pack-objects --all-progress-implied --revs --stdout --thin --delta-base-offset -q
+21:19:55.085657 git.c:502               trace: built-in: git pack-objects --all-progress-implied --revs --stdout --thin --delta-base-offset -q
+21:19:56.185616 http.c:994              == Info: Found bundle for host: 0x1052a8060 [can multiplex]
+21:19:56.185652 http.c:994              == Info: Re-using existing connection with host github.com
+21:19:56.185664 http.c:994              == Info: Server auth using Basic with user 'martybprod'
+21:19:56.185685 http.c:994              == Info: [HTTP/2] [5] OPENED stream for https://github.com/martybprod/tatrame.git/git-receive-pack
+21:19:56.185691 http.c:994              == Info: [HTTP/2] [5] [:method: POST]
+21:19:56.185693 http.c:994              == Info: [HTTP/2] [5] [:scheme: https]
+21:19:56.185695 http.c:994              == Info: [HTTP/2] [5] [:authority: github.com]
+21:19:56.185697 http.c:994              == Info: [HTTP/2] [5] [:path: /martybprod/tatrame.git/git-receive-pack]
+21:19:56.185699 http.c:994              == Info: [HTTP/2] [5] [authorization: Basic <redacted>]
+21:19:56.185700 http.c:994              == Info: [HTTP/2] [5] [user-agent: git/2.55.0]
+21:19:56.185702 http.c:994              == Info: [HTTP/2] [5] [content-type: application/x-git-receive-pack-request]
+21:19:56.185703 http.c:994              == Info: [HTTP/2] [5] [accept: application/x-git-receive-pack-result]
+21:19:56.185705 http.c:994              == Info: [HTTP/2] [5] [content-length: 4]
+21:19:56.185788 http.c:941              => Send header, 0000000309 bytes (0x00000135)
+21:19:56.185792 http.c:953              => Send header: POST /martybprod/tatrame.git/git-receive-pack HTTP/2
+21:19:56.185793 http.c:953              => Send header: Host: github.com
+21:19:56.185795 http.c:953              => Send header: Authorization: Basic <redacted>
+21:19:56.185796 http.c:953              => Send header: User-Agent: git/2.55.0
+21:19:56.185798 http.c:953              => Send header: Content-Type: application/x-git-receive-pack-request
+21:19:56.185799 http.c:953              => Send header: Accept: application/x-git-receive-pack-result
+21:19:56.185800 http.c:953              => Send header: Content-Length: 4
+21:19:56.185802 http.c:953              => Send header:
+21:19:56.185804 http.c:994              == Info: upload completely sent off: 4 bytes
+21:19:56.488691 http.c:941              <= Recv header, 0000000013 bytes (0x0000000d)
+21:19:56.488706 http.c:953              <= Recv header: HTTP/2 200
+21:19:56.488715 http.c:941              <= Recv header, 0000000026 bytes (0x0000001a)
+21:19:56.488718 http.c:953              <= Recv header: server: GitHub-Babel/3.0
+21:19:56.488733 http.c:941              <= Recv header, 0000000053 bytes (0x00000035)
+21:19:56.488735 http.c:953              <= Recv header: content-type: application/x-git-receive-pack-result
+21:19:56.488739 http.c:941              <= Recv header, 0000000054 bytes (0x00000036)
+21:19:56.488740 http.c:953              <= Recv header: content-security-policy: default-src 'none'; sandbox
+21:19:56.488743 http.c:941              <= Recv header, 0000000040 bytes (0x00000028)
+21:19:56.488744 http.c:953              <= Recv header: expires: Fri, 01 Jan 1980 00:00:00 GMT
+21:19:56.488748 http.c:941              <= Recv header, 0000000018 bytes (0x00000012)
+21:19:56.488750 http.c:953              <= Recv header: pragma: no-cache
+21:19:56.488752 http.c:941              <= Recv header, 0000000053 bytes (0x00000035)
+21:19:56.488754 http.c:953              <= Recv header: cache-control: no-cache, max-age=0, must-revalidate
+21:19:56.488756 http.c:941              <= Recv header, 0000000023 bytes (0x00000017)
+21:19:56.488757 http.c:953              <= Recv header: vary: Accept-Encoding
+21:19:56.488759 http.c:941              <= Recv header, 0000000045 bytes (0x0000002d)
+21:19:56.488761 http.c:953              <= Recv header: strict-transport-security: max-age=31536000
+21:19:56.488763 http.c:941              <= Recv header, 0000000019 bytes (0x00000013)
+21:19:56.488765 http.c:953              <= Recv header: content-length: 0
+21:19:56.488767 http.c:941              <= Recv header, 0000000037 bytes (0x00000025)
+21:19:56.488768 http.c:953              <= Recv header: date: Fri, 11 Sep 2026 00:19:57 GMT
+21:19:56.488770 http.c:941              <= Recv header, 0000000056 bytes (0x00000038)
+21:19:56.488772 http.c:953              <= Recv header: x-github-request-id: 9D3F:47B05:19477E:20DE99:6AA3492C
+21:19:56.488774 http.c:941              <= Recv header, 0000000027 bytes (0x0000001b)
+21:19:56.488775 http.c:953              <= Recv header: x-github-edge-region: iad
+21:19:56.488777 http.c:941              <= Recv header, 0000000023 bytes (0x00000017)
+21:19:56.488778 http.c:953              <= Recv header: x-frame-options: DENY
+21:19:56.488780 http.c:941              <= Recv header, 0000000002 bytes (0x00000002)
+21:19:56.488782 http.c:953              <= Recv header:
+21:19:56.488790 http.c:994              == Info: Connection #0 to host github.com left intact
+21:19:56.488812 http.c:994              == Info: Found bundle for host: 0x1052a8060 [can multiplex]
+21:19:56.488816 http.c:994              == Info: Re-using existing connection with host github.com
+21:19:56.488821 http.c:994              == Info: Server auth using Basic with user 'martybprod'
+21:19:56.488838 http.c:994              == Info: [HTTP/2] [7] OPENED stream for https://github.com/martybprod/tatrame.git/git-receive-pack
+21:19:56.488841 http.c:994              == Info: [HTTP/2] [7] [:method: POST]
+21:19:56.488842 http.c:994              == Info: [HTTP/2] [7] [:scheme: https]
+21:19:56.488844 http.c:994              == Info: [HTTP/2] [7] [:authority: github.com]
+21:19:56.488846 http.c:994              == Info: [HTTP/2] [7] [:path: /martybprod/tatrame.git/git-receive-pack]
+21:19:56.488848 http.c:994              == Info: [HTTP/2] [7] [authorization: Basic <redacted>]
+21:19:56.488849 http.c:994              == Info: [HTTP/2] [7] [user-agent: git/2.55.0]
+21:19:56.488851 http.c:994              == Info: [HTTP/2] [7] [accept-encoding: deflate, gzip]
+21:19:56.488852 http.c:994              == Info: [HTTP/2] [7] [content-type: application/x-git-receive-pack-request]
+21:19:56.488854 http.c:994              == Info: [HTTP/2] [7] [accept: application/x-git-receive-pack-result]
+21:19:56.488856 http.c:994              == Info: [HTTP/2] [7] [accept-language: fr-CA, *;q=0.9]
+21:19:56.489034 http.c:941              => Send header, 0000000355 bytes (0x00000163)
+21:19:56.489038 http.c:953              => Send header: POST /martybprod/tatrame.git/git-receive-pack HTTP/2
+21:19:56.489040 http.c:953              => Send header: Host: github.com
+21:19:56.489041 http.c:953              => Send header: Authorization: Basic <redacted>
+21:19:56.489045 http.c:953              => Send header: User-Agent: git/2.55.0
+21:19:56.489047 http.c:953              => Send header: Accept-Encoding: deflate, gzip
+21:19:56.489048 http.c:953              => Send header: Content-Type: application/x-git-receive-pack-request
+21:19:56.489050 http.c:953              => Send header: Accept: application/x-git-receive-pack-result
+21:19:56.489051 http.c:953              => Send header: Accept-Language: fr-CA, *;q=0.9
+21:19:56.489053 http.c:953              => Send header:
