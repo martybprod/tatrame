@@ -40,8 +40,12 @@ data/commentaires/
 data/activite.jsonl
 data/commentaires.json
 
-# Extraction de textes sources pour distillation (textes sous copyright, hors produit)
-_distillation/sources/
+# Chantier du tarot en développement (essais, cartes retenues, sources, scripts de
+# génération) — pas du produit livré, et surtout pas destiné à git : ~200 Mo d'images
+# ont fait gonfler un push à 131 Mo (2026-09-10). Martin déplace tout le dossier vers
+# le parent (ATRO_PLUS/_distillation) ; ignoré ici en attendant, au cas où il resterait
+# encore localement le temps du déplacement.
+_distillation/
 
 # Fichiers de travail/vérification visuelle (jamais versionnés)
 _chrome_profile/
