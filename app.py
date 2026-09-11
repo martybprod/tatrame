@@ -1628,23 +1628,34 @@ def _avec_article(animal):
     return ("la " if animal == "chèvre" else "le ") + animal.capitalize()
 
 
-def _sous_titre_chinois(sc):
-    """La ligne qui nomme les animaux, calculée (l'app la met, pas le corpus).
+def _qualifiant_element(element):
+    """L'élément en qualificatif du signe : « de métal », avec élision « d'eau »."""
+    return ("d'" if element == "eau" else "de ") + element
 
-    « Le Tigre s'oppose à ton Singe. » Le texte du corpus, lui, ne nomme aucun
-    animal : il décrit la dynamique de la relation. Séparation nette entre le
-    calcul (ici) et la rédaction (là-bas).
+
+def _sous_titre_chinois(sc):
+    """La ligne qui nomme le signe du jour, calculée (l'app la met, pas le corpus).
+
+    « Le Tigre de métal s'oppose à ton Singe. » L'élément du jour qualifie le
+    signe (2026-09-11, Martin) : la ligne reflète la variante fine servie —
+    même rotation que les textes relation_élément. Le texte du corpus, lui,
+    ne nomme aucun animal : il décrit la dynamique de la relation. Séparation
+    nette entre le calcul (ici) et la rédaction (là-bas).
     """
     natal = sc["animal_natal"].capitalize()
+    jour = (_avec_article(sc["animal_du_jour"])
+            + " " + _qualifiant_element(sc["element_du_jour"]))
     if sc["relation"] == "identique":
-        return f"C'est le jour {_avec_article(sc['animal_du_jour']).replace('le ', 'du ').replace('la ', 'de la ')}, le tien."
+        jour = jour.replace("le ", "du ").replace("la ", "de la ")
+        return f"C'est le jour {jour}, le tien."
     verbe = {
         "choc": "s'oppose à",
         "harmonie": "s'allie à",
         "trine": "est en affinité avec",
         "nuisance": "accroche un peu",
     }[sc["relation"]]
-    return f"{_avec_article(sc['animal_du_jour'])} {verbe} ton {natal}."
+    phrase = f"{jour} {verbe} ton {natal}."
+    return phrase[0].upper() + phrase[1:]   # majuscule de début (défaut ancien)
 
 
 def _titre_du_jour(textes, force_transit, date, ecart_lune, n):

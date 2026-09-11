@@ -192,3 +192,32 @@ def test_repli_sur_la_relation_seule_sans_variante(monkeypatch):
     assert fines and simples, "les deux clés doivent être consultées"
     assert demandees.index(fines[0]) < demandees.index(simples[0]), \
         "la clé fine doit être essayée avant la clé simple"
+
+
+# ------------------------------------------------- le sous-titre (signe du jour)
+
+def test_le_sous_titre_nomme_l_element_du_jour():
+    """La ligne calculée qualifie le signe du jour par son élément — même
+    rotation que les textes fins (« Le Tigre de métal s'oppose à ton Singe. »).
+    Élision « d'eau », chèvre féminine, cas identique."""
+    import app as application
+
+    sc = {"relation": "choc", "animal_du_jour": "tigre",
+          "animal_natal": "singe", "element_du_jour": "métal"}
+    assert application._sous_titre_chinois(sc) == \
+        "Le Tigre de métal s'oppose à ton Singe."
+
+    sc = {"relation": "choc", "animal_du_jour": "chèvre",
+          "animal_natal": "rat", "element_du_jour": "terre"}
+    assert application._sous_titre_chinois(sc) == \
+        "La Chèvre de terre s'oppose à ton Rat."
+
+    sc = {"relation": "choc", "animal_du_jour": "coq",
+          "animal_natal": "lapin", "element_du_jour": "eau"}
+    assert application._sous_titre_chinois(sc) == \
+        "Le Coq d'eau s'oppose à ton Lapin."
+
+    sc = {"relation": "identique", "animal_du_jour": "chien",
+          "animal_natal": "chien", "element_du_jour": "feu"}
+    assert application._sous_titre_chinois(sc) == \
+        "C'est le jour du Chien de feu, le tien."
