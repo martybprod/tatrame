@@ -133,3 +133,62 @@ def test_le_corpus_couvre_les_relations_saillantes():
     assert attendues <= set(rels), f"manque {attendues - set(rels)}"
     for r in attendues:
         assert rels[r].get("miroir") and rels[r].get("geste"), f"{r} incomplet"
+
+
+# ------------------------------------------------- la clé fine (relation_élément)
+
+def test_tous_les_elements_ont_un_slug():
+    """Le titre construit `relation_slug` pour l'élément du jour : un élément
+    sans slug serait un KeyError au pire moment (le jour où il sort)."""
+    manquants = {e for e in C.ELEMENT_TIGE if e not in C.ELEMENT_SLUG}
+    assert not manquants, f"éléments sans slug : {manquants}"
+    assert all(s.isascii() for s in C.ELEMENT_SLUG.values())
+
+
+def _titre_avec_corpus(monkeypatch, retour):
+    """Appelle `_titre_du_jour` un jour où le chinois prend la tête
+    (17/7/2026 = jour dragon ; née en 1980 = singe -> « trine », 0.70, qui
+    bat un ciel vide, un écart lunaire de 90° et un 17 du mois), avec un
+    corpus espion qui renvoie `retour`[clé]. Renvoie (titre, clés demandées)."""
+    import app as application
+
+    demandees = []
+
+    class CorpusEspion:
+        def lire(self, *cles):
+            demandees.append(cles)
+            return retour.get(cles[-1])
+
+    monkeypatch.setattr(application, "corpus", CorpusEspion())
+    textes = {"transit": {"miroir": "ciel", "geste": "geste ciel"}}
+    titre, _ = application._titre_du_jour(textes, 0.0, dt.date(2026, 7, 17), 90.0,
+                                          {"annee": 1980, "mois": 4, "jour": 6})
+    return titre, demandees
+
+
+def test_la_cle_fine_element_gagne_quand_elle_existe(monkeypatch):
+    """Un texte rédigé pour relation × élément est servi tel quel."""
+    sc = C.saillance_chinoise(1980, 4, 6, dt.date(2026, 7, 17))
+    cle_fine = f"{sc['relation']}_{C.ELEMENT_SLUG[sc['element_du_jour']]}"
+    texte_fin = "miroir de la variante élément"
+    titre, _ = _titre_avec_corpus(
+        monkeypatch,
+        {cle_fine: {"miroir": texte_fin, "geste": "g"},
+         sc["relation"]: {"miroir": "miroir générique", "geste": "g"}})
+    assert titre["miroir"] == texte_fin
+
+
+def test_repli_sur_la_relation_seule_sans_variante(monkeypatch):
+    """Tant que les variantes élément ne sont pas rédigées, le comportement
+    actuel EST le repli : la clé simple répond, jamais un titre vide. La clé
+    fine est bien essayée EN PREMIER."""
+    sc = C.saillance_chinoise(1980, 4, 6, dt.date(2026, 7, 17))
+    cle_fine = f"{sc['relation']}_{C.ELEMENT_SLUG[sc['element_du_jour']]}"
+    titre, demandees = _titre_avec_corpus(
+        monkeypatch, {sc["relation"]: {"miroir": "miroir générique", "geste": "g"}})
+    assert titre["miroir"] == "miroir générique"
+    fines = [c for c in demandees if c[-1] == cle_fine]
+    simples = [c for c in demandees if c[-1] == sc["relation"]]
+    assert fines and simples, "les deux clés doivent être consultées"
+    assert demandees.index(fines[0]) < demandees.index(simples[0]), \
+        "la clé fine doit être essayée avant la clé simple"

@@ -25,6 +25,10 @@ import datetime as dt
 TIGES = ["jiǎ", "yǐ", "bǐng", "dīng", "wù", "jǐ", "gēng", "xīn", "rén", "guǐ"]
 ELEMENT_TIGE = ["bois", "bois", "feu", "feu", "terre",
                 "terre", "métal", "métal", "eau", "eau"]
+# Slug sans accent pour les CLÉS de corpus fines (relation_élément, ex.
+# `choc_metal`) — toutes les clés du corpus sont ASCII, par convention.
+ELEMENT_SLUG = {"bois": "bois", "feu": "feu", "terre": "terre",
+                "métal": "metal", "eau": "eau"}
 # tige d'index pair = yang, impair = yin
 def _polarite(i_tige):
     return "yang" if i_tige % 2 == 0 else "yin"

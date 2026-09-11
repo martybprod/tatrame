@@ -1661,7 +1661,16 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
     tr = textes.get("transit") or {}
     titre = {"source": "ciel", "miroir": tr.get("miroir"), "geste": tr.get("geste")}
     if choix["voix"] == "chinois":
-        rel = corpus.lire("chinois_detail", "relations", sc["relation"]) or {}
+        # Clé FINE d'abord : relation × élément du jour (ex. `choc_metal`).
+        # Le pilier du jour tourne sur 60 jours (12 animaux × 5 éléments),
+        # donc un texte fin ne se reverrait qu'à 60 jours de distance —
+        # au lieu de 12 pour la relation seule, qui donnait l'impression
+        # de « toujours le même message » (testeur, 2026-09-03). Repli sur
+        # la clé simple tant que les variantes ne sont pas rédigées : le
+        # comportement actuel EST le repli, jamais un texte manquant.
+        fine = f"{sc['relation']}_{chinois.ELEMENT_SLUG[sc['element_du_jour']]}"
+        rel = (corpus.lire("chinois_detail", "relations", fine)
+               or corpus.lire("chinois_detail", "relations", sc["relation"])) or {}
         if rel.get("miroir"):
             titre = {"source": "chinois", "miroir": rel["miroir"],
                      "geste": rel.get("geste"), "en_bref": rel.get("en_bref"),

@@ -1,6 +1,6 @@
 {
   "_charte": "data/corpus/CHARTE.md",
-  "_note": "La voix chinoise du jour — relation entre l'animal du jour et l'animal natal. Ton non-fataliste (pas de bon/mauvais jour). L'app injecte les noms d'animaux ; le texte décrit la dynamique.",
+  "_note": "La voix chinoise du jour — relation entre l'animal du jour et l'animal natal. Ton non-fataliste (pas de bon/mauvais jour). L'app injecte les noms d'animaux ; le texte décrit la dynamique. Clés optionnelles fines « relation_élément » (ex. choc_metal) : l'élément du jour affine le texte — le pilier du jour tourne sur 60 jours (12 animaux × 5 éléments), donc une variante rédigée ne revient qu'à 60 jours de distance, au lieu de 12 pour la relation seule. L'app essaie la clé fine PUIS se replie sur la relation seule : une variante absente ne casse rien, se rédige quand on y arrive.",
   "relations": {
     "choc": {
       "en_bref": "Une journée qui te pousse dans l'autre sens, loin de ton rythme habituel.",
