@@ -38,9 +38,11 @@ COPY outils/construire_geo.py outils/construire_geo.py
 RUN mkdir -p data/geo \
     && curl -fsSL -o data/geo/CA.zip https://download.geonames.org/export/dump/CA.zip \
     && curl -fsSL -o data/geo/FR.zip https://download.geonames.org/export/dump/FR.zip \
-    && (cd data/geo && unzip -o CA.zip && unzip -o FR.zip) \
+    && curl -fsSL -o data/geo/BE.zip https://download.geonames.org/export/dump/BE.zip \
+    && (cd data/geo && unzip -o CA.zip && unzip -o FR.zip && unzip -o BE.zip) \
     && python outils/construire_geo.py \
-    && rm -f data/geo/CA.zip data/geo/FR.zip data/geo/CA.txt data/geo/FR.txt \
+    && rm -f data/geo/CA.zip data/geo/FR.zip data/geo/BE.zip \
+             data/geo/CA.txt data/geo/FR.txt data/geo/BE.txt \
              data/geo/readme.txt
 
 # --- Code applicatif ----------------------------------------------------------

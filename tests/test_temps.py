@@ -3,7 +3,7 @@
 Ces tests n'ont pas besoin d'oracle : ce sont des FAITS historiques et
 calendaires vérifiables, pas des modèles. Ils tiennent lieu de contrat.
 """
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
@@ -128,6 +128,47 @@ def test_lmt_evite_l_erreur_de_23_minutes_de_tzdata():
     )
 
 
+# ------------------------------------------------------- Belgique
+
+def test_belgique_occupee_est_a_l_heure_allemande():
+    """La Belgique entière est occupée : tzdata a RAISON, ne crions pas au loup.
+
+    La France a une « zone libre » que tzdata ne modélise pas, d'où son
+    avertissement. La Belgique n'a PAS d'équivalent — vérifié : de mai 1940 à
+    septembre 1944, Europe/Brussels donne exactement l'heure de Berlin. Une
+    naissance belge d'occupation est donc juste, et aucun avis ne doit
+    apparaître pour autre chose que la période « best effort » d'avant 1970.
+    """
+    zone = temps.fuseau("Europe/Brussels")
+    for quand in (datetime(1941, 1, 15), datetime(1941, 7, 15),
+                  datetime(1943, 1, 15), datetime(1943, 7, 15)):
+        assert quand.replace(tzinfo=zone).utcoffset() == \
+            quand.replace(tzinfo=temps.fuseau("Europe/Berlin")).utcoffset(), (
+                f"{quand:%Y-%m-%d} : Bruxelles devrait être à l'heure allemande")
+
+    avis = temps.limites_connues(1941, 7, 15, "Europe/Brussels", longitude=4.35)
+    assert not any("occup" in a.lower() for a in avis), (
+        f"aucun avertissement d'occupation ne doit être émis : {avis}")
+
+
+def test_belgique_1976_benelux_pas_france():
+    """1976 : le piège qu'on aurait pu croire belge, et qui ne l'est pas.
+
+    Bruxelles n'a PAS suivi l'heure d'été en 1976 (Paris, si). tzdata le
+    modélise correctement — donc rien à signaler. Ce test fige le fait pour
+    qu'on ne réintroduise pas un avertissement inutile.
+    """
+    brux = datetime(1976, 7, 15, 10, 0, tzinfo=temps.fuseau("Europe/Brussels"))
+    paris = datetime(1976, 7, 15, 10, 0, tzinfo=temps.fuseau("Europe/Paris"))
+    assert brux.utcoffset() == paris.utcoffset() - timedelta(hours=1)
+
+
+def test_belgique_limite_lmt_signalee():
+    """Avant mai 1892, tzdata donne le méridien de BRUXELLES, pas celui du lieu."""
+    avis = temps.limites_connues(1890, 6, 15, "Europe/Brussels", longitude=5.8167)
+    assert any("MÉRIDIEN DE" in a for a in avis), f"limite LMT non signalée : {avis}"
+
+
 # --------------------------------------------- limites historiques
 
 @pytest.mark.parametrize("annee,mois,jour,fuseau,attendu", [
@@ -136,6 +177,7 @@ def test_lmt_evite_l_erreur_de_23_minutes_de_tzdata():
     (1975, 3, 15, "America/Toronto", "23 février"),
     (1941, 1, 15, "Europe/Paris", "ZONE OCCUPÉE"),
     (1943, 6, 1, "Europe/Paris", "Alsace-Moselle"),
+    (1890, 6, 15, "Europe/Brussels", "MÉRIDIEN DE"),
 ])
 def test_limites_annoncees(annee, mois, jour, fuseau, attendu):
     """Chaque limite connue doit se SIGNALER, jamais se taire."""

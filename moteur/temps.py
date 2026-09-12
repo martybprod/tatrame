@@ -156,6 +156,25 @@ def limites_connues(annee, mois, jour, nom_fuseau, longitude=None):
                 "et n'est modélisée par AUCUNE zone tzdata."
             )
 
+    # Belgique (ajoutée le 2026-09-12) : tzdata la modélise BIEN, et on l'a
+    # vérifié plutôt que supposé — d'où le peu d'avis ici, là où la France en
+    # collectionne. Deux pièges qu'on aurait pu croire belges sont en fait
+    # correctement traités :
+    #   - l'occupation 1940-44 : la Belgique était ENTIÈREMENT occupée et à
+    #     l'heure allemande, que tzdata reproduit exactement. Pas de « zone
+    #     libre » comme en France, donc pas de thème décalé d'une heure.
+    #   - 1946-1976 sans heure d'été : tzdata le sait (idem France).
+    # Le cas 1976 (la Belgique suit le Benelux, pas la France) est réel mais
+    # tzdata le modélise juste — l'annoncer serait crier au loup.
+    if nom_fuseau == "Europe/Brussels":
+        if longitude is not None and d < datetime(1892, 5, 1):
+            avis.append(
+                "Avant mai 1892, tzdata donne le temps moyen local du MÉRIDIEN DE "
+                "BRUXELLES, pas celui du lieu. La Belgique s'étale de 2,93 à 5,82°E : "
+                "l'écart va d'environ −6 min (Ostende) à +6 min (Arlon), soit ≈ 1,5° "
+                "d'Ascendant. Utiliser plutôt utc_depuis_tsm() avec la longitude du lieu."
+            )
+
     if d < datetime(1970, 1, 1):
         avis.append(
             "Avant 1970, tzdata est explicitement « best effort » : sa propre "

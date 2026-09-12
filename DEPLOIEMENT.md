@@ -98,7 +98,7 @@ docker run --rm -p 8000:8000 \
 # puis http://localhost:8000/health
 ```
 
-Le 1er build télécharge les éphémérides JPL (~32 Mo) et les dumps GeoNames (~100 Mo) pour
+Le 1er build télécharge les éphémérides JPL (~32 Mo) et les dumps GeoNames (~130 Mo) pour
 construire `lieux.sqlite` : c'est long UNE fois, puis mis en cache (les `git push` de code
 ne le refont pas).
 

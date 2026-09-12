@@ -4,6 +4,11 @@ Le fuseau vient du champ 18 de GeoNames : quand l'utilisateur choisit une
 ville de la base, `timezonefinder` (~90 Mo + numpy + h3 + une compilation
 CFFI faute de wheel macOS) est superflu.
 
+La recherche passe par la table `alias`, pas par `lieux.nom` : GeoNames nomme
+les villes belges en anglais ou en néerlandais (« Brussels », « Antwerp »,
+« Gent »), si bien que le nom principal ne suffit PAS à trouver une commune
+belge pour un utilisateur francophone. Voir outils/construire_geo.py.
+
 Données GeoNames, CC BY 4.0 : l'attribution doit rester visible dans l'app.
 """
 import pathlib
@@ -66,14 +71,19 @@ class Lieux:
         dont un au Nouveau-Brunswick et deux au Québec) et un mauvais choix
         déplace l'Ascendant. C'est à l'utilisateur de trancher.
         """
-        sql = "SELECT * FROM lieux WHERE recherche = ?"
+        # DISTINCT obligatoire : en recherche par préfixe, un même lieu ressort
+        # une fois par variante qui correspond (« Bru » → Brussels ET Bruxelles).
+        # La jointure est interne, ce qui est sûr : alias_de() indexe TOUJOURS le
+        # nom principal, donc aucun lieu ne peut être absent de `alias`.
+        sql = ("SELECT DISTINCT l.* FROM alias a JOIN lieux l ON l.geonameid = a.geonameid "
+               "WHERE a.nom = ?")
         args = [plier(nom)]
         if pays:
-            sql += " AND pays = ?"
+            sql += " AND l.pays = ?"
             args.append(pays)
         lignes = self.con.execute(sql, args).fetchall()
         if not lignes:
-            sql = sql.replace("recherche = ?", "recherche LIKE ?")
+            sql = sql.replace("a.nom = ?", "a.nom LIKE ?")
             args[0] = plier(nom) + "%"
             lignes = self.con.execute(sql + " LIMIT 200", args).fetchall()
 
