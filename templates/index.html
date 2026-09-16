@@ -864,9 +864,9 @@ details.aide.ciel-titre summary{font-size:10px}
 .carte-jour-hero{padding:28px 26px 30px; box-shadow:0 10px 34px rgba(0,0,0,.16)}
 /* La carte-entrée « Aujourd'hui » (2026-09-15) : ne montre que le chapo +
    sous-titre, garde le même relief que le héros d'avant, s'ouvre en plein
-   écran (glyphe ⤢ en coin, comme les autres angles). */
-.carte-jour-hero--entree{cursor:pointer; position:relative; padding:22px 46px 22px 26px}
-.carte-jour-hero--entree .glyphe-plein{position:absolute; right:20px; top:50%; transform:translateY(-50%)}
+   écran au clic (plus de glyphe ⤢ — Martin, 2026-09-15 : « les personnes
+   seront assez intelligentes pour appuyer sans le voir »). */
+.carte-jour-hero--entree{cursor:pointer; padding:22px 26px}
 .carte-jour-hero--entree:active{opacity:.85}
 .jour-entete{text-align:center; color:var(--encre3); margin-bottom:22px;
   padding-bottom:18px; border-bottom:1px solid var(--bord)}
@@ -878,13 +878,8 @@ details.aide.ciel-titre summary{font-size:10px}
 /* Une RANGÉE plein écran — visuellement identique à une rangée de tiroir
    (même padding, même hover, même typo), pour se mêler sans rupture aux
    tiroirs dans un même groupe « Explorer » (Martin, 2026-08-24 : « la Lune »
-   et « Nuance » ouvrent en plein écran, PAS en dépli inline). Le glyphe ⤢,
-   à la même place que le chevron ⌄ du tiroir, dit « ça s'ouvre en grand »
-   plutôt que « ça se déplie ici ». N'EST PAS utilisé pour les tuiles de
-   domaine (12 cartes dans « Le fil du jour ») : sur une grille aussi dense,
-   l'icône répétée surchargeait pour rien — elles gardent l'ancien style
-   .pont.angle-carte, SANS glyphe (rien à changer là, cette règle ne le
-   posait déjà que via ce bloc, retiré). */
+   et « Nuance » ouvrent en plein écran, PAS en dépli inline). Plus de glyphe
+   ⤢ (Martin, 2026-09-15 : superflu, le clic sur la rangée entière suffit). */
 .rangee-angle{
   border-bottom:1px solid var(--bord); cursor:pointer;
   padding:15px 20px; display:flex; align-items:center; gap:14px;
@@ -892,7 +887,6 @@ details.aide.ciel-titre summary{font-size:10px}
 }
 .rangee-angle:last-child{border-bottom:0}
 .rangee-angle:hover{background:var(--papier)}
-.rangee-angle .glyphe-plein{flex:none; color:var(--accent-doux); opacity:.5; font-size:16px; line-height:1}
 
 /* Rythme plus généreux entre les repères de premier niveau (on en a moins). */
 .jour-section{margin-top:34px}
@@ -2077,7 +2071,6 @@ function angleCarte({nom, resume, ico, corpsHTML}) {
       <span class="tiroir-nom">${T(nom)}</span>
       ${resume ? `<span class="tiroir-resume compact">${resume}</span>` : ''}
     </span>
-    <span class="glyphe-plein" aria-hidden="true">⤢</span>
   </div>`;
 }
 
@@ -2454,9 +2447,8 @@ async function chargerJour() {
   }
 
   let html = `<div class="carte" id="${corpsPhase ? idEntete : ''}"
-      style="text-align:center;padding:20px 22px 18px${corpsPhase ? ';cursor:pointer;position:relative' : ''}">
+      style="text-align:center;padding:20px 22px 18px${corpsPhase ? ';cursor:pointer' : ''}">
       <div class="jour-entete" style="margin-bottom:0;padding-bottom:0;border-bottom:0">${enteteJour}</div>
-      ${corpsPhase ? `<span class="glyphe-plein" aria-hidden="true" style="position:absolute;right:18px;top:50%;transform:translateY(-50%)">⤢</span>` : ''}
     </div>`;
 
   /* Tes cartes du jour — les TROIS cartes réunies, juste sous l'en-tête, présentées
@@ -2523,7 +2515,6 @@ async function chargerJour() {
     html += `<div class="carte carte-jour-hero carte-jour-hero--entree" id="${idAuj}" title="Toucher pour lire">
       <div class="chapo">Aujourd'hui</div>
       ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 0">${T(titre.sous_titre)}</p>` : ''}
-      <span class="glyphe-plein" aria-hidden="true">⤢</span>
     </div>`;
   }
 
