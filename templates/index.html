@@ -2410,42 +2410,17 @@ async function chargerJour() {
     </svg>`;
   })(j.jour.phase?.ecart);
 
-  /* ═══ AUJOURD'HUI — le héros de la page. Le bandeau de synthèse d'avant est
-     FONDU ici : date + Lune deviennent une fine ligne d'en-tête, dés-accentuée,
-     à l'intérieur même de la carte du message. Un seul bloc primaire, un seul
-     foyer d'attention (protéger le pic). Les faits-ciel ne vivent QUE dans
-     cette carte quand le ciel mène, ou dans « Explorer » quand le chinois mène
-     — plus jamais dupliqués dans un bandeau. ═══ */
-  const enteteJour = `<div class="jour-entete">
-      <div class="date">${miniLune}${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
-      <div class="lune">La Lune éclaire ${T(nomMaison(lune.maison))} · ${T(nomPhase(phase))}</div>
-    </div>`;
+  /* ═══ EN-TÊTE DU JOUR — sa PROPRE carte, maintenue en tête (demande de Martin,
+     2026-09-15) : date + Lune (où ça se joue · phase) d'abord, ensuite les cartes
+     du jour, puis le message. Les faits-ciel ne vivent QUE dans cette carte
+     quand le ciel mène, ou dans « Explorer » quand le chinois mène. ═══ */
+  const enteteJour = `<div class="date">${miniLune}${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
+      <div class="lune">La Lune éclaire ${T(nomMaison(lune.maison))} · ${T(nomPhase(phase))}</div>`;
 
-  let html = '';
-  if (titre && titre.miroir) {
-    html += `<div class="carte carte-jour-hero">
-      ${enteteJour}
-      <div class="chapo">Aujourd'hui</div>
-      ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
-      ${cielMene && dom ? `<details class="aide ciel-titre"><summary>Dans le ciel</summary>
-        <p style="font-size:15px;color:var(--encre2);margin:8px 0 4px">${domPhrase}</p>
-        <p class="quoi" style="margin:4px 0 12px">${domTempo}</p></details>` : ''}
-      <div class="miroir">${T(titre.miroir)}</div>
-      ${blocGeste(titre.geste, "Aujourd'hui")}
-      ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
-      ${cielMene ? domRetourAide : ''}
-    </div>`;
-  } else {
-    /* Pas de message écrit ce jour-là : on garde au moins l'en-tête date/Lune,
-       sans le trait ni l'air du dessous, pour ne pas ouvrir sur du vide. */
-    html += `<div class="carte carte-jour-hero"><div class="jour-entete"
-        style="margin-bottom:0;padding-bottom:0;border-bottom:0">
-        <div class="date">${miniLune}${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
-        <div class="lune">La Lune éclaire ${T(nomMaison(lune.maison))} · ${T(nomPhase(phase))}</div>
-      </div></div>`;
-  }
+  let html = `<div class="carte" style="text-align:center;padding:20px 22px 18px"><div class="jour-entete"
+      style="margin-bottom:0;padding-bottom:0;border-bottom:0">${enteteJour}</div></div>`;
 
-  /* Tes cartes du jour — les TROIS cartes réunies, sous le message, présentées
+  /* Tes cartes du jour — les TROIS cartes réunies, juste sous l'en-tête, présentées
      CÔTE À CÔTE (le monde vs toi). TOUJOURS affichées, plus de tiroir à
      déplier (demande de Martin, 2026-08-22) : chaque carte affiche son DOS par
      défaut et s'ouvre en plein écran au premier clic (2026-08-27). Trois
@@ -2486,6 +2461,22 @@ async function chargerJour() {
         ${memeCarte}
         ${aide("Trois cartes, pourquoi ?", "« Le pouls du monde » se calcule sur la date du jour seule : le même climat pour tout le monde. « Ton arcane du jour » vient de ton ciel à toi : chaque jour, ton ciel et tes nombres proposent plusieurs cartes, et celle qui sort est celle qu'on ne t'a pas montrée depuis le plus longtemps — le jeu entier finit par passer. « Ta couleur du jour » se calcule sur tes luminaires (couleur = la Lune du jour, rang = l'écart entre le Soleil du jour et ton Ascendant). Les trois sont toujours calculées, jamais tirées.")}
       </div>`;
+  }
+
+  /* ═══ LE MESSAGE DU JOUR — le héros, maintenant APRÈS les cartes et séparé
+     de l'en-tête date/Lune (demande de Martin, 2026-09-15). ═══ */
+  if (titre && titre.miroir) {
+    html += `<div class="carte carte-jour-hero">
+      <div class="chapo">Aujourd'hui</div>
+      ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
+      ${cielMene && dom ? `<details class="aide ciel-titre"><summary>Dans le ciel</summary>
+        <p style="font-size:15px;color:var(--encre2);margin:8px 0 4px">${domPhrase}</p>
+        <p class="quoi" style="margin:4px 0 12px">${domTempo}</p></details>` : ''}
+      <div class="miroir">${T(titre.miroir)}</div>
+      ${blocGeste(titre.geste, "Aujourd'hui")}
+      ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
+      ${cielMene ? domRetourAide : ''}
+    </div>`;
   }
 
   /* ═══ LES ANGLES DU JOUR — tiroirs : la pensée reste visible dans l'en-tête,
