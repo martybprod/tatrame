@@ -916,6 +916,13 @@ details.aide.ciel-titre summary{font-size:10px}
    seule ligne : l'épure tient. */
 .jour-groupe-fil{border-color:rgba(233,212,148,.55);margin-top:20px}
 .jour-groupe-fil .tiroir-nom{color:var(--accent-doux)}
+/* « Le fond du temps » (2026-09-15) : teinte sourdine, plus froide et plus
+   sombre que .jour-groupe (papier2/doré) — signale « consulté rarement »
+   plutôt que d'attirer l'œil comme le Fil du jour (effet inverse voulu). */
+.jour-groupe-temps{background:#17181b; border-color:#2a2c30}
+.jour-groupe-temps .tiroir-ico{color:#7d8592; opacity:.8}
+.jour-groupe-temps .tiroir-nom{color:#6d7480}
+.jour-section-temps{color:#5d6470}
 details.tiroir{border-bottom:1px solid var(--bord)}
 details.tiroir:last-child{border-bottom:0}
 details.tiroir>summary{
@@ -2503,7 +2510,7 @@ async function chargerJour() {
   // Converti en entrée plein écran (2026-09-15) : tout ce qui suit « Aujourd'hui »
   // s'ouvre désormais par le même geste ⤢, plus de tiroir à déplier en place.
   if (dom && !cielMene) {
-    angles += angleCarte({
+    angles += `<div class="jour-groupe">${angleCarte({
       nom: "Ce qui domine aujourd'hui",
       resume: t.transit?.miroir ? T(t.transit.miroir) : domPhrase.replace(/<[^>]*>/g, ''),
       ico: icono(ICONES_JOUR.domine),
@@ -2515,7 +2522,7 @@ async function chargerJour() {
         <p class="quoi">${domTempo}</p>
         ${blocGeste(t.transit?.geste, "Ce qui domine aujourd'hui")}
         ${domCalc}${domRetourAide}`
-    });
+    })}</div>`;
   }
 
   /* La Lune aujourd'hui — « où ça se joue » (sa maison) ET « le moment du
@@ -2532,7 +2539,7 @@ async function chargerJour() {
         ${blocGeste(ph.geste, 'Le moment du cycle')}
         ${aide("D'où vient la phase ?", "L'écart entre la Lune et le Soleil dans le ciel du jour, divisé en huit parts égales — un calcul purement astronomique, le même pour tout le monde, qui donne les huit phases classiques (nouvelle, premier quartier, pleine…).")}
       </div>` : '';
-    angles += angleCarte({
+    angles += `<div class="jour-groupe">${angleCarte({
       nom: 'La Lune aujourd\'hui',
       resume: T((lm && lm.miroir) || ph.miroir),
       ico: icono(ICONES_JOUR.lune_maison),
@@ -2542,7 +2549,7 @@ async function chargerJour() {
         ${blocGeste(lm.geste, 'La Lune aujourd\'hui')}
         ${aide("D'où vient ce calcul ?", "La Lune du jour traverse une maison de ton thème de naissance — précise à ta carte, elle seule dit sur quel terrain de ta vie ça se joue aujourd'hui. Elle change de maison environ tous les deux jours et demi.")}` : ''}
         ${blocPhase}`
-    });
+    })}</div>`;
   }
 
   /* Le Fil du jour — un domaine de vie, rythmé par le ciel : la maison de la
@@ -2583,13 +2590,13 @@ async function chargerJour() {
     const nuPhrase = nu
       ? `La Lune du jour ${T(nomAspect(nu.classe))} <b style="color:var(--encre)">${T(nomPlanete(nu.natal))}</b> de ton thème.`
       : '';
-    angles += angleCarte({
+    angles += `<div class="jour-groupe">${angleCarte({
       nom: 'Nuance',
       resume: "Le ton de la Lune est contrarié aujourd'hui — ce qui semble facile demande un peu plus d'effort.",
       ico: icono(ICONES_JOUR.nuance),
       corpsHTML: `${nuPhrase ? `<p style="font-size:15px;color:var(--encre2)">${nuPhrase}</p>` : ''}
         ${aide("D'où vient cette nuance ?", "Le signe et la maison de la Lune donnent en général le ton du jour — mais quand la Lune du jour fait elle-même un aspect dur (carré ou opposition) très exact à une planète de ton thème de naissance, cet aspect prend le dessus. Le ton habituel de la Lune ne disparaît pas : il se complique, et demande plus d'effort que d'habitude.")}`
-    });
+    })}</div>`;
   }
 
   /* (Les angles ci-dessus rejoignent le groupe « Explorer » plus bas, avec les
@@ -2661,15 +2668,21 @@ async function chargerJour() {
     html += `<div class="jour-groupe jour-groupe-fil">${filDuJour}</div>`;
   }
 
-  if (angles || cycles) {
-    const fondDuTemps = cycles ? tiroir({
-      nom: 'Le fond du temps',
-      resume: 'Les cycles plus lents — ton mois, ton année, ta traversée de vie.',
-      ico: icono(ICONES_JOUR.cycle),
-      corps: cycles,
-    }) : '';
-    html += `<div class="jour-section">Explorer</div>
-      <div class="jour-groupe">${angles}${fondDuTemps}</div>`;
+  // Chaque angle (Ce qui domine, La Lune, Nuance) est déjà sa PROPRE carte
+  // (.jour-groupe individuel, posé au moment de sa construction plus haut) —
+  // découvrable indépendamment, demande de Martin (2026-09-15).
+  if (angles) {
+    html += `<div class="jour-section">Explorer</div>${angles}`;
+  }
+
+  // « Le fond du temps » : SECTION à part entière, distincte d'Explorer — ces
+  // cycles (mois, année, traversée de vie) changent rarement, on n'y revient
+  // pas tous les jours. Couleur sourdine (.jour-groupe-temps), pas le liseré
+  // doré du Fil ni le papier2 neutre d'Explorer : un repère visuel « c'est du
+  // temps long, pas de l'aujourd'hui » (demande de Martin, 2026-09-15).
+  if (cycles) {
+    html += `<div class="jour-section jour-section-temps">Le fond du temps</div>
+      <div class="jour-groupe jour-groupe-temps">${cycles}</div>`;
   }
 
   /* ═══ À MÉDITER — la clôture du jour, à CONTEMPLER : plein écran (angleCarte,
