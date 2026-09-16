@@ -59,6 +59,9 @@ CHAMPS_DE_PROSE = frozenset({
     # les nombres et les arcanes
     "anime", "alimenter", "contrarie", "conditionnement",
     "en_resonance", "en_tension",
+    # les cartes du jour : l'invitation personnelle (registre « tu ») et la
+    # lecture de fond (symboles + enseignement, commune monde/perso)
+    "invitation_personnelle", "lecture",
     # les approfondissements
     "resume", "le_mouvement", "au_quotidien", "avec_les_autres", "les_canaux",
     "le_piege", "si_tu_ne_te_reconnais_pas", "de_quoi_il_s_agit",

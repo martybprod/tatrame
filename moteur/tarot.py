@@ -27,15 +27,35 @@ Les cartes calculées sont par ailleurs une tradition établie : *Birth Cards*
 d'Angeles Arrien (1977), publiées par Mary K. Greer (*Who Are You in the
 Tarot?*).
 """
+from moteur.mineurs import ELEMENT_PAR_SIGNE
+from moteur.theme import signe_de
 
-# Noms traditionnels français — domaine public.
+# Noms des arcanes — ceux INSCRITS SUR LES CARTES du jeu maison.
+# Source de vérité : _distillation/noms_cartes.json — le cartouche de
+# chaque image porte ce nom, l'affichage doit dire la même chose.
 ARCANES = {
-    0: "Le Mat", 1: "Le Bateleur", 2: "La Papesse", 3: "L'Impératrice",
-    4: "L'Empereur", 5: "Le Pape", 6: "L'Amoureux", 7: "Le Chariot",
-    8: "La Force", 9: "L'Hermite", 10: "La Roue de Fortune", 11: "La Justice",
-    12: "Le Pendu", 13: "L'Arcane sans nom", 14: "Tempérance", 15: "Le Diable",
-    16: "La Maison Dieu", 17: "L'Étoile", 18: "La Lune", 19: "Le Soleil",
-    20: "Le Jugement", 21: "Le Monde",
+    0: "Foi",
+    1: "Existence",
+    2: "Intuition",
+    3: "Créativité",
+    4: "Liberté",
+    5: "Vide",
+    6: "Union",
+    7: "Volonté",
+    8: "Courage",
+    9: "Solitude",
+    10: "Changement",
+    11: "Justesse",
+    12: "Perspective",
+    13: "Transformation",
+    14: "Équilibre",
+    15: "Emprise",
+    16: "Rupture",
+    17: "Silence",
+    18: "L'Invisible",
+    19: "Rayonnement",
+    20: "Vérité",
+    21: "Accomplissement",
 }
 
 # ⚠️ LA TABLE AUTHENTIQUE — Mathers, *Book T*, 1888.
@@ -96,7 +116,7 @@ def _reduire_vers(n, plafond):
 
 
 def _nom(n):
-    """22 est équivalent à 0 : Le Mat ferme la boucle qu'il ouvre."""
+    """22 est équivalent à 0 : Foi ferme la boucle qu'elle ouvre."""
     return ARCANES[0 if n == 22 else n]
 
 
@@ -183,6 +203,108 @@ def profil(jour, mois, annee, annee_courante=None):
 
 
 # ─────────────────────────────────────────────────────────────────────
+# LA CARTE MAJEURE PERSONNELLE DU JOUR — le vivier + la rotation.
+#
+# ⚠️ CONVENTION D'ALIGN (à publier dans /api/conventions) : aucune source ne
+# calcule de carte quotidienne personnelle. Align en tranche UNE, dans la
+# logique du reste du moteur : chaque jour, le ciel et les nombres proposent
+# un VIVIER de candidats — tous des faits réels, nommés par leur cause — et
+# la carte du jour est le candidat qu'on n'a PAS montré depuis le plus
+# longtemps. C'est l'anti-répétition de `J.choisir_dominante`, appliqué aux
+# arcanes. Zéro tirage : la sélection est une fonction pure de (thème, date,
+# fenêtre rejouée).
+#
+# Pourquoi un vivier et pas une seule main : une main unique, même juste,
+# laisse des arcanes jamais sortis. Mesuré, pas supposé (_verif_majeure_perso.py)
+# : le transit dominant reste à l'orbe de ses cibles natales, donc lire la
+# roue des 22 parts sur lui seul laisse certaines cartes muettes (20/22 en un
+# an sur un thème diffus). Sept candidats par jour font tourner le jeu entier
+# pour tout le monde : 22/22 sur un an, thèmes à amas compris.
+# ─────────────────────────────────────────────────────────────────────
+
+# Dérivées de LA table, sans duplication : planètes classiques et signes
+# portent leurs arcanes ; les trois lettres-mères aussi (Air -> Mat, Eau ->
+# Pendu, Feu -> Jugement). La Terre n'a pas d'arcane dans la table — pas de
+# candidat « element » les jours où la Lune est en signe de Terre.
+_ARCANE_PAR_ASTRE = {v: k for k, (typ, v) in GOLDEN_DAWN.items() if typ == "planete"}
+_ARCANE_PAR_SIGNE = {v: k for k, (typ, v) in GOLDEN_DAWN.items() if typ == "signe"}
+ARCANE_PAR_ELEMENT = {"feu": 20, "eau": 12, "air": 0}
+
+
+def _candidat(numero, cause, **details):
+    """Un candidat du vivier : son arcane, son nom, et SA cause — les détails
+    (astre, signe…) nourrissent le texte de cause affiché sous la carte."""
+    return {"numero": numero, "nom": _nom(numero), "cause": cause, **details}
+
+
+def candidats_du_jour(dominante, potentiels, positions, theme,
+                      jour, mois, annee_naissance, annee_courante):
+    """Le vivier du jour : les arcanes que le ciel et les nombres PROPOSENT.
+
+    Chaque candidat est un fait réel, nommé par sa cause (le texte affiché
+    sous la carte vit dans data/corpus/majeure_perso.json) :
+      - astre     : la planète du transit dominant (les classiques seules :
+                    Uranus/Neptune/Pluton n'ont pas d'arcane Golden Dawn) ;
+      - meteo     : le signe où cette planète parle ;
+      - terrain   : le signe du point natal qu'elle touche ;
+      - potentiel : la première lente en orb qui a un arcane (La Roue, Le Monde) ;
+      - element   : l'élément du signe de la Lune (une lettre-mère) ;
+      - chapitre  : la carte de l'année personnelle (numérologie) ;
+      - origine   : la carte de naissance (portrait).
+    L'ordre EST le prestige : la rotation le suit quand plusieurs candidats
+    sont également neufs. `chapitre` et `origine` sont toujours là — même un
+    jour sans transit, le vivier n'est jamais vide.
+    """
+    candidats = []
+    if dominante:
+        nom = dominante["transit"]
+        if nom in _ARCANE_PAR_ASTRE:
+            candidats.append(_candidat(_ARCANE_PAR_ASTRE[nom], "astre", astre=nom))
+        signe = signe_de(positions[nom])["signe"]
+        candidats.append(_candidat(_ARCANE_PAR_SIGNE[signe], "meteo",
+                                   astre=nom, signe=signe))
+        cle = dominante["natal"]
+        lon = (theme["corps"][cle]["lon"] if cle in theme["corps"]
+               else theme["angles"][cle]["lon"])
+        signe_natal = signe_de(lon)["signe"]
+        candidats.append(_candidat(_ARCANE_PAR_SIGNE[signe_natal], "terrain",
+                                   astre=nom, point=cle, signe=signe_natal))
+    for pot in potentiels or []:
+        if pot["transit"] in _ARCANE_PAR_ASTRE:
+            candidats.append(_candidat(_ARCANE_PAR_ASTRE[pot["transit"]],
+                                       "potentiel", astre=pot["transit"]))
+            break
+    signe_lune = signe_de(positions["lune"])["signe"]
+    element = ELEMENT_PAR_SIGNE.get(signe_lune)
+    if element in ARCANE_PAR_ELEMENT:
+        candidats.append(_candidat(ARCANE_PAR_ELEMENT[element], "element",
+                                   signe=signe_lune, element=element))
+    n_an = carte_de_l_annee(jour, mois, annee_courante)["numero"]
+    candidats.append(_candidat(0 if n_an == 22 else n_an, "chapitre"))
+    n_nais = carte_de_naissance(jour, mois, annee_naissance)["numero"]
+    candidats.append(_candidat(0 if n_nais == 22 else n_nais, "origine"))
+    return candidats
+
+
+def choisir_personnelle(candidats, vus):
+    """Le moins récemment montré gagne — la rotation du vivier.
+
+    `vus` : {numéro : rang de la dernière apparition} ; absent = jamais vu,
+    donc préféré. À égalité, l'ordre du vivier tranche (le plus central
+    d'abord), puis le numéro — départage stable, jamais un `min` au hasard
+    sur un dict.
+    """
+    if not candidats:
+        return None
+
+    def rang(item):
+        i, c = item
+        return (vus.get(c["numero"], -1), i, c["numero"])
+
+    return min(enumerate(candidats), key=rang)[1]
+
+
+# ─────────────────────────────────────────────────────────────────────
 # IMAGES — un accent visuel qui SUIT le calcul, jamais ne le remplace.
 #
 # Rappel du cadre : les cartes ILLUSTRNT un arcane calculé (naissance, fond,
@@ -204,7 +326,7 @@ URL_DOS = "/static/cartes/dos.jpg"
 def url_carte(numero):
     """L'URL de la vignette d'un arcane majeur.
 
-    22 ≡ 0 : Le Mat ferme la boucle qu'il ouvre — même convention que _nom.
+    22 ≡ 0 : Foi ferme la boucle qu'elle ouvre — même convention que _nom.
     Les images vivent dans static/cartes/ (servies par Flask) au format
     00.jpg … 21.jpg.
     """

@@ -240,8 +240,9 @@ def test_carte_de_naissance_exemple_canonique():
 
 
 def test_22_referme_la_boucle_sur_le_mat():
+    """22 ≡ 0 — et le nom affiché est celui du jeu maison (cartouche « Foi »)."""
     n = T.carte_de_naissance(6, 1, 1950)
-    assert n["numero"] == 22 and n["nom"] == "Le Mat"
+    assert n["numero"] == 22 and n["nom"] == T.ARCANES[0] == "Foi"
     assert T.carte_de_fond(6, 1, 1950)["numero"] == 4
 
 

@@ -1,0 +1,27 @@
+{
+ "_charte": "data/corpus/CHARTE.md",
+ "_note": "La carte majeure PERSONNELLE du jour -- le vivier + la rotation (voir moteur/tarot.py). Chaque jour, le ciel et les nombres proposent des candidats ; la rotation montre le moins recent. Ces textes disent POURQUOI la carte sort aujourd'hui : une phrase, langage clair, la cause nommee. Les variables {astre}, {point}, {signe}, {element} sont remplacees par l'app (labels de app.py) ; une cause ne reference que les variables que son candidat porte.",
+ "causes": {
+  "astre": {
+   "texte": "C'est {astre} qui parle le plus fort dans ton ciel aujourd'hui. La carte en est l'écho."
+  },
+  "meteo": {
+   "texte": "La carte vient de {astre}, qui parle depuis le signe {signe}. C'est le climat de ce passage."
+  },
+  "terrain": {
+   "texte": "La carte vient de {astre}, qui touche ton {point} natal en {signe}. C'est ce terrain en toi qui résonne."
+  },
+  "potentiel": {
+   "texte": "La carte vient de {astre}, qui travaille en fond depuis un moment déjà. Sa couleur est lente, et elle porte loin."
+  },
+  "element": {
+   "texte": "La Lune du jour passe en {signe} : l'élément {element} ouvre la carte."
+  },
+  "chapitre": {
+   "texte": "C'est la carte de ton année. Le chapitre que tu vis colore aussi ta journée."
+  },
+  "origine": {
+   "texte": "C'est ta carte de naissance. Le jour la rejoue : ton point de départ a sa place aujourd'hui."
+  }
+ }
+}

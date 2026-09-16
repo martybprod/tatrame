@@ -56,7 +56,9 @@ CHAMPS_DE_PROSE = {
     # le signe chinois natal (le portrait de l'animal, la nuance de l'élément)
     "portrait", "nuance",
     # les messages de la carte du jour et de la carte de l'année
-    "invitation", "pour_l_annee",
+    "invitation", "invitation_personnelle", "pour_l_annee",
+    # la lecture de fond d'un arcane (symboles + enseignement)
+    "lecture",
     # la personologie (48 sous-périodes + axe des nœuds)
     "essence", "origine", "destination",
     # les 17 lois (Millman, distillées) — le levier du jour

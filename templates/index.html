@@ -665,6 +665,13 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    affiché, d'où un flash de la carte précédente (Martin, 2026-08-27). */
 .carte-plein-corps img.img-chargement{opacity:0}
 .carte-plein-corps .carte-plein-nom{font-family:var(--serif);font-size:22px;text-align:center}
+/* La cause : plus petite et discrète, entre le nom et l'invitation — elle
+   explique d'où vient la carte, l'invitation fait le reste. */
+.carte-plein-corps .carte-plein-cause{font-size:13.5px;line-height:1.5;color:var(--encre3);text-align:center;margin-top:2px}
+/* Le bouton de la lecture de fond : un lien discret sous l'invitation. */
+.carte-plein-corps .carte-plein-suite{background:none;border:0;color:var(--accent);text-decoration:underline;font-size:13.5px;cursor:pointer;margin-top:10px;font-family:inherit}
+/* La lecture dépliée : du texte long, aligné à gauche pour se lire sans effort. */
+.carte-plein-corps .carte-plein-lecture{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--encre2);text-align:left;margin-top:12px;white-space:pre-line}
 .carte-plein-corps .carte-plein-invitation{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--encre2);text-align:center}
 /* Angle du jour en plein écran : contenu texte (pas une carte image), donc
    pas centré/étroit comme carte-plein-corps — largeur normale, scrollable si
@@ -1110,7 +1117,7 @@ const terme = k => LEX.termes?.[k] || {};
 const nomEtat = e => terme(e).court || e;
 
 /* L'URL de la vignette d'un arcane — miroir JS de moteur.tarot.url_carte
-   (22 ≡ 0 : Le Mat ferme la boucle ; format 00.jpg). La vignette ILLUSTRE un
+   (22 ≡ 0 : Foi ferme la boucle ; format 00.jpg). La vignette ILLUSTRE un
    arcane calculé, elle ne tire jamais de carte au hasard. */
 const urlCarte = n => `/static/cartes/${String(n === 22 ? 0 : n).padStart(2,'0')}.jpg`;
 
@@ -1790,7 +1797,20 @@ function ouvrirCartePlein(zone) {
   if (img.complete) img.classList.remove('img-chargement'); // déjà en cache
   img.alt = zone.dataset.nom;
   $('#carte-plein-nom').textContent = zone.dataset.nom;
+  /* La cause (pourquoi cette carte aujourd'hui) : elle existe pour les trois
+     cartes du rang ; masquée si absente — jamais une ligne vide. */
+  const causeEl = $('#carte-plein-cause');
+  causeEl.textContent = zone.dataset.cause || '';
+  causeEl.hidden = !zone.dataset.cause;
   $('#carte-plein-invitation').textContent = zone.dataset.invitation || '';
+  /* La lecture de fond (symboles + enseignement de la carte) : présente pour
+     les majeures, absente pour les mineures. Repliée à chaque ouverture, le
+     bouton la déplie — on garde le texte complet dans le DOM, pas de re-fetch. */
+  const boutonLecture = $('#carte-plein-suite'), blocLecture = $('#carte-plein-lecture');
+  boutonLecture.hidden = !zone.dataset.lecture;
+  blocLecture.hidden = true;
+  blocLecture.textContent = zone.dataset.lecture || '';
+  boutonLecture.onclick = () => { blocLecture.hidden = false; };
   fermetureCartePleinEnCours = false;
   vue.classList.remove('fermant');
   vue.classList.add('ouvert');
@@ -2425,20 +2445,24 @@ async function chargerJour() {
       </div></div>`;
   }
 
-  /* Tes cartes du jour — les DEUX cartes réunies, sous le message, présentées
-     CÔTE À CÔTE (« Toi » vs « Le pouls du monde »). TOUJOURS affichées, plus
-     de tiroir à déplier (demande de Martin, 2026-08-22) : chaque carte affiche
-     son DOS par défaut et s'ouvre en plein écran au premier clic (2026-08-27). */
-  if (j.carte_min || j.carte_jour) {
-    const cm = j.carte_min, cj = j.carte_jour;
+  /* Tes cartes du jour — les TROIS cartes réunies, sous le message, présentées
+     CÔTE À CÔTE (le monde vs toi). TOUJOURS affichées, plus de tiroir à
+     déplier (demande de Martin, 2026-08-22) : chaque carte affiche son DOS par
+     défaut et s'ouvre en plein écran au premier clic (2026-08-27). Trois
+     horloges, trois cartes : le calendrier (le monde), le ciel élu + les
+     nombres (l'arcane perso), les luminaires (la mineure) — aucune ne double
+     l'autre. */
+  if (j.carte_min || j.carte_jour || j.carte_perso) {
+    const cj = j.carte_jour, cp = j.carte_perso, cm = j.carte_min;
     /* Chaque carte affiche son dos en grille (le dos seul, jamais de texte en
        ligne) et s'ouvre en PLEIN ÉCRAN au PREMIER clic (Martin, 2026-08-27) —
-       plus de dévoilement en deux temps. Nom et invitation vivent SEULEMENT
-       en data-attributs, lus par ouvrirCartePlein : ils ne sont lisibles
-       qu'en plein écran. */
-    const ligneCarte = (zoneId, src, badge, badgeCol, nom, invitation, alt) => `
+       plus de dévoilement en deux temps. Nom, cause et invitation vivent
+       SEULEMENT en data-attributs, lus par ouvrirCartePlein : ils ne sont
+       lisibles qu'en plein écran. */
+    const ligneCarte = (zoneId, src, badge, badgeCol, nom, invitation, alt, cause, lecture) => `
       <div class="carte-jour-zone" id="${zoneId}" title="Clique pour l'agrandir"
-           data-src="${src}" data-nom="${T(nom)}" data-invitation="${T(invitation || '')}">
+           data-src="${src}" data-nom="${T(nom)}" data-invitation="${T(invitation || '')}"
+           data-cause="${T(cause || '')}" data-lecture="${T(lecture || '')}">
         <span class="carte-jour">
           <img class="face" src="${src}" alt="${alt}"
                onerror="this.onerror=null;this.src='/static/cartes/dos.jpg'">
@@ -2446,13 +2470,21 @@ async function chargerJour() {
         </span>
         <span style="display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:${badgeCol};border:1px solid ${badgeCol};border-radius:10px;padding:1px 7px">${badge}</span>
       </div>`;
+    /* Résonance : le monde et toi lisez la même arcane aujourd'hui (~5 % des
+       jours). Dite une fois, sous le rang — pas un état, une rencontre. */
+    const memeCarte = (cj && cp && (cp.numero % 22) === (cj.numero % 22))
+      ? `<p style="margin:10px 0 0;font-size:13.5px;color:var(--encre2);text-align:center">Le monde lit la même carte que toi aujourd'hui.</p>` : '';
     html += `<div class="jour-section">Tes cartes du jour</div>
       <div class="jour-groupe" style="padding:2px 2px 8px">
         <div class="pont carte-jour-paire" style="margin-top:14px">
-          ${cj ? ligneCarte('z-carte-maj', urlCarte(cj.numero), 'Le pouls du monde', 'var(--accent)', cj.nom, cj.invitation, T(cj.nom)) : ''}
-          ${cm ? ligneCarte('z-carte-min', urlCarteMineur(cm.suit, cm.rang), 'Toi', 'var(--accent)', cm.nom, cm.invitation, 'arcane mineur') : ''}
+          ${cj ? ligneCarte('z-carte-maj', urlCarte(cj.numero), 'Le pouls du monde', 'var(--accent)', cj.nom, cj.invitation, T(cj.nom),
+              "Le même calcul que ta carte de naissance, appliqué à la date du jour : le monde entier la partage.", cj.lecture) : ''}
+          ${cp ? ligneCarte('z-carte-perso', urlCarte(cp.numero), 'Ton arcane du jour', 'var(--accent)', cp.nom, cp.invitation, T(cp.nom), cp.cause_texte, cp.lecture) : ''}
+          ${cm ? ligneCarte('z-carte-min', urlCarteMineur(cm.suit, cm.rang), 'Ta couleur du jour', 'var(--accent)', cm.nom, cm.invitation, 'arcane mineur',
+              "La Lune du jour donne la couleur ; le Soleil, mesuré depuis ton Ascendant de naissance, donne le rang.") : ''}
         </div>
-        ${aide("Deux cartes, pourquoi ?", "La carte « Le pouls du monde » se calcule sur la date du jour seule (le même climat pour tout le monde). La carte « Toi » se calcule sur ton thème (couleur = la Lune du jour, rang = l'écart entre le Soleil du jour et ton Ascendant de naissance) : elle n'appartient qu'à toi. Les deux sont toujours calculées, jamais tirées.")}
+        ${memeCarte}
+        ${aide("Trois cartes, pourquoi ?", "« Le pouls du monde » se calcule sur la date du jour seule : le même climat pour tout le monde. « Ton arcane du jour » vient de ton ciel à toi : chaque jour, ton ciel et tes nombres proposent plusieurs cartes, et celle qui sort est celle qu'on ne t'a pas montrée depuis le plus longtemps — le jeu entier finit par passer. « Ta couleur du jour » se calcule sur tes luminaires (couleur = la Lune du jour, rang = l'écart entre le Soleil du jour et ton Ascendant). Les trois sont toujours calculées, jamais tirées.")}
       </div>`;
   }
 
@@ -2714,11 +2746,11 @@ async function chargerJour() {
     }
   }
 
-  /* Les deux cartes du jour : le premier clic ouvre directement le plein
+  /* Les trois cartes du jour : le premier clic ouvre directement le plein
      écran (Martin, 2026-08-27) — la carte est montrée agrandie d'emblée,
-     jamais dévoilée en petit dans la grille. Même câblage pour les deux
+     jamais dévoilée en petit dans la grille. Même câblage pour les trois
      (voir ouvrirCartePlein). */
-  [$('#z-carte-maj'), $('#z-carte-min')].forEach(zone => {
+  [$('#z-carte-maj'), $('#z-carte-perso'), $('#z-carte-min')].forEach(zone => {
     if (!zone) return;
     zone.onclick = () => ouvrirCartePlein(zone);
   });
@@ -4367,7 +4399,10 @@ function fermerFeedback() {
   <div class="accueil-carte"><div class="carte carte-plein-corps">
     <img id="carte-plein-img" src="" alt="">
     <div class="carte-plein-nom" id="carte-plein-nom"></div>
+    <div class="carte-plein-cause" id="carte-plein-cause"></div>
     <div class="carte-plein-invitation" id="carte-plein-invitation"></div>
+    <button class="carte-plein-suite" id="carte-plein-suite" hidden>Comprendre cette carte</button>
+    <div class="carte-plein-lecture" id="carte-plein-lecture" hidden></div>
   </div></div>
 </div>
 <!-- Vue plein écran d'un angle du jour (contenu texte, pas une carte tarot) :

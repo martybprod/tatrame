@@ -18,7 +18,7 @@ RACINE = Path(__file__).resolve().parent.parent
 
 
 def test_url_carte_couvre_les_22_arcanes():
-    """0 à 21 → 00.jpg à 21.jpg ; 22 ≡ 0 (Le Mat ferme la boucle)."""
+    """0 à 21 → 00.jpg à 21.jpg ; 22 ≡ 0 (Foi ferme la boucle)."""
     for n in range(22):
         assert url_carte(n) == f"/static/cartes/{n:02d}.jpg"
     assert url_carte(22) == "/static/cartes/00.jpg"
@@ -82,3 +82,113 @@ def test_carte_du_jour_pointe_vers_une_vignette_valide():
         c = carte_du_jour(j, m, 2026)
         chemin = RACINE / url_carte(c["numero"]).lstrip("/")
         assert chemin.exists(), f"carte du jour {c['numero']} → vignette manquante"
+
+
+# ─────────────────────────────────────────────────────────────────────
+# Le vivier + la rotation — la carte majeure PERSONNELLE du jour.
+#
+# Le bug que ces tests verrouillent : un rang de récence NÉGATIF (l'offset
+# du jour) faisait passer « vu il y a 7 jours » avant « jamais vu »
+# (sentinelle -1), et la même carte se figeait à l'écran des semaines
+# durant. La sentinelle « jamais vu » doit rester la plus petite valeur.
+# ─────────────────────────────────────────────────────────────────────
+
+import datetime as dt
+
+from moteur.tarot import ARCANES, candidats_du_jour, choisir_personnelle
+
+# Un thème minimal, à la main : le vivier n'y lit que les longitudes natales.
+THEME = {"corps": {"soleil": {"lon": 150.0}, "mars": {"lon": 150.0},
+                   "lune": {"lon": 40.0}, "mercure": {"lon": 160.0},
+                   "venus": {"lon": 210.0}, "jupiter": {"lon": 250.0}},
+         "angles": {"asc": {"lon": 120.0}, "mc": {"lon": 30.0}}}
+# Un ciel minimal : la planète transitante + la Lune (pour le candidat élément).
+POSITIONS = {"soleil": 95.0, "lune": 200.0, "mars": 95.0}
+DOMINANTE = {"transit": "mars", "natal": "soleil", "classe": "carre-opposition"}
+
+
+def vivier(dominante=DOMINANTE):
+    return candidats_du_jour(dominante, [], POSITIONS, THEME,
+                             15, 6, 1980, 2026)
+
+
+def test_vivier_propose_le_chapitre_et_l_origine_meme_sans_transit():
+    """Un jour sans transit dominant n'est pas un jour sans carte : le
+    chapitre (l'année) et l'origine (la naissance) sont toujours là."""
+    causes = {x["cause"] for x in vivier(dominante=None)}
+    assert {"chapitre", "origine"} <= causes
+
+
+def test_vivier_candidats_sont_des_majeurs_nommes():
+    """Chaque candidat est un majeur valide (0-21), nommé, avec sa cause."""
+    causes_connues = {"astre", "meteo", "terrain", "potentiel",
+                      "element", "chapitre", "origine"}
+    for x in vivier():
+        assert x["numero"] in range(22)
+        assert x["nom"] == ARCANES[x["numero"]]
+        assert x["cause"] in causes_connues
+
+
+def test_rotation_jamais_vu_passe_avant_vu_recemment():
+    """La sentinelle « jamais vu » gagne toute égalité — même contre une
+    carte vue il y a longtemps. C'est le verrou anti-figeage."""
+    premiere = vivier()[0]
+    choice = choisir_personnelle(vivier(), {premiere["numero"]: 0})
+    assert choice["cause"] != premiere["cause"]
+
+
+def test_rotation_le_plus_ancien_gagne_puis_l_ordre_du_vivier():
+    """Quand tout le monde a été vu, le moins récemment montré gagne ; à
+    égalité, l'ordre du vivier (le plus central d'abord) — stable, jamais
+    au hasard."""
+    c = vivier()
+    ancien = c[1]
+    vus = {x["numero"]: 5 for x in c}      # tout le monde a été vu
+    vus[ancien["numero"]] = 2              # …lui plus tôt que les autres
+    assert choisir_personnelle(c, vus)["numero"] == ancien["numero"]
+    vus_egal = {x["numero"]: 9 for x in c}
+    assert choisir_personnelle(c, vus_egal)["cause"] == c[0]["cause"]
+
+
+def test_rotation_sans_candidat_ne_leve_pas():
+    assert choisir_personnelle([], {}) is None
+
+
+def test_replay_la_carte_perso_ne_se_figere_pas(monkeypatch):
+    """Le replay de la fenêtre (app) doit faire tourner les cartes — le bug
+    du rang négatif laissait la même carte des semaines à l'écran. Le ciel est
+    simulé (il glisse d'un jour à l'autre, comme le vrai) : seul le mécanisme
+    de rotation est sous test."""
+    import app as application
+
+    def ciel_glissant(theme, date):
+        # La Lune avance de ~13°/jour : le vivier change d'un jour à l'autre.
+        lon_lune = (POSITIONS["lune"] + 13.0 * date.timetuple().tm_yday) % 360.0
+        return {c: {"lon": (POSITIONS.get(c, 150.0) + 13.0 * date.day) % 360.0,
+                    "vitesse_lon": 0.0}
+                for c in ("soleil", "lune", "mars", "venus", "mercure",
+                          "jupiter", "saturne")} | {"lune": {
+                    "lon": lon_lune, "vitesse_lon": 0.0}}
+
+    cles = ["soleil_conjonction_mars", "venus_carre-opposition_lune",
+            "mars_conjonction_mercure", "lune_sextile-trigone_jupiter"]
+    monkeypatch.setattr(application, "_dominantes_fenetre",
+                        lambda theme, date, fenetre=7: {
+                            o: cles[(date.day + o) % len(cles)]
+                            for o in range(-fenetre, 0)})
+    monkeypatch.setattr(application, "_ciel_leger", ciel_glissant)
+    n = {"jour": 15, "mois": 6, "annee": 1980}
+
+    def jour_pour(date):
+        return {"dominante": DOMINANTE, "potentiel": []}
+
+    cartes = [application._carte_perso_pour(
+        THEME, dt.date(2026, 9, 1) + dt.timedelta(days=j), n,
+        POSITIONS, jour_pour(dt.date(2026, 9, 1)))["numero"]
+        for j in range(10)]
+    assert len(set(cartes)) >= 3, "la rotation doit faire passer plusieurs cartes"
+    # Et le replay est déterministe : même jour, même carte, toujours.
+    assert application._carte_perso_pour(THEME, dt.date(2026, 9, 1), n,
+                                         POSITIONS, jour_pour(dt.date(2026, 9, 1))) == \
+           application._carte_perso_pour(THEME, dt.date(2026, 9, 1), n,
+                                         POSITIONS, jour_pour(dt.date(2026, 9, 1)))

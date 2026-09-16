@@ -1736,21 +1736,27 @@ def _resoudre_variantes(entree, dominante):
 FENETRE_RECURRENCE = 7
 
 
+def _ciel_leger(theme, date):
+    """Le ciel d'un jour à midi UTC — version LÉGÈRE : ni corpus, ni cartes,
+    juste les positions et vitesses. Sert aux regards en arrière."""
+    t = moteur.eph.instant(date.year, date.month, date.day, 12, 0, 0)
+    return {c: moteur.eph.position(c, t) for c in moteur.eph.CORPS}
+
+
 def _declencheurs_pour(theme, date):
     """Déclencheurs classés par force pour une date — version LÉGÈRE : ni
     corpus, ni cartes, juste `J.transits` filtré. Sert à la fenêtre de regard
     en arrière, où l'on n'a besoin que des forces, pas du message du jour."""
-    t = moteur.eph.instant(date.year, date.month, date.day, 12, 0, 0)
-    ciel = {c: moteur.eph.position(c, t) for c in moteur.eph.CORPS}
+    ciel = _ciel_leger(theme, date)
     positions = {c: p["lon"] for c, p in ciel.items()}
     vitesses = {c: p["vitesse_lon"] for c, p in ciel.items()}
     return [x for x in J.transits(theme, positions, vitesses)
             if x["etage"] == "declencheur"]
 
 
-def _recents_pour(theme, date, fenetre=FENETRE_RECURRENCE):
-    """Les clés dominantes des `fenetre` jours précédant `date`, du plus
-    ancien au plus récent (recents[-1] = hier).
+def _dominantes_fenetre(theme, date, fenetre=FENETRE_RECURRENCE):
+    """Les clés dominantes des `fenetre` jours précédant `date`, offset par
+    offset, mémoïsées — la règle de récurrence en UN seul endroit.
 
     On balaie la fenêtre de gauche à droite en appliquant LA MÊME règle de
     sélection (`J.choisir_dominante`), pour que « récent » reflète ce qui a
@@ -1758,6 +1764,10 @@ def _recents_pour(theme, date, fenetre=FENETRE_RECURRENCE):
     gauche s'amorce en naïf : pas de passé connu, `choisir_dominante`
     départage alors par la force. Cela BORNE le regard en arrière à la
     fenêtre, sans cascade vers le passé lointain.
+
+    Deux consommateurs partagent ce passé reconstruit — le transit dominant
+    du jour (`_recents_pour`) et la rotation des cartes (`_carte_perso_pour`)
+    — pour que la même fenêtre raconte la même histoire aux deux.
     """
     dominantes = {}   # offset (négatif) -> clé dominante (récurrence)
 
@@ -1775,7 +1785,80 @@ def _recents_pour(theme, date, fenetre=FENETRE_RECURRENCE):
 
     for offset in range(-fenetre, 0):
         cle_a(offset)
-    return [dominantes[o] for o in range(-fenetre, 0)]
+    return dominantes
+
+
+def _recents_pour(theme, date, fenetre=FENETRE_RECURRENCE):
+    """Les clés dominantes des `fenetre` jours précédant `date`, du plus
+    ancien au plus récent (recents[-1] = hier). Voir `_dominantes_fenetre`.
+    """
+    passe = _dominantes_fenetre(theme, date, fenetre)
+    return [passe[o] for o in range(-fenetre, 0)]
+
+
+def _carte_perso_pour(theme, date, n, positions, jour, fenetre=FENETRE_RECURRENCE):
+    """La carte majeure PERSONNELLE du jour : le vivier lu par la rotation.
+
+    La rotation doit savoir ce qui a VRAIMENT été montré ces derniers jours :
+    on rejoue donc la fenêtre jour par jour (dominantes mémoïsées via
+    `_dominantes_fenetre`, vivier reconstruit avec le ciel de chaque jour),
+    puis on applique la règle à aujourd'hui. Le bord gauche s'amorce en naïf —
+    le passé inconnu ne prive aucune carte, il ouvre le jeu.
+    """
+    passe = _dominantes_fenetre(theme, date, fenetre)
+    vus, pick = {}, None
+    for offset in range(-fenetre, 1):
+        d = date + dt.timedelta(days=offset)
+        if offset == 0:
+            dom, pots, pos = jour["dominante"], jour["potentiel"], positions
+        else:
+            ciel = _ciel_leger(theme, d)
+            pos = {c: p["lon"] for c, p in ciel.items()}
+            vitesses = {c: p["vitesse_lon"] for c, p in ciel.items()}
+            pots = [t for t in J.transits(theme, pos, vitesses)
+                    if t["etage"] == "potentiel"][:2]
+            cle = passe.get(offset)
+            # La clé porte tout ce que le vivier lit : « lune_sextile-trigone_jupiter ».
+            dom = (dict(zip(("transit", "classe", "natal"), cle.split("_", 2)))
+                   if cle else None)
+        cands = TAR.candidats_du_jour(dom, pots, pos, theme,
+                                      n["jour"], n["mois"], n["annee"], d.year)
+        pick = TAR.choisir_personnelle(cands, vus)
+        if pick:
+            # Rang POSITIF et croissant avec la récence — la sentinelle -1 de
+            # `choisir_personnelle` (jamais vu) doit rester la plus petite
+            # valeur : un offset négatif la devancerait et figerait la carte.
+            vus[pick["numero"]] = offset + fenetre
+    return pick
+
+
+# L'article fait partie du libellé quand la phrase l'exige : « la Lune »,
+# « le Soleil », mais Mars sans article — les textes de cause placent
+# toujours l'astre en milieu de phrase, jamais en tête.
+_ARTICLE_ASTRE = {"lune": "la Lune", "soleil": "le Soleil"}
+
+
+class _Libelles(dict):
+    """Les variables des textes de cause. Une clé absente rend du vide : une
+    coquille dans le corpus ne doit jamais casser la page du Jour."""
+
+    def __missing__(self, cle):
+        return ""
+
+
+def _texte_cause(carte_perso):
+    """La cause de la carte, résolue en phrase : les slugs du vivier vers les
+    mots affichés (Soleil, Ascendant, Vierge…). Le texte vit dans le corpus
+    (majeure_perso.json) ; ici on ne fait que nommer les variables."""
+    brut = corpus.lire("majeure_perso", "causes", carte_perso["cause"]) or {}
+    astre = carte_perso.get("astre", "")
+    libelles = _Libelles(
+        astre=_ARTICLE_ASTRE.get(astre, LABEL_ASTRE.get(astre, "")),
+        point=LABEL_ASTRE.get(carte_perso.get("point", ""), ""),
+        signe=carte_perso.get("signe", ""),
+        element=MIN.ELEMENT_NOM.get(carte_perso.get("element", ""), ""),
+    )
+    return (brut.get("texte") or "").format_map(libelles)
 
 
 def _jour_pour(profil, date):
@@ -1816,11 +1899,16 @@ def _jour_pour(profil, date):
     # jour. Un arcane-écho calculé qui colorie la journée (le ciel mène toujours).
     carte_jr = carte_du_jour(date.day, date.month, date.year)
     # Son message : une invitation du présent (jamais une prédiction), lue sous
-    # le nom quand la carte se dévoile. L'arcane 22 est Le Mat, qui ferme la
+    # le nom quand la carte se dévoile. L'arcane 22 est Foi, qui ferme la
     # boucle sur le 0 — on lit donc son texte à la clé « 0 ».
     carte_jr["invitation"] = corpus.lire(
         "arcanes", "arcanes", str(0 if carte_jr["numero"] == 22 else carte_jr["numero"]),
         "invitation")
+    # La lecture de fond (symboles + enseignement), commune aux deux majeures :
+    # c'est elle que le bouton « Comprendre cette carte » déplie en plein écran.
+    carte_jr["lecture"] = corpus.lire(
+        "arcanes", "arcanes", str(0 if carte_jr["numero"] == 22 else carte_jr["numero"]),
+        "lecture")
     # La carte mineure PERSONNELLE : couleur = élément de la Lune transit
     # (partagé, change vite) ; rang = écart Soleil transit -> Ascendant natal
     # (personnel, avance sur l'année). Toujours un calcul, jamais un tirage —
@@ -1834,6 +1922,19 @@ def _jour_pour(profil, date):
     recents = _recents_pour(theme, date)
     j = J.journee(theme, positions, vitesses, ap, carte_an,
                   carte_jour=carte_jr, mois_perso=mp, recents=recents)
+    # La carte majeure PERSONNELLE : le vivier du jour (ciel + nombres) lu par
+    # la rotation — le moins récemment montré gagne. Elle lit la dominante et
+    # le potentiel du jour, donc elle vient après `J.journee`. L'invitation est
+    # celle des 22 arcanes (déjà écrite) ; la cause dit pourquoi elle sort.
+    carte_perso = _carte_perso_pour(theme, date, n, positions, j)
+    # L'invitation PERSONNELLE (registre « tu ») quand elle est écrite — sinon
+    # repli sur l'invitation commune, le temps que les 22 soient rédigées.
+    carte_perso["invitation"] = (corpus.lire(
+        "arcanes", "arcanes", str(carte_perso["numero"]), "invitation_personnelle")
+        or corpus.lire("arcanes", "arcanes", str(carte_perso["numero"]), "invitation"))
+    carte_perso["lecture"] = corpus.lire(
+        "arcanes", "arcanes", str(carte_perso["numero"]), "lecture")
+    carte_perso["cause_texte"] = _texte_cause(carte_perso)
 
     textes = {}
     for genre, cle in j["cles"]:
@@ -1918,6 +2019,7 @@ def _jour_pour(profil, date):
         "manque": [g for g, _ in j["cles"] if not textes.get(g)],
         "carte_annee": carte_an,
         "carte_jour": carte_jr,
+        "carte_perso": carte_perso,
         "carte_min": carte_min,
         # La couche la plus lente : la traversée de la vie, universelle.
         "vie": _bloc_vie(n["jour"], n["mois"], n["annee"], date),
@@ -2280,6 +2382,28 @@ def api_conventions():
                       "seule, la même pour tout le monde) : les deux cohabitent, l'une "
                       "colore le climat commun, l'autre ta texture propre — toutes deux "
                       "issues du même calcul.",
+        },
+        "carte_majeure_personnelle": {
+            "regle": "Un arcane majeur PERSONNEL chaque jour. Chaque jour, le ciel et "
+                     "les nombres proposent un vivier de candidats : la planète du "
+                     "transit dominant, le signe où elle parle, le signe du point natal "
+                     "qu'elle touche, la planète lente en orb, l'élément de la Lune, la "
+                     "carte de l'année, la carte de naissance. La carte montrée est "
+                     "celle qu'on ne t'a pas montrée depuis le plus longtemps.",
+            "source": "tranché par Ta Trame, sur une base Golden Dawn (Mathers, Book T, "
+                      "1888, domaine public)",
+            "detail": "Aucune source ne calcule de carte quotidienne personnelle — "
+                      "convention Ta Trame, comme pour la carte du jour universelle. "
+                      "Une main unique (le seul transit dominant) laisserait des "
+                      "arcanes jamais montrés : un transit reste à l'orbe de ses "
+                      "cibles natales, donc certaines cartes ne sortiraient jamais. "
+                      "Le vivier fait tourner le jeu entier : les 22 arcanes sortent "
+                      "en un an, vérifié par calcul, pas supposé "
+                      "(_verif_majeure_perso.py). La rotation est déterministe : elle "
+                      "rejoue la même fenêtre de récurrence que le transit dominant. "
+                      "Chaque carte porte sa cause (« Mars parle aujourd'hui », « le "
+                      "jour rejoue ta carte de naissance ») : elle colore la journée, "
+                      "elle ne la remplace pas — le ciel mène, la carte échoit.",
         },
         "fil_du_jour": {
             "regle": "Un conseil de vie quotidien, choisi par le ciel. La maison où "
