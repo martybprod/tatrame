@@ -862,6 +862,12 @@ details.aide.ciel-titre summary{font-size:10px}
 /* Le message du jour = le héros. Plus d'air, une légère élévation qui le
    détache, l'en-tête (date + Lune) fondu dedans en fine ligne dés-accentuée. */
 .carte-jour-hero{padding:28px 26px 30px; box-shadow:0 10px 34px rgba(0,0,0,.16)}
+/* La carte-entrée « Aujourd'hui » (2026-09-15) : ne montre que le chapo +
+   sous-titre, garde le même relief que le héros d'avant, s'ouvre en plein
+   écran (glyphe ⤢ en coin, comme les autres angles). */
+.carte-jour-hero--entree{cursor:pointer; position:relative; padding:22px 46px 22px 26px}
+.carte-jour-hero--entree .glyphe-plein{position:absolute; right:20px; top:50%; transform:translateY(-50%)}
+.carte-jour-hero--entree:active{opacity:.85}
 .jour-entete{text-align:center; color:var(--encre3); margin-bottom:22px;
   padding-bottom:18px; border-bottom:1px solid var(--bord)}
 .jour-entete .date{font-size:11px; letter-spacing:.16em; text-transform:uppercase}
@@ -2463,19 +2469,28 @@ async function chargerJour() {
       </div>`;
   }
 
-  /* ═══ LE MESSAGE DU JOUR — le héros, maintenant APRÈS les cartes et séparé
-     de l'en-tête date/Lune (demande de Martin, 2026-09-15). ═══ */
+  /* ═══ LE MESSAGE DU JOUR — DÉCOUVRABLE (demande de Martin, 2026-09-15) :
+     la carte ne montre plus que le chapo + le sous-titre (le titre court).
+     Le miroir (texte long), le geste et les aides ne vivent QU'en plein
+     écran, au clic — même geste ⤢ que le reste des angles du jour. ═══ */
   if (titre && titre.miroir) {
-    html += `<div class="carte carte-jour-hero">
-      <div class="chapo">Aujourd'hui</div>
-      ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
+    const corpsAujourdhui = `
       ${cielMene && dom ? `<details class="aide ciel-titre"><summary>Dans le ciel</summary>
         <p style="font-size:15px;color:var(--encre2);margin:8px 0 4px">${domPhrase}</p>
         <p class="quoi" style="margin:4px 0 12px">${domTempo}</p></details>` : ''}
       <div class="miroir">${T(titre.miroir)}</div>
       ${blocGeste(titre.geste, "Aujourd'hui")}
       ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
-      ${cielMene ? domRetourAide : ''}
+      ${cielMene ? domRetourAide : ''}`;
+    const idAuj = 'ac-aujourdhui';
+    setTimeout(() => {
+      const el = document.getElementById(idAuj);
+      if (el) el.onclick = () => ouvrirAnglePlein("Aujourd'hui", corpsAujourdhui);
+    }, 0);
+    html += `<div class="carte carte-jour-hero carte-jour-hero--entree" id="${idAuj}" title="Toucher pour lire">
+      <div class="chapo">Aujourd'hui</div>
+      ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 0">${T(titre.sous_titre)}</p>` : ''}
+      <span class="glyphe-plein" aria-hidden="true">⤢</span>
     </div>`;
   }
 
@@ -2485,18 +2500,18 @@ async function chargerJour() {
   let angles = '';
 
   // Le transit dominant, quand il n'est pas déjà dans « Aujourd'hui » (chinois mène).
+  // Converti en entrée plein écran (2026-09-15) : tout ce qui suit « Aujourd'hui »
+  // s'ouvre désormais par le même geste ⤢, plus de tiroir à déplier en place.
   if (dom && !cielMene) {
-    angles += tiroir({
+    angles += angleCarte({
       nom: "Ce qui domine aujourd'hui",
       resume: t.transit?.miroir ? T(t.transit.miroir) : domPhrase.replace(/<[^>]*>/g, ''),
       ico: icono(ICONES_JOUR.domine),
       // domPhrase contient du HTML (des <b> pour les noms de planètes) — on ne
       // passe PAS par aide() ici, elle échapperait ces balises via T(). On
       // reprend directement la classe .aide (même rendu discret replié) pour
-      // garder le HTML intact. Demande de Martin (2026-08-22) : la mécanique
-      // du ciel repliée par défaut, discrète — le mouvement (domTempo) et le
-      // geste restent visibles, eux.
-      corps: `<details class="aide"><summary>Dans le ciel</summary><p>${domPhrase}</p></details>
+      // garder le HTML intact.
+      corpsHTML: `<details class="aide"><summary>Dans le ciel</summary><p>${domPhrase}</p></details>
         <p class="quoi">${domTempo}</p>
         ${blocGeste(t.transit?.geste, "Ce qui domine aujourd'hui")}
         ${domCalc}${domRetourAide}`
