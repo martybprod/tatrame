@@ -1840,7 +1840,13 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
     blocLecture.hidden = false;
     blocLecture.classList.remove('lecture-surgit'); void blocLecture.offsetWidth; // relance l'anim si déjà jouée
     blocLecture.classList.add('lecture-surgit');
-    blocLecture.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'nearest'});
+    // Juste un léger « ça bouge, la suite est là » — PAS un saut qui amène le
+    // début du texte en haut (scrollIntoView faisait perdre la carte de vue
+    // tout de suite). Un petit scrollBy relatif, sur le conteneur scrollable,
+    // garde la carte visible (Martin, 2026-09-15).
+    $('.carte-plein-corps').scrollBy({
+      top: 60, behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth',
+    });
   };
   fermetureCartePleinEnCours = false;
   vue.classList.remove('fermant');
