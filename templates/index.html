@@ -922,7 +922,12 @@ details.aide.ciel-titre summary{font-size:10px}
 .jour-groupe-temps{background:#17181b; border-color:#2a2c30}
 .jour-groupe-temps .tiroir-ico{color:#7d8592; opacity:.8}
 .jour-groupe-temps .tiroir-nom{color:#6d7480}
-.jour-section-temps{color:#5d6470}
+.jour-section-temps{color:#5d6470; cursor:pointer; display:flex; align-items:center; gap:6px}
+.jour-section-temps::-webkit-details-marker{display:none}
+.jour-section-temps::marker{content:''}
+.jour-section-temps::after{content:'⌄'; font-size:13px; transition:transform .18s ease}
+.jour-section-temps-details[open] .jour-section-temps::after{transform:rotate(180deg)}
+.jour-section-temps-details .jour-groupe-temps{margin-top:8px}
 details.tiroir{border-bottom:1px solid var(--bord)}
 details.tiroir:last-child{border-bottom:0}
 details.tiroir>summary{
@@ -2678,11 +2683,15 @@ async function chargerJour() {
   // « Le fond du temps » : SECTION à part entière, distincte d'Explorer — ces
   // cycles (mois, année, traversée de vie) changent rarement, on n'y revient
   // pas tous les jours. Couleur sourdine (.jour-groupe-temps), pas le liseré
-  // doré du Fil ni le papier2 neutre d'Explorer : un repère visuel « c'est du
-  // temps long, pas de l'aujourd'hui » (demande de Martin, 2026-09-15).
+  // doré du Fil ni le papier2 neutre d'Explorer. REPLIÉE par défaut (Martin,
+  // 2026-09-15) : la section elle-même est un <details>, le titre EST le
+  // déclencheur — un clic de plus qu'Explorer, cohérent avec « consulté
+  // rarement ».
   if (cycles) {
-    html += `<div class="jour-section jour-section-temps">Le fond du temps</div>
-      <div class="jour-groupe jour-groupe-temps">${cycles}</div>`;
+    html += `<details class="jour-section-temps-details">
+      <summary class="jour-section jour-section-temps">Le fond du temps</summary>
+      <div class="jour-groupe jour-groupe-temps">${cycles}</div>
+    </details>`;
   }
 
   /* ═══ À MÉDITER — la clôture du jour, à CONTEMPLER : plein écran (angleCarte,
