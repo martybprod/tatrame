@@ -672,6 +672,11 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .carte-plein-corps .carte-plein-suite{background:none;border:0;color:var(--accent);text-decoration:underline;font-size:13.5px;cursor:pointer;margin-top:10px;font-family:inherit}
 /* La lecture dépliée : du texte long, aligné à gauche pour se lire sans effort. */
 .carte-plein-corps .carte-plein-lecture{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--encre2);text-align:left;margin-top:12px;white-space:pre-line}
+/* Signale que le texte vient d'apparaître (Martin, 2026-09-15) : un léger
+   fondu + glissement vers sa place, en plus du scroll qui l'amène à l'écran. */
+@keyframes lectureSurgit{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.carte-plein-lecture.lecture-surgit{animation:lectureSurgit .35s ease}
+@media (prefers-reduced-motion:reduce){.carte-plein-lecture.lecture-surgit{animation:none}}
 .carte-plein-corps .carte-plein-invitation{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--encre2);text-align:center}
 /* Angle du jour en plein écran : contenu texte (pas une carte image), donc
    pas centré/étroit comme carte-plein-corps — largeur normale, scrollable si
@@ -1795,7 +1800,13 @@ document.addEventListener('touchend', e => {
    ═══════════════════════════════════════════════════════════ */
 let fermetureCartePleinEnCours = false;
 
-function ouvrirCartePlein(zone) {
+/* Le cœur de la visionneuse plein écran d'une carte — pris {src, nom, cause,
+   invitation, lecture} en donnée brute, PAS un élément DOM : ainsi n'importe
+   quelle carte affichée ailleurs dans l'app (Portrait, l'année personnelle…)
+   peut ouvrir la même vue riche, avec le bouton « Comprendre cette carte »,
+   sans dépendre de la mécanique des trois cartes du jour (Martin, 2026-09-15
+   : « on ne voit pas Comprendre cette carte » ailleurs que dans Le Jour). */
+function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture = ''}) {
   const vue = $('#carte-plein');
   const img = $('#carte-plein-img');
   /* Flash de la carte précédente : le navigateur garde l'ancien bitmap affiché
@@ -1805,34 +1816,49 @@ function ouvrirCartePlein(zone) {
   img.classList.add('img-chargement');
   img.onload = () => img.classList.remove('img-chargement');
   img.onerror = () => img.classList.remove('img-chargement');
-  img.src = zone.dataset.src;
+  img.src = src;
   if (img.complete) img.classList.remove('img-chargement'); // déjà en cache
-  img.alt = zone.dataset.nom;
-  $('#carte-plein-nom').textContent = zone.dataset.nom;
+  img.alt = nom;
+  $('#carte-plein-nom').textContent = nom;
   /* La cause (pourquoi cette carte aujourd'hui) : elle existe pour les trois
      cartes du rang ; masquée si absente — jamais une ligne vide. */
   const causeEl = $('#carte-plein-cause');
-  causeEl.textContent = zone.dataset.cause || '';
-  causeEl.hidden = !zone.dataset.cause;
-  $('#carte-plein-invitation').textContent = zone.dataset.invitation || '';
+  causeEl.textContent = cause;
+  causeEl.hidden = !cause;
+  $('#carte-plein-invitation').textContent = invitation;
   /* La lecture de fond (symboles + enseignement de la carte) : présente pour
      les majeures, absente pour les mineures. Repliée à chaque ouverture, le
-     bouton la déplie — on garde le texte complet dans le DOM, pas de re-fetch. */
+     bouton la déplie — on garde le texte complet dans le DOM, pas de re-fetch.
+     Au dépli, on SCROLLE vers le texte (le conteneur est overflow-y:auto) :
+     sans ce geste, rien à l'écran ne montrait que le texte venait d'apparaître
+     plus bas, hors du cadre visible (Martin, 2026-09-15). */
   const boutonLecture = $('#carte-plein-suite'), blocLecture = $('#carte-plein-lecture');
-  boutonLecture.hidden = !zone.dataset.lecture;
+  boutonLecture.hidden = !lecture;
   blocLecture.hidden = true;
-  blocLecture.textContent = zone.dataset.lecture || '';
-  boutonLecture.onclick = () => { blocLecture.hidden = false; };
+  blocLecture.textContent = lecture;
+  boutonLecture.onclick = () => {
+    blocLecture.hidden = false;
+    blocLecture.classList.remove('lecture-surgit'); void blocLecture.offsetWidth; // relance l'anim si déjà jouée
+    blocLecture.classList.add('lecture-surgit');
+    blocLecture.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'nearest'});
+  };
   fermetureCartePleinEnCours = false;
   vue.classList.remove('fermant');
   vue.classList.add('ouvert');
   vue.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+  $('#carte-plein-fermer').onclick = fermerCartePlein;
+}
+
+function ouvrirCartePlein(zone) {
+  ouvrirCartePleinDonnees({
+    src: zone.dataset.src, nom: zone.dataset.nom,
+    cause: zone.dataset.cause, invitation: zone.dataset.invitation, lecture: zone.dataset.lecture,
+  });
   // Dès qu'on ouvre la carte en plein écran, elle est « consultée » : à la
   // fermeture, on la revoit DÉVOILÉE en petit dans le fil, plus un dos vierge
   // (Martin, 2026-08-27).
   zone.classList.add('revelee');
-  $('#carte-plein-fermer').onclick = fermerCartePlein;
 }
 
 function fermerCartePlein() {
@@ -2787,13 +2813,18 @@ async function chargerJour() {
     if (!zone) return;
     zone.onclick = () => ouvrirCartePlein(zone);
   });
-  /* La carte de l'année : un clic sur sa vignette (dans le tiroir) la zoome. */
+  /* La carte de l'année : un clic sur sa vignette l'ouvre en plein écran,
+     AVEC « Comprendre cette carte » (Martin, 2026-09-15 — un simple zoom sans
+     texte laissait la carte muette, contrairement aux cartes du jour). */
   const vignetteAn = $('#vue-jour .carte-annee .vignette');
   if (vignetteAn) {
     const ca = j.carte_annee;
     vignetteAn.onclick = e => {
       e.stopPropagation();
-      ouvrirLightbox(urlCarte(ca.numero), `${T(ca.nom)}<span class="corr">côté ciel · ${T(ca.correspondance[1])}</span>`);
+      ouvrirCartePleinDonnees({
+        src: urlCarte(ca.numero), nom: T(ca.nom),
+        invitation: `Côté ciel · ${T(ca.correspondance[1])}`, lecture: T(ca.lecture || ''),
+      });
     };
   }
 
@@ -3453,11 +3484,15 @@ async function chargerPortrait() {
           ? `<div><h4 style="margin-top:0">Dans ton ciel</h4><p>${T(tx.arcane_naissance.lecture_etat)}</p></div>` : ''}
       </div>`,
   });
-  /* Un clic sur la vignette zoome la carte (sans ouvrir le panneau). */
+  /* Un clic sur la vignette ouvre la carte en plein écran, AVEC « Comprendre
+     cette carte » (sans ouvrir le panneau détaillé) — Martin, 2026-09-15. */
   const vignetteArc = $('#c-arcane .vignette');
   if (vignetteArc) vignetteArc.onclick = e => {
     e.stopPropagation();
-    ouvrirLightbox(urlCarte(na.numero), `${T(na.nom)}<span class="corr">côté ciel · ${T(na.correspondance[1])}</span>`);
+    ouvrirCartePleinDonnees({
+      src: urlCarte(na.numero), nom: T(na.nom),
+      invitation: `Côté ciel · ${T(na.correspondance[1])}`, lecture: T(tx.arcane_naissance?.lecture || ''),
+    });
   };
 }
 

@@ -1895,6 +1895,13 @@ def _jour_pour(profil, date):
     carte_an["message"] = corpus.lire(
         "arcanes", "arcanes", str(0 if carte_an["numero"] == 22 else carte_an["numero"]),
         "pour_l_annee")
+    # La lecture de fond (symboles + enseignement) : celle que le bouton
+    # « Comprendre cette carte » déplie en plein écran (même clé que carte_jr
+    # et carte_perso ci-dessous) — sans elle, zoomer la carte de l'année ne
+    # montrait qu'une image nue.
+    carte_an["lecture"] = corpus.lire(
+        "arcanes", "arcanes", str(0 if carte_an["numero"] == 22 else carte_an["numero"]),
+        "lecture")
     # La carte du jour : même méthode que la naissance, appliquée à la date du
     # jour. Un arcane-écho calculé qui colorie la journée (le ciel mène toujours).
     carte_jr = carte_du_jour(date.day, date.month, date.year)
