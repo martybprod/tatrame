@@ -2431,12 +2431,33 @@ async function chargerJour() {
   /* ═══ EN-TÊTE DU JOUR — sa PROPRE carte, maintenue en tête (demande de Martin,
      2026-09-15) : date + Lune (où ça se joue · phase) d'abord, ensuite les cartes
      du jour, puis le message. Les faits-ciel ne vivent QUE dans cette carte
-     quand le ciel mène, ou dans « Explorer » quand le chinois mène. ═══ */
+     quand le ciel mène, ou dans « Explorer » quand le chinois mène.
+     « Le moment du cycle » (la PHASE) est retiré de la carte « La Lune
+     aujourd'hui » (qui ne garde que la maison) et vit ICI : cliquer sur la
+     date + la mini-lune ouvre le détail de la phase — c'est littéralement ce
+     que cette ligne annonce (demande de Martin, 2026-09-15). */
+  const lm = t.lune_maison, ph = t.phase;
   const enteteJour = `<div class="date">${miniLune}${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
       <div class="lune">La Lune éclaire ${T(nomMaison(lune.maison))} · ${T(nomPhase(phase))}</div>`;
 
-  let html = `<div class="carte" style="text-align:center;padding:20px 22px 18px"><div class="jour-entete"
-      style="margin-bottom:0;padding-bottom:0;border-bottom:0">${enteteJour}</div></div>`;
+  const corpsPhase = (ph && ph.miroir) ? `
+      <div class="miroir" style="font-size:16px">${T(ph.miroir)}</div>
+      <p class="quoi" style="margin:4px 0 10px">${nomPhase(phase)} — ${quoiPhase(phase)}</p>
+      ${blocGeste(ph.geste, 'Le moment du cycle')}
+      ${aide("D'où vient la phase ?", "L'écart entre la Lune et le Soleil dans le ciel du jour, divisé en huit parts égales — un calcul purement astronomique, le même pour tout le monde, qui donne les huit phases classiques (nouvelle, premier quartier, pleine…).")}` : '';
+  const idEntete = 'jour-entete-clic';
+  if (corpsPhase) {
+    setTimeout(() => {
+      const el = document.getElementById(idEntete);
+      if (el) el.onclick = () => ouvrirAnglePlein('Le moment du cycle', corpsPhase);
+    }, 0);
+  }
+
+  let html = `<div class="carte" id="${corpsPhase ? idEntete : ''}"
+      style="text-align:center;padding:20px 22px 18px${corpsPhase ? ';cursor:pointer;position:relative' : ''}">
+      <div class="jour-entete" style="margin-bottom:0;padding-bottom:0;border-bottom:0">${enteteJour}</div>
+      ${corpsPhase ? `<span class="glyphe-plein" aria-hidden="true" style="position:absolute;right:18px;top:50%;transform:translateY(-50%)">⤢</span>` : ''}
+    </div>`;
 
   /* Tes cartes du jour — les TROIS cartes réunies, juste sous l'en-tête, présentées
      CÔTE À CÔTE (le monde vs toi). TOUJOURS affichées, plus de tiroir à
@@ -2530,30 +2551,21 @@ async function chargerJour() {
     })}</div>`;
   }
 
-  /* La Lune aujourd'hui — « où ça se joue » (sa maison) ET « le moment du
-     cycle » (sa phase) réunis : c'est le même astre, deux facettes. Fusion de
-     deux ex-tiroirs en un (guide UX : morceler, moins de rangées). Le sous-bloc
-     « le moment du cycle » se déplie à l'intérieur pour ne pas tout empiler. */
-  const lm = t.lune_maison, ph = t.phase;
-  if ((lm && lm.miroir) || (ph && ph.miroir)) {
-    const blocPhase = (ph && ph.miroir) ? `
-      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bord)">
-        <span class="lib" style="display:block;font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--encre3);margin-bottom:4px">Le moment du cycle</span>
-        <div class="miroir" style="font-size:16px">${T(ph.miroir)}</div>
-        <p class="quoi" style="margin:4px 0 10px">${nomPhase(phase)} — ${quoiPhase(phase)}</p>
-        ${blocGeste(ph.geste, 'Le moment du cycle')}
-        ${aide("D'où vient la phase ?", "L'écart entre la Lune et le Soleil dans le ciel du jour, divisé en huit parts égales — un calcul purement astronomique, le même pour tout le monde, qui donne les huit phases classiques (nouvelle, premier quartier, pleine…).")}
-      </div>` : '';
+  /* La Lune aujourd'hui — « où ça se joue » (sa maison) SEULEMENT : « le
+     moment du cycle » (sa phase) en a été retiré (demande de Martin,
+     2026-09-15) — il vit maintenant derrière la date/mini-lune tout en haut
+     (voir corpsPhase, construit plus haut), là où la phase est littéralement
+     déjà annoncée. lm/ph sont déclarés plus haut, avant enteteJour. */
+  if (lm && lm.miroir) {
     angles += `<div class="jour-groupe">${angleCarte({
       nom: 'La Lune aujourd\'hui',
-      resume: T((lm && lm.miroir) || ph.miroir),
+      resume: T(lm.miroir),
       ico: icono(ICONES_JOUR.lune_maison),
-      corpsHTML: `${(lm && lm.miroir) ? `
+      corpsHTML: `
         <details class="aide"><summary>Dans le ciel</summary><p>La Lune traverse ta maison ${lune.maison} aujourd'hui.</p></details>
         <p class="quoi" style="margin:4px 0 12px">${nomMaison(lune.maison)} — ${quoiMaison(lune.maison)}</p>
         ${blocGeste(lm.geste, 'La Lune aujourd\'hui')}
-        ${aide("D'où vient ce calcul ?", "La Lune du jour traverse une maison de ton thème de naissance — précise à ta carte, elle seule dit sur quel terrain de ta vie ça se joue aujourd'hui. Elle change de maison environ tous les deux jours et demi.")}` : ''}
-        ${blocPhase}`
+        ${aide("D'où vient ce calcul ?", "La Lune du jour traverse une maison de ton thème de naissance — précise à ta carte, elle seule dit sur quel terrain de ta vie ça se joue aujourd'hui. Elle change de maison environ tous les deux jours et demi.")}`
     })}</div>`;
   }
 
@@ -2680,6 +2692,23 @@ async function chargerJour() {
     html += `<div class="jour-section">Explorer</div>${angles}`;
   }
 
+  /* ═══ À MÉDITER — la clôture du jour, à CONTEMPLER : plein écran (angleCarte,
+     glyphe ⤢), le texte caché tant qu'on ne clique pas, pour ne pas y jeter un
+     œil dès le matin par réflexe. Placée après Explorer, AVANT « Le fond du
+     temps » (Martin, 2026-09-15 : remontée au-dessus — c'est un contenu du
+     jour même, contrairement aux cycles lents qui suivent). C'est, avec les
+     deux cartes, le seul usage du plein écran : contempler un objet seul,
+     jamais explorer du texte (ça, c'est le tiroir). ═══ */
+  if (t.transit?.pensee_soir) {
+    html += `<div class="jour-groupe" id="c-mediter">${angleCarte({
+      nom: 'À méditer',
+      resume: 'à lire en fin de journée',
+      ico: icono(ICONES_JOUR.mediter),
+      corpsHTML: `<div class="miroir" style="margin-bottom:0">${T(t.transit.pensee_soir)}</div>
+        ${aide("D'où vient cette pensée ?", "Elle prolonge le ciel du jour — le transit dominant qui a coloré ta journée. Là où le matin invitait à agir, celle-ci invite à regarder en arrière, une fois la journée passée. Toujours calculée sur ton thème, différente d'un jour à l'autre.")}`,
+    })}</div>`;
+  }
+
   // « Le fond du temps » : SECTION à part entière, distincte d'Explorer — ces
   // cycles (mois, année, traversée de vie) changent rarement, on n'y revient
   // pas tous les jours. Couleur sourdine (.jour-groupe-temps), pas le liseré
@@ -2692,21 +2721,6 @@ async function chargerJour() {
       <summary class="jour-section jour-section-temps">Le fond du temps</summary>
       <div class="jour-groupe jour-groupe-temps">${cycles}</div>
     </details>`;
-  }
-
-  /* ═══ À MÉDITER — la clôture du jour, à CONTEMPLER : plein écran (angleCarte,
-     glyphe ⤢), le texte caché tant qu'on ne clique pas, pour ne pas y jeter un
-     œil dès le matin par réflexe. Placée après Explorer, avant le pied. C'est,
-     avec les deux cartes, le seul usage du plein écran : contempler un objet
-     seul, jamais explorer du texte (ça, c'est le tiroir). ═══ */
-  if (t.transit?.pensee_soir) {
-    html += `<div class="jour-groupe" id="c-mediter">${angleCarte({
-      nom: 'À méditer',
-      resume: 'à lire en fin de journée',
-      ico: icono(ICONES_JOUR.mediter),
-      corpsHTML: `<div class="miroir" style="margin-bottom:0">${T(t.transit.pensee_soir)}</div>
-        ${aide("D'où vient cette pensée ?", "Elle prolonge le ciel du jour — le transit dominant qui a coloré ta journée. Là où le matin invitait à agir, celle-ci invite à regarder en arrière, une fois la journée passée. Toujours calculée sur ton thème, différente d'un jour à l'autre.")}`,
-    })}</div>`;
   }
 
   /* ═══ TON JOURNAL — même registre utilitaire/dés-accentué que Rappels
