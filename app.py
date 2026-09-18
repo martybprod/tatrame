@@ -377,7 +377,9 @@ def _verrou_profils():
         if s == "explorer" and i + 1 < len(segments) and segments[i + 1] != "domaines":
             pid = segments[i + 1]
             break
-    if pid is None or _deverrouille(pid):
+    if pid is None or _charger(pid) is None:
+        return None                      # profil inconnu : la route répondra 404
+    if _deverrouille(pid):
         return None
     return jsonify({"erreur": "verrouille", "a_mdp": auth.a_mdp(PROFILS, pid)}), 401
 
@@ -2179,7 +2181,13 @@ def api_apercu(profil_id):
         # écran — sans heure ni lieu de naissance, la moitié manque. Plutôt
         # qu'un aperçu bancal, on renvoie vers Le Portrait (qui, lui, garde
         # honnêtement les nombres) — voir _construire.
-        return jsonify({"complet": False, "attribution": ATTRIBUTION})
+        return jsonify({
+            "complet": False,
+            "attribution": ATTRIBUTION,
+            # Même sans thème, l'aperçu dit DE QUI il est — et retombe sur les
+            # prénoms pour les profils d'avant `nom_affiche` (jamais « None »).
+            "profil": {"nom": profil.get("nom_affiche") or " ".join(profil["prenoms_nom"])},
+        })
 
     date = _date_demandee()
     n = profil["naissance"]

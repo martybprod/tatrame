@@ -84,6 +84,10 @@ def test_vieux_profil_sans_lieu_id_reste_modifiable(client, tmp_path):
         "fold": 0,
     }
     (tmp_path / "ancien.json").write_text(json.dumps(ancien), encoding="utf-8")
+    # Auth réaliste : un profil posé sur disque est verrouillé tant que cet
+    # appareil ne l'a pas déverrouillé (couche auth postérieure à ce test).
+    with client.session_transaction() as s:
+        s["deverrouilles"] = ["ancien"]
 
     r = client.get("/api/profil/ancien")
     assert r.status_code == 200
@@ -154,5 +158,7 @@ def test_apercu_ne_montre_jamais_None(client, tmp_path):
         # pas de nom_affiche : c'est le sujet
     }
     (tmp_path / "sans-nom.json").write_text(json.dumps(ancien), encoding="utf-8")
+    with client.session_transaction() as s:
+        s["deverrouilles"] = ["sans-nom"]
     d = client.get("/api/apercu/sans-nom").get_json()
     assert d["profil"]["nom"] == "Vieux Profil"

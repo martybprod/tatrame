@@ -8,7 +8,7 @@
   "invitation": "Aujourd'hui, une envie de te lancer dans quelque chose de nouveau se précise, juste avant de passer à l'action. Tu voudrais d'abord être sûr de tout, par prudence plus que par doute. Fais un seul petit pas qui t'engage, sans attendre d'être certain à cent pour cent."
  },
  "batons_3": {
-  "invitation": "Un premier effort commence à donner des résultats aujourd'hui. C'est petit, mais c'est vrai. Tu as envie de dire que ce n'est rien. C'est qu'on t'a appris à attendre la fin pour être fier de toi. Prends un instant pour voir le chemin déjà fait."
+  "invitation": "Un premier effort commence à donner des résultats aujourd'hui. C'est petit, mais c'est vrai. Tu as envie de dire que ce n'est rien. C'est un ancien réflexe d'attendre la fin pour être fier de toi. Prends un instant pour voir le chemin déjà fait."
  },
  "batons_4": {
   "invitation": "Une étape est franchie aujourd'hui, quelque chose qui mérite d'être reconnu. Tu as envie de passer vite à la suite sans t'arrêter. Offre-toi une petite pause aujourd'hui, même courte, pour fêter ce qui est fait."
@@ -56,7 +56,7 @@
   "invitation": "Aujourd'hui, tu peux te sentir un peu blasé, comme si rien de nouveau n'arrivait. Pourtant, quelque chose de bon est peut-être juste là, devant toi. Ce sentiment vient de toi, pas de ce qui t'entoure. Regarde autour de toi : il y a sûrement une petite chose simple à apprécier, là, maintenant."
  },
  "coupes_5": {
-  "invitation": "Aujourd'hui, une tristesse ou une perte peut occuper ton esprit, au point qu'elle prenne beaucoup de place dans tes pensées. Ne cherche pas à cacher ou à repousser cette peine : elle est normale et mérite d'être ressentie. Mais rappelle-toi qu'elle ne représente pas tout ce que tu vis en ce moment. Prends un moment pour regarder aussi ce qui va encore bien et ce qui est toujours là."
+  "invitation": "Aujourd'hui, une tristesse ou une perte peut occuper ton esprit et prendre beaucoup de place. Ne cherche pas à repousser cette peine : elle est normale et mérite d'être ressentie. Mais elle ne représente pas tout ce que tu vis. Regarde aussi ce qui va encore bien et ce qui est toujours là."
  },
  "coupes_6": {
   "invitation": "Aujourd'hui, un souvenir tendre peut remonter, une image d'avant, un lien simple qui appartient presque à l'enfance. Laisse-le venir, sans le trouver démodé ou naïf. Il porte peut-être quelque chose dont tu as encore besoin. Reste un instant avec cette douceur, sans te presser d'en sortir."
@@ -65,28 +65,28 @@
   "invitation": "Aujourd'hui, plusieurs envies ou possibilités peuvent se présenter en même temps, au point de brouiller ce que tu ressens vraiment. Ne te perds pas dans cette abondance. Tu n'as pas à tout choisir tout de suite. Écarte-en une, doucement, juste pour alléger le reste."
  },
  "coupes_8": {
-  "invitation": "Aujourd'hui, tu peux avoir envie de t'éloigner de quelque chose de confortable, mais qui ne te suffit plus. Ne te sens pas coupable. Tu ne rejettes pas ce qui était bon, tu cherches juste plus loin maintenant. Fais un petit pas dans cette direction, même discret."
+  "invitation": "Aujourd'hui, une envie de prendre de la distance se fait sentir, face à quelque chose de confortable qui ne te suffit plus. Ne te sens pas coupable. Tu ne rejettes pas ce qui était bon, tu cherches juste plus loin maintenant. Fais un petit pas dans cette direction, même discret."
  },
  "coupes_9": {
-  "invitation": "Aujourd'hui, une petite joie peut se présenter à toi : quelque chose qui s'est arrangé, un problème qui s'est réglé ou un souhait qui s'est réalisé simplement. Tu pourrais avoir envie de penser tout de suite à la prochaine chose que tu désires. Tu n'as pas à décider si vite. Savoure ce qui est là, juste un moment."
+  "invitation": "Aujourd'hui, une petite joie peut se présenter : quelque chose qui s'est arrangé, un problème qui s'est réglé ou un souhait qui s'est réalisé. Tu pourrais avoir envie de penser tout de suite à la prochaine chose que tu désires. Tu n'as pas à décider si vite. Savoure ce qui est là, juste un moment."
  },
  "coupes_10": {
-  "invitation": "Aujourd'hui, tu peux ressentir un vrai sentiment de bien-être et de bonheur avec les personnes qui comptent pour toi. Tu peux le sentir aussi bien dans ton cœur que dans ton corps. Tu pourrais avoir envie de te demander si ce bonheur est bien réel ou de chercher des raisons de le confirmer. Mais tu n'as pas besoin de preuves. Laisse simplement ce sentiment être là et profite-en, sans chercher à l'analyser."
+  "invitation": "Aujourd'hui, un bonheur simple circule avec les personnes qui comptent pour toi, dans ton cœur comme dans ton corps. Tu pourrais le douter, chercher des raisons de le confirmer. Tu n'as pas besoin de preuves. Laisse ce sentiment être là, et profite-en sans l'analyser."
  },
  "coupes_valet": {
-  "invitation": "Aujourd'hui, tu peux ressentir une nouvelle sensibilité en toi, comme une petite intuition ou un sentiment que tu ne comprends pas encore très bien. Ne pense pas que c'est naïf ou sans importance. Tu n'as pas besoin d'être sûr de toi tout de suite pour que ce que tu ressens compte. Laisse cette intuition s'exprimer, même un peu, même si ce n'est pas parfait."
+  "invitation": "Une nouvelle sensibilité s'éveille en toi aujourd'hui, une petite intuition que tu ne comprends pas encore très bien. Ne la trouve pas naïve ou sans importance. Tu n'as pas besoin d'être sûr tout de suite pour que ce que tu ressens compte. Laisse-la s'exprimer, même un peu, même imparfaitement."
  },
  "coupes_cavalier": {
   "invitation": "Aujourd'hui, une proposition ou une invitation guidée par l'émotion peut se présenter, sans être vraiment réfléchie à l'avance. Ne te méfie pas tout de suite de cet élan. Il n'est pas moins valable parce qu'il vient du cœur. Suis-le un peu, simplement pour voir où il te mène."
  },
  "coupes_reine": {
-  "invitation": "Aujourd'hui, une empathie profonde peut se montrer en toi, la capacité de sentir ce que l'autre traverse, même sans qu'il dise tout. C'est une force, pas une porte ouverte à tout absorber. Accueille ce que tu perçois, sans t'y noyer."
+  "invitation": "Aujourd'hui, une empathie profonde s'exprime en toi, la capacité de sentir ce que l'autre traverse, même sans qu'il dise tout. C'est une force, pas une porte ouverte à tout absorber. Accueille ce que tu perçois, sans t'y noyer."
  },
  "coupes_roi": {
   "invitation": "Aujourd'hui, une situation chargée en émotions peut se présenter, chez toi ou autour de toi, sans que tu te laisses emporter. Cette capacité à rester posé, tu l'as construite, ce n'est pas un hasard ni de la froideur. Reste ce point stable, mais sans t'oublier toi-même."
  },
  "epees_as": {
-  "invitation": "Aujourd'hui, une idée peut te traverser, si claire qu'elle semble s'imposer avant même que tu aies eu le temps d'y penser. Tu pourrais avoir envie de tout de suite la justifier, de trouver une raison logique. C'est une vieille habitude, celle de ne faire confiance qu'à ce qui s'explique. Laisse cette clarté exister quelques instants, sans avoir besoin de la prouver."
+  "invitation": "Aujourd'hui, une idée peut te traverser, si claire qu'elle semble s'imposer avant même que tu y penses. Tu pourrais avoir envie de la justifier tout de suite par une raison logique. C'est une vieille habitude, celle de ne faire confiance qu'à ce qui s'explique. Laisse cette clarté exister quelques instants, sans la prouver."
  },
  "epees_2": {
   "invitation": "Aujourd'hui, un choix peut rester en suspens, entre deux options qui te semblent aussi bonnes l'une que l'autre. Tu as envie de ne pas trancher. C'est une peur toute normale : celle de perdre ce que l'autre option t'aurait apporté. Choisis une petite chose aujourd'hui, sans attendre d'être totalement sûr."
@@ -101,7 +101,7 @@
   "invitation": "Aujourd'hui, un conflit peut se présenter, avec l'envie d'avoir raison à tout prix. Ce besoin de gagner vient d'une vieille peur : celle de ne plus compter si tu perds. Avant de t'accrocher à cette victoire, demande-toi ce qu'elle te coûterait vraiment."
  },
  "epees_6": {
-  "invitation": "Aujourd'hui, tu peux avoir envie de t'éloigner d'une situation difficile, même sans savoir exactement ce qui t'attend ensuite. Ce mouvement, c'est prendre soin de toi, pas fuir. Tu n'as jamais eu besoin d'une sécurité totale pour avancer. Fais un pas vers plus de calme, même petit."
+  "invitation": "Aujourd'hui, partir loin d'une situation difficile peut te tenter, même sans savoir exactement ce qui t'attend ensuite. Ce mouvement, c'est prendre soin de toi, pas fuir. Tu n'as jamais eu besoin d'une sécurité totale pour avancer. Fais un pas vers plus de calme, même petit."
  },
  "epees_7": {
   "invitation": "Aujourd'hui, tu peux avoir envie de contourner un problème plutôt que de l'affronter directement. Ne te juge pas pour ça. C'est une stratégie que tu as apprise dans un temps où parler franchement n'était pas sans danger. Si tu peux, essaie d'en dire un peu plus que d'habitude aujourd'hui."
@@ -110,10 +110,10 @@
   "invitation": "Aujourd'hui, tu peux te sentir coincé, avec des pensées qui tournent en boucle sans mener nulle part. Ces pensées ne sont pas toute la réalité. C'est une vieille façon de te protéger, en essayant de tout prévoir à l'avance. Note une seule sortie possible, même minuscule, juste pour voir qu'elle existe."
  },
  "epees_9": {
-  "invitation": "Aujourd'hui, une inquiétude peut prendre trop de place dans ta tête, surtout si elle revient la nuit et grossit dans le silence. N'y pense pas encore plus. C'est un vieux réflexe qui te garde sur tes gardes, plus qu'un vrai danger présent en ce moment. Écris-la quelque part, pour voir sa vraie taille, à la lumière du jour."
+  "invitation": "Aujourd'hui, une inquiétude peut prendre trop de place dans ta tête, surtout si elle revient la nuit. N'y pense pas encore plus. C'est un vieux réflexe qui te garde sur tes gardes, plus qu'un vrai danger présent en ce moment. Écris-la quelque part, pour voir sa vraie taille, à la lumière du jour."
  },
  "epees_10": {
-  "invitation": "Aujourd'hui, tu peux sentir que tu as touché le fond, comme la fin d'une période qui t'a beaucoup demandé mentalement. Vois ça comme une fin, pas comme un échec de plus. Il n'y a rien de pire à ajouter à ce qui est déjà arrivé. Remarque ce qui, doucement, recommence déjà à se relever en toi."
+  "invitation": "Sentir que tu as touché le fond peut arriver aujourd'hui, comme la fin d'une période qui t'a beaucoup demandé mentalement. Vois ça comme une fin, pas comme un échec de plus. Rien de pire ne s'ajoute à ce qui est déjà arrivé. Remarque ce qui, doucement, recommence à se relever en toi."
  },
  "epees_valet": {
   "invitation": "Aujourd'hui, une curiosité vive peut te pousser à poser des questions directes, presque sans filtre. Ne freine pas complètement cette franchise. Elle vient d'un vrai désir de comprendre, pas d'un manque de tact. Pose la question qui te démange vraiment, même si elle est toute simple."
@@ -137,7 +137,7 @@
   "invitation": "Aujourd'hui, un travail que tu soignes peut prendre forme grâce à d'autres personnes autour de toi. Tu pourrais avoir envie de tout faire seul pour prouver ta valeur. Accepte que travailler avec d'autres compte aussi, et laisse une part du mérite leur revenir."
  },
  "deniers_4": {
-  "invitation": "Aujourd'hui, tu peux avoir envie de tout retenir fermement : de l'argent, du temps, ou une place que tu as acquise. C'est une peur de manquer, pas un défaut. Essaie de lâcher juste une petite chose aujourd'hui, seulement pour voir ce qui se passe."
+  "invitation": "Aujourd'hui, une envie de tout retenir fermement peut s'installer : de l'argent, du temps, ou une place que tu as acquise. C'est une peur de manquer, pas un défaut. Essaie de lâcher juste une petite chose aujourd'hui, seulement pour voir ce qui se passe."
  },
  "deniers_5": {
   "invitation": "Aujourd'hui, un sentiment de manque peut se montrer, l'impression d'être laissé de côté pendant que les autres semblent en sécurité. Ne prends pas cette impression comme un jugement sur toi. Elle exagère souvent la réalité. Cherche une aide proche que tu n'as peut-être pas encore remarquée."
@@ -146,7 +146,7 @@
   "invitation": "Aujourd'hui, un échange peut se présenter, dans lequel tu donnes ou tu reçois. Remarque simplement qui a le plus de pouvoir dans ce moment précis, sans en faire honte à personne. Juste regarder ce rapport en face suffit souvent à le rendre plus juste."
  },
  "deniers_7": {
-  "invitation": "Aujourd'hui, tu peux avoir envie de faire le bilan d'un effort que tu as déjà investi. Tu pourrais être impatient de voir des résultats tout de suite, à cause d'un vieux doute plus que de la situation elle-même. Prends un instant pour regarder ce qui a vraiment progressé, avant de décider la suite."
+  "invitation": "Aujourd'hui, un bilan t'appelle, celui d'un effort que tu as déjà investi. Tu pourrais être impatient de voir des résultats tout de suite, à cause d'un vieux doute plus que de la situation elle-même. Prends un instant pour regarder ce qui a vraiment progressé, avant de décider la suite."
  },
  "deniers_8": {
   "invitation": "Aujourd'hui, un geste répété peut occuper ta journée, presque comme une habitude machinale. C'est un entraînement patient, pas une corvée sans but. Reste sur une seule chose un peu plus longtemps, sans chercher de raccourci pour aller plus vite."
@@ -164,7 +164,7 @@
   "invitation": "Aujourd'hui, une lenteur méthodique peut se montrer dans une chose que tu avances. Tu pourrais être impatient en comparant ton rythme à celui des autres, mais personne d'autre ne connaît ton terrain. Choisis la méthode fiable plutôt que la vitesse, un pas après l'autre, sans te presser."
  },
  "deniers_reine": {
-  "invitation": "Aujourd'hui, tu peux avoir envie de prendre soin des besoins concrets d'un proche : nourrir, dépanner, arranger. Fais-le sans attendre qu'on le remarque en retour. Donne ce que tu peux donner aujourd'hui, sans en tenir le compte."
+  "invitation": "Aujourd'hui, l'envie de prendre soin des besoins concrets d'un proche peut te venir : nourrir, dépanner, arranger. Fais-le sans attendre qu'on le remarque en retour. Donne ce que tu peux donner aujourd'hui, sans en tenir le compte."
  },
  "deniers_roi": {
   "invitation": "Aujourd'hui, tu peux remarquer une stabilité matérielle que tu as bâtie avec le temps, même modeste. Tu pourrais avoir envie de rester prudent par réflexe, alors que tu as la place pour donner un peu de marge à quelqu'un. Une générosité tranquille, sans urgence, peut trouver sa place aujourd'hui."
