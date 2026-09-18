@@ -1,0 +1,23 @@
+{
+  "_note": "Titres des voix non-ciel du routeur (piste b, 2026-09-18). Quand la saillance du basculement numérologique ou d'un pic lunaire gagne, le titre passe à cette voix ; le sous-titre calculé NOMME la voix (« Année personnelle 9 », « Nouvelle Lune »). Mesuré, non-prédictif : un climat, jamais un événement.",
+  "numero": {
+    "annee": {
+      "miroir": "Un nouveau numéro personnel s'ouvre aujourd'hui : l'année tourne et change de couleur. Ce qui comptait depuis des mois laisse la place à un autre thème, et les premiers jours donnent le ton de l'ensemble. Tu n'as rien à décider d'un coup, tu poses juste un regard sur le chapitre qui commence.",
+      "geste": "Note en un mot ce que tu aimerais que cette année fasse de toi. Un seul mot suffit pour commencer."
+    },
+    "mois": {
+      "miroir": "Le mois personnel change aujourd'hui : une nuance nouvelle se glisse dans ton année. Ce n'est pas un grand virage, plutôt un décalage de teinte — ce à quoi tu fais attention ce mois-ci n'est plus tout à fait pareil.",
+      "geste": "Reprends tes projets du moment sous cette lumière neuve, une minute suffit pour remarquer ce qui change d'accent."
+    }
+  },
+  "lune": {
+    "nouvelle": {
+      "miroir": "La Lune devient invisible ce soir : la Nouvelle Lune ouvre un point de départ dans le ciel. Les intentions posées maintenant ont un terrain vierge sous elles, sans preuve à fournir tout de suite.",
+      "geste": "Choisis une seule chose à commencer en petit, et fais son premier geste aujourd'hui, même minuscule."
+    },
+    "pleine": {
+      "miroir": "La Pleine Lune éclaire la nuit tout entière : ce qui était flou devient net, ce qui mûrissait depuis des semaines se montre fini, ou presque. C'est un moment de récolte plus que de départ.",
+      "geste": "Prends cinq minutes pour regarder ce qui a grandi depuis un mois, et nomme-le clairement."
+    }
+  }
+}

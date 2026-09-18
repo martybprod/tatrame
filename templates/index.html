@@ -2405,12 +2405,12 @@ async function chargerJour() {
   const dom = j.jour.dominante;
   const lune = j.jour.lune, phase = j.jour.phase.phase;
 
-  // Le titre du jour, élu par le routeur : le ciel par défaut, la voix chinoise
-  // quand sa relation est plus saillante (avec le sous-titre qui nomme les animaux).
+  // Le titre du jour, élu par le routeur : le ciel par défaut ; chinois, numéro
+  // ou lune quand leur voix est plus saillante (avec un sous-titre qui la nomme).
   const titre = j.titre || t.transit;
   // Quand le ciel mène, « Aujourd'hui » ET « Ce qui domine aujourd'hui » racontent
   // le même transit — on ne le dit qu'une fois, dans la première carte.
-  const cielMene = !titre || titre.source !== 'chinois';
+  const cielMene = !titre || !['chinois', 'numero', 'lune'].includes(titre.source);
 
   let domPhrase = '', domTempo = '', domCalc = '', domRetourAide = '';
   if (dom) {
@@ -2537,7 +2537,7 @@ async function chargerJour() {
         <p class="quoi" style="margin:4px 0 12px">${domTempo}</p></details>` : ''}
       <div class="miroir">${T(titre.miroir)}</div>
       ${blocGeste(titre.geste, "Aujourd'hui")}
-      ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
+      ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance), ta numérologie (le changement d'année ou de mois personnel), la Lune (Nouvelle ou Pleine) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
       ${cielMene ? domRetourAide : ''}`;
     const idAuj = 'ac-aujourdhui';
     setTimeout(() => {

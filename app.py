@@ -1663,17 +1663,20 @@ def _sous_titre_chinois(sc):
 def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
     """Le routeur du titre : quelle voix prend la tête aujourd'hui.
 
-    Quatre saillances comparées (ciel, numéro, lune, chinois). Pour l'instant
-    seule la voix CHINOISE peut ravir le titre au ciel ; numéro et lune restent
-    des sections de contexte (leur corpus de titre viendra après). Si le chinois
-    gagne mais que son corpus manque encore, on retombe proprement sur le ciel.
+    Quatre saillances comparées (ciel, numéro, lune, chinois). Le ciel reste la
+    voix du quotidien ; les trois autres ne le ravissent que sur leurs pics,
+    et leur titre NOMME alors la voix — sous-titre calculé (« Année personnelle
+    9 », « Nouvelle Lune », les animaux du chinois), même logique qu'un transit
+    qui nomme le point natal touché. Si le corpus de la voix gagnante manque,
+    on retombe proprement sur le ciel.
     """
     sc = chinois.saillance_chinoise(n["annee"], n["mois"], n["jour"], date)
     choix = routeur.router_du_jour(force_transit, date, ecart_lune,
                                    score_chinois=sc["score"])
     tr = textes.get("transit") or {}
     titre = {"source": "ciel", "miroir": tr.get("miroir"), "geste": tr.get("geste")}
-    if choix["voix"] == "chinois":
+    voix = choix["voix"]
+    if voix == "chinois":
         # Clé FINE d'abord : relation × élément du jour (ex. `choc_metal`).
         # Le pilier du jour tourne sur 60 jours (12 animaux × 5 éléments),
         # donc un texte fin ne se reverrait qu'à 60 jours de distance —
@@ -1688,6 +1691,30 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
             titre = {"source": "chinois", "miroir": rel["miroir"],
                      "geste": rel.get("geste"), "en_bref": rel.get("en_bref"),
                      "sous_titre": _sous_titre_chinois(sc)}
+    elif voix == "numero":
+        # La bascule gagne : le titre nomme le numéro qui tourne (année ou mois
+        # personnel), pas juste « un changement ». La bascule est un fait de
+        # calendrier ; le numéro lui-même dépend de la naissance.
+        quel = choix["details"]["numero"]["quel"]
+        if quel == "annee":
+            num = annee_personnelle(n["jour"], n["mois"], date.year)
+            sous_titre = f"Année personnelle {num}"
+        else:
+            num = mois_personnel(n["jour"], n["mois"], date.year, date.month)
+            sous_titre = f"Mois personnel {num}"
+        txt = corpus.lire("titres_voix", "numero", quel) or {}
+        if txt.get("miroir"):
+            titre = {"source": "numero", "miroir": txt["miroir"],
+                     "geste": txt.get("geste"), "sous_titre": sous_titre}
+    elif voix == "lune":
+        # Pic lunaire gagnant : le titre nomme la phase, déjà affichée en
+        # contexte dans l'en-tête — ici elle prend la grosse place.
+        quel = choix["details"]["lune"]["quel"]
+        txt = corpus.lire("titres_voix", "lune", quel) or {}
+        if txt.get("miroir"):
+            titre = {"source": "lune", "miroir": txt["miroir"],
+                     "geste": txt.get("geste"),
+                     "sous_titre": "Nouvelle Lune" if quel == "nouvelle" else "Pleine Lune"}
     return titre, {"choix": choix, "chinois": sc}
 
 
