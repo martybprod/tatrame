@@ -670,8 +670,14 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .carte-plein-corps .carte-plein-cause{font-size:13.5px;line-height:1.5;color:var(--encre3);text-align:center;margin-top:2px}
 /* Le bouton de la lecture de fond : un lien discret sous l'invitation. */
 .carte-plein-corps .carte-plein-suite{background:none;border:0;color:var(--accent);text-decoration:underline;font-size:13.5px;cursor:pointer;margin-top:10px;font-family:inherit}
-/* La lecture dépliée : du texte long, aligné à gauche pour se lire sans effort. */
+/* La lecture dépliée : du texte long, aligné à gauche pour se lire sans effort.
+   Elle est toujours en trois paragraphes, et le dernier (la leçon) est en gras.
+   Les blancs sont donc portés par des <p> et non par `pre-line` sur le texte
+   brut — c'est le seul moyen de styler le dernier bloc sans toucher au corpus
+   (Martin, 2026-09-21). `pre-line` reste pour les sauts simples à l'intérieur
+   d'un paragraphe. */
 .carte-plein-corps .carte-plein-lecture{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--encre2);text-align:left;margin-top:12px;white-space:pre-line}
+.carte-plein-corps .carte-plein-lecture p + p{margin-top:10px}
 /* Signale que le texte vient d'apparaître (Martin, 2026-09-15) : un léger
    fondu + glissement vers sa place, en plus du scroll qui l'amène à l'écran. */
 @keyframes lectureSurgit{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
@@ -1835,7 +1841,16 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
   const boutonLecture = $('#carte-plein-suite'), blocLecture = $('#carte-plein-lecture');
   boutonLecture.hidden = !lecture;
   blocLecture.hidden = true;
-  blocLecture.textContent = lecture;
+  /* Une lecture de fond est toujours en trois paragraphes ; le dernier porte la
+     leçon, donc il est mis en gras. On construit les <p> ici plutôt que de
+     laisser `pre-line` gérer les blancs du texte brut : c'est le seul moyen de
+     styler le dernier bloc sans toucher au corpus, qui reste du texte simple
+     (Martin, 2026-09-21). */
+  const blocsLecture = String(lecture).split(/\n{2,}/).map(b => b.trim()).filter(Boolean);
+  blocLecture.innerHTML = blocsLecture.map((bloc, i) =>
+    i === blocsLecture.length - 1
+      ? `<p><strong>${T(bloc)}</strong></p>`
+      : `<p>${T(bloc)}</p>`).join('');
   boutonLecture.onclick = () => {
     blocLecture.hidden = false;
     blocLecture.classList.remove('lecture-surgit'); void blocLecture.offsetWidth; // relance l'anim si déjà jouée
