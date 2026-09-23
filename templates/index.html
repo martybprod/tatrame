@@ -485,14 +485,23 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
      d'apparition vit donc sur la ZONE parente — voir fondreImages).
    - Le `perspective` est porté par la zone : la profondeur vient de l'ancêtre. */
 .carte-jour{position:relative;display:inline-block;width:60px;height:105px;flex:none;border-radius:6px;border:1px solid var(--bord);box-shadow:0 1px 3px rgba(0,0,0,.12);transform-style:preserve-3d;transition:transform .6s cubic-bezier(.34,.65,.3,1)}
-.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;-webkit-backface-visibility:hidden;backface-visibility:hidden}
-.carte-jour .face{transform:rotateY(180deg)}
+.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:opacity .6s cubic-bezier(.34,.65,.3,1)}
+/* CEINTURE ET BRETELLES (Martin, 2026-09-23 : « les cartes sont encore
+   présentées face ») : la visibilité des faces ne repose PAS seulement sur la
+   3D — si un moteur aplatisse le contexte (vieux Safari, groupes d'opacité…),
+   `backface-visibility` cesse de cacher, et c'est l'OPACITÉ qui prend le
+   relais, synchronisée sur la durée du flip. Les deux mécaniques ensemble
+   donnent le bon rendu partout : le dos est visible PAR DÉFAUT, toujours. */
+.carte-jour .face{transform:rotateY(180deg);opacity:0}
+.carte-jour-zone.revelee .carte-jour .face{opacity:1}
+.carte-jour-zone.revelee .carte-jour .dos{opacity:0}
 .carte-jour-zone.revelee .carte-jour{transform:rotateY(180deg);cursor:zoom-in}
 /* La face est un ÉTAT, pas un événement : au re-rendu d'une carte déjà
    retournée (rechargement de la vue), le flip n'est pas rejoué — la classe
    .reprise coupe la transition le temps du premier paint (voir
-   reappliquerCartesRevelees). */
-.carte-jour.reprise{transition:none}
+   reappliquerCartesRevelees). Les images sont comprises : leur cross-fade
+   d'opacité ne doit pas se rejouer non plus. */
+.carte-jour.reprise, .carte-jour.reprise img{transition:none}
 /* Les deux cartes côte à côte : chacune empile son image PUIS son texte
    (au lieu d'être côte à côte l'une dans l'autre), pour que la paire tienne
    sur une seule ligne même en mobile étroit. */
@@ -676,7 +685,7 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 @media (prefers-reduced-motion:reduce){
   .carte-jour-zone{transition:transform .12s ease, opacity .12s ease}
   .carte-jour-zone:active{transform:none}
-  .carte-jour{transition:none}
+  .carte-jour, .carte-jour img{transition:none}
 }
 
 /* ═══ SQUELETTE DU PREMIER ÉCRAN FROID (Martin, 2026-09-23) ═══
@@ -1831,7 +1840,10 @@ document.addEventListener('touchend', e => {
    2026-09-23 : le panneau ne ferme plus au toucher, le message doit pouvoir
    être scrollé sans disparaître). La vue Jour (déjà chargée dessous) reste
    en place. */
-const CLE_ACCUEIL_VU = 'trame.accueil.vu';
+const CLE_ACCUEIL_VU = 'trame.accueil.vu2';
+/* .v2 (2026-09-23) : remise à zéro générale au déploiement du flip 3D — le
+   suffixe ORPHELIN l'ancienne clé : chaque appareil rejoue l'accueil une
+   fois, comme un jour neuf, sans toucher aux données de compte. */
 // Le geste de sortie est maintenant explicite (✕ / fond / Échap), le message
 // revient UNE FOIS PAR MOMENT (jour OU soir — voir cleAccueil) : mode test
 // « à chaque chargement » (2026-08-22) retiré, décision de Martin (2026-09-23).
@@ -2027,7 +2039,11 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
    localStorage ne garde qu'une paire {jour, zones} — un nouveau jour écrase
    l'ancien sans entretien. La clé du jour est la date SERVEUR (j.date, la
    même que celle du message), pas l'horloge de l'appareil. */
-const CLE_CARTES_REVELEES = 'trame.cartes.revelees';
+const CLE_CARTES_REVELEES = 'trame.cartes.revelees.v2';
+/* .v2 (2026-09-23) : remise à zéro générale au déploiement du flip 3D — les
+   cartes révélées ce jour-là par l'ANCIENNE version sont oubliées, tout le
+   monde repart avec les cartes au dos ; la mémoire journalière reprend ensuite
+   normalement (demande de Martin, pour vérifier comme un jour neuf). */
 
 function cartesReveleesDuJour(date) {
   try {
