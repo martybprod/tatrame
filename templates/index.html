@@ -468,21 +468,35 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .arcane .corr{font-size:12px;color:var(--encre3)}
 .vignette{width:56px;height:98px;object-fit:cover;border-radius:6px;border:1px solid var(--bord);flex:none;box-shadow:0 1px 3px rgba(0,0,0,.12);cursor:zoom-in}
 
-/* La carte du jour affiche son DOS en grille ; le premier clic l'ouvre en
-   PLEIN ÉCRAN (Martin, 2026-08-27). Une fois ouverte (.revelee), elle reste
+/* La carte du jour affiche son DOS en grille. Un clic la fait se RETOURNER en
+   3D sur place, puis le plein écran s'ouvre automatiquement (Martin,
+   2026-09-23) ; une carte déjà retournée ouvre le plein écran direct et reste
    DÉVOILÉE en petit dans le fil — on revoit la carte déjà consultée, pas un
    dos vierge. Effet, pas oracle : la carte est CALCULÉE (date → arcane). */
-.carte-jour{position:relative;display:inline-block;width:60px;height:105px;flex:none;border-radius:6px;overflow:hidden;border:1px solid var(--bord);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease}
-.carte-jour .face{opacity:0}
-.carte-jour-zone.revelee .carte-jour .face{opacity:1}
-.carte-jour-zone.revelee .carte-jour .dos{opacity:0}
-.carte-jour-zone.revelee .carte-jour{cursor:zoom-in}
+/* ═══ LE FLIP 3D DES CARTES DU JOUR (Martin, 2026-09-23 : « elle se retourne
+   avec un flip, puis seulement ensuite elle passe en plein écran ») ═══
+   Le dos au repos ; la face est PRÉ-ROTÉE au dos (rotateY(180°) + backface
+   cachée) ; `.revelee` tourne le conteneur de 180° — la face arrive en douceur
+   par la géométrie, plus par une opacité. Uniquement transform/opacity → GPU.
+   ⚠️ Deux pièges respectés ici :
+   - PAS de `overflow:hidden` ni d'opacité < 1 SUR `.carte-jour` : ce sont des
+     propriétés de groupe, elles aplatisent le `preserve-3d` (le fondu
+     d'apparition vit donc sur la ZONE parente — voir fondreImages).
+   - Le `perspective` est porté par la zone : la profondeur vient de l'ancêtre. */
+.carte-jour{position:relative;display:inline-block;width:60px;height:105px;flex:none;border-radius:6px;border:1px solid var(--bord);box-shadow:0 1px 3px rgba(0,0,0,.12);transform-style:preserve-3d;transition:transform .6s cubic-bezier(.34,.65,.3,1)}
+.carte-jour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.carte-jour .face{transform:rotateY(180deg)}
+.carte-jour-zone.revelee .carte-jour{transform:rotateY(180deg);cursor:zoom-in}
+/* La face est un ÉTAT, pas un événement : au re-rendu d'une carte déjà
+   retournée (rechargement de la vue), le flip n'est pas rejoué — la classe
+   .reprise coupe la transition le temps du premier paint (voir
+   reappliquerCartesRevelees). */
+.carte-jour.reprise{transition:none}
 /* Les deux cartes côte à côte : chacune empile son image PUIS son texte
    (au lieu d'être côte à côte l'une dans l'autre), pour que la paire tienne
    sur une seule ligne même en mobile étroit. */
 .carte-jour-paire{display:flex; gap:16px; align-items:flex-start}
-.carte-jour-zone{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; cursor:pointer}
+.carte-jour-zone{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; cursor:pointer; perspective:600px}
 .carte-jour-zone .carte-jour{width:72px;height:126px}
 
 /* La visionneuse : un clic sur une carte la montre en grand, en détail.
@@ -633,18 +647,46 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 
 /* ═══ FONDU DES IMAGES AU CHARGEMENT (Martin, 2026-08-27) ═══
    Ce que Martin veut vraiment : que chaque image ÉMERGE du fond sombre au
-   lieu de « popper ». L'image (ou, pour les cartes du jour, LE CONTENEUR)
-   reste invisible tant qu'elle n'est pas chargée, puis apparaît en fondu.
-   Comme le fond de l'app est déjà noir (#141110), invisible = fond noir :
-   l'image se matérialise depuis le noir. Voir fondreImages() côté JS.
-   ⚠️ Pour les cartes du jour on fond le CONTENEUR (.carte-jour), jamais les
-   images .face/.dos — celles-ci gèrent déjà leur opacité pour le flip. */
+   lieu de « popper ». L'image reste invisible tant qu'elle n'est pas chargée,
+   puis apparaît en fondu. Comme le fond de l'app est déjà noir (#141110),
+   invisible = fond noir : l'image se matérialise depuis le noir.
+   Voir fondreImages() côté JS.
+   ⚠️ Pour les cartes du jour on fond la ZONE (.carte-jour-zone), jamais
+   .carte-jour ni ses images : une opacité < 1 sur le preserve-3d de la carte
+   l'aplatirait (propriété de groupe) et casserait le flip. L'opacité d'un
+   ANCESTRE, elle, est sans danger : la carte se compose en 3D, puis la zone
+   entière fond comme une image. */
 .img-fondu{opacity:0; transition:opacity 1.6s ease}
 .img-fondu.chargee{opacity:1}
 @media (prefers-reduced-motion:reduce){
   .vue-entre{animation-duration:.12s}
   .img-fondu{transition-duration:.12s}
 }
+
+/* ═══ L'APPUI (Martin, 2026-09-23) — la tuile s'enfonce d'un poil sous le
+   doigt (le mobile n'a pas de hover : rien ne disait « c'est touchable »).
+   Posée APRÈS .img-fondu : une règle ne peut porter qu'UNE déclaration
+   transition, celle-ci restitue donc les DEUX canaux (le fondu 1.6 s des
+   zones et l'appui 0.12 s) au lieu de se les disputer. Le scale vit sur la
+   transform de la ZONE, jamais sur .carte-jour — c'est le champ de bataille
+   du rotateY du flip. ═══ */
+.carte-jour-zone{transition:transform .12s ease, opacity 1.6s ease}
+.carte-jour-zone:active{transform:scale(.97)}
+@media (prefers-reduced-motion:reduce){
+  .carte-jour-zone{transition:transform .12s ease, opacity .12s ease}
+  .carte-jour-zone:active{transform:none}
+  .carte-jour{transition:none}
+}
+
+/* ═══ SQUELETTE DU PREMIER ÉCRAN FROID (Martin, 2026-09-23) ═══
+   Le seul moment où l'app fait encore attendre : le premier écran du jour,
+   pendant que le bundle se calcule/fetch (le reste est en cache local). La
+   structure du Jour en pulsation légère — et les cartes montent leurs VRAIS
+   dos : le squelette ment le moins possible (le dos est déjà l'état de repos). */
+.squelette-ligne{height:14px;border-radius:7px;background:var(--bord);opacity:.55;animation:squelette-pulse 1.3s ease-in-out infinite alternate;margin:11px 0}
+.squelette-ligne.courte{width:52%}
+@keyframes squelette-pulse{from{opacity:.32}to{opacity:.68}}
+@media (prefers-reduced-motion:reduce){ .squelette-ligne{animation:none} }
 
 /* Vue plein écran d'une carte du jour (2e clic sur une carte déjà retournée) :
    RÉUTILISE la classe .accueil-jour (même fond métier à tisser + voile, même
@@ -1920,10 +1962,13 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
       img.src = src;                           // déjà décodée : swap instantané
     };
     const grand = new Image();
-    grand.onload = montrerPlein;
-    grand.onerror = montrerPlein;              // jamais coincé sur la mini
     grand.src = src;
-    if (grand.complete && grand.naturalWidth) montrerPlein();   // déjà en cache
+    /* Décodage AVANT le swap : `onload` ne garantit que le téléchargement, pas
+       le décodage — `decode()` promet une image peignable d'un coup, sans
+       décodage visible au milieu de l'écran. Échec (réseau, image cassée) :
+       on affiche quand même la pleine résolution — l'onerror de img gère le
+       masque, jamais de carte coincée sur la mini. */
+    grand.decode().then(montrerPlein, montrerPlein);
   } else {
     img.src = src;
     if (img.complete) img.classList.remove('img-chargement'); // déjà en cache
@@ -1999,26 +2044,56 @@ function memoriserCarteRevelee(date, zoneId) {
 }
 
 /* Au (re)rendu de la vue Jour : redevoir leur face aux cartes déjà retournées
-   aujourd'hui — l'utilisateur ne revoit jamais un dos qu'il a déjà levé. */
+   aujourd'hui — l'utilisateur ne revoit jamais un dos qu'il a déjà levé. La
+   face est un ÉTAT : le flip n'est PAS rejoué au re-rendu (.reprise coupe la
+   transition le temps du premier paint, double rAF comme fondreImages). */
 function reappliquerCartesRevelees(date) {
   const zones = new Set(cartesReveleesDuJour(date));
   ['z-carte-maj', 'z-carte-perso', 'z-carte-min'].forEach(id => {
     const zone = document.getElementById(id);
-    if (zone && zones.has(id)) zone.classList.add('revelee');
+    if (zone && zones.has(id)) {
+      zone.classList.add('revelee');
+      const carte = zone.querySelector('.carte-jour');
+      if (carte) {
+        carte.classList.add('reprise');
+        requestAnimationFrame(() => requestAnimationFrame(() =>
+          carte.classList.remove('reprise')));
+      }
+    }
   });
 }
 
-function ouvrirCartePlein(zone) {
-  ouvrirCartePleinDonnees({
+async function ouvrirCartePlein(zone) {
+  const donnees = () => ({
     src: zone.dataset.src, nom: zone.dataset.nom,
     cause: zone.dataset.cause, invitation: zone.dataset.invitation, lecture: zone.dataset.lecture,
   });
-  // Dès qu'on ouvre la carte en plein écran, elle est « consultée » : à la
-  // fermeture, on la revoit DÉVOILÉE en petit dans le fil, plus un dos vierge
-  // (Martin, 2026-08-27). L'état est mémorisé pour toute la journée : un
-  // redémarrage de l'app dans le même jour ne rend pas son dos à la carte.
+  // Déjà retournée (2e tap, ou retour sur une carte consultée) : le plein
+  // écran ouvre DIRECTEMENT — le flip est un geste unique, pas un décor.
+  if (zone.classList.contains('revelee')) { ouvrirCartePleinDonnees(donnees()); return; }
+  // Garde double-tap : un flip en cours se termine, il ne se relance pas.
+  if (zone.dataset.flip === '1') return;
+  zone.dataset.flip = '1';
+  /* Pré-décodage de la face AVANT le geste : le flip ne doit jamais buter sur
+     un décodage d'image à mi-rotation. La mini est en cache (service worker),
+     donc ~0 ms — le timeout de garde sert les cas où le cache est froid. */
+  const face = zone.querySelector('img.face');
+  if (face) { try { await face.decode({ timeout: 400 }); } catch (e) { /* retourner quand même */ } }
+  // Dès que le flip part, la carte est « consultée » : à la fermeture du plein
+  // écran, on la revoit DÉVOILÉE en petit, plus un dos vierge (Martin,
+  // 2026-08-27). Mémorisé pour toute la journée : un redémarrage de l'app dans
+  // le même jour ne rend pas son dos à la carte.
   zone.classList.add('revelee');
   memoriserCarteRevelee(zone.dataset.jour, zone.id);
+  /* Léger chevauchement (Martin, 2026-09-23) : le plein écran part à ~450 ms
+     d'un flip de 600 ms — les deux mouvements se répondent au lieu de se
+     suivre mécaniquement. prefers-reduced-motion : le CSS rend le flip
+     instantané, on enchaîne donc sans délai. */
+  const delai = matchMedia('(prefers-reduced-motion:reduce)').matches ? 0 : 450;
+  setTimeout(() => {
+    delete zone.dataset.flip;
+    ouvrirCartePleinDonnees(donnees());
+  }, delai);
 }
 
 function fermerCartePlein() {
@@ -2545,6 +2620,33 @@ function câblerMsgThemeIncomplet() {
     editionDe = profilId;
     ouvrirFormulaire(await (await fetch(`/api/profil/${profilId}`)).json());
   };
+}
+
+/* L'attente du PREMIER écran froid du jour (bundle en route) a un visage : la
+   structure du Jour en pulsation légère, avec les VRAIS dos de cartes — le
+   dos est déjà l'état de repos des cartes, le squelette ment le moins
+   possible. Remplacé mot pour mot par chargerJour() quand le bundle arrive.
+   N'apparaît qu'au démarrage : naviguer ensuite ne re-rend jamais ce squelette
+   (chargerX re-rend depuis les données déjà là). */
+function rendreSqueletteJour() {
+  const dos = `/static/cartes/mini/dos.webp?v={{ vstat }}`;
+  const carteDos = `<div class="carte-jour-zone" style="cursor:default">` +
+    `<span class="carte-jour"><img class="dos" src="${dos}" alt=""></span></div>`;
+  $('#vue-jour').innerHTML = `
+    <div class="carte" style="text-align:center;padding:20px 22px 18px">
+      <div class="squelette-ligne" style="width:42%;margin:4px auto 0"></div>
+      <div class="squelette-ligne courte" style="width:26%;margin:10px auto 0"></div>
+    </div>
+    <div class="jour-section">Tes cartes du jour</div>
+    <div class="jour-groupe" style="padding:2px 2px 8px">
+      <div class="pont carte-jour-paire" style="margin-top:14px">${carteDos.repeat(3)}</div>
+    </div>
+    <div class="carte" style="margin-top:14px">
+      <div class="squelette-ligne" style="width:70%"></div>
+      <div class="squelette-ligne"></div>
+      <div class="squelette-ligne"></div>
+      <div class="squelette-ligne courte"></div>
+    </div>`;
 }
 
 async function chargerJour(donnees) {
@@ -4230,21 +4332,20 @@ function montrer(vue) {
 }
 
 /* Fait ÉMERGER les images du fond noir au chargement (voir .img-fondu).
-   - Cartes du jour : on fond le CONTENEUR .carte-jour (ses images .face/.dos
-     gèrent déjà leur opacité pour le flip — on n'y touche pas).
+   - Cartes du jour : on fond la ZONE (.carte-jour-zone) — une opacité < 1 sur
+     .carte-jour elle-même aplatirait son preserve-3d et casserait le flip ;
+     l'opacité d'un ancêtre, elle, est sans danger (voir le pavé CSS .img-fondu).
    - Autres images de contenu (vignettes…) : on fond l'image elle-même.
    Idempotent (data-fondu) : rejouer montrer() ne re-déclenche pas un élément
    déjà fondu. Une image déjà en cache (complete) est marquée « chargée »
    immédiatement — le fondu joue quand même, très court, jamais de blocage. */
 function fondreImages(racine) {
   if (!racine) return;
-  racine.querySelectorAll('.carte-jour').forEach(el => {
-    // Une carte déjà DÉVOILÉE (.revelee, ouverte en plein écran) ne doit pas
-    // être re-fondue à chaque retour sur l'onglet — sinon elle disparaîtrait
-    // brièvement (opacity:0) avant de refondre. On ne fond que la carte au dos
-    // encore visible.
-    const zone = el.closest('.carte-jour-zone');
-    if (zone && zone.classList.contains('revelee')) return;
+  racine.querySelectorAll('.carte-jour-zone').forEach(el => {
+    // Une carte déjà DÉVOILÉE (.revelee) ne doit pas être re-fondue à chaque
+    // retour sur l'onglet — sinon elle disparaîtrait brièvement (opacity:0)
+    // avant de refondre. On ne fond que la carte au dos encore visible.
+    if (el.classList.contains('revelee')) return;
     preparerFondu(el, el.querySelector('.dos'));
   });
   // .tuto-pwa-img exclues : un mode d'emploi se feuillette VITE — aucun fondu
@@ -4538,6 +4639,7 @@ async function demarrer() {
   montrer('jour');
   document.querySelectorAll('#nav button').forEach(x =>
     x.classList.toggle('actif', x.dataset.vue === 'jour'));
+  rendreSqueletteJour();   // l'attente du premier écran froid a un visage
   /* UN SEUL aller-retour pour tout le démarrage : le bundle réunit lexique,
      conventions, jour, aperçu, portrait et ciel (voir /api/bundle) — l'ancien
      Promise.all lançait 6-7 requêtes, un aller-retour transatlantique chacune.
