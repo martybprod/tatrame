@@ -51,10 +51,11 @@
   `.revelee` des trois cartes du jour **mémorisé pour la journée** (localStorage
   `trame.cartes.revelees`, clé = date SERVEUR `j.date` posée en `data-jour`) et
   réappliqué au rendu — un redémarrage le même jour garde les faces visibles, un
-  nouveau jour rend les dos.
-- **Note** : le mode test `ACCUEIL_TEST_TOUJOURS` (accueil montré à CHAQUE chargement,
-  2026-08-22) est resté tel quel — décision de Martin à trancher.
+  nouveau jour rend les dos. (3) le mode test `ACCUEIL_TEST_TOUJOURS` (accueil montré
+  à CHAQUE chargement, 2026-08-22) est **repassé à `false` le jour même, décision de
+  Martin** : le message revient une fois par moment (jour OU soir — `cleAccueil`).
 - **Vérifié** : suite pytest verte (759) + parcours navigateur complet (ouverture, clic
   panneau ne ferme plus, ✕ ferme, fond ferme, carte retournée → rechargement → face
-  conservée, les autres au dos).
+  conservée ; accueil montré une seule fois, plus au rechargement du même moment,
+  « À méditer » restant un moment distinct le soir).
 - **Statut** : livré le jour même.
