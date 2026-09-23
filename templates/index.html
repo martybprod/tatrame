@@ -469,12 +469,13 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .vignette{width:56px;height:98px;object-fit:cover;border-radius:6px;border:1px solid var(--bord);flex:none;box-shadow:0 1px 3px rgba(0,0,0,.12);cursor:zoom-in}
 
 /* La carte du jour affiche son DOS en grille. Un clic la fait se RETOURNER en
-   3D sur place, puis le plein écran s'ouvre automatiquement (Martin,
-   2026-09-23) ; une carte déjà retournée ouvre le plein écran direct et reste
-   DÉVOILÉE en petit dans le fil — on revoit la carte déjà consultée, pas un
-   dos vierge. Effet, pas oracle : la carte est CALCULÉE (date → arcane). */
-/* ═══ LE FLIP 3D DES CARTES DU JOUR (Martin, 2026-09-23 : « elle se retourne
-   avec un flip, puis seulement ensuite elle passe en plein écran ») ═══
+   3D sur place — c'est TOUT : la carte reste révélée dans la grille pour le
+   reste de la journée (Martin, 2026-09-23 : « révélées seulement lorsque
+   l'utilisateur clique dessus, et rester ensuite révélées »). Le plein écran
+   n'est JAMAIS automatique : c'est un deuxième clic, sur la carte déjà
+   retournée, qui le décide. Effet, pas oracle : la carte est CALCULÉE
+   (date → arcane). */
+/* ═══ LE FLIP 3D DES CARTES DU JOUR ═══
    Le dos au repos ; la face est PRÉ-ROTÉE au dos (rotateY(180°) + backface
    cachée) ; `.revelee` tourne le conteneur de 180° — la face arrive en douceur
    par la géométrie, plus par une opacité. Uniquement transform/opacity → GPU.
@@ -2068,8 +2069,10 @@ async function ouvrirCartePlein(zone) {
     src: zone.dataset.src, nom: zone.dataset.nom,
     cause: zone.dataset.cause, invitation: zone.dataset.invitation, lecture: zone.dataset.lecture,
   });
-  // Déjà retournée (2e tap, ou retour sur une carte consultée) : le plein
-  // écran ouvre DIRECTEMENT — le flip est un geste unique, pas un décor.
+  // Carte déjà retournée (2ᵉ clic) : SEUL moment où le plein écran s'ouvre.
+  // Le rituel voulu par Martin (2026-09-23) : le clic RETOURNE la carte sur
+  // place, elle RESTE révélée dans la grille pour le reste de la journée —
+  // le plein écran n'est jamais automatique, c'est un deuxième geste décidé.
   if (zone.classList.contains('revelee')) { ouvrirCartePleinDonnees(donnees()); return; }
   // Garde double-tap : un flip en cours se termine, il ne se relance pas.
   if (zone.dataset.flip === '1') return;
@@ -2079,21 +2082,12 @@ async function ouvrirCartePlein(zone) {
      donc ~0 ms — le timeout de garde sert les cas où le cache est froid. */
   const face = zone.querySelector('img.face');
   if (face) { try { await face.decode({ timeout: 400 }); } catch (e) { /* retourner quand même */ } }
-  // Dès que le flip part, la carte est « consultée » : à la fermeture du plein
-  // écran, on la revoit DÉVOILÉE en petit, plus un dos vierge (Martin,
-  // 2026-08-27). Mémorisé pour toute la journée : un redémarrage de l'app dans
-  // le même jour ne rend pas son dos à la carte.
+  // Le flip EST la révélation : la carte se retourne sur place et y reste.
+  // Mémorisée pour toute la journée : un redémarrage de l'app dans le même
+  // jour ne rend pas son dos à la carte (Martin, 2026-08-27).
   zone.classList.add('revelee');
   memoriserCarteRevelee(zone.dataset.jour, zone.id);
-  /* Léger chevauchement (Martin, 2026-09-23) : le plein écran part à ~450 ms
-     d'un flip de 600 ms — les deux mouvements se répondent au lieu de se
-     suivre mécaniquement. prefers-reduced-motion : le CSS rend le flip
-     instantané, on enchaîne donc sans délai. */
-  const delai = matchMedia('(prefers-reduced-motion:reduce)').matches ? 0 : 450;
-  setTimeout(() => {
-    delete zone.dataset.flip;
-    ouvrirCartePleinDonnees(donnees());
-  }, delai);
+  delete zone.dataset.flip;
 }
 
 function fermerCartePlein() {
