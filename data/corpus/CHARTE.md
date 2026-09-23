@@ -213,10 +213,13 @@ d'énergie) reste intacte ; seule la façon de la présenter passe de la privati
 
 ### Pense à Ginette
 
-La lectrice-cible : peu d'éducation, mais elle aime qu'on lui parle d'elle et d'astrologie
-**clairement**. Tout doit lui être compréhensible du premier coup, **sans sacrifier le style**.
-Un mot qui demande de l'éducation ou un décodage (« optimale », « porter l'argent ») → du courant.
+La lectrice-cible : **Ginette Tremblay** (*née le 03/11/1958*), peu d'éducation, mais elle aime
+qu'on lui parle d'elle et d'astrologie **clairement**. Tout doit lui être compréhensible du
+premier coup, **sans sacrifier le style**. Un mot qui demande de l'éducation ou un décodage
+(« optimale », « porter l'argent ») → du courant.
 Quand Martin dit **« Pense à Ginette »**, c'est le rappel de relire de son point de vue.
+Profil complet et mises à jour : `data/corpus/ginette-lectrice-cible.md` — un ajustement qui
+change sa lecture passe par là (voir `LOG_AJUSTEMENTS.md`).
 
 ### Le modèle de référence (validé avec Martin)
 
@@ -271,6 +274,59 @@ comprend sans effort.)*
 
 **Ce qui ne change pas :** le fond, le recadrage en conditionnement, la chaleur, le non-verdict,
 et « une chute par entrée ». On enlève l'effort de lecture, pas la justesse.
+
+### Les leçons de la passe des messages du jour (2026-08-31 → 09-01)
+
+> Issue de la revue « Ginette » sur les 56 mineurs + les transits (retrouvée dans les
+> commits git, appliquée aux entrées du jour). Complète les réflexes ci-dessus ; ce qui
+> y figure l'emporte.
+
+**1. Le jargon de phase est interdit.** « culmine », « sommet », « intensité »,
+« Maintenant, » racontent une courbe d'intensité que le lecteur ne vit pas — on écrit
+le vécu au présent :
+
+| ❌ | ✅ |
+|---|---|
+| « Quand le passage culmine, ton humeur… » | « Aujourd'hui, ton humeur… » |
+| « Au sommet du passage, le conflit est net » | « Aujourd'hui, le conflit est net » |
+| « À son intensité, tu te présentes sans préparation » | « Aujourd'hui, tu peux te présenter sans avoir besoin de tout préparer » |
+| « Maintenant, la tension est nette » | « Aujourd'hui, la tension est nette » |
+
+**2. Les métaphores économiques sont interdites.** « coûte », « coûté », « plus cher »
+transforment une journée en facture. On nomme l'**effort demandé**, la **perte** ou le
+**manque** — jamais un prix :
+
+| ❌ | ✅ |
+|---|---|
+| « Le coût est bas aujourd'hui » | « elle te demandera moins d'effort » |
+| « ça t'a coûté de ne pas t'en servir » | « ce que tu pourrais perdre en ne saisissant pas cette occasion » |
+| « Voir grand te coûte moins cher » | « Voir grand te demande moins d'effort » |
+| « est-ce que ça t'a vraiment coûté ? » | « est-ce que cela t'a vraiment manqué ? » |
+
+**3. La temporalité suit la vitesse de la planète.** Une planète **rapide** (Lune, Mercure,
+Vénus, Soleil, Mars) se dit « **aujourd'hui** ». Une planète **lente** (Jupiter, Saturne,
+Uranus, Neptune) se dit « **ces temps-ci** ». Ne jamais dater un transit lent au jour près.
+
+**4. « Dedans » et « se sent » impersonnels sont interdits.** « ton dedans », « ce qui se
+sent », « une lourdeur du dedans » détachent le ressenti de la personne. On le rattache à
+son sujet humain : « ton dedans » → « **ton humeur** » ; « ce que tu aimes se sent » →
+« **tu sens** plus clairement ce que tu aimes » ; « une lourdeur du dedans » → « **une
+lourdeur d'humeur** ».
+
+**5. L'ouverture affirmative directe.** Commencer par la chose, pas par son absence :
+« Il y a de la place à l'intérieur » → « **Tu es plus disponible à l'intérieur** ». Le
+sujet en tête de phrase, la ressource, pas le constat clé en main.
+
+**6. La déculpabilisation se varie, jamais en série.** Le « C'est qu'on t'a appris à… » est
+puissant mais s'épuise à la répétition (corrigé dans la passe). Règle : **au plus un par
+entrée**, et on alterne les formes — « par prudence plus que par peur », « une vieille
+habitude », « c'est un vieux réflexe », « tu l'as appris il y a longtemps » — ou on le
+supprime quand ce n'est pas indispensable.
+
+**7. Le « d'où ça vient » n'est pas obligatoire.** L'explication du réflexe (le
+« d'où ça vient ») se garde **seulement quand elle éclaire** (passe Deniers : 3 entrées la
+gardent, 4 s'en passent). Si elle ajoute de la longueur sans ajouter de compréhension,
+on la coupe.
 
 ---
 

@@ -60,6 +60,20 @@
   (« a été choisie » — personne n'a choisi, c'est reçu).
 - Un mot qui sonne sombre ou fort pour rien → le mot plus chaud (« habitée »
   plutôt que « possédée »).
+- **Chasser le jargon de phase** : « culmine », « sommet », « intensité »,
+  « Maintenant, » → écrire le vécu au présent (« Aujourd'hui, … ») —
+  ces mots racontent une courbe d'intensité que le lecteur ne vit pas
+  (leçon de la passe 2026-08-31).
+- **Chasser les métaphores économiques** : « coûte », « a coûté », « plus cher »
+  → « demande de l'effort », « perdre », « manquer » (passe transits 2026-09-01).
+- **Temporalité = vitesse de la planète** : rapide (Lune→Mars) = « aujourd'hui »,
+  lente (Jupiter→Neptune) = « ces temps-ci » (passe transits 2026-08-31).
+- **Pas de « dedans »/« se sent » impersonnel** : « ton dedans » → « ton humeur »,
+  « se sent » → « tu sens » (passe transits 2026-09-01).
+- **Déculpabilisation variée, jamais en série** : au plus un « on t'a appris à… »
+  par entrée, sinon le supprimer.
+- **Le « d'où ça vient » est facultatif** : ne le garder que s'il éclaire vraiment
+  (passe Deniers : 3 entrées le gardent, 4 s'en passent).
 
 ## 4. Passe mécanique (scriptée dans le filet)
 
