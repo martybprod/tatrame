@@ -59,3 +59,21 @@
   conservée ; accueil montré une seule fois, plus au rechargement du même moment,
   « À méditer » restant un moment distinct le soir).
 - **Statut** : livré le jour même.
+
+## 2026-09-23 — Couleur du cartouche tarot : or éclairci d'un cran
+
+- **Demande** (Martin) : le cartouche (le médaillon doré qui entoure le disque des numéros)
+  est « parfait, mais très légèrement trop foncé ».
+- **Décision** : l'or des lignes `ORN_LINE` passe de `(200,162,78)` à **`(219,181,101)`** —
+  même teinte jaune brun, ~+6 % de luminosité (nuance « B » choisie sur un aperçu de
+  3 candidats). Corrigé dans `_distillation/_composer_cartouches.py` (+ `_tint_ornements.py`
+  pour les maquettes HTML). Le disque, le cerne foncé et le nom ne changent pas.
+- **Déployé** : 37 cartes recomposées dans les 2 thèmes ; les 22 majeurs du thème **clair**
+  repassés en `static/cartes/NN.jpg` (800×1388, BICUBIC, q82 — la recette documentée) +
+  miniatures WebP régénérées. **Art intact** : l'écart avec les cartes précédentes est
+  confiné aux lignes d'or (0,03-0,18 % des pixels), le reste est identique.
+- **Notes** : `_distillation/` (composeur + images sources) n'est PAS versionné (hors
+  dépôt de l'app) ; seul le jpg déployé l'est. « L'Éveil » (major_22) n'est pas servi par
+  l'app (arcanes 0-21) — non déployé. Les mineures de l'app restent les cartes classiques
+  (sans cartouche de ce jeu).
+- **Statut** : livré le jour même.
