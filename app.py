@@ -6,7 +6,9 @@ Même profil + même date -> même réponse, toujours, pour toujours.
 Port 5073 (hors liste des ports « unsafe » des navigateurs).
 """
 import base64
+import copy
 import datetime as dt
+import hashlib
 import json
 import os
 import pathlib
@@ -18,6 +20,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 from flask import (Flask, jsonify, redirect, render_template, render_template_string,
                     request, session)
+from flask_compress import Compress
 from py_vapid import Vapid
 from pywebpush import webpush
 
@@ -70,6 +73,52 @@ DOMAINE_LABELS = {
 }
 
 app = Flask(__name__)
+# gzip des pages, JSON et textes servis (les images, déjà compressées, sont
+# exclues par mimetype) : la prod ne compresse PAS derrière Coolify — vérifié
+# par en-têtes le 2026-09-23 (`content-length: 253561` nu sur `/`). Sur une
+# liaison transatlantique, c'est le premier levier de poids, avant même le
+# cache. Seulement gzip (pas de brotli) : un ZIP de moins à épingler, pour un
+# gain marginal sur des textes déjà divisés par ~4.
+Compress(app)
+# Les statiques (cartes, fonds, icônes) ne changent qu'au déploiement : ils
+# vivent donc LONGTEMPS dans le cache du téléphone, au lieu d'être revalidés
+# un par un par un aller-retour 304 à chaque ouverture (le défaut Werkzeug
+# sans max-age — jusqu'ici ~80 requêtes conditionnelles par visite, un
+# aller-retour transatlantique chacune). Le rafraîchissement passe par le
+# bust de version : chaque URL statique du gabarit et du front porte
+# ?v=<empreinte> — voir `_empreinte_statique`.
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = dt.timedelta(days=365)
+
+
+def _empreinte_statique():
+    """Une empreinte courte de TOUT static/ — sha1 des contenus, ordre stable.
+
+    UN seul jeton pour toutes les URLs : si un fichier change, chaque `?v=`
+    change et les caches repartent de zéro ; si rien ne change (redéploiement
+    de code seul), l'empreinte est identique et les téléphones ne
+    re-téléchargent rien. Calculée une fois au démarrage (~16 Mo à hacher,
+    hors course). `/sw.js` reste hors contrat : l'after_request le sert en
+    `no-cache`, sa revalidation à CHAQUE requête est voulue (piège du service
+    worker resté actif, voir static/sw.js).
+    """
+    h = hashlib.sha1()
+    racine = pathlib.Path(app.static_folder)
+    for chemin in sorted(racine.rglob("*")):
+        if chemin.is_file():
+            h.update(str(chemin.relative_to(racine)).encode("utf-8"))
+            h.update(chemin.read_bytes())
+    return h.hexdigest()[:10]
+
+
+VSTAT = _empreinte_statique()
+
+
+@app.context_processor
+def _injecter_vstat():
+    """L'empreinte statique est disponible dans tous les gabarits (`vstat`)."""
+    return {"vstat": VSTAT}
+
+
 moteur = Moteur()
 corpus = Corpus()
 lieux = Lieux()
@@ -274,10 +323,16 @@ def _ecrire(chemin, donnees):
 
 @app.after_request
 def _pas_de_cache(reponse):
-    # Le JS/CSS est servi depuis static/ ; la page, elle, ne doit jamais être
-    # mise en cache, sinon un redémarrage semble « ne rien changer ».
+    # La page elle-même (le JS/CSS est inline dedans) est servie en `no-cache` :
+    # revalidée par ETag à chaque visite — inchangée, elle ne renvoie que 304
+    # (corps vide) au lieu des 254 Ko complets ; modifiée, elle s'impose
+    # immédiatement. C'est le même contrat que /sw.js : le navigateur ne peut
+    # JAMAIS ignorer une mise à jour silencieusement, mais une visite identique
+    # ne coûte plus qu'un aller-retour de quelques octets. (L'ancien
+    # `no-store` forçait le re-téléchargement complet à chaque ouverture —
+    # ruineux sur une liaison transatlantique.)
     if request.path == "/":
-        reponse.headers["Cache-Control"] = "no-store"
+        reponse.headers["Cache-Control"] = "no-cache"
     # /sw.js : servi via send_static_file (app.py::service_worker), donc
     # caché par défaut plusieurs heures comme n'importe quel fichier statique.
     # C'est le piège précis vécu par Martin (2026-08-27, « sur mon iPhone, ça
@@ -305,7 +360,7 @@ def _pas_de_cache(reponse):
 # automatiquement (elle porte <profil_id> dans son URL).
 
 _ROUTES_PROTOGEES = re.compile(
-    r"^/api/(profil|portrait|jour|explorer|ciel|apercu|relations|notifications)"
+    r"^/api/(profil|portrait|jour|explorer|ciel|apercu|relations|notifications|bundle)"
 )
 
 # Routes de gestion du compte : elles portent <profil_id> mais gèrent JUSTE le
@@ -362,7 +417,7 @@ def _verrou_profils():
     segments = request.path.strip("/").split("/")
     pid = None
     for i, s in enumerate(segments):
-        if s in ("portrait", "jour", "ciel", "apercu") and i + 1 < len(segments):
+        if s in ("portrait", "jour", "ciel", "apercu", "bundle") and i + 1 < len(segments):
             pid = segments[i + 1]
             break
         # notifications/cle-publique n'a pas de profil (route globale, comme
@@ -940,12 +995,57 @@ def _charger_entite(genre, id_):
 
 # ------------------------------------------------------------- lectures
 
+# ------------------------------------------- mémoïsation (le calcul ne bouge pas)
+#
+# La thèse d'Align rend le cache TRIVIAL et sûr : tout est déterministe
+# (même entrée -> même sortie, pour toujours — voir l'en-tête du fichier),
+# donc un calcul déjà payé n'a jamais besoin de l'être deux fois. Le thème
+# natal d'une naissance ne change jamais ; le ciel d'un jour non plus (il ne
+# dépend même pas du profil) ; le Jour complet d'un profil ne change plus une
+# fois sa date passée. Un profil à ~300 ms de calcul Skyfield par lecture,
+# trois lectures par ouverture d'app et une relance mobile sur liaison
+# transatlantique : sans mémo, on paie trois fois la même physique.
+#
+# Sûreté : les valeurs mémoïsées ne sont JAMAIS rendues telles quelles ni
+# mutées après insertion — les consommateurs (X.croiser, qui injecte asc/mc
+# dans corps) reçoivent une copie. Threads (gunicorn 1 worker × 4) : lire ou
+# écrire une clé complète d'un dict est atomique (GIL) ; le pire cas est un
+# calcul dupliqué par deux threads, qui produit la même valeur.
+
+_MEMO_THEMES = {}   # signature de naissance -> thème natal brut
+_MEMO_JOURS = {}    # (signature, date iso) -> jour complet d'un profil
+_MEMO_CIEL = {}     # date iso -> ciel léger du jour (universel, sans profil)
+
+
+def _signature(profil):
+    """Ce qui détermine TOUT le calcul personnel : l'identité de naissance.
+    Deux profils de même naissance et mêmes prénoms donnent le même Jour —
+    la clé est une fonction des données, pas de l'id, donc une édition du
+    profil (nouvelle heure, nouveau lieu) change la clé sans entretien."""
+    return json.dumps(
+        [profil.get("id"), profil.get("prenoms_nom"), profil.get("naissance"),
+         profil.get("fold", 0)],
+        ensure_ascii=False, sort_keys=True)
+
+
+def _theme_pour(profil):
+    """Le thème natal, mémoïsé — recalculé seulement si la naissance change."""
+    cle = json.dumps([profil.get("naissance"), profil.get("fold", 0)],
+                     ensure_ascii=False, sort_keys=True)
+    theme = _MEMO_THEMES.get(cle)
+    if theme is None:
+        n = profil["naissance"]
+        theme = moteur.theme_natal(
+            n["annee"], n["mois"], n["jour"], n["heure"], n["minute"],
+            n["lat"], n["lon"], n["fuseau"], fold=profil.get("fold", 0),
+        )
+        _MEMO_THEMES[cle] = theme
+    return copy.deepcopy(theme)
+
+
 def _croisement(profil, annee_courante):
+    theme = _theme_pour(profil)
     n = profil["naissance"]
-    theme = moteur.theme_natal(
-        n["annee"], n["mois"], n["jour"], n["heure"], n["minute"],
-        n["lat"], n["lon"], n["fuseau"], fold=profil.get("fold", 0),
-    )
     return theme, X.croiser(theme, profil["prenoms_nom"],
                             n["jour"], n["mois"], n["annee"], annee_courante)
 
@@ -1132,10 +1232,7 @@ def _personne_relations(entite):
     complet = all(k in n for k in ("heure", "minute", "lat", "lon", "fuseau"))
     elements, positions = {}, None
     if complet:
-        theme = moteur.theme_natal(
-            an, mo, jo, n["heure"], n["minute"], n["lat"], n["lon"], n["fuseau"],
-            fold=entite.get("fold", 0),
-        )
+        theme = _theme_pour(entite)
         corps = theme["corps"]
         elements = {
             "soleil": A.ELEMENT_DE[corps["soleil"]["signe"]],
@@ -1525,8 +1622,9 @@ def api_relations(profil_id, b_genre, b_id):
     pouls = None
     if resultat["composite"] is not None:
         date = _date_demandee()
-        t = moteur.eph.instant(date.year, date.month, date.day, 12, 0, 0)
-        ciel = {c: moteur.eph.position(c, t) for c in moteur.eph.CORPS}
+        # Même lecture mémoïsée que le Jour : le ciel de midi UTC est
+        # universel (par date, sans profil) — voir _ciel_leger.
+        ciel = _ciel_leger(None, date)
         positions = {c: p["lon"] for c, p in ciel.items()}
         vitesses = {c: p["vitesse_lon"] for c, p in ciel.items()}
         pouls = REL.pouls_composite(resultat["composite"], positions, vitesses)
@@ -1767,9 +1865,24 @@ FENETRE_RECURRENCE = 7
 
 def _ciel_leger(theme, date):
     """Le ciel d'un jour à midi UTC — version LÉGÈRE : ni corpus, ni cartes,
-    juste les positions et vitesses. Sert aux regards en arrière."""
-    t = moteur.eph.instant(date.year, date.month, date.day, 12, 0, 0)
-    return {c: moteur.eph.position(c, t) for c in moteur.eph.CORPS}
+    juste les positions et vitesses. Sert aux regards en arrière.
+
+    Mémoïsé PAR DATE (le paramètre `theme` ne sert qu'à la signature — le
+    ciel du jour est le même pour tous les profils) : le rejeu de la fenêtre
+    de récurrence réévalue sinon 7-15 fois les mêmes éphémérides à chaque
+    lecture du Jour."""
+    cle = date.isoformat()
+    ciel = _MEMO_CIEL.get(cle)
+    if ciel is None:
+        t = moteur.eph.instant(date.year, date.month, date.day, 12, 0, 0)
+        ciel = {c: moteur.eph.position(c, t) for c in moteur.eph.CORPS}
+        _MEMO_CIEL[cle] = ciel
+        if len(_MEMO_CIEL) > 64:            # garde-fou de taille : garder le récent
+            today = dt.datetime.now(TEMPS.fuseau(FUSEAU_APP)).date()
+            garde = today - dt.timedelta(days=30)
+            for vieille in [k for k in _MEMO_CIEL if k < garde.isoformat()]:
+                del _MEMO_CIEL[vieille]
+    return {c: dict(p) for c, p in ciel.items()}   # copie : jamais partagé
 
 
 def _declencheurs_pour(theme, date):
@@ -1895,7 +2008,29 @@ def _jour_pour(profil, date):
     la route pour que le scheduler des rappels push (voir `_envoyer_rappels`)
     puisse lire exactement le même `titre` que l'API, EN PROCESS, sans faire
     une requête HTTP vers son propre serveur.
+
+    Mémoïsé par (identité de naissance, date) : le résultat coûte ~300 ms de
+    Skyfield et ne dépend QUE de ces deux paramètres (aucun état, aucune
+    horloge dans le calcul — c'est la thèse déterministe). La même journée,
+    relue par l'app, un rappel push ou Explorer, est donc payée une fois.
+    Le dictionnaire stocké n'est plus touché après insertion ; on rend une
+    copie profonde, car certains consommateurs enrichissent le leur.
     """
+    cle = (_signature(profil), date.isoformat())
+    en_memoire = _MEMO_JOURS.get(cle)
+    if en_memoire is None:
+        en_memoire = _jour_pour_calcule(profil, date)
+        _MEMO_JOURS[cle] = en_memoire
+        if len(_MEMO_JOURS) > 128:          # garde-fou de taille
+            today = dt.datetime.now(TEMPS.fuseau(FUSEAU_APP)).date()
+            garde = (today - dt.timedelta(days=3)).isoformat()
+            for vieille in [k for k in _MEMO_JOURS if k[1] < garde]:
+                del _MEMO_JOURS[vieille]
+    return copy.deepcopy(en_memoire)
+
+
+def _jour_pour_calcule(profil, date):
+    """Le calcul du Jour lui-même — voir `_jour_pour` (mémoïsation)."""
     if not profil.get("complet"):
         # Le Fil du jour, le transit dominant, la Lune du jour : tout lit la
         # maison natale (donc l'ascendant) — sans heure ni lieu de naissance,
@@ -1906,10 +2041,9 @@ def _jour_pour(profil, date):
     theme, r = _croisement(profil, date.year)
 
     # Le ciel de ce jour, à midi UTC — un instant stable et explicite.
-    # Une seule passe par corps : `position` fait déjà trois évaluations
-    # d'éphéméride pour la vitesse, la rappeler doublerait le travail.
-    t = moteur.eph.instant(date.year, date.month, date.day, 12, 0, 0)
-    ciel = {c: moteur.eph.position(c, t) for c in moteur.eph.CORPS}
+    # Même lecture que les regards en arrière (`_ciel_leger`, mémoïsée par
+    # date) : le Jour du matin puis Explorer à midi partagent le même calcul.
+    ciel = _ciel_leger(theme, date)
     positions = {c: p["lon"] for c, p in ciel.items()}
     vitesses = {c: p["vitesse_lon"] for c, p in ciel.items()}
 
@@ -2132,10 +2266,7 @@ def api_ciel(profil_id):
         return jsonify({"complet": False, "attribution": ATTRIBUTION})
 
     n = profil["naissance"]
-    theme = moteur.theme_natal(
-        n["annee"], n["mois"], n["jour"], n["heure"], n["minute"],
-        n["lat"], n["lon"], n["fuseau"], fold=profil.get("fold", 0),
-    )
+    theme = _theme_pour(profil)
     s = synthese.synthetiser(theme)
 
     def textes_astre(nom, signe, maison):
@@ -2532,6 +2663,34 @@ def api_conventions():
                       "les lire. La variété vient du ciel réel, qui bouge tout seul — la "
                       "Lune change de signe tous les deux jours et demi.",
         },
+    })
+
+
+@app.get("/api/bundle/<profil_id>")
+def api_bundle(profil_id):
+    """Tout le démarrage de l'app en UNE réponse — lexique, conventions,
+    jour, aperçu, portrait et ciel.
+
+    Avant, la page du Jour déclenchait 6-7 requêtes distinctes, chacune un
+    aller-retour transatlantique, chacune recalculant (avant mémoïsation) le
+    même thème. Le bundle réunit le tout en un seul voyage. Il appelle les
+    routes elles-mêmes : une seule source de vérité, zéro duplication de la
+    logique de construction — ce que le bundle dit est EXACTEMENT ce que
+    chaque vue seule dirait. Les calculs sont mémoïsés (voir _jour_pour et
+    _theme_pour) : la première demande paie la physique, les suivantes lisent.
+
+    `?date=` traverse (rejeu d'une journée, comme chaque route seule).
+    """
+    profil = _charger(profil_id)
+    if not profil:
+        return jsonify({"erreur": "profil inconnu"}), 404
+    return jsonify({
+        "lexique": api_lexique().get_json(),
+        "conventions": api_conventions().get_json(),
+        "jour": api_jour(profil_id).get_json(),
+        "apercu": api_apercu(profil_id).get_json(),
+        "portrait": api_portrait(profil_id).get_json(),
+        "ciel": api_ciel(profil_id).get_json(),
     })
 
 

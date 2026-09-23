@@ -20,9 +20,9 @@
      le CSS ne s'applique. `color-scheme` force le navigateur à traiter TOUTE
      la page comme sombre, indépendamment du réglage système. -->
 <meta name="color-scheme" content="dark">
-<link rel="manifest" href="/static/manifest.json">
-<link rel="icon" href="/static/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="/static/ta-trame-icone-180.png">
+<link rel="manifest" href="/static/manifest.json?v={{ vstat }}">
+<link rel="icon" href="/static/favicon-32.png?v={{ vstat }}" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/static/ta-trame-icone-180.png?v={{ vstat }}">
 <title>Ta Trame</title>
 <style>
 /* Align — sobre, chaud, sans kitsch ésotérique.
@@ -145,7 +145,7 @@ body{
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
-    url('/static/img/fond-defilement.webp');
+    url('/static/img/fond-defilement.webp?v={{ vstat }}');
   background-position:0 0, top left;
   /* Tuile 760×1680 (ratio ≈ 782:1728, portrait). Hauteur EXPLICITE (840px). */
   background-size:auto, 380px 840px;
@@ -177,7 +177,7 @@ body{
     linear-gradient(to bottom,
       rgba(20,17,16,0) 0%, rgba(20,17,16,.55) 45%,
       #141110 55%, var(--papier) 100%),
-    url('/static/img/trame-bandeau.jpg');
+    url('/static/img/trame-bandeau.jpg?v={{ vstat }}');
   background-position:center 44%; background-size:cover; background-repeat:no-repeat;
   /* Émerge du noir en fondu à l'apparition (comme #fond-app) — le texte de
      l'en-tête, lui, est dans `header` au-dessus (z-index) et reste visible. */
@@ -553,7 +553,7 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
-    url('/static/img/metierAtisser1.webp');
+    url('/static/img/metierAtisser1.webp?v={{ vstat }}');
   background-position:55% 48%; background-size:cover; background-repeat:no-repeat;
   padding-top:max(28px, env(safe-area-inset-top));
   padding-bottom:max(28px, env(safe-area-inset-bottom));
@@ -1084,11 +1084,11 @@ function precharger_fonds() {
     img.src = url;
     if (img.complete && img.naturalWidth) marquer();   // déjà en cache
   };
-  fondre(document.getElementById('fond-app'), '/static/img/fond-defilement.webp');
-  fondre(document.querySelector('.bandeau-marque'), '/static/img/trame-bandeau.jpg');
+  fondre(document.getElementById('fond-app'), '/static/img/fond-defilement.webp?v={{ vstat }}');
+  fondre(document.querySelector('.bandeau-marque'), '/static/img/trame-bandeau.jpg?v={{ vstat }}');
   // Le fond « métier » de l'accueil du jour : simple mise en cache anticipée,
   // son écran fond déjà par sa propre transition d'opacité (.ouvert).
-  new Image().src = '/static/img/metierAtisser1.webp';
+  new Image().src = '/static/img/metierAtisser1.webp?v={{ vstat }}';
 }
 precharger_fonds();
 
@@ -1141,6 +1141,15 @@ const nomAspect = c => (LEX.aspects?.[c]?.nom) || c;
 const terme = k => LEX.termes?.[k] || {};
 const nomEtat = e => terme(e).court || e;
 
+/* Le bust de version : toute URL statique porte ?v=<empreinte de static/>
+   (calculée au démarrage côté serveur, voir app.py::_empreinte_statique).
+   Les statiques sont servies avec un cache d'un an — sans ce ?v=, un fichier
+   remplacé resterait l'ancienne copie pendant un an. L'empreinte est
+   identique d'un déploiement à l'autre tant que static/ ne change pas :
+   le cache du téléphone n'est dépensé que si les octets ont changé. */
+const VSTAT = "{{ vstat }}";
+const avecV = url => `${url}?v=${VSTAT}`;
+
 /* L'URL de la vignette d'un arcane — miroir JS de moteur.tarot.url_carte
    (22 ≡ 0 : Foi ferme la boucle ; format 00.jpg). La vignette ILLUSTRE un
    arcane calculé, elle ne tire jamais de carte au hasard. */
@@ -1150,6 +1159,18 @@ const urlCarte = n => `/static/cartes/${String(n === 22 ? 0 : n).padStart(2,'0')
    `onerror` replie sur le dos de carte si le fichier venait à manquer — la
    vignette illustre un calcul, elle ne doit jamais casser l'affichage. */
 const urlCarteMineur = (suit, rang) => `/static/cartes/mineurs/${suit}_${rang}.jpg`;
+
+/* La miniature d'une carte : même chemin, passant par mini/ et en WebP —
+   fabriquée hors app par scripts/generer_miniatures_cartes.py (256 px de
+   large, 10-40 Ko, contre 300-490 Ko pour la pleine résolution servie en
+   JPEG). Les vignettes (72-126 px à l'écran, ~378 px en rétine ×3) lisent
+   la mini ; les plein écrans et la lightbox gardent la pleine résolution.
+   Accepte une URL déjà versionnée (`?v=`) et la reversionne proprement :
+   une URL hors des cartes passe à l'identique. */
+const miniUrl = url =>
+  avecV(url.split('?')[0]
+    .replace('/static/cartes/', '/static/cartes/mini/')
+    .replace(/\.jpg$/, '.webp'));
 
 /* Le « ? » repliable — la vulgarisation à la demande, jamais imposée. */
 function aide(titre, texte, source) {
@@ -1656,7 +1677,7 @@ function ouvrirDetail({surtitre, titre, motcle, resume, intro, detail, court, ex
   // toute vignette de carte incluse dans le panneau (via `extra`) se zoome au
   // clic — un seul geste, la même visionneuse que partout ailleurs dans l'app.
   $('#panneau').querySelectorAll('img.vignette-zoomable').forEach(img => {
-    img.onclick = () => ouvrirLightbox(img.src,
+    img.onclick = () => ouvrirLightbox(img.dataset.plein || img.src,
       `${T(img.dataset.nom)}<span class="corr">côté ciel · ${T(img.dataset.signe)}</span>`);
   });
 }
@@ -1811,6 +1832,11 @@ document.addEventListener('keydown', e => {
    classe .accueil-jour : même fond métier à tisser + voile, même animation).
    ═══════════════════════════════════════════════════════════ */
 let fermetureCartePleinEnCours = false;
+/* Jeton anti-course : chaque ouverture s'attribue le numéro suivant ; les
+   rappels asynchrones (la pleine résolution qui finit de charger) ne prennent
+   la main que s'ils sont encore les bienvenue — sinon une carte ouverte
+   juste après se ferait écraser par l'image de la précédente. */
+let jetonPlein = 0;
 
 /* Le cœur de la visionneuse plein écran d'une carte — pris {src, nom, cause,
    invitation, lecture} en donnée brute, PAS un élément DOM : ainsi n'importe
@@ -1824,12 +1850,37 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
   /* Flash de la carte précédente : le navigateur garde l'ancien bitmap affiché
      tant que la nouvelle image n'est pas décodée, donc on la masque au
      changement et on la réveille une fois chargée (ou en erreur — on ne la
-     laisse jamais invisible en silence). */
+     laisse jamais invisible en silence).
+     Sur connexion lente, attendre la pleine résolution (312-491 Ko) laissait
+     un vide au moment précis du geste. La MINI (10-40 Ko, déjà en cache :
+     la vignette l'affiche) s'affiche donc à l'instant, et la pleine
+     résolution prend le relais en fond, une fois décodée — le swap est alors
+     local, sans attente réseau. */
+  const jeton = ++jetonPlein;
+  // Toute carte arrive ici avec son URL pleine résolution, versionnée une
+  // fois pour toutes (les appelants passent l'URL brute — un seul point
+  // applique ?v=, donc un seul format de cache par fichier).
+  src = avecV(src.split('?')[0]);
   img.classList.add('img-chargement');
   img.onload = () => img.classList.remove('img-chargement');
   img.onerror = () => img.classList.remove('img-chargement');
-  img.src = src;
-  if (img.complete) img.classList.remove('img-chargement'); // déjà en cache
+  const srcMini = miniUrl(src);
+  if (srcMini !== src) {
+    img.src = srcMini;
+    const montrerPlein = () => {
+      if (jeton !== jetonPlein) return;        // une autre carte a pris la place
+      img.classList.remove('img-chargement');
+      img.src = src;                           // déjà décodée : swap instantané
+    };
+    const grand = new Image();
+    grand.onload = montrerPlein;
+    grand.onerror = montrerPlein;              // jamais coincé sur la mini
+    grand.src = src;
+    if (grand.complete && grand.naturalWidth) montrerPlein();   // déjà en cache
+  } else {
+    img.src = src;
+    if (img.complete) img.classList.remove('img-chargement'); // déjà en cache
+  }
   img.alt = nom;
   $('#carte-plein-nom').textContent = nom;
   /* La cause (pourquoi cette carte aujourd'hui) : elle existe pour les trois
@@ -2449,8 +2500,8 @@ function câblerMsgThemeIncomplet() {
   };
 }
 
-async function chargerJour() {
-  const j = await (await fetch(`/api/jour/${profilId}`)).json();
+async function chargerJour(donnees) {
+  const j = donnees || await (await fetch(`/api/jour/${profilId}`)).json();
   if (j.complet === false) {
     $('#vue-jour').innerHTML = msgThemeIncomplet();
     câblerMsgThemeIncomplet();
@@ -2556,12 +2607,12 @@ async function chargerJour() {
     const ligneCarte = (zoneId, src, badge, badgeCol, nom, invitation, alt, cause, lecture) => `
       <div class="carte-jour-zone" id="${zoneId}" title="Clique pour l'agrandir"
            data-jour="${j.date}"
-           data-src="${src}" data-nom="${T(nom)}" data-invitation="${T(invitation || '')}"
+           data-src="${avecV(src)}" data-nom="${T(nom)}" data-invitation="${T(invitation || '')}"
            data-cause="${T(cause || '')}" data-lecture="${T(lecture || '')}">
         <span class="carte-jour">
-          <img class="face" src="${src}" alt="${alt}"
-               onerror="this.onerror=null;this.src='/static/cartes/dos.jpg'">
-          <img class="dos" src="/static/cartes/dos.jpg" alt="">
+          <img class="face" src="${miniUrl(src)}" alt="${alt}"
+               onerror="this.onerror=null;this.src='/static/cartes/mini/dos.webp?v={{ vstat }}'">
+          <img class="dos" src="/static/cartes/mini/dos.webp?v={{ vstat }}" alt="">
         </span>
         <span style="display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:${badgeCol};border:1px solid ${badgeCol};border-radius:10px;padding:1px 7px">${badge}</span>
       </div>`;
@@ -2731,7 +2782,7 @@ async function chargerJour() {
         ${t.annee_perso.univers ? `<div class="pont" style="margin-top:14px">
           <span>Le monde, lui, est en année <span class="cible">${t.annee_perso.univers.universelle}</span>${t.annee_perso.univers.titre ? ` — ${T(t.annee_perso.univers.titre.toLowerCase())}` : ''}.</span></div>` : ''}
         <div class="pont carte-annee" style="margin-top:14px;display:flex;align-items:center;gap:14px">
-          <img class="vignette" src="${urlCarte(j.carte_annee.numero)}" alt="${T(j.carte_annee.nom)}">
+          <img class="vignette" src="${miniUrl(urlCarte(j.carte_annee.numero))}" alt="${T(j.carte_annee.nom)}">
           <span style="flex:1">Carte de l'année : <span class="cible">${T(j.carte_annee.nom)}</span></span>
         </div>
         ${t.annee_perso.detail ? `<span class="tout-lire" data-cible="annee">tout lire →</span>` : ''}
@@ -2911,7 +2962,8 @@ async function chargerJour() {
       resume: t.annee_perso.detail.resume,
       detail: t.annee_perso.detail,
       extra: `<div class="section" style="display:flex;gap:16px;align-items:flex-start">
-          <img class="vignette-zoomable" src="${urlCarte(j.carte_annee.numero)}" alt="${T(j.carte_annee.nom)}"
+          <img class="vignette-zoomable" src="${miniUrl(urlCarte(j.carte_annee.numero))}" alt="${T(j.carte_annee.nom)}"
+               data-plein="${avecV(urlCarte(j.carte_annee.numero))}"
                data-nom="${T(j.carte_annee.nom)}" data-signe="${T(j.carte_annee.correspondance[1])}"
                style="width:72px;height:126px;object-fit:cover;border-radius:8px;border:1px solid var(--bord);flex:none;cursor:zoom-in">
           <div><h4 style="margin-top:0">La carte de l'année</h4>
@@ -3129,8 +3181,8 @@ function fermerReglagesRappels() {
    chiffres, numéros, et sa carte du ciel. »
    Une seule vue, rien de nu, tout cliquable.
    ═══════════════════════════════════════════════════════════ */
-async function chargerApercu() {
-  const d = await (await fetch(`/api/apercu/${profilId}`)).json();
+async function chargerApercu(donnees) {
+  const d = donnees || await (await fetch(`/api/apercu/${profilId}`)).json();
   if (d.complet === false) {
     $('#vue-apercu').innerHTML = msgThemeIncomplet();
     câblerMsgThemeIncomplet();
@@ -3273,8 +3325,8 @@ async function chargerApercu() {
 /* ═══════════════════════════════════════════════════════════
    LE PORTRAIT
    ═══════════════════════════════════════════════════════════ */
-async function chargerPortrait() {
-  const p = await (await fetch(`/api/portrait/${profilId}`)).json();
+async function chargerPortrait(donnees) {
+  const p = donnees || await (await fetch(`/api/portrait/${profilId}`)).json();
   const tx = p.textes || {};
   let html = '';
 
@@ -3292,7 +3344,7 @@ async function chargerPortrait() {
   html += `<div class="carte">
     <div class="chapo">Ta carte</div>
     <div class="arcane" id="c-arcane">
-      <img class="vignette" src="${urlCarte(na.numero)}" alt="${T(na.nom)}">
+      <img class="vignette" src="${miniUrl(urlCarte(na.numero))}" alt="${T(na.nom)}">
       <div class="corps">
         <div class="num">${na.numero === 22 ? 0 : na.numero}</div>
         <div class="nom">${T(na.nom)}</div>
@@ -3543,7 +3595,8 @@ async function chargerPortrait() {
     motcle: na.nom,
     court: tx.arcane_naissance,
     extra: `<div class="section" style="display:flex;gap:16px;align-items:flex-start">
-        <img class="vignette-zoomable" src="${urlCarte(na.numero)}" alt="${T(na.nom)}"
+        <img class="vignette-zoomable" src="${miniUrl(urlCarte(na.numero))}" alt="${T(na.nom)}"
+             data-plein="${avecV(urlCarte(na.numero))}"
              data-nom="${T(na.nom)}" data-signe="${T(na.correspondance[1])}"
              style="width:72px;height:126px;object-fit:cover;border-radius:8px;border:1px solid var(--bord);flex:none;cursor:zoom-in">
         ${tx.arcane_naissance?.lecture_etat
@@ -3579,8 +3632,8 @@ function traduireRaisons(raisons) {
    ═══════════════════════════════════════════════════════════ */
 let CIEL = null;
 
-async function chargerCiel() {
-  const d = await (await fetch(`/api/ciel/${profilId}`)).json();
+async function chargerCiel(donnees) {
+  const d = donnees || await (await fetch(`/api/ciel/${profilId}`)).json();
   if (d.complet === false) {
     $('#vue-ciel').innerHTML = msgThemeIncomplet();
     câblerMsgThemeIncomplet();
@@ -3752,8 +3805,8 @@ function ouvrirAstre(nom) {
 /* ═══════════════════════════════════════════════════════════
    LES RÈGLES
    ═══════════════════════════════════════════════════════════ */
-async function chargerRegles() {
-  const c = await (await fetch('/api/conventions')).json();
+async function chargerRegles(donnees) {
+  const c = donnees || await (await fetch('/api/conventions')).json();
   const ORDRE = ['determinisme','accents','trait_union','apostrophes',
                  'particules','annee_personnelle','mois_personnel','jour_personnel',
                  'maisons','ephemerides'];
@@ -4282,10 +4335,10 @@ function inviterInstallationPWA() {
    qu'une phrase seule (Martin, 2026-08-28). Images recadrées/floutées pour
    masquer les contacts personnels visibles dans le partage iOS d'origine. */
 const TUTO_PWA_ETAPES = [
-  { img: '/static/img/tuto-pwa/1.webp', legende: "Touche le bouton <b>⋯</b> en bas de Safari." },
-  { img: '/static/img/tuto-pwa/2.webp', legende: "Choisis <b>Partager</b>." },
-  { img: '/static/img/tuto-pwa/3.webp', legende: "Touche <b>En voir plus</b>." },
-  { img: '/static/img/tuto-pwa/4.webp', legende: "Puis <b>Sur l'écran d'accueil</b>." },
+  { img: '/static/img/tuto-pwa/1.webp?v={{ vstat }}', legende: "Touche le bouton <b>⋯</b> en bas de Safari." },
+  { img: '/static/img/tuto-pwa/2.webp?v={{ vstat }}', legende: "Choisis <b>Partager</b>." },
+  { img: '/static/img/tuto-pwa/3.webp?v={{ vstat }}', legende: "Touche <b>En voir plus</b>." },
+  { img: '/static/img/tuto-pwa/4.webp?v={{ vstat }}', legende: "Puis <b>Sur l'écran d'accueil</b>." },
 ];
 function ouvrirTutoAjoutEcranAccueil(fin) {
   const n = TUTO_PWA_ETAPES.length;
@@ -4438,8 +4491,19 @@ async function demarrer() {
   montrer('jour');
   document.querySelectorAll('#nav button').forEach(x =>
     x.classList.toggle('actif', x.dataset.vue === 'jour'));
-  await Promise.all([chargerJour(), chargerApercu(), chargerPortrait(),
-                     chargerCiel(), chargerRegles()]);
+  /* UN SEUL aller-retour pour tout le démarrage : le bundle réunit lexique,
+     conventions, jour, aperçu, portrait et ciel (voir /api/bundle) — l'ancien
+     Promise.all lançait 6-7 requêtes, un aller-retour transatlantique chacune.
+     Les chargerX restent autonomes (fetch quand on les appelle sans données)
+     pour les rafraîchissements partiels — changement de profil d'un rappel,
+     rechargement d'une seule vue. */
+  const bundle = await (await fetch(`/api/bundle/${profilId}`)).json();
+  LEX = bundle.lexique || LEX;
+  chargerJour(bundle.jour);
+  chargerApercu(bundle.apercu);
+  chargerPortrait(bundle.portrait);
+  chargerCiel(bundle.ciel);
+  chargerRegles(bundle.conventions);
   // Une fois la vue Jour prête dessous : soit on ouvre la carte d'un rappel
   // (l'app vient d'être ouverte depuis une notification), soit l'écran d'accueil
   // du jour normal (une seule fois par jour — voir montrerAccueilJour).
@@ -4508,7 +4572,8 @@ function fermerFeedback() {
 }
 
 (async () => {
-  LEX = await (await fetch('/api/lexique')).json();
+  // Le lexique arrive DANS le bundle (voir demarrer) : un seul aller-retour
+  // pour tout le démarrage, au lieu d'une lecture séquentielle avant le reste.
   await demarrer();
 })();
 </script>

@@ -31,3 +31,6 @@ cryptography==49.0.0    # dépendance de pywebpush (signature VAPID)
 flask==3.1.2            # routes, sessions, templates
 werkzeug==3.1.8         # utilisé directement : hachage des mots de passe (auth.py)
 jinja2==3.1.6           # rendu des gabarits
+flask-compress==1.25    # gzip/brotli des pages, JSON et statiques — la prod
+                        # (Coolify/Traefik) ne compresse pas, vérifié 2026-09-23 ;
+                        # 254 Ko de page -> ~60 Ko, les JSON divisés par ~5.
