@@ -505,8 +505,10 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 
 /* ═══ L'ÉCRAN D'ACCUEIL DU JOUR ═══
    La carte « Aujourd'hui » seule, montrée une fois par jour à la première
-   ouverture. Touche n'importe où → fondu, la vue Jour (déjà chargée dessous)
-   apparaît. Mobile : plein écran. Bureau : grande carte centrée sur fond
+   ouverture. Sortie par le ✕, un clic sur le FOND (hors du panneau) ou
+   Échap — comme les autres vues plein écran. Le panneau ne ferme plus au
+   toucher : le message doit pouvoir être scrollé sans disparaître (Martin,
+   2026-09-23). Mobile : plein écran. Bureau : grande carte centrée sur fond
    assombri (largeur contrainte, cf. .accueil-carte). */
 .accueil-jour{
   /* TOUJOURS display:flex (jamais none) — voir le pavé « PREMIUM & DOUX »
@@ -581,6 +583,13 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
      du flex parent — si align-items/justify-content venaient à être perdus
      ou surchargés, la carte reste centrée quoi qu'il arrive. */
   margin:auto;
+  /* Le message doit rester LISIBLE s'il est long : plafonné sous la hauteur
+     du plein écran (le parent est `height:100dvh` + padding, `max-height:100%`
+     se cale donc dessus) et scrollable DANS LE PANNEAU — un geste de scroll ne
+     fait plus disparaître le message (Martin, 2026-09-23). Partagé avec les
+     deux autres vues plein écran (#carte-plein, #angle-plein) dont le corps
+     interne a déjà son propre plafond plus bas : aucun double scroll. */
+  max-height:100%; overflow-y:auto;
   opacity:0; transform:translateY(14px) scale(.98); will-change:opacity, transform;
   /* Même durée que .accueil-jour (0.7s, Martin 2026-08-27) : la carte de
      texte et le fond « métier » doivent fondre EN PHASE — désynchronisés
@@ -597,12 +606,6 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .accueil-carte .chapo{margin-bottom:16px}
 .accueil-carte .miroir{font-size:24px;line-height:1.55;margin-bottom:22px}
 .accueil-carte .accueil-date{font-family:var(--serif);font-size:15px;color:var(--encre3);margin-bottom:20px}
-.accueil-indice{
-  position:absolute; bottom:max(22px, env(safe-area-inset-bottom));
-  font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--encre3);
-  opacity:0; animation:acc-indice 1s ease 1.1s forwards;
-}
-@keyframes acc-indice{to{opacity:.7}}
 @media (max-width:480px){
   .accueil-carte .miroir{font-size:21px}
 }
@@ -614,7 +617,6 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
     transition-duration:.12s; transition-timing-function:linear;
   }
   .accueil-carte, .accueil-jour.fermant .accueil-carte{transform:none}
-  .accueil-indice{animation-duration:.15s; animation-timing-function:linear}
 }
 
 /* ═══ FONDU D'ENTRÉE DES VUES (Martin, 2026-08-27 : « premium ») ═══
@@ -1713,8 +1715,11 @@ document.addEventListener('touchend', e => {
    La carte « Aujourd'hui » seule, montrée UNE FOIS PAR JOUR à la première
    ouverture. Le contenu est rempli par chargerJour() (data-jour = la date du
    message). On ne montre que si : le message existe, et ce jour-là n'a pas
-   déjà été vu (localStorage). Touche n'importe où → fermeture animée, la vue
-   Jour (déjà chargée dessous) reste en place. */
+   déjà été vu (localStorage). Sortie par le ✕, un clic sur le FOND (hors du
+   panneau) ou Échap — le MÊME mode que les autres vues plein écran (Martin,
+   2026-09-23 : le panneau ne ferme plus au toucher, le message doit pouvoir
+   être scrollé sans disparaître). La vue Jour (déjà chargée dessous) reste
+   en place. */
 const CLE_ACCUEIL_VU = 'trame.accueil.vu';
 // ⚠️ TEMPORAIRE — mode test demandé par Martin (2026-08-22) : afficher la carte
 // « Aujourd'hui » à CHAQUE chargement, même si déjà vue dans la journée, pour
@@ -1756,6 +1761,7 @@ function montrerAccueilJour(force) {
   acc.classList.add('ouvert');
   acc.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';            // pas de scroll derrière
+  $('#accueil-fermer').onclick = fermerAccueilJour;
   return true;
 }
 
@@ -1782,21 +1788,22 @@ function fermerAccueilJour() {
   setTimeout(fini, reduit ? 200 : 720);  // doit couvrir le fondu .7s (voir .accueil-jour)
 }
 
-/* Délégation au niveau document (comme la lightbox) : ce script s'exécute
-   AVANT que #accueil-jour existe dans le DOM (l'élément est plus bas dans le
-   body), donc on n'attache pas directement dessus — sinon null.addEventListener
-   planterait tout le script. On filtre par `closest('#accueil-jour')`. */
+/* Sortie du plein écran accueil — le MÊME mode que carte-plein et angle-plein :
+   le ✕ en haut à droite (câblé dans montrerAccueilJour), un clic sur le FOND
+   (hors du panneau papier .carte), ou Échap. Le panneau lui-même ne ferme
+   PLUS : ni clic ni touchend dessus — un scroll du message ne doit jamais le
+   faire disparaître (retour des testeuses, Martin 2026-09-23). Délégation au
+   niveau document, comme la lightbox : ce script s'exécute AVANT que
+   #accueil-jour existe dans le DOM (l'élément est plus bas dans le body), on
+   filtre donc par `closest('#accueil-jour')`. */
 document.addEventListener('click', e => {
   const acc = $('#accueil-jour');
-  if (acc && acc.classList.contains('ouvert') && e.target.closest('#accueil-jour'))
+  if (acc && acc.classList.contains('ouvert') && e.target.closest('#accueil-jour')
+      && !e.target.closest('.carte'))
     fermerAccueilJour();
 });
-document.addEventListener('touchend', e => {
-  const acc = $('#accueil-jour');
-  if (acc && acc.classList.contains('ouvert') && e.target.closest('#accueil-jour')) {
-    e.preventDefault();
-    fermerAccueilJour();
-  }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') fermerAccueilJour();
 });
 
 /* ═══════════════════════════════════════════════════════════
@@ -1871,6 +1878,39 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
   $('#carte-plein-fermer').onclick = fermerCartePlein;
 }
 
+/* ── Mémoire des cartes retournées (Martin, 2026-09-23) ────────────────────
+   Une carte du jour dévoilée (.revelee) doit le RESTER toute la journée, même
+   après un redémarrage de l'app : c'est l'état du jour, pas de la session.
+   localStorage ne garde qu'une paire {jour, zones} — un nouveau jour écrase
+   l'ancien sans entretien. La clé du jour est la date SERVEUR (j.date, la
+   même que celle du message), pas l'horloge de l'appareil. */
+const CLE_CARTES_REVELEES = 'trame.cartes.revelees';
+
+function cartesReveleesDuJour(date) {
+  try {
+    const etat = JSON.parse(localStorage.getItem(CLE_CARTES_REVELEES));
+    return (etat && etat.jour === date && Array.isArray(etat.zones)) ? etat.zones : [];
+  } catch { return []; }
+}
+
+function memoriserCarteRevelee(date, zoneId) {
+  if (!date || !zoneId) return;
+  const zones = cartesReveleesDuJour(date);
+  if (zones.includes(zoneId)) return;
+  localStorage.setItem(CLE_CARTES_REVELEES,
+    JSON.stringify({ jour: date, zones: zones.concat(zoneId) }));
+}
+
+/* Au (re)rendu de la vue Jour : redevoir leur face aux cartes déjà retournées
+   aujourd'hui — l'utilisateur ne revoit jamais un dos qu'il a déjà levé. */
+function reappliquerCartesRevelees(date) {
+  const zones = new Set(cartesReveleesDuJour(date));
+  ['z-carte-maj', 'z-carte-perso', 'z-carte-min'].forEach(id => {
+    const zone = document.getElementById(id);
+    if (zone && zones.has(id)) zone.classList.add('revelee');
+  });
+}
+
 function ouvrirCartePlein(zone) {
   ouvrirCartePleinDonnees({
     src: zone.dataset.src, nom: zone.dataset.nom,
@@ -1878,8 +1918,10 @@ function ouvrirCartePlein(zone) {
   });
   // Dès qu'on ouvre la carte en plein écran, elle est « consultée » : à la
   // fermeture, on la revoit DÉVOILÉE en petit dans le fil, plus un dos vierge
-  // (Martin, 2026-08-27).
+  // (Martin, 2026-08-27). L'état est mémorisé pour toute la journée : un
+  // redémarrage de l'app dans le même jour ne rend pas son dos à la carte.
   zone.classList.add('revelee');
+  memoriserCarteRevelee(zone.dataset.jour, zone.id);
 }
 
 function fermerCartePlein() {
@@ -2514,6 +2556,7 @@ async function chargerJour() {
        lisibles qu'en plein écran. */
     const ligneCarte = (zoneId, src, badge, badgeCol, nom, invitation, alt, cause, lecture) => `
       <div class="carte-jour-zone" id="${zoneId}" title="Clique pour l'agrandir"
+           data-jour="${j.date}"
            data-src="${src}" data-nom="${T(nom)}" data-invitation="${T(invitation || '')}"
            data-cause="${T(cause || '')}" data-lecture="${T(lecture || '')}">
         <span class="carte-jour">
@@ -2834,6 +2877,9 @@ async function chargerJour() {
     if (!zone) return;
     zone.onclick = () => ouvrirCartePlein(zone);
   });
+  /* Une carte déjà retournée plus tôt dans la journée (même app redémarrée)
+     reprend sa face dévoilée — voir memoriserCarteRevelee. */
+  reappliquerCartesRevelees(j.date);
   /* La carte de l'année : un clic sur sa vignette l'ouvre en plein écran,
      AVEC « Comprendre cette carte » (Martin, 2026-09-15 — un simple zoom sans
      texte laissait la carte muette, contrairement aux cartes du jour). */
@@ -4476,12 +4522,13 @@ function fermerFeedback() {
 </div>
 
 <!-- Écran d'accueil du jour : la carte « Aujourd'hui » seule, une fois par
-     jour, à la première ouverture. Touche n'importe où pour continuer vers
-     la vue Jour normale (déjà chargée dessous). Rempli par chargerJour(),
-     montré par montrerAccueilJour(). -->
+     jour, à la première ouverture. Sortie par le ✕, un clic sur le FOND ou
+     Échap — le MÊME mode que les autres vues plein écran (demande de Martin,
+     2026-09-23 : le message doit pouvoir être scrollé sans disparaître).
+     Rempli par chargerJour(), montré par montrerAccueilJour(). -->
 <div id="accueil-jour" class="accueil-jour" aria-hidden="true" role="dialog" aria-label="Ton message du jour">
+  <button class="angle-plein-fermer" id="accueil-fermer" aria-label="Fermer">✕</button>
   <div class="accueil-carte"></div>
-  <div class="accueil-indice">touche pour continuer</div>
 </div>
 <div id="carte-plein" class="accueil-jour" aria-hidden="true" role="dialog" aria-label="La carte en grand">
   <button class="angle-plein-fermer" id="carte-plein-fermer" aria-label="Fermer">✕</button>

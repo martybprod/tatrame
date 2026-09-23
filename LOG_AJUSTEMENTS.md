@@ -37,3 +37,24 @@
   tarot par modèle local (seeds 777142-144 dans `_distillation/`, modèles Mucha/Art Nouveau/
   flux-dev dans `PROJETS_IA/DrawThings/`, packs `PACKS/`).
 - **Statut** : ouvert — à compléter à chaque demande.
+
+## 2026-09-23 — UX Le Jour : sortie du message plein écran + mémoire des cartes retournées
+
+- **Demande** (Martin, retours de testeuses) : (1) à l'ouverture de l'app, le message du
+  jour en plein écran se fermait au premier toucher — celles qui scrollaient pour voir si
+  le message avait une suite perdaient la vue du message ; (2) les cartes du jour
+  retournées reprenaient leur dos à chaque redémarrage de l'app dans la même journée.
+- **Décision** : (1) sortie du plein écran accueil par le **✕ en haut à droite, un clic
+  dans le fond (hors panneau) ou Échap** — le même mode que carte-plein/angle-plein ;
+  plus aucun fermeture au clic/touchend sur le panneau, qui est devenu scrollable
+  (`max-height` + `overflow-y`) ; l'indice « touche pour continuer » retiré. (2) état
+  `.revelee` des trois cartes du jour **mémorisé pour la journée** (localStorage
+  `trame.cartes.revelees`, clé = date SERVEUR `j.date` posée en `data-jour`) et
+  réappliqué au rendu — un redémarrage le même jour garde les faces visibles, un
+  nouveau jour rend les dos.
+- **Note** : le mode test `ACCUEIL_TEST_TOUJOURS` (accueil montré à CHAQUE chargement,
+  2026-08-22) est resté tel quel — décision de Martin à trancher.
+- **Vérifié** : suite pytest verte (759) + parcours navigateur complet (ouverture, clic
+  panneau ne ferme plus, ✕ ferme, fond ferme, carte retournée → rechargement → face
+  conservée, les autres au dos).
+- **Statut** : livré le jour même.
