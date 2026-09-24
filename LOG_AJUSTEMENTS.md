@@ -77,3 +77,17 @@
   l'app (arcanes 0-21) — non déployé. Les mineures de l'app restent les cartes classiques
   (sans cartouche de ce jeu).
 - **Statut** : livré le jour même.
+
+## 2026-09-23 — Le Jour : aperçu de la première phrase sous le titre « Aujourd'hui »
+
+- **Demande** (Martin) : la carte-entrée « Aujourd'hui » ne montre que le titre ; ajouter
+  en dessous la **première phrase du message**, pour donner un avant-goût avant d'appuyer.
+- **Décision** : la carte affiche désormais un aperçu (`premierePhrase(titre.miroir)`),
+  sous le titre et, s'il y en a un, sous le sous-titre de la voix. Nouvelle fonction
+  `premierePhrase` (découpe au premier `. ! ? …` suivi d'une espace ou de la fin) et
+  classe CSS `.carte-jour-hero--entree .apercu-message` (serif 16,5 px, encre2).
+- **⚠️ Étape suivante (à faire)** : **vérifier que la première phrase de CHAQUE message
+  est autonome et appropriée** — elle est maintenant lue **seule, hors contexte**, en
+  aperçu (elle doit se tenir sans la suite du miroir). Passe à planifier sur l'ensemble
+  du corpus des titres (ciel / chinois / numéro / lune).
+- **Statut** : livré le jour même ; la vérification des premières phrases reste ouverte.
