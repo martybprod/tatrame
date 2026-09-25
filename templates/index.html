@@ -1857,10 +1857,11 @@ document.addEventListener('touchend', e => {
    2026-09-23 : le panneau ne ferme plus au toucher, le message doit pouvoir
    être scrollé sans disparaître). La vue Jour (déjà chargée dessous) reste
    en place. */
-const CLE_ACCUEIL_VU = 'trame.accueil.vu3';
-/* .v3 (2026-09-25) : remise à zéro générale au déploiement (même mécanique que
-   .v2 — le suffixe orphelin l'ancienne clé). Pour les vérifications SANS
-   déploiement, voir `?jour-neuf` dans demarrer(). */
+const CLE_ACCUEIL_VU = 'trame.accueil.vu4';
+/* .v4 (2026-09-25) : remise à zéro générale au déploiement (même mécanique que
+   .v2/.v3 — le suffixe orphelin l'ancienne clé) : cartes au dos, accueil
+   rejoué, comme si personne n'avait ouvert l'app aujourd'hui. Pour les
+   vérifications SANS déploiement, voir `?jour-neuf` dans demarrer(). */
 // Le geste de sortie est maintenant explicite (✕ / fond / Échap), le message
 // revient UNE FOIS PAR MOMENT (jour OU soir — voir cleAccueil) : mode test
 // « à chaque chargement » (2026-08-22) retiré, décision de Martin (2026-09-23).
@@ -2056,13 +2057,13 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
    localStorage ne garde qu'une paire {jour, zones} — un nouveau jour écrase
    l'ancien sans entretien. La clé du jour est la date SERVEUR (j.date, la
    même que celle du message), pas l'horloge de l'appareil. */
-const CLE_CARTES_REVELEES = 'trame.cartes.revelees.v3';
-/* .v3 (2026-09-25) : remise à zéro générale au déploiement — les cartes
-   révélées aujourd'hui par les versions précédentes sont oubliées, tout le
-   monde repart avec les cartes au dos. ⚠️ Ce n'est PAS un bug que les cartes
-   cliquées restent révélées toute la journée : c'est la mémoire du jour, par
-   conception. Pour re-tester un jour neuf SANS déploiement, ouvrir l'app avec
-   `?jour-neuf` (voir demarrer). */
+const CLE_CARTES_REVELEES = 'trame.cartes.revelees.v4';
+/* .v4 (2026-09-25) : remise à zéro générale au déploiement — tout le monde
+   repart avec les cartes au dos, comme si personne n'avait ouvert l'app
+   aujourd'hui (demande de Martin). ⚠️ Ce n'est PAS un bug que les cartes
+   cliquées restent ensuite révélées toute la journée : c'est la mémoire du
+   jour, par conception. Pour re-tester un jour neuf SANS déploiement, ouvrir
+   l'app avec `?jour-neuf` (voir demarrer). */
 
 function cartesReveleesDuJour(date) {
   try {
