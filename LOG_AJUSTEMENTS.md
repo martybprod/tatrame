@@ -91,3 +91,31 @@
   aperçu (elle doit se tenir sans la suite du miroir). Passe à planifier sur l'ensemble
   du corpus des titres (ciel / chinois / numéro / lune).
 - **Statut** : livré le jour même ; la vérification des premières phrases reste ouverte.
+
+## 2026-09-27 — Carte IV · Liberté : texte recollé sur la nouvelle image validée (v33)
+
+- **Demande** (Martin) : après refonte de l'image de la carte **IV · Liberté** (« le grand
+  ciel à vol d'oiseau », validée v33), « regarde en profondeur les ajustements qu'il faut
+  faire au message de la carte », puis « applique les ajustements ».
+- **Décision** : passe de relecture (`RELECTURE.md` — le texte suit la carte). Corrections
+  dans `data/corpus/arcanes.json` (entrée « 4 »), toutes tirées de l'image validée :
+  - `lecture` : temple désormais **gréco-romain, au flanc d'une montagne, très lointain**,
+    vu **de très haut** ; l'eau le **traverse** puis **s'élargit et prend toute la place
+    en bas** ; **plaines** autour ; l'**aigle** s'en va **vu de dos** au centre du ciel.
+    Retirés : les **têtes de bélier** et les **fleurs sauvages** (absentes de l'image),
+    « éperon de roche », « frontons », « plusieurs cascades ».
+  - `contrarie` : « **les colonnes tombées** de la carte » (au lieu des béliers de pierre),
+    « figée en ruine », « attend **de l'espace** ».
+  - `en_resonance` : « la brèche / le mur » supprimés → « Une seule sortie ouverte suffit ».
+  - `invitation` : « le vieux **temple** se laisse traverser, et **la campagne** s'ouvre
+    derrière » (les murs disparaissent).
+  - `conditionnement` : « **Ce que tu maintiens** a été utile » (le « mur » retiré).
+  - Filet : `tests/test_lectures.py` → `SYMBOLES_REQUIS[4]` = temple, colonnes, aigle,
+    rivière, eau, montagnes, plaines, ciel (retirés : bélier, fleurs, lierre, soleil,
+    cascades).
+- **Sources** : `cartes_validees/CARTE_major_04_Liberte_validee.png` (v33) ;
+  `_distillation/_gen_carte_Liberte_v33_validee.py` ; fiche image
+  `osho_tarot_PROMPTS_majeurs.md` §IV.
+- **Régénéré** : `TEXTES_22_ARCANES_MAJEURS.html` (`gen_fiches_cartes.py`) ; miroir
+  `TEXTES_22_ARCANES_MAJEURS.md`. Suite pytest **verte** (764 passed, 11 skipped).
+- **Statut** : livré le jour même.
