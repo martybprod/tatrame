@@ -36,7 +36,7 @@ SYMBOLES_REQUIS = {
         "fruits"],
     7: ["avance", "flammes", "sphinx", "croissants", "étoil"],
     8: ["œuf", "falaises", "gouffre", "rocher", "coque", "bec", "herbe",
-        "oiseau", "huit", "brume"],
+        "oiseau", "brume"],
     9: ["nuit", "neige", "montagnes", "capuchon", "bâton", "lumière",
         "poitrine", "étoile à six branches", "ombre"],
     10: ["roue", "galaxies", "saisons", "hiver", "lune", "glaçons",
