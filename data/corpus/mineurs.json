@@ -1,172 +1,242 @@
 {
- "_charte": "data/corpus/CHARTE.md",
- "_note": "Les 56 arcanes mineurs -- carte MINEURE PERSONNELLE du jour (en plus de la carte du jour universelle, un majeur, voir arcanes.json). Nom et correspondance sont CALCULES par moteur/mineurs.py, jamais dupliques ici : seule l'invitation (le texte du jour, meme fonction que celle des majeurs) est ecrite, 100% originale. Convention Ta Trame (2 axes independants : couleur = element de la Lune transit, rang = ecart Soleil transit -> Ascendant natal / 14) -- voir moteur/mineurs.py pour le detail et le piege mathematique evite.",
- "batons_as": {
-  "invitation": "Une étincelle peut s'éveiller en toi aujourd'hui, avant même que tu aies un projet précis. Tu as envie de tout planifier d'abord. Laisse cette énergie exister un moment, juste pour sentir qu'elle est là."
- },
- "batons_2": {
-  "invitation": "Aujourd'hui, une envie de te lancer dans quelque chose de nouveau se précise, juste avant de passer à l'action. Tu voudrais d'abord être sûr de tout, par prudence plus que par doute. Fais un seul petit pas qui t'engage, sans attendre d'être certain à cent pour cent."
- },
- "batons_3": {
-  "invitation": "Un premier effort commence à donner des résultats aujourd'hui. C'est petit, mais c'est vrai. Tu as envie de dire que ce n'est rien. C'est un ancien réflexe d'attendre la fin pour être fier de toi. Prends un instant pour voir le chemin déjà fait."
- },
- "batons_4": {
-  "invitation": "Une étape est franchie aujourd'hui, quelque chose qui mérite d'être reconnu. Tu as envie de passer vite à la suite sans t'arrêter. Offre-toi une petite pause aujourd'hui, même courte, pour fêter ce qui est fait."
- },
- "batons_5": {
-  "invitation": "Aujourd'hui, tu es tiraillé entre plusieurs envies, plusieurs personnes. Tu as besoin de décider tout de suite. Écoute une voix différente de la tienne, juste un moment."
- },
- "batons_6": {
-  "invitation": "Une reconnaissance méritée peut arriver aujourd'hui, le signe que ton effort a été vu. Tu as le réflexe de la minimiser, ou de la refiler trop vite aux autres, par gêne plus que par modestie. Laisse-toi porter un instant par ce qu'on te renvoie."
- },
- "batons_7": {
-  "invitation": "Aujourd'hui, tu as une position à défendre, face à une pression réelle ou juste ressentie. Tu as envie de céder tout de suite pour avoir la paix. C'est un vieux réflexe pour éviter le conflit à tout prix. Tiens bon sur un seul point aujourd'hui, sans chercher à tout gagner."
- },
- "batons_8": {
-  "invitation": "Aujourd'hui, plusieurs choses s'accélèrent en même temps, à un rythme qui surprend un peu. Tu as envie de tout contrôler pour ne rien perdre. C'est une vieille peur de rater quelque chose d'important. Choisis une seule chose à suivre de près, et laisse le reste avancer seul."
- },
- "batons_9": {
-  "invitation": "Aujourd'hui, une fatigue se fait sentir après une longue série d'efforts, même si tu tiens encore debout. Tu as envie de prouver que tout va bien. C'est un vieux réflexe qui oublie les limites du corps. Accorde-toi un geste de repos aujourd'hui, même petit."
- },
- "batons_10": {
-  "invitation": "Une charge lourde peut peser sur toi aujourd'hui, quelque chose que tu portes depuis un moment. Tu as envie de tout finir d'un coup pour t'en libérer. C'est qu'on t'a appris à croire que ta valeur dépend de ce que tu fais. Pose une petite partie du poids aujourd'hui, juste pour souffler un peu."
- },
- "batons_valet": {
-  "invitation": "Aujourd'hui, une idée encore jeune se montre, une curiosité que tu n'as pas encore mise à l'épreuve. Tu as envie de la juger tout de suite, trop sérieuse ou trop naïve. C'est ton vieux besoin d'être sûr tout de suite. Laisse cette idée exister un moment, sans lui demander de preuve."
- },
- "batons_cavalier": {
-  "invitation": "Aujourd'hui, une envie de foncer te prend, avant même d'avoir vérifié les détails. Remarque cette impatience sans te juger. C'est une énergie qui pousse à agir vite plutôt qu'à réfléchir. Ralentis d'un cran sur un seul point, juste avant de t'élancer."
- },
- "batons_reine": {
-  "invitation": "Aujourd'hui, une confiance chaleureuse t'habite, une énergie qui donne aux autres envie d'avancer eux aussi. Tu as envie de la mettre au service de tout le monde, sauf de toi. C'est l'habitude de te rendre utile avant de te sentir à ta place. Garde un peu de cette chaleur pour toi."
- },
- "batons_roi": {
-  "invitation": "Aujourd'hui, tu avances vite et bien sans avoir à forcer. Tu as envie d'imposer ton tempo aux autres pour aller encore plus vite. C'est le vieux piège de croire que commander, c'est tout contrôler. Fais ce que tu as à faire à ton rythme, sans écraser personne."
- },
- "coupes_as": {
-  "invitation": "Aujourd'hui, un sentiment plus grand que prévu peut déborder en toi, avant même que tu saches pour qui ou pourquoi. Regarde cette vague sans la juger. Elle dit juste que quelque chose est vivant en toi. Laisse-la monter, sans chercher à la nommer tout de suite."
- },
- "coupes_2": {
-  "invitation": "Aujourd'hui, un échange sincère avec quelqu'un peut se présenter, un partage qui va dans les deux sens sans calcul. Tu as l'habitude de donner plus que tu ne reçois. Ce n'est pas vraiment un choix, c'est un vieux pli. Essaie de recevoir aussi aujourd'hui, juste pour voir."
- },
- "coupes_3": {
-  "invitation": "Aujourd'hui, tu as envie de retrouver du monde, une joie qui se vit mieux à plusieurs que seul. Ce n'est pas une faiblesse. Certaines joies ont juste besoin d'être partagées pour exister pleinement. Appelle quelqu'un, ou propose un moment simple ensemble."
- },
- "coupes_4": {
-  "invitation": "Aujourd'hui, tu peux te sentir un peu blasé, comme si rien de nouveau n'arrivait. Pourtant, quelque chose de bon est peut-être juste là, devant toi. Ce sentiment vient de toi, pas de ce qui t'entoure. Regarde autour de toi : il y a sûrement une petite chose simple à apprécier, là, maintenant."
- },
- "coupes_5": {
-  "invitation": "Aujourd'hui, une tristesse ou une perte peut occuper ton esprit et prendre beaucoup de place. Ne cherche pas à repousser cette peine : elle est normale et mérite d'être ressentie. Mais elle ne représente pas tout ce que tu vis. Regarde aussi ce qui va encore bien et ce qui est toujours là."
- },
- "coupes_6": {
-  "invitation": "Aujourd'hui, un souvenir tendre peut remonter, une image d'avant, un lien simple qui appartient presque à l'enfance. Laisse-le venir, sans le trouver démodé ou naïf. Il porte peut-être quelque chose dont tu as encore besoin. Reste un instant avec cette douceur, sans te presser d'en sortir."
- },
- "coupes_7": {
-  "invitation": "Aujourd'hui, plusieurs envies ou possibilités peuvent se présenter en même temps, au point de brouiller ce que tu ressens vraiment. Ne te perds pas dans cette abondance. Tu n'as pas à tout choisir tout de suite. Écarte-en une, doucement, juste pour alléger le reste."
- },
- "coupes_8": {
-  "invitation": "Aujourd'hui, une envie de prendre de la distance se fait sentir, face à quelque chose de confortable qui ne te suffit plus. Ne te sens pas coupable. Tu ne rejettes pas ce qui était bon, tu cherches juste plus loin maintenant. Fais un petit pas dans cette direction, même discret."
- },
- "coupes_9": {
-  "invitation": "Aujourd'hui, une petite joie peut se présenter : quelque chose qui s'est arrangé, un problème qui s'est réglé ou un souhait qui s'est réalisé. Tu pourrais avoir envie de penser tout de suite à la prochaine chose que tu désires. Tu n'as pas à décider si vite. Savoure ce qui est là, juste un moment."
- },
- "coupes_10": {
-  "invitation": "Aujourd'hui, un bonheur simple circule avec les personnes qui comptent pour toi, dans ton cœur comme dans ton corps. Tu pourrais le douter, chercher des raisons de le confirmer. Tu n'as pas besoin de preuves. Laisse ce sentiment être là, et profite-en sans l'analyser."
- },
- "coupes_valet": {
-  "invitation": "Une nouvelle sensibilité s'éveille en toi aujourd'hui, une petite intuition que tu ne comprends pas encore très bien. Ne la trouve pas naïve ou sans importance. Tu n'as pas besoin d'être sûr tout de suite pour que ce que tu ressens compte. Laisse-la s'exprimer, même un peu, même imparfaitement."
- },
- "coupes_cavalier": {
-  "invitation": "Aujourd'hui, une proposition ou une invitation guidée par l'émotion peut se présenter, sans être vraiment réfléchie à l'avance. Ne te méfie pas tout de suite de cet élan. Il n'est pas moins valable parce qu'il vient du cœur. Suis-le un peu, simplement pour voir où il te mène."
- },
- "coupes_reine": {
-  "invitation": "Aujourd'hui, une empathie profonde s'exprime en toi, la capacité de sentir ce que l'autre traverse, même sans qu'il dise tout. C'est une force, pas une porte ouverte à tout absorber. Accueille ce que tu perçois, sans t'y noyer."
- },
- "coupes_roi": {
-  "invitation": "Aujourd'hui, une situation chargée en émotions peut se présenter, chez toi ou autour de toi, sans que tu te laisses emporter. Cette capacité à rester posé, tu l'as construite, ce n'est pas un hasard ni de la froideur. Reste ce point stable, mais sans t'oublier toi-même."
- },
- "epees_as": {
-  "invitation": "Aujourd'hui, une idée peut te traverser, si claire qu'elle semble s'imposer avant même que tu y penses. Tu pourrais avoir envie de la justifier tout de suite par une raison logique. C'est une vieille habitude, celle de ne faire confiance qu'à ce qui s'explique. Laisse cette clarté exister quelques instants, sans la prouver."
- },
- "epees_2": {
-  "invitation": "Aujourd'hui, un choix peut rester en suspens, entre deux options qui te semblent aussi bonnes l'une que l'autre. Tu as envie de ne pas trancher. C'est une peur toute normale : celle de perdre ce que l'autre option t'aurait apporté. Choisis une petite chose aujourd'hui, sans attendre d'être totalement sûr."
- },
- "epees_3": {
-  "invitation": "Aujourd'hui, une déception peut se montrer, une vérité qui fait mal, que tu la dises ou que tu l'entendes. Ne repousse pas cette peine trop vite. Ce n'est pas un échec, c'est juste la preuve que cette chose comptait pour toi. Accorde-lui un moment, même bref, avant de passer à autre chose."
- },
- "epees_4": {
-  "invitation": "Une fatigue mentale peut se faire sentir aujourd'hui, comme un trop-plein. Tu penses qu'arrêter, c'est être faible. Ce n'est pas vrai. On t'a juste appris à toujours rester occupé. Offre-toi une vraie pause, sans te sentir coupable."
- },
- "epees_5": {
-  "invitation": "Aujourd'hui, un conflit peut se présenter, avec l'envie d'avoir raison à tout prix. Ce besoin de gagner vient d'une vieille peur : celle de ne plus compter si tu perds. Avant de t'accrocher à cette victoire, demande-toi ce qu'elle te coûterait vraiment."
- },
- "epees_6": {
-  "invitation": "Aujourd'hui, partir loin d'une situation difficile peut te tenter, même sans savoir exactement ce qui t'attend ensuite. Ce mouvement, c'est prendre soin de toi, pas fuir. Tu n'as jamais eu besoin d'une sécurité totale pour avancer. Fais un pas vers plus de calme, même petit."
- },
- "epees_7": {
-  "invitation": "Aujourd'hui, tu peux avoir envie de contourner un problème plutôt que de l'affronter directement. Ne te juge pas pour ça. C'est une stratégie que tu as apprise dans un temps où parler franchement n'était pas sans danger. Si tu peux, essaie d'en dire un peu plus que d'habitude aujourd'hui."
- },
- "epees_8": {
-  "invitation": "Aujourd'hui, tu peux te sentir coincé, avec des pensées qui tournent en boucle sans mener nulle part. Ces pensées ne sont pas toute la réalité. C'est une vieille façon de te protéger, en essayant de tout prévoir à l'avance. Note une seule sortie possible, même minuscule, juste pour voir qu'elle existe."
- },
- "epees_9": {
-  "invitation": "Aujourd'hui, une inquiétude peut prendre trop de place dans ta tête, surtout si elle revient la nuit. N'y pense pas encore plus. C'est un vieux réflexe qui te garde sur tes gardes, plus qu'un vrai danger présent en ce moment. Écris-la quelque part, pour voir sa vraie taille, à la lumière du jour."
- },
- "epees_10": {
-  "invitation": "Sentir que tu as touché le fond peut arriver aujourd'hui, comme la fin d'une période qui t'a beaucoup demandé mentalement. Vois ça comme une fin, pas comme un échec de plus. Rien de pire ne s'ajoute à ce qui est déjà arrivé. Remarque ce qui, doucement, recommence à se relever en toi."
- },
- "epees_valet": {
-  "invitation": "Aujourd'hui, une curiosité vive peut te pousser à poser des questions directes, presque sans filtre. Ne freine pas complètement cette franchise. Elle vient d'un vrai désir de comprendre, pas d'un manque de tact. Pose la question qui te démange vraiment, même si elle est toute simple."
- },
- "epees_cavalier": {
-  "invitation": "Aujourd'hui, une idée peut te donner envie de foncer, sans attendre l'accord de personne pour avancer. Ne muselle pas cette impatience. C'est une vraie énergie, elle a juste besoin d'un endroit où aller. Choisis toi-même où la diriger, plutôt que de la laisser tout emporter sur son passage."
- },
- "epees_reine": {
-  "invitation": "Aujourd'hui, une lucidité tranchante peut se montrer en toi, la capacité de voir une chose clairement et de la dire. Tu pourrais avoir envie de l'adoucir jusqu'à ce qu'elle ne veuille plus rien dire, ou au contraire de la durcir par peur qu'on ne t'écoute pas. Dis-la avec justesse, sans tomber dans l'un ou l'autre."
- },
- "epees_roi": {
-  "invitation": "Aujourd'hui, une décision peut demander à être prise, avec la tête plus qu'avec l'humeur du moment. Tu pourrais avoir envie de trancher vite pour en finir. C'est une impatience bien compréhensible, mais ce n'est pas de la vraie clarté. Prends un instant de plus pour juger les choses avec calme."
- },
- "deniers_as": {
-  "invitation": "Aujourd'hui, une petite occasion concrète peut se présenter à toi, sans mode d'emploi pour l'instant. Tu pourrais avoir envie de tout comprendre avant de commencer, par prudence plus que par peur. Pose un premier geste simple, même sans connaître la suite."
- },
- "deniers_2": {
-  "invitation": "Aujourd'hui, plusieurs choses concrètes peuvent te tirer dans des sens différents. Tu as le réflexe de vouloir tout gérer parfaitement en même temps. Choisis une seule chose à ajuster maintenant, le reste peut attendre son tour."
- },
- "deniers_3": {
-  "invitation": "Aujourd'hui, un travail que tu soignes peut prendre forme grâce à d'autres personnes autour de toi. Tu pourrais avoir envie de tout faire seul pour prouver ta valeur. Accepte que travailler avec d'autres compte aussi, et laisse une part du mérite leur revenir."
- },
- "deniers_4": {
-  "invitation": "Aujourd'hui, une envie de tout retenir fermement peut s'installer : de l'argent, du temps, ou une place que tu as acquise. C'est une peur de manquer, pas un défaut. Essaie de lâcher juste une petite chose aujourd'hui, seulement pour voir ce qui se passe."
- },
- "deniers_5": {
-  "invitation": "Aujourd'hui, un sentiment de manque peut se montrer, l'impression d'être laissé de côté pendant que les autres semblent en sécurité. Ne prends pas cette impression comme un jugement sur toi. Elle exagère souvent la réalité. Cherche une aide proche que tu n'as peut-être pas encore remarquée."
- },
- "deniers_6": {
-  "invitation": "Aujourd'hui, un échange peut se présenter, dans lequel tu donnes ou tu reçois. Remarque simplement qui a le plus de pouvoir dans ce moment précis, sans en faire honte à personne. Juste regarder ce rapport en face suffit souvent à le rendre plus juste."
- },
- "deniers_7": {
-  "invitation": "Aujourd'hui, un bilan t'appelle, celui d'un effort que tu as déjà investi. Tu pourrais être impatient de voir des résultats tout de suite, à cause d'un vieux doute plus que de la situation elle-même. Prends un instant pour regarder ce qui a vraiment progressé, avant de décider la suite."
- },
- "deniers_8": {
-  "invitation": "Aujourd'hui, un geste répété peut occuper ta journée, presque comme une habitude machinale. C'est un entraînement patient, pas une corvée sans but. Reste sur une seule chose un peu plus longtemps, sans chercher de raccourci pour aller plus vite."
- },
- "deniers_9": {
-  "invitation": "Aujourd'hui, tu peux remarquer un confort que tu as gagné par tes propres moyens, petit ou installé depuis longtemps. Tu pourrais avoir envie de minimiser ce que tu as bâti seul. Prends un moment pour en profiter, sans avoir à le partager ni à te justifier."
- },
- "deniers_10": {
-  "invitation": "Quelque chose de plus grand que toi peut se montrer aujourd'hui, un héritage, une stabilité bâtie avant toi. Tu as le réflexe de tout ramener à ta vie, à maintenant. Regarde plus loin que toi, ce qui se transmet d'une génération à l'autre, et la place que tu y tiens."
- },
- "deniers_valet": {
-  "invitation": "Aujourd'hui, un projet concret peut vouloir démarrer, encore fragile et pas tout à fait certain. Tu pourrais avoir envie de tout savoir avant de faire le premier pas. Autorise-toi à étudier la chose un peu, puis à avancer quand même."
- },
- "deniers_cavalier": {
-  "invitation": "Aujourd'hui, une lenteur méthodique peut se montrer dans une chose que tu avances. Tu pourrais être impatient en comparant ton rythme à celui des autres, mais personne d'autre ne connaît ton terrain. Choisis la méthode fiable plutôt que la vitesse, un pas après l'autre, sans te presser."
- },
- "deniers_reine": {
-  "invitation": "Aujourd'hui, l'envie de prendre soin des besoins concrets d'un proche peut te venir : nourrir, dépanner, arranger. Fais-le sans attendre qu'on le remarque en retour. Donne ce que tu peux donner aujourd'hui, sans en tenir le compte."
- },
- "deniers_roi": {
-  "invitation": "Aujourd'hui, tu peux remarquer une stabilité matérielle que tu as bâtie avec le temps, même modeste. Tu pourrais avoir envie de rester prudent par réflexe, alors que tu as la place pour donner un peu de marge à quelqu'un. Une générosité tranquille, sans urgence, peut trouver sa place aujourd'hui."
- }
+  "_charte": "data/corpus/CHARTE.md",
+  "_note": "Les 56 arcanes mineurs -- carte MINEURE PERSONNELLE du jour (en plus de la carte du jour universelle, un majeur, voir arcanes.json). Nom et correspondance sont CALCULES par moteur/mineurs.py, jamais dupliques ici : seule l'invitation (le texte du jour, meme fonction que celle des majeurs) est ecrite, 100% originale. Convention Ta Trame (2 axes independants : couleur = element de la Lune transit, rang = ecart Soleil transit -> Ascendant natal / 14) -- voir moteur/mineurs.py pour le detail et le piege mathematique evite.",
+  "batons_as": {
+    "invitation": "Une étincelle peut s'éveiller en toi aujourd'hui, avant même que tu aies un projet précis. Tu as envie de tout planifier d'abord. Laisse cette énergie exister un moment, juste pour sentir qu'elle est là."
+  },
+  "batons_2": {
+    "invitation": "Aujourd'hui, une envie de te lancer dans quelque chose de nouveau se précise, juste avant de passer à l'action. Tu voudrais d'abord être sûr de tout, par prudence plus que par doute. Fais un seul petit pas qui t'engage, sans attendre d'être certain à cent pour cent."
+  },
+  "batons_3": {
+    "invitation": "Un premier effort commence à donner des résultats aujourd'hui. C'est petit, mais c'est vrai. Tu as envie de dire que ce n'est rien. C'est un ancien réflexe d'attendre la fin pour être fier de toi. Prends un instant pour voir le chemin déjà fait."
+  },
+  "batons_4": {
+    "invitation": "Une étape est franchie aujourd'hui, quelque chose qui mérite d'être reconnu. Tu as envie de passer vite à la suite sans t'arrêter. Offre-toi une petite pause aujourd'hui, même courte, pour fêter ce qui est fait."
+  },
+  "batons_5": {
+    "invitation": "Aujourd'hui, tu es tiraillé entre plusieurs envies, plusieurs personnes. Tu as besoin de décider tout de suite. Écoute une voix différente de la tienne, juste un moment."
+  },
+  "batons_6": {
+    "invitation": "Une reconnaissance méritée peut arriver aujourd'hui, le signe que ton effort a été vu. Tu as le réflexe de la minimiser, ou de la refiler trop vite aux autres, par gêne plus que par modestie. Laisse-toi porter un instant par ce qu'on te renvoie."
+  },
+  "batons_7": {
+    "invitation": "Aujourd'hui, tu as une position à défendre, face à une pression réelle ou juste ressentie. Tu as envie de céder tout de suite pour avoir la paix. C'est un vieux réflexe pour éviter le conflit à tout prix. Tiens bon sur un seul point aujourd'hui, sans chercher à tout gagner."
+  },
+  "batons_8": {
+    "invitation": "Aujourd'hui, plusieurs choses s'accélèrent en même temps, à un rythme qui surprend un peu. Tu as envie de tout contrôler pour ne rien perdre. C'est une vieille peur de rater quelque chose d'important. Choisis une seule chose à suivre de près, et laisse le reste avancer seul."
+  },
+  "batons_9": {
+    "invitation": "Aujourd'hui, une fatigue se fait sentir après une longue série d'efforts, même si tu tiens encore debout. Tu as envie de prouver que tout va bien. C'est un vieux réflexe qui oublie les limites du corps. Accorde-toi un geste de repos aujourd'hui, même petit."
+  },
+  "batons_10": {
+    "invitation": "Une charge lourde peut peser sur toi aujourd'hui, quelque chose que tu portes depuis un moment. Tu as envie de tout finir d'un coup pour t'en libérer. C'est qu'on t'a appris à croire que ta valeur dépend de ce que tu fais. Pose une petite partie du poids aujourd'hui, juste pour souffler un peu."
+  },
+  "batons_valet": {
+    "invitation": "Aujourd'hui, une idée encore jeune se montre, une curiosité que tu n'as pas encore mise à l'épreuve. Tu as envie de la juger tout de suite, trop sérieuse ou trop naïve. C'est ton vieux besoin d'être sûr tout de suite. Laisse cette idée exister un moment, sans lui demander de preuve."
+  },
+  "batons_cavalier": {
+    "invitation": "Aujourd'hui, une envie de foncer te prend, avant même d'avoir vérifié les détails. Remarque cette impatience sans te juger. C'est une énergie qui pousse à agir vite plutôt qu'à réfléchir. Ralentis d'un cran sur un seul point, juste avant de t'élancer."
+  },
+  "batons_reine": {
+    "invitation": "Aujourd'hui, une confiance chaleureuse t'habite, une énergie qui donne aux autres envie d'avancer eux aussi. Tu as envie de la mettre au service de tout le monde, sauf de toi. C'est l'habitude de te rendre utile avant de te sentir à ta place. Garde un peu de cette chaleur pour toi."
+  },
+  "batons_roi": {
+    "invitation": "Aujourd'hui, tu avances vite et bien sans avoir à forcer. Tu as envie d'imposer ton tempo aux autres pour aller encore plus vite. C'est le vieux piège de croire que commander, c'est tout contrôler. Fais ce que tu as à faire à ton rythme, sans écraser personne."
+  },
+  "coupes_as": {
+    "invitation": "Aujourd'hui, un sentiment plus grand que prévu peut déborder en toi, avant même que tu saches pour qui ou pourquoi. Regarde cette vague sans la juger. Elle dit juste que quelque chose est vivant en toi. Laisse-la monter, sans chercher à la nommer tout de suite."
+  },
+  "coupes_2": {
+    "invitation": "Aujourd'hui, un échange sincère avec quelqu'un peut se présenter, un partage qui va dans les deux sens sans calcul. Tu as l'habitude de donner plus que tu ne reçois. Ce n'est pas vraiment un choix, c'est un vieux pli. Essaie de recevoir aussi aujourd'hui, juste pour voir."
+  },
+  "coupes_3": {
+    "invitation": "Aujourd'hui, tu as envie de retrouver du monde, une joie qui se vit mieux à plusieurs que seul. Ce n'est pas une faiblesse. Certaines joies ont juste besoin d'être partagées pour exister pleinement. Appelle quelqu'un, ou propose un moment simple ensemble."
+  },
+  "coupes_4": {
+    "invitation": "Aujourd'hui, tu peux te sentir un peu blasé, comme si rien de nouveau n'arrivait. Pourtant, quelque chose de bon est peut-être juste là, devant toi. Ce sentiment vient de toi, pas de ce qui t'entoure. Regarde autour de toi : il y a sûrement une petite chose simple à apprécier, là, maintenant."
+  },
+  "coupes_5": {
+    "invitation": "Aujourd'hui, une tristesse ou une perte peut occuper ton esprit et prendre beaucoup de place. Ne cherche pas à repousser cette peine : elle est normale et mérite d'être ressentie. Mais elle ne représente pas tout ce que tu vis. Regarde aussi ce qui va encore bien et ce qui est toujours là."
+  },
+  "coupes_6": {
+    "invitation": "Aujourd'hui, un souvenir tendre peut remonter, une image d'avant, un lien simple qui appartient presque à l'enfance. Laisse-le venir, sans le trouver démodé ou naïf. Il porte peut-être quelque chose dont tu as encore besoin. Reste un instant avec cette douceur, sans te presser d'en sortir."
+  },
+  "coupes_7": {
+    "invitation": "Aujourd'hui, plusieurs envies ou possibilités peuvent se présenter en même temps, au point de brouiller ce que tu ressens vraiment. Ne te perds pas dans cette abondance. Tu n'as pas à tout choisir tout de suite. Écarte-en une, doucement, juste pour alléger le reste."
+  },
+  "coupes_8": {
+    "invitation": "Aujourd'hui, une envie de prendre de la distance se fait sentir, face à quelque chose de confortable qui ne te suffit plus. Ne te sens pas coupable. Tu ne rejettes pas ce qui était bon, tu cherches juste plus loin maintenant. Fais un petit pas dans cette direction, même discret."
+  },
+  "coupes_9": {
+    "invitation": "Aujourd'hui, une petite joie peut se présenter : quelque chose qui s'est arrangé, un problème qui s'est réglé ou un souhait qui s'est réalisé. Tu pourrais avoir envie de penser tout de suite à la prochaine chose que tu désires. Tu n'as pas à décider si vite. Savoure ce qui est là, juste un moment."
+  },
+  "coupes_10": {
+    "invitation": "Aujourd'hui, un bonheur simple circule avec les personnes qui comptent pour toi, dans ton cœur comme dans ton corps. Tu pourrais le douter, chercher des raisons de le confirmer. Tu n'as pas besoin de preuves. Laisse ce sentiment être là, et profite-en sans l'analyser."
+  },
+  "coupes_valet": {
+    "invitation": "Une nouvelle sensibilité s'éveille en toi aujourd'hui, une petite intuition que tu ne comprends pas encore très bien. Ne la trouve pas naïve ou sans importance. Tu n'as pas besoin d'être sûr tout de suite pour que ce que tu ressens compte. Laisse-la s'exprimer, même un peu, même imparfaitement."
+  },
+  "coupes_cavalier": {
+    "invitation": "Aujourd'hui, une proposition ou une invitation guidée par l'émotion peut se présenter, sans être vraiment réfléchie à l'avance. Ne te méfie pas tout de suite de cet élan. Il n'est pas moins valable parce qu'il vient du cœur. Suis-le un peu, simplement pour voir où il te mène."
+  },
+  "coupes_reine": {
+    "invitation": "Aujourd'hui, une empathie profonde s'exprime en toi, la capacité de sentir ce que l'autre traverse, même sans qu'il dise tout. C'est une force, pas une porte ouverte à tout absorber. Accueille ce que tu perçois, sans t'y noyer."
+  },
+  "coupes_roi": {
+    "invitation": "Aujourd'hui, une situation chargée en émotions peut se présenter, chez toi ou autour de toi, sans que tu te laisses emporter. Cette capacité à rester posé, tu l'as construite, ce n'est pas un hasard ni de la froideur. Reste ce point stable, mais sans t'oublier toi-même."
+  },
+  "epees_as": {
+    "invitation": "Aujourd'hui, une idée peut te traverser, si claire qu'elle semble s'imposer avant même que tu y penses. Tu pourrais avoir envie de la justifier tout de suite par une raison logique. C'est une vieille habitude, celle de ne faire confiance qu'à ce qui s'explique. Laisse cette clarté exister quelques instants, sans la prouver."
+  },
+  "epees_2": {
+    "invitation": "Aujourd'hui, un choix peut rester en suspens, entre deux options qui te semblent aussi bonnes l'une que l'autre. Tu as envie de ne pas trancher. C'est une peur toute normale : celle de perdre ce que l'autre option t'aurait apporté. Choisis une petite chose aujourd'hui, sans attendre d'être totalement sûr."
+  },
+  "epees_3": {
+    "invitation": "Aujourd'hui, une déception peut se montrer, une vérité qui fait mal, que tu la dises ou que tu l'entendes. Ne repousse pas cette peine trop vite. Ce n'est pas un échec, c'est juste la preuve que cette chose comptait pour toi. Accorde-lui un moment, même bref, avant de passer à autre chose."
+  },
+  "epees_4": {
+    "invitation": "Une fatigue mentale peut se faire sentir aujourd'hui, comme un trop-plein. Tu penses qu'arrêter, c'est être faible. Ce n'est pas vrai. On t'a juste appris à toujours rester occupé. Offre-toi une vraie pause, sans te sentir coupable."
+  },
+  "epees_5": {
+    "invitation": "Aujourd'hui, un conflit peut se présenter, avec l'envie d'avoir raison à tout prix. Ce besoin de gagner vient d'une vieille peur : celle de ne plus compter si tu perds. Avant de t'accrocher à cette victoire, demande-toi ce qu'elle te coûterait vraiment."
+  },
+  "epees_6": {
+    "invitation": "Aujourd'hui, partir loin d'une situation difficile peut te tenter, même sans savoir exactement ce qui t'attend ensuite. Ce mouvement, c'est prendre soin de toi, pas fuir. Tu n'as jamais eu besoin d'une sécurité totale pour avancer. Fais un pas vers plus de calme, même petit."
+  },
+  "epees_7": {
+    "invitation": "Aujourd'hui, tu peux avoir envie de contourner un problème plutôt que de l'affronter directement. Ne te juge pas pour ça. C'est une stratégie que tu as apprise dans un temps où parler franchement n'était pas sans danger. Si tu peux, essaie d'en dire un peu plus que d'habitude aujourd'hui."
+  },
+  "epees_8": {
+    "invitation": "Aujourd'hui, tu peux te sentir coincé, avec des pensées qui tournent en boucle sans mener nulle part. Ces pensées ne sont pas toute la réalité. C'est une vieille façon de te protéger, en essayant de tout prévoir à l'avance. Note une seule sortie possible, même minuscule, juste pour voir qu'elle existe."
+  },
+  "epees_9": {
+    "invitation": "Aujourd'hui, une inquiétude peut prendre trop de place dans ta tête, surtout si elle revient la nuit. N'y pense pas encore plus. C'est un vieux réflexe qui te garde sur tes gardes, plus qu'un vrai danger présent en ce moment. Écris-la quelque part, pour voir sa vraie taille, à la lumière du jour."
+  },
+  "epees_10": {
+    "invitation": "Sentir que tu as touché le fond peut arriver aujourd'hui, comme la fin d'une période qui t'a beaucoup demandé mentalement. Vois ça comme une fin, pas comme un échec de plus. Rien de pire ne s'ajoute à ce qui est déjà arrivé. Remarque ce qui, doucement, recommence à se relever en toi."
+  },
+  "epees_valet": {
+    "invitation": "Aujourd'hui, une curiosité vive peut te pousser à poser des questions directes, presque sans filtre. Ne freine pas complètement cette franchise. Elle vient d'un vrai désir de comprendre, pas d'un manque de tact. Pose la question qui te démange vraiment, même si elle est toute simple."
+  },
+  "epees_cavalier": {
+    "invitation": "Aujourd'hui, une idée peut te donner envie de foncer, sans attendre l'accord de personne pour avancer. Ne muselle pas cette impatience. C'est une vraie énergie, elle a juste besoin d'un endroit où aller. Choisis toi-même où la diriger, plutôt que de la laisser tout emporter sur son passage."
+  },
+  "epees_reine": {
+    "invitation": "Aujourd'hui, une lucidité tranchante peut se montrer en toi, la capacité de voir une chose clairement et de la dire. Tu pourrais avoir envie de l'adoucir jusqu'à ce qu'elle ne veuille plus rien dire, ou au contraire de la durcir par peur qu'on ne t'écoute pas. Dis-la avec justesse, sans tomber dans l'un ou l'autre."
+  },
+  "epees_roi": {
+    "invitation": "Aujourd'hui, une décision peut demander à être prise, avec la tête plus qu'avec l'humeur du moment. Tu pourrais avoir envie de trancher vite pour en finir. C'est une impatience bien compréhensible, mais ce n'est pas de la vraie clarté. Prends un instant de plus pour juger les choses avec calme."
+  },
+  "deniers_as": {
+    "invitation": "Aujourd'hui, une petite occasion concrète peut se présenter à toi, sans mode d'emploi pour l'instant. Tu pourrais avoir envie de tout comprendre avant de commencer, par prudence plus que par peur. Pose un premier geste simple, même sans connaître la suite."
+  },
+  "deniers_2": {
+    "invitation": "Aujourd'hui, plusieurs choses concrètes peuvent te tirer dans des sens différents. Tu as le réflexe de vouloir tout gérer parfaitement en même temps. Choisis une seule chose à ajuster maintenant, le reste peut attendre son tour."
+  },
+  "deniers_3": {
+    "invitation": "Aujourd'hui, un travail que tu soignes peut prendre forme grâce à d'autres personnes autour de toi. Tu pourrais avoir envie de tout faire seul pour prouver ta valeur. Accepte que travailler avec d'autres compte aussi, et laisse une part du mérite leur revenir."
+  },
+  "deniers_4": {
+    "invitation": "Aujourd'hui, une envie de tout retenir fermement peut s'installer : de l'argent, du temps, ou une place que tu as acquise. C'est une peur de manquer, pas un défaut. Essaie de lâcher juste une petite chose aujourd'hui, seulement pour voir ce qui se passe."
+  },
+  "deniers_5": {
+    "invitation": "Aujourd'hui, un sentiment de manque peut se montrer, l'impression d'être laissé de côté pendant que les autres semblent en sécurité. Ne prends pas cette impression comme un jugement sur toi. Elle exagère souvent la réalité. Cherche une aide proche que tu n'as peut-être pas encore remarquée."
+  },
+  "deniers_6": {
+    "invitation": "Aujourd'hui, un échange peut se présenter, dans lequel tu donnes ou tu reçois. Remarque simplement qui a le plus de pouvoir dans ce moment précis, sans en faire honte à personne. Juste regarder ce rapport en face suffit souvent à le rendre plus juste."
+  },
+  "deniers_7": {
+    "invitation": "Aujourd'hui, un bilan t'appelle, celui d'un effort que tu as déjà investi. Tu pourrais être impatient de voir des résultats tout de suite, à cause d'un vieux doute plus que de la situation elle-même. Prends un instant pour regarder ce qui a vraiment progressé, avant de décider la suite."
+  },
+  "deniers_8": {
+    "invitation": "Aujourd'hui, un geste répété peut occuper ta journée, presque comme une habitude machinale. C'est un entraînement patient, pas une corvée sans but. Reste sur une seule chose un peu plus longtemps, sans chercher de raccourci pour aller plus vite."
+  },
+  "deniers_9": {
+    "invitation": "Aujourd'hui, tu peux remarquer un confort que tu as gagné par tes propres moyens, petit ou installé depuis longtemps. Tu pourrais avoir envie de minimiser ce que tu as bâti seul. Prends un moment pour en profiter, sans avoir à le partager ni à te justifier."
+  },
+  "deniers_10": {
+    "invitation": "Quelque chose de plus grand que toi peut se montrer aujourd'hui, un héritage, une stabilité bâtie avant toi. Tu as le réflexe de tout ramener à ta vie, à maintenant. Regarde plus loin que toi, ce qui se transmet d'une génération à l'autre, et la place que tu y tiens."
+  },
+  "deniers_valet": {
+    "invitation": "Aujourd'hui, un projet concret peut vouloir démarrer, encore fragile et pas tout à fait certain. Tu pourrais avoir envie de tout savoir avant de faire le premier pas. Autorise-toi à étudier la chose un peu, puis à avancer quand même."
+  },
+  "deniers_cavalier": {
+    "invitation": "Aujourd'hui, une lenteur méthodique peut se montrer dans une chose que tu avances. Tu pourrais être impatient en comparant ton rythme à celui des autres, mais personne d'autre ne connaît ton terrain. Choisis la méthode fiable plutôt que la vitesse, un pas après l'autre, sans te presser."
+  },
+  "deniers_reine": {
+    "invitation": "Aujourd'hui, l'envie de prendre soin des besoins concrets d'un proche peut te venir : nourrir, dépanner, arranger. Fais-le sans attendre qu'on le remarque en retour. Donne ce que tu peux donner aujourd'hui, sans en tenir le compte."
+  },
+  "deniers_roi": {
+    "invitation": "Aujourd'hui, tu peux remarquer une stabilité matérielle que tu as bâtie avec le temps, même modeste. Tu pourrais avoir envie de rester prudent par réflexe, alors que tu as la place pour donner un peu de marge à quelqu'un. Une générosité tranquille, sans urgence, peut trouver sa place aujourd'hui."
+  },
+  "feu_as": {
+    "nom": "Source",
+    "invitation": "Deux grands arbres ouvrent une clairière dorée. Une colonne de lumière tombe sur une source, et l'eau claire coule entre les pierres. Elle ne demande la permission à personne. Toi non plus. Ce qui se lève en toi aujourd'hui est déjà là.",
+    "comprendre": "Deux grands arbres moussus ouvrent une clairière, et une colonne de lumière tombe du ciel sur une source. L'eau claire coule entre les pierres dorées, remplit une petite flaque, puis file vers les fougères et les fleurs blanches. C'est la carte de ce qui monte en toi avant d'avoir un nom. La source n'a pas de projet, elle coule parce qu'elle est là, et toute la clairière s'est organisée autour d'elle.\n\nOn t'a appris à ne pas te fier à ce qui pousse tout seul, à croire que ce qui vaut doit être construit, planifié, prouvé. Ici, la lumière éclaire ce qui sortait de terre sans toi. Les fougères et les fleurs blanches n'ont pas demandé la permission à la forêt.\n\nL'invitation du jour est simple. Ne coupe pas ce qui se met à couler. Tu n'as rien à décider pour l'instant, juste à laisser passer."
+  },
+  "feu_10": {
+    "nom": "Refoulement",
+    "invitation": "Dans un champ de blé sec, une femme lève les bras et une spirale de feu monte de sa poitrine vers le ciel. Ce qui était gardé dedans demande à sortir. Tu peux ouvrir au lieu de retenir. Retenu, ce feu brûle de l'intérieur.",
+    "comprendre": "Au milieu d'un champ de blé, une femme ouvre les bras et lève la tête. Une spirale de feu part de son cœur, tourne au-dessus d'elle et se déploie vers le ciel en rubans lumineux. Le blé l'entoure sans prendre feu. Même le champ sec la laisse faire.\n\nCe feu-là a attendu longtemps sous la poitrine. Chaque fois qu'on l'a remisé pour garder la paix, il s'est mis à brûler à l'intérieur. La carte montre le jour où ça sort, et où le dehors, au lieu d'exploser, reçoit.\n\nCe que tu retiens en ce moment a le droit d'être dit, montré, chanté trop fort même. Au grand air, le feu éclaire. Tu peux ouvrir la porte de ta poitrine et le laisser tourner."
+  },
+  "feu_page": {
+    "nom": "Jeu",
+    "invitation": "Sur la plage, une petite fille rit en rebâtissant son château de sable pendant que la vague approche. Elle sait qu'il partira, elle construit quand même. Le jeu d'aujourd'hui ne doit rien produire. Il vaut parce que tu t'y amuses.",
+    "comprendre": "Sur la plage, une petite fille rit à pleine bouche. Son château de sable s'effrite déjà sous la vague qui revient, et elle rajoute une tour. Des papillons passent au-dessus des dunes, elle ne les compte pas. Il y a des coquillages dans le sable et des pas qui vont nulle part.\n\nElle ne construit pas pour laisser une trace. Le château est fait pour le plaisir des mains et pour l'instant où il tient, pas pour durer. Personne ne la note, et c'est justement pour ça que c'est vraiment du jeu.\n\nOffre-toi aujourd'hui une chose pareille, sans utilité et sans résultat à défendre. Dessine, bricole, chante mal, joue. Ce qui se perd en fin de journée n'enlève rien au plaisir d'avoir construit."
+  },
+  "feu_chevalier": {
+    "nom": "Intensité",
+    "invitation": "À la nuit tombée, sur la lande, un homme en lunettes de soudeur se penche sur un bloc de pierre où une lumière blanche brûle. Tout son feu est concentré en un seul point. Il se donne à un seul but, et il vaut le soin qu'on lui met.",
+    "comprendre": "La lande est sombre, les étoiles sont sorties, et sur un bloc de pierre, une lumière blanche brûle. Un homme se penche dessus, en lunettes de soudeur et gants épais, la tige à la main qui relie la flamme à une petite machine de cuivre, à côté, avec son manomètre. La lumière dessine des rais jusqu'au ciel.\n\nTout son feu est réuni en un seul point, et c'est de là que vient cette intensité. Rien n'est dispersé, rien n'est à moitié. La nuit autour n'est pas une ennemie, elle rend la flamme plus visible encore.\n\nSi ton énergie est grande aujourd'hui, donne-lui une cible précise au lieu de la laisser chauffer partout. Équipe-toi comme il faut, va-y à fond, et garde les yeux protégés pendant que ça brille."
+  },
+  "feu_reine": {
+    "nom": "Partage",
+    "invitation": "Une reine sourit à côté de son feu, au sommet d'une falaise, et sa robe devient des jardins en terrasses qui descendent la montagne. Ce qu'elle a ne lui reste pas dans les mains. Tout ce qui coule de toi nourrit aussi les autres.",
+    "comprendre": "Au sommet d'une falaise, une reine sourit à côté d'un petit feu. Sa robe, un fleuve de couleurs, descend la pente et devient des jardins en terrasses. Des légumes, des arbres chargés de fruits, des cascades qui arrosent chaque niveau, les montagnes derrière. Deux abeilles tournent près d'elle, comme si la montagne entière était à partager.\n\nCe qu'elle possède ne reste pas plié dans une armoire. Il coule vers le bas et nourrit tout ce qui pousse en dessous. Le partage n'est pas une perte ici, c'est la façon dont sa richesse prend corps.\n\nCe que tu sais, ce que tu as, ce que tu récoltes peut descendre la pente avec toi aujourd'hui. Une part donnée ne rend pas plus pauvre, elle fait pousser plus bas qu'on ne le voit."
+  },
+  "feu_roi": {
+    "nom": "Le Créateur",
+    "invitation": "Dehors, la nuit, un homme tient deux branches croisées dans ses mains, et neuf personnes de tous âges le regardent. Les flammes montent déjà hautes dans le cercle de pierres. Aujourd'hui, quelque chose de vivant attend le feu que tu sais faire.",
+    "comprendre": "La nuit est tombée dans la clairière. Un homme tient deux branches croisées et frotte sans se presser, pendant que neuf personnes de tous âges l'entourent, assises en cercle autour du grand feu qui brûle à même le sol, cerné de pierres posées à la main. Les flammes montent droites dans l'air noir.\n\nIl sait faire quelque chose que personne autour du feu ne sait faire. Le feu qui éclaire tout le monde est passé par ses mains, par son geste patient et précis. Créer, ici, ce n'est pas exposer, c'est fournir le centre.\n\nIl y a en toi un savoir-faire qui tient ce rôle. Ne le garde pas par modestie. Le feu que tu sais allumer éclaire ceux qui ne sauraient jamais le faire seuls. Fabrique-le aujourd'hui, devant eux."
+  },
+  "feu_2": {
+    "nom": "Possibilités",
+    "invitation": "Des pissenlits remplissent le pré, et le vent emporte leurs graines en une longue traînée dorée. Chaque graine va quelque part de son côté. Ton champ d'aujourd'hui est plus large que ce que tu avais prévu de faire.",
+    "comprendre": "Le pré est couvert de pissenlits, et le vent arrache les graines en une longue traînée dorée qui s'élève au-dessus des collines. Le ciel entier semble rempli de départs possibles. Une seule plante en a lancé des centaines, et nul ne sait où chacune retombera.\n\nChoisir vite et bien, une seule bonne direction et toutes les autres en erreur, c'est une règle que tu portes depuis longtemps. La carte montre autre chose. La vie s'y prend à tous les vents à la fois, et ce qui part n'est pas perdu, il pousse ailleurs.\n\nAujourd'hui, tu peux regarder le champ au lieu d'une seule tige. Plusieurs portes s'ouvrent en même temps, et tu n'es pas obligé d'en fermer avant de passer."
+  },
+  "feu_3": {
+    "nom": "Expérience",
+    "invitation": "Une petite fille pose sa main à plat sur le tronc d'un arbre immense, les yeux fermés. Elle ne le décrit pas, elle le touche. Aujourd'hui, c'est simple. Mets la main sur ce qui t'intéresse, pour de vrai.",
+    "comprendre": "Une petite fille avance dans la forêt et pose la paume bien à plat contre le tronc rugueux d'un arbre immense. Elle a fermé les yeux. Elle ne compte pas les années du tronc, elle écoute dessous. L'arbre ne bouge pas, et pourtant tout vit sous la rude surface, la sève, des dizaines d'étés rangés dans le bois. La mousse et les fougères s'accrochent au pied du tronc.\n\nTu as appris à connaître par les mots, les livres et les conseils des autres. Il reste une façon plus ancienne de savoir. Toucher. Le tronc est rude, l'arbre est vivant, et ta main enregistre ce qu'aucune explication ne rendra aussi exact.\n\nCe qui t'intéresse aujourd'hui mérite ta main, pas seulement ton opinion. Approche-toi, mets-y les doigts, reste un moment. La forêt autour ne demande rien d'autre que tu sois là, en personne."
+  },
+  "feu_4": {
+    "nom": "Participation",
+    "invitation": "La nuit est tombée sur la rivière, et des milliers de lucioles montent ensemble en un seul fleuve de lumière, jusqu'aux étoiles. Chacune est minuscule. C'est le rassemblement qui fait le fleuve. Ce soir, tu fais partie de quelque chose de plus grand que toi.",
+    "comprendre": "La nuit s'est installée sur la rivière, les roseaux sont noirs, et pourtant le ciel et l'eau sont pleins de lumière. Des lucioles par centaines montent vers les étoiles, un fleuve qui ne s'arrête jamais. L'eau reflète leur passage, et les roseaux noirs n'en sont que le cadre.\n\nTu es parfois revenu de quelque chose en te disant que ta part était trop petite pour compter. La carte dit l'inverse. C'est l'addition des petites lumières qui remplit la nuit, et rien de grand ici n'existe sans les lucioles une par une.\n\nSi une invitation t'arrive aujourd'hui, un groupe, une table, un chantier commun, ne la refuse pas parce que ta place semble modeste. Entre, apporte la tienne, et regarde ce que ça fait."
+  },
+  "feu_5": {
+    "nom": "Totalité",
+    "invitation": "Quatre personnes de tous âges tiennent les cordes d'un ballon qui s'envole au soleil couchant. Personne ne lâche, personne ne fait semblant. Ce qui s'élève aujourd'hui demande tout de toi, et c'est justement ça qui te porte.",
+    "comprendre": "Au soleil couchant, dans une prairie fleurie, un grand ballon à bandes rouges et crème s'élève. Quatre personnes tiennent les cordes, un enfant, un vieil homme, une femme et un homme barbu, et aucun ne fait semblant de tirer. Le ballon ne monte que de tout ce monde à la fois.\n\nTu connais la version à moitié. Donner un peu, s'engager un peu, garder une corde de rechange. La carte montre ce qui arrive quand on y va entier. Le vent est doux, la terre est belle, et l'effort devient même un plaisir quand il est complet.\n\nCe que tu entreprends aujourd'hui mérite tes deux mains. Mets-y ton attention, ton temps, ta présence, sans garder la moitié de toi en réserve. C'est comme ça que ça s'envole."
+  },
+  "feu_6": {
+    "nom": "Succès",
+    "invitation": "Le village a allumé le grand feu, les guirlandes brillent et tout le monde danse autour. Tu y es pour quelque chose, et ce soir ça se voit. La fête, c'est le travail qui a fini par briller.",
+    "comprendre": "Le village fête quelque chose ce soir. Le grand feu brûle dans son brasier de pierre et de bois. Un mât se dresse au-dessus des flammes, couvert de guirlandes de fleurs et de rubans, et tout le monde danse autour. Dans le ciel, des étoiles filantes passent comme si le ciel participait.\n\nLe succès ressemble à ça plus qu'à un trophée. C'est un travail de longue haleine qui finit en lumière partagée, entouré de visages qui ont donné chacun quelque chose. Tu y es pour quelque chose, et tu peux le regarder en face sans baisser les yeux.\n\nPrends le temps de savourer aujourd'hui. Répète-toi ce que tu as réussi, dis-le à voix haute, laisse les autres te féliciter. La flamme qui éclaire la place, c'est aussi la tienne."
+  },
+  "feu_7": {
+    "nom": "Stress",
+    "invitation": "Un homme traverse un précipice sur un fil, bras tendus, une pile de livres, de paniers et d'objets de la maison en équilibre sur la tête. En dessous, un pont de bois solide attendait. Pose-en une ou deux, le fil sera plus sûr, et le pont existe encore.",
+    "comprendre": "Un homme avance sur un fil tendu au-dessus d'un précipice, les bras à l'horizontale, une pile instable de vieux livres, de paniers et de ce qu'on accumule dans une maison posés sur sa tête. Une goutte de sueur coule. En dessous, un pont de bois solide traverse le ruisseau, vide.\n\nTout ce qu'il porte, il l'a chargé lui-même, un objet à la fois, en croyant gagner du temps. Le fil tremble parce que la charge est trop haute, pas parce que le vide a grandi. Le vide n'a pas bougé d'un mètre.\n\nRegarde ce que tu portes en ce moment. Deux ou trois choses peuvent descendre dans les sacs, ou rester à terre. Le pont existe toujours, et il mène au même endroit en te laissant respirer."
+  },
+  "feu_8": {
+    "nom": "Voyage",
+    "invitation": "Un marcheur pieds nus suit un chemin qui traverse les blés, laisse le village derrière lui et file vers la montagne. Aujourd'hui, tu as le droit d'être en route sans savoir exactement où ça mène.",
+    "comprendre": "Un marcheur pieds nus s'éloigne, un bâton à la main. Le chemin traverse les blés dorés et les fleurs, laisse derrière lui un village aux toits rouges, puis monte vers les montagnes où une cascade tombe dans un lac. Il ne regarde pas en arrière.\n\nPersonne ne l'attend au bout avec une récompense visible. Il marche parce que la route est là, et que chaque pas ouvre un morceau de paysage qu'on ne voit pas d'ici. Le vent dans les blés fait son travail, lui aussi.\n\nPersonne n'exige de toi un plan d'arrivée, ni une date. Ce que tu quittes n'était pas une erreur, et ce qui t'attend n'a pas besoin d'être prouvé. Avance d'un pas, puis d'un autre, c'est comme ça que les voyages se font."
+  },
+  "feu_9": {
+    "nom": "Épuisement",
+    "invitation": "Un homme courbé tourne la manivelle d'une énorme machine à rouages et à sablier, pendant qu'une porte ouverte donne sur la mer. Il croit entretenir une mécanique sans fin. Sors respirer une minute, le monde ne s'arrête pas quand tu lâches les mains.",
+    "comprendre": "Dans une pièce aux murs de bois, un homme se penche, le dos rond, sur la manivelle d'une énorme machine de rouages et de sabliers. Il sue. Il est seul à alimenter tout ce mécanisme, et le temps passe à côté, sans lui. La porte, elle, est grande ouverte sur la mer et le sable.\n\nLa machine représente le temps qu'il croit devoir entretenir à la main, minute après minute, sans jamais s'asseoir. Le sablier se vide et se retourne, les rouages tournent, et rien ne dit qu'on lui doit ça.\n\nLa porte existe dans ta vie aussi, et elle donne sur quelque chose de libre et d'immense. Tu peux lâcher la manivelle un moment sans que le monde casse. Va voir la mer, reviens si tu veux, mais respire d'abord."
+  }
 }

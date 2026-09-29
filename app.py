@@ -2086,6 +2086,10 @@ def _jour_pour_calcule(profil, date):
     carte_min = MIN.carte_mineure(
         positions["lune"], positions["soleil"], theme["angles"]["asc"]["lon"])
     carte_min["invitation"] = corpus.lire("mineurs", carte_min["cle"], "invitation")
+    # « Comprendre cette carte » + le nom Align, pour les familles produites
+    # (Feu à ce jour). Repli sur les valeurs classiques pour les autres.
+    carte_min["comprendre"] = corpus.lire("mineurs", carte_min["cle"], "comprendre", defaut="")
+    carte_min["nom"] = corpus.lire("mineurs", carte_min["cle"], "nom", defaut=carte_min["nom"])
     # La fenêtre de regard en arrière : pour que la sélection brise les
     # blocs de jours identiques (un transit serré qui domine toute une
     # semaine). Déterministe — voir `_recents_pour`.

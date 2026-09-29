@@ -14,6 +14,28 @@ RACINE = pathlib.Path(__file__).resolve().parents[1]
 
 SUITS = {"batons", "coupes", "epees", "deniers"}
 
+# Les familles ALIGN produites (Feu à ce jour) : un jour de l'élément
+# correspondant sert la carte dessinée, plus la carte classique des autres
+# éléments — transition douce, jamais un jour sans carte.
+SUITS_ALIGN = set(M.SUIT_ALIGN.values())
+
+
+def _rangs_de(suit):
+    """Les rangs d'une famille, en noms Align pour les familles produites."""
+    return ([M.RANG_ALIGN.get(r, r) for r in M.RANGS] if suit in SUITS_ALIGN
+            else list(M.RANGS))
+
+
+def _cles_atteignables():
+    """Les clés que le moteur sert aujourd'hui : 4 familles × 14 rangs.
+    Feu remplace Bâtons (même élément, même fenêtre de Lune)."""
+    cles = set()
+    for elt in M.ELEMENT_NOM:
+        suit = M.SUIT_ALIGN.get(elt, M.SUIT_PAR_ELEMENT[elt])
+        for r in M.RANGS:
+            cles.add(f"{suit}_{M.RANG_ALIGN.get(r, r) if suit in SUITS_ALIGN else r}")
+    return cles
+
 # Vitesses moyennes réelles (°/jour) — suffisantes pour un test de couverture,
 # pas pour un calcul de position (voir moteur/ephemerides.py pour le vrai calcul).
 V_LUNE, V_SOLEIL = 13.176, 0.9856
@@ -22,13 +44,14 @@ V_LUNE, V_SOLEIL = 13.176, 0.9856
 def test_toutes_les_cles_sont_bien_formees():
     for lon in (0.0, 47.3, 123.9, 271.5, 359.9):
         c = M.carte_mineure(lon, (lon + 90) % 360, 10.0)
-        assert c["suit"] in SUITS
-        assert c["rang"] in M.RANGS
+        assert c["suit"] in SUITS | SUITS_ALIGN
+        assert c["rang"] in _rangs_de(c["suit"])
         assert c["cle"] == f"{c['suit']}_{c['rang']}"
 
 
 def test_56_cles_possibles_au_total():
-    assert len(SUITS) * len(M.RANGS) == 56
+    # Quatre familles servies (Feu remplace Bâtons, même élément) × 14 rangs.
+    assert len(_cles_atteignables()) == 56
     assert len(M.RANGS) == 14
 
 
@@ -47,7 +70,7 @@ def test_les_56_sont_atteignables_pour_une_meme_personne():
             lune = (lune0 + jour * V_LUNE) % 360.0
             soleil = (soleil0 + jour * V_SOLEIL) % 360.0
             vues.add(M.carte_mineure(lune, soleil, asc)["cle"])
-        manque = {f"{s}_{r}" for s in SUITS for r in M.RANGS} - vues
+        manque = _cles_atteignables() - vues
         assert not manque, f"asc={asc} : clés jamais atteintes en 3 ans : {manque}"
 
 
@@ -74,9 +97,10 @@ def test_pas_de_trou_ni_recouvrement_du_rang():
     # donné : juste après chaque frontière, on doit retrouver le rang suivant
     # dans l'ordre, une seule fois chacun, sur un tour complet.
     asc = 30.0
+    c0 = M.carte_mineure(0.0, asc + 0.01, asc)
     rangs_en_ordre = [M.carte_mineure(0.0, asc + i * M.LARGEUR_RANG + 0.01, asc)["rang"]
                       for i in range(len(M.RANGS))]
-    assert rangs_en_ordre == M.RANGS
+    assert rangs_en_ordre == _rangs_de(c0["suit"])
 
 
 def test_figures_et_as_bien_marques():

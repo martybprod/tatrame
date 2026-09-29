@@ -144,11 +144,11 @@ MOTIF_MARQUE = re.compile(r"\bAlign\b|Ta Trame|ta trame", re.I)
 
 def textes_affiches_de_cartes():
     """Tous les textes qu'un lecteur voit sur une carte : arcanes.json (3
-    champs × 22) et mineurs.json (invitation des 56). Les clés internes
+    champs × 22) et mineurs.json (invitation + « comprendre » de la famille Feu, 56+14). Les clés internes
     (préfixées « _ », notes de travail) sont exclues."""
     for nom_fichier, champs in (
             ("arcanes.json", ("invitation", "invitation_personnelle", "lecture")),
-            ("mineurs.json", ("invitation",))):
+            ("mineurs.json", ("invitation", "comprendre"))):
         contenu = json.loads(
             (RACINE / "data" / "corpus" / nom_fichier).read_text(encoding="utf-8"))
         for cle, entree in contenu.items():

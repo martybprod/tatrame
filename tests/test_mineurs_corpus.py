@@ -17,7 +17,13 @@ RACINE = pathlib.Path(__file__).resolve().parents[1]
 CORPUS_PATH = RACINE / "data" / "corpus" / "mineurs.json"
 SOURCE = RACINE / "_distillation" / "sources"
 
-CLES_ATTENDUES = {f"{s}_{r}" for s in M.SUIT_NOM for r in M.RANGS}
+def _cles_attendues():
+    """70 clés : les 4 familles classiques + Feu en rangs Align (page, chevalier)."""
+    cles = set()
+    for suit in M.SUIT_NOM:
+        for r in M.RANGS:
+            cles.add(f"{suit}_{M.RANG_ALIGN.get(r, r) if suit in M.SUIT_ALIGN.values() else r}")
+    return cles
 
 
 def _charger():
@@ -41,13 +47,13 @@ def _norm(txt):
 
 def test_les_56_cles_sont_couvertes():
     entrees = _entrees()
-    manque = CLES_ATTENDUES - entrees.keys()
+    manque = _cles_attendues() - entrees.keys()
     assert not manque, f"mineurs sans entrée corpus : {manque}"
 
 
 def test_aucune_cle_hors_namespace():
     entrees = _entrees()
-    hors = entrees.keys() - CLES_ATTENDUES
+    hors = entrees.keys() - _cles_attendues()
     assert not hors, f"clés hors namespace (faute de frappe ?) : {hors}"
 
 
@@ -144,3 +150,67 @@ def test_aucune_ouverture_ne_domine():
     debuts = Counter(" ".join(_norm(e["invitation"])[:4]) for e in entrees.values())
     trop = {d: n for d, n in debuts.items() if n > 5}
     assert not trop, f"ouvertures qui dominent : {trop}"
+
+
+# ------------------------------------------------ SYMBOLES (famille Feu)
+# Le filet des symboles, comme SYMBOLES_REQUIS pour les majeurs : inventaire
+# fait en regardant chaque image validée ; le texte « comprendre » doit nommer
+# tous les symboles de sa carte, l'invitation en nomme au moins trois.
+SYMBOLES_REQUIS_MINEURS = {
+    "feu_as": ["source", "eau", "lumière", "arbres", "pierres", "fougères", "fleurs"],
+    "feu_2": ["pissenlits", "graines", "vent", "pré", "collines", "ciel"],
+    "feu_3": ["fille", "main", "tronc", "arbre", "yeux", "forêt"],
+    "feu_4": ["lucioles", "fleuve de lumière", "rivière", "nuit", "roseaux", "étoiles"],
+    "feu_5": ["ballon", "cordes", "personnes", "prairie fleurie", "soleil couchant"],
+    "feu_6": ["feu", "guirlandes", "mât", "danse", "village", "étoiles filantes"],
+    "feu_7": ["fil", "précipice", "pile", "livres", "pont", "bras"],
+    "feu_8": ["marcheur", "pieds nus", "chemin", "blés", "village", "montagnes"],
+    "feu_9": ["machine", "rouages", "sablier", "manivelle", "porte", "mer"],
+    "feu_10": ["spirale de feu", "cœur", "femme", "blé"],
+    "feu_page": ["fille", "château de sable", "vague", "papillons", "plage"],
+    "feu_chevalier": ["bloc de pierre", "lunettes", "lumière blanche", "machine de cuivre", "nuit", "étoiles"],
+    "feu_reine": ["reine", "feu", "robe", "jardins", "terrasses", "montagnes"],
+    "feu_roi": ["feu", "branches", "pierres", "personnes", "nuit"],
+}
+
+
+def _couvre(texte, symbole):
+    mots = set(_norm(symbole))
+    plats = set(_norm(texte))
+    return mots <= plats
+
+
+def test_comprendre_nomme_tous_les_symboles():
+    entrees = _entrees()
+    absents = [k for k, sym in SYMBOLES_REQUIS_MINEURS.items()
+               if k in entrees
+               and [s for s in sym if not _couvre(entrees[k].get("comprendre", ""), s)]]
+    assert not absents, f"« comprendre » ne nomme pas tous les symboles : "                         f"{[(k, SYMBOLES_REQUIS_MINEURS[k]) for k in absents]}"
+
+
+def test_invitation_nomme_au_moins_trois_symboles():
+    entrees = _entrees()
+    faibles = []
+    for k, sym in SYMBOLES_REQUIS_MINEURS.items():
+        if k not in entrees:
+            continue
+        t = entrees[k].get("invitation", "")
+        nommes = [s for s in sym if _couvre(t, s)]
+        if len(nommes) < 3:
+            faibles.append((k, len(nommes)))
+    assert not faibles, f"invitation sous les 3 symboles : {faibles}"
+
+
+def test_comprendre_dans_la_fenetre_portrait():
+    entrees = _entrees()
+    hors = {k: len(entrees[k].get("comprendre", "").split())
+            for k in SYMBOLES_REQUIS_MINEURS
+            if k in entrees and not 120 <= len(entrees[k].get("comprendre", "").split()) <= 180}
+    assert not hors, f"« comprendre » hors fenêtre 120-180 mots : {hors}"
+
+
+def test_nom_align_present_pour_la_famille_produite():
+    entrees = _entrees()
+    vides = [k for k in SYMBOLES_REQUIS_MINEURS
+             if k in entrees and not entrees[k].get("nom", "").strip()]
+    assert not vides, f"nom Align manquant : {vides}"

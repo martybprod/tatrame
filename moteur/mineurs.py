@@ -64,7 +64,17 @@ ELEMENT_PAR_SIGNE = {
 SUIT_PAR_ELEMENT = {"feu": "batons", "terre": "deniers", "air": "epees", "eau": "coupes"}
 
 SUIT_NOM = {"batons": "Bâtons", "deniers": "Deniers", "epees": "Épées", "coupes": "Coupes"}
+SUIT_NOM["feu"] = "Feu"   # la famille Align du Feu (images validées + texte produits)
+
 ELEMENT_NOM = {"feu": "Feu", "terre": "Terre", "air": "Air", "eau": "Eau"}
+
+# Les familles ALIGN produites (images validées + texte dans mineurs.json).
+# Un élément absent sert encore sa carte classique — transition douce.
+SUIT_ALIGN = {"feu": "feu"}
+# Les rangs des figures, en Align (le nom des cartes dessinées) :
+# valet → Page, cavalier → Chevalier. Le moteur calcule en valet/cavalier
+# (l'ordre traditionnel), les familles Align affichent page/chevalier.
+RANG_ALIGN = {"valet": "page", "cavalier": "chevalier"}
 
 # ─────────────────────────────────────────────────────────────── les rangs
 
@@ -152,18 +162,25 @@ def carte_mineure(lune_lon, soleil_lon, asc_lon):
     pour le texte.
     """
     signe_lune = SIGNES[int(lune_lon % 360.0 // 30) % 12]
-    suit = SUIT_PAR_ELEMENT[ELEMENT_PAR_SIGNE[signe_lune]]
+    elt = ELEMENT_PAR_SIGNE[signe_lune]
+    suit_corr = SUIT_PAR_ELEMENT[elt]       # la couleur, côté correspondance Golden Dawn
 
     arc = (soleil_lon - asc_lon) % 360.0
     rang = RANGS[min(int(arc // LARGEUR_RANG), len(RANGS) - 1)]
 
-    cle = f"{suit}_{rang}"
-    type_corr, valeur_corr = _correspondance(suit, rang)
+    # La famille ALIGN quand elle est produite (images + texte dans
+    # mineurs.json) ; sinon la carte classique correspondante — transition
+    # douce, jamais un jour sans carte. La correspondance Golden Dawn reste
+    # lue sur la couleur classique : le décan ne dépend pas du nom de famille.
+    suit = SUIT_ALIGN.get(elt, suit_corr)
+    rang_affiche = RANG_ALIGN.get(rang, rang) if suit in SUIT_ALIGN.values() else rang
+    cle = f"{suit}_{rang_affiche}"
+    type_corr, valeur_corr = _correspondance(suit_corr, rang)
     return {
         "suit": suit, "suit_nom": SUIT_NOM[suit],
-        "rang": rang, "rang_nom": RANG_NOM[rang],
+        "rang": rang_affiche, "rang_nom": RANG_NOM[rang],
         "cle": cle,
-        "nom": _nom(suit, rang),
+        "nom": _nom(suit_corr, rang),
         "correspondance": (type_corr, valeur_corr),
         "figure": rang in FIGURES,
     }

@@ -2814,8 +2814,8 @@ async function chargerJour(donnees) {
           ${cj ? ligneCarte('z-carte-maj', urlCarte(cj.numero), 'Le pouls du monde', 'var(--accent)', cj.nom, cj.invitation, T(cj.nom),
               "Le même calcul que ta carte de naissance, appliqué à la date du jour : le monde entier la partage.", cj.lecture) : ''}
           ${cp ? ligneCarte('z-carte-perso', urlCarte(cp.numero), 'Ton arcane du jour', 'var(--accent)', cp.nom, cp.invitation, T(cp.nom), cp.cause_texte, cp.lecture) : ''}
-          ${cm ? ligneCarte('z-carte-min', urlCarteMineur(cm.suit, cm.rang), 'Ta couleur du jour', 'var(--accent)', cm.nom, cm.invitation, 'arcane mineur',
-              "La Lune du jour donne la couleur ; le Soleil, mesuré depuis ton Ascendant de naissance, donne le rang.") : ''}
+          ${cm ? ligneCarte('z-carte-min', urlCarteMineur(cm.suit, cm.rang), 'Ta couleur du jour', 'var(--accent)', cm.nom, cm.invitation, cm.nom,
+              "La Lune du jour donne la couleur ; le Soleil, mesuré depuis ton Ascendant de naissance, donne le rang.", cm.comprendre) : ''}
         </div>
         ${memeCarte}
         ${aide("Trois cartes, pourquoi ?", "« Le pouls du monde » se calcule sur la date du jour seule : le même climat pour tout le monde. « Ton arcane du jour » vient de ton ciel à toi : chaque jour, ton ciel et tes nombres proposent plusieurs cartes, et celle qui sort est celle qu'on ne t'a pas montrée depuis le plus longtemps — le jeu entier finit par passer. « Ta couleur du jour » se calcule sur tes luminaires (couleur = la Lune du jour, rang = l'écart entre le Soleil du jour et ton Ascendant). Les trois sont toujours calculées, jamais tirées.")}
