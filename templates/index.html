@@ -719,9 +719,13 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    affiché, d'où un flash de la carte précédente (Martin, 2026-08-27). */
 .carte-plein-corps img.img-chargement{opacity:0}
 .carte-plein-corps .carte-plein-nom{font-family:var(--serif);font-size:22px;text-align:center}
-/* La cause : plus petite et discrète, entre le nom et l'invitation — elle
-   explique d'où vient la carte, l'invitation fait le reste. */
-.carte-plein-corps .carte-plein-cause{font-size:13.5px;line-height:1.5;color:var(--encre3);text-align:center;margin-top:2px}
+/* Le calcul : d'où vient la carte. Tiroir REPLIÉ (Martin, 2026-09-29 : « je
+   ne veux pas qu'on voie directement l'explication ») — la carte d'abord,
+   l'explication sur demande. Centré comme le reste de la carte plein écran ;
+   le dépli garde le texte discret (encre3), sous la ligne du summary. */
+.carte-plein-corps .carte-plein-calcul{width:100%;max-width:300px;margin-top:0;text-align:center}
+.carte-plein-corps .carte-plein-calcul summary{font-size:11px}
+.carte-plein-corps .carte-plein-calcul p{margin-top:8px;text-align:center}
 /* Le bouton de la lecture de fond : un lien discret sous l'invitation. */
 .carte-plein-corps .carte-plein-suite{background:none;border:0;color:var(--accent);text-decoration:underline;font-size:13.5px;cursor:pointer;margin-top:10px;font-family:inherit}
 /* La lecture dépliée : du texte long, aligné à gauche pour se lire sans effort.
@@ -2007,10 +2011,14 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
   img.alt = nom;
   $('#carte-plein-nom').textContent = nom;
   /* La cause (pourquoi cette carte aujourd'hui) : elle existe pour les trois
-     cartes du rang ; masquée si absente — jamais une ligne vide. */
+     cartes du rang ; masquée si absente — jamais une ligne vide. Depuis le
+     2026-09-29 elle n'est plus affichée d'office : c'est le tiroir replié
+     « Le calcul », remis à zéro à chaque ouverture — même geste que la lecture
+     (Martin : « je ne veux pas qu'on voie directement l'explication »). */
   const causeEl = $('#carte-plein-cause');
-  causeEl.textContent = cause;
+  $('#carte-plein-cause-texte').textContent = cause;
   causeEl.hidden = !cause;
+  causeEl.open = false;
   $('#carte-plein-invitation').textContent = invitation;
   /* La lecture de fond (symboles + enseignement de la carte) : présente pour
      les majeures, absente pour les mineures. Repliée à chaque ouverture, le
@@ -2812,7 +2820,7 @@ async function chargerJour(donnees) {
       <div class="jour-groupe" style="padding:2px 2px 8px">
         <div class="pont carte-jour-paire" style="margin-top:14px">
           ${cj ? ligneCarte('z-carte-maj', urlCarte(cj.numero), 'Le pouls du monde', 'var(--accent)', cj.nom, cj.invitation, T(cj.nom),
-              "Le même calcul que ta carte de naissance, appliqué à la date du jour : le monde entier la partage.", cj.lecture) : ''}
+              "Calculée sur la date du jour seule — comme une carte de naissance se calcule sur une date de naissance. Le monde entier la partage.", cj.lecture) : ''}
           ${cp ? ligneCarte('z-carte-perso', urlCarte(cp.numero), 'Ton arcane du jour', 'var(--accent)', cp.nom, cp.invitation, T(cp.nom), cp.cause_texte, cp.lecture) : ''}
           ${cm ? ligneCarte('z-carte-min', urlCarteMineur(cm.suit, cm.rang), 'Ta couleur du jour', 'var(--accent)', cm.nom, cm.invitation, cm.nom,
               "La Lune du jour donne la couleur ; le Soleil, mesuré depuis ton Ascendant de naissance, donne le rang.", cm.comprendre) : ''}
@@ -4810,7 +4818,10 @@ function fermerFeedback() {
   <div class="accueil-carte"><div class="carte carte-plein-corps">
     <img id="carte-plein-img" src="" alt="">
     <div class="carte-plein-nom" id="carte-plein-nom"></div>
-    <div class="carte-plein-cause" id="carte-plein-cause"></div>
+    <details class="aide carte-plein-calcul" id="carte-plein-cause">
+      <summary>Le calcul</summary>
+      <p id="carte-plein-cause-texte"></p>
+    </details>
     <div class="carte-plein-invitation" id="carte-plein-invitation"></div>
     <button class="carte-plein-suite" id="carte-plein-suite" hidden>Comprendre cette carte</button>
     <div class="carte-plein-lecture" id="carte-plein-lecture" hidden></div>

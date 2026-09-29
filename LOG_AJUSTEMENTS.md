@@ -92,6 +92,23 @@
   du corpus des titres (ciel / chinois / numéro / lune).
 - **Statut** : livré le jour même ; la vérification des premières phrases reste ouverte.
 
+## 2026-09-29 — Plein écran carte du jour : le calcul passe en tiroir replié
+
+- **Demande** (Martin) : (1) ne plus afficher directement l'explication du calcul des
+  cartes du jour — un tiroir replié « Le calcul » à la place ; (2) la phrase du
+  « pouls du monde » (« Le même calcul que ta carte de naissance, appliqué à la date
+  du jour… ») n'était pas claire : on croyait qu'elle parlait de la carte de
+  naissance, pas de la carte du jour.
+- **Décision** : (1) dans la vue plein écran, la ligne `.carte-plein-cause` devient un
+  `<details class="aide carte-plein-calcul">` replié « Le calcul » — remis fermé à
+  chaque ouverture (même geste que la lecture). Seules les trois cartes du jour
+  portaient une `cause` (carte de l'année et arcane de naissance n'en passent pas),
+  donc les autres ouvertures plein écran ne changent pas. (2) La phrase devient :
+  « Calculée sur la date du jour seule — comme une carte de naissance se calcule sur
+  une date de naissance. Le monde entier la partage. » (le parallèle date → carte est
+  explicite, le sujet reste la carte du jour).
+- **Statut** : livré le jour même.
+
 ## 2026-09-27 — Carte IV · Liberté : texte recollé sur la nouvelle image validée (v33)
 
 - **Demande** (Martin) : après refonte de l'image de la carte **IV · Liberté** (« le grand
