@@ -62,7 +62,7 @@ SYMBOLES_REQUIS = {
          "lumière", "palmier", "citronnier", "fleurs", "chat"],
     20: ["statue", "visage", "pierre", "terre", "femme", "robe",
          "frangipanier", "lumière", "herbe", "mousse"],
-    21: ["tisserande", "métier", "mandala", "étoiles", "galaxies", "doigts",
+    21: ["tisserande", "métier", "mandala", "étoiles", "galaxies", "navette",
          "rayon de soleil", "centre", "arc-en-ciel", "papillon", "vierge"],
     22: ["sommet", "silhouette", "nuages", "rais de lumière", "rivière",
          "forêts", "herbes"],
