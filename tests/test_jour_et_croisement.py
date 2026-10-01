@@ -239,10 +239,11 @@ def test_carte_de_naissance_exemple_canonique():
     assert T.carte_de_fond(13, 4, 1975)["numero"] == 3
 
 
-def test_22_referme_la_boucle_sur_le_mat():
-    """22 ≡ 0 — et le nom affiché est celui du jeu maison (cartouche « Foi »)."""
+def test_22_est_le_maitre_et_ne_se_replie_plus_sur_foi():
+    """Le Maître (22) a son propre nom depuis que 0 et 22 alternent (2026-10-01) :
+    une naissance qui donne 22 affiche « Éveil », plus « Foi »."""
     n = T.carte_de_naissance(6, 1, 1950)
-    assert n["numero"] == 22 and n["nom"] == T.ARCANES[0] == "Foi"
+    assert n["numero"] == 22 and n["nom"] == "Éveil"
     assert T.carte_de_fond(6, 1, 1950)["numero"] == 4
 
 

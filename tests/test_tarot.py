@@ -4,13 +4,14 @@ La doctrine d'Align (voir moteur/tarot.py) : une carte ne s'affiche que parce
 qu'elle a été CALCULÉE. Ces tests verrouillent les deux choses qui pourraient
 silencieusement casser l'expérience :
 
-  1. la COHÉRENCE du mapping numéro → image (22 ≡ 0, format 00.jpg…) ;
+  1. la COHÉRENCE du mapping numéro → image (00.jpg … 22.jpg, chacun le sien) ;
   2. l'EXISTENCE de chaque vignette — si une image manque, c'est ICI que ça
      casse, pas à l'écran d'un utilisateur (la leçon des garde-fous image).
 """
 from pathlib import Path
 
-from moteur.tarot import url_carte, URL_DOS, carte_de_naissance, carte_de_l_annee, carte_du_jour
+from moteur.tarot import (url_carte, URL_DOS, carte_de_naissance, carte_de_l_annee, carte_du_jour,
+                          candidats_du_jour, _nom)
 
 # La racine du projet : tests/ → parent. Les images sont servies depuis
 # static/cartes/ à l'exécution ; on vérifie qu'elles existent sur le disque.
@@ -18,10 +19,9 @@ RACINE = Path(__file__).resolve().parent.parent
 
 
 def test_url_carte_couvre_les_22_arcanes():
-    """0 à 21 → 00.jpg à 21.jpg ; 22 ≡ 0 (Foi ferme la boucle)."""
-    for n in range(22):
+    """0 à 22 → 00.jpg à 22.jpg : Le Maître a sa propre vignette."""
+    for n in range(23):
         assert url_carte(n) == f"/static/cartes/{n:02d}.jpg"
-    assert url_carte(22) == "/static/cartes/00.jpg"
 
 
 def test_url_carte_ne_sort_jamais_des_majeurs():
@@ -35,7 +35,7 @@ def test_url_carte_ne_sort_jamais_des_majeurs():
 
 def test_chaque_arcane_a_sa_vignette():
     """Le garde-fou image : chaque arcane 0-21 a une vraie vignette servie."""
-    for n in range(22):
+    for n in range(23):
         p = RACINE / url_carte(n).lstrip("/")
         assert p.exists(), f"vignette manquante pour l'arcane {n} : {p}"
 
@@ -60,7 +60,7 @@ def test_carte_du_jour_est_deterministe():
     a = carte_du_jour(18, 7, 2026)
     b = carte_du_jour(18, 7, 2026)
     assert a == b
-    assert a["numero"] in range(22)
+    assert a["numero"] in range(23)
 
 
 def test_carte_du_jour_est_celle_de_la_naissance_de_la_journee():
@@ -124,8 +124,8 @@ def test_vivier_candidats_sont_des_majeurs_nommes():
     causes_connues = {"astre", "meteo", "terrain", "potentiel",
                       "element", "chapitre", "origine"}
     for x in vivier():
-        assert x["numero"] in range(22)
-        assert x["nom"] == ARCANES[x["numero"]]
+        assert x["numero"] in range(23)
+        assert x["nom"] == _nom(x["numero"])
         assert x["cause"] in causes_connues
 
 
@@ -192,3 +192,25 @@ def test_replay_la_carte_perso_ne_se_figere_pas(monkeypatch):
                                          POSITIONS, jour_pour(dt.date(2026, 9, 1))) == \
            application._carte_perso_pour(THEME, dt.date(2026, 9, 1), n,
                                          POSITIONS, jour_pour(dt.date(2026, 9, 1)))
+
+
+# ────────────────────────────────────────────── le couple 0 / 22 (2026-10-01)
+
+def test_le_29_fevrier_alterne_foi_et_le_maitre():
+    """Le pouls du monde sur l'unique jour hors cycle du calendrier : Foi,
+    puis Le Maître, un 29 février sur deux."""
+    a, b = carte_du_jour(29, 2, 2028), carte_du_jour(29, 2, 2032)
+    assert (a["numero"], a["nom"]) == (0, "Foi")
+    assert (b["numero"], b["nom"]) == (22, "Éveil")
+    # les jours ordinaires ne sont pas touchés
+    assert carte_du_jour(28, 2, 2032)["numero"] <= 22
+    assert carte_du_jour(1, 3, 2032)["numero"] <= 22
+
+
+def test_l_air_alterne_foi_et_le_maitre_selon_la_phase():
+    """Les jours d'Air : Lune croissante → Foi ; décroissante → Le Maître."""
+    vide = {"corps": {}, "angles": {}}
+    croissante = candidats_du_jour(None, None, {"lune": 70.0, "soleil": 340.0}, vide, 1, 1, 1990, 2026)
+    assert [c["numero"] for c in croissante if c["cause"] == "element"] == [0]
+    decroissante = candidats_du_jour(None, None, {"lune": 190.0, "soleil": 340.0}, vide, 1, 1, 1990, 2026)
+    assert [c["numero"] for c in decroissante if c["cause"] == "element"] == [22]

@@ -64,6 +64,8 @@ SYMBOLES_REQUIS = {
          "frangipanier", "lumière", "herbe", "mousse"],
     21: ["tisserande", "métier", "mandala", "étoiles", "galaxies", "doigts",
          "rayon de soleil", "centre", "arc-en-ciel", "papillon", "vierge"],
+    22: ["sommet", "silhouette", "nuages", "rais de lumière", "rivière",
+         "forêts", "herbes"],
 }
 
 

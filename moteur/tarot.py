@@ -103,6 +103,28 @@ FAMILLES = {
 }
 
 
+#: Le Maître (22) — la carte HORS CYCLE du deck. Depuis le 2026-10-01, le 0 et
+#: le 22 ALTERNENT : ce sont les deux faces du même emplacement (« Foi ferme la
+#: boucle qu'elle ouvre »). La Lune tranche sur les jours d'Air — croissante =
+#: Foi (le saut dans le neuf), décroissante = Le Maître (l'achèvement) — et le
+#: pouls du monde alterne sur l'unique jour hors cycle du calendrier, le
+#: 29 février (2028 : Foi · 2032 : Le Maître · …).
+MAITRE = 22
+NOM_MAITRE = "Éveil"
+PREMIER_29_FEVRIER_FOI = 2028
+
+
+def _maitre_du_29_fevrier(annee):
+    """Le pouls du monde les 29 février : Foi, puis Le Maître, un sur deux."""
+    return 0 if ((annee - PREMIER_29_FEVRIER_FOI) // 4) % 2 == 0 else MAITRE
+
+
+def _lune_croissante(positions):
+    """Lune croissante : (Lune - Soleil) mod 360 < 180° — même convention que
+    les huit phases de moteur/jour.py (phase_lunaire)."""
+    return (positions["lune"] - positions["soleil"]) % 360.0 < 180.0
+
+
 def _reduire_vers(n, plafond):
     """Somme des chiffres, itérée, jusqu'à tomber sous le plafond.
 
@@ -116,8 +138,8 @@ def _reduire_vers(n, plafond):
 
 
 def _nom(n):
-    """22 est équivalent à 0 : Foi ferme la boucle qu'elle ouvre."""
-    return ARCANES[0 if n == 22 else n]
+    """22 est Le Maître (Éveil) depuis que 0 et 22 alternent ; 0 reste Foi."""
+    return NOM_MAITRE if n == MAITRE else ARCANES[n]
 
 
 def carte_de_naissance(jour, mois, annee):
@@ -179,7 +201,11 @@ def carte_du_jour(quanti, mois, annee):
     /api/conventions, au côté de « le jour vient du ciel » — les deux
     cohabitent : le ciel donne la journée, l'arcane en donne la coloration.
     """
-    n = _reduire_vers(quanti + mois + annee, 22)
+    if mois == 2 and quanti == 29:
+        # L'unique jour hors cycle du calendrier : la porte du couple 0 / 22.
+        n = _maitre_du_29_fevrier(annee)
+    else:
+        n = _reduire_vers(quanti + mois + annee, 22)
     return {"numero": n, "nom": _nom(n), "correspondance": GOLDEN_DAWN[0 if n == 22 else n]}
 
 
@@ -277,12 +303,17 @@ def candidats_du_jour(dominante, potentiels, positions, theme,
     signe_lune = signe_de(positions["lune"])["signe"]
     element = ELEMENT_PAR_SIGNE.get(signe_lune)
     if element in ARCANE_PAR_ELEMENT:
-        candidats.append(_candidat(ARCANE_PAR_ELEMENT[element], "element",
+        arcane_elt = ARCANE_PAR_ELEMENT[element]
+        if arcane_elt == 0:
+            # Le couple Foi / Le Maître : la phase lunaire tranche —
+            # croissante = Foi (le saut dans le neuf), décroissante = Le Maître.
+            arcane_elt = 0 if _lune_croissante(positions) else MAITRE
+        candidats.append(_candidat(arcane_elt, "element",
                                    signe=signe_lune, element=element))
     n_an = carte_de_l_annee(jour, mois, annee_courante)["numero"]
-    candidats.append(_candidat(0 if n_an == 22 else n_an, "chapitre"))
+    candidats.append(_candidat(n_an, "chapitre"))
     n_nais = carte_de_naissance(jour, mois, annee_naissance)["numero"]
-    candidats.append(_candidat(0 if n_nais == 22 else n_nais, "origine"))
+    candidats.append(_candidat(n_nais, "origine"))
     return candidats
 
 
@@ -330,5 +361,5 @@ def url_carte(numero):
     Les images vivent dans static/cartes/ (servies par Flask) au format
     00.jpg … 21.jpg.
     """
-    n = 0 if numero == 22 else numero
+    n = numero
     return f"/static/cartes/{n:02d}.jpg"

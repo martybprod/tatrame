@@ -372,12 +372,12 @@ def test_les_cles_attendues_sont_toutes_la():
     from moteur.ages import PASSAGES
     assert set(t["ages_detail"]["passages"]) == {cle for cle, _, _ in PASSAGES}
 
-    assert set(t["arcanes"]["arcanes"]) == {str(i) for i in range(22)}
+    assert set(t["arcanes"]["arcanes"]) == {str(i) for i in range(23)}
     # chaque arcane porte SES DEUX messages : la carte du jour (une invitation
     # du présent) et la carte de l'année (la couleur du chapitre). Sans quoi un
     # jour, ou une année, tombe sur une carte muette. Ni l'un ni l'autre ne
     # prédit — ce sont des colorations, additives au ciel et au nombre.
-    for i in range(22):
+    for i in range(23):
         arc = t["arcanes"]["arcanes"][str(i)]
         assert arc.get("invitation"), f"arcane {i} sans message de carte du jour"
         assert arc.get("pour_l_annee"), f"arcane {i} sans message de carte de l'année"
@@ -562,6 +562,11 @@ def test_les_arcanes_collent_a_la_table_golden_dawn():
     arcanes = charger()["arcanes"]["arcanes"]
     for numero, entree in arcanes.items():
         n = int(numero)
+        if n == 22:
+            # Le Maître est HORS CYCLE : pas d'attribution Golden Dawn, et son
+            # propre nom depuis que 0 et 22 alternent.
+            assert entree["nom"] == "Éveil", "arcane 22 : le Maître s'appelle Éveil"
+            continue
         assert entree["nom"] == ARCANES[n], f"arcane {n} : nom divergent"
         # Comparaison insensible à la casse et aux accents : le corpus écrit
         # « Vénus » (du texte, destiné à l'œil), le moteur « venus » (une clé

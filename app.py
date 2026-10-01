@@ -2072,12 +2072,12 @@ def _jour_pour_calcule(profil, date):
     # le nom quand la carte se dévoile. L'arcane 22 est Foi, qui ferme la
     # boucle sur le 0 — on lit donc son texte à la clé « 0 ».
     carte_jr["invitation"] = corpus.lire(
-        "arcanes", "arcanes", str(0 if carte_jr["numero"] == 22 else carte_jr["numero"]),
+        "arcanes", "arcanes", str(carte_jr["numero"]),
         "invitation")
     # La lecture de fond (symboles + enseignement), commune aux deux majeures :
     # c'est elle que le bouton « Comprendre cette carte » déplie en plein écran.
     carte_jr["lecture"] = corpus.lire(
-        "arcanes", "arcanes", str(0 if carte_jr["numero"] == 22 else carte_jr["numero"]),
+        "arcanes", "arcanes", str(carte_jr["numero"]),
         "lecture")
     # La carte mineure PERSONNELLE : couleur = élément de la Lune transit
     # (partagé, change vite) ; rang = écart Soleil transit -> Ascendant natal
