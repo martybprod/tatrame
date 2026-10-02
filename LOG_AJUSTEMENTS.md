@@ -136,3 +136,36 @@
 - **Régénéré** : `TEXTES_22_ARCANES_MAJEURS.html` (`gen_fiches_cartes.py`) ; miroir
   `TEXTES_22_ARCANES_MAJEURS.md`. Suite pytest **verte** (764 passed, 11 skipped).
 - **Statut** : livré le jour même.
+
+## 2026-10-01 — Cartes « mod Martin » : maj 21 et eau 03 remises en app + textes recollés
+
+- **Demande** (Martin) : deux cartes retouchées à la main à mettre en app — **maj 21 ·
+  Accomplissement** et **eau 03 · Célébration** ; pour eau 03, « la modification a changé
+  la saturation », à « remettre au même niveau qu'elle était précédemment » ; puis
+  « réécris le texte correctement et pousse ».
+- **Diagnostic** : les deux dépôts Draw Things portaient une **aberration** que Martin avait
+  retirée sur ses photos — maj 21 : **deux papillons** (un de trop, à gauche) ; eau 03 :
+  **un verre en trop**. Le texte de maj 21 dit « **un** papillon monarque… en haut du
+  métier ».
+- **Décision / travail** (reconstruit sans filigrane à partir des dépôts propres + régions
+  corrigées des photos) :
+  - **maj 21** : papillon en trop retiré + raccord de la robe. Master
+    `cartes_validees/CARTE_major_21_Accomplissement_validee.png`.
+  - **eau 03** : verre en trop retiré + **saturation au niveau précédent** (38,0 → 34,0 %,
+    lum 139 → 140 ; cible v10 = 34,5/141). Master
+    `cartes_validees/CARTE_eau_03_Celebration_validee.png`.
+  - Anciennes validées archivées : `archives/…_AVANT_MOD_MARTIN_2026-10-01.png`.
+  - **Textes recollés** : `arcanes.json` « 21 » (« Au centre du mandala s'allume une
+    lumière dorée, juste là où elle travaille » au lieu du « rayon de soleil descend droit
+    du ciel ») + filet `SYMBOLES_REQUIS[21]` (« rayon de soleil » → « lumière ») ;
+    `corpus_mineurs_eau.json` eau_3 réécrit pour la version **statique** (plus de « pied
+    levé » ; paniers portés ; celui du milieu lève son verre).
+- **Déployé** : `static/cartes/21.jpg` et `static/cartes/mineurs/eau_3.jpg` (800×1388
+  BICUBIC, q82) + miniatures WebP ; cartouches recomposés (41 cartes).
+- **Outil** : `gen_fiches_cartes.py` rendu tolérant aux arcanes **sans `correspondance`**
+  (l'arcane **22** ajouté par une autre session cassait la génération du HTML).
+- **Sources image** : `IMG_20261001_194756(1).png` (maj 21) et
+  `IMG_20261001_201037(1).png` (eau 03) = versions corrigées (photos).
+- **Vérifs** : suite pytest **verte** (771 passed, 11 skipped) ; texte maj 21 recollé dans
+  le HTML régénéré.
+- **Statut** : livré et poussé le jour même.
