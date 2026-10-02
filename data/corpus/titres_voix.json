@@ -8,6 +8,45 @@
     "mois": {
       "miroir": "Le mois personnel change aujourd'hui : une nuance nouvelle se glisse dans ton année. Ce n'est pas un grand virage, plutôt un décalage de teinte — ce à quoi tu fais attention ce mois-ci n'est plus tout à fait pareil.",
       "geste": "Reprends tes projets du moment sous cette lumière neuve, une minute suffit pour remarquer ce qui change d'accent."
+    },
+    "mois_numeros": {
+      "_note_mois_numeros": "Le jour où le mois personnel bascule, le titre dit SA couleur : la variante du numéro qui commence (demande de Martin, 2026-10-01). Sympa, rapide, ce qui est favorisé. Signature commune « Ton nouveau mois commence aujourd'hui » ; chaque texte validé charte + doublons (validateur). Repli sur la variante générique « mois » si le numéro manque.",
+      "1": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, et il pousse doucement vers le départ. Le mois favorise les premiers pas. Une chose entamée cette semaine avance plus facilement qu'à l'accoutumée, même en tout petit.",
+        "geste": "Choisis une seule chose à lancer, et fais aujourd'hui son premier geste."
+      },
+      "2": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, plus lent et plus doux. Le mois te facilite l'ajustement et l'entraide. Une aide peut se présenter sans que tu la demandes, et l'accepter est une vraie force ce mois-ci.",
+        "geste": "Reprends une chose en pause et corrige un seul détail."
+      },
+      "3": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, et il ouvre la parole. Ton terrain de jeu, ce sont les échanges. Les mots viennent plus vite, les gens répondent, ce que tu montres trouve son monde. Bonne période pour dire, montrer, proposer.",
+        "geste": "Choisis la bonne personne et dis-lui ce que tu gardes pour toi."
+      },
+      "4": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, taillé pour le concret. Ce qui se pose et se termine est favorisé. Rien de spectaculaire, mais ce que tu mets en ordre maintenant tiendra debout longtemps. La satisfaction est discrète et bien réelle.",
+        "geste": "Donne une heure au dossier le plus ingrat de ta liste."
+      },
+      "5": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, et il demande de l'air. Le mouvement est à l'honneur. Un changement de décor, de trajet ou de rythme fait plus de bien que prévu. Les imprévus se réglent souvent à ton avantage.",
+        "geste": "Modifie une seule chose dans ton quotidien, et regarde ce qui bouge."
+      },
+      "6": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, chaleureux et dense. Le lien est ton allié ce mois-ci. Un proche a besoin de toi, et ce que tu donnes nourrit aussi ta propre vie. Bien entouré, c'est l'un des mois les plus réconfortants de l'année.",
+        "geste": "Choisis une personne à aider et dis jusqu'où tu iras."
+      },
+      "7": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, plus calme. Le mois ralentit le rythme pour te laisser voir clair. Là où tu courais, tu peux maintenant regarder autour. Ce que tu comprends ici vaut mieux que ce que tu forcerais ailleurs.",
+        "geste": "Prends deux heures seul cette semaine, sans écran et sans but."
+      },
+      "8": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, et il rend ce que tu as construit. Les résultats visibles sont favorisés. Ce que tu as posé depuis des mois peut enfin se mesurer, parfois en argent, souvent en reconnaissance.",
+        "geste": "Regarde en face un chiffre que tu évites, puis laisse-le reposer."
+      },
+      "9": {
+        "miroir": "Ton nouveau mois commence aujourd'hui, et il allège. Ce qui se termine bien est favorisé. Une chose peut être posée, remerciée, rangée, et l'espace rendu se sent tout de suite. La légèreté est le vrai cadeau du mois.",
+        "geste": "Termine une chose sans la remplacer, et laisse le vide s'installer."
+      }
     }
   },
   "lune": {

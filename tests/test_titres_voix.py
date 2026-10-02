@@ -32,6 +32,22 @@ def test_la_bascule_d_annee_prend_le_titre_et_est_nommee():
     assert titre["miroir"] and titre["geste"]
 
 
+def test_la_bascule_de_mois_dit_la_couleur_du_mois_qui_commence():
+    """Demande de Martin (2026-10-01) : le jour de la bascule, le titre ne dit
+    pas seulement « ça change » — il dit SA couleur, la variante écrite pour
+    le numéro qui commence (le générique reste le repli si elle manque)."""
+    titre, routage = _titre(0.2, dt.date(2026, 10, 1), 90.0)
+    assert routage["choix"]["voix"] == "numero"
+    assert routage["choix"]["details"]["numero"]["quel"] == "mois"
+    assert titre["source"] == "numero"
+    assert titre["sous_titre"].startswith("Mois personnel")
+    num = titre["sous_titre"].rsplit(" ", 1)[-1]
+    attendu = application.corpus.lire("titres_voix", "numero", "mois_numeros", num)
+    assert attendu, f"variante mois_numeros[{num}] absente"
+    assert titre["miroir"] == attendu["miroir"]
+    assert titre["geste"] == attendu["geste"]
+
+
 def test_le_pic_lunaire_prend_le_titre_et_est_nomme():
     titre, routage = _titre(0.2, dt.date(2026, 7, 17), 0.0)
     assert routage["choix"]["voix"] == "lune"

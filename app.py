@@ -1794,13 +1794,19 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
         # personnel), pas juste « un changement ». La bascule est un fait de
         # calendrier ; le numéro lui-même dépend de la naissance.
         quel = choix["details"]["numero"]["quel"]
+        txt = None
         if quel == "annee":
             num = annee_personnelle(n["jour"], n["mois"], date.year)
             sous_titre = f"Année personnelle {num}"
         else:
             num = mois_personnel(n["jour"], n["mois"], date.year, date.month)
             sous_titre = f"Mois personnel {num}"
-        txt = corpus.lire("titres_voix", "numero", quel) or {}
+            # Le nouveau mois parle avec SA couleur : la variante écrite pour
+            # le numéro qui commence (ce qui est favorisé, vite lu), avec
+            # repli sur le texte générique de la bascule si elle manque.
+            txt = corpus.lire("titres_voix", "numero", "mois_numeros", num)
+        if txt is None:
+            txt = corpus.lire("titres_voix", "numero", quel) or {}
         if txt.get("miroir"):
             titre = {"source": "numero", "miroir": txt["miroir"],
                      "geste": txt.get("geste"), "sous_titre": sous_titre}
