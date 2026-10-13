@@ -60,3 +60,6 @@ _http.log
 .chrome_tmp/
 # Maquettes visuelles (fichiers de travail, ouverts à la main) — non versionnées
 maquette_*
+
+# Sauvegardes du corpus, prises AVANT chaque écriture depuis l'album (jamais versionnées)
+data/corpus/_sauvegardes/

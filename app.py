@@ -24,6 +24,7 @@ from flask_compress import Compress
 from py_vapid import Vapid
 from pywebpush import webpush
 
+import album as ALBUM
 import auth
 from moteur import ages
 from moteur import aspects as A
@@ -331,7 +332,7 @@ def _pas_de_cache(reponse):
     # ne coûte plus qu'un aller-retour de quelques octets. (L'ancien
     # `no-store` forçait le re-téléchargement complet à chaque ouverture —
     # ruineux sur une liaison transatlantique.)
-    if request.path == "/":
+    if request.path == "/" or request.path == "/album":
         reponse.headers["Cache-Control"] = "no-cache"
     # /sw.js : servi via send_static_file (app.py::service_worker), donc
     # caché par défaut plusieurs heures comme n'importe quel fichier statique.
@@ -442,6 +443,54 @@ def _verrou_profils():
 @app.get("/")
 def accueil():
     return render_template("index.html")
+
+
+@app.get("/album")
+def album_cartes():
+    """L'album visuel des cartes (majeures + familles), lu à la source.
+
+    Rien n'est figé : les images sont cherchées sur disque et les textes lus
+    dans le corpus à CHAQUE visite — une carte ajoutée apparaît seule.
+
+    ``admin`` décide seulement si l'écran propose le mode édition ; la vraie
+    garde est côté écriture (api_album_enregistrer), pas ici.
+    """
+    return render_template("album.html", album=ALBUM.construire_album(),
+                           admin=_session_est_admin())
+
+
+@app.post("/api/album/enregistrer")
+def api_album_enregistrer():
+    """Écrit dans le corpus les textes modifiés depuis l'album.
+
+    C'est la SEULE route de l'app qui modifie le corpus — tout le reste lit.
+    Trois garde-fous, dans cet ordre :
+      1. session admin (l'album se consulte, mais ne s'écrit pas) ;
+      2. ``album.appliquer`` résout TOUTES les cibles avant d'écrire : une clé
+         inconnue arrête le lot entier (jamais de demi-écriture) ;
+      3. sauvegarde horodatée de chaque fichier touché, avant écriture.
+    Ensuite le corpus est RELU : le Jour, les portraits, les rappels et le
+    bundle parleront des nouveaux textes dès le prochain appel, sans redémarrer.
+    """
+    if not _session_est_admin():
+        return jsonify({"erreur": "non-admin"}), 403
+    body = request.get_json(silent=True) or {}
+    modifications = body.get("modifications")
+    if not isinstance(modifications, list) or not modifications:
+        return jsonify({"erreur": "aucune modification reçue"}), 400
+    try:
+        rapport = ALBUM.appliquer(modifications)
+    except ValueError as e:
+        return jsonify({"erreur": str(e)}), 400
+    except (OSError, json.JSONDecodeError) as e:
+        return jsonify({"erreur": "écriture impossible : %s" % e}), 500
+
+    corpus.recharger()
+    # Les mémoïsations portent du texte déjà lu dans l'ancien corpus : on les
+    # jette, elles se recalculent seules au prochain appel.
+    _MEMO_JOURS.clear()
+    _MEMO_CIEL.clear()
+    return jsonify({"ok": True, "rapport": rapport})
 
 
 @app.get("/api/lieux")

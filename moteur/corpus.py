@@ -35,8 +35,23 @@ class Corpus:
         #: par des rédacteurs différents (c'est ce qui évite les tics), mais
         #: l'app doit les lire comme une seule table.
         self.axes = {}
+        self._charger()
 
-        for fichier in sorted(dossier.glob("*.json")):
+    def recharger(self):
+        """Relit les fichiers du dossier et remplace les tables.
+
+        N'existe que pour UN cas : l'édition d'un texte depuis l'album
+        (app.py::api_album_enregistrer). Écrire un fichier ne suffit pas — le
+        corpus est chargé UNE fois au démarrage, et l'app doit reparler des
+        nouveaux textes sans redémarrer. On relit ici, en place : les tables
+        restent le même objet, les lecteurs (``corpus.lire``) voient le neuf.
+        """
+        self.tables = {}
+        self.axes = {}
+        self._charger()
+
+    def _charger(self):
+        for fichier in sorted(self.dossier.glob("*.json")):
             table = json.loads(fichier.read_text(encoding="utf-8"))
             self.tables[fichier.stem] = table
             for cle, contenu in table.items():

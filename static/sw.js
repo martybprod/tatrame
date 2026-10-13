@@ -9,7 +9,10 @@
 //   - la page (le JS/CSS vit inline dedans) : cache-d'abord + revalidation en
 //     arrière-plan (stale-while-revalidate) → l'app s'ouvre instantanément,
 //     la version suivante arrive pour la PROCHAINE ouverture. Un déploiement
-//     se voit donc au ré-open suivant, jamais à des semaines ;
+//     se voit donc au ré-open suivant, jamais à des semaines. PORTÉE : la
+//     RACINE seulement — les autres navigations (/album, /admin…) vont au
+//     réseau, sinon le worker rendrait la page précédente à la mauvaise
+//     adresse (bogue corrigé le 2026-10-12, voir page_swr) ;
 //   - le bundle du jour (/api/bundle) : RÉSEAU d'abord — c'est la donnée
 //     vivante de la journée, le serveur reste la source de vérité. Le cache
 //     ne parle qu'en repli (hors-ligne / réseau coupé) : il sert alors la
@@ -58,6 +61,13 @@ const CACHE_JOUR = "tatrame-jour-v1";       // le bundle du jour (repli hors-lig
 // Stockée TOUJOURS sous la clé `/` (match avec ignoreSearch) : les navigations
 // arrivent avec des requêtes (`/?carte=…` des rappels push) qui ne doivent
 // pas multiplier les entrées ni rater le cache.
+//
+// ⚠️ PORTÉE — la clé `/` contient le CORPS de la dernière navigation, quelle
+// qu'elle soit. Servir cette entrée pour une AUTRE adresse rendait donc la
+// mauvaise page : Martin ouvre `/admin/commentaires`, le worker lui rend
+// l'album mis en cache à l'instant d'avant — formulaire de connexion jamais
+// vu, bouton d'édition jamais atteint (vécu le 2026-10-12). Le fetch ne route
+// donc QUE la racine ici ; tout le reste des navigations va au réseau.
 async function page_swr(event) {
   const cache = await caches.open(CACHE_PAGES);
   const en_cache = await cache.match("/", { ignoreSearch: true });
@@ -105,7 +115,12 @@ self.addEventListener("fetch", (event) => {
     return;
   }
   if (event.request.mode === "navigate") {
-    event.respondWith(page_swr(event));
+    // SEULE la page de l'app (« / ») passe par le cache : voir page_swr.
+    // Les autres navigations (l'album, l'admin) sont servies par le RÉSEAU —
+    // sinon le worker rend le corps de la précédente, à la mauvaise adresse.
+    if (url.pathname === "/") {
+      event.respondWith(page_swr(event));
+    }
     return;
   }
   if (url.pathname.startsWith("/static/")) {

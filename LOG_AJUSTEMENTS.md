@@ -169,3 +169,39 @@
 - **Vérifs** : suite pytest **verte** (771 passed, 11 skipped) ; texte maj 21 recollé dans
   le HTML régénéré.
 - **Statut** : livré et poussé le jour même.
+
+## 2026-10-03 — RÈGLE : une seule image à la fois (et non trois)
+
+- **Demande** (Martin) : « il faut vraiment que tu notes quelque part en gros et
+  prioritaire que tu ne fais jamais trois cartes si je ne t'en donne pas expressément
+  et explicitement la consigne. Ce que je voudrais, c'est que le personnage sur la
+  nouvelle carte [saisisse] un coin en haut pour voir derrière. »
+- **Contexte** : sur le 6 d'Eau · Illusion, trois tirages ont été produits à chaque
+  itération (v1 « la toile », puis v2 « le coin tiré ») ; Martin n'en a retenu aucun
+  et a arrêté la série.
+- **Décision** : la règle est inscrite **en tête de `ASTRO_PLUS_APP/AGENTS.md`**
+  (section « RÈGLE PRIORITAIRE — UNE IMAGE À LA FOIS »), donc chargée à chaque
+  session. Une itération = une image ; trois seulement sur consigne expresse.
+  La production des mineures reprend **une carte à la fois, un tirage à la fois**.
+- **Statut** : règle inscrite le jour même.
+
+## 2026-10-03 — 5 d'Eau · Attachement livrée · style d'origine rétabli · HTTP/LoRA
+
+- **Demande** (Martin) : revenir au **style des premières cartes majeures**, « par
+  souci de cohérence », puis « certains pas effacés par les vagues ».
+- **Style** : le bloc des premières cartes est celui de `_gen_carte_Existence_v9_validee.py`
+  (« large flat areas », « no realistic shading, no modelling of light and shadow »,
+  « not a comic ») ; le bloc des cartes Eau en était une **version tronquée**.
+  Rétabli, il ramène le trait et l'aplat. La variante faible (`_gen_carte.py`) ne suffit pas.
+- **Découverte** : l'API HTTP **accepte et applique** la clé `loras` et remplace la pile
+  de l'app (vérifié dans les métadonnées XMP du PNG). Le postulat « le HTTP subit les
+  LoRA de l'app » était **faux** — une recette JSON est reproductible de bout en bout.
+- **Master 5 d'Eau** : retouche haute résolution de Martin (6932×10399, graine d'origine
+  779068, v15-C), réduite en 1024×1536 ; export et ancien master archivés ; fiche
+  `_gen_carte_Attachement_v15C_validee.py`.
+- **Organisation** : ancre `style_deck_origine` dans `_ancres.json` (le bloc ne se recopie
+  plus), contrôle pré-vol `_verifier_recette.py`, LoRA déclarés, section 0 dans
+  `ETAT_PRODUCTION_MINEURS.md`.
+- **Textes** : les 5 textes Eau (as, 2, 3, 4, 5) sont conformes à la charte ; celui de la 2
+  (Amitié) réécrit (il ne nommait qu'un symbole). Livraison des 14 Eau en bloc décidée.
+- **Statut** : livré le jour même ; **non poussé**.

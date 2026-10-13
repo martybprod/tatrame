@@ -65,12 +65,13 @@ SUIT_PAR_ELEMENT = {"feu": "batons", "terre": "deniers", "air": "epees", "eau": 
 
 SUIT_NOM = {"batons": "Bâtons", "deniers": "Deniers", "epees": "Épées", "coupes": "Coupes"}
 SUIT_NOM["feu"] = "Feu"   # la famille Align du Feu (images validées + texte produits)
+SUIT_NOM["eau"] = "Eau"   # la famille Align de l'Eau (2026-10-13 : 14 images + 14 textes)
 
 ELEMENT_NOM = {"feu": "Feu", "terre": "Terre", "air": "Air", "eau": "Eau"}
 
 # Les familles ALIGN produites (images validées + texte dans mineurs.json).
 # Un élément absent sert encore sa carte classique — transition douce.
-SUIT_ALIGN = {"feu": "feu"}
+SUIT_ALIGN = {"feu": "feu", "eau": "eau"}
 # Les rangs des figures, en Align (le nom des cartes dessinées) :
 # valet → Page, cavalier → Chevalier. Le moteur calcule en valet/cavalier
 # (l'ordre traditionnel), les familles Align affichent page/chevalier.
