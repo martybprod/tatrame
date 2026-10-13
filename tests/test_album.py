@@ -20,7 +20,7 @@ import album
 
 RACINE = pathlib.Path(__file__).resolve().parents[1]
 
-SECTIONS_ATTENDUES = ["majeurs", "feu", "eau", "nuages", "arc_en_ciel"]
+SECTIONS_ATTENDUES = ["majeurs", "feu", "eau", "air", "terre"]
 
 
 @pytest.fixture(scope="module")
@@ -64,10 +64,10 @@ def test_toute_carte_a_un_texte(donnees):
 
 
 def test_repli_sur_le_texte_classique_quand_la_famille_n_est_pas_redigee(donnees):
-    """Nuages n'a pas encore son texte : la carte doit tout de même servir
+    """Air n'a pas encore son texte : la carte doit tout de même servir
     l'invitation classique (Épées), avec une note honnête — jamais du vide."""
-    nuages = next(s for s in donnees["sections"] if s["id"] == "nuages")
-    for carte in nuages["cartes"]:
+    air = next(s for s in donnees["sections"] if s["id"] == "air")
+    for carte in air["cartes"]:
         assert carte["textes"], carte["id"]
         assert carte["note_texte"], carte["id"]
         assert "Épées" in carte["note_texte"]

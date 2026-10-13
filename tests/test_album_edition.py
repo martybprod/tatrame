@@ -74,11 +74,11 @@ def test_cible_mineure_du_corpus_de_travail(faux_corpus):
 
 
 def test_famille_non_redigee_ecrit_dans_la_couleur_classique(faux_corpus):
-    """Nuages n'est pas encore écrit : le texte AFFICHÉ est celui d'Épées, et
+    """Air n'est pas encore écrit : le texte AFFICHÉ est celui d'Épées, et
     c'est là — sa vraie maison — qu'on l'écrit. Sinon l'édition ne
     s'appliquerait à rien de visible."""
     corpus, _ = faux_corpus
-    chemin, cle = album.cible_ecriture("nuages-3", "invitation")
+    chemin, cle = album.cible_ecriture("air-3", "invitation")
     assert chemin == corpus / "mineurs.json"
     assert cle == ["epees_3", "invitation"]
 

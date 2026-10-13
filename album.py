@@ -62,9 +62,8 @@ NOMS_CARTES = DISTILLATION / "noms_cartes.json"
 FAMILLES = [
     {"cle": "feu", "nom": "Feu", "classique": "batons", "couleur": "Bâtons"},
     {"cle": "eau", "nom": "Eau", "classique": "coupes", "couleur": "Coupes"},
-    {"cle": "nuages", "nom": "Nuages", "classique": "epees", "couleur": "Épées"},
-    {"cle": "arc_en_ciel", "nom": "Arc-en-ciel", "classique": "deniers",
-     "couleur": "Deniers", "prefixe": "arc"},
+    {"cle": "air", "nom": "Air", "classique": "epees", "couleur": "Épées"},
+    {"cle": "terre", "nom": "Terre", "classique": "deniers", "couleur": "Deniers"},
 ]
 
 # Les 14 rangs d'une famille, dans l'ordre de lecture (Align : Page, Chevalier).

@@ -105,7 +105,7 @@ def test_les_deux_fichiers_de_cartes_sont_dans_l_index():
     # Eau est INTÉGRÉE (2026-10-13 : 14 images + 14 textes) : ses clés vivent
     # dans mineurs.json, l'app gagne le doublon et le corpus de travail
     # `_distillation/corpus_mineurs_eau.json` n'est plus indexé — voulu. La
-    # prochaine famille (Nuages…) se ramassera seule, de la même façon.
+    # prochaine famille (Air…) se ramassera seule, de la même façon.
     sources = album._sources_mineurs()
     assert sources["eau_roi"][1].name == "mineurs.json"
     assert sources["eau_reine"][1].name == "mineurs.json"
