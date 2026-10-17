@@ -3110,12 +3110,12 @@ async function chargerJour(donnees) {
       carteAccueil.dataset.jour = j.date;   // clé « une fois par moment »
       carteAccueil.dataset.periode = 'jour';
       carteAccueil.innerHTML = `<div class="carte">
-        <div class="accueil-date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
         <div class="chapo">Aujourd'hui</div>
         ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
-        ${/* L'amorce du matin (conseil court, résolue côté serveur avec repli miroir) */''}
+        ${/* L'amorce du matin : le cœur du message, rien d'autre — ni date ni
+           geste (demande de Martin, 2026-10-17). Le geste reste dans le
+           plein écran. */''}
         <div class="miroir">${T(titre.amorce)}</div>
-        ${blocGeste(titre.geste, "Aujourd'hui")}
       </div>`;
     } else {
       delete carteAccueil.dataset.jour;   // rien à montrer, ni jour ni soir
