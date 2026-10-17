@@ -1867,8 +1867,9 @@ const CLE_ACCUEIL_VU = 'trame.accueil.vu5';
    rejoué, comme si personne n'avait ouvert l'app aujourd'hui. Pour les
    vérifications SANS déploiement, voir `?jour-neuf` dans demarrer(). */
 // Le geste de sortie est maintenant explicite (✕ / fond / Échap), le message
-// revient UNE FOIS PAR MOMENT (jour OU soir — voir cleAccueil) : mode test
-// « à chaque chargement » (2026-08-22) retiré, décision de Martin (2026-09-23).
+// revenait UNE FOIS PAR MOMENT (jour OU soir — voir cleAccueil). Depuis le
+// 2026-10-17 (demande de Martin) : l'amorce du matin se rejoue à CHAQUE
+// démarrage/redémarrage jusqu'à 13h — voir avantTreizeHeure().
 const ACCUEIL_TEST_TOUJOURS = false;
 let fermetureAccueilEnCours = false;
 
@@ -1893,13 +1894,24 @@ function cleAccueil(carte) {
   return carte.dataset.jour + '-' + (carte.dataset.periode || 'jour');
 }
 
+// L'amorce du matin reste visible à CHAQUE démarrage/redémarrage jusqu'à 13h
+// (heure locale de l'appareil — demande de Martin, 2026-10-17) : le « déjà
+// vu » ne bloque qu'APRÈS 13h. Le soir, `estSoir()` prend le relais avec
+// « À méditer ».
+function avantTreizeHeure() {
+  return new Date().getHours() < 13;
+}
+
 function montrerAccueilJour(force) {
   const acc = $('#accueil-jour');
   const carte = $('#accueil-jour .accueil-carte');
   const jour = carte && carte.dataset.jour;
   if (!jour) return false;                            // rien d'écrit pour ce moment
   // `force` (clic sur un rappel « message du jour ») rouvre même si déjà vu.
-  if (!force && !ACCUEIL_TEST_TOUJOURS && localStorage.getItem(CLE_ACCUEIL_VU) === cleAccueil(carte)) return false;  // déjà vu
+  // Avant 13h, l'amorce se rejoue à chaque démarrage : le « déjà vu » ne
+  // bloque qu'après 13h (demande de Martin, 2026-10-17).
+  if (!force && !ACCUEIL_TEST_TOUJOURS && !avantTreizeHeure() &&
+      localStorage.getItem(CLE_ACCUEIL_VU) === cleAccueil(carte)) return false;  // déjà vu
   fermetureAccueilEnCours = false;
   acc.classList.remove('fermant');
   acc.classList.add('ouvert');
