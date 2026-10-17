@@ -282,6 +282,19 @@ valeur ; t'ajuster un pas à la fois, c'est déjà beaucoup. »)
 - **Reste (clôture)** : revue vivante de l'app (accueil, notification, un
   jour précis) avec Martin, puis éventuel ajustement final. Le chantier
   d'écriture est terminé.
+- **2026-10-17 (matin) · Test + correction** : Martin voit encore l'ancien
+  message sur la PWA. Diagnostic : le service worker sert la page en
+  stale-while-revalidate (design d'ouverture instantanée du 2026-09-23) —
+  après un déploiement, la première ouverture montre l'ancienne page, la
+  fraîche arrive à la suivante. Correctif : caches du worker bumpés v1 → v2
+  (commit `d191dfe`, poussé, vérifié en ligne) → purge garantie à la
+  prochaine navigation de chaque appareil. Le « déjà vu » de l'accueil est
+  par (date, période) côté appareil : rien à réinitialiser côté comptes.
+  Version dev (127.0.0.1:5073) : serveur local redémarré (il tournait depuis
+  mardi) — amorce visible ✓. ⚠️ Leçon : le redémarrage local a utilisé un
+  pkill trop large qui a tué d'autres apps de l'écosystème (relancées par
+  leurs watchdogs : archiviste ✓ ollama ✓ ; les autres services « auto » à
+  vérifier/relancer via Vibe Station au besoin).
 - **2026-10-16 (nuit) · Commit + déploiement** : commit `96ff97a` sur `main`
   (10 fichiers du chantier, 3 148 insertions — le travail album/cartes en
   cours de Martin reste non commité) + push → rebuild Coolify déclenché.
@@ -326,6 +339,24 @@ valeur ; t'ajuster un pas à la fois, c'est déjà beaucoup. »)
   et 12 intégrés, couverture 180/180 verrouillée par test. 260 amorces en
   place dans tout le corpus. 830 verts. Reste : revue vivante de l'app avec
   Martin.
+- **2026-10-17 (matin) · Raffinement carte d'accueil** : la carte du matin
+  ne montre plus que le cœur — l'amorce seule, **sans le geste (« En
+  action ») et sans la date** (le geste reste au plein écran « Aujourd'hui »).
+  Commit `df4ffe9` poussé. Question ouverte : le sous-titre (« Le Rat de
+  bois… ») reste pour l'instant — à trancher avec Martin.
+- **2026-10-17 (matin, suite) · Remise à zéro générale** : clés bumpées
+  `vu4 → vu5` et `v4 → v5` — tout le monde repart « première ouverture »
+  à la prochaine navigation après déploiement (accueil rejoué, cartes au
+  dos). Rappel : la prise `?jour-neuf` (URL) fait la même chose SANS
+  déploiement — c'était le moyen de test immédiat, déjà dans l'app.
+  ⚠️ Mot de passe du profil de test `jean-test-0384ca` défini lors de la
+  vérification navigateur (profil de test, sans données réelles).
+  Déploiement `8c6a20f` poussé. 830 verts.
+- **2026-10-17 (après-midi) · Règle « jusqu'à 13h »** : avant 13h (heure de
+  l'appareil), le « déjà vu » ne bloque plus — l'amorce se rejoue à chaque
+  démarrage/redémarrage de l'app. Après 13h : une fois par jour comme avant.
+  « À méditer » le soir inchangé. `avantTreizeHeure()` dans index.html.
+  Déploiement `2841e7c`. 830 verts.
 
 - **2026-10-16 (nuit, fin¹³) · OpenChamber** — Batch 11 des précis intégré
   (clés 151-165, 1 seule correction). 165/180 amorcées — il reste un seul
