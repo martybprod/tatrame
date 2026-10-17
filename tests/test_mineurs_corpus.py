@@ -188,17 +188,32 @@ def test_comprendre_nomme_tous_les_symboles():
     assert not absents, f"« comprendre » ne nomme pas tous les symboles : "                         f"{[(k, SYMBOLES_REQUIS_MINEURS[k]) for k in absents]}"
 
 
-def test_invitation_nomme_au_moins_trois_symboles():
+def test_invitation_n_est_pas_une_scene():
+    """Convention du 2026-10-17 (option A) : l'invitation d'une mineure est
+    une INVITATION DU JOUR — un geste adressé au lecteur, jamais une
+    description de la scène. La scène vit dans le premier paragraphe du
+    « comprendre » seul. Avant la correction, l'invitation reprenait 56 %
+    (Feu) à 71 % (Air) des mots du 1er ¶, avec 21 suites de ≥ 5 mots
+    partagées ; les majeures, elles, sont à ~26 % et 0 suite.
+    Ce test garde la ligne au niveau des majeures."""
     entrees = _entrees()
-    faibles = []
-    for k, sym in SYMBOLES_REQUIS_MINEURS.items():
-        if k not in entrees:
+    fautifs = []
+    for k, v in entrees.items():
+        inv, comp = v.get("invitation", ""), v.get("comprendre", "")
+        if not inv or not comp:
+            continue  # les entrées à invitation seule (textes traditionnels) n'ont rien à dupliquer
+        a = [w for w in _norm(inv) if len(w) > 2]
+        b = _norm(comp.split("\n\n")[0])
+        if not a or not b:
             continue
-        t = entrees[k].get("invitation", "")
-        nommes = [s for s in sym if _couvre(t, s)]
-        if len(nommes) < 3:
-            faibles.append((k, len(nommes)))
-    assert not faibles, f"invitation sous les 3 symboles : {faibles}"
+        part = sum(1 for w in a if w in set(b)) / len(a)
+        sb = {" ".join(b[i:i + 5]) for i in range(len(b) - 4)}
+        suite = any(" ".join(a[i:i + 5]) in sb for i in range(len(a) - 4))
+        if part > 0.45 or suite:
+            fautifs.append((k, round(100 * part), suite))
+    assert not fautifs, (
+        "invitation qui re-décrit la scène (à réécrire en invitation du jour) : "
+        f"{fautifs} — la scène appartient au 1er ¶ du « comprendre » seul")
 
 
 def test_comprendre_dans_la_fenetre_portrait():
