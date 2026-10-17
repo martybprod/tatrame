@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadre Mucha — maquette crayon v1</title>
+<style>
+  /* ═══ Maquette crayon : cadre Art Nouveau (Mucha) pour les cartes de l'UI.
+     BUT : juger la PLACE, la DENSITÉ et l'ÉCHELLE du cadre avant toute
+     génération Draw Things. Le trait ici est un crayon SVG fait main —
+     le vrai cadre (whiplash organiques, médaillons peints, grain aquarelle)
+     sera généré par Draw Things puis duotoné sur les MÊMES hex de l'app.
+     La palette ci-dessous est celle de l'app, à l'octet près. ═══ */
+  :root{
+    --encre:#ece0bd; --encre2:#b3a68a; --encre3:#86795f;
+    --papier:#141110; --papier2:#1e1a16; --bord:#372e1e;
+    --accent:#d9b95c; --accent-doux:#e9d494;
+    --page:#241f18;
+    --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);padding:26px 16px 34px}
+  .wrap{max-width:736px;margin:0 auto}
+  h1{font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:.01em}
+  .intro{font-size:13.5px;line-height:1.55;opacity:.75;margin:8px 0 18px;max-width:64ch}
+
+  /* la toile sombre = le fond de l'app */
+  .toile{background:var(--papier);border-radius:14px;padding:26px 18px 30px;
+    display:flex;flex-direction:column;gap:26px}
+  .sect-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;
+    color:var(--encre3);font-weight:600;margin:0 0 10px 2px}
+  .duo{display:flex;flex-wrap:wrap;gap:22px;justify-content:center}
+  .scene{width:344px;max-width:100%}
+  .caption{font-size:12px;color:var(--encre3);text-align:center;margin-top:10px}
+  .caption b{color:var(--encre2);font-weight:600}
+
+  /* ── les vraies classes de l'app (copiées d'index.html) ── */
+  .carte{background:var(--papier2);border:1px solid var(--bord);border-radius:var(--r,14px);
+    padding:24px;margin:0}
+  .chapo{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--encre3);margin-bottom:12px}
+  .quoi{font-size:13px;color:var(--encre3);line-height:1.55;margin-top:6px}
+  .miroir{font-family:var(--serif);font-size:21px;line-height:1.5;margin-bottom:18px;color:var(--encre)}
+  .geste{position:relative;border-left:2px solid var(--accent-doux);padding-left:16px;
+    color:var(--encre2);font-size:15px;line-height:1.5}
+  .geste strong{color:var(--encre);font-weight:600}
+  .apercu-message{font-family:var(--serif);font-size:16.5px;line-height:1.5;color:var(--encre2);margin:12px 0 0}
+
+  /* ── la variante « après » : le cadre Mucha en calque SVG 9-slice simulé ── */
+  .carte.cadree{border:0;border-radius:12px;position:relative;height:214px;
+    padding:36px 38px 28px}
+  .cadre-svg{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+
+  /* .carte standard, gradation « coins + filet » */
+  .carte.coins{border:0;border-radius:12px;position:relative;height:212px;
+    padding:28px 32px 22px}
+
+  /* la page du journal + filet Mucha */
+  .journal-page{position:relative;background:var(--page);border-radius:14px 14px 4px 4px;
+    padding:16px 18px 30px;min-height:96px;
+    font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.6;color:var(--encre3)}
+  .filet-svg{position:absolute;left:50%;transform:translateX(-50%);bottom:9px;
+    width:calc(100% - 40px);height:18px;display:block}
+
+  /* ── notes sous la toile ── */
+  .notes{margin-top:20px;font-size:13px;line-height:1.6;max-width:68ch}
+  .notes li{margin:0 0 7px 18px}
+  .notes .pal{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;opacity:.85}
+  .next{margin-top:14px;font-size:13px;color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- le symbole du coin : médaillon rond + coups de fouet + feuilles,
+       dessiné UNE fois pour top-left ; les 3 autres coins sont des miroirs.
+       C'est le crayon de ce que Draw Things devra peindre. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="coin" viewBox="0 0 78 78">
+        <!-- médaillon -->
+        <circle cx="34" cy="34" r="13.5" fill="none" stroke="#d9b95c" stroke-width="1.4"/>
+        <circle cx="34" cy="34" r="9.6" fill="none" stroke="#e9d494" stroke-width=".6" opacity=".5"/>
+        <g fill="#e9d494" opacity=".8">
+          <ellipse cx="34" cy="27.6" rx="2" ry="4.4"/>
+          <ellipse cx="34" cy="27.6" rx="2" ry="4.4" transform="rotate(60 34 34)"/>
+          <ellipse cx="34" cy="27.6" rx="2" ry="4.4" transform="rotate(120 34 34)"/>
+          <ellipse cx="34" cy="27.6" rx="2" ry="4.4" transform="rotate(180 34 34)"/>
+          <ellipse cx="34" cy="27.6" rx="2" ry="4.4" transform="rotate(240 34 34)"/>
+          <ellipse cx="34" cy="27.6" rx="2" ry="4.4" transform="rotate(300 34 34)"/>
+        </g>
+        <circle cx="34" cy="34" r="2" fill="#d9b95c"/>
+        <!-- coup de fouet horizontal (vers la droite) + son écho -->
+        <path d="M45.5 28.5 C55 21, 63 33, 78 25.5" fill="none" stroke="#d9b95c" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M47.5 32.5 C57 26, 64.5 36.5, 78 31" fill="none" stroke="#e9d494" stroke-width=".6" stroke-linecap="round" opacity=".55"/>
+        <!-- coup de fouet vertical (vers le bas) + son écho -->
+        <path d="M28.5 45.5 C21 55, 33 63, 25.5 78" fill="none" stroke="#d9b95c" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M32.5 47.5 C26 57, 36.5 64.5, 31 78" fill="none" stroke="#e9d494" stroke-width=".6" stroke-linecap="round" opacity=".55"/>
+        <!-- feuilles vers la diagonale du coin -->
+        <path d="M43.5 43.5 q7.5 -1.5 10 -8.5 q-8 1.5 -10 8.5 z" fill="#d9b95c" opacity=".42"/>
+        <path d="M43.5 43.5 q-1.5 7.5 -8.5 10 q1.5 -8 8.5 -10 z" fill="#d9b95c" opacity=".42"/>
+        <!-- bourgeons -->
+        <circle cx="64" cy="26.5" r="1.3" fill="#e9d494" opacity=".85"/>
+        <circle cx="26.5" cy="64" r="1.3" fill="#e9d494" opacity=".85"/>
+      </symbol>
+      <linearGradient id="fg" x1="0" x2="1">
+        <stop offset="0" stop-color="#e9d494" stop-opacity="0"/>
+        <stop offset=".3" stop-color="#e9d494" stop-opacity=".75"/>
+        <stop offset=".7" stop-color="#e9d494" stop-opacity=".75"/>
+        <stop offset="1" stop-color="#e9d494" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <h1>Cadre Mucha pour les cartes — maquette crayon v1</h1>
+  <p class="intro">Le héros « Aujourd'hui » tel qu'il est, puis avec le cadre Art Nouveau
+    ajouré (médaillons aux coins, whiplash, double filet) — et la gradation prévue pour
+    le reste de l'app. Palette de l'app à l'hex près, rien ne change.</p>
+
+  <div class="toile">
+
+    <div>
+      <p class="sect-label">1 · Le héros du jour — avant / après</p>
+      <div class="duo">
+
+        <!-- AVANT : copie exacte du rendu actuel (carte-jour-hero--entree) -->
+        <div class="scene">
+          <div class="carte" style="padding:22px 26px">
+            <div class="chapo">Aujourd'hui</div>
+            <p class="quoi" style="margin:-4px 0 0">Un jour pour ralentir le fil</p>
+            <p class="apercu-message">Le fil se tend moins qu'hier. Ce que tu as noué la
+              semaine dernière demande moins de force que de patience — laisse la trame
+              avancer d'elle-même.</p>
+          </div>
+          <p class="caption"><b>Tel qu'il est</b> — bordure 1px, radius 14px</p>
+        </div>
+
+        <!-- APRÈS : même carte, le cadre en calque (ici SVG crayon ;
+             en vrai : PNG Draw Things duotoné, monté en border-image 9-slice) -->
+        <div class="scene">
+          <div class="carte cadree">
+            <svg class="cadre-svg" viewBox="0 0 344 214" preserveAspectRatio="none" aria-hidden="true">
+              <!-- double filet périphérique -->
+              <rect x="8.5" y="8.5" width="327" height="197" rx="10" fill="none" stroke="#6b5a33" stroke-width="1"/>
+              <rect x="13" y="13" width="318" height="188" rx="8" fill="none" stroke="#e9d494" stroke-width="1" opacity=".38"/>
+              <!-- les quatre coins (miroirs du symbole) -->
+              <use href="#coin" x="0" y="0" width="78" height="78"/>
+              <use href="#coin" x="0" y="0" width="78" height="78" transform="translate(344,0) scale(-1,1)"/>
+              <use href="#coin" x="0" y="0" width="78" height="78" transform="translate(0,214) scale(1,-1)"/>
+              <use href="#coin" x="0" y="0" width="78" height="78" transform="translate(344,214) scale(-1,-1)"/>
+              <!-- connecteurs sinusoïdes, bords -->
+              <path d="M78 25.5 C128 19, 166 32, 208 26 S 246 20, 266 24.5" fill="none" stroke="#d9b95c" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
+              <path d="M78 188.5 C128 195, 166 182, 208 188 S 246 194, 266 189.5" fill="none" stroke="#d9b95c" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
+              <path d="M25.5 78 C19 100, 32 118, 25.5 136" fill="none" stroke="#d9b95c" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
+              <path d="M318.5 78 C325 100, 312 118, 318.5 136" fill="none" stroke="#d9b95c" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
+              <!-- bourgeons de milieu de bord -->
+              <circle cx="172" cy="25" r="1.5" fill="#e9d494" opacity=".85"/>
+              <circle cx="172" cy="189" r="1.5" fill="#e9d494" opacity=".85"/>
+              <circle cx="25" cy="107" r="1.5" fill="#e9d494" opacity=".85"/>
+              <circle cx="319" cy="107" r="1.5" fill="#e9d494" opacity=".85"/>
+            </svg>
+            <div class="chapo">Aujourd'hui</div>
+            <p class="quoi" style="margin:-4px 0 0">Un jour pour ralentir le fil</p>
+            <p class="apercu-message">Le fil se tend moins qu'hier. Ce que tu as noué la
+              semaine dernière demande moins de force que de patience — laisse la trame
+              avancer d'elle-même.</p>
+          </div>
+          <p class="caption"><b>Avec le cadre</b> — médaillons, whiplash, double filet</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <p class="sect-label">2 · La gradation — le même vocabulaire, dosé</p>
+      <div class="duo">
+
+        <!-- carte standard : coins réduits + filet simple -->
+        <div class="scene">
+          <div class="carte coins">
+            <svg class="cadre-svg" viewBox="0 0 344 212" preserveAspectRatio="none" aria-hidden="true">
+              <rect x="9" y="9" width="326" height="194" rx="10" fill="none" stroke="#6b5a33" stroke-width="1"/>
+              <use href="#coin" x="0" y="0" width="78" height="78" transform="scale(.62)"/>
+              <use href="#coin" x="0" y="0" width="78" height="78" transform="translate(344,0) scale(-.62,.62)"/>
+              <use href="#coin" x="0" y="0" width="78" height="78" transform="translate(0,212) scale(.62,-.62)"/>
+              <use href="#coin" x="0" y="0" width="78" height="78" transform="translate(344,212) scale(-.62,-.62)"/>
+              <path d="M49 16 C130 9, 230 25, 295 15" fill="none" stroke="#d9b95c" stroke-width="1" stroke-linecap="round" opacity=".8"/>
+              <path d="M49 196 C130 203, 230 187, 295 197" fill="none" stroke="#d9b95c" stroke-width="1" stroke-linecap="round" opacity=".8"/>
+              <path d="M16 49 C9 100, 22 130, 16 163" fill="none" stroke="#d9b95c" stroke-width="1" stroke-linecap="round" opacity=".8"/>
+              <path d="M328 49 C335 100, 322 130, 328 163" fill="none" stroke="#d9b95c" stroke-width="1" stroke-linecap="round" opacity=".8"/>
+            </svg>
+            <div class="chapo">La Lune aujourd'hui</div>
+            <p class="miroir" style="font-size:17px;margin-bottom:14px">La Lune traverse ta
+              maison du travail : ce que tu fais de tes heures compte à tes yeux.</p>
+            <p class="geste"><strong>Geste</strong> — Pose la chose qui compte ce matin,
+              avant le reste.</p>
+          </div>
+          <p class="caption"><b>Carte standard</b> — coins réduits + filet simple</p>
+        </div>
+
+        <!-- journal : le filet Mucha remplace le filet dégradé -->
+        <div class="scene">
+          <div class="journal-page">Ce que je retiens d'aujourd'hui…
+            <svg class="filet-svg" viewBox="0 0 288 18" aria-hidden="true">
+              <path d="M6 9 H116" fill="none" stroke="url(#fg)" stroke-width="1"/>
+              <path d="M182 9 H282" fill="none" stroke="url(#fg)" stroke-width="1"/>
+              <path d="M118 9 C122 5, 127 4.5, 132 8" fill="none" stroke="#d9b95c" stroke-width="1" stroke-linecap="round"/>
+              <path d="M170 9 C166 13, 161 13.5, 156 10" fill="none" stroke="#d9b95c" stroke-width="1" stroke-linecap="round"/>
+              <path d="M138 9 q6 -6.5 12 0 q-6 6.5 -12 0 z" fill="none" stroke="#d9b95c" stroke-width="1"/>
+              <circle cx="144" cy="9" r="1.7" fill="#e9d494"/>
+              <circle cx="132" cy="8" r="1.2" fill="#e9d494" opacity=".8"/>
+              <circle cx="156" cy="10" r="1.2" fill="#e9d494" opacity=".8"/>
+            </svg>
+          </div>
+          <p class="caption"><b>Journal</b> — le filet Mucha en pied de page</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <ul>
+      <li><b>Palette inchangée</b> — celle de l'app à l'hex près&nbsp;:
+        <span class="pal">#141110 · #1e1a16 · #241f18 · #372e1e · #d9b95c · #e9d494</span>.
+        Le vrai cadre sera <b>duotoné</b> sur ces valeurs après génération.</li>
+      <li><b>Ceci est un crayon</b> — le trait SVG ici est dessiné à la main, uniquement
+        pour juger la place, la densité et l'échelle. Le vrai cadre (whiplash organiques,
+        médaillons peints, grain aquarelle) sortira de Draw Things avec le LoRA Mucha 0,55,
+        centre vide et plat pour le détourage.</li>
+      <li><b>Montage prévu</b> — border-image 9-slice&nbsp;: les coins restent intacts,
+        les bords s'étirent&nbsp;; une seule image sert le héros, la carte standard et le filet.</li>
+      <li><b>Gradation</b> — héros&nbsp;: cadre complet · cartes standard&nbsp;: coins réduits +
+        filet simple · journal/chapôs&nbsp;: filet seul. L'app reste épurée, le cadre embellit
+        sans recharger.</li>
+    </ul>
+    <p class="next">Feu vert → recette cadre_ui_v1.json + UN tirage Draw Things, montré seul.</p>
+  </div>
+
+</div>
+</body>
+</html>
