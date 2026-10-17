@@ -121,6 +121,37 @@ main{max-width:1180px; margin:0 auto; padding:8px 22px 80px}
 .carte .sous{font-size:12px; color:var(--encre3); margin-top:-4px}
 .carte:not(:hover) .nom{}
 
+/* Les MESSAGES du jour : une vignette de TEXTE (aperçu du message), pas
+   d'image — la grille s'élargit pour laisser lire. */
+.grille.messages{grid-template-columns:repeat(auto-fill,minmax(258px,1fr))}
+.grille.messages{gap:16px 14px}
+.carte .texte{
+  display:flex; flex-direction:column; gap:7px; width:100%;
+  min-height:132px; padding:13px 14px; border-radius:10px;
+  background:var(--papier2); border:1px solid var(--bord);
+  transition:border-color .22s, transform .22s, box-shadow .22s;
+}
+.carte:hover .texte,.carte:focus-visible .texte{
+  border-color:var(--accent); transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(0,0,0,.5);
+}
+.carte .texte .champs{
+  font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--encre3);
+}
+.carte .texte .apercu{
+  font-family:var(--serif); font-size:13.5px; line-height:1.55;
+  color:var(--encre2);
+  display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.carte .texte .nom{font-size:14.5px}
+
+/* Dans la fiche, un message n'a pas d'image : la lecture prend toute la
+   largeur. */
+.feuille.message{grid-template-columns:1fr}
+.feuille.message .image{display:none}
+
 .pied{max-width:1180px; margin:0 auto; padding:0 22px 70px; color:var(--encre3);
   font-size:12.5px; text-align:center; font-style:italic}
 .pied a{color:var(--encre2)}
@@ -289,7 +320,8 @@ main{max-width:1180px; margin:0 auto; padding:8px 22px 80px}
   <p class="compte">
     <b>{{ album.stats.cartes }}</b> cartes ·
     <b>{{ album.stats.images }}</b> images ·
-    <b>{{ album.stats.textes }}</b> textes écrits
+    <b>{{ album.stats.textes }}</b> textes ·
+    <b>{{ album.stats.messages }}</b> messages du jour
   </p>
   {% if admin %}
   <p><button class="bascule" id="bascule-edition" aria-pressed="false">Éditer les textes</button></p>
@@ -311,8 +343,17 @@ main{max-width:1180px; margin:0 auto; padding:8px 22px 80px}
       <h2>{{ s.titre }}<span class="compte">{{ s.cartes|length }} cartes</span></h2>
       <p class="note">{{ s.note }}</p>
     </div>
-    <div class="grille">
+    <div class="grille{% if s.genre == 'messages' %} messages{% endif %}">
       {% for c in s.cartes %}
+      {% if c.genre == 'message' %}
+      <button class="carte" data-id="{{ c.id }}" aria-label="{{ c.nom }}">
+        <span class="texte">
+          <span class="champs">{{ c.champs }}</span>
+          <span class="nom">{{ c.nom }}</span>
+          {% if c.apercu %}<span class="apercu">{{ c.apercu }}</span>{% endif %}
+        </span>
+      </button>
+      {% else %}
       <button class="carte" data-id="{{ c.id }}" aria-label="{{ c.nom }}">
         {% if c.mini %}
         <span class="vignette">
@@ -329,6 +370,7 @@ main{max-width:1180px; margin:0 auto; padding:8px 22px 80px}
         <span class="nom">{{ c.nom }}</span>
         <span class="sous">{{ c.correspondance or c.couleur }}</span>
       </button>
+      {% endif %}
       {% endfor %}
     </div>
   </section>
@@ -399,10 +441,22 @@ const ALBUM = {{ album|tojson }};
 const VSTAT = "{{ vstat }}";
 const ADMIN = {{ admin|tojson }};
 
-/* Ordre de lecture à plat, pour les flèches précédent/suivant. */
+/* Ordre de lecture à plat, pour les flèches précédent/suivant.
+   Les CARTES ont leur ordre ; les MESSAGES du jour ont le leur (tout l'album
+   dans l'ordre de la page) — les flèches restent dans l'étage où on est. */
 const PLAT = [];
+const TOUT = [];
 const PAR_ID = {};
-ALBUM.sections.forEach(s => s.cartes.forEach(c => { PLAT.push(c.id); PAR_ID[c.id] = c; }));
+ALBUM.sections.forEach(s => s.cartes.forEach(c => {
+  PAR_ID[c.id] = c;
+  TOUT.push(c.id);
+  if (c.genre !== "message") PLAT.push(c.id);
+}));
+
+function ordreDe(id){
+  const c = PAR_ID[id];
+  return (c && c.genre === "message") ? TOUT : PLAT;
+}
 
 /* — édition des textes —
    Chaque bloc porte la clé du champ où il vit (b.champ). Le couple
@@ -443,10 +497,15 @@ function texteDuBloc(c, b){
 function afficher(id){
   const c = PAR_ID[id]; if(!c) return;
   const changeDeCarte = (courant !== id);
+  const message = c.genre === "message";
   courant = id;
+  /* Un message n'a pas d'image : la lecture prend toute la largeur. */
+  feuille.classList.toggle("message", message);
   if(c.image){
     mImage.innerHTML = '<img src="' + echappe(c.image) + '?v=' + echappe(VSTAT) + '" alt="' + echappe(c.nom) + '"'
       + ' onerror="this.onerror=null;this.src=\'/static/cartes/dos.jpg\'">';
+  } else if(message){
+    mImage.innerHTML = "";
   } else {
     mImage.innerHTML = '<div class="venue">Image à venir</div>';
   }
@@ -457,6 +516,7 @@ function afficher(id){
   if(c.etiquette) meta.push('· ' + echappe(c.etiquette));
   if(c.correspondance) meta.push('· ' + echappe(c.correspondance));
   if(c.trad) meta.push('· ' + echappe(c.trad));
+  if(c.source) meta.push('· ' + echappe(c.source));
   html += '<p class="meta">' + meta.join(' ') + '</p>';
 
   if(c.textes && c.textes.length){
@@ -500,10 +560,11 @@ function fermer(){
 
 function voisin(pas){
   if(courant == null) return;
-  let i = PLAT.indexOf(courant);
+  const liste = ordreDe(courant);
+  let i = liste.indexOf(courant);
   if(i < 0) return;
-  i = (i + pas + PLAT.length) % PLAT.length;
-  afficher(PLAT[i]);
+  i = (i + pas + liste.length) % liste.length;
+  afficher(liste[i]);
 }
 
 document.querySelectorAll(".carte").forEach(el => {

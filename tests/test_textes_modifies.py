@@ -119,5 +119,5 @@ def test_les_deux_fichiers_de_cartes_sont_dans_l_index():
 def test_le_script_tourne_et_sort_la_liste(capsys):
     assert TM.main() == 0
     sortie = capsys.readouterr().out
-    assert "TEXTES DE CARTES MODIFIÉS DEPUIS LE DERNIER COMMIT" in sortie
+    assert "TEXTES MODIFIÉS DEPUIS LE DERNIER COMMIT (cartes et messages)" in sortie
     assert "un `push` ne pousse que des COMMITS" in sortie

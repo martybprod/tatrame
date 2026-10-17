@@ -34,8 +34,28 @@ def _toutes(donnees):
 
 # ------------------------------------------------------------- structure
 
-def test_les_cinq_sections_dans_l_ordre(donnees):
-    assert [s["id"] for s in donnees["sections"]] == SECTIONS_ATTENDUES
+def test_les_cinq_sections_de_cartes_dans_l_ordre(donnees):
+    """Les CARTES d'abord (majeurs + familles), puis les messages du jour."""
+    assert [s["id"] for s in donnees["sections"]][:5] == SECTIONS_ATTENDUES
+    assert all(s.get("genre") != "messages" for s in donnees["sections"][:5])
+    assert all(s.get("genre") == "messages" for s in donnees["sections"][5:])
+
+
+def test_les_sections_de_messages(donnees):
+    """Les messages du jour : le Fil par domaine, les deux étages de transits,
+    la Lune — 650 textes au total, chacun avec ses champs éditables."""
+    messages = [s for s in donnees["sections"] if s.get("genre") == "messages"]
+    identifiants = [s["id"] for s in messages]
+    assert identifiants[:5] == ["fil-soi", "fil-ressources", "fil-echanges",
+                                "fil-racines", "fil-creation"]
+    assert "transit-gen" in identifiants and "transit-precis" in identifiants
+    assert "lune-phases" in identifiants and "lune-maisons" in identifiants
+    total = sum(len(s["cartes"]) for s in messages)
+    assert total == 650, total
+    phases = next(s for s in messages if s["id"] == "lune-phases")
+    assert len(phases["cartes"]) == 8
+    maisons = next(s for s in messages if s["id"] == "lune-maisons")
+    assert len(maisons["cartes"]) == 12
 
 
 def test_vingt_trois_majeurs(donnees):
@@ -45,8 +65,50 @@ def test_vingt_trois_majeurs(donnees):
 
 
 def test_quatorze_cartes_par_famille(donnees):
-    for section in donnees["sections"][1:]:
+    familles = [s for s in donnees["sections"] if s["id"] in SECTIONS_ATTENDUES[1:]]
+    assert len(familles) == 4
+    for section in familles:
         assert len(section["cartes"]) == 14, section["id"]
+
+
+def test_un_message_porte_ses_champs_de_texte(donnees):
+    """Un message du Fil : le miroir et le geste éditables, la source montrée
+    mais JAMAIS éditable (c'est de la fabrication, pas du message)."""
+    soi = next(s for s in donnees["sections"] if s["id"] == "fil-soi")
+    carte = next(c for c in soi["cartes"] if c["id"] == "fil-soi")
+    assert [b["champ"] for b in carte["textes"]] == ["miroir", "geste"]
+    assert carte["apercu"], "une vignette de texte sans aperçu ne se lit pas"
+    assert carte["fichier_texte"] == "data/corpus/fil.json"
+    assert carte["cle_texte"] == "soi"
+
+
+def test_les_transits_precis_portent_leurs_variantes(donnees):
+    """Certaines entrées précises portent leurs trois phases au lieu d'un
+    texte unique — des SOUS-DICTS (approche.miroir, coeur.geste…) : les deux
+    formes doivent être éditables, champ par champ."""
+    precis = next(s for s in donnees["sections"] if s["id"] == "transit-precis")
+    texte_unique = next(c for c in precis["cartes"]
+                        if c["id"] == "transit-precis-lune_conjonction_soleil")
+    assert [b["champ"] for b in texte_unique["textes"]] == ["miroir", "geste", "pensee_soir"]
+    variantes = next(c for c in precis["cartes"]
+                     if c["id"] == "transit-precis-lune_carre-opposition_soleil")
+    champs = [b["champ"] for b in variantes["textes"]]
+    assert {"approche.miroir", "approche.geste", "coeur.miroir", "coeur.geste",
+            "retrait.miroir", "retrait.geste", "pensee_soir"} <= set(champs)
+    # Le chemin d'écriture suit la niche : 4 maillons, pas 3.
+    chemin = album.cible_ecriture(variantes["id"], "coeur.geste")
+    assert chemin[1] == ["transits_precis", "lune_carre-opposition_soleil",
+                         "coeur", "geste"]
+
+
+def test_les_champs_de_fabrication_ne_sont_pas_editables(donnees):
+    """`source_livre` et `themes` racontent D'OÙ vient le texte, pas le texte :
+    aucun bloc d'édition ne doit les exposer."""
+    for section in donnees["sections"]:
+        for carte in section["cartes"]:
+            for bloc in carte["textes"]:
+                assert bloc["champ"] not in ("source_livre", "themes"), \
+                    (carte["id"], bloc["champ"])
 
 
 def test_chaque_carte_a_un_nom(donnees):
@@ -64,13 +126,20 @@ def test_toute_carte_a_un_texte(donnees):
 
 
 def test_repli_sur_le_texte_classique_quand_la_famille_n_est_pas_redigee(donnees):
-    """Air n'a pas encore son texte : la carte doit tout de même servir
-    l'invitation classique (Épées), avec une note honnête — jamais du vide."""
+    """Air est en cours d'écriture : une carte sans texte maison sert
+    l'invitation classique (Épées), avec une note honnête — jamais du vide.
+    Une carte qui A son texte maison n'affiche, elle, aucune note."""
     air = next(s for s in donnees["sections"] if s["id"] == "air")
-    for carte in air["cartes"]:
+    avec_repli = [c for c in air["cartes"] if c["note_texte"]]
+    maison = [c for c in air["cartes"] if not c["note_texte"]]
+    assert maison, "plus aucune carte air sans texte maison : le test n'a plus d'objet"
+    for carte in avec_repli:
         assert carte["textes"], carte["id"]
-        assert carte["note_texte"], carte["id"]
-        assert "Épées" in carte["note_texte"]
+        assert "Épées" in carte["note_texte"], carte["id"]
+        assert carte["cle_texte"].startswith("epees_"), carte["id"]
+    for carte in maison:
+        assert carte["textes"], carte["id"]
+        assert carte["cle_texte"].startswith("air_"), carte["id"]
 
 
 def test_texte_de_la_famille_quand_il_existe(donnees):
