@@ -1,0 +1,1977 @@
+{
+  "fenetre": "2026-10-16 + 365 jours",
+  "profils": 20,
+  "total_jours_profil": 1460,
+  "sans_dominante": 0,
+  "precis": [
+    {
+      "cle": "lune_carre-opposition_soleil",
+      "jours": 38,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 9,
+        "diffusante": 5,
+        "croissante": 4,
+        "balsamique": 3,
+        "pleine": 4,
+        "premier_quartier": 6,
+        "gibbeuse": 3,
+        "nouvelle": 4
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_lune",
+      "jours": 33,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 2,
+        "pleine": 3,
+        "diffusante": 6,
+        "croissante": 8,
+        "balsamique": 4,
+        "dernier_quartier": 4,
+        "premier_quartier": 3,
+        "gibbeuse": 3
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_lune",
+      "jours": 32,
+      "profils": 4,
+      "phases": {
+        "croissante": 6,
+        "diffusante": 6,
+        "premier_quartier": 4,
+        "nouvelle": 5,
+        "gibbeuse": 4,
+        "balsamique": 4,
+        "pleine": 1,
+        "dernier_quartier": 2
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_soleil",
+      "jours": 29,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 3,
+        "diffusante": 3,
+        "nouvelle": 4,
+        "pleine": 5,
+        "dernier_quartier": 7,
+        "croissante": 2,
+        "premier_quartier": 4,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_asc",
+      "jours": 28,
+      "profils": 4,
+      "phases": {
+        "balsamique": 4,
+        "croissante": 4,
+        "gibbeuse": 5,
+        "diffusante": 3,
+        "premier_quartier": 2,
+        "nouvelle": 3,
+        "pleine": 3,
+        "dernier_quartier": 4
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_mc",
+      "jours": 25,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 4,
+        "pleine": 5,
+        "croissante": 5,
+        "gibbeuse": 4,
+        "balsamique": 2,
+        "nouvelle": 3,
+        "diffusante": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_venus",
+      "jours": 25,
+      "profils": 4,
+      "phases": {
+        "croissante": 5,
+        "dernier_quartier": 3,
+        "balsamique": 3,
+        "diffusante": 4,
+        "premier_quartier": 2,
+        "gibbeuse": 1,
+        "nouvelle": 4,
+        "pleine": 3
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_asc",
+      "jours": 23,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 2,
+        "nouvelle": 4,
+        "premier_quartier": 5,
+        "balsamique": 2,
+        "croissante": 2,
+        "diffusante": 3,
+        "pleine": 3,
+        "gibbeuse": 2
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_mars",
+      "jours": 22,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 4,
+        "nouvelle": 2,
+        "diffusante": 2,
+        "dernier_quartier": 5,
+        "gibbeuse": 2,
+        "pleine": 1,
+        "balsamique": 4,
+        "croissante": 2
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_lune",
+      "jours": 20,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 4,
+        "balsamique": 4,
+        "dernier_quartier": 4,
+        "pleine": 1,
+        "nouvelle": 1,
+        "croissante": 5,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_lune",
+      "jours": 19,
+      "profils": 4,
+      "phases": {
+        "diffusante": 3,
+        "balsamique": 5,
+        "gibbeuse": 5,
+        "dernier_quartier": 2,
+        "premier_quartier": 2,
+        "pleine": 2
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_venus",
+      "jours": 17,
+      "profils": 4,
+      "phases": {
+        "balsamique": 1,
+        "pleine": 3,
+        "gibbeuse": 2,
+        "croissante": 3,
+        "diffusante": 2,
+        "premier_quartier": 4,
+        "nouvelle": 2
+      }
+    },
+    {
+      "cle": "lune_conjonction_lune",
+      "jours": 17,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 3,
+        "premier_quartier": 3,
+        "balsamique": 3,
+        "dernier_quartier": 3,
+        "diffusante": 3,
+        "croissante": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_lune",
+      "jours": 17,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 2,
+        "premier_quartier": 1,
+        "pleine": 4,
+        "diffusante": 1,
+        "gibbeuse": 2,
+        "balsamique": 3,
+        "nouvelle": 2,
+        "croissante": 2
+      }
+    },
+    {
+      "cle": "lune_conjonction_asc",
+      "jours": 17,
+      "profils": 4,
+      "phases": {
+        "croissante": 1,
+        "nouvelle": 4,
+        "balsamique": 1,
+        "diffusante": 2,
+        "pleine": 3,
+        "premier_quartier": 4,
+        "dernier_quartier": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_mercure",
+      "jours": 16,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 2,
+        "dernier_quartier": 4,
+        "croissante": 1,
+        "balsamique": 1,
+        "diffusante": 3,
+        "nouvelle": 2,
+        "premier_quartier": 3
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_mars",
+      "jours": 16,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 3,
+        "balsamique": 4,
+        "gibbeuse": 2,
+        "diffusante": 2,
+        "premier_quartier": 2,
+        "dernier_quartier": 1,
+        "croissante": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_asc",
+      "jours": 15,
+      "profils": 4,
+      "phases": {
+        "diffusante": 2,
+        "dernier_quartier": 5,
+        "premier_quartier": 3,
+        "gibbeuse": 2,
+        "croissante": 2,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_asc",
+      "jours": 15,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 6,
+        "diffusante": 2,
+        "pleine": 5,
+        "premier_quartier": 2
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_lune",
+      "jours": 15,
+      "profils": 4,
+      "phases": {
+        "croissante": 4,
+        "nouvelle": 3,
+        "balsamique": 2,
+        "gibbeuse": 1,
+        "premier_quartier": 2,
+        "dernier_quartier": 2,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_mc",
+      "jours": 15,
+      "profils": 4,
+      "phases": {
+        "pleine": 2,
+        "dernier_quartier": 3,
+        "nouvelle": 1,
+        "croissante": 3,
+        "premier_quartier": 3,
+        "diffusante": 1,
+        "gibbeuse": 2
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_mercure",
+      "jours": 14,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 2,
+        "diffusante": 1,
+        "pleine": 2,
+        "nouvelle": 2,
+        "croissante": 4,
+        "balsamique": 1,
+        "gibbeuse": 2
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_asc",
+      "jours": 14,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 5,
+        "nouvelle": 1,
+        "balsamique": 4,
+        "dernier_quartier": 1,
+        "croissante": 1,
+        "gibbeuse": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "lune_conjonction_soleil",
+      "jours": 14,
+      "profils": 4,
+      "phases": {
+        "diffusante": 3,
+        "croissante": 4,
+        "dernier_quartier": 3,
+        "gibbeuse": 2,
+        "nouvelle": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "lune_conjonction_venus",
+      "jours": 14,
+      "profils": 4,
+      "phases": {
+        "pleine": 2,
+        "gibbeuse": 1,
+        "croissante": 1,
+        "nouvelle": 3,
+        "diffusante": 4,
+        "premier_quartier": 2,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "lune_conjonction_mars",
+      "jours": 14,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 3,
+        "croissante": 2,
+        "dernier_quartier": 2,
+        "nouvelle": 2,
+        "gibbeuse": 2,
+        "balsamique": 2,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_mc",
+      "jours": 14,
+      "profils": 4,
+      "phases": {
+        "balsamique": 7,
+        "nouvelle": 2,
+        "premier_quartier": 3,
+        "pleine": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_venus",
+      "jours": 14,
+      "profils": 3,
+      "phases": {
+        "pleine": 3,
+        "balsamique": 5,
+        "nouvelle": 2,
+        "croissante": 1,
+        "dernier_quartier": 2,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_soleil",
+      "jours": 13,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 3,
+        "balsamique": 5,
+        "croissante": 3,
+        "premier_quartier": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_lune",
+      "jours": 13,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 3,
+        "diffusante": 2,
+        "nouvelle": 4,
+        "premier_quartier": 2,
+        "pleine": 2
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_venus",
+      "jours": 13,
+      "profils": 4,
+      "phases": {
+        "balsamique": 3,
+        "premier_quartier": 2,
+        "diffusante": 1,
+        "pleine": 1,
+        "dernier_quartier": 4,
+        "gibbeuse": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "lune_conjonction_mc",
+      "jours": 13,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 3,
+        "pleine": 2,
+        "premier_quartier": 2,
+        "croissante": 1,
+        "balsamique": 2,
+        "gibbeuse": 3
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_soleil",
+      "jours": 13,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 1,
+        "pleine": 1,
+        "dernier_quartier": 1,
+        "balsamique": 4,
+        "nouvelle": 2,
+        "croissante": 4
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_soleil",
+      "jours": 12,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 4,
+        "dernier_quartier": 3,
+        "premier_quartier": 3,
+        "croissante": 2
+      }
+    },
+    {
+      "cle": "lune_conjonction_mercure",
+      "jours": 12,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 3,
+        "pleine": 1,
+        "premier_quartier": 3,
+        "nouvelle": 4,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_pluton",
+      "jours": 12,
+      "profils": 3,
+      "phases": {
+        "croissante": 2,
+        "nouvelle": 3,
+        "diffusante": 2,
+        "premier_quartier": 2,
+        "gibbeuse": 2,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_lune",
+      "jours": 12,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 4,
+        "pleine": 3,
+        "dernier_quartier": 2,
+        "nouvelle": 2,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_jupiter",
+      "jours": 12,
+      "profils": 3,
+      "phases": {
+        "dernier_quartier": 2,
+        "croissante": 2,
+        "pleine": 1,
+        "gibbeuse": 1,
+        "nouvelle": 2,
+        "balsamique": 3,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_uranus",
+      "jours": 12,
+      "profils": 4,
+      "phases": {
+        "diffusante": 6,
+        "dernier_quartier": 2,
+        "croissante": 2,
+        "gibbeuse": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_mars",
+      "jours": 12,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 4,
+        "premier_quartier": 1,
+        "diffusante": 3,
+        "pleine": 2,
+        "croissante": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_venus",
+      "jours": 12,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 3,
+        "nouvelle": 3,
+        "croissante": 1,
+        "gibbeuse": 1,
+        "pleine": 3,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_lune",
+      "jours": 12,
+      "profils": 4,
+      "phases": {
+        "balsamique": 3,
+        "diffusante": 4,
+        "premier_quartier": 1,
+        "gibbeuse": 2,
+        "nouvelle": 2
+      }
+    },
+    {
+      "cle": "venus_conjonction_venus",
+      "jours": 12,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 1,
+        "dernier_quartier": 1,
+        "balsamique": 1,
+        "croissante": 2,
+        "pleine": 2,
+        "diffusante": 5
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_mercure",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 3,
+        "premier_quartier": 3,
+        "pleine": 1,
+        "croissante": 1,
+        "gibbeuse": 1,
+        "dernier_quartier": 2
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_asc",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 3,
+        "pleine": 5,
+        "diffusante": 1,
+        "premier_quartier": 2
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_venus",
+      "jours": 11,
+      "profils": 3,
+      "phases": {
+        "dernier_quartier": 3,
+        "balsamique": 1,
+        "nouvelle": 1,
+        "croissante": 2,
+        "diffusante": 1,
+        "premier_quartier": 1,
+        "gibbeuse": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_mercure",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 2,
+        "gibbeuse": 1,
+        "dernier_quartier": 3,
+        "croissante": 2,
+        "diffusante": 2,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_venus",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 2,
+        "nouvelle": 2,
+        "diffusante": 5,
+        "gibbeuse": 1,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_mercure",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "pleine": 2,
+        "croissante": 3,
+        "diffusante": 2,
+        "dernier_quartier": 2,
+        "nouvelle": 2
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_mars",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "balsamique": 4,
+        "pleine": 2,
+        "nouvelle": 4,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_asc",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 3,
+        "croissante": 3,
+        "balsamique": 3,
+        "gibbeuse": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_mc",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 4,
+        "diffusante": 2,
+        "premier_quartier": 2,
+        "nouvelle": 1,
+        "gibbeuse": 1,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_venus",
+      "jours": 11,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 1,
+        "pleine": 6,
+        "croissante": 1,
+        "dernier_quartier": 3
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_mc",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "pleine": 4,
+        "gibbeuse": 1,
+        "premier_quartier": 3,
+        "nouvelle": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_mercure",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "diffusante": 2,
+        "pleine": 1,
+        "croissante": 1,
+        "balsamique": 1,
+        "dernier_quartier": 3,
+        "premier_quartier": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_jupiter",
+      "jours": 10,
+      "profils": 3,
+      "phases": {
+        "nouvelle": 3,
+        "croissante": 2,
+        "dernier_quartier": 2,
+        "gibbeuse": 2,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_mars",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 3,
+        "pleine": 4,
+        "gibbeuse": 3
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_mercure",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 3,
+        "premier_quartier": 4,
+        "diffusante": 1,
+        "dernier_quartier": 1,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_venus",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "croissante": 3,
+        "nouvelle": 5,
+        "balsamique": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_mars",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 3,
+        "pleine": 3,
+        "diffusante": 1,
+        "croissante": 1,
+        "gibbeuse": 2
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_mars",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 2,
+        "balsamique": 1,
+        "pleine": 1,
+        "dernier_quartier": 1,
+        "croissante": 3,
+        "gibbeuse": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_mc",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 3,
+        "pleine": 3,
+        "gibbeuse": 2,
+        "balsamique": 2
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_asc",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "pleine": 2,
+        "premier_quartier": 2,
+        "gibbeuse": 1,
+        "balsamique": 3,
+        "diffusante": 2
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_mars",
+      "jours": 10,
+      "profils": 4,
+      "phases": {
+        "diffusante": 3,
+        "pleine": 1,
+        "dernier_quartier": 1,
+        "balsamique": 2,
+        "croissante": 3
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_asc",
+      "jours": 10,
+      "profils": 3,
+      "phases": {
+        "pleine": 3,
+        "dernier_quartier": 1,
+        "diffusante": 1,
+        "premier_quartier": 1,
+        "balsamique": 1,
+        "croissante": 1,
+        "nouvelle": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_mars",
+      "jours": 10,
+      "profils": 2,
+      "phases": {
+        "croissante": 3,
+        "dernier_quartier": 5,
+        "balsamique": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_soleil",
+      "jours": 9,
+      "profils": 4,
+      "phases": {
+        "croissante": 1,
+        "gibbeuse": 2,
+        "dernier_quartier": 1,
+        "pleine": 1,
+        "premier_quartier": 1,
+        "balsamique": 1,
+        "diffusante": 2
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_jupiter",
+      "jours": 9,
+      "profils": 3,
+      "phases": {
+        "balsamique": 1,
+        "pleine": 3,
+        "nouvelle": 2,
+        "diffusante": 2,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_lune",
+      "jours": 9,
+      "profils": 4,
+      "phases": {
+        "pleine": 5,
+        "croissante": 3,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_mc",
+      "jours": 9,
+      "profils": 4,
+      "phases": {
+        "balsamique": 3,
+        "gibbeuse": 1,
+        "dernier_quartier": 1,
+        "diffusante": 2,
+        "premier_quartier": 2
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_uranus",
+      "jours": 9,
+      "profils": 2,
+      "phases": {
+        "pleine": 1,
+        "nouvelle": 3,
+        "croissante": 2,
+        "balsamique": 1,
+        "gibbeuse": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_jupiter",
+      "jours": 8,
+      "profils": 3,
+      "phases": {
+        "premier_quartier": 4,
+        "gibbeuse": 2,
+        "diffusante": 1,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_soleil",
+      "jours": 8,
+      "profils": 3,
+      "phases": {
+        "nouvelle": 3,
+        "dernier_quartier": 1,
+        "diffusante": 2,
+        "gibbeuse": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_neptune",
+      "jours": 8,
+      "profils": 3,
+      "phases": {
+        "croissante": 1,
+        "premier_quartier": 2,
+        "balsamique": 1,
+        "dernier_quartier": 2,
+        "diffusante": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_soleil",
+      "jours": 8,
+      "profils": 4,
+      "phases": {
+        "pleine": 1,
+        "diffusante": 1,
+        "balsamique": 4,
+        "premier_quartier": 2
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_mercure",
+      "jours": 8,
+      "profils": 3,
+      "phases": {
+        "premier_quartier": 1,
+        "gibbeuse": 1,
+        "pleine": 1,
+        "diffusante": 2,
+        "croissante": 1,
+        "nouvelle": 2
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_mc",
+      "jours": 8,
+      "profils": 3,
+      "phases": {
+        "gibbeuse": 5,
+        "premier_quartier": 1,
+        "balsamique": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_mars",
+      "jours": 7,
+      "profils": 3,
+      "phases": {
+        "premier_quartier": 4,
+        "diffusante": 2,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_jupiter",
+      "jours": 7,
+      "profils": 3,
+      "phases": {
+        "balsamique": 3,
+        "dernier_quartier": 2,
+        "nouvelle": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_pluton",
+      "jours": 7,
+      "profils": 4,
+      "phases": {
+        "diffusante": 3,
+        "gibbeuse": 2,
+        "balsamique": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_asc",
+      "jours": 7,
+      "profils": 3,
+      "phases": {
+        "dernier_quartier": 3,
+        "premier_quartier": 3,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_asc",
+      "jours": 7,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 5,
+        "pleine": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "lune_conjonction_uranus",
+      "jours": 7,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 1,
+        "pleine": 1,
+        "premier_quartier": 2,
+        "gibbeuse": 1,
+        "nouvelle": 2
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_pluton",
+      "jours": 7,
+      "profils": 3,
+      "phases": {
+        "dernier_quartier": 3,
+        "balsamique": 1,
+        "diffusante": 1,
+        "premier_quartier": 2
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_mercure",
+      "jours": 7,
+      "profils": 4,
+      "phases": {
+        "balsamique": 2,
+        "pleine": 1,
+        "diffusante": 2,
+        "dernier_quartier": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_mercure",
+      "jours": 7,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 1,
+        "pleine": 2,
+        "dernier_quartier": 2,
+        "balsamique": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_pluton",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 2,
+        "diffusante": 1,
+        "croissante": 1,
+        "pleine": 1,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "lune_carre-opposition_saturne",
+      "jours": 6,
+      "profils": 2,
+      "phases": {
+        "balsamique": 1,
+        "nouvelle": 1,
+        "dernier_quartier": 2,
+        "pleine": 2
+      }
+    },
+    {
+      "cle": "lune_conjonction_neptune",
+      "jours": 6,
+      "profils": 3,
+      "phases": {
+        "nouvelle": 2,
+        "premier_quartier": 3,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_mc",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 3,
+        "balsamique": 3
+      }
+    },
+    {
+      "cle": "lune_conjonction_saturne",
+      "jours": 6,
+      "profils": 3,
+      "phases": {
+        "balsamique": 1,
+        "dernier_quartier": 2,
+        "gibbeuse": 1,
+        "diffusante": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_asc",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "diffusante": 3,
+        "gibbeuse": 1,
+        "pleine": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "lune_conjonction_jupiter",
+      "jours": 6,
+      "profils": 3,
+      "phases": {
+        "gibbeuse": 2,
+        "balsamique": 1,
+        "croissante": 1,
+        "premier_quartier": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_lune",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "diffusante": 3,
+        "gibbeuse": 1,
+        "premier_quartier": 2
+      }
+    },
+    {
+      "cle": "venus_conjonction_lune",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 2,
+        "diffusante": 3,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_soleil",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "croissante": 3,
+        "gibbeuse": 2,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_soleil",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "dernier_quartier": 2,
+        "diffusante": 2,
+        "balsamique": 2
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_mc",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "croissante": 2,
+        "gibbeuse": 1,
+        "diffusante": 1,
+        "premier_quartier": 1,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_mercure",
+      "jours": 6,
+      "profils": 4,
+      "phases": {
+        "premier_quartier": 1,
+        "gibbeuse": 1,
+        "nouvelle": 2,
+        "diffusante": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_mars",
+      "jours": 6,
+      "profils": 2,
+      "phases": {
+        "dernier_quartier": 1,
+        "gibbeuse": 1,
+        "croissante": 2,
+        "premier_quartier": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_saturne",
+      "jours": 5,
+      "profils": 4,
+      "phases": {
+        "balsamique": 2,
+        "premier_quartier": 1,
+        "croissante": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_mc",
+      "jours": 5,
+      "profils": 4,
+      "phases": {
+        "balsamique": 2,
+        "gibbeuse": 1,
+        "croissante": 2
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_pluton",
+      "jours": 5,
+      "profils": 2,
+      "phases": {
+        "nouvelle": 4,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_pluton",
+      "jours": 5,
+      "profils": 3,
+      "phases": {
+        "premier_quartier": 1,
+        "balsamique": 1,
+        "pleine": 1,
+        "nouvelle": 2
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_neptune",
+      "jours": 5,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 2,
+        "diffusante": 1,
+        "pleine": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_mars",
+      "jours": 5,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 2,
+        "premier_quartier": 1,
+        "pleine": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_mars",
+      "jours": 5,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 2,
+        "pleine": 1,
+        "gibbeuse": 2
+      }
+    },
+    {
+      "cle": "soleil_conjonction_venus",
+      "jours": 5,
+      "profils": 4,
+      "phases": {
+        "nouvelle": 1,
+        "croissante": 1,
+        "pleine": 1,
+        "diffusante": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_neptune",
+      "jours": 5,
+      "profils": 2,
+      "phases": {
+        "premier_quartier": 2,
+        "nouvelle": 1,
+        "balsamique": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_mercure",
+      "jours": 5,
+      "profils": 3,
+      "phases": {
+        "premier_quartier": 2,
+        "croissante": 2,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_venus",
+      "jours": 5,
+      "profils": 3,
+      "phases": {
+        "dernier_quartier": 1,
+        "pleine": 1,
+        "premier_quartier": 1,
+        "diffusante": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_venus",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "croissante": 3,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_mercure",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "pleine": 3,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_uranus",
+      "jours": 4,
+      "profils": 3,
+      "phases": {
+        "balsamique": 1,
+        "premier_quartier": 1,
+        "gibbeuse": 1,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_pluton",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "nouvelle": 1,
+        "croissante": 1,
+        "gibbeuse": 2
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_jupiter",
+      "jours": 4,
+      "profils": 4,
+      "phases": {
+        "croissante": 1,
+        "balsamique": 1,
+        "nouvelle": 2
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_jupiter",
+      "jours": 4,
+      "profils": 3,
+      "phases": {
+        "dernier_quartier": 1,
+        "gibbeuse": 2,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_pluton",
+      "jours": 4,
+      "profils": 3,
+      "phases": {
+        "nouvelle": 4
+      }
+    },
+    {
+      "cle": "mars_conjonction_jupiter",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "premier_quartier": 3,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_mc",
+      "jours": 4,
+      "profils": 3,
+      "phases": {
+        "gibbeuse": 2,
+        "pleine": 2
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_soleil",
+      "jours": 4,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 3,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_neptune",
+      "jours": 4,
+      "profils": 4,
+      "phases": {
+        "gibbeuse": 1,
+        "dernier_quartier": 2,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_jupiter",
+      "jours": 4,
+      "profils": 4,
+      "phases": {
+        "balsamique": 1,
+        "nouvelle": 1,
+        "diffusante": 1,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_lune",
+      "jours": 4,
+      "profils": 4,
+      "phases": {
+        "croissante": 2,
+        "diffusante": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_jupiter",
+      "jours": 4,
+      "profils": 4,
+      "phases": {
+        "croissante": 1,
+        "dernier_quartier": 1,
+        "diffusante": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_neptune",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "diffusante": 2,
+        "balsamique": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "lune_conjonction_pluton",
+      "jours": 4,
+      "profils": 3,
+      "phases": {
+        "pleine": 2,
+        "premier_quartier": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_soleil",
+      "jours": 4,
+      "profils": 3,
+      "phases": {
+        "dernier_quartier": 1,
+        "gibbeuse": 3
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_neptune",
+      "jours": 4,
+      "profils": 3,
+      "phases": {
+        "premier_quartier": 1,
+        "diffusante": 2,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_jupiter",
+      "jours": 4,
+      "profils": 3,
+      "phases": {
+        "premier_quartier": 2,
+        "pleine": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "lune_sextile-trigone_saturne",
+      "jours": 4,
+      "profils": 1,
+      "phases": {
+        "pleine": 1,
+        "dernier_quartier": 1,
+        "diffusante": 2
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_neptune",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "balsamique": 1,
+        "premier_quartier": 1,
+        "gibbeuse": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_saturne",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "diffusante": 1,
+        "balsamique": 3
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_neptune",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "balsamique": 1,
+        "croissante": 2,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_uranus",
+      "jours": 4,
+      "profils": 2,
+      "phases": {
+        "balsamique": 2,
+        "diffusante": 2
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_saturne",
+      "jours": 3,
+      "profils": 1,
+      "phases": {
+        "diffusante": 1,
+        "pleine": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_saturne",
+      "jours": 3,
+      "profils": 2,
+      "phases": {
+        "pleine": 1,
+        "nouvelle": 2
+      }
+    },
+    {
+      "cle": "mercure_conjonction_neptune",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "balsamique": 1,
+        "nouvelle": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_neptune",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "balsamique": 1,
+        "diffusante": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_saturne",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "croissante": 2,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_pluton",
+      "jours": 3,
+      "profils": 2,
+      "phases": {
+        "croissante": 1,
+        "gibbeuse": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "venus_sextile-trigone_uranus",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "diffusante": 1,
+        "pleine": 1,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_pluton",
+      "jours": 3,
+      "profils": 2,
+      "phases": {
+        "dernier_quartier": 2,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_venus",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "croissante": 2,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_soleil",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "nouvelle": 1,
+        "gibbeuse": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_mercure",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "balsamique": 2,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_pluton",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "nouvelle": 1,
+        "gibbeuse": 2
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_jupiter",
+      "jours": 3,
+      "profils": 2,
+      "phases": {
+        "croissante": 1,
+        "pleine": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_mc",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "pleine": 1,
+        "premier_quartier": 1,
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_pluton",
+      "jours": 3,
+      "profils": 3,
+      "phases": {
+        "diffusante": 1,
+        "dernier_quartier": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "venus_carre-opposition_uranus",
+      "jours": 3,
+      "profils": 2,
+      "phases": {
+        "pleine": 1,
+        "premier_quartier": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_uranus",
+      "jours": 3,
+      "profils": 1,
+      "phases": {
+        "croissante": 1,
+        "diffusante": 2
+      }
+    },
+    {
+      "cle": "soleil_sextile-trigone_saturne",
+      "jours": 3,
+      "profils": 1,
+      "phases": {
+        "croissante": 2,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_mc",
+      "jours": 3,
+      "profils": 1,
+      "phases": {
+        "premier_quartier": 3
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_saturne",
+      "jours": 2,
+      "profils": 1,
+      "phases": {
+        "pleine": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_saturne",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "balsamique": 2
+      }
+    },
+    {
+      "cle": "venus_conjonction_neptune",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "gibbeuse": 1,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_mars",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "croissante": 1,
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_jupiter",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "diffusante": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_uranus",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "pleine": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_uranus",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "pleine": 1,
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "venus_conjonction_uranus",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "nouvelle": 1,
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_saturne",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "diffusante": 1,
+        "premier_quartier": 1
+      }
+    },
+    {
+      "cle": "mercure_carre-opposition_uranus",
+      "jours": 2,
+      "profils": 1,
+      "phases": {
+        "pleine": 1,
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_asc",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "nouvelle": 1,
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_saturne",
+      "jours": 2,
+      "profils": 2,
+      "phases": {
+        "croissante": 1,
+        "pleine": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_asc",
+      "jours": 2,
+      "profils": 1,
+      "phases": {
+        "premier_quartier": 2
+      }
+    },
+    {
+      "cle": "mars_carre-opposition_neptune",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "mercure_sextile-trigone_pluton",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_neptune",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "diffusante": 1
+      }
+    },
+    {
+      "cle": "soleil_conjonction_uranus",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "gibbeuse": 1
+      }
+    },
+    {
+      "cle": "soleil_carre-opposition_uranus",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "croissante": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_saturne",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "dernier_quartier": 1
+      }
+    },
+    {
+      "cle": "mercure_conjonction_saturne",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "balsamique": 1
+      }
+    },
+    {
+      "cle": "mars_sextile-trigone_uranus",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "nouvelle": 1
+      }
+    },
+    {
+      "cle": "mars_conjonction_soleil",
+      "jours": 1,
+      "profils": 1,
+      "phases": {
+        "croissante": 1
+      }
+    }
+  ],
+  "generique_fallback": []
+}

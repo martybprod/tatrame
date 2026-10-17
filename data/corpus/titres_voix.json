@@ -5,6 +5,36 @@
       "miroir": "Un nouveau numéro personnel s'ouvre aujourd'hui : l'année tourne et change de couleur. Ce qui comptait depuis des mois laisse la place à un autre thème, et les premiers jours donnent le ton de l'ensemble. Tu n'as rien à décider d'un coup, tu poses juste un regard sur le chapitre qui commence.",
       "geste": "Note en un mot ce que tu aimerais que cette année fasse de toi. Un seul mot suffit pour commencer."
     },
+    "annee_numeros": {
+      "_note_annee_numeros": "Le jour où l'ANNÉE personnelle bascule, l'amorce dit SA couleur : le conseil écrit pour le numéro qui commence (demande de Martin, 2026-10-16, même logique que mois_numeros). Amorce seule : le miroir et le geste restent ceux du générique « annee », l'app fusionne (repli complet si la variante manque).",
+      "1": {
+        "amorce": "Ose commencer par une petite chose qui te tient à cœur, sans attendre que tout soit parfait. Tu as le droit d'avancer à ton rythme."
+      },
+      "2": {
+        "amorce": "Accepte un coup de main aujourd'hui, même pour une petite chose. Tu n'as pas à tout porter pour que les choses se passent bien."
+      },
+      "3": {
+        "amorce": "Aujourd'hui, partage une idée ou une pensée qui te tente, même si elle n'est pas encore tout à fait claire. Tes mots ont leur place."
+      },
+      "4": {
+        "amorce": "Choisis une petite chose à mettre en ordre et prends le temps de bien la faire. Ce que tu construis pas à pas compte, même si personne ne le remarque."
+      },
+      "5": {
+        "amorce": "Change un peu tes habitudes aujourd'hui, même dans un détail de ta journée. Tu as le droit d'essayer une autre façon de faire."
+      },
+      "6": {
+        "amorce": "Prends le temps de faire plaisir à quelqu'un qui compte pour toi, sans oublier ce qui te ferait du bien à toi aussi. Tu mérites autant d'attention que les autres."
+      },
+      "7": {
+        "amorce": "Accorde-toi un moment de calme pour réfléchir à ce qui compte vraiment pour toi. Tu as le droit de ralentir sans avoir à te justifier."
+      },
+      "8": {
+        "amorce": "Prends un instant pour reconnaître ce que tu as accompli et les efforts que tu y as mis. Tu as le droit de regarder ce que tu as construit avec fierté."
+      },
+      "9": {
+        "amorce": "Termine une petite chose que tu laisses traîner depuis un moment et demande-toi si tu as encore besoin de garder le reste. Tu peux faire de la place sans tout régler d'un coup."
+      }
+    },
     "mois": {
       "miroir": "Le mois personnel change aujourd'hui : une nuance nouvelle se glisse dans ton année. Ce n'est pas un grand virage, plutôt un décalage de teinte — ce à quoi tu fais attention ce mois-ci n'est plus tout à fait pareil.",
       "geste": "Reprends tes projets du moment sous cette lumière neuve, une minute suffit pour remarquer ce qui change d'accent."
@@ -12,38 +42,47 @@
     "mois_numeros": {
       "_note_mois_numeros": "Le jour où le mois personnel bascule, le titre dit SA couleur : la variante du numéro qui commence (demande de Martin, 2026-10-01). Sympa, rapide, ce qui est favorisé. Signature commune « Ton nouveau mois commence aujourd'hui » ; chaque texte validé charte + doublons (validateur). Repli sur la variante générique « mois » si le numéro manque.",
       "1": {
+        "amorce": "Choisis une seule chose que tu aimerais mettre en route ce mois-ci et fais un premier pas concret. Inutile de tout prévoir : commencer, c'est déjà le principal.",
         "miroir": "Ton nouveau mois commence aujourd'hui, et il pousse doucement vers le départ. Le mois favorise les premiers pas. Une chose entamée cette semaine avance plus facilement qu'à l'accoutumée, même en tout petit.",
         "geste": "Choisis une seule chose à lancer, et fais aujourd'hui son premier geste."
       },
       "2": {
+        "amorce": "Reprends doucement une chose que tu avais laissée de côté et vois ce que tu peux ajuster. Tu as le droit de faire les choses à ton rythme.",
         "miroir": "Ton nouveau mois commence aujourd'hui, plus lent et plus doux. Le mois te facilite l'ajustement et l'entraide. Une aide peut se présenter sans que tu la demandes, et l'accepter est une vraie force ce mois-ci.",
         "geste": "Reprends une chose en pause et corrige un seul détail."
       },
       "3": {
+        "amorce": "Dis à une personne ce que tu aimerais lui partager depuis quelque temps. Pas besoin de mots parfaits pour te faire comprendre.",
         "miroir": "Ton nouveau mois commence aujourd'hui, et il ouvre la parole. Ton terrain de jeu, ce sont les échanges. Les mots viennent plus vite, les gens répondent, ce que tu montres trouve son monde. Bonne période pour dire, montrer, proposer.",
         "geste": "Choisis la bonne personne et dis-lui ce que tu gardes pour toi."
       },
       "4": {
+        "amorce": "Consacre un peu de temps à une tâche concrète que tu repousses depuis un moment. Même une petite avancée compte quand tu prends les choses en main.",
         "miroir": "Ton nouveau mois commence aujourd'hui, taillé pour le concret. Ce qui se pose et se termine est favorisé. Rien de spectaculaire, mais ce que tu mets en ordre maintenant tiendra debout longtemps. La satisfaction est discrète et bien réelle.",
         "geste": "Donne une heure au dossier le plus ingrat de ta liste."
       },
       "5": {
+        "amorce": "Modifie un détail de ta routine, comme ton trajet ou ta façon d'organiser ta journée. Tu as le droit de sortir un peu de tes habitudes.",
         "miroir": "Ton nouveau mois commence aujourd'hui, et il demande de l'air. Le mouvement est à l'honneur. Un changement de décor, de trajet ou de rythme fait plus de bien que prévu. Les imprévus se réglent souvent à ton avantage.",
         "geste": "Modifie une seule chose dans ton quotidien, et regarde ce qui bouge."
       },
       "6": {
+        "amorce": "Demande à un proche comment tu peux l'aider, puis choisis ce que tu peux réellement faire. Être présent pour quelqu'un ne demande pas de se donner en entier.",
         "miroir": "Ton nouveau mois commence aujourd'hui, chaleureux et dense. Le lien est ton allié ce mois-ci. Un proche a besoin de toi, et ce que tu donnes nourrit aussi ta propre vie. Bien entouré, c'est l'un des mois les plus réconfortants de l'année.",
         "geste": "Choisis une personne à aider et dis jusqu'où tu iras."
       },
       "7": {
+        "amorce": "Éloigne-toi un moment des écrans et laisse tes pensées se poser tranquillement. Tu as le droit de prendre du recul avant de décider quoi que ce soit.",
         "miroir": "Ton nouveau mois commence aujourd'hui, plus calme. Le mois ralentit le rythme pour te laisser voir clair. Là où tu courais, tu peux maintenant regarder autour. Ce que tu comprends ici vaut mieux que ce que tu forcerais ailleurs.",
         "geste": "Prends deux heures seul cette semaine, sans écran et sans but."
       },
       "8": {
+        "amorce": "Regarde en face le chiffre ou le résultat que tu évites dans un projet qui compte pour toi. Reconnaître ce qui est là, c'est déjà reprendre la main.",
         "miroir": "Ton nouveau mois commence aujourd'hui, et il rend ce que tu as construit. Les résultats visibles sont favorisés. Ce que tu as posé depuis des mois peut enfin se mesurer, parfois en argent, souvent en reconnaissance.",
         "geste": "Regarde en face un chiffre que tu évites, puis laisse-le reposer."
       },
       "9": {
+        "amorce": "Choisis une chose que tu peux terminer et laisse-toi ensuite le temps de profiter de l'espace retrouvé. Tu n'as pas besoin de la remplacer par autre chose.",
         "miroir": "Ton nouveau mois commence aujourd'hui, et il allège. Ce qui se termine bien est favorisé. Une chose peut être posée, remerciée, rangée, et l'espace rendu se sent tout de suite. La légèreté est le vrai cadeau du mois.",
         "geste": "Termine une chose sans la remplacer, et laisse le vide s'installer."
       }
@@ -51,10 +90,12 @@
   },
   "lune": {
     "nouvelle": {
+      "amorce": "Donne une chance à une idée qui te tient à cœur en faisant quelque chose de concret pour la commencer. Tu peux te lancer sans savoir encore où cela te mènera.",
       "miroir": "La Lune devient invisible ce soir : la Nouvelle Lune ouvre un point de départ dans le ciel. Les intentions posées maintenant ont un terrain vierge sous elles, sans preuve à fournir tout de suite.",
       "geste": "Choisis une seule chose à commencer en petit, et fais son premier geste aujourd'hui, même minuscule."
     },
     "pleine": {
+      "amorce": "Prends cinq minutes pour regarder ce que tu as accompli ces dernières semaines et nomme ce qui te réjouit le plus. Reconnaître le chemin parcouru compte autant que la suite.",
       "miroir": "La Pleine Lune éclaire la nuit tout entière : ce qui était flou devient net, ce qui mûrissait depuis des semaines se montre fini, ou presque. C'est un moment de récolte plus que de départ.",
       "geste": "Prends cinq minutes pour regarder ce qui a grandi depuis un mois, et nomme-le clairement."
     }

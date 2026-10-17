@@ -2852,7 +2852,9 @@ async function chargerJour(donnees) {
     // un avant-goût qui donne envie d'appuyer. ⚠️ ÉTAPE SUIVANTE — vérifier que la
     // première phrase de CHAQUE message est autonome et appropriée hors contexte,
     // puisqu'elle est désormais lue seule ici (voir LOG_AJUSTEMENTS.md, 2026-09-23).
-    const apercuAujourdhui = premierePhrase(titre.miroir);
+    // 2026-10-16 : l'aperçu lit l'amorce (le conseil court) — repli miroir tant
+    // que l'entrée n'a pas la sienne.
+    const apercuAujourdhui = premierePhrase(titre.amorce || titre.miroir);
     html += `<div class="carte carte-jour-hero carte-jour-hero--entree" id="${idAuj}" title="Toucher pour lire">
       <div class="chapo">Aujourd'hui</div>
       ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 0">${T(titre.sous_titre)}</p>` : ''}
@@ -3111,7 +3113,8 @@ async function chargerJour(donnees) {
         <div class="accueil-date">${d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}</div>
         <div class="chapo">Aujourd'hui</div>
         ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 12px">${T(titre.sous_titre)}</p>` : ''}
-        <div class="miroir">${T(titre.miroir)}</div>
+        ${/* L'amorce du matin (conseil court, résolue côté serveur avec repli miroir) */''}
+        <div class="miroir">${T(titre.amorce)}</div>
         ${blocGeste(titre.geste, "Aujourd'hui")}
       </div>`;
     } else {

@@ -1821,7 +1821,8 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
     choix = routeur.router_du_jour(force_transit, date, ecart_lune,
                                    score_chinois=sc["score"])
     tr = textes.get("transit") or {}
-    titre = {"source": "ciel", "miroir": tr.get("miroir"), "geste": tr.get("geste")}
+    titre = {"source": "ciel", "amorce": tr.get("amorce"),
+             "miroir": tr.get("miroir"), "geste": tr.get("geste")}
     voix = choix["voix"]
     if voix == "chinois":
         # Clé FINE d'abord : relation × élément du jour (ex. `choc_metal`).
@@ -1835,7 +1836,8 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
         rel = (corpus.lire("chinois_detail", "relations", fine)
                or corpus.lire("chinois_detail", "relations", sc["relation"])) or {}
         if rel.get("miroir"):
-            titre = {"source": "chinois", "miroir": rel["miroir"],
+            titre = {"source": "chinois", "amorce": rel.get("amorce"),
+                     "miroir": rel["miroir"],
                      "geste": rel.get("geste"), "en_bref": rel.get("en_bref"),
                      "sous_titre": _sous_titre_chinois(sc)}
     elif voix == "numero":
@@ -1847,6 +1849,14 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
         if quel == "annee":
             num = annee_personnelle(n["jour"], n["mois"], date.year)
             sous_titre = f"Année personnelle {num}"
+            # La nouvelle année parle avec SA couleur : l'amorce écrite pour
+            # le numéro qui commence (même logique que mois_numeros), posée
+            # SUR les textes longs génériques de la bascule — repli complet
+            # tant que la variante manque.
+            variante = corpus.lire("titres_voix", "numero", "annee_numeros", num)
+            txt = corpus.lire("titres_voix", "numero", "annee") or {}
+            if variante and variante.get("amorce"):
+                txt = {**txt, "amorce": variante["amorce"]}
         else:
             num = mois_personnel(n["jour"], n["mois"], date.year, date.month)
             sous_titre = f"Mois personnel {num}"
@@ -1857,7 +1867,8 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
         if txt is None:
             txt = corpus.lire("titres_voix", "numero", quel) or {}
         if txt.get("miroir"):
-            titre = {"source": "numero", "miroir": txt["miroir"],
+            titre = {"source": "numero", "amorce": txt.get("amorce"),
+                     "miroir": txt["miroir"],
                      "geste": txt.get("geste"), "sous_titre": sous_titre}
     elif voix == "lune":
         # Pic lunaire gagnant : le titre nomme la phase, déjà affichée en
@@ -1865,9 +1876,15 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
         quel = choix["details"]["lune"]["quel"]
         txt = corpus.lire("titres_voix", "lune", quel) or {}
         if txt.get("miroir"):
-            titre = {"source": "lune", "miroir": txt["miroir"],
+            titre = {"source": "lune", "amorce": txt.get("amorce"),
+                     "miroir": txt["miroir"],
                      "geste": txt.get("geste"),
                      "sous_titre": "Nouvelle Lune" if quel == "nouvelle" else "Pleine Lune"}
+    # L'amorce du matin (le conseil court de la carte d'accueil et de la
+    # notification) : résolue ici UNE fois pour toutes — amorce écrite,
+    # sinon repli sur le miroir. Le front et la notification n'ont qu'un
+    # champ à lire ; les messages longs restent entiers dans `miroir`.
+    titre["amorce"] = titre.get("amorce") or titre.get("miroir")
     return titre, {"choix": choix, "chinois": sc}
 
 
@@ -1908,7 +1925,13 @@ def _resoudre_variantes(entree, dominante):
     if not isinstance(entree, dict) or entree is None or "miroir" in entree:
         return entree
     phase = _phase_du_transit(dominante)
-    return entree.get(phase) or entree.get("coeur") or next(iter(entree.values()), None)
+    resolu = entree.get(phase) or entree.get("coeur") or next(iter(entree.values()), None)
+    # L'amorce du matin vit au niveau HAUT de l'entrée : un conseil par
+    # transit, les phases changent le ton, pas le conseil (passation §5.3).
+    # On la regreffe dans la variante — même geste que pensee_soir côté route.
+    if isinstance(resolu, dict) and not resolu.get("amorce") and entree.get("amorce"):
+        resolu = {**resolu, "amorce": entree["amorce"]}
+    return resolu
 
 
 # Fenêtre de regard en arrière, en jours. Assez large pour briser les blocs
@@ -2891,8 +2914,8 @@ def _contenu_rappel(profil, date_loc, creneau, prefs):
     d = _jour_pour(profil, date_loc)
     if not d.get("complet"):
         return None
-    if creneau == "matin":                    # Message du jour = le miroir
-        corps = (d["titre"] or {}).get("miroir")
+    if creneau == "matin":                    # Message du jour = l'amorce
+        corps = (d["titre"] or {}).get("amorce")
         carte = {"carte": "jour"}
     elif creneau == "soir":                    # À méditer = la pensée du soir du transit
         corps = (d["textes"].get("transit") or {}).get("pensee_soir")
