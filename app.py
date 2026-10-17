@@ -267,6 +267,13 @@ app.secret_key = SECRET_KEY
 # visite — indispensable au confort PWA (usage quotiden, écran d'accueil).
 app.config["PERMANENT_SESSION_LIFETIME"] = 60 * 60 * 24 * 365
 
+if not _EST_PROD:
+    # En local, cookie à NOM PROPRE (2026-10-16) : les navigateurs ne distinguent pas les ports,
+    # et sur 127.0.0.1 toutes les apps Flask au nom par défaut « session » s'écrasent
+    # mutuellement (vécu : se connecter ici déconnectait Manto en pleine génération, et
+    # inversement). En prod le domaine est propre : nom inchangé, aucune session perdue.
+    app.config["SESSION_COOKIE_NAME"] = "tatrame_session"
+
 if _EST_PROD:
     # Derrière le reverse proxy de Coolify (Traefik) qui termine le TLS : sans ça Flask
     # se croit en http (il ne voit que le trafic interne du proxy) et n'enverrait pas les
