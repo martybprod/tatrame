@@ -282,6 +282,10 @@ valeur ; t'ajuster un pas à la fois, c'est déjà beaucoup. »)
 - **Reste (clôture)** : revue vivante de l'app (accueil, notification, un
   jour précis) avec Martin, puis éventuel ajustement final. Le chantier
   d'écriture est terminé.
+- **2026-10-16 (nuit) · Commit + déploiement** : commit `96ff97a` sur `main`
+  (10 fichiers du chantier, 3 148 insertions — le travail album/cartes en
+  cours de Martin reste non commité) + push → rebuild Coolify déclenché.
+  Test vivant prévu le lendemain matin (accueil + notification).
 - **2026-10-16 (nuit, fin¹²) · OpenChamber** : **Batch 10 intégré** (clés
   136-150 : mercure_carre-opposition_saturne 3 j → mercure_carre-opposition_pluton
   3 j). ChatGPT relu (3 corrections : 2 accords de genre « direct »/« sûr »,

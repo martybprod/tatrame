@@ -245,7 +245,7 @@ def main():
         print(etat_du_depot())
         print()
 
-    print("TEXTES DE CARTES MODIFIÉS DEPUIS LE DERNIER COMMIT")
+    print("TEXTES MODIFIÉS DEPUIS LE DERNIER COMMIT (cartes et messages)")
     print()
     sous_git = textes_sous_git(index)
     if not sous_git:

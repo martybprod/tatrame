@@ -196,6 +196,25 @@ def cible_ecriture(carte_id, champ, sources=None):
             return None
         return CORPUS / "arcanes.json", ["arcanes", num, champ]
 
+    # — les messages du jour (fil, transits, Lune) —
+    if carte_id.startswith("fil-"):
+        return _cible_entree(CORPUS / "fil.json", [], carte_id[4:],
+                             champ, dict(CHAMPS_FIL))
+    if carte_id.startswith("transit-gen-"):
+        return _cible_entree(CORPUS / "transits.json", ["transits_generiques"],
+                             carte_id[len("transit-gen-"):], champ,
+                             CHAMPS_TRANSIT_AUTORISES)
+    if carte_id.startswith("transit-precis-"):
+        return _cible_entree(CORPUS / "transits.json", ["transits_precis"],
+                             carte_id[len("transit-precis-"):], champ,
+                             CHAMPS_TRANSIT_AUTORISES)
+    if carte_id.startswith("phase-"):
+        return _cible_entree(CORPUS / "ciel.json", ["phases"],
+                             carte_id[len("phase-"):], champ, dict(CHAMPS_LUNE))
+    if carte_id.startswith("lune-maison-"):
+        return _cible_entree(CORPUS / "ciel.json", ["lune_maison"],
+                             carte_id[len("lune-maison-"):], champ, dict(CHAMPS_LUNE))
+
     if "-" not in carte_id:
         return None
     fam_cle, rang = carte_id.split("-", 1)
@@ -417,6 +436,200 @@ def _section_famille(famille, noms, sources):
     }
 
 
+# --------------------------------------------- les messages du jour
+#
+# Le troisième étage de l'album : les textes que l'app sert CHAQUE JOUR.
+# Trois maisons, toutes dans ``data/corpus/`` :
+#   fil.json      — le coaching du jour (miroir + geste), en 12 domaines de vie ;
+#   transits.json — le miroir, le geste et la pensée du soir de chaque contact
+#                   (génériques + précis ; certaines précises portent leurs trois
+#                   phases : approche / coeur / retrait) ;
+#   ciel.json     — la Lune : les 8 phases et les 12 maisons.
+# Même contrat que les cartes : l'album les AFFICHE, l'éditeur les réécrit dans
+# leur fichier — `cible_ecriture` reste le seul endroit qui sait où. Les champs
+# qui ne sont pas des textes (source_livre, themes) sont montrés mais jamais
+# éditables : ils sont de la FABRICATION, pas du message.
+
+ORDRE_DOMAINES = ["soi", "ressources", "echanges", "racines", "creation",
+                  "quotidien", "autre", "traversee", "sens", "metier",
+                  "communaute", "retrait"]        # l'ordre des maisons (jour.py)
+LIBELLES_DOMAINES = {
+    "soi": "Soi", "ressources": "Ressources", "echanges": "Échanges",
+    "racines": "Racines", "creation": "Création", "quotidien": "Quotidien",
+    "autre": "Autre", "traversee": "Traversée", "sens": "Sens",
+    "metier": "Métier", "communaute": "Communauté", "retrait": "Retrait",
+}
+CHAMPS_FIL = (("miroir", "Le miroir"), ("geste", "Le geste"))
+CHAMPS_PHASE = (("miroir", "Le miroir"), ("geste", "Le geste"))
+CHAMPS_LUNE = CHAMPS_PHASE
+#: Une entrée de transit est de l'UNE DES DEUX FORMES (la clé « miroir »
+#: tranche) : un texte unique, ou ses trois phases — chacune avec son miroir
+#: et son geste. Voir `_champs_transit`.
+CHAMPS_TRANSIT_UNIQUES = (("miroir", "Le miroir"), ("geste", "Le geste"),
+                          ("pensee_soir", "La pensée du soir"))
+PHASES_TRANSIT = (("approche", "L'approche"), ("coeur", "Le cœur"),
+                  ("retrait", "Le retrait"))
+CHAMPS_TRANSIT_AUTORISES = ({c for c, _ in CHAMPS_TRANSIT_UNIQUES}
+                            | {"%s.%s" % (p, c) for p, _ in PHASES_TRANSIT
+                               for c, _ in CHAMPS_PHASE})
+NOMS_PHASES = {
+    "nouvelle": "Nouvelle lune", "croissante": "Lune croissante",
+    "premier_quartier": "Premier quartier", "gibbeuse": "Gibbeuse",
+    "pleine": "Pleine lune", "decroissante": "Lune décroissante",
+    "dernier_quartier": "Dernier quartier", "balsamique": "Balsamique",
+}
+
+
+def _capitalise(texte):
+    return texte[:1].upper() + texte[1:]
+
+
+def _champs_transit(entree):
+    """Les blocs d'une entrée de transit, selon sa forme."""
+    if entree.get("miroir") is not None:
+        return list(CHAMPS_TRANSIT_UNIQUES)
+    blocs = []
+    for phase, titre in PHASES_TRANSIT:
+        blocs += [("%s.%s" % (phase, champ), "%s — %s" % (titre, libelle))
+                  for champ, libelle in CHAMPS_PHASE]
+    blocs.append(("pensee_soir", "La pensée du soir"))
+    return blocs
+
+
+def _valeur(entree, chemin):
+    """La valeur d'un champ, qui peut être nichée (« approche.miroir »)."""
+    noeud = entree
+    for partie in chemin.split("."):
+        if not isinstance(noeud, dict):
+            return None
+        noeud = noeud.get(partie)
+    return noeud if isinstance(noeud, str) else None
+
+
+def _carte_message(cid, nom, groupe, cle_texte, fichier_texte, entree, champs):
+    """Une entrée de message, mise en forme comme une carte d'album.
+
+    Pas d'image : la vignette est un APERÇU du texte. Seuls les champs de
+    TEXTE deviennent des blocs éditables — le reste de l'entrée (source,
+    thèmes) est du décor de fabrication. Le champ peut être niché
+    (« approche.miroir ») : c'est le chemin JSON qu'écrira l'éditeur.
+    """
+    entree = entree if isinstance(entree, dict) else {}
+    blocs = []
+    for chemin_champ, titre in champs:
+        valeur = _valeur(entree, chemin_champ)
+        if valeur and valeur.strip():
+            paras = _paragraphes(valeur)
+            if paras:
+                blocs.append({"titre": titre, "champ": chemin_champ,
+                              "paragraphes": paras})
+    apercu = next((b["paragraphes"][0] for b in blocs if b["paragraphes"]), "")
+    return {
+        "id": cid, "genre": "message", "groupe": groupe, "nom": nom,
+        "etiquette": "",
+        "source": entree.get("source_livre", "") if isinstance(entree, dict) else "",
+        "apercu": apercu[:190],
+        "champs": " · ".join(b["titre"] for b in blocs),
+        "image": None, "mini": None,
+        "cle_texte": cle_texte, "fichier_texte": fichier_texte,
+        "textes": blocs, "note_texte": "",
+    }
+
+
+def _sections_fil():
+    """Le Fil du jour, une section par domaine de vie (l'ordre des maisons)."""
+    donnees = {k: v for k, v in _lire_json(CORPUS / "fil.json").items()
+               if not k.startswith("_") and isinstance(v, dict)}
+    if not donnees:
+        return []
+    fichier = _relatif(CORPUS / "fil.json")
+    presents = [d for d in ORDRE_DOMAINES
+                if any(k.split("_", 1)[0] == d for k in donnees)]
+    presents += sorted({k.split("_", 1)[0] for k in donnees} - set(presents))
+    sections = []
+    for domaine in presents:
+        libelle = LIBELLES_DOMAINES.get(domaine, _capitalise(domaine))
+        cartes = []
+        for cle in sorted(k for k in donnees if k.split("_", 1)[0] == domaine):
+            qualifiant = cle[len(domaine):].lstrip("_")
+            nom = libelle + ((" · " + qualifiant.replace("_", " ")) if qualifiant else "")
+            cartes.append(_carte_message("fil-" + cle, nom, "Le Fil du jour",
+                                         cle, fichier, donnees[cle], CHAMPS_FIL))
+        sections.append({
+            "id": "fil-" + domaine, "genre": "messages",
+            "titre": "Fil · %s" % libelle,
+            "note": "Le coaching du jour du domaine %s — le miroir et le geste."
+                    % libelle.lower(),
+            "cartes": cartes,
+        })
+    return sections
+
+
+def _sections_transits():
+    donnees = _lire_json(CORPUS / "transits.json")
+    fichier = _relatif(CORPUS / "transits.json")
+    sections = []
+    for identifiant, groupe, titre, note in (
+            ("transit-gen", ("transits_generiques",), "Transits · génériques",
+             "Le miroir, le geste et la pensée du soir pour chaque classe d'aspect."),
+            ("transit-precis", ("transits_precis",), "Transits · précis",
+             "Le contact exact (« mars carré ton Soleil »). Certaines entrées "
+             "portent leurs trois phases — approche, cœur, retrait — au lieu "
+             "d'un texte unique.")):
+        bloc = donnees.get(groupe[0]) or {}
+        cartes = [_carte_message("%s-%s" % (identifiant, cle),
+                                 _capitalise(cle.replace("_", " ")), titre,
+                                 cle, fichier, valeur, _champs_transit(valeur))
+                  for cle, valeur in sorted(bloc.items()) if isinstance(valeur, dict)]
+        sections.append({"id": identifiant, "genre": "messages", "titre": titre,
+                         "note": note, "cartes": cartes})
+    return sections
+
+
+def _sections_lune():
+    donnees = _lire_json(CORPUS / "ciel.json")
+    fichier = _relatif(CORPUS / "ciel.json")
+    sections = []
+    phases = donnees.get("phases") or {}
+    sections.append({
+        "id": "lune-phases", "genre": "messages", "titre": "Lune · phases",
+        "note": "Le miroir et le geste des huit phases lunaires.",
+        "cartes": [_carte_message("phase-" + cle, NOMS_PHASES.get(cle, _capitalise(cle)),
+                                  "La Lune", cle, fichier, valeur, CHAMPS_LUNE)
+                   for cle, valeur in sorted(phases.items()) if isinstance(valeur, dict)],
+    })
+    maisons = donnees.get("lune_maison") or {}
+    sections.append({
+        "id": "lune-maisons", "genre": "messages", "titre": "Lune · maisons",
+        "note": "Le miroir et le geste de chaque maison de la Lune.",
+        "cartes": [_carte_message("lune-maison-" + cle, "Lune en maison %s" % cle,
+                                  "La Lune", cle, fichier, valeur, CHAMPS_LUNE)
+                   for cle, valeur in sorted(maisons.items()) if isinstance(valeur, dict)],
+    })
+    return sections
+
+
+def _sections_messages():
+    return _sections_fil() + _sections_transits() + _sections_lune()
+
+
+def _cible_entree(chemin_fichier, chemin_prefixe, cle, champ, champs_autorises):
+    """Le chemin JSON d'un champ de message, si la clé existe vraiment.
+
+    Le champ peut être niché (« approche.miroir ») : chaque maillon du chemin
+    doit exister, sinon on refuse — on n'invente jamais une entrée.
+    """
+    if champ not in champs_autorises:
+        return None
+    chemin = list(chemin_prefixe) + [cle] + champ.split(".")
+    noeud = _lire_json(chemin_fichier)
+    for partie in chemin[:-1]:
+        noeud = noeud.get(partie) if isinstance(noeud, dict) else None
+        if not isinstance(noeud, dict):
+            return None
+    return chemin_fichier, chemin
+
+
 # ------------------------------------------------------------------- album
 
 def construire_album():
@@ -426,12 +639,17 @@ def construire_album():
 
     sections = [_section_majeurs(noms)]
     sections += [_section_famille(f, noms, sources) for f in FAMILLES]
+    sections += _sections_messages()
 
-    toutes = [c for s in sections for c in s["cartes"]]
+    # Les CARTES (avec image) et les MESSAGES du jour sont comptés à part :
+    # ce sont deux étages de l'album, pas un même inventory de 729 « cartes ».
+    cartes = [c for s in sections if s.get("genre") != "messages" for c in s["cartes"]]
+    messages = [c for s in sections if s.get("genre") == "messages" for c in s["cartes"]]
     stats = {
-        "cartes": len(toutes),
-        "images": sum(1 for c in toutes if c["image"]),
-        "textes": sum(1 for c in toutes if c["textes"]),
+        "cartes": len(cartes),
+        "images": sum(1 for c in cartes if c["image"]),
+        "textes": sum(1 for c in cartes if c["textes"]),
+        "messages": len(messages),
     }
 
     return {
