@@ -18,11 +18,19 @@ CORPUS_PATH = RACINE / "data" / "corpus" / "mineurs.json"
 SOURCE = RACINE / "_distillation" / "sources"
 
 def _cles_attendues():
-    """70 clés : les 4 familles classiques + Feu en rangs Align (page, chevalier)."""
+    """Les clés réellement servies par le moteur : 4 familles × 14 rangs.
+    Une famille Align ne remplace sa couleur classique que pour les rangs
+    DÉJÀ LIVRÉS (M.ALIGN_RANGS) ; ailleurs, la carte classique reste servie."""
     cles = set()
-    for suit in M.SUIT_NOM:
+    # Les quatre couleurs classiques restent au corpus (transition douce : un
+    # rang non encore dessiné dans une famille Align sert sa carte classique).
+    for suit in M.SUIT_PAR_ELEMENT.values():
         for r in M.RANGS:
-            cles.add(f"{suit}_{M.RANG_ALIGN.get(r, r) if suit in M.SUIT_ALIGN.values() else r}")
+            cles.add(f"{suit}_{r}")
+    # Plus les rangs déjà livrés de chaque famille Align.
+    for suit, rangs in M.ALIGN_RANGS.items():
+        for ra in rangs:
+            cles.add(f"{suit}_{ra}")
     return cles
 
 

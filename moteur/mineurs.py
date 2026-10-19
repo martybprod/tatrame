@@ -66,12 +66,26 @@ SUIT_PAR_ELEMENT = {"feu": "batons", "terre": "deniers", "air": "epees", "eau": 
 SUIT_NOM = {"batons": "Bâtons", "deniers": "Deniers", "epees": "Épées", "coupes": "Coupes"}
 SUIT_NOM["feu"] = "Feu"   # la famille Align du Feu (images validées + texte produits)
 SUIT_NOM["eau"] = "Eau"   # la famille Align de l'Eau (2026-10-13 : 14 images + 14 textes)
+SUIT_NOM["air"] = "Air"   # la famille Align de l'Air (en cours : as -> 10 + Page, 2026-10-18)
 
 ELEMENT_NOM = {"feu": "Feu", "terre": "Terre", "air": "Air", "eau": "Eau"}
 
 # Les familles ALIGN produites (images validées + texte dans mineurs.json).
 # Un élément absent sert encore sa carte classique — transition douce.
-SUIT_ALIGN = {"feu": "feu", "eau": "eau"}
+SUIT_ALIGN = {"feu": "feu", "eau": "eau", "air": "air"}
+
+# Les rangs DÉJÀ LIVRÉS d'une famille Align (image dans static/cartes + texte
+# dans mineurs.json). Une famille en cours de production sert ces rangs-là et
+# garde la carte classique pour les autres : jamais une carte sans image ni
+# texte. Ajouter un rang ici le jour où sa carte est livrée (Air : as -> 10 et
+# Page le 2026-10-18 ; restent Chevalier, Reine, Roi).
+ALIGN_RANGS = {
+    "feu": {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "page", "chevalier", "reine", "roi"},
+    "eau": {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "page", "chevalier", "reine", "roi"},
+    "air": {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10", "page", "chevalier"},
+}
 # Les rangs des figures, en Align (le nom des cartes dessinées) :
 # valet → Page, cavalier → Chevalier. Le moteur calcule en valet/cavalier
 # (l'ordre traditionnel), les familles Align affichent page/chevalier.
@@ -175,6 +189,10 @@ def carte_mineure(lune_lon, soleil_lon, asc_lon):
     # lue sur la couleur classique : le décan ne dépend pas du nom de famille.
     suit = SUIT_ALIGN.get(elt, suit_corr)
     rang_affiche = RANG_ALIGN.get(rang, rang) if suit in SUIT_ALIGN.values() else rang
+    # Rang pas encore dessiné dans la famille Align : on sert la carte
+    # classique de la même couleur (transition douce, jamais un trou).
+    if rang_affiche not in ALIGN_RANGS.get(suit, ()):
+        suit, rang_affiche = suit_corr, rang
     cle = f"{suit}_{rang_affiche}"
     type_corr, valeur_corr = _correspondance(suit_corr, rang)
     return {

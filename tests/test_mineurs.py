@@ -28,12 +28,17 @@ def _rangs_de(suit):
 
 def _cles_atteignables():
     """Les clés que le moteur sert aujourd'hui : 4 familles × 14 rangs.
-    Feu remplace Bâtons (même élément, même fenêtre de Lune)."""
+    Une famille Align remplace sa couleur classique (même élément, même fenêtre
+    de Lune) POUR LES RANGS DÉJÀ LIVRÉS (M.ALIGN_RANGS) ; les autres rangs
+    gardent la carte classique — transition douce, jamais de trou."""
     cles = set()
     for elt in M.ELEMENT_NOM:
-        suit = M.SUIT_ALIGN.get(elt, M.SUIT_PAR_ELEMENT[elt])
+        classique = M.SUIT_PAR_ELEMENT[elt]
+        suit = M.SUIT_ALIGN.get(elt, classique)
+        livres = M.ALIGN_RANGS.get(suit, set()) if suit in SUITS_ALIGN else set()
         for r in M.RANGS:
-            cles.add(f"{suit}_{M.RANG_ALIGN.get(r, r) if suit in SUITS_ALIGN else r}")
+            ra = M.RANG_ALIGN.get(r, r)
+            cles.add(f"{suit}_{ra}" if ra in livres else f"{classique}_{r}")
     return cles
 
 # Vitesses moyennes réelles (°/jour) — suffisantes pour un test de couverture,
