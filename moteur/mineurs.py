@@ -84,7 +84,7 @@ ALIGN_RANGS = {
             "page", "chevalier", "reine", "roi"},
     "eau": {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "page", "chevalier", "reine", "roi"},
-    "air": {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10", "page", "chevalier"},
+    "air": {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10", "page", "chevalier", "reine"},
 }
 # Les rangs des figures, en Align (le nom des cartes dessinées) :
 # valet → Page, cavalier → Chevalier. Le moteur calcule en valet/cavalier
