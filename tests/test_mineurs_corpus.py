@@ -237,3 +237,120 @@ def test_nom_align_present_pour_la_famille_produite():
     vides = [k for k in SYMBOLES_REQUIS_MINEURS
              if k in entrees and not entrees[k].get("nom", "").strip()]
     assert not vides, f"nom Align manquant : {vides}"
+
+
+# ------------------------------------------------ FORMES (banque, 2026-10-21)
+# Charte, section « La banque de formes » : une invitation de mineure prend UNE
+# forme (météo, miroir, offre, question, permission, image, geste déguisé), et
+# les recettes qui ont saturé (« une seule chose », la durée imposée, « même
+# petite », l'ancrage « Aujourd'hui ») reçoivent des plafonds.
+#
+# Le défaut cherché ici n'est PAS lexical (les 8-grammes ci-dessus l'ont) :
+# c'est la FORMULE partagée, invisible test par test et criante en série.
+# Les plafonds s'appliquent par famille, le jour où elle entre dans
+# FAMILLES_A_LA_BANQUE — un test rouge en permanence finit ignoré, donc la
+# vis se serre à chaque rétroportage au lieu de bloquer avant le travail.
+
+BANQUE_DE_FORMES = frozenset({"météo", "miroir", "offre", "question",
+                              "permission", "image", "geste déguisé"})
+
+# Familles passées à la banque de formes (leurs invitations réécrites).
+# Terre y entre au rétroportage, Feu/Eau/Air et les couleurs classiques ensuite.
+FAMILLES_A_LA_BANQUE = frozenset()
+
+PLAFOND_ANCRAGE = 0.30   # « Aujourd'hui » en ouverture
+PLAFOND_RECETTE = 0.08   # chaque recette, par famille (~1 carte / 14)
+
+# Les recettes qui ont saturé, listées une à une (leçon test_style : une liste
+# explicite est moins élégante et beaucoup plus juste qu'une détection vague).
+RECETTES_SURVEILLEES = {
+    "une seule chose": re.compile(r"une (seule|petite) chose\b|une seule tâche\b|un seul[ee]?\b(?= .*à (faire|la fois))", re.I),
+    "durée imposée": re.compile(r"\b(dix|cinq|trois|quinze|trente|deux|une)\s+minutes?\b|\b\d+\s+minutes?\b|\brespirations?\b", re.I),
+    "même petite": re.compile(r"\bmême (petite?|bref|courte?|minuscule|infime)\b", re.I),
+}
+
+
+def _familles_de(cle):
+    return cle.rsplit("_", 1)[0]
+
+
+def test_familles_a_la_banque_respectent_les_plafonds():
+    """Les invitations des familles réécrites tiennent les plafonds de la banque.
+    « Aujourd'hui » en COURS de texte reste libre : seul l'ancrage systématique
+    fatigue (85 cartes / 100 à la mesure du 2026-10-21)."""
+    if not FAMILLES_A_LA_BANQUE:
+        pytest.skip("aucune famille à la banque de formes encore (rétroportage à venir)")
+    entrees = {k: e for k, e in _entrees().items()
+               if _familles_de(k) in FAMILLES_A_LA_BANQUE}
+    assert entrees, "familles à la banque mais aucune entrée dans le corpus"
+    n = len(entrees)
+    ancrage = [k for k, e in entrees.items()
+               if re.match(r"^aujourd['’]hui\b", e["invitation"], re.I)]
+    assert len(ancrage) / n <= PLAFOND_ANCRAGE, (
+        f"« Aujourd'hui » en ouverture : {len(ancrage)}/{n} "
+        f"(plafond {PLAFOND_ANCRAGE:.0%}) : {ancrage}")
+    for nom, motif in RECETTES_SURVEILLEES.items():
+        fautifs = [k for k, e in entrees.items() if motif.search(e["invitation"])]
+        assert len(fautifs) / n <= PLAFOND_RECETTE, (
+            f"recette « {nom} » : {len(fautifs)}/{n} (plafond {PLAFOND_RECETTE:.0%}) : {fautifs}")
+
+
+# Le pilote Terre : les invitations des rangs non encore livrés (pas d'image),
+# rédigées d'après le sens des cartes, testées ICI avant toute migration dans
+# mineurs.json. À la livraison d'un rang : vérifier contre l'image validée
+# (RELECTURE §1), écrire « comprendre », migrer, ajouter le rang à ALIGN_RANGS.
+CORPUS_TRAVAIL_TERRE = RACINE.parent / "_distillation" / "corpus_mineurs_terre.json"
+PLAFOND_FORME_PILOTE = 3      # une même forme : ≤ 3 cartes
+PLAFOND_ANCRAGE_PILOTE = 2    # « Aujourd'hui » en ouverture : ≤ 2 cartes
+
+
+def test_le_pilote_terre_respecte_la_banque_de_formes():
+    from collections import Counter
+    if not CORPUS_TRAVAIL_TERRE.exists():
+        pytest.skip("_distillation/corpus_mineurs_terre.json absent — pilote pas encore rédigé")
+    travail = json.loads(CORPUS_TRAVAIL_TERRE.read_text(encoding="utf-8"))
+    entrees = {k: v for k, v in travail.items() if not k.startswith("_")}
+    assert entrees, "corpus de travail Terre vide"
+
+    hors_banque = {k: v.get("forme") for k, v in entrees.items()
+                   if v.get("forme") not in BANQUE_DE_FORMES}
+    assert not hors_banque, f"forme hors banque (charte) : {hors_banque}"
+
+    longueurs = {k: len(v["invitation"].split()) for k, v in entrees.items()}
+    fautes = {k: n for k, n in longueurs.items() if n < 30 or n > 55}
+    assert not fautes, f"invitation hors bornes (30-55 mots, charte « jour ») : {fautes}"
+
+    ancrage = [k for k, v in entrees.items()
+               if re.match(r"^aujourd['’]hui\b", v["invitation"], re.I)]
+    assert len(ancrage) <= PLAFOND_ANCRAGE_PILOTE, (
+        f"« Aujourd'hui » en ouverture : {len(ancrage)}/{len(entrees)} "
+        f"(plafond {PLAFOND_ANCRAGE_PILOTE}) : {ancrage}")
+
+    for nom, motif in RECETTES_SURVEILLEES.items():
+        fautifs = [k for k, v in entrees.items() if motif.search(v["invitation"])]
+        assert len(fautifs) <= 1, (
+            f"recette « {nom} » dans le pilote : {fautifs} (≤ 1 attendu)")
+
+    formes = Counter(v["forme"] for v in entrees.values())
+    trop = {f: n for f, n in formes.items() if n > PLAFOND_FORME_PILOTE}
+    assert not trop, f"une même forme domine le pilote : {trop}"
+
+    # rien de déjà écrit ne revient : ni entre les rangs du pilote…
+    vus, collisions = {}, []
+    for k, v in entrees.items():
+        mots = _norm(v["invitation"])
+        for i in range(len(mots) - 4):
+            g = " ".join(mots[i:i + 5])
+            if g in vus and vus[g] != k:
+                collisions.append((g, vus[g], k))
+            else:
+                vus[g] = k
+    assert not collisions, f"5-grammes partagés dans le pilote : {collisions[:5]}"
+    # …ni avec les invitations déjà servies (as, 2, et le reste du corpus)
+    existants = [(" ".join(_norm(e["invitation"])), k) for k, e in _entrees().items()]
+    for k, v in entrees.items():
+        mots = _norm(v["invitation"])
+        for i in range(len(mots) - 7):
+            g = " ".join(mots[i:i + 8])
+            pour, ek = next(((t, k2) for t, k2 in existants if g in t), (None, None))
+            assert pour is None, f"8-gramme déjà servi ({ek}) : {g!r} (pilote {k})"

@@ -330,6 +330,63 @@ on la coupe.
 
 ---
 
+## La banque de formes — les invitations des mineures (2026-10-21)
+
+> Retour de Martin : *« Des messages des cartes, je trouve que très très souvent on nous
+> donne un conseil du genre “Aujourd'hui, choisis une seule chose et donne-lui dix minutes.” »*
+
+**Le diagnostic, mesuré.** 85 des 100 invitations de mineures ouvrent par « Aujourd'hui » ;
+21 passent par « tu as envie de » ; 49 finissent sur un impératif ; la recette « une seule
+chose » revient 20 fois, la durée imposée 13 fois. Chaque texte respectait la charte —
+c'est leur **assemblage** qui formait un squelette unique : *ancrage → constat → envie →
+normalisation → geste impératif*. Les tests comptaient les mots copiés (suites de 8), pas
+les formules : ils n'ont rien vu. **La cause** : la règle 1 de la passe 2026-08-31
+ci-dessus — « Aujourd'hui, … » était le remplacement du jargon de phase *pour les
+transits* ; les rédacteurs l'ont appliquée à tout.
+
+**La règle.** Une invitation de mineure adopte **une forme** prise dans la banque, et
+**la forme suit ce que la carte est** — pas un dé, pas une rotation mécanique. On ne
+paraphrase pas le même message : on change de geste d'écriture.
+
+### La banque (7 formes)
+
+| Forme | Ce qu'elle fait | Marqueur |
+|---|---|---|
+| **Météo** | le climat du jour posé sans adresse ni geste | « Certaines saisons ne montrent rien dehors… » |
+| **Miroir** | renvoie un comportement observable, au présent | « Tu es en train de rester au bord d'un groupe… » |
+| **Offre** | fait remarquer ce qui est déjà là | « Tu peux remarquer les endroits où… » |
+| **Question** | la carte demande au lieu de prescrire | « Quelle chose concrète pourrait être ton premier indice ? » |
+| **Permission** | lève une obligation, déculpabilise par le droit | « Tu as le droit d'ouvrir la main. » |
+| **Image** | une seule image concrète et limpide porte le message | « Une plante ne demande pas la permission de fleurir. » |
+| **Geste déguisé** | l'action dans une petite scène, jamais à l'impératif | « Quelqu'un lave sa tasse, les deux mains dessus. » |
+
+### Le mapping — la forme suit la carte (indicatif, pas mécanique)
+
+- **Un As** = une **Offre** (l'énergie neuve se remarque, elle ne se commande pas).
+- **Un 5** = un **Miroir** (la friction s'observe avant de se corriger).
+- **Une figure** (page, chevalier, reine, roi) = une **Permission** ou un **Geste déguisé**
+  (une posture à s'autoriser, pas une tâche).
+- **L'élément garde sa pente** : la Terre peut garder le geste concret (c'est sa nature),
+  l'Air pose des questions, l'Eau donne des permissions, le Feu offre.
+- La **Météo** reste le domaine des majeures ; une mineure peut l'emprunter, rarement.
+
+### Les plafonds (mesurés par `tests/test_mineurs_corpus.py`)
+
+| Mesure | Plafond |
+|---|---|
+| « Aujourd'hui » en **ouverture** | ≤ 30 % des invitations d'une famille à la banque *(il reste permis — il est devenu tic à 85 %)* |
+| Chaque recette (« une seule chose », la durée imposée, « même petite ») | ≤ 8 % d'une famille, donc ~1 carte sur 14 |
+| Une même forme | ≤ 3 cartes par famille de 14 |
+
+- « Aujourd'hui » **en cours de texte** reste libre — seul l'ancrage systématique fatiguait.
+- Les plafonds s'appliquent **par famille**, le jour où elle entre dans
+  `FAMILLES_A_LA_BANQUE` (tests) — c'est-à-dire au rétroportage de ses invitations.
+- Le **pilote Terre** (invitations des rangs non livrés, dans
+  `_distillation/corpus_mineurs_terre.json`) est rédigé sous la banque et testé à part,
+  avant toute migration dans `mineurs.json`.
+
+---
+
 ## Les conventions de calcul — publiées, jamais tues
 
 Align **affiche ses règles** (écran « Les Règles », `/api/conventions`), et dit pour chacune si
