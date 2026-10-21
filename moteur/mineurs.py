@@ -66,13 +66,14 @@ SUIT_PAR_ELEMENT = {"feu": "batons", "terre": "deniers", "air": "epees", "eau": 
 SUIT_NOM = {"batons": "Bâtons", "deniers": "Deniers", "epees": "Épées", "coupes": "Coupes"}
 SUIT_NOM["feu"] = "Feu"   # la famille Align du Feu (images validées + texte produits)
 SUIT_NOM["eau"] = "Eau"   # la famille Align de l'Eau (2026-10-13 : 14 images + 14 textes)
+SUIT_NOM["terre"] = "Terre"   # la famille Align de la Terre (en cours : As, 2026-10-20)
 SUIT_NOM["air"] = "Air"   # la famille Align de l'Air (en cours : as -> 10 + Page, 2026-10-18)
 
 ELEMENT_NOM = {"feu": "Feu", "terre": "Terre", "air": "Air", "eau": "Eau"}
 
 # Les familles ALIGN produites (images validées + texte dans mineurs.json).
 # Un élément absent sert encore sa carte classique — transition douce.
-SUIT_ALIGN = {"feu": "feu", "eau": "eau", "air": "air"}
+SUIT_ALIGN = {"feu": "feu", "eau": "eau", "air": "air", "terre": "terre"}
 
 # Les rangs DÉJÀ LIVRÉS d'une famille Align (image dans static/cartes + texte
 # dans mineurs.json). Une famille en cours de production sert ces rangs-là et
@@ -85,6 +86,7 @@ ALIGN_RANGS = {
     "eau": {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "page", "chevalier", "reine", "roi"},
     "air": {"as", "2", "3", "4", "5", "6", "7", "8", "9", "10", "page", "chevalier", "reine", "roi"},
+    "terre": {"as"},
 }
 # Les rangs des figures, en Align (le nom des cartes dessinées) :
 # valet → Page, cavalier → Chevalier. Le moteur calcule en valet/cavalier

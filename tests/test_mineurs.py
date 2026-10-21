@@ -79,13 +79,23 @@ def test_les_56_sont_atteignables_pour_une_meme_personne():
         assert not manque, f"asc={asc} : clés jamais atteintes en 3 ans : {manque}"
 
 
+def _element_de(suit):
+    """L'élément d'une famille servie (Align ou classique)."""
+    if suit in M.SUIT_PAR_ELEMENT.values():
+        return next(e for e, s in M.SUIT_PAR_ELEMENT.items() if s == suit)
+    return next(e for e, s in M.SUIT_ALIGN.items() if s == suit)
+
+
 def test_couleur_independante_de_l_ascendant():
-    """La couleur ne doit dépendre QUE de la Lune — pas de l'Ascendant ni
-    du Soleil (sinon elle cesserait d'être « partagée » ce jour-là)."""
+    """L'ÉLÉMENT ne doit dépendre QUE de la Lune — pas de l'Ascendant ni du
+    Soleil (sinon la couleur cesserait d'être « partagée » ce jour-là).
+    ⚠️ On teste l'ÉLÉMENT, pas le libellé : une famille Align **partiellement**
+    livrée (la Terre n'a que son As) sert la carte classique de la même couleur
+    pour ses autres rangs — le nom change, l'élément non."""
     for lune in (5.0, 95.0, 185.0, 275.0):
-        suits = {M.carte_mineure(lune, soleil, asc)["suit"]
-                  for soleil in (0.0, 120.0, 240.0) for asc in (0.0, 90.0, 200.0)}
-        assert len(suits) == 1, f"lune={lune} : la couleur varie avec soleil/ascendant"
+        elements = {_element_de(M.carte_mineure(lune, soleil, asc)["suit"])
+                    for soleil in (0.0, 120.0, 240.0) for asc in (0.0, 90.0, 200.0)}
+        assert len(elements) == 1, f"lune={lune} : la couleur varie avec soleil/ascendant"
 
 
 def test_rang_independant_de_la_lune():
