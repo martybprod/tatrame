@@ -255,8 +255,9 @@ BANQUE_DE_FORMES = frozenset({"météo", "miroir", "offre", "question",
                               "permission", "image", "geste déguisé"})
 
 # Familles passées à la banque de formes (leurs invitations réécrites).
-# Terre y entre au rétroportage, Feu/Eau/Air et les couleurs classiques ensuite.
-FAMILLES_A_LA_BANQUE = frozenset()
+# Air 2026-10-21 (pilote réel, validé contre les cartes) ; Terre suivra à son
+# rétroportage, puis Feu/Eau et les couleurs classiques.
+FAMILLES_A_LA_BANQUE = frozenset({"air"})
 
 PLAFOND_ANCRAGE = 0.30   # « Aujourd'hui » en ouverture
 PLAFOND_RECETTE = 0.08   # chaque recette, par famille (~1 carte / 14)
