@@ -387,6 +387,65 @@ paraphrase pas le même message : on change de geste d'écriture.
 
 ---
 
+## La description de la carte — décrire la carte, pas le prompt (2026-10-26)
+
+> Retour de Martin, en relisant le **Huit de Terre** : *« le paragraphe de description de la carte est
+> souvent rempli d'éléments inutiles qui proviennent du prompt qui a servi à composer l'image, mais qui
+> sont tout à fait inutiles pour décrire la carte (ex : dans un pays chaud, plein de détails de couleurs
+> non pertinents). »*
+
+**Le diagnostic.** Le premier paragraphe du « comprendre » s'écrit en regardant l'image — et l'image
+garde la trace de la **recette** qui l'a fabriquée : le pays (« dans un pays chaud »), les matières, la
+liste des couleurs de la palette, les plantes ajoutées pour meubler, la lumière décrite comme une
+consigne de rendu. Rien de tout cela n'aide le lecteur : **il a la carte sous les yeux**, et il ne
+connaît pas la recette.
+
+**La règle — un élément ne reste que s'il a une fonction.** Trois fonctions, pas quatre :
+
+| Fonction | Exemple (Huit de Terre) |
+|---|---|
+| **Il est un symbole** de la carte, pris dans la grille | le **balai**, le **petit tas de feuilles**, les **dalles**, les **joints** où pousse l'herbe |
+| **Il est indispensable pour lire la scène** (où, qui, quoi) | « une femme **pieds nus** sur la pierre chaude » ; « **personne** ne la regarde » |
+| **Il porte une sortie visible** (R-M2) | la lumière du soir, si elle **sort** du cadre et tombe sur le geste |
+
+Tout le reste est **du décor de prompt**, et il tombe. Le test : *si l'élément pouvait être remplacé ou
+supprimé sans changer ce que la carte veut dire, c'est du décor.*
+
+**Ce qui tombe, nommément :**
+
+- le **nom du pays ou du climat** quand il n'est qu'une consigne de rendu (« dans un pays chaud »,
+  « quelque part en Italie », « méditerranéen ») ;
+- l'**inventaire des couleurs** (« ivoire, ocres, olive, vert-de-gris, pourpre ») — sauf si une couleur
+  **est** un symbole de la carte. La palette se garde dans la **fiche** et dans la **recette**, jamais
+  dans le texte ;
+- les **objets ajoutés pour remplir** (une plante de plus, des collines à l'horizon, un oiseau, un outil
+  qui ne sert pas le geste) ;
+- la **lumière décrite comme une consigne** (« lumière basse venant de la gauche », « soleil hors
+  cadre ») : on garde **ce qu'elle fait**, pas comment elle est réglée ;
+- les **interdits de la recette retournés en prose** (« rien de tropical », « sans palmiers ») : on ne
+  décrit pas ce qui **n'est pas** sur l'image.
+
+**Les trois questions de contrôle, avant d'écrire le paragraphe :**
+
+1. **Ce détail est-il dans la grille des symboles ?** Sinon, il ne reste que s'il faut le voir pour lire
+   la scène.
+2. **Un lecteur qui n'a que la carte et le texte comprend-il mieux avec ce détail ?** Si non, il part.
+3. **Est-ce que je décris l'image, ou est-ce que je récite le prompt ?** Un texte qui pourrait servir de
+   consigne de génération est un texte raté.
+
+**Longueur et unité** : 5 à 8 phrases, **un seul sujet** (un lieu, une figure, un geste). Un paragraphe
+qui énumère trois plans — le premier plan, le fond, le ciel — décrit un décor, pas une carte.
+
+**L'exemple qui a fait la règle** (Huit de Terre) : « dans un pays chaud » et « la poussière monte dans
+la lumière du soir » ont été **coupés par Martin**. Le premier était une consigne de la recette
+(chauffer le pays pour éviter le tropical), le second un effet de lumière. La carte n'y perd rien : elle
+tient par les dalles, le balai, les pieds nus et le visage.
+
+*(Cette règle est **humaine** : elle ne se mesure pas par un test — comme « Pense à Ginette ». Elle se
+relit à voix haute avant de livrer, en même temps que les tics de style.)*
+
+---
+
 ## Les conventions de calcul — publiées, jamais tues
 
 Align **affiche ses règles** (écran « Les Règles », `/api/conventions`), et dit pour chacune si
