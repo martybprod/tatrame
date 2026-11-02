@@ -31,7 +31,7 @@ SYMBOLES_REQUIS = {
     3: ["ruban", "mains", "robe", "motif", "bassin", "feu", "eau"],
     4: ["temple", "colonnes", "aigle", "rivière", "eau", "montagnes",
         "plaines", "ciel"],
-    5: ["vide", "nue", "bras", "œuf", "lumière", "étoile", "spirale"],
+    5: ["vide", "noir", "œuf", "lumière"],
     6: ["mains", "colombes", "serpent", "soleil", "collines", "arbre",
         "fruits"],
     7: ["avance", "flammes", "sphinx", "croissants", "étoil"],
