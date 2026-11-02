@@ -8,6 +8,7 @@ elle est marquée comme telle, à confirmer sur une source.
 import datetime as dt
 
 from moteur import chinois as C
+from moteur import routeur as R
 
 
 # ------------------------------------------------- le pilier de l'année
@@ -119,6 +120,93 @@ def test_saillance_chinoise_bien_formee():
     assert s["relation"] in C.POIDS_RELATION
     assert s["animal_natal"] == "singe"            # 1980 = 庚申, singe de métal
     assert s["cle"] == f"{s['relation']}_singe"
+
+
+# --------------------------------------------- le mur des voix (répétition)
+#
+# Même idée que le mur des transits (`jour.choisir_dominante`), appliquée au
+# TITRE : un texte qui vient de prendre la tête ne la reprend pas à un ou
+# deux jours d'écart — « Mois personnel 4 » deux matins de suite, la même
+# Nouvelle Lune deux fois — sauf si aucune autre voix n'a quoi dire.
+
+def test_le_mur_evince_une_voix_deja_montree():
+    """Le même texte ne reprend pas la tête : la voix récente cède devant la
+    meilleure voix valable, même moins saillante."""
+    candidats = {"numero": 0.8, "ciel": 0.4}
+    cles = {"numero": "numero:annee", "ciel": "ciel:lune_sextile-trigone_venus"}
+    recents = [["numero:annee", "ciel:venus_sextile-trigone_mars"]]
+    choix = R.choisir_voix(candidats, cles, recents)
+    assert choix["voix"] == "ciel"
+    assert choix["mur"] == {"voix_evincee": "numero", "cle": "numero:annee"}
+
+
+def test_le_mur_cede_si_aucune_remplacante_valable():
+    """Aucune voix avec un texte neuf et une saillance au plancher : on garde
+    la voix récente — une répétition vaut mieux qu'un titre hors-sol."""
+    candidats = {"numero": 0.8, "ciel": 0.1}
+    cles = {"numero": "numero:annee", "ciel": "ciel:lune_sextile-trigone_venus"}
+    choix = R.choisir_voix(candidats, cles, [["numero:annee"]])
+    assert choix["voix"] == "numero"
+    assert choix["mur"] is None
+
+
+def test_le_mur_ne_pese_que_sur_les_remplacantes():
+    """Sans voix récente dans la fenêtre, l'élection reste la règle
+    historique — même si la gagnante est sous le plancher. Le mur ne doit
+    jamais changer une élection qu'il n'a pas lieu de toucher."""
+    candidats = {"numero": 0.2, "ciel": 0.1}
+    cles = {"numero": "numero:annee", "ciel": "ciel:x"}
+    choix = R.choisir_voix(candidats, cles, [["chinois:trine_feu"]])
+    assert choix["voix"] == "numero"
+    assert choix["mur"] is None
+
+
+def test_une_voix_sans_texte_n_est_jamais_remplacante():
+    """Le chinois « neutre » n'a pas de texte dédié : élire une remplaçante
+    sans message ferait retomber le titre sur le ciel — la voix murée. Le
+    mur ignore donc les voix sans clé de texte."""
+    candidats = {"ciel": 0.5, "chinois": 0.15}
+    cles = {"ciel": "ciel:venus_sextile-trigone_mars", "chinois": None}
+    choix = R.choisir_voix(candidats, cles, [["ciel:venus_sextile-trigone_mars"]])
+    assert choix["voix"] == "ciel"
+    assert choix["mur"] is None
+
+
+def test_le_mur_regarde_le_texte_pas_la_voix():
+    """« Mois personnel 4 » puis « Mois personnel 7 » : deux textes, aucune
+    éviction. Le même numéro à un jour d'écart, si : la voix cède."""
+    candidats = {"numero": 0.6, "ciel": 0.2}
+    cles = {"numero": "numero:mois_numeros:4", "ciel": "ciel:a"}
+    different = R.choisir_voix(candidats, cles, [["numero:mois_numeros:7"]])
+    assert different["voix"] == "numero" and different["mur"] is None
+    candidats["ciel"] = 0.4                      # une remplaçante au plancher
+    meme = R.choisir_voix(candidats, cles, [["numero:mois_numeros:4"]])
+    assert meme["voix"] == "ciel" and meme["mur"] is not None
+
+
+def test_le_mur_des_voix_ne_regarde_que_la_fenetre():
+    """Un texte montré il y a 4 jours redevient disponible : le mur empêche
+    le rapprochement, il n'interdit pas le retour (fenêtre de 3 jours)."""
+    candidats = {"numero": 0.6, "ciel": 0.2}
+    cles = {"numero": "numero:annee", "ciel": "ciel:a"}
+    recents = [["numero:annee"], [], [], []]     # vu il y a 4 jours, pas dans les 3
+    choix = R.choisir_voix(candidats, cles, recents)
+    assert choix["voix"] == "numero" and choix["mur"] is None
+
+
+def test_router_du_jour_branche_le_mur():
+    """Le point d'entrée applique le mur quand on lui passe les clés de
+    texte et l'historique — et conserve `details` pour le rendu."""
+    cles = {"numero": "numero:mois_numeros:4", "ciel": "ciel:a",
+            "lune": "lune:pleine", "chinois": "chinois:trine_feu"}
+    choix = R.router_du_jour(0.4, dt.date(2026, 11, 1), 90.0, score_chinois=0.0,
+                             cles_texte=cles, titres_recents=[["numero:mois_numeros:4"]])
+    assert choix["voix"] == "ciel"
+    assert choix["mur"]["voix_evincee"] == "numero"
+    assert "details" in choix
+    # sans historique, comportement historique intact : la numero gagne
+    sans_mur = R.router_du_jour(0.4, dt.date(2026, 11, 1), 90.0, score_chinois=0.0)
+    assert sans_mur["voix"] == "numero" and "mur" not in sans_mur
 
 
 def test_le_corpus_couvre_les_relations_saillantes():

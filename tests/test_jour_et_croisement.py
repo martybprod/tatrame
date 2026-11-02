@@ -141,11 +141,29 @@ def _decl(cle, force):
     return {"cle": cle, "force": force}
 
 
-def test_dominante_leader_net_gagne_meme_si_recent():
-    """Un leader au-delà de la marge gagne toujours : on n'affiche jamais un
-    transit faible au nom de la variété."""
-    decl = [_decl("a", 0.90), _decl("b", 0.50)]   # écart 0.40 >> marge
+def test_le_meme_message_ne_revient_pas_trop_vite():
+    """Martin (2026-11-01) : le même message lu le 30 octobre et le 1er
+    novembre, c'est trop rapproché. Un leader NET déjà montré récemment cède
+    donc la place à un remplaçant valable, même moins fort — le mur de la
+    répétition passe AVANT la marge."""
+    decl = [_decl("a", 0.90), _decl("b", 0.50)]   # a net leader, mais récent
+    assert J.choisir_dominante(decl, ["a", "a", "a"])["cle"] == "b"
+
+
+def test_un_leader_net_gagne_si_aucun_remplacant_valable():
+    """On n'affiche jamais un transit creux au nom de la variété : sous le
+    plancher (0,20), aucun remplaçant ne mérite la journée et le leader
+    récent reste — une répétition vaut mieux qu'un message vide."""
+    decl = [_decl("a", 0.90), _decl("b", 0.15)]
     assert J.choisir_dominante(decl, ["a", "a", "a"])["cle"] == "a"
+
+
+def test_le_mur_ne_regarde_que_la_fenetre_d_exclusion():
+    """Au-delà de la fenêtre (3 jours), une clé redevient disponible : le mur
+    empêche le rapprochement, il n'interdit pas le retour."""
+    decl = [_decl("a", 0.90), _decl("b", 0.50)]
+    # a vu il y a 4 jours (recents[-4]), pas dans les 3 derniers jours.
+    assert J.choisir_dominante(decl, ["a", "x", "x", "x"])["cle"] == "a"
 
 
 def test_dominante_le_moins_recent_gagne_parmi_les_comparables():

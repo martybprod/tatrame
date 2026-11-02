@@ -60,9 +60,21 @@ POIDS_CLASSE = {"conjonction": 1.0, "carre-opposition": 0.82, "sextile-trigone":
 
 # Sous cet écart de force avec le leader, deux déclencheurs sont jugés
 # COMPARABLES : la sélection sensible à la récurrence peut alors préférer le
-# moins récent. Au-delà, le leader est net et gagne — on n'affiche jamais un
-# transit faible au nom de la variété.
+# moins récent. Au-delà, le leader est net et gagne — sauf s'il vient d'être
+# montré : le mur ci-dessous passe avant la marge.
 MARGE_COMPARABLES = 0.12
+
+# LE MUR DE LA RÉPÉTITION (Martin, 2026-11-01) : un même message lu le 30
+# octobre puis le 1er novembre, c'est trop rapproché — même quand le ciel le
+# garde en tête (Vénus sextile Mars tient plusieurs jours autour de l'exact).
+# Une dominante déjà montrée dans les N derniers jours est donc écartée, MÊME
+# si elle reste la plus forte, dès qu'un remplaçant valable existe.
+# `PLANCHER_VARIETE` = force minimale du remplaçant : sous ce seuil, le contact
+# est trop loin de l'exact (orbe très entamé) pour porter la journée, et on
+# préfère encore la répétition à un message creux. (0,20 ≈ un aspect à ~60 %
+# de son orbe sur un point personnel — un contact encore réel, jamais du bruit.)
+FENETRE_NON_REPETITION = 3
+PLANCHER_VARIETE = 0.20
 
 
 def _ecart(a, b):
@@ -141,26 +153,45 @@ def lune_du_jour(theme, lon_lune):
     return {**signe_de(lon_lune), "maison": maison_de(lon_lune, cusp)}
 
 
-def choisir_dominante(declencheurs, recents, marge=MARGE_COMPARABLES):
-    """Parmi les déclencheurs comparables au leader, le MOINS RÉCENT gagne.
+def choisir_dominante(declencheurs, recents, marge=MARGE_COMPARABLES,
+                      exclusion=FENETRE_NON_REPETITION,
+                      plancher=PLANCHER_VARIETE):
+    """La dominante du jour, sans réapparition trop rapprochée.
+
+    Deux garde-fous, dans cet ordre :
+
+    1. LE MUR — une clé déjà dominante dans les `exclusion` derniers jours est
+       écartée, même si elle est la plus forte. C'est ce qui empêche le même
+       texte de revenir à deux jours d'intervalle quand un aspect lent reste
+       exact (le cas Vénus sextile Mars des 30 octobre / 1er novembre 2026).
+       Le remplaçant doit franchir `plancher` : sous ce seuil, aucun contact
+       ne mérite la journée et on préfère la répétition à un message creux.
+    2. LA MARGE — parmi les déclencheurs comparables au leader (dans la
+       marge), le MOINS RÉCENT gagne.
 
     La règle historique — « le plus fort gagne, point » — laissait un transit
     serré dominer toute une semaine : une station rétrograde tient plusieurs
     jours à moins de 1° d'exact, donc le même message s'affichait jour après
-    jour. On brise ces blocs. Tant que des déclencheurs sont comparables au
-    leader (dans la marge), on préfère celui qu'on n'a PAS montré récemment.
+    jour. On brise ces blocs, d'abord par le mur, ensuite par la marge.
 
     `recents` : liste des clés dominantes des N jours précédents, du plus
     ancien au plus récent (recents[-1] = hier). Calculée en amont, de façon
     déterministe — cette fonction est PURE, sans accès à l'éphéméride. Le
     bord gauche de la fenêtre s'amorce naturellement en naïf (pas de passé
     connu → on départage par la force), ce qui borne le regard en arrière.
-
-    Un leader NET (au-delà de la marge) gagne quand même : `candidats` se
-    réduit alors à lui seul, et on le renvoie tel quel.
     """
     if not declencheurs:
         return None
+
+    # 1) Le mur : écarter ce qui vient d'être montré, s'il reste de quoi choisir.
+    if exclusion > 0 and recents:
+        vus = {cle for cle in recents[-exclusion:] if cle}
+        remplacants = [d for d in declencheurs
+                       if d["cle"] not in vus and d["force"] >= plancher]
+        if remplacants:
+            declencheurs = remplacants
+
+    # 2) La marge : parmi les comparables, le moins récent.
     seuil = declencheurs[0]["force"] - marge
     candidats = [d for d in declencheurs if d["force"] >= seuil]
     if len(candidats) == 1:

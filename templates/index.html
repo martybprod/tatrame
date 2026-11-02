@@ -2748,6 +2748,18 @@ async function chargerJour(donnees) {
       "Un retour se calcule sur l'instant exact de ta naissance, pas sur la date civile seule. Si tu es né tard en soirée, cet instant peut tomber, une fois ramené au temps universel, sur le jour civil suivant. Le calcul reste précis — il peut juste sembler décalé d'un jour par rapport à ton anniversaire.") : '';
   }
 
+  /* Le mur du transit a cédé (aucun autre contact valable dans le ciel) :
+     le même message peut alors revenir à 1-3 jours d'écart. On le NOMME
+     plutôt que de laisser croire à un oubli — quand le ciel insiste, c'est
+     un sens, pas une panne. Visible sur la carte héros quand le ciel mène,
+     dans la carte « Ce qui domine » sinon. */
+  const repCiel = j.repetition_ciel;
+  const joursRep = repCiel ? `il y a ${repCiel} jour${repCiel > 1 ? 's' : ''}` : '';
+  const noteRepHeros = (repCiel && cielMene)
+    ? `<p class="quoi" style="margin:6px 0 0">Le ciel insiste : ce message parlait aussi ${joursRep}.</p>` : '';
+  const noteRepTransit = repCiel
+    ? `<p class="quoi" style="margin:4px 0 12px">Ce transit dominait aussi ${joursRep} : il est resté fort, le ciel insiste.</p>` : '';
+
   /* La mini-lune du jour dans l'en-tête — deux arcs SVG, la technique du
      gh-pages « moon-phase » (limbe + terminateur elliptique), mais dessinée
      depuis l'écart Lune-Soleil que le SERVEUR fournit déjà (j.jour.phase) :
@@ -2854,6 +2866,7 @@ async function chargerJour(donnees) {
       ${cielMene && dom ? `<details class="aide ciel-titre"><summary>Dans le ciel</summary>
         <p style="font-size:15px;color:var(--encre2);margin:8px 0 4px">${domPhrase}</p>
         <p class="quoi" style="margin:4px 0 12px">${domTempo}</p></details>` : ''}
+      ${cielMene ? noteRepTransit : ''}
       <div class="miroir">${T(titre.miroir)}</div>
       ${blocGeste(titre.geste, "Aujourd'hui")}
       ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance), ta numérologie (le changement d'année ou de mois personnel), la Lune (Nouvelle ou Pleine) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
@@ -2874,6 +2887,7 @@ async function chargerJour(donnees) {
       <div class="chapo">Aujourd'hui</div>
       ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 0">${T(titre.sous_titre)}</p>` : ''}
       <p class="apercu-message">${T(apercuAujourdhui)}</p>
+      ${noteRepHeros}
     </div>`;
   }
 
@@ -2896,6 +2910,7 @@ async function chargerJour(donnees) {
       // garder le HTML intact.
       corpsHTML: `<details class="aide"><summary>Dans le ciel</summary><p>${domPhrase}</p></details>
         <p class="quoi">${domTempo}</p>
+        ${noteRepTransit}
         ${blocGeste(t.transit?.geste, "Ce qui domine aujourd'hui")}
         ${domCalc}${domRetourAide}`
     })}</div>`;

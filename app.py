@@ -1814,7 +1814,44 @@ def _sous_titre_chinois(sc):
     return phrase[0].upper() + phrase[1:]   # majuscule de début (défaut ancien)
 
 
-def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
+def _cles_texte_voix(date, ecart_lune, n, cle_dominante, sc=None):
+    """La clé de TEXTE que chaque voix du routeur afficherait aujourd'hui.
+
+    C'est elle que le mur des voix compare — la voix, elle, peut porter des
+    textes différents : « annee » est UN texte pour toute l'année (seule
+    l'amorce varie avec le numéro), « mois_numeros:4 » est le texte du mois
+    4, le chinois se décline par relation × élément (repli sur la relation
+    seule tant que la variante manque — la clé suit le REPLI, puisque c'est
+    le texte affiché qu'on ne veut pas revoir). None = la voix n'a rien à
+    montrer aujourd'hui : elle n'est jamais remplaçante au mur.
+    """
+    if sc is None:
+        sc = chinois.saillance_chinoise(n["annee"], n["mois"], n["jour"], date)
+    bascule = routeur.saillance_bascule(date)
+    pic = routeur.saillance_pic_lunaire(ecart_lune)
+    if bascule["quel"] == "annee":
+        cle_numero = "numero:annee"
+    else:
+        num = mois_personnel(n["jour"], n["mois"], date.year, date.month)
+        cle_numero = (f"numero:mois_numeros:{num}"
+                      if corpus.lire("titres_voix", "numero", "mois_numeros", num)
+                      else "numero:mois")
+    fine = f"{sc['relation']}_{chinois.ELEMENT_SLUG[sc['element_du_jour']]}"
+    rel_fine = corpus.lire("chinois_detail", "relations", fine) or {}
+    rel_simple = corpus.lire("chinois_detail", "relations", sc["relation"]) or {}
+    cle_chinois = (f"chinois:{fine}" if rel_fine.get("miroir")
+                   else f"chinois:{sc['relation']}" if rel_simple.get("miroir")
+                   else None)
+    return {
+        "ciel": f"ciel:{cle_dominante}" if cle_dominante else None,
+        "numero": cle_numero,
+        "lune": f"lune:{pic['quel']}",
+        "chinois": cle_chinois,
+    }
+
+
+def _titre_du_jour(textes, force_transit, date, ecart_lune, n,
+                   cle_dominante=None, titres_recents=None):
     """Le routeur du titre : quelle voix prend la tête aujourd'hui.
 
     Quatre saillances comparées (ciel, numéro, lune, chinois). Le ciel reste la
@@ -1823,10 +1860,23 @@ def _titre_du_jour(textes, force_transit, date, ecart_lune, n):
     9 », « Nouvelle Lune », les animaux du chinois), même logique qu'un transit
     qui nomme le point natal touché. Si le corpus de la voix gagnante manque,
     on retombe proprement sur le ciel.
+
+    `titres_recents` branche le MUR DES VOIX : un texte déjà affiché dans les
+    derniers jours ne reprend pas la tête s'il reste une voix valable (voir
+    `routeur.choisir_voix`). La clé de texte du ciel est celle de la dominante
+    du jour, déjà murée par la sélection des transits — ce second mur ne sert
+    que les jours où celle-ci a cédé (aucun autre contact valable dans le ciel).
     """
     sc = chinois.saillance_chinoise(n["annee"], n["mois"], n["jour"], date)
-    choix = routeur.router_du_jour(force_transit, date, ecart_lune,
-                                   score_chinois=sc["score"])
+    if titres_recents is None:
+        choix = routeur.router_du_jour(force_transit, date, ecart_lune,
+                                       score_chinois=sc["score"])
+    else:
+        cles_voix = _cles_texte_voix(date, ecart_lune, n, cle_dominante, sc=sc)
+        choix = routeur.router_du_jour(force_transit, date, ecart_lune,
+                                       score_chinois=sc["score"],
+                                       cles_texte=cles_voix,
+                                       titres_recents=titres_recents)
     tr = textes.get("transit") or {}
     titre = {"source": "ciel", "amorce": tr.get("amorce"),
              "miroir": tr.get("miroir"), "geste": tr.get("geste")}
@@ -2023,6 +2073,39 @@ def _recents_pour(theme, date, fenetre=FENETRE_RECURRENCE):
     return [passe[o] for o in range(-fenetre, 0)]
 
 
+def _titres_recents_pour(theme, date, n, fenetre=J.FENETRE_NON_REPETITION):
+    """Les textes de titre affichés les `fenetre` jours précédant `date`,
+    du plus ancien au plus récent — UN jour = la liste des clés affichées
+    (la voix élue ET le transit, qui se voit même quand il ne mène pas).
+
+    Rejoue l'élection AVEC le mur, jour par jour — même logique que
+    `_dominantes_fenetre` pour les transits — pour que « récent » reflète
+    ce qui a vraiment été montré, pas seulement la voix la plus saillante.
+    Le bord gauche s'amorce en naïf (pas de passé connu → élection simple),
+    ce qui borne le regard en arrière. Déterministe : fonction pure de
+    (naissance, date).
+    """
+    passe = _dominantes_fenetre(theme, date, fenetre)
+    jours = []
+    for offset in range(-fenetre, 0):
+        d = date + dt.timedelta(days=offset)
+        cle_dom = passe.get(offset)
+        decls = _declencheurs_pour(theme, d)
+        force = next((x["force"] for x in decls if x["cle"] == cle_dom), 0.0) \
+            if cle_dom else 0.0
+        ciel = _ciel_leger(theme, d)
+        ecart = (ciel["lune"]["lon"] - ciel["soleil"]["lon"]) % 360.0
+        cles_voix = _cles_texte_voix(d, ecart, n, cle_dom)
+        choix = routeur.router_du_jour(force, d, ecart,
+                                       score_chinois=chinois.saillance_chinoise(
+                                           n["annee"], n["mois"], n["jour"], d)["score"],
+                                       cles_texte=cles_voix, titres_recents=jours)
+        affichees = [c for c in (cles_voix.get(choix["voix"]),
+                                 cles_voix.get("ciel")) if c]
+        jours.append(affichees)
+    return jours
+
+
 def _carte_perso_pour(theme, date, n, positions, jour, fenetre=FENETRE_RECURRENCE):
     """La carte majeure PERSONNELLE du jour : le vivier lu par la rotation.
 
@@ -2179,8 +2262,21 @@ def _jour_pour_calcule(profil, date):
     # blocs de jours identiques (un transit serré qui domine toute une
     # semaine). Déterministe — voir `_recents_pour`.
     recents = _recents_pour(theme, date)
+    # La même mémoire pour les VOIX du titre (héros + transit affiché) :
+    # le mur du routeur en a besoin — voir `_titres_recents_pour`.
+    titres_recents = _titres_recents_pour(theme, date, n)
     j = J.journee(theme, positions, vitesses, ap, carte_an,
                   carte_jour=carte_jr, mois_perso=mp, recents=recents)
+    # Le mur du transit a-t-il cédé (clé déjà montrée dans la fenêtre, sans
+    # remplaçant valable) ? Si oui, l'interface le nomme — voir le marquage
+    # côté template — au lieu de laisser croire à une erreur. C'est la même
+    # fenêtre que la sélection : déterministe, fonction de (naissance, date).
+    repetition_ciel = None
+    dom = j.get("dominante")
+    if dom and dom["cle"] in recents:
+        jours = recents[::-1].index(dom["cle"]) + 1
+        if jours <= J.FENETRE_NON_REPETITION:
+            repetition_ciel = jours
     # La carte majeure PERSONNELLE : le vivier du jour (ciel + nombres) lu par
     # la rotation — le moins récemment montré gagne. Elle lit la dominante et
     # le potentiel du jour, donc elle vient après `J.journee`. L'invitation est
@@ -2261,11 +2357,14 @@ def _jour_pour_calcule(profil, date):
             textes[retire] = {**textes[retire], "geste": None, "geste_retire": True}
 
     # Le routeur : quelle voix prend le titre du jour. Le ciel mène par défaut ;
-    # la voix chinoise le ravit quand sa relation est plus saillante.
+    # la voix chinoise le ravit quand sa relation est plus saillante. Le mur
+    # des voix empêche un texte récemment montré de reprendre la tête.
     dom = j.get("dominante")
     force_transit = dom["force"] if dom else 0.0
     titre, routage = _titre_du_jour(textes, force_transit, date,
-                                    j["phase"]["ecart"], n)
+                                    j["phase"]["ecart"], n,
+                                    cle_dominante=dom["cle"] if dom else None,
+                                    titres_recents=titres_recents)
 
     return {
         "complet": True,
@@ -2275,6 +2374,7 @@ def _jour_pour_calcule(profil, date):
         "textes": textes,
         "titre": titre,
         "routeur": routage,
+        "repetition_ciel": repetition_ciel,
         "manque": [g for g, _ in j["cles"] if not textes.get(g)],
         "carte_annee": carte_an,
         "carte_jour": carte_jr,
