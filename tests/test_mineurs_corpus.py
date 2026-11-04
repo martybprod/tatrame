@@ -169,7 +169,7 @@ SYMBOLES_REQUIS_MINEURS = {
     "feu_2": ["pissenlits", "graines", "vent", "pré", "collines", "ciel"],
     "feu_3": ["fille", "main", "tronc", "arbre", "yeux", "forêt"],
     "feu_4": ["lucioles", "fleuve de lumière", "rivière", "nuit", "roseaux", "étoiles"],
-    "feu_5": ["ballon", "cordes", "personnes", "champ", "flamme", "tempête", "herbe"],
+    "feu_5": ["ballon", "cordes", "personnes", "champ", "flamme", "vent", "herbe"],
     "feu_6": ["feu", "guirlandes", "mât", "danse", "village", "étoiles filantes"],
     "feu_7": ["fil", "précipice", "pile", "livres", "pont", "bras"],
     "feu_8": ["marcheur", "pieds nus", "chemin", "blés", "village", "montagnes"],
