@@ -1,0 +1,53 @@
+{
+  "id": "major_09",
+  "nom": "Solitude",
+  "type": "majeur",
+  "registre": "interieur",
+  "element": "terre",
+  "note_grille": "colonne 2 (avec Intuition et Rupture), entrer et voir clair. Élément Terre. La solitude reste un lieu et un chemin concrets, pas une idée. Tension signature (Pollack) — retrait fécond contre fuite des autres.",
+  "mots_cles": [
+    "*major_09",
+    "interieur",
+    "terre*"
+  ],
+  "tension": {
+    "pousse": "te retrouver",
+    "retient": "fuir le silence"
+  },
+  "lumiere": "Un marcheur avance calmement dans une vallée enneigée, la nuit. C'est peut-être l'image qui correspond à ce que tu vis actuellement. Tu as choisi de passer du temps avec toi-même, sans pour autant tourner le dos aux personnes que tu aimes. Une petite lumière t'accompagne, au creux de ton corps, et elle éclaire suffisamment le chemin pour te permettre de faire un pas de plus. Le froid extérieur n'atteint pas cette chaleur intérieure. Tu n'es pas coupé du monde : tu as simplement besoin de retrouver ta propre voix.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu t'es progressivement isolé. Le retrait que tu avais choisi pour mieux t'entendre s'est transformé en fuite, et le silence est devenu un mur plutôt qu'un espace de repos. Tu réponds de moins en moins aux messages, tu laisses les invitations sans réponse et tu appelles cela la paix. Le froid de l'extérieur a fini par s'installer dans ton humeur, tandis que la petite lumière que tu portes diminue lorsque personne ne sait ce que tu traverses. La solitude qui nourrit laisse toujours une porte ouverte. Celle que tu vis maintenant semble s'être refermée de l'intérieur.",
+    "issue": "Envoie un seul message aujourd'hui, simplement pour faire savoir à quelqu'un que tu penses à cette personne, sans avoir à te justifier. La porte du retrait peut se rouvrir par un geste minuscule, et la lumière revient avec lui."
+  },
+  "questions": [
+    "Ton retrait actuel te rapproche-t-il de toi-même ou te permet-il surtout d'éviter quelqu'un ?",
+    "Qu'est-ce que le silence t'a permis d'entendre depuis que tu lui fais une place ?",
+    "À qui pourrais-tu envoyer un petit signe, même si tu as besoin de rester seul ces temps-ci ?"
+  ],
+  "lecon": "Habiter la solitude comme un lieu où tu peux mieux t'entendre, sans la laisser devenir un mur entre toi et les autres.",
+  "image": {
+    "geste": "Un homme encapuchonné marche seul dans une vallée entourée de montagnes enneigées. Il fait nuit, il tient un bâton et avance d'un pas régulier, le regard calme.",
+    "seuil": "La vallée s'ouvre devant lui, vaste et silencieuse. Il est entré volontairement dans cet espace blanc et désert, personne ne l'y a poussé.",
+    "detail": "Une étoile blanche à six branches brille sur sa poitrine comme une lanterne. La lumière qui éclaire son chemin ne vient pas du ciel : il la porte en lui."
+  },
+  "micro_geste": "Accorde-toi une demi-heure aujourd'hui, sans écran ni compagnie. Au retour, garde en mémoire la phrase qui t'est venue pendant ce moment.",
+  "positions": {
+    "jour": "Le bruit qui t'entoure te pèse peut-être davantage qu'à l'habitude, et une partie de toi réclame déjà un moment de silence. Tu peux lui réserver une véritable période de calme, même courte, plutôt que de laisser s'accumuler quelques minutes de solitude dispersées entre deux écrans. La carte montre une personne qui marche seule dans un froid immense, avec une lumière bien présente sur elle. Son pas est paisible. Il s'agit d'un moment choisi, pas d'une fuite. Le temps que tu passes seul aujourd'hui mérite une place dans ton horaire, comme un rendez-vous que tu ne déplaces pas.",
+    "amene": "Tu sais déjà rester avec toi-même sans avoir besoin de te distraire constamment. Tu as développé cette capacité au cours de périodes où personne n'était présent, et elle continue de t'accompagner. Tu peux également constater que les personnes qui t'aiment n'attendent pas nécessairement que tu sois disponible à chaque instant. Aujourd'hui, tu apportes deux choses : un besoin sincère de silence et une vie qui demeure accessible lorsque tu décides de retrouver les autres.",
+    "se_joue": "Où se trouve actuellement la frontière entre le besoin d'être avec toi-même et le désir d'éviter le monde ? Un retrait bénéfique te permet d'entendre plus clairement tes propres pensées. Un retrait qui se referme sur lui-même peut plutôt t'amener à diminuer ta lumière pour ne plus rien voir. La différence est parfois subtile, mais elle se remarque dans les faits. Après un moment de solitude, retrouves-tu davantage de clarté ou ressens-tu surtout le besoin de prolonger ton absence ? C'est la question à observer aujourd'hui.",
+    "essayer": "Pars marcher seul, sans objectif précis, même si la sortie est courte. Tu n'as pas besoin de couper les liens avec le monde pour profiter de ce moment. Tu peux simplement laisser un mot à quelqu'un pour signaler ton absence. Au retour, tu auras peut-être découvert deux ou trois choses qu'aucune conversation n'aurait pu te faire entendre. Essaie cette promenade solitaire au cours de la semaine. Certaines pensées se manifestent plus facilement dans la marche que partout ailleurs.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, IX (Ermite) — se retirer pour entendre, rencontrer un guide ou sa propre nuit ; ombre : isolement, peur des gens, refus de grandir",
+    "wen": "§3 — élément Terre ; §5 — mode d'ombre « retourné »",
+    "greer": "§6.2 — leçon : se retirer, chercher, parfaire, accepter un guide",
+    "production": "angles — être seul sans être coupé, la lumière portée dans le grand froid ; le retrait fécond vérifié dans le concret (terre). Image — description du visage validé (BRIEF_production_majeurs.md, Groupe B), geste/seuil/détail reformulés",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu n'as plus autant besoin de couper les liens pour retrouver ton calme. Tu as connu des périodes où le silence et la distance semblaient être les seuls moyens de te protéger. Ce qui demeure, c'est ta capacité à apprécier tes moments seule. Tu peux préserver cet espace sans disparaître complètement et sans fermer toutes les portes autour de toi.",
+    "image_soi": "Tu te vois comme quelqu'un qui doit se débrouiller sans demander grand-chose. Cette autonomie te rend fière et te donne le sentiment de ne dépendre de personne. Tu préfères parfois garder tes difficultés pour toi plutôt que de risquer de déranger. Ce rôle te protège, mais il peut aussi t'empêcher de reconnaître le moment où la présence d'une autre personne te ferait du bien.",
+    "entourage": "On te croit autonome et on te laisse souvent organiser ton temps comme tu le souhaites. Les invitations se font parfois moins fréquentes, parce que les autres supposent que tu préfères être seule. Cette distance n'est pas nécessairement volontaire de leur part. À force de respecter ton retrait, certains ne savent plus très bien quand une invitation serait bienvenue."
+  }
+}

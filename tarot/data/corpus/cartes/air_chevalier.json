@@ -1,0 +1,55 @@
+{
+  "id": "air_chevalier",
+  "nom": "Lutte",
+  "type": "figure",
+  "famille": "air",
+  "rang": "chevalier",
+  "element": "air",
+  "note_grille": "figure air (chevalier) : l'élan vers un seul objectif — ici l'élan est contré par son propre cavalier, et la force se dépense à contretemps, tension assumée.",
+  "mots_cles": [
+    "le cheval cabré",
+    "les rênes tendues",
+    "l'écharpe au vent",
+    "le mouvement contrarié"
+  ],
+  "tension": {
+    "pousse": "affronter",
+    "retient": "s'épuiser"
+  },
+  "lumiere": "Un cheval blanc se cabre, puissant et nerveux. Son cavalier tire fermement sur les rênes, le corps incliné vers l'arrière. Les deux forces semblent s'opposer dans un même mouvement. La carte ne remet pas en question le courage ni la détermination. Elle invite plutôt à examiner la direction dans laquelle cette énergie est dépensée. Toute résistance n'est pas nécessairement un combat qui mérite d'être poursuivi.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu consacres beaucoup d'énergie à lutter contre une situation qui ne dépend peut-être plus de toi. Tu refuses un changement, contestes une réalité ou t'accroches à une position qui ne peut plus évoluer comme tu le souhaites. Plus tu tires, plus la résistance augmente. La fatigue s'installe et ton énergie se retrouve mobilisée dans un affrontement qui ne produit plus de mouvement.",
+    "issue": "Identifie ce contre quoi tu luttes actuellement. Demande-toi ce qui peut encore être influencé et ce qui doit être accepté comme une donnée de départ. Concentre ensuite ton énergie sur une action qui dépend réellement de toi."
+  },
+  "questions": [
+    "Dans quelle situation dépenses-tu le plus d'énergie à résister ?",
+    "Quelle part de cette situation peux-tu encore orienter ?",
+    "Que pourrais-tu accomplir si tu cessais de lutter contre ce qui ne dépend pas de toi ?"
+  ],
+  "lecon": "La force ne se mesure pas à la résistance permanente. Elle se révèle aussi dans la capacité à choisir son combat.",
+  "image": {
+    "geste": "les rênes sont tendues et le cavalier tire vers l'arrière. Le mouvement est contrarié.",
+    "seuil": "un mur de nuages descend jusqu'au sol à gauche. La limite semble déjà présente dans le paysage.",
+    "detail": "l'écharpe couleur rouille flotte derrière le cavalier. Malgré la tension, quelque chose continue de se déplacer."
+  },
+  "micro_geste": "Nomme la situation contre laquelle tu luttes. Pendant une minute, relâche consciemment la tension dans ton corps et réfléchis à une direction plus utile.",
+  "positions": {
+    "jour": "Une énergie importante est mobilisée aujourd'hui, mais tu gagnerais à vérifier où elle se dirige. Tu peux avoir envie de défendre une position, de convaincre ou de retenir quelque chose qui semble déjà t'échapper. La carte montre deux forces qui se contrarient. Avant de poursuivre le combat, demande-toi s'il existe une manière plus constructive d'utiliser ton énergie.",
+    "amene": "Tu arrives avec une détermination qui t'a permis de traverser des situations difficiles. Tu sais tenir bon et ne pas abandonner au premier obstacle. Mais cette capacité peut devenir épuisante lorsqu'elle se transforme en résistance automatique. La carte ne te demande pas de renoncer à ta force. Elle t'encourage à la mettre au service d'une direction plutôt que de l'épuiser contre un mur.",
+    "se_joue": "Une situation pourrait t'obliger à distinguer ce que tu peux changer de ce que tu ne peux pas contrôler. Tu risques de consacrer beaucoup d'efforts à obtenir une réponse qui ne dépend pas entièrement de toi. La carte t'invite à retrouver une position plus active : reconnaître la réalité, choisir ta marge de manœuvre et avancer à partir de là.",
+    "essayer": "Prends une situation conflictuelle et divise-la en deux parties : ce qui dépend de toi et ce qui échappe à ton contrôle. Choisis une action concrète dans la première catégorie. Pour le reste, travaille à réduire la résistance intérieure inutile. Tu peux rester déterminé sans devoir lutter contre tout."
+  },
+  "source_referentielle": {
+    "pollack": "§4, chevalier d'Épées — la charge rapide, l'attaque directe : notre carte en montre la contrepartie, l'élan contré par celui qui le porte",
+    "wen": "§4 — rangs : le chevalier, l'élan vers un seul objectif ; famille air : la force qui travaille à contretemps",
+    "greer": "§6.4 — le chevalier comme fonction : diriger l'élan au lieu de le contrer",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_chevalier)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à sortir d'une période où tu avais besoin de lutter constamment pour défendre ta position. Jusqu'ici, tu pouvais consacrer beaucoup d'énergie à convaincre les autres, à justifier tes décisions ou à essayer de faire changer les choses par la force de tes arguments. Tu apprends maintenant à reconnaître les situations dans lesquelles il est préférable de ne plus insister. Tu conserves ta détermination, mais tu peux désormais l'utiliser pour avancer plutôt que pour rester dans un combat permanent.",
+    "image_soi": "Tu te vois comme une personne qui ne doit jamais abandonner ou reculer devant une difficulté. Tu as parfois l'impression que céder sur un point signifie perdre toute ta position. Tu continues donc à défendre tes idées, même lorsque la discussion ne mène plus nulle part. Cette détermination te donne de la force, mais elle peut aussi t'empêcher de reconnaître qu'il est parfois préférable de changer de stratégie ou de laisser tomber un combat.",
+    "entourage": "Les autres admirent ta détermination et savent que tu ne renonces pas facilement. Ils viennent parfois vers toi lorsqu'une situation demande de la persévérance ou du courage. Mais cette réputation peut aussi créer des attentes : on suppose que tu es toujours prête à défendre tes positions. Certaines personnes préfèrent éviter les désaccords avec toi, tandis que d'autres te laissent gérer seule les conflits. Ton entourage remarque ta combativité, mais ne comprend pas toujours ce qu'elle te coûte."
+  }
+}

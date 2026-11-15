@@ -1,0 +1,56 @@
+{
+  "id": "eau_03",
+  "nom": "Célébration",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 3,
+  "element": "eau",
+  "note_grille": "degré 3 (premier fruit) × famille eau (lien, émotion) : accord — le premier fruit se goûte mieux à plusieurs, et la joie partagée est le fruit même. Pollack : trois de Coupes, la fête qui suit le travail.",
+  "mots_cles": [
+    "Lever son verre",
+    "la pluie sur les vignes",
+    "les paniers remplis",
+    "trois générations réunies",
+    "la joie partagée"
+  ],
+  "tension": {
+    "pousse": "célébrer",
+    "retient": "attendre"
+  },
+  "lumiere": "La pluie tombe sur les vignes, mais personne ne songe à interrompre la fête. Trois générations sont réunies, les paniers débordent de raisins et les verres se lèvent au milieu des gouttes. Une étape vient de s'achever dans ta vie. Peut-être un projet mené à terme, une période difficile traversée ou un travail qui a demandé beaucoup de patience. Le résultat est là, même si toutes les conditions ne sont pas parfaites. Tu peux prendre le temps de le savourer avec ceux qui ont partagé le chemin. La joie n'a pas besoin d'attendre une journée ensoleillée pour être accueillie.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu termines quelque chose et, presque aussitôt, ton attention se déplace vers ce qui reste à accomplir. La satisfaction ne dure que quelques secondes avant que la prochaine obligation reprenne toute la place. Tu minimises ce que tu viens de réaliser, comme si t'arrêter pour en profiter était une perte de temps. Pourtant, personne ne t'interdit de célébrer. C'est toi qui réduis le moment à une simple case cochée. Le travail est terminé, mais tu n'as pas encore goûté au fruit de tes efforts.",
+    "issue": "Choisis une chose que tu as menée à bien récemment et accorde-lui un véritable moment de reconnaissance. Prépare quelque chose à boire, partage la nouvelle ou prends quelques instants pour mesurer le chemin parcouru. La célébration commence lorsque tu décides de ne plus passer immédiatement à la suite."
+  },
+  "questions": [
+    "Quelle réussite récente as-tu déjà laissée derrière toi sans prendre le temps de l'apprécier ?",
+    "Avec qui peux-tu partager une joie spontanée, sans avoir besoin de préparer les choses ?",
+    "Quel accomplissement, même modeste, mériterait un moment particulier aujourd'hui ?"
+  ],
+  "lecon": "La joie mérite sa place dès que quelque chose arrive à son terme. Il n'est pas nécessaire d'attendre une occasion exceptionnelle pour célébrer.",
+  "image": {
+    "geste": "Au centre du groupe, une femme lève son verre bien haut sous la pluie. Son mouvement donne le signal de la fête. La célébration est un choix, indépendamment du temps qu'il fait.",
+    "seuil": "Les rangs de vigne sont dépouillés de leurs grappes et les paniers débordent de raisin noir. La récolte est achevée. Le passage vers le repos est déjà ouvert.",
+    "detail": "Des pieds nus éclaboussent les flaques tandis qu'une lumière dorée apparaît entre les nuages. La pluie continue, mais elle ne trouble plus la joie du groupe."
+  },
+  "micro_geste": "Ce soir, lève ton verre à une chose que tu as terminée cette semaine. Peu importe ce qu'il contient : prends simplement le temps de marquer le moment.",
+  "positions": {
+    "jour": "Une joie attend peut-être d'être reconnue dans ta journée. Quelque chose s'est achevé, une difficulté a été dépassée ou une étape importante vient de se refermer. Tu pourrais être tenté de considérer cela comme une simple formalité avant de passer à la prochaine tâche. La carte montre pourtant trois générations qui célèbrent ensemble au milieu d'une vigne détrempée. Les paniers sont pleins, le travail est terminé et les verres se lèvent malgré l'averse. Tu peux faire de même. Aujourd'hui, le moment de reconnaître ce qui est accompli compte autant que l'accomplissement lui-même.",
+    "amene": "Tu arrives peut-être d'une période où il a fallu beaucoup tenir. Tu as avancé malgré les contraintes, réglé les détails, pris des responsabilités et poursuivi ton objectif jusqu'au bout. Maintenant que le résultat est là, ton regard s'est déjà déplacé vers ce qui vient ensuite. La carte t'invite à revenir un instant vers ce que tu viens de traverser. Les femmes réunies dans la vigne ne cherchent pas une meilleure occasion. Elles partagent ce qu'elles ont récolté, avec les moyens du moment. Leur joie donne une valeur supplémentaire au travail accompli.",
+    "se_joue": "Qu'attends-tu pour t'autoriser à être content de ce que tu as réalisé ? Peut-être une confirmation, une reconnaissance extérieure ou une réussite encore plus importante. À force de placer la célébration après la prochaine étape, tu risques de ne jamais lui faire de place. La carte rappelle que le plaisir ne doit pas être réservé aux grandes victoires. Les paniers sont déjà remplis. La pluie n'empêche pas les verres de se lever. Ce qui se joue aujourd'hui, c'est ta capacité à reconnaître la valeur du présent sans lui demander d'être parfait.",
+    "essayer": "Choisis un accomplissement récent et donne-lui une forme concrète. Tu peux préparer un repas, appeler quelqu'un qui a participé à cette réussite ou simplement prononcer à voix haute ce que tu as réussi à faire. Ne transforme pas ce moment en nouvelle obligation. Quelques minutes suffisent. La célébration n'a pas besoin d'un décor particulier ni d'un grand rassemblement. Elle commence lorsque tu acceptes de goûter ce que tu as récolté avant de reprendre le chemin."
+  },
+  "source_referentielle": {
+    "pollack": "§4 nombres — le 3, le premier fruit ; trois de Coupes : la fête du groupe après le travail",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 3 : premier fruit",
+    "greer": "§6 — la joie partagée entre générations, le fruit goûté avec ceux qui y ont participé",
+    "production": "image du corpus mineurs eau (trois générations de femmes sous la pluie dans une vigne d'automne, paniers débordants, verre levé), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu apprends à ne plus passer immédiatement à la tâche suivante dès que tu as terminé quelque chose. Avant, tu avais tendance à terminer un travail, à le considérer comme réglé et à te concentrer aussitôt sur le prochain objectif. Aujourd'hui, tu peux prendre le temps de regarder ce que tu as accompli. Même si tout n'est pas parfait et que les circonstances ne sont pas idéales, tes efforts ont produit des résultats. Tu n'as pas besoin d'attendre que tout soit parfait pour reconnaître tes réussites.",
+    "image_soi": "Tu as tendance à considérer tes réussites comme quelque chose de normal, qui ne mérite pas vraiment d'être célébré. Tu as l'impression qu'un accomplissement doit être exceptionnel, important ou particulièrement visible pour avoir de la valeur. Alors tu minimises ce que tu as fait et tu passes rapidement à autre chose. Même lorsque tu as de bonnes raisons d'être fière de toi, tu as du mal à t'arrêter pour en profiter. Tu regardes déjà ce qu'il te reste à accomplir au lieu de reconnaître ce que tu as réussi.",
+    "entourage": "Ton entourage aimerait prendre le temps de célébrer tes réussites. Certaines personnes organisent une petite fête, apportent un gâteau ou prennent le temps de te féliciter. Elles veulent te montrer qu'elles reconnaissent tes efforts et qu'elles sont heureuses pour toi. Pourtant, elles remarquent parfois que tu minimises leurs compliments ou que tu changes rapidement de sujet. Elles aimeraient que tu acceptes simplement leurs félicitations et que tu prennes ta place dans ce moment de joie, sans chercher immédiatement à passer à autre chose."
+  }
+}

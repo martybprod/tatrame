@@ -1,0 +1,56 @@
+{
+  "id": "eau_reine",
+  "nom": "Réceptivité",
+  "type": "figure",
+  "famille": "eau",
+  "rang": "reine",
+  "element": "eau",
+  "note_grille": "figure eau (reine) : la maîtrise intérieure qui nourrit — recevoir sans faire miroir. Deux lectures possibles (Greer) : quelqu'un qui sait recevoir, ou ta propre part qui apprend à accueillir sans retenir.",
+  "mots_cles": [
+    "Accueillir sans retenir",
+    "l'eau transparente",
+    "la profondeur visible",
+    "les mouvements légers",
+    "l'espace disponible"
+  ],
+  "tension": {
+    "pousse": "recevoir",
+    "retient": "attraper"
+  },
+  "lumiere": "Une femme se tient dans un lac limpide, baignée par la lumière du jour. L'eau ne renvoie pas son image comme un miroir. Elle laisse plutôt passer la lumière jusqu'aux pierres du fond. Rien ne semble s'y accumuler. Cette carte représente une manière d'accueillir ce qui arrive sans chercher à le posséder. Une attention peut être reçue, une émotion peut être ressentie et une aide peut être acceptée sans devenir une dette. Tu laisses chaque chose trouver sa place, puis tu lui permets de poursuivre son chemin. La réceptivité véritable conserve de l'espace pour ce qui vient ensuite.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu accueilles tout ce qui se présente, mais tu ne parviens plus à laisser les choses repartir. Les demandes s'ajoutent, les émotions des autres restent en toi et chaque nouvelle responsabilité vient s'empiler sur les précédentes. Tu veux être disponible, compréhensif et présent pour tout le monde. Peu à peu, tu confonds l'ouverture avec l'obligation de tout absorber. La surface de ton eau intérieure est devenue chargée d'images et de tensions. Tu ne distingues plus ce qui t'appartient de ce que tu as recueilli autour de toi. Recevoir ne devrait pas signifier tout porter.",
+    "issue": "Accepte aujourd'hui une chose agréable sans chercher immédiatement à la rendre. Un compliment, un service ou un moment d'attention peuvent simplement être accueillis. Laisse cette expérience exister sans ajouter de justification ni de contrepartie."
+  },
+  "questions": [
+    "Qu'est-ce qui cherche à venir vers toi en ce moment ?",
+    "Comment réagis-tu lorsque quelqu'un t'offre quelque chose sans rien attendre ?",
+    "Quelle émotion ou quelle responsabilité pourrais-tu laisser repartir pour retrouver de l'espace ?"
+  ],
+  "lecon": "Recevoir ne signifie pas accumuler. C'est accueillir ce qui vient, lui faire une place et préserver la liberté de laisser partir ce qui ne doit pas rester.",
+  "image": {
+    "geste": "Une reine se tient debout dans un lac transparent, l'eau jusqu'à la taille. Ses yeux sont fermés et sa tête légèrement inclinée vers la surface.",
+    "seuil": "La surface ne forme aucun reflet distinct. La lumière traverse l'eau et permet de voir les pierres qui reposent au fond.",
+    "detail": "Un lotus ouvert repose sur une grande feuille ronde. Son cœur doré se détache doucement de la surface."
+  },
+  "micro_geste": "Lorsqu'on t'offre quelque chose aujourd'hui, réponds simplement merci. Ne cherche pas immédiatement à rendre la pareille.",
+  "positions": {
+    "jour": "Tu peux accepter ce qui t'est offert sans devoir équilibrer immédiatement l'échange. Une personne te donne du temps, une attention ou un coup de main. Tu n'as pas besoin de chercher aussitôt comment rembourser ce geste. La carte montre une silhouette dans une eau transparente qui ne retient aucune image. Elle accueille la lumière et laisse apparaître le fond. Cette scène t'invite à recevoir avec simplicité. Tu peux laisser un geste généreux t'atteindre sans le transformer en nouvelle obligation.",
+    "amene": "Tu arrives peut-être avec beaucoup de choses déjà présentes en toi. Tu écoutes les autres, réponds à leurs besoins et gardes en mémoire ce qu'ils traversent. Tu as l'habitude de rester disponible, parfois même lorsque ton propre espace devient limité. La carte t'invite à observer ce que tu conserves inutilement. Toutes les émotions entendues ne sont pas les tiennes. Toutes les demandes ne deviennent pas automatiquement tes responsabilités. Tu peux rester attentif aux autres sans absorber leur quotidien.",
+    "se_joue": "La différence entre recevoir et retenir est au cœur de cette carte. Une eau limpide accueille la lumière sans garder son image. Une eau encombrée, au contraire, accumule les reflets jusqu'à ne plus laisser voir le fond. Dans ta vie, tu peux reconnaître ces deux mouvements. Il y a des moments où tu accueilles une expérience et la laisses te traverser. Il y en a d'autres où tu conserves chaque parole, chaque attente et chaque émotion. Ce qui se joue aujourd'hui, c'est la possibilité de rester ouvert sans devenir saturé.",
+    "essayer": "Lorsqu'une personne te fait un compliment ou te propose son aide, prends une respiration avant de répondre. Tu peux simplement accepter, sans minimiser ce qu'elle vient de faire ni chercher à rendre immédiatement la pareille. Si une demande dépasse tes possibilités, tu peux également le reconnaître avec douceur. La réceptivité ne t'oblige pas à dire oui à tout. Elle consiste à accueillir librement ce qui est juste pour toi. Comme le lotus posé sur l'eau, tu peux recevoir sans t'alourdir."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Reine de Coupes — la maîtrise intérieure du sentiment, recevoir et nourrir ; figures de cour : une manière d'être, jamais une personne",
+    "wen": "§4 — rangs : la reine, la maîtrise intérieure ; famille eau : recevoir sans faire miroir",
+    "greer": "§6.4 — les figures comme rôles et facettes ; nourrir sans garder la trace",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_eau.json (entrée eau_reine) ombre « subi » (recevoir vécu en encaissement, de l'extérieur), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à mieux faire la différence entre écouter les autres et prendre leurs problèmes sur tes épaules. Tu avais l'habitude d'accueillir les confidences, les émotions et les difficultés de ton entourage sans vraiment poser de limites. Tu gardais beaucoup de choses pour toi et tu avais du mal à prendre de la distance avec ce que les autres te racontaient. Aujourd'hui, tu peux continuer à être attentive et compréhensive sans tout absorber. Tu apprends à écouter sans te sentir obligée de porter les problèmes des autres après la conversation.",
+    "image_soi": "Tu te vois comme la personne à qui les autres peuvent tout raconter. Tu es souvent celle qui écoute, qui comprend et qui ne juge pas. Tu as parfois l'impression que refuser une conversation ou ne pas être disponible serait une forme de rejet ou de manque de gentillesse. Alors tu acceptes les confidences, même lorsque tu es fatiguée ou que tu as déjà beaucoup de choses à gérer. Tu prends sur toi pour ne pas décevoir les autres. Mais à force d'être toujours disponible pour eux, tu risques de ne plus avoir assez de temps ni d'énergie pour toi-même.",
+    "entourage": "Ton entourage sait qu'il peut venir te parler de ses difficultés et te confier des choses personnelles. On te considère comme une personne douce, compréhensive et capable d'écouter sans juger. Certaines personnes te racontent même leurs problèmes les plus importants avant d'en parler à quelqu'un d'autre. Tu es devenue un soutien pour beaucoup de monde. Mais comme tu écoutes volontiers, les autres ne pensent pas toujours à te demander comment tu vas, si tu as besoin de parler ou si tu as encore l'énergie de recevoir leurs confidences. Ils oublient parfois que tu as toi aussi besoin d'être écoutée et soutenue."
+  }
+}

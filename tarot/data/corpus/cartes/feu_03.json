@@ -1,0 +1,56 @@
+{
+  "id": "feu_03",
+  "nom": "Expérience",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 3,
+  "element": "feu",
+  "note_grille": "degré 3 (premier fruit) × famille feu (élan) : accord — l'élan donne son premier fruit, et le fruit ici est un savoir pris avec les mains. Pollack : trois de Bâtons, les premiers résultats qui se confirment.",
+  "mots_cles": [
+    "la main sur le tronc",
+    "éprouver",
+    "le savoir direct",
+    "les yeux fermés",
+    "la matière"
+  ],
+  "tension": {
+    "pousse": "toucher",
+    "retient": "expliquer"
+  },
+  "lumiere": "Il y a une grande différence entre connaître quelque chose grâce aux explications des autres et l'avoir découvert par toi-même.\n\nTu peux lire plusieurs livres sur un sujet, regarder des vidéos et écouter des conseils. Mais cela ne remplace pas le fait d'essayer réellement.\n\nImagine une enfant qui pose sa main sur le tronc d'un grand arbre et ferme les yeux pour sentir son écorce. Elle ne se contente pas de savoir que l'arbre existe : elle le découvre directement avec ses sens.\n\nCette carte t'invite à faire la même chose. Pour mieux comprendre ce qui t'intéresse, approche-toi, touche, essaie et expérimente.\n\nCertaines choses s'apprennent beaucoup mieux en les vivant qu'en les expliquant.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu passes peut-être beaucoup de temps à chercher des informations sur quelque chose qui t'intéresse.\n\nTu lis des articles, regardes des vidéos et demandes l'avis des autres. Mais tu repousses toujours le moment de faire l'expérience toi-même.\n\nTu accumules des informations sans vraiment découvrir la chose.\n\nÀ force de vouloir tout comprendre avant de commencer, tu risques de ne jamais passer à la pratique.\n\nCe qui te manque n'est peut-être pas une explication supplémentaire, mais simplement une première expérience.",
+    "issue": "Choisis une chose que tu aimerais mieux connaître et essaie-la concrètement aujourd'hui.\n\nNe cherche pas à tout maîtriser avant de commencer. Fais un premier essai, observe ce qui se passe et apprends directement de ton expérience.\n\nC'est en pratiquant que tu découvriras des choses qu'aucune explication ne pourrait complètement te transmettre."
+  },
+  "questions": [
+    "Quelles choses connais-tu seulement grâce aux livres, aux vidéos ou aux explications des autres ?",
+    "Qu'aimerais-tu découvrir directement par toi-même ?",
+    "Qu'est-ce qui t'empêche de passer à l'expérience concrète ?"
+  ],
+  "image": {
+    "geste": "Une enfant pose la paume de sa main contre l'écorce rugueuse d'un grand arbre. Elle ferme les yeux et prend le temps de sentir le contact.",
+    "seuil": "La forêt l'entoure. Pour découvrir cet arbre, elle n'a pas besoin de chercher ailleurs : il lui suffit de poser sa main sur son tronc.",
+    "detail": "La sève circule sous l'écorce. Le tronc porte les traces de nombreuses années. De la mousse pousse à sa base."
+  },
+  "micro_geste": "Choisis une chose qui t'intéresse et essaie-la aujourd'hui concrètement, au lieu de chercher encore des informations à son sujet.",
+  "positions": {
+    "jour": "Qu'aimerais-tu mieux connaître en ce moment ?\n\nTu as peut-être déjà lu plusieurs articles, regardé des vidéos ou écouté les conseils de différentes personnes. Mais as-tu vraiment essayé par toi-même ?\n\nCette carte montre une enfant qui pose sa main sur le tronc d'un grand arbre et ferme les yeux pour sentir son contact.\n\nElle ne cherche pas à comprendre l'arbre à travers des explications. Elle prend simplement le temps de le découvrir.\n\nAujourd'hui, tu peux faire la même chose avec ce qui t'intéresse. Passe de la théorie à la pratique. C'est peut-être là que se trouve ce qu'il te reste à apprendre.",
+    "amene": "Tu as appris à connaître les choses en lisant, en écoutant et en demandant conseil. Cette façon d'apprendre t'a certainement beaucoup apporté.\n\nMais il existe une autre manière de découvrir le monde : essayer, toucher, manipuler et observer directement.\n\nTu connais probablement déjà cette façon de faire dans certaines activités, comme cuisiner, jardiner ou bricoler.\n\nCette carte te rappelle que tu possèdes déjà cette capacité. Tu n'as pas toujours besoin de chercher des réponses à l'extérieur. Tu peux aussi apprendre par toi-même, grâce à tes propres expériences.",
+    "se_joue": "Tu peux connaître beaucoup de choses sur un sujet sans savoir réellement ce que cela fait de l'expérimenter.\n\nTant que tu restes dans les explications, tu découvres ce que les autres en pensent. Lorsque tu passes à l'action, tu découvre ce que cette expérience signifie pour toi.\n\nLa question est simple : qu'est-ce qui t'empêche encore d'essayer directement ?",
+    "essayer": "Choisis une activité ou un sujet qui t'intéresse et prends le temps de le découvrir par la pratique.\n\nSi tu veux apprendre à cuisiner, prépare une recette. Si tu veux découvrir le jardinage, plante quelque chose. Si tu veux comprendre une activité, essaie-la.\n\nNe cherche pas à réussir parfaitement dès le premier essai.\n\nObserve, touche, recommence et ajuste tes gestes. C'est ainsi que l'expérience devient une véritable connaissance."
+  },
+  "source_referentielle": {
+    "pollack": "§4 nombres — le 3, le premier fruit, ce qui se montre ; trois de Bâtons : les premiers résultats qui se confirment",
+    "wen": "§4 — famille feu : élan, désir ; degré 3 : premier fruit",
+    "greer": "§6 — étage 2 : la question de l'expérience directe ; le savoir qui passe par le corps",
+    "production": "image du corpus mineurs feu (paume sur le tronc, yeux fermés), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "Tu comprends vraiment quelque chose lorsque tu prends le temps de l'expérimenter toi-même.",
+  "croix": {
+    "eloigne": "Tu commences à comprendre que tu n'as pas besoin de tout connaître avant de passer à l'action. Jusqu'ici, tu cherchais beaucoup d'informations, tu regardais des vidéos et tu demandais des avis pour être certaine de ne pas te tromper. Maintenant, tu peux apprendre directement en faisant l'expérience des choses. Certaines connaissances ne s'acquièrent pas dans les livres : elles viennent simplement de ce que tu vis et de ce que tu essaies.",
+    "image_soi": "Tu te considères comme quelqu'un qui aime apprendre et comprendre avant d'agir. Tu penses qu'il faut être bien informée et maîtriser un sujet pour être crédible. Cette façon de voir les choses te pousse parfois à attendre trop longtemps avant de te lancer. Tu préfères continuer à apprendre plutôt que de risquer de faire une erreur en essayant.",
+    "entourage": "Les autres te voient comme une personne cultivée et bien renseignée. Ils apprécient tes explications et viennent facilement te demander conseil. Tu as acquis une réputation de personne qui connaît bien les sujets dont elle parle. Pourtant, ils ne savent pas toujours que tu n'as pas nécessairement expérimenté toi-même ce que tu expliques. On reconnaît tes connaissances, mais on ne pense pas forcément à te donner l'occasion de découvrir les choses par la pratique."
+  }
+}

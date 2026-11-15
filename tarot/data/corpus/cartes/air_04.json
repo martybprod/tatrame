@@ -1,0 +1,55 @@
+{
+  "id": "air_04",
+  "nom": "Procrastination",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 4,
+  "element": "air",
+  "note_grille": "degré 4 (le cadre) × famille air (le seuil) : le cadre devient ici l'encadrement d'une porte — la structure qui devait protéger tient lieu de frontière, assumé.",
+  "mots_cles": [
+    "la porte ouverte",
+    "le seuil",
+    "le manteau coloré",
+    "le jardin en attente"
+  ],
+  "tension": {
+    "pousse": "préparer",
+    "retient": "remettre"
+  },
+  "lumiere": "Une porte est déjà ouverte sur un jardin vivant. Pourtant, la personne qui se tient dans l'encadrement n'a pas encore franchi le seuil. Sa main repose sur le montant, comme si elle attendait un dernier signe. Derrière elle, la pièce est terne, presque dépourvue de couleurs. Mais celles du jardin ont déjà commencé à apparaître sur son manteau. La possibilité du changement est présente. Il reste à lui donner un mouvement réel.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu accumules les préparatifs et les bonnes raisons de patienter. Tu veux améliorer ton plan, attendre le bon moment ou réunir davantage de garanties. Chaque report semble raisonnable lorsqu'il est pris isolément. Pourtant, leur succession finit par occuper toute la place. Le projet demeure devant toi, mais tu n'en fais jamais véritablement partie.",
+    "issue": "Choisis une tâche que tu repousses régulièrement et consacre-lui une petite portion de ton temps aujourd'hui. Ne vise pas l'achèvement. Cherche simplement à entrer dans l'action."
+  },
+  "questions": [
+    "Quelle porte ouverte continues-tu d'observer sans la franchir ?",
+    "Qu'est-ce qui te manque réellement pour commencer ?",
+    "Quelle petite action pourrait donner une forme concrète à ton intention ?"
+  ],
+  "lecon": "La préparation peut éclairer le chemin, mais elle ne remplace pas le premier pas.",
+  "image": {
+    "geste": "une main s'appuie sur le cadre de la porte. Le corps est encore dans l'entre-deux.",
+    "seuil": "les couleurs du jardin apparaissent déjà sur le manteau gris. Le changement a commencé à toucher celui qui hésite.",
+    "detail": "la pièce intérieure reste nue et grise. Elle représente un espace familier qui ne retient plus que par habitude."
+  },
+  "micro_geste": "Accorde quinze minutes à une chose que tu repousses. Ouvre le document, passe l'appel ou commence la première étape.",
+  "positions": {
+    "jour": "Une occasion de commencer se présente, mais tu pourrais être tenté de prolonger encore les préparatifs. La carte te montre une porte déjà ouverte. Rien ne semble empêcher le passage, sinon l'habitude de rester dans l'encadrement. Aujourd'hui, ne cherche pas à organiser tout le parcours. Fais simplement quelque chose qui te rapproche concrètement du jardin que tu regardes depuis longtemps.",
+    "amene": "Tu arrives avec une capacité à anticiper et à préparer qui t'a probablement souvent aidé. Mais cette qualité peut devenir encombrante lorsqu'elle te fait attendre une certitude impossible. La carte distingue clairement la préparation du passage à l'action. Ton projet n'a pas nécessairement besoin d'une nouvelle stratégie. Il a peut-être surtout besoin d'un premier geste imparfait.",
+    "se_joue": "Tu te trouves entre le confort de ce que tu connais et l'inconnu de ce que tu souhaites entreprendre. La porte n'est pas fermée, mais tu conserves la main sur son cadre. Une partie de toi attend encore, tandis qu'une autre sait déjà ce qu'elle aimerait découvrir. Le mouvement commence lorsque tu acceptes de ne pas tout maîtriser avant de partir.",
+    "essayer": "Choisis une tâche que tu as tendance à repousser et divise-la en une première étape très courte. Fixe un moment précis et commence sans attendre d'être parfaitement motivé. Tu peux t'arrêter après cette première étape si nécessaire. L'essentiel est de remplacer l'attente par une expérience réelle."
+  },
+  "source_referentielle": {
+    "pollack": "§4, quatre d'Épées — le repos encadré, la pause nécessaire : notre carte montre la pause qui oublie de se terminer",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 4 : le cadre qui devient encadrement de porte",
+    "greer": "§6 — la préparation honnête et la ligne de partage avec l'attente qui décide à la place",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_4)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à sortir de cette habitude de toujours repousser le moment de commencer. Jusqu'ici, tu trouvais facilement une raison d'attendre : un détail à vérifier, une meilleure période à choisir ou une préparation supplémentaire à terminer. Tu voulais que toutes les conditions soient réunies avant de te lancer. Tu comprends maintenant que tu peux commencer même si tout n'est pas parfaitement prêt. Parfois, le simple fait de faire un premier pas permet déjà de faire avancer les choses.",
+    "image_soi": "Tu as souvent l'impression que tu n'es pas encore suffisamment prête pour commencer. Tu te dis qu'il vaut mieux attendre d'avoir vérifié tous les détails afin de ne pas faire d'erreur ou de décevoir les autres. Tu relis, tu ajustes et tu cherches encore ce qui pourrait manquer. Tu considères cette attitude comme du sérieux et de la prudence, mais elle peut aussi être une manière de repousser indéfiniment le moment d'agir.",
+    "entourage": "Les autres te voient comme une personne réfléchie qui préfère prendre son temps avant de décider. Ils savent que tu aimes vérifier les choses et préparer tes projets avec attention. Ils peuvent donc accepter tes retards en pensant que tu as besoin de temps pour bien faire. Peu à peu, ils s'habituent à attendre ton signal sans se rendre compte que tu pourrais déjà être prête à avancer depuis longtemps."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "eau_page",
+  "nom": "Compréhension",
+  "type": "figure",
+  "famille": "eau",
+  "rang": "page",
+  "element": "eau",
+  "note_grille": "figure eau (page) : l'exploration et le message qui arrive par l'eau — ici, la clarté qui se voit par le fond. Deux lectures possibles (Greer) : quelqu'un qui regarde et comprend, ou ta propre part qui apprend à voir clair.",
+  "mots_cles": [
+    "Le fond visible",
+    "la rivière peu profonde",
+    "le pied suspendu",
+    "l'autre rive accessible",
+    "le regard attentif"
+  ],
+  "tension": {
+    "pousse": "comprendre",
+    "retient": "remettre"
+  },
+  "lumiere": "L'eau est si limpide que les pierres apparaissent nettement sous la surface. On distingue leur forme, leur disposition et les petites herbes qui bougent entre elles. La rivière semblait peut-être profonde au premier regard, mais elle est suffisamment basse pour laisser voir son fond. Il fallait simplement prendre le temps de regarder. Cette carte parle d'une compréhension qui arrive lorsque tu cesses de compliquer ce qui se trouve devant toi. Tu n'as pas toujours besoin de chercher plus loin ou de multiplier les explications. Parfois, la réponse est déjà visible, à condition de baisser les yeux et de regarder avec attention.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu repousses le moment de regarder une situation de plus près. Tu la trouves complexe, tu accumules les hypothèses et tu imagines plusieurs difficultés possibles. Pourtant, tu n'as peut-être pas encore pris le temps d'examiner les faits les plus simples. Tu restes à la surface, occupé à réfléchir à la profondeur supposée du problème. La carte montre une eau claire et peu profonde. Les pierres sont là, accessibles au regard. Ce qui manque n'est pas nécessairement une nouvelle explication, mais le courage tranquille de regarder ce qui existe déjà.",
+    "issue": "Choisis une question qui te semble compliquée et accorde-lui quelques minutes d'attention véritable. Écarte les suppositions et distingue les faits de tes interprétations. Essaie ensuite de résumer la situation en une phrase simple. La compréhension commence souvent lorsque les mots deviennent plus clairs."
+  },
+  "questions": [
+    "Quelle situation te paraît particulièrement difficile à comprendre en ce moment ?",
+    "Quels éléments concrets connais-tu déjà à son sujet ?",
+    "Quelle explication simple pourrais-tu envisager avant d'en chercher une autre ?"
+  ],
+  "lecon": "La clarté apparaît parfois lorsque l'on cesse de creuser et que l'on prend simplement le temps de regarder.",
+  "image": {
+    "geste": "Une personne se tient au bord d'une rivière transparente. Un pied repose dans l'herbe et l'autre est levé au-dessus de l'eau. Son regard descend vers les pierres.",
+    "seuil": "La rive opposée est proche et couverte de végétation. L'eau reste peu profonde sur toute sa largeur, laissant apparaître un passage accessible.",
+    "detail": "Les pierres plates forment une succession régulière au fond de la rivière. De fines herbes aquatiques ondulent entre elles."
+  },
+  "micro_geste": "Choisis une difficulté actuelle et explique-la en une seule phrase de dix mots maximum.",
+  "positions": {
+    "jour": "Une réponse pourrait devenir plus évidente aujourd'hui. Une situation que tu examines depuis longtemps peut soudain se présenter sous un angle beaucoup plus simple. Peut-être qu'une information manquante arrive, qu'une conversation clarifie un malentendu ou que tu découvres que tu connaissais déjà une partie de la réponse. La carte montre une eau transparente dans laquelle chaque pierre est visible. Elle t'invite à regarder les choses directement avant de leur attribuer une profondeur qu'elles n'ont peut-être pas.",
+    "amene": "Tu arrives avec une interrogation qui a pris beaucoup de place dans ton esprit. Tu as peut-être essayé plusieurs explications, consulté différentes personnes ou imaginé toutes les issues possibles. Pourtant, tu sens qu'un élément essentiel reste à reconnaître. La carte t'encourage à revenir aux choses concrètes. Qu'as-tu observé ? Qu'est-ce qui a réellement été dit ? Quelles informations possèdes-tu déjà ? Tu n'as pas besoin de tout résoudre d'un coup. Tu peux commencer par rendre la situation plus lisible.",
+    "se_joue": "Tu pourrais être en train de confondre complexité et profondeur. Certaines questions méritent effectivement du temps et de la réflexion, mais d'autres deviennent plus difficiles parce qu'on les entoure de suppositions. La carte présente une rivière dont le fond apparaît sans effort particulier. Le passage existe, et la rive d'en face est accessible. Ce qui se joue aujourd'hui, c'est ton choix de regarder les faits avant de poursuivre tes hypothèses. Une compréhension simple n'est pas une compréhension superficielle.",
+    "essayer": "Prends une feuille et écris la situation qui te préoccupe en quelques lignes. Sépare ce que tu sais de ce que tu imagines. Ensuite, essaie de formuler la question essentielle en une seule phrase. Tu verras peut-être apparaître un point précis qui demande une réponse, plutôt qu'un problème immense à résoudre. La carte t'invite à retrouver cette simplicité. Comme une personne qui regarde le fond d'une rivière avant d'y poser le pied, tu peux avancer avec davantage de confiance lorsque tu vois où tu vas."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Page de Coupes — l'exploration émotionnelle, le message qui arrive par l'eau ; figures de cour : une manière d'être, jamais une personne",
+    "wen": "§4 — rangs : la page, l'exploration et le message ; famille eau : la clarté du sentiment",
+    "greer": "§6.4 — les figures comme rôles et facettes ; deux lectures simultanées, chez quelqu'un ou en toi",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_eau.json (entrée eau_page) ombre « differe » (la compréhension repoussée, le mystère entretenu), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus chercher une explication compliquée derrière chaque situation. Tu avais tendance à analyser longuement les événements, à multiplier les hypothèses et à vouloir comprendre tous les détails avant de te faire une opinion. Aujourd'hui, tu peux regarder les choses avec plus de simplicité. Tu conserves ta capacité à observer, à réfléchir et à remarquer ce qui échappe aux autres, mais tu n'as plus besoin de tout analyser. Tu peux parfois comprendre une situation en prenant simplement le temps de regarder ce qui se passe réellement.",
+    "image_soi": "Tu as l'impression que tu dois tout comprendre avant de pouvoir agir. Tu veux connaître toutes les raisons, anticiper les conséquences et examiner chaque possibilité avant de prendre une décision. Avancer sans avoir toutes les réponses te donne l'impression de prendre un risque inutile ou d'agir trop rapidement. Alors tu réfléchis encore, tu analyses les différentes possibilités et tu repousses parfois le moment de passer à l'action. Mais certaines situations ne peuvent pas être entièrement comprises à l'avance. Tu peux aussi apprendre en avançant.",
+    "entourage": "Ton entourage te demande souvent d'expliquer les situations, de donner ton avis ou d'apporter des précisions. On te considère comme une personne qui réfléchit beaucoup et qui remarque des détails que les autres ne voient pas. Mais certaines personnes ont parfois du mal à suivre ton raisonnement, surtout lorsque tu développes longuement une situation. Elles peuvent finir par simplifier les choses à ta place ou prendre une décision sans attendre ton explication. On oublie parfois de te demander simplement ce que tu penses, avec des mots directs et sans compliquer davantage le sujet."
+  }
+}

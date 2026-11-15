@@ -1,0 +1,53 @@
+{
+  "id": "major_21",
+  "nom": "Accomplissement",
+  "type": "majeur",
+  "registre": "transpersonnel",
+  "element": "terre",
+  "note_grille": "dernier majeur (tradition du Monde). Registre transpersonnel et élément Terre. L'accomplissement passe par les mains, pas par un sommet. La pièce n'est finie qu'habitée. Tension signature (Pollack), achever ou repartir.",
+  "mots_cles": [
+    "major_21",
+    "transpersonnel",
+    "terre"
+  ],
+  "tension": {
+    "pousse": "achever",
+    "retient": "repartir"
+  },
+  "lumiere": "Tu poses les derniers nœuds d'un long motif, et tu le fais sans hâte. Les couleurs de ta pièce s'accordent toutes parce qu'elles viennent du même endroit : de toi. Un fil, puis un autre, et le centre du dessin se remplit comme prévu. Tu peux toucher du doigt ce qu'apporte un chemin parcouru jusqu'au bout et pleinement habité. Il reste peu de fils, et chacun trouve sa place.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu tournes autour des derniers nœuds : toujours une préparation de plus, un fil à commander, une couleur à revoir. Tu as encore l'élan d'achever, mais il s'est ralenti et reste en attente. La pièce demeure sur le métier, belle, presque terminée, mais pas encore habitée. Personne ne voit le motif entier, pas même toi. La poussière se pose doucement sur les bobines, et ton plaisir de travailler diminue avec elle.",
+    "issue": "Fais un véritable nœud aujourd'hui : un geste concret qui rapproche ton ouvrage de sa fin, même s'il est petit. Montre ensuite le motif en cours à quelqu'un qui saura le regarder. Un ouvrage qui sort du silence et qui est partagé retrouve souvent son élan."
+  },
+  "questions": [
+    "Quel ouvrage de ta vie attend ses derniers nœuds, et depuis combien de temps ?",
+    "Qu'est-ce qui te fait tourner autour au lieu de nouer ?",
+    "À qui pourrais-tu montrer le motif déjà réalisé, même avant qu'il soit terminé ?"
+  ],
+  "lecon": "Achever sans hâte, un nœud à la fois, et laisser la pièce être habitée plutôt que parfaite.",
+  "image": {
+    "geste": "Une femme d'âge mûr noue à mains nues les derniers fils au centre d'un grand motif de haute lice. Son geste est posé et digne. Elle sourit à l'endroit même où elle travaille.",
+    "seuil": "Le métier à tisser marque le seuil entre l'ouvrage commencé et l'ouvrage habité. Les fils verticaux portent chacun une couleur, et toutes viennent de la même palette.",
+    "detail": "Les bobines suspendues attendent leur tour en haut du métier. Rien n'est en désordre, et rien ne presse."
+  },
+  "micro_geste": "Noue aujourd'hui un seul vrai nœud dans ton ouvrage en cours, puis laisse-le reposer bien en vue.",
+  "positions": {
+    "jour": "Devant un grand métier de haute lice, une femme d'âge mûr noue les derniers fils au centre du motif, à mains nues et sans hâte. Chaque fil vertical porte une couleur, et toutes s'accordent parce qu'elles viennent de la même palette. Ta journée ressemble à cet atelier. Tu approches de la fin d'un chemin, mais il ne s'agit pas de faire un grand saut : il s'agit de poser un nœud, puis un autre. Le dernier bout du chemin se parcourt comme le reste, et il t'attend avec le sourire.",
+    "amene": "Tu es déjà avancé dans certains ouvrages de ta vie. Une relation qui a traversé les années, une habitude devenue une maison, un apprentissage transformé en geste sûr. La carte t'invite à regarder aujourd'hui le chemin parcouru, et pas seulement celui qu'il reste à faire. Ce regard change la journée, parce qu'il te montre la palette entière plutôt que le seul fil du moment. Tu as tissé davantage que tu ne le remarques habituellement.",
+    "se_joue": "Entre achever et repartir sur un nouveau projet, où se trouve ton énergie en ce moment ? Il y a des jours où finir constitue le véritable mouvement. D'autres fois, recommencer est une façon élégante de ne jamais terminer. Les deux attitudes peuvent se déguiser l'une en l'autre, mais elles ne donnent pas le même résultat. Que gagnerais-tu à nouer le dernier fil avant de monter une nouvelle chaîne sur le métier ?",
+    "essayer": "Quelqu'un reprend un ouvrage laissé trois mois dans un panier. En début de soirée, pendant dix minutes au salon, la personne ne remet pas tout le projet en question : elle prend le fil indiqué et avance de quelques rangs. Au moment de ranger, elle pose l'ouvrage bien en vue sur la table pour le retrouver le lendemain. Tu peux reprendre cette petite scène avec ce que tu as à achever. Le premier nœud remis en main en dit davantage que le plan le plus parfait."
+  },
+  "source_referentielle": {
+    "pollack": "§3, XXI — l'unité en mouvement, pas un aboutissement figé ; XXI réunit ce que I et II avaient séparé ; tension achever / repartir ; ombre : stagnation, élan ralenti jusqu'à l'arrêt",
+    "wen": "§3 — élément Terre (Monde) ; §5 — mode d'ombre « amoindri »",
+    "greer": "§6.2 — leçon : danser avec ses limites, achever, intégrer",
+    "production": "angles pollack §3 XXI + wen §3 (élément Terre) + greer §6.2 ; image = visage validé du brief Groupe D (femme d'âge mûr devant un métier de haute-lice, fils verticaux d'une même palette, derniers fils noués à mains nues au centre du motif), reformulé avec nos mots ; nom interne du jeu, trace noms_cartes.json, Completion",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu ressens moins le besoin d'ouvrir un nouveau chantier dès qu'un projet se termine. Tu as longtemps enchaîné les étapes sans prendre le temps de regarder ce qui était déjà terminé. Ce qui demeure, c'est l'expérience acquise au fil de ton travail. Tu peux t'appuyer sur tes connaissances et reconnaître le chemin parcouru sans devoir immédiatement recommencer.",
+    "image_soi": "Tu gardes l'image de celle qui doit encore apprendre et améliorer son travail. Même après une réalisation importante, tu remarques d'abord ce qui manque ou ce qui pourrait être repris. Cette exigence t'a permis de développer ton savoir-faire. Elle peut aussi t'empêcher de reconnaître la valeur de ce que tu as déjà construit, comme si le résultat restait toujours provisoire.",
+    "entourage": "Les autres reconnaissent ton expérience et viennent te demander conseil. On parle volontiers de ton travail et de ce que tu sais accomplir. Les compliments portent souvent sur tes résultats, tes compétences ou ta fiabilité. On pense moins à te demander ce que tu souhaites maintenant que ce projet est terminé. Ta capacité à poursuivre peut être remarquée davantage que ton droit de faire une pause."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "eau_04",
+  "nom": "Recueillement",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 4,
+  "element": "eau",
+  "note_grille": "degré 4 (cadre) × famille eau (émotion, intériorité) : accord nuancé — ici le cadre est intérieur. La pierre plate et la grotte sèche tiennent l'espace, comme un bord posé autour de ce qui tourne. Pollack : quatre de Coupes, le temps d'arrêt qui révèle ce qu'on n'avait pas vu.",
+  "mots_cles": [
+    "Se poser au bord de l'eau",
+    "les pensées en mouvement",
+    "l'abri tranquille",
+    "quelques minutes pour soi",
+    "la distance apaisante"
+  ],
+  "tension": {
+    "pousse": "s'asseoir",
+    "retient": "tourner avec"
+  },
+  "lumiere": "Une femme s'est installée près d'une rivière paisible. Son dos repose contre un arbre imposant et ses mains sont posées librement sur ses genoux. Elle ne cherche pas à faire taire ses pensées. Elle les laisse passer, comme elle regarde l'eau poursuivre son chemin. Elle a simplement choisi de s'asseoir un peu à l'écart du courant. Cette carte t'invite à découvrir cette même position intérieure. Tu peux prendre quelques minutes pour observer ce qui t'habite sans devoir intervenir. La distance ne supprime pas les pensées, mais elle permet de retrouver un peu d'espace autour d'elles.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Ta journée semble composée d'une succession d'interruptions et d'obligations. Les moments où tu pourrais souffler arrivent souvent par hasard : une attente, un trajet, un feu rouge ou une transition entre deux activités. Pourtant, même ces instants sont rapidement remplis par ton téléphone, la musique ou de nouvelles préoccupations. Tu ne choisis presque jamais de t'arrêter. Tu traverses le bruit intérieur sans trouver le recul nécessaire pour l'observer. L'eau continue de couler, mais tu restes entraîné dans son mouvement au lieu de trouver un endroit où t'asseoir.",
+    "issue": "Accorde-toi quelques minutes dans un endroit tranquille, sans écran ni distraction. Laisse les pensées venir et repartir sans chercher à les résoudre. Tu n'as pas besoin de vider ton esprit. Il suffit de prendre place à côté de ce qui se passe en toi."
+  },
+  "questions": [
+    "À quel moment pourrais-tu t'offrir un véritable temps d'arrêt aujourd'hui ?",
+    "Quelle préoccupation revient régulièrement et gagnerait à être observée avec un peu de recul ?",
+    "Que pourrais-tu découvrir en restant quelques minutes sans chercher à t'occuper ?"
+  ],
+  "lecon": "La tranquillité ne vient pas nécessairement de l'absence de pensées, mais de la possibilité de ne plus être emporté par chacune d'elles.",
+  "image": {
+    "geste": "Une femme est assise sur une pierre plate, le dos appuyé contre un vieux tronc. Ses mains reposent sur ses genoux, paumes ouvertes, et son visage porte une expression détendue.",
+    "seuil": "Une ouverture rocheuse se dessine entre deux troncs couverts de mousse. Une petite cavité sèche se trouve tout près de l'eau. Le refuge est accessible sans grand déplacement.",
+    "detail": "Les fougères entourent la pierre et leurs feuilles retombent près de la surface sombre de la rivière. Au loin, quelques lumières apparaissent dans la vallée à la tombée du jour."
+  },
+  "micro_geste": "Installe-toi cinq minutes dans un endroit calme, sans écran. Laisse tes pensées circuler pendant que tu restes simplement présent.",
+  "positions": {
+    "jour": "Tu peux choisir de faire une pause avant que la fatigue ne t'y oblige. Tu n'as pas besoin d'attendre d'être débordé pour t'accorder quelques minutes de tranquillité. La carte montre une femme installée au bord d'une rivière, protégée par la présence d'un grand arbre. Ses mains sont ouvertes et son regard ne semble poursuivre aucune pensée en particulier. Cette scène rappelle qu'un arrêt volontaire peut devenir un véritable espace de repos. Tu peux laisser les choses continuer autour de toi sans te sentir obligé de suivre chacune d'elles.",
+    "amene": "Tu arrives peut-être avec une accumulation de pensées qui ne trouvent jamais leur moment de repos. Une conversation revient, une décision reste en suspens, une inquiétude se glisse dans les moments les plus ordinaires. Tu as beau changer d'activité, ton esprit continue de travailler. La carte t'invite à chercher un endroit où tu peux déposer cette agitation, même brièvement. Il n'est pas nécessaire de trouver une solution ce soir. Une chaise, une fenêtre ouverte ou un coin tranquille peuvent devenir ton propre bord de rivière.",
+    "se_joue": "Il existe une différence entre vivre une pensée et être entraîné par elle. Lorsque tu restes au milieu du courant, chaque idée semble demander une réponse immédiate. Tu la suis, tu l'analyses et tu passes à la suivante sans retrouver ton point d'appui. Depuis la rive, tu peux regarder le même mouvement autrement. Les pensées continuent d'exister, mais tu n'es plus obligé de les accompagner jusqu'à leur conclusion. La carte pose une question importante : quelle place réserves-tu réellement aux moments où tu n'as rien à produire ?",
+    "essayer": "Choisis ce soir un endroit où tu pourras rester assis quelques minutes. Éloigne ton téléphone et laisse le silence s'installer. Si une pensée revient avec insistance, remarque simplement sa présence avant de ramener ton attention vers ce qui t'entoure : une lumière, un bruit, une branche ou le mouvement de l'air. Tu n'as rien à réussir pendant ce temps. La carte propose une petite retraite accessible au milieu de la vie ordinaire. Le courant continue, mais tu peux rester sur la rive."
+  },
+  "source_referentielle": {
+    "pollack": "§4 nombres — le 4, le cadre ; quatre de Coupes : le temps d'arrêt qui révèle le bord",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 4 : cadre (ici le cadre est intérieur)",
+    "greer": "§6 — se tourner vers l'intérieur sans se vider la tête, la distance choisie envers ses propres pensées",
+    "production": "image du corpus mineurs eau (forêt immense au soir, arche de pierre entre deux troncs, femme assise au bord d'un cours d'eau très calme), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à retrouver des moments de calme dans tes journées. Avant, tu étais constamment interrompue par les messages, les appels et les demandes des autres. Tu avais pris l'habitude de répondre immédiatement à tout, au point de laisser ton téléphone organiser ton emploi du temps. Peu à peu, tu retrouves la possibilité de t'arrêter, de ne plus être disponible à chaque instant et de profiter d'un moment seule. Tu sais déjà où trouver ce calme : il te suffit parfois de retourner dans un endroit tranquille où tu te sens bien.",
+    "image_soi": "Tu as l'impression que tu dois toujours être disponible et répondre aux besoins des autres. Tu te sens indispensable et tu as peur que les choses se compliquent si tu ne réponds pas rapidement. Même lorsque tu prends une pause, tu penses aux messages auxquels tu n'as pas répondu et aux personnes qui pourraient avoir besoin de toi. Tu as du mal à t'autoriser de vrais moments de tranquillité, car tu associes parfois le fait de ne pas être disponible à un manque de responsabilité. Pourtant, tu as aussi besoin de temps pendant lequel personne ne te sollicite.",
+    "entourage": "Ton entourage a pris l'habitude de te contacter à n'importe quel moment, parce qu'il sait que tu réponds généralement rapidement. On te décrit comme une personne toujours disponible, et cette qualité est souvent présentée comme un compliment. Mais les autres ne réalisent pas forcément qu'ils interrompent tes repas, tes moments de repos ou tes activités personnelles. Comme tu réponds souvent présente, ils ne pensent pas toujours à te laisser du temps pour toi. Ta disponibilité est devenue une habitude pour eux, alors qu'elle devrait aussi dépendre de tes envies et de tes limites."
+  }
+}

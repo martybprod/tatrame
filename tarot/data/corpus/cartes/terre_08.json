@@ -1,0 +1,55 @@
+{
+  "id": "terre_08",
+  "nom": "Simplicité",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 8,
+  "element": "terre",
+  "note_grille": "degré 8 (maîtrise) × famille terre (corps, ressources) : accord — l'ordinaire maîtrisé devient un art. La voie de la famille : la magie de l'ordinaire.",
+  "mots_cles": [
+    "le simple",
+    "les dalles usées",
+    "sans décor",
+    "l'herbe entre les pierres",
+    "le geste juste"
+  ],
+  "tension": {
+    "pousse": "simplifier",
+    "retient": "compliquer"
+  },
+  "lumiere": "Tu fais simple, et le simple tient mieux. Les dalles usées n'ont rien à prouver, et l'herbe entre les pierres a trouvé sa place naturellement. Tu gardes l'essentiel et tu laisses le décor à ceux qui en ont besoin. Ce que tu fais, tu le fais pleinement, et cela suffit à lui donner sa beauté.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu remets la simplicité à plus tard. Tu prévois d'y revenir lorsque tout sera bien organisé, mais tu ajoutes une couche, puis une autre. Au fond, tu crains que le simple, une fois dépouillé de ses ornements, ne suffise pas à te représenter. Alors le jardin se remplit de décorations, tandis que l'essentiel attend sous les couches.",
+    "issue": "Choisis une seule chose à simplifier aujourd'hui. Retire une couche, pas dix, et observe comment l'espace ainsi libéré change la lumière. Le simple attire le simple, et le reste suivra."
+  },
+  "questions": [
+    "Qu'est-ce que tu compliques alors qu'un seul geste suffirait ?",
+    "Qu'est-ce que le décor ajoute, et qu'est-ce qu'il dissimule ?",
+    "Qu'est-ce qui devient beau lorsque tu le laisses simple ?"
+  ],
+  "lecon": "Choisir le simple est une décision, pas un choix par défaut. La beauté de l'ordinaire apparaît lorsqu'on cesse de vouloir tout décorer.",
+  "image": {
+    "geste": "de grandes dalles sont posées avec soin et usées par les pas. Un ouvrage solide, sans esbroufe",
+    "seuil": "aucune porte ni aucun décor. Le jardin ancien se montre tel qu'il est, et tout y trouve sa place",
+    "detail": "de la mousse pousse entre les dalles. Le temps a travaillé avec le jardinier, sans qu'il ait besoin de le lui demander"
+  },
+  "micro_geste": "Choisis une chose compliquée et retire-lui une couche aujourd'hui.",
+  "positions": {
+    "jour": "Aujourd'hui, peu de choses suffisent, et c'est une bonne nouvelle. La carte montre un jardin ancien qui n'a pas besoin de décorations. L'herbe pousse entre les dalles, et c'est elle qui contribue à la beauté du lieu. Prends ce que tu as à faire aujourd'hui et retire-en une couche. Ce qui reste tient mieux et apparaît plus clairement.",
+    "amene": "Tu arrives avec une tendance à charger. Des précautions supplémentaires, des plans en double, des mots qui viennent s'ajouter aux gestes. On t'a peut-être appris que plus solide voulait dire plus lourd. Pourtant, tu sais déjà ce qui se passe lorsque tu fais simple. Les dalles posées avec soin peuvent tenir des années sans qu'on ait besoin d'y ajouter quoi que ce soit.",
+    "se_joue": "Tout se joue entre le désir d'ajouter et la capacité de laisser les choses telles qu'elles sont. Une partie de toi croit que le simple, une fois dépouillé, paraît insuffisant. Une autre sait que la mousse entre les dalles n'a pas besoin d'être cultivée pour apparaître. Alors une question se pose. Qu'est-ce que tu ajoutes, et qu'est-ce que cela cherche à cacher ?",
+    "essayer": "Essaie aujourd'hui de poser un geste sans rien y ajouter. Accomplis une tâche simplement, donne une réponse courte et sincère ou prépare une table sans chercher à en faire davantage. La carte propose une expérience, pas un grand bouleversement. Ce que la simplicité te permettra de voir sera déjà une réponse, et tu pourras t'y fier."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Deniers — la voie : la magie de l'ordinaire ; l'ordinaire maîtrisé, pas le vide",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré 8 : la maîtrise technique, la mise en circulation",
+    "greer": "§6.3 — équation nombre × famille : un 8 de terre parle de la circulation dans le concret",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : deux-points de chute retirés, « ajouter » triplé remplacé par « charger »"
+  },
+  "croix": {
+    "eloigne": "Tu commences à abandonner le besoin de compliquer les choses pour être certaine qu'elles soient suffisamment bien faites. Jusqu'ici, tu avais tendance à ajouter des précautions, des explications ou des étapes supplémentaires, même lorsque ce n'était pas nécessaire. Tu apprends maintenant à faire confiance aux solutions simples. Tu découvres qu'une chose peut être réussie sans être compliquée ni parfaite.",
+    "image_soi": "Tu as parfois l'impression que tu dois en faire beaucoup pour prouver que tu es compétente. Tu peux penser qu'un travail simple ne sera pas suffisamment apprécié ou qu'il donnera l'impression que tu n'as pas fourni assez d'efforts. Tu ajoutes donc des détails et des exigences qui ne sont pas toujours indispensables. Cette façon de fonctionner te donne le sentiment de faire les choses sérieusement, mais elle peut aussi te faire perdre de vue l'essentiel.",
+    "entourage": "Les autres te trouvent soigneuse, minutieuse et attentive aux détails. Ils apprécient ton sérieux et savent que tu accordes de l'importance à la qualité de ton travail. Ils te confient donc facilement les tâches qui demandent de la précision. En revanche, ils ne se rendent pas toujours compte du temps et de l'énergie que tu consacres à ces détails, ni du fait que tu pourrais parfois faire les choses beaucoup plus simplement."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "eau_07",
+  "nom": "Projections",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 7,
+  "element": "eau",
+  "note_grille": "degré 7 (évaluation, discernement) × famille eau (imaginaire, lien) : accord — le discernement s'exerce sur les images accrochées derrière les gens. Deux lectures simultanées (Greer) : ce que tu projettes, et ce que l'on projette sur toi.",
+  "mots_cles": [
+    "Les décors suspendus",
+    "les histoires derrière les visages",
+    "l'espace entre les images",
+    "les mécanismes visibles",
+    "la rencontre véritable"
+  ],
+  "tension": {
+    "pousse": "voir en face",
+    "retient": "projeter"
+  },
+  "lumiere": "Tu peux apprendre à reconnaître les histoires que ton imagination ajoute aux personnes que tu rencontres. Derrière chacun, tu installes parfois un paysage : un jardin, une fête, une promesse ou une attente. Ces décors racontent souvent davantage tes désirs que la réalité de l'autre. La carte t'offre une possibilité de discernement. Lorsque tu identifies ce que tu as imaginé, tu peux commencer à le retirer. La personne apparaît alors plus clairement, avec ses qualités, ses limites et ses contradictions. Entre deux décors, il existe un espace dépouillé où une véritable rencontre peut commencer.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu regardes quelqu'un, mais tu ne vois plus vraiment la personne. Tu aperçois surtout ce que tu espères trouver chez elle, ou ce que tu redoutes qu'elle représente. Tu lui attribues des intentions, des attentes et parfois même des paroles qu'elle n'a jamais prononcées. Lorsque son comportement ne correspond pas au personnage que tu avais imaginé, la déception apparaît. Pourtant, l'autre n'a peut-être jamais promis de jouer ce rôle. Ton imagination a simplement construit une scène et lui a donné une place avant de lui demander qui elle était.",
+    "issue": "Pose une question directe à la personne concernée au lieu de chercher à interpréter ses intentions. Écoute sa réponse avant de construire la suite. Une conversation réelle peut remplacer de nombreuses suppositions."
+  },
+  "questions": [
+    "Quelle personne vois-tu actuellement à travers un scénario que tu as construit ?",
+    "Quelles qualités ou intentions lui attribues-tu sans les avoir vérifiées ?",
+    "Quelle question sincère pourrais-tu lui poser pour mieux la connaître ?"
+  ],
+  "lecon": "Une personne ne se résume jamais au personnage que notre imagination lui attribue. La rencontre commence lorsque les projections cessent de parler à sa place.",
+  "image": {
+    "geste": "Deux personnes se font face sur une scène. Chacune regarde l'autre à travers un paysage peint qui semble prolonger sa silhouette.",
+    "seuil": "Entre les deux grandes toiles suspendues, une bande sombre reste visible. Aucun décor ne l'occupe. Cet espace libre permet aux deux personnes de se rencontrer directement.",
+    "detail": "Au-dessus de la scène, les cordes et les poulies sont apparentes. Les toiles peuvent être déplacées et les paysages ne sont pas permanents."
+  },
+  "micro_geste": "Aujourd'hui, au lieu de deviner ce que quelqu'un pense, pose-lui directement une question.",
+  "positions": {
+    "jour": "Tu pourrais découvrir que tu connais moins bien une personne que tu ne le pensais. Cela ne signifie pas que la relation est fausse, mais peut-être que ton imagination a pris beaucoup de place dans la manière dont tu la regardes. La carte présente deux personnes séparées par des décors suspendus. Chacune semble rencontrer davantage l'image de l'autre que sa véritable présence. Tu peux commencer à retirer ces images. Une question sincère, une écoute attentive ou une conversation sans attente particulière peuvent transformer la rencontre.",
+    "amene": "Tu arrives avec une certaine expérience des relations humaines. Tu sais que les premières impressions ne racontent jamais toute une personne. Quelqu'un qui semblait distant a peut-être révélé une grande sensibilité. Une personne que tu croyais très sûre d'elle a peut-être montré ses hésitations. La carte te rappelle que tu possèdes déjà cette capacité à revoir ton jugement. Tu peux maintenant l'appliquer à une relation dans laquelle ton imagination a pris un peu trop de place.",
+    "se_joue": "Entre toi et l'autre, il y a peut-être deux histoires qui se croisent sans réellement se rencontrer. Tu imagines ce que cette personne attend de toi, tandis qu'elle se fait peut-être sa propre idée de tes intentions. Les deux scénarios peuvent être très éloignés de la réalité. La bande sombre entre les toiles représente l'espace où ces suppositions peuvent enfin tomber. Ce qui se joue n'est pas de savoir qui a raison. C'est de découvrir ce qui existe lorsque chacun cesse de faire parler l'autre à travers ses propres attentes.",
+    "essayer": "Choisis une relation dans laquelle tu aimerais obtenir davantage de clarté. Pose une question ouverte, sans préparer à l'avance la réponse que tu espères recevoir. Tu peux demander comment l'autre voit la situation, ce qu'il souhaite ou ce qu'il ressent réellement. Laisse-lui le temps de répondre. Cette démarche peut sembler plus exposante que de continuer à imaginer, mais elle ouvre un espace beaucoup plus vivant. Les décors peuvent rester beaux dans ton imagination. Ils n'ont simplement plus besoin de prendre la place de la personne."
+  },
+  "source_referentielle": {
+    "pollack": "§4, nombres — le sept : l'évaluation, le discernement ; les images qu'on reçoit à trier de la personne réelle",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 7 : évaluation, discernement",
+    "greer": "§6 — deux lectures simultanées : ce que tu projettes sur l'autre, et ce que l'on projette sur toi",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-10 sous le brief eau (groupe B), image d'après le corpus distillé (corpus_mineurs_eau.json, eau_7)",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à voir les personnes telles qu'elles sont réellement, sans leur attribuer des intentions, des qualités ou des sentiments que tu imagines. Tu avais tendance à te faire rapidement une idée de quelqu'un, à imaginer ce que pourrait devenir une relation ou à espérer retrouver chez l'autre quelque chose que tu avais déjà connu. Peu à peu, tu apprends à laisser tomber ces attentes. Ce qui reste, c'est ton envie sincère de connaître les autres et de créer des liens. Tu peux continuer à t'intéresser aux personnes, tout en leur laissant la liberté de te montrer qui elles sont vraiment.",
+    "image_soi": "Tu as tendance à penser que tu comprends facilement les autres, même lorsqu'ils ne disent pas clairement ce qu'ils ressentent ou ce qu'ils pensent. Tu observes leurs réactions, tu analyses leurs paroles et tu essaies de deviner ce qu'ils veulent vraiment dire. Tu considères cela comme une preuve de sensibilité et d'attention. Mais parfois, tu interprètes tellement les comportements des autres que tu finis par leur attribuer des pensées ou des intentions qu'ils n'ont peut-être pas. Tu risques alors de réagir à ce que tu imagines plutôt qu'à ce que la personne exprime réellement.",
+    "entourage": "Ton entourage te considère comme une personne intuitive, capable de comprendre rapidement les autres. Certaines personnes viennent même te demander ce que quelqu'un pense réellement ou pourquoi il a agi d'une certaine manière. Cette réputation peut te donner l'impression que tu dois toujours comprendre les situations et deviner les intentions de chacun. Pourtant, certaines personnes peuvent aussi se sentir mal à l'aise lorsqu'elles ont l'impression que tu analyses leurs paroles ou leurs comportements. Elles peuvent se demander si tu les écoutes vraiment ou si tu as déjà décidé à leur place ce qu'elles pensent."
+  }
+}

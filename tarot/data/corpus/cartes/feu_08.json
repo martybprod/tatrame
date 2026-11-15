@@ -1,0 +1,55 @@
+{
+  "id": "feu_08",
+  "nom": "Voyage",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 8,
+  "element": "feu",
+  "note_grille": "degré 8 (mouvement, mise en circulation) × famille feu (élan, projet) : accord — le mouvement est l'élan même. Pollack : huit de Bâtons, le thème est le déplacement.",
+  "mots_cles": [
+    "la route",
+    "le premier bout",
+    "marcher",
+    "sans destination",
+    "les kilomètres"
+  ],
+  "tension": {
+    "pousse": "partir",
+    "retient": "attendre de savoir"
+  },
+  "lumiere": "Tu te mets en route et tu découvres que le chemin se révèle au fur et à mesure. Chaque pas te fait découvrir une partie du paysage que tu ne connaissais pas encore. Tu n'as pas besoin de connaître ta destination finale pour avancer dans la bonne direction. Le mouvement est au cœur de cette carte. Il vaut mieux commencer à marcher que rester à réfléchir à son départ derrière une fenêtre.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu as envie d'avancer, mais tu n'oses le faire qu'à moitié. Tu as quitté ton village, puis tu t'es arrêté en chemin, retenu par quelque chose que tu n'as pas encore réglé avec ceux que tu as laissés derrière toi. Tu restes ainsi dans une situation d'attente, en te disant que tu partiras lorsque le moment sera meilleur. Pendant ce temps, la route continue, mais tu n'avances plus.",
+    "issue": "Choisis une seule étape à franchir aujourd'hui. Pense au prochain tournant, pas à la destination finale. Le chemin se dessine au fur et à mesure qu'on le parcourt. Un premier pas concret vaut mieux que tous les projets qui restent sur le papier."
+  },
+  "questions": [
+    "Quel chemin attends-tu d'avoir entièrement planifié avant de commencer à avancer ?",
+    "À quel moment t'arrêtes-tu en cours de route, et qu'est-ce qui t'empêche de continuer ?",
+    "Qu'est-ce que tes premiers pas t'ont déjà appris que tu n'aurais pas pu découvrir en réfléchissant seulement ?"
+  ],
+  "image": {
+    "geste": "un voyageur marche pieds nus en s'éloignant, un bâton à la main. C'est en avançant qu'il découvre le chemin",
+    "seuil": "le village aux toits rouges se trouve derrière lui. Il a quitté ce qu'il connaît, simplement, sans avoir besoin de dramatiser ce départ",
+    "detail": "au loin se dressent des montagnes, avec une cascade qui se déverse dans un lac. À l'arrivée, personne ne l'attend avec une récompense. Le voyage n'a pas besoin d'une promesse pour avoir du sens"
+  },
+  "micro_geste": "Marche dix minutes aujourd'hui sans destination précise. Observe ce que cette marche change dans tes pensées.",
+  "positions": {
+    "jour": "Aujourd'hui, cette carte t'invite à prendre un nouveau départ, même modeste. Un voyage commence toujours par un premier pas, jamais par la certitude de connaître toute la route. L'image montre un marcheur qui avance sans regarder derrière lui. Ce qu'il laisse n'a pas nécessairement besoin d'un adieu ou d'une explication. Tu peux simplement commencer à marcher et découvrir la direction au fur et à mesure.",
+    "amene": "Tu arrives avec toute l'expérience des chemins que tu as déjà parcourus. Tu as connu des départs réussis, pris des directions sans savoir exactement où elles te mèneraient et appris à avancer malgré l'incertitude. Cette expérience fait partie de tes acquis. La carte te rappelle que tu sais déjà partir et que cette capacité s'est développée avec le temps.",
+    "se_joue": "Tout se joue entre deux attitudes. Avancer, ou attendre de savoir exactement quelle direction prendre. Pourtant, un chemin ne révèle jamais toute sa destination à l'avance. Il montre d'abord le prochain tournant, et c'est déjà suffisant pour continuer. La question du jour est simple. Peux-tu accepter de faire quelques pas vers quelque chose que tu ne connais pas encore ?",
+    "essayer": "Aujourd'hui, choisis une première étape concrète. Marche dix minutes sans destination, commence un projet en réalisant simplement la première tâche ou réserve la première nuit d'un voyage que tu envisages. La carte ne te demande pas de préparer tout le parcours. Elle t'invite à faire le premier bout de chemin. Le reste se précise en avançant."
+  },
+  "source_referentielle": {
+    "pollack": "§4, huit de Bâtons — accord fort : le thème est le déplacement ; §4 nombres : 8 = mouvement",
+    "wen": "§4 — famille feu : élan, projet, travail ; degré 8 : mise en circulation",
+    "greer": "§6.3 — équation nombre × famille : un 8 de feu parle d'élan en mouvement",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : deux-points de chute retirés, « se précisera » ramené au présent, accord de genre conservé en générique léger"
+  },
+  "lecon": "Tu peux commencer à avancer avant de tout comprendre. La direction se précise au fil des pas.",
+  "croix": {
+    "eloigne": "Tu commences à accepter que tu n'as pas besoin de connaître tout le chemin avant de commencer à avancer. Jusqu'ici, tu voulais avoir un itinéraire précis et savoir exactement où tu allais avant de faire le premier pas. Cette recherche de certitude pouvait t'empêcher de partir. Tu apprends maintenant à faire confiance à ton expérience et à avancer progressivement, même lorsque tu ne connais pas encore la destination finale.",
+    "image_soi": "Tu aimes te voir comme une personne indépendante, curieuse et prête à partir à l'aventure. Pourtant, lorsque vient le moment de changer réellement quelque chose, tu peux passer beaucoup de temps à préparer ton départ. Tu attends le bon moment, les bonnes conditions ou une meilleure occasion. Tu présentes cela comme de la préparation, alors qu'il peut parfois s'agir d'une façon de repousser le changement que tu souhaites pourtant vivre.",
+    "entourage": "Les autres te voient comme une personne qui aime bouger, découvrir de nouvelles choses et changer de direction. Ils admirent parfois ta capacité à partir et à recommencer ailleurs. Cette image d'indépendance peut cependant cacher ce que tu vis réellement. Ton entourage suppose que tu n'as besoin de personne et ne pense pas toujours à te demander ce que tu ressens, ce que tu as laissé derrière toi ou ce qui t'empêche parfois d'avancer."
+  }
+}

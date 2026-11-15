@@ -1,0 +1,56 @@
+{
+  "id": "feu_page",
+  "nom": "Jeu",
+  "type": "figure",
+  "famille": "feu",
+  "rang": "page",
+  "element": "feu",
+  "note_grille": "figure feu (page) : l'exploration, le début, l'élan qui s'exerce avant de servir. Deux lectures possibles (Greer) : quelqu'un qui joue encore, ou la part de toi qui n'a jamais perdu ce geste. La page ne bâtit rien qui doive durer, et c'est sa force.",
+  "mots_cles": [
+    "le château de sable",
+    "la vague",
+    "le rire à pleine bouche",
+    "construire pour l'instant",
+    "les papillons"
+  ],
+  "tension": {
+    "pousse": "jouer",
+    "retient": "faire utile"
+  },
+  "lumiere": "Tu peux prendre plaisir à faire quelque chose, même si cela ne sert à rien de particulier et même si cela ne dure pas.\n\nCette carte montre une enfant qui construit un château de sable sur la plage. Une vague arrive et commence déjà à le détruire.\n\nPourtant, l'enfant continue de construire en riant.\n\nElle sait que la mer reprendra probablement son château, mais cela ne l'empêche pas de s'amuser.\n\nC'est exactement le message de cette carte : tu as le droit de faire des choses simplement parce qu'elles te plaisent.\n\nTout ce que tu fais n'a pas besoin d'avoir un objectif, de produire un résultat ou de servir à quelque chose.\n\nLe plaisir d'être dans l'activité est déjà une bonne raison.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu as peut-être tellement pris l'habitude de remplir tes journées avec des tâches utiles que tu ne trouves plus de place pour le plaisir.\n\nTu te dis que tu t'amuseras lorsque tu auras terminé ton travail, réglé tes obligations ou atteint tes objectifs.\n\nMais il y a toujours quelque chose à faire.\n\nPendant ce temps, tu repousses les activités qui te font simplement du bien.\n\nTu oublies peut-être qu'une activité n'a pas besoin d'être productive pour avoir de la valeur.",
+    "issue": "Accorde-toi quinze minutes aujourd'hui pour faire quelque chose uniquement pour le plaisir.\n\nTu peux dessiner, chanter, bricoler, jouer, danser ou construire quelque chose sans chercher à obtenir un résultat.\n\nNe te demande pas si cela sert à quelque chose.\n\nProfite simplement du moment."
+  },
+  "questions": [
+    "Qu'aimais-tu faire pour le plaisir avant de vouloir que tout soit utile ?",
+    "Quand as-tu fait quelque chose en sachant que cela ne durerait pas ?",
+    "Que ferais-tu aujourd'hui si tu n'avais pas à montrer le résultat à quelqu'un ?"
+  ],
+  "lecon": "Le plaisir de jouer est important, même lorsqu'il ne produit rien de concret. Tu peux créer simplement pour profiter du moment.",
+  "image": {
+    "geste": "Une enfant rit à pleine bouche et ajoute une tour à son château de sable, alors qu'une vague commence déjà à le faire disparaître. Elle recommence sans se décourager.",
+    "seuil": "Les dunes marquent la limite de la plage. Derrière elles se trouve le monde des obligations et du travail, mais ici, l'enfant est libre de jouer.",
+    "detail": "Des papillons volent au-dessus du sable. Des traces de pas traversent la plage sans suivre de destination précise."
+  },
+  "micro_geste": "Prends quinze minutes aujourd'hui pour faire quelque chose qui te plaît, sans objectif particulier et sans chercher à montrer le résultat à quelqu'un.",
+  "positions": {
+    "jour": "Tu n'as pas besoin de rendre chaque moment de ta journée utile.\n\nTu peux faire quelque chose simplement parce que tu aimes le faire.\n\nCette carte montre une enfant qui construit un château de sable alors qu'une vague approche déjà pour le détruire.\n\nElle continue de rire et de construire, car elle profite du moment présent.\n\nAujourd'hui, tu peux retrouver ce plaisir simple : faire une activité sans chercher à réussir, à produire ou à obtenir quelque chose en retour.",
+    "amene": "Tu as peut-être passé beaucoup de temps à faire ce qui était nécessaire, important ou utile.\n\nÀ force, tu as peut-être mis de côté les activités que tu aimais simplement pour le plaisir.\n\nCette carte te rappelle que tu peux retrouver cette liberté.\n\nTu n'as pas besoin d'être productif à chaque instant. Tu peux aussi faire quelque chose parce que cela te fait sourire.",
+    "se_joue": "Tu fais peut-être une différence très nette entre les activités utiles et celles qui ne servent à rien.\n\nTu accordes facilement du temps aux premières, mais tu repousses les secondes.\n\nCette carte t'invite à remettre un peu de jeu dans ta vie.\n\nTu peux créer quelque chose sans chercher à le conserver, essayer une activité sans vouloir devenir excellent ou simplement profiter d'un moment sans objectif.\n\nLa question est : qu'aimerais-tu faire si tu n'avais pas besoin que cela serve à quelque chose ?",
+    "essayer": "Choisis une activité que tu aimais faire lorsque tu étais plus jeune ou découvre quelque chose qui t'amuse.\n\nTu peux dessiner, jouer avec de la pâte, chanter, danser, construire quelque chose ou te promener sans destination précise.\n\nNe cherche pas à obtenir un résultat parfait.\n\nLaisse-toi simplement profiter de l'activité.\n\nComme l'enfant qui reconstruit son château, tu peux recommencer autant de fois que tu en as envie."
+  },
+  "source_referentielle": {
+    "pollack": "§4, page de Bâtons — l'étincelle d'apprendre, l'élan qui s'exerce ; figures de cour : des manières d'être, jamais des personnes",
+    "wen": "§4 — rang page : exploration, début, le message qui s'amuse avant de servir ; famille feu : l'élan",
+    "greer": "§6.4 — les figures comme rôles et facettes, deux lectures simultanées : chez quelqu'un ou en toi",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_feu.json (entrée feu_page), à reformuler par Martin ; ombre « differe » (le jeu reporté), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à comprendre que tout ce que tu fais n'a pas besoin d'être utile ou productif. Jusqu'ici, tu avais tendance à organiser ton temps en fonction de ce que tu devais accomplir. Le plaisir et les activités sans objectif précis passaient souvent après le reste. Tu retrouves maintenant le droit de faire des choses simplement parce qu'elles te font du bien. Tu peux retrouver cette spontanéité et cette joie de jouer que tu avais peut-être mises de côté en grandissant.",
+    "image_soi": "Tu te vois comme une personne sérieuse qui doit utiliser son temps intelligemment. Tu as parfois l'impression que les activités sans objectif concret sont une perte de temps. Même lorsque tu prends du plaisir, tu peux ressentir le besoin de le justifier comme une récompense après avoir travaillé. Cette façon de te voir te donne une image responsable, mais elle t'empêche de profiter librement des moments simples.",
+    "entourage": "Les autres te considèrent comme une personne sérieuse, organisée et raisonnable. Ils pensent facilement à toi lorsqu'il faut planifier ou gérer quelque chose. En revanche, ils ne pensent pas toujours à t'inviter pour des activités spontanées, amusantes ou sans objectif particulier. Ils peuvent supposer que tu n'as pas le temps ou que cela ne t'intéresse pas. Cette image de personne toujours occupée peut te priver de moments de légèreté."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "eau_06",
+  "nom": "Illusion",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 6,
+  "element": "eau",
+  "note_grille": "degré 6 (circulation) × famille eau (lien, imaginaire) : accord — la circulation se fait ici entre deux mondes, l'imaginaire et le réel, et la carte montre le passage. La toile soulevée est la porte. Wen : le six comme mouvement qui s'établit.",
+  "mots_cles": [
+    "Le rideau qu'on soulève",
+    "le paysage d'un été rêvé",
+    "la nuit véritable",
+    "le coin dévoilé",
+    "la réalité plus vaste"
+  ],
+  "tension": {
+    "pousse": "vérifier",
+    "retient": "rester dans l'image"
+  },
+  "lumiere": "Tu peux te laisser porter par ton imagination, à condition de ne pas oublier qu'elle reste une porte et non un lieu où vivre. La carte montre un homme qui soulève le bord d'une immense toile. Sur celle-ci, un été parfait est représenté : des arbres chargés de fruits, une fontaine, des fleurs et une lumière éternelle. Mais derrière la peinture s'étend la véritable nuit, avec ses étoiles et son horizon. Les deux mondes peuvent coexister. Tu as le droit de rêver, d'espérer et de créer de belles images. Tu retrouves simplement ta liberté lorsque tu sais distinguer ce que tu imagines de ce qui existe réellement.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu t'es peut-être installé dans une représentation de la vie qui ne t'appartient pas entièrement. Quelqu'un t'a présenté une promesse, une réussite ou un avenir particulièrement séduisant, et tu as fini par prendre cette image pour une réalité certaine. Tout semble parfait dans ce décor : les couleurs sont harmonieuses, les fruits abondants et la lumière toujours présente. Pourtant, derrière la toile, le monde continue d'exister avec ses nuits, ses incertitudes et ses imperfections. Tu n'as pas encore soulevé le tissu pour vérifier ce qui se trouve réellement de l'autre côté.",
+    "issue": "Choisis une seule croyance ou une promesse qui occupe beaucoup de place dans ton esprit. Vérifie ce qui est établi, ce qui reste possible et ce qui relève de ton imagination. Tu n'as pas besoin de renoncer à ton rêve. Tu as simplement besoin de connaître le sol sur lequel tu poses les pieds."
+  },
+  "questions": [
+    "Quelle représentation idéale de ta vie mériterait d'être confrontée à la réalité ?",
+    "Quels éléments connais-tu réellement, et lesquels as-tu complétés par tes espoirs ?",
+    "Que pourrais-tu découvrir en regardant derrière ce qui paraît parfait ?"
+  ],
+  "lecon": "L'imagination ouvre des horizons, mais elle ne doit pas remplacer le réel. La liberté commence lorsqu'on sait reconnaître la différence entre les deux.",
+  "image": {
+    "geste": "Un homme pieds nus tient entre ses doigts le bord relevé d'une immense toile. Son bras soulève le tissu et découvre ce qui se trouve derrière.",
+    "seuil": "Au-delà de la peinture apparaît un ciel nocturne rempli d'étoiles, prolongé jusqu'à la ligne de la mer. Un simple coin de toile sépare les deux univers.",
+    "detail": "Le paysage peint représente un été luxuriant : verger, fontaine et fleurs abondantes. La lumière semble uniforme, sans source naturelle identifiable."
+  },
+  "micro_geste": "Choisis aujourd'hui une promesse ou une belle représentation de ta vie. Demande-toi ce qui est certain et ce qui reste à vérifier.",
+  "positions": {
+    "jour": "Une situation pourrait te sembler plus simple ou plus parfaite dans ton imagination que dans sa réalité. La carte montre un homme qui soulève une toile représentant un été merveilleux. Derrière elle, la véritable nuit apparaît, immense et étoilée. Cette image t'invite à regarder au-delà des apparences. Tu peux conserver tes rêves sans leur demander de remplacer les faits. Une petite vérification pourrait aujourd'hui t'apporter davantage de liberté que des heures passées à imaginer la suite.",
+    "amene": "Tu arrives avec une attente, un espoir ou une représentation qui t'aide peut-être à avancer. Cette image possède une valeur. Elle te permet d'imaginer ce qui pourrait devenir possible. Mais tu peux aussi remarquer qu'elle prend parfois beaucoup de place. La carte t'apporte une distinction importante : rêver d'une situation n'oblige pas à croire qu'elle se déroulera exactement ainsi. Le paysage nocturne derrière la toile n'est pas une menace. Il représente simplement tout ce qui existe en dehors de tes attentes.",
+    "se_joue": "Où se situe la limite entre l'espoir et la certitude ? Tu peux être attaché à une version idéale d'une relation, d'un projet ou d'un avenir. Cette version te rassure, mais elle peut aussi t'empêcher de voir les informations qui ne correspondent pas à ton attente. La carte ne te demande pas de devenir méfiant envers tout ce qui est beau. Elle t'encourage à vérifier avant de construire davantage. Une promesse devient plus solide lorsqu'elle peut rencontrer les faits sans perdre toute sa valeur.",
+    "essayer": "Prends une situation qui te semble particulièrement prometteuse et pose une question concrète à son sujet. Demande une précision, vérifie une information ou regarde ce qui a réellement été fait jusqu'ici. Tu n'as pas besoin de détruire ton enthousiasme pour être lucide. Au contraire, cette démarche permet de donner une base réelle à ce que tu souhaites construire. Soulève simplement un coin de la toile. Tu découvriras peut-être que la réalité est différente, mais aussi plus intéressante que prévu."
+  },
+  "source_referentielle": {
+    "pollack": "§4, nombres — le six : la circulation, le mouvement qui s'établit ; le rêve distingué du réel",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 6 : circulation, ici entre l'imaginaire et le réel",
+    "greer": "§6 — questions de discernement : qu'est-ce que tu sais, qu'est-ce que tu espères",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-10 sous le brief eau (groupe B), image d'après le corpus distillé (corpus_mineurs_eau.json, eau_6)",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à voir une situation telle qu'elle est réellement, et non plus telle que tu l'avais imaginée. Tu avais cru à une promesse ou à une situation qui semblait idéale, parce que tout était présenté de manière très séduisante. Avec le temps, tu découvres que la réalité ne correspond pas à cette belle image. Tu peux être déçue, mais tu conserves ta capacité à rêver, à imaginer et à croire en de nouvelles possibilités. Tu comprends simplement que toutes les belles promesses ne sont pas forcément réelles.",
+    "image_soi": "Tu te reproches d'avoir été trop naïve et de ne pas avoir vu les choses comme elles étaient. Tu te dis qu'avec plus de lucidité, tu aurais dû remarquer les incohérences ou comprendre que certaines promesses étaient trompeuses. Depuis cette expérience, tu as tendance à te méfier davantage et à examiner chaque nouvelle proposition avec prudence. Cette méfiance peut t'éviter de nouvelles déceptions, mais elle risque aussi de t'empêcher de faire confiance à des personnes ou à des situations qui le méritent réellement.",
+    "entourage": "Certaines personnes de ton entourage continuent à te présenter une situation comme étant idéale, alors que tu commences à en voir les limites. Elles répètent que tout va bien, que tu as de la chance ou que tu devrais être satisfaite. Pourtant, certaines savent peut-être que la réalité est moins belle qu'elles ne le prétendent. Elles préfèrent ne pas remettre les choses en question, par habitude ou pour éviter une discussion difficile. Tu peux ainsi te retrouver entourée de personnes qui entretiennent une illusion au lieu de t'aider à voir clairement la situation."
+  }
+}

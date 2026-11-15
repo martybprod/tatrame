@@ -1,0 +1,53 @@
+{
+  "id": "major_02",
+  "nom": "Intuition",
+  "type": "majeur",
+  "registre": "exterieur",
+  "element": "eau",
+  "note_grille": "colonne 2 (avec Solitude et Rupture) : le voile. Élément Eau : le savoir monte sans bruit, comme l'eau qui se ferme en anneaux. Tension signature (Pollack) : savoir contre pouvoir le formuler. Tension assumée avec le registre — II est la réceptivité la plus intérieure, et la carte l'installe pourtant dehors, au bord du bassin, là où ce qui monte en toi doit se tester dans le monde.",
+  "mots_cles": [
+    "*major_02",
+    "exterieur",
+    "eau*"
+  ],
+  "tension": {
+    "pousse": "savoir",
+    "retient": "prouver"
+  },
+  "lumiere": "Tu connais ces moments où tu sais quelque chose sans pouvoir expliquer comment. Une réponse apparaît avant les arguments, avec douceur, et elle reste présente malgré les hésitations. Ce savoir intérieur a toute sa place dans tes décisions. Il ne remplace pas la réflexion : il lui ouvre une autre voie. Lorsque tu acceptes de le suivre, tu agis d'une manière qui te ressemble, même si tu n'es pas encore capable de justifier ton choix. Les mots viennent ensuite. L'essentiel s'était déjà exprimé en toi, discrètement.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu entends ta propre voix comme une radio dans une pièce voisine : elle est là, mais trop faible pour que tu distingues les mots. Les opinions des autres prennent le dessus, les comparaisons s'accumulent et les décisions sont sans cesse reportées. Tu cherches alors les réponses à l'extérieur avant même de vérifier ce que tu sais intérieurement. Peu à peu, tu en viens à douter de choses qui te semblaient pourtant évidentes la veille. Cette voix ne crie jamais. Lorsqu'on ne l'écoute pas, elle se fait simplement plus discrète.",
+    "issue": "Choisis une question qui te préoccupe cette semaine et note la première réponse qui te vient, avant d'en parler à qui que ce soit. Ta voix intérieure ne te demande pas de la croire aveuglément. Le simple fait de l'écouter lui redonne déjà sa place."
+  },
+  "questions": [
+    "Qu'est-ce que tu sais déjà, même si tu ne peux pas encore l'expliquer ?",
+    "Auprès de qui cherches-tu des réponses avant de regarder en toi ?",
+    "Quel serait le prochain petit pas si ta première impression était juste ?"
+  ],
+  "lecon": "Écouter d'abord ce qui se manifeste en toi, puis chercher à le vérifier à l'extérieur, plutôt que de faire l'inverse.",
+  "image": {
+    "geste": "Une femme assise laisse ses jambes dans l'eau d'un bassin de pierre. Elle regarde vers le bas et semble écouter quelque chose qui ne passe pas par les oreilles.",
+    "seuil": "L'eau forme lentement des anneaux autour de ses chevilles. Le contact a déjà eu lieu, et ses effets continuent de se propager.",
+    "detail": "Un cristal lumineux repose dans le creux de ses deux mains, à hauteur du cœur. La lumière de la nuit ne vient pas du ciel : elle semble monter directement de ses mains."
+  },
+  "micro_geste": "Avant de donner ton avis aujourd'hui, attends trois secondes et note ce qui te vient en premier.",
+  "positions": {
+    "jour": "Tu réfléchis actuellement à une décision, et deux sources de réponses se font entendre en même temps. La première vient de l'extérieur : elle est claire, argumentée et facile à citer. La seconde monte de l'intérieur : elle est discrète, sans preuve particulière, mais bien présente. Tu la reconnaîtras à sa manière de ne pas insister. Elle ne se répète pas, elle attend simplement que tu l'écoutes. Aujourd'hui, la voix qui parle le plus fort n'est peut-être pas la tienne. Elle n'a pourtant pas besoin de l'emporter sur les autres. Elle demande seulement à être entendue jusqu'au bout.",
+    "amene": "Une impression juste t'a traversé récemment, et tu as pu en vérifier la pertinence par la suite. Ces moments ne viennent pas de nulle part. Ils sont le résultat d'une attention qui travaille continuellement, même lorsque tu n'en as pas conscience. La carte t'invite à reconnaître ces réussites discrètes au lieu de les laisser passer inaperçues. Elles constituent une expérience réelle, qui t'appartient. Tu peux t'appuyer dessus aujourd'hui autant que sur l'avis d'une personne compétente.",
+    "se_joue": "Quelle réponse attends-tu de l'extérieur avant d'oser reconnaître ce que tu sais déjà intérieurement ? C'est autour de cette question que la journée s'organise. Tu consultes, tu compares, tu demandes un autre avis, et le temps passe alors que ta propre réponse ne change pas. La prudence explique une partie de cette attente, mais l'habitude y contribue aussi. Le nœud se trouve entre ta première impression et ton besoin d'obtenir des preuves. Quelle petite décision pourrais-tu confier à cette première réponse, simplement pour voir ce qui se passe ?",
+    "essayer": "Tu peux garder ta première réponse pour toi pendant une journée, avant de consulter qui que ce soit. Elle n'a pas besoin d'être parfaite, parfaitement justifiée ou formulée avec précision. Il suffit de la recueillir. Note-la quelque part, sans la montrer, puis consulte d'autres personnes si tu le souhaites. Tu pourras comparer les points de vue en fin de journée, sans pression. C'est ainsi que se construit la confiance en ta propre voix : une réponse écoutée et conservée à la fois.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, II — le savoir qui ne se dit pas, l'eau derrière les piliers ; tension savoir / pouvoir le formuler ; colonne 2 (le voile)",
+    "wen": "§3 — élément Eau (table des majeurs, recopiée de jeu.json)",
+    "greer": "§6.2 — leçon : apprendre l'autonomie intérieure, écouter ce qui n'est pas dit",
+    "production": "concepts — pollack §3 II (le voile, la passivité qui laisse monter l'information), wen §3 (Eau), greer §6.2, nom maison « Intuition » de noms_cartes.json ; image — visage validé par Martin (brief de production, Groupe A) : femme au bassin de pierre, jambes dans l'eau en anneaux, cristal à hauteur de cœur, dauphins — reformulé en geste / seuil / détail",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu consultes moins les autres avant de reconnaître ce que tu perçois. Tu as longtemps comparé les avis et attendu une confirmation extérieure. Cette habitude perd de son importance. Ce qui demeure, c'est ta capacité à remarquer une première impression, même discrète. Tu n'as pas besoin de la transformer immédiatement en certitude. Tu peux simplement lui accorder une place dans ta réflexion.",
+    "image_soi": "Tu te places volontiers dans le rôle de celle qui apprend encore. Tu accordes plus de poids aux faits vérifiables qu'à ce que tu ressens ou pressens. Une impression te semble insuffisante tant qu'elle n'est pas confirmée par quelqu'un ou par un document. Cette réserve te protège des conclusions hâtives, mais elle peut aussi t'amener à écarter trop vite ce que tu as pourtant remarqué.",
+    "entourage": "On vient parfois te demander conseil parce que tu sais écouter et remarquer des détails qui échappent aux autres. Pourtant, lorsque tu exprimes un doute, certaines personnes se dépêchent de te donner leur propre avis. Elles te voient comme quelqu'un de perspicace, mais ne te laissent pas toujours le temps de formuler ta réponse. Leur empressement peut finir par couvrir ta propre voix."
+  }
+}

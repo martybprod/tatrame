@@ -1,0 +1,56 @@
+{
+  "id": "terre_03",
+  "nom": "Guidance",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 3,
+  "element": "terre",
+  "note_grille": "degré 3 (premier fruit) × famille terre : accord — le vase qui monte sous deux mains est le premier fruit du geste transmis.",
+  "mots_cles": [
+    "la main qui ne parle pas",
+    "le vase qui monte",
+    "l'épaule du maître",
+    "le geste transmis",
+    "la terre humide"
+  ],
+  "tension": {
+    "pousse": "apprendre en faisant",
+    "retient": "comprendre avant de faire"
+  },
+  "lumiere": "Tu apprends souvent plus facilement lorsqu'une personne expérimentée se tient près de toi pour te montrer comment faire, plutôt que lorsqu'elle t'explique longuement la méthode. Elle est déjà passée par là, et son savoir se retrouve dans ses gestes, ses outils et sa manière de travailler. Tu peux t'appuyer sur cette expérience sans perdre ta propre façon de faire. Le vase prend forme, et il monte plus facilement parce que deux personnes travaillent autour de la même terre. Ce que tu accomplis aujourd'hui porte déjà la trace de ceux qui t'ont transmis leur savoir.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu cherches la bonne manière de faire, mais tu regardes trop loin. La réponse se trouve peut-être tout près : dans un conseil qu'on t'a déjà donné, dans le geste d'un collègue ou dans une petite voix intérieure que tu n'écoutes pas assez. Le bruit autour de toi couvre ces indications, et tu demandes des explications à tout le monde, sauf à la personne qui pourrait simplement te montrer. Tu veux comprendre toute la méthode avant de toucher la terre. Pourtant, la terre attend toujours tes mains.",
+    "issue": "Approche aujourd'hui une personne qui maîtrise ce que tu souhaites apprendre et demande-lui de te montrer son geste. Observe attentivement, puis essaie à ton tour. Une fois le mouvement compris par tes mains, le doute perdra une partie de son pouvoir."
+  },
+  "questions": [
+    "Qui autour de toi sait déjà faire ce que tu es en train d'apprendre ?",
+    "Quelle petite voix parle bas en toi, et que dit-elle ?",
+    "Qu'est-ce que tu pourrais apprendre en regardant les mains, plutôt qu'en écoutant des mots ?"
+  ],
+  "lecon": "Ce qui est transmis par les gestes s'inscrit souvent plus profondément que ce qui est seulement expliqué avec des mots.",
+  "image": {
+    "geste": "un jeune potier façonne un vase humide sur un tour de bois, entraîné par son pied sur le volant. Derrière lui, un maître se penche et pose une main sur son épaule, tandis que l'autre se tient près du vase",
+    "seuil": "la porte basse de l'atelier reste ouverte sur la lumière de fin de journée. Des étagères chargées de pots en train de sécher bordent le passage",
+    "detail": "les mains du jeune potier et celles du maître travaillent à la même hauteur, de chaque côté de la paroi du vase. Elles ne se touchent pas, mais participent au même mouvement"
+  },
+  "micro_geste": "Demande aujourd'hui à une personne expérimentée de te montrer un geste précis, puis reproduis-le immédiatement devant elle.",
+  "positions": {
+    "jour": "Dans un atelier au plafond bas, un tour de bois tourne sous le pied d'un jeune potier. Entre ses mains, un vase humide commence à prendre forme. Une main plus âgée se tient tout près, sans le brusquer. L'atelier sent la terre mouillée et personne n'a besoin de parler. Ta journée peut contenir un moment de ce genre. Quelqu'un peut te montrer quelque chose simplement par ses gestes, ou tu peux toi-même transmettre un savoir de cette manière. Le premier apprentissage de la journée pourrait passer d'une main à l'autre.",
+    "amene": "Tu apprends actuellement quelque chose qui demande davantage à ton corps qu'à ton esprit. Tu le remarques lorsque tu observes les gestes de personnes expérimentées et que tu constates avec quelle facilité elles accomplissent ce qui te demande encore des efforts. Une partie de toi hésite peut-être à demander de l'aide, par peur de déranger ou de paraître inexpérimentée. Pourtant, recevoir un geste transmis demande seulement un peu d'audace et une attention sincère.",
+    "se_joue": "Comment apprends-tu lorsque personne ne prend le temps de t'expliquer ? Tu observes les mains, tu reproduis les mouvements et tu essaies à nouveau. Cette façon d'apprendre est une force, mais elle peut aussi te mettre face à une difficulté. Une partie de toi voudrait disposer d'un manuel, d'une méthode complète ou d'une garantie de réussite avant de commencer. Pourtant, le vase ne prend pas forme dans les livres. Il se construit sous les doigts qui touchent la terre humide.",
+    "essayer": "Un nouvel apprenti s'installe au tour après avoir observé le maître travailler. La pâte lui échappe deux fois avant de commencer à prendre forme. Personne ne se moque de lui. Le maître s'approche, replace son pouce et le vase tient enfin. La carte te propose cette même progression pour ta journée : un premier essai imparfait, une aide précise, puis un nouveau geste qui fonctionne mieux. C'est dans cet espace entre le geste observé et le geste reproduit que le savoir devient véritablement le tien."
+  },
+  "source_referentielle": {
+    "pollack": "§4, trois de Deniers — l'ouvrage qui prend forme, le travail concerté ; la lecture est tournée ici vers la transmission par le geste",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré 3 : le premier fruit, la création qui agit",
+    "greer": "§6 — apprendre par les mains, la maîtrise qui se montre sans expliquer",
+    "production": "rédaction de l'agent Groupe A le 2026-11-11 sous le brief terre (Groupe A — la source et les fondamentaux), image d'après _distillation/passation/terre_03_Guidance.md (concept « l'atelier du potier », master 780165 v31)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus avoir peur de demander de l'aide ou de poser des questions lorsque tu ne sais pas quelque chose. Jusqu'ici, tu pouvais attendre longtemps avant de demander conseil, par crainte de déranger ou de montrer que tu ne maîtrisais pas tout. Tu comprends maintenant que tu peux apprendre avec les autres et accepter leur accompagnement. Demander de l'aide ne diminue pas tes capacités : cela peut au contraire te permettre d'avancer plus facilement.",
+    "image_soi": "Tu te vois comme une personne qui doit apprendre à se débrouiller seule. Tu as parfois du mal à reconnaître que tu ne sais pas faire quelque chose ou que tu aurais besoin d'un coup de main. Tu préfères observer, chercher et essayer par toi-même plutôt que de demander directement de l'aide. Cette indépendance te rend fière, mais elle peut aussi te faire perdre beaucoup de temps et d'énergie.",
+    "entourage": "Les autres te pensent autonome et capable de te débrouiller seule. Comme tu demandes rarement de l'aide, ils supposent que tu n'en as pas besoin. Ils peuvent même ne pas remarquer que tu rencontres des difficultés. Certains seraient pourtant prêts à t'accompagner si tu le leur demandais. Ton entourage voit tes compétences, mais ne mesure pas toujours les efforts que tu fais pour tout gérer seule."
+  }
+}

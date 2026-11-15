@@ -1,0 +1,56 @@
+{
+  "id": "terre_04",
+  "nom": "Avarice",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 4,
+  "element": "terre",
+  "note_grille": "degré 4 (le cadre) × famille terre (la garde, la matière) : accord de surface, retourné par l'image — le cadre garde si bien qu'il scelle. La contradiction nombre × famille est le sujet même de la carte.",
+  "mots_cles": [
+    "la dalle à ras",
+    "l'eau qui attend",
+    "le crochet vide",
+    "la corde retombante",
+    "garder sans servir"
+  ],
+  "tension": {
+    "pousse": "puiser",
+    "retient": "fermer"
+  },
+  "lumiere": "Tu sais préserver ce qui compte, et cette capacité est une véritable force. Tu entretiens une réserve, un savoir, une maison ou une amitié sans les laisser se perdre. Mais la main qui sait fermer sait aussi ouvrir. Lorsque le besoin se présente, tu peux puiser dans ce que tu as conservé et laisser les choses circuler. Ce que tu gardes reste vivant parce que tu continues à t'en servir, pour toi comme pour les autres.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu continues de garder, mais cette habitude est devenue une fermeture. Ce que tu protèges ne sert plus à personne, et pas même à toi. La corde du puits reste suspendue sans seau, tandis que la dalle ferme l'accès à l'eau comme si elle risquait de disparaître. Tu te dis que tu attends simplement le bon moment pour utiliser tes réserves. Pourtant, l'eau est toujours là, sous la pierre. Ce qui ne bouge plus, c'est la main qui refuse de soulever la dalle.",
+    "issue": "Soulève aujourd'hui une dalle, au sens propre ou symbolique. Donne quelque chose, prête-le, transmets un savoir ou utilise une réserve que tu conserves depuis longtemps. L'eau recommence à circuler dès qu'on y puise, et le puits reste disponible pour la suite."
+  },
+  "questions": [
+    "Qu'est-ce que tu gardes scellé alors que ça rendrait service aujourd'hui ?",
+    "À qui pourrait servir ce que tu gardes sans y toucher ?",
+    "Qu'est-ce qui te fait peur dans l'idée de soulever la dalle ?"
+  ],
+  "lecon": "Ce que l'on conserve doit pouvoir servir. Il n'est pas nécessaire d'attendre que le moment soit parfait pour en faire usage.",
+  "image": {
+    "geste": "une dalle de pierre posée à ras de l'ouverture ferme un vieux puits. Une main repose à plat sur sa surface, les doigts écartés",
+    "seuil": "sous la dalle, l'ouverture du puits existe toujours. Le poteau, la poulie, le crochet et la corde sont en place, prêts à servir dès que la pierre sera déplacée",
+    "detail": "des traces verdâtres descendent encore le long des pierres du puits. Elles rappellent que l'eau continue de vivre en dessous"
+  },
+  "micro_geste": "Ouvre aujourd'hui une réserve que tu gardes fermée et utilise-en une partie avant la fin de la journée.",
+  "positions": {
+    "jour": "Dans la lumière basse d'une cour de ferme, un vieux puits de pierres attend. Sa dalle est parfaitement posée au niveau de la margelle, et une main repose dessus comme pour en garder l'accès. À côté, le seau est sec et le crochet vide. Quelque part dans ta journée, une situation ressemble à cette scène. Une ressource existe, mais elle reste enfermée derrière une fermeture soigneusement maintenue. Le premier geste à faire est simple : déplacer la pierre.",
+    "amene": "Tu gardes actuellement plusieurs choses bien à l'abri. Des talents que tu n'utilises pas, des paroles que tu retiens, des projets terminés qui dorment dans un tiroir ou du temps que tu ne prends jamais pour partager. Tout ranger et tout préserver te rassure, mais cette habitude peut aussi empêcher les choses de vivre. À force de mettre chaque ressource à l'abri, tu finis par ne plus t'en servir. La carte te montre ce mécanisme sans te juger. Il existe une différence parfois très mince entre bien conserver et conserver à l'excès.",
+    "se_joue": "Pourquoi gardes-tu fermé ce qui pourrait être utile ? Cette question mérite d'être examinée. Peut-être crains-tu de voir ta réserve diminuer ou d'arriver un jour au fond du puits. Peut-être conserves-tu simplement par habitude, depuis si longtemps que la dalle te semble faire partie du puits lui-même. Pourtant, l'eau est faite pour être puisée. Une ressource qui ne circule jamais finit par perdre sa fonction. La pierre protège peut-être davantage ta peur que ce qu'elle recouvre.",
+    "essayer": "Tu peux utiliser ce que tu as conservé. Le beau savon peut sortir de son tiroir, le pot de confiture de l'an dernier peut être ouvert ce matin, et le compliment que tu retiens depuis des semaines peut enfin être exprimé. Une chose gardée attend parfois simplement d'être utilisée. Elle ne perd pas sa valeur lorsqu'elle sert. Au contraire, elle trouve alors sa véritable utilité et laisse de la place pour accueillir autre chose."
+  },
+  "source_referentielle": {
+    "pollack": "§4, quatre de Deniers — le garde, la sécurité, la main qui referme ; notre carte montre le revers, l'eau scellée sous la dalle",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré 4 : le cadre, la structure",
+    "greer": "§6 — l'ombre de la garde : quand garder empêche de servir",
+    "production": "rédaction de l'agent Groupe A le 2026-11-11 sous le brief terre (Groupe A — la source et les fondamentaux), image d'après _distillation/passation/terre_04_Avarice.md (concept « le puits scellé », master 780176 9c + retouche)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à te libérer de la peur de manquer et du besoin de tout garder en réserve. Jusqu'ici, tu avais tendance à compter ce que tu possédais et à vérifier régulièrement que tu avais suffisamment de ressources pour l'avenir. Cette inquiétude pouvait t'empêcher de profiter de ce que tu avais déjà. Tu apprends maintenant à faire davantage confiance à la vie et à comprendre que tu peux partager sans forcément te retrouver démunie.",
+    "image_soi": "Tu te vois comme une personne prévoyante qui doit toujours anticiper les difficultés. Pour toi, garder ses ressources et éviter les dépenses inutiles est une preuve de sérieux. Tu peux avoir peur qu'en donnant ou en partageant, il ne te reste plus assez pour toi-même. Tu préfères donc conserver ce que tu possèdes plutôt que de prendre le risque de manquer. Cette prudence te rassure, mais elle peut aussi t'empêcher de profiter pleinement de tes ressources.",
+    "entourage": "Les autres te trouvent prudente dans ta façon de gérer tes affaires et tes ressources. Certains peuvent même te trouver un peu réservée lorsqu'il s'agit de prêter, de donner ou de partager. Ils peuvent avoir l'impression que tu préfères garder les choses pour toi. Cette réputation peut décourager les autres de venir vers toi, sans qu'ils cherchent nécessairement à comprendre les raisons de ton comportement."
+  }
+}

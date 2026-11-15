@@ -1,0 +1,56 @@
+{
+  "id": "terre_page",
+  "nom": "Aventure",
+  "type": "figure",
+  "famille": "terre",
+  "rang": "page",
+  "element": "terre",
+  "note_grille": "figure terre (page) : l'exploration au corps, un message porté par les pieds plus que par les mots. Deux lectures possibles (Greer) : un élan d'exploration autour de toi, ou le tien qui se lève. Rang page = le début de la fonction, rien fait encore, et c'est normal.",
+  "mots_cles": [
+    "l'ouverture dans la roche",
+    "le pas dans l'ombre",
+    "les mains vides",
+    "la pierre tiède",
+    "l'envie d'aller voir"
+  ],
+  "tension": {
+    "pousse": "aller voir",
+    "retient": "préparer avant d'entrer"
+  },
+  "lumiere": "Tu ressens une nouvelle envie de découvrir quelque chose, et cette envie ne demande pas de préparation particulière. Aucun plan n'est nécessaire, aucune lampe ne doit être préparée avant le premier pas. La pierre est encore tiède sous ta main, et l'ouverture dans la roche laisse apparaître un intérieur brun et accueillant, jamais complètement noir. Ton corps sait avancer vers l'inconnu concret, un pas après l'autre, même sans garantie. La curiosité suffit à te conduire jusqu'à l'entrée.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu repousses le premier pas en préparant sans cesse ton expédition. Tu cherches la lampe idéale, le moment le plus sûr ou une raison supplémentaire de commencer. Pourtant, le passage est toujours là. Une partie de toi voudrait simplement aller voir, tandis qu'une autre réclame des garanties que l'inconnu ne pourra jamais offrir. Alors, la roche attend et la lumière baisse lentement sur le sentier. À force de rester devant l'entrée, tu finis par t'habituer à ne pas franchir le seuil.",
+    "issue": "Accorde-toi aujourd'hui une minute pour essayer. Regarde à l'intérieur et avance d'un seul pas. Tu pourras ressortir immédiatement si tu le souhaites : rien ne t'oblige à continuer. Ce premier mouvement est souvent moins difficile que toute la liste des préparatifs qui le précède."
+  },
+  "questions": [
+    "Qu'est-ce que tu aimerais aller voir, sans garantie de résultat ?",
+    "Quel pas pourrais-tu faire les mains vides, rien que pour regarder ?",
+    "Qu'est-ce qui se révèle moins sombre que prévu, quand tu entres vraiment ?"
+  ],
+  "lecon": "L'aventure commence lorsque tu fais le premier pas vers l'inconnu, et non lorsque tous les préparatifs sont terminés.",
+  "image": {
+    "geste": "un enfant pose la main à plat sur la roche et penche le haut du corps vers l'ouverture. Le reste de son corps semble déjà prêt à suivre",
+    "seuil": "une ouverture sombre apparaît dans la pente rocheuse. Elle est plus haute qu'un homme et son fond reste invisible. L'enfant peut y entrer sans équipement",
+    "detail": "l'intérieur de la grotte semble brun et tiède, plutôt que complètement noir. Les mains sont vides : aucune lampe, aucune corde et aucun plan ne sont nécessaires pour ce premier regard"
+  },
+  "micro_geste": "Ouvre aujourd'hui une porte ou une boîte que tu n'as jamais ouverte chez toi et regarde simplement ce qu'elle contient.",
+  "positions": {
+    "jour": "Une ouverture se présente aujourd'hui quelque part dans ta vie. Elle est peut-être plus grande que prévu, mais moins inquiétante que tu ne l'imaginais. La lumière du soir descend sur une pente sèche et la roche conserve encore la chaleur de la journée. Devant l'entrée, un enfant d'une dizaine d'années penche le visage vers l'intérieur, une main posée sur la pierre. Il n'a rien dans les mains, seulement l'envie de découvrir ce qui se trouve là. Ta journée peut suivre le même mouvement. Un seul pas suffit pour commencer.",
+    "amene": "Tu as peut-être pris l'habitude de considérer la prudence comme une condition indispensable avant toute exploration. Avant de commencer quelque chose de nouveau, tu cherches à connaître tout ce qui existe déjà à son sujet. Plus tu accumules d'informations, plus le moment de passer à l'action peut reculer. Cette méthode t'a certainement été utile dans des situations où la prudence était nécessaire. Mais elle montre maintenant ses limites devant l'inconnu, qui ne peut jamais offrir toutes les garanties. Tu sais attendre et cette capacité est précieuse. La carte t'invite simplement à regarder ce qui, dans ta vie, attend encore d'être découvert par l'expérience.",
+    "se_joue": "Qu'est-ce qui te retient devant le passage, et qu'est-ce qui te donne envie d'avancer ? Ces deux forces sont présentes en même temps. Une voix énumère les risques possibles, tandis qu'une autre reste attirée par la chaleur de la pierre et le désir d'aller voir. L'enfant de la carte ne cherche pas à faire disparaître l'une ou l'autre. Il avance malgré l'incertitude, avec un pied déjà dans l'ombre. La question est de savoir laquelle de ces deux voix guidera ton prochain mouvement.",
+    "essayer": "Tu peux entrer dans un nouvel espace sans avoir tout planifié ni préparé. Choisis une expérience qui reste à ta portée : emprunter une rue que tu ne connais pas, essayer un plat improvisé ou poser immédiatement une question qui t'intéresse. Fais simplement l'expérience, sans exiger un résultat particulier. Tu n'auras aucun bilan à présenter et tu pourras toujours revenir sur tes pas. Ce que tu apprendras par ce contact direct avec l'inconnu peut avoir plus de valeur que toutes les préparations restées sur la table."
+  },
+  "source_referentielle": {
+    "pollack": "§4, figures de cour — le page porte la couleur neuve, l'apprentissage par le geste",
+    "wen": "§4 — rang page : le début de la fonction ; famille terre : l'exploration passe par le corps et la matière",
+    "greer": "§6.4 — page = exploration et message, lue aussi bien chez quelqu'un qu'en toi",
+    "production": "image : _distillation/passation/terre_page_Aventure.md et symboles/terre_page_aventure.md (concept « la bouche de la grotte », validé par Martin) ; angles : Pollack (page), Wen (rang page), Greer (rangs)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à abandonner l'habitude de tout préparer avant d'oser découvrir quelque chose de nouveau. Jusqu'ici, tu pouvais passer beaucoup de temps à vérifier le matériel, les conditions et les éventuels problèmes avant de te lancer. Cette préparation te donnait un sentiment de sécurité, mais elle pouvait aussi retarder tes expériences. Tu apprends maintenant à accepter une part d'inconnu et à découvrir les choses directement, en avançant étape par étape.",
+    "image_soi": "Tu te vois comme une personne prudente qui préfère vérifier tous les détails avant de prendre un risque. Tu as parfois l'impression que partir sans être parfaitement préparée serait irresponsable. Tu continues donc à chercher des informations et à vérifier les conditions, même lorsque tu pourrais déjà commencer. Cette prudence te rassure, mais elle peut aussi t'empêcher de vivre les expériences que tu souhaites découvrir.",
+    "entourage": "Les autres te considèrent comme une personne réfléchie et prudente. Ils apprécient ton attention aux détails et viennent facilement te demander conseil avant de prendre une décision. Ils savent que tu préfères bien préparer les choses plutôt que de te lancer à l'aveugle. Cependant, cette réputation peut parfois t'enfermer dans un rôle de conseillère ou d'organisatrice, alors que tu aimerais peut-être simplement participer à l'aventure sans avoir à tout prévoir."
+  }
+}

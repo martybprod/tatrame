@@ -1,0 +1,54 @@
+{
+  "id": "master",
+  "nom": "Éveil",
+  "type": "hors_cycle",
+  "registre": "hors_cycle",
+  "element": null,
+  "note_grille": "carte hors cycle : ni élément ni degré ni colonne. Le moteur saute les liaisons qui la concernent et le tirage qui la contient reste un tirage ordinaire. La nuance tient dans la phrase d'exception, pas dans un renforcement.",
+  "mots_cles": [
+    "*Le sommet",
+    "la vallée qui serpente",
+    "le chemin de lumière",
+    "la petite silhouette",
+    "le grand paysage*"
+  ],
+  "tension": {
+    "pousse": "regarder",
+    "retient": "chercher ailleurs"
+  },
+  "lumiere": "Tu arrives au sommet, après avoir avancé un pas à la fois. En dessous de toi, toute la vallée s'étend. Tu y vois les détours que tu pensais être des erreurs. Mais, vus d'en haut, tous ces virages prennent leur place dans le parcours.\n\nSur la carte, une toute petite silhouette se tient au sommet d'une montagne. Elle est immobile et regarde le paysage au loin.\n\nCe que tu cherchais depuis le début est maintenant devant toi. Tu n'as rien à ajouter.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu cherches ta réponse ailleurs, plutôt que de regarder ce que tu as déjà vécu.\n\nTu essaies une nouvelle méthode, tu écoutes une autre personne ou tu lis encore un livre. Pendant ce temps, tu oublies de regarder le chemin que tu as déjà parcouru.\n\nFaire confiance à quelqu'un d'autre pour trouver la réponse peut te soulager pendant un moment. Mais personne ne peut atteindre ton sommet à ta place.\n\nCe sommet ne se donne pas à quelqu'un d'autre. Il te reste à le reconnaître en toi. Et, en bas, la vallée t'attend avec tout ce que tu as déjà traversé.",
+    "issue": "Nomme une seule chose que tu sais déjà, mais que tu continues à chercher chez les autres.\n\nLe chemin de lumière qui monte de la vallée commence exactement là où tu es."
+  },
+  "le_regard": [
+    "Éveil ne donne pas de réponse à ta question. Elle t'aide plutôt à regarder ta question autrement.",
+    "Ici, il n'y a pas de réponse toute faite. Tu peux laisser la question ouverte. Une partie de toi porte peut-être déjà la réponse.",
+    "Cette carte est rare. Elle ne parle ni de ta journée ni de ton problème. Elle t'invite simplement à te regarder en train de regarder."
+  ],
+  "questions": [
+    "Qu'est-ce que tu sais déjà, mais que tu continues à chercher ailleurs ?",
+    "Quelle partie de toi a déjà atteint le sommet sans que tu t'en rendes compte ?",
+    "Qu'est-ce qui te permet de comprendre aujourd'hui que tout ton parcours a eu un sens, même ses détours ?"
+  ],
+  "lecon": "On reconnaît le sommet lorsqu'on regarde le chemin parcouru. Mais pour avancer, mieux vaut partir de la vallée et continuer à marcher, même si le chemin fait des détours.",
+  "image": {
+    "geste": "une silhouette minuscule au sommet d'un pic, de dos, immobile. Elle regarde l'étendue, elle ne salue personne",
+    "seuil": "un chemin de lumière monte de la vallée jusqu'au pic. Le passage est visible depuis en bas, même quand on ne le croit pas praticable",
+    "detail": "la figure tient à peine plus de place qu'un arbre isolé. La vallée entière tient dans le même cadrage, et rien n'est coupé"
+  },
+  "micro_geste": "Aujourd'hui, prends deux minutes pour regarder le paysage depuis un endroit un peu en hauteur, comme une fenêtre ou un escalier.\n\nPrends le temps de penser au chemin que tu as parcouru pour te rendre là où tu es.",
+  "source_referentielle": {
+    "pollack": "hors des 78 cartes — Pollack ne couvre pas la carte ; la conception suit la structure du deck Osho Zen : le maître intérieur, l'autorité à reprendre",
+    "wen": "§3 — hors cycle : ni élément ni degré ; la carte s'excepte du moteur plutôt que de s'y plier",
+    "greer": "§6.2 — la leçon de l'autorité intérieure : devenir sa propre référence",
+    "production": "fiche rédigée par l'orchestrateur le 2026-11-11 ; conception verrouillée avec Martin (option A — dans le paquet, forme propre « Le regard », 3 variantes seedées, pas de repère visuel, libellé « le regard » dans les trois cartes) ; image d'après le visage validé CARTE_major_22_Le_Maitre_validee.png",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Ce qui s'en va, c'est la course après une réponse, celle qui te faisait chercher encore là où tu n'avais pas regardé. Elle te laisse les yeux ouverts sur la vallée, et le silence qui va avec. Le chemin reste visible sans que tu aies à le parcourir deux fois.",
+    "image_soi": "À tes yeux, tu es celle qui n'a pas encore assez compris pour s'arrêter. Tu te vois vérifier une dernière fois, comme si le sommet exigeait une permission. Cette place t'occupe, et elle retarde le moment de regarder simplement ce qui est là.",
+    "entourage": "De l'extérieur, on te voit arriver au sommet et on attend de toi quelques mots pour donner un sens au chemin parcouru. On te prête une compréhension que tu n'as peut-être pas envie d'expliquer. Ton silence peut surprendre, car les autres s'attendent à une révélation. Pourtant, le paysage peut suffire, sans discours ni conclusion."
+  }
+}

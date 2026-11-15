@@ -1,0 +1,56 @@
+{
+  "id": "eau_10",
+  "nom": "Harmonie",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 10,
+  "element": "eau",
+  "note_grille": "degré 10 (achèvement, plénitude) × famille eau (lien, intériorité) : accord — la plénitude est intérieure, chaque eau trouve son niveau et toutes rejoignent la même nappe. L'harmonie montrée n'exige pas l'uniformité.",
+  "mots_cles": [
+    "Les courants multiples",
+    "les bassins de pierre",
+    "l'eau qui se rassemble",
+    "les différences qui cohabitent",
+    "la lumière sous la surface"
+  ],
+  "tension": {
+    "pousse": "accorder",
+    "retient": "uniformiser"
+  },
+  "lumiere": "Plusieurs petits courants descendent entre les pierres et les racines. Certains glissent doucement, d'autres forment de minuscules cascades avant de rejoindre un bassin limpide. Chaque filet d'eau suit sa propre trajectoire, et pourtant tous finissent par alimenter la même étendue tranquille. C'est l'image de l'harmonie que cette carte te propose. L'accord ne demande pas que tout soit identique. Il naît lorsque les différences peuvent coexister et trouver leur place. Tu peux regarder les aspects de ta vie de cette façon. Chacun possède son rythme, et l'ensemble peut rester équilibré sans intervention permanente.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu as peut-être perdu le sentiment que les différentes parties de ta vie se rejoignent. Les journées s'enchaînent, les relations suivent leur propre rythme et tes besoins semblent parfois partir dans des directions opposées. Rien ne paraît véritablement cassé, mais une impression de dispersion s'installe. Tu passes d'une activité à l'autre sans ressentir de continuité. Comme un petit courant qui se perd dans la mousse, une partie de ton énergie ne rejoint plus le bassin commun. Tu t'es habitué à ce léger désaccord au point de ne plus le remarquer.",
+    "issue": "Repère un moment de ta journée où les choses se déroulent naturellement. Ne cherche pas à l'améliorer ni à l'organiser davantage. Reste simplement présent dans cet espace où plusieurs éléments semblent déjà trouver leur place."
+  },
+  "questions": [
+    "Dans quel domaine de ta vie ressens-tu déjà un équilibre naturel ?",
+    "Quelle différence pourrais-tu accepter au lieu d'essayer de la corriger ?",
+    "Que se passerait-il si tu laissais certaines choses suivre leur propre rythme ?"
+  ],
+  "lecon": "L'harmonie ne consiste pas à rendre toutes les choses semblables. Elle apparaît lorsque chacune trouve sa place dans un ensemble vivant.",
+  "image": {
+    "geste": "Une femme est assise pieds nus sur une pierre au bord d'un bassin. Ses mains reposent ouvertes et son visage semble paisible.",
+    "seuil": "Les différents chemins d'eau restent libres. Aucun barrage ne détourne les courants et le bassin reçoit leurs arrivées sans distinction.",
+    "detail": "Des reflets lumineux dessinent des taches dorées sur le fond du bassin. Une brume légère flotte au-dessus de la surface."
+  },
+  "micro_geste": "Prends cinq minutes dans un endroit paisible. Observe ce qui fonctionne déjà autour de toi, sans chercher à modifier quoi que ce soit.",
+  "positions": {
+    "jour": "Une forme d'équilibre pourrait se mettre en place sans que tu aies besoin de tout organiser. Certaines choses trouvent leur rythme, des personnes se comprennent mieux et plusieurs aspects de ta journée semblent enfin cohabiter. La carte montre des eaux différentes qui descendent vers un même bassin. Aucun courant ne ressemble exactement à un autre, mais tous contribuent à la même tranquillité. Tu peux observer ce qui se rejoint naturellement aujourd'hui. L'harmonie ne demande pas toujours une intervention. Elle apparaît parfois lorsque tu acceptes de laisser les choses s'accorder.",
+    "amene": "Tu arrives avec plusieurs dimensions de ta vie qui n'avancent pas nécessairement à la même vitesse. Une partie de toi veut agir, une autre demande du repos. Certains projets avancent rapidement tandis que d'autres ont besoin de temps. Tu pourrais être tenté de faire entrer tout cela dans un seul rythme. La carte te rappelle que tu n'es pas obligé de fonctionner de manière uniforme. Comme les différents courants du paysage, tes besoins peuvent être variés tout en appartenant au même ensemble.",
+    "se_joue": "Tu cherches peut-être à contrôler les petites différences qui apparaissent autour de toi. Tu ajustes les horaires, modifies les habitudes et essaies de rapprocher des personnes qui n'ont pas forcément les mêmes attentes. Cette volonté de créer un accord peut finir par produire davantage de tension. La carte t'invite à observer ce qui se passerait si tu intervenais moins. Les eaux trouvent leur chemin et le bassin se remplit progressivement. Ce qui se joue, c'est ta capacité à reconnaître l'équilibre sans chercher à le fabriquer dans chaque détail.",
+    "essayer": "Choisis une activité ou une relation qui fonctionne déjà assez bien. Consacre-lui un peu de temps sans chercher à la rendre plus efficace ou plus parfaite. Tu peux partager un repas, marcher tranquillement ou simplement rester dans un endroit où tu te sens à ta place. Laisse les différences exister sans vouloir les résoudre. La carte rappelle qu'un accord profond ne vient pas de l'effacement des particularités. Il se construit lorsque chacun peut participer à sa manière."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Dix de Coupes — l'achèvement émotionnel, le lien retrouvé ; §4 nombres : 10 = achèvement, saturation",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 10 : achèvement",
+    "greer": "§6.3 — équation nombre × famille : un 10 d'eau parle de la plénitude du lien",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_eau.json (entrée eau_10) ombre « amoindri » (l'accord affaibli, chaque chose de son côté), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à mieux accepter les différentes parties de ta vie. Pendant un certain temps, tu as pu avoir l'impression de partir dans plusieurs directions, entre ton travail, ta famille, tes projets personnels et tes propres besoins. Tu cherchais peut-être à tout organiser autour d'un seul objectif ou à trouver une logique unique à ton parcours. Aujourd'hui, tu comprends que ces différentes activités peuvent parfaitement coexister. Tu n'as pas besoin de choisir une seule direction pour donner du sens à ta vie. Tu peux construire un équilibre avec plusieurs envies et plusieurs responsabilités.",
+    "image_soi": "Tu as parfois l'impression d'être dispersée parce que ta vie ne suit pas un parcours simple et parfaitement organisé. Tu compares ton quotidien à celui des personnes qui semblent avoir un objectif précis et une seule direction. Tu peux alors penser que tu devrais faire des choix plus clairs ou abandonner certaines parties de ta vie pour être plus cohérente. Pourtant, tu n'as pas besoin que tout tourne autour d'un seul projet. Tes différentes activités, tes relations et tes envies peuvent avoir leur place sans que cela rende ta vie désordonnée.",
+    "entourage": "Ton entourage te voit parfois comme une personne qui mène plusieurs projets ou qui s'intéresse à des domaines très différents. Certains trouvent cela stimulant et amusant, tandis que d'autres ont du mal à comprendre ce qui est vraiment important pour toi. On peut te demander de choisir une priorité ou de préciser quelle direction tu souhaites suivre. Mais les autres ne comprennent pas toujours que tu peux avoir plusieurs centres d'intérêt et plusieurs objectifs sans être perdue. Tu n'as pas forcément besoin d'entrer dans une seule catégorie pour que ton parcours ait du sens."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "feu_as",
+  "nom": "Source",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": "as",
+  "element": "feu",
+  "note_grille": "degré as (ouverture, un don) × famille feu (élan, désir, projet) : accord — la qualité du feu à l'état pur, ce qui monte en toi avant d'avoir un nom. Pollack : as de Bâtons, l'étincelle qui précède toute forme ; le feu ne se commande pas, il se remarque.",
+  "mots_cles": [
+    "la source",
+    "ce qui monte tout seul",
+    "l'eau claire",
+    "le don",
+    "avant le nom"
+  ],
+  "tension": {
+    "pousse": "laisser couler",
+    "retient": "prouver"
+  },
+  "lumiere": "Il arrive parfois qu'une envie apparaisse en toi sans que tu l'aies cherchée.\n\nTu as soudainement envie de créer quelque chose, de découvrir un nouvel endroit, de commencer une activité ou de prendre une direction différente.\n\nCette carte montre une source d'eau claire qui jaillit naturellement au milieu d'une clairière.\n\nL'eau coule entre les pierres, remplit une petite mare et continue son chemin vers les plantes qui l'entourent.\n\nPersonne ne lui dit où aller. Elle suit simplement son mouvement naturel.\n\nLa carte t'invite à faire pareil : accueillir les envies et les idées qui apparaissent spontanément, sans chercher tout de suite à les expliquer ou à les justifier.\n\nTu peux leur laisser une chance d'exister.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu ressens peut-être une envie de faire quelque chose, mais tu ne lui accordes pas vraiment d'attention.\n\nTu te dis que ce n'est pas important, que tu n'as pas le temps ou que tu devrais d'abord t'occuper d'autres choses.\n\nTu repousses cette envie jusqu'à ce qu'elle devienne presque imperceptible.\n\nPetit à petit, tu peux perdre le contact avec ce qui te donne naturellement envie d'avancer.\n\nCette carte te rappelle qu'une envie n'a pas besoin d'être immédiatement utile ou parfaitement justifiée pour mériter ton attention.",
+    "issue": "Prends quelques minutes pour noter une envie ou une idée qui te vient naturellement aujourd'hui.\n\nNe cherche pas à savoir tout de suite si elle est raisonnable, réalisable ou intéressante pour les autres.\n\nÉcris-la simplement comme elle se présente.\n\nTu peux ensuite lui consacrer un petit moment pour voir ce qu'elle pourrait devenir."
+  },
+  "questions": [
+    "Quelle envie apparaît en toi en ce moment, même si tu ne sais pas encore comment l'expliquer ?",
+    "Quelles activités te donnent naturellement envie d'agir ?",
+    "Que pourrais-tu découvrir si tu arrêtais de vouloir tout contrôler avant de commencer ?"
+  ],
+  "image": {
+    "geste": "Une source d'eau claire jaillit du sol et commence à couler naturellement. Personne ne la dirige et personne ne lui indique un chemin.",
+    "seuil": "La source se trouve dans une clairière entourée de grands arbres couverts de mousse. La lumière du ciel éclaire directement l'eau.",
+    "detail": "L'eau remplit une petite mare avant de continuer vers les fougères et les fleurs blanches qui poussent autour."
+  },
+  "micro_geste": "Note aujourd'hui, sur une feuille ou dans ton téléphone, la première envie ou idée qui te vient spontanément. Écris-la sans la modifier ni la juger.",
+  "positions": {
+    "jour": "Une envie nouvelle apparaît peut-être en toi.\n\nTu as soudainement envie de faire quelque chose, sans forcément savoir pourquoi ni où cela pourrait te mener.\n\nCette carte montre une source d'eau claire qui jaillit naturellement au milieu d'une clairière.\n\nL'eau coule simplement, sans avoir besoin d'être dirigée.\n\nC'est le message de cette journée : tu peux accueillir ce qui te donne spontanément envie d'avancer, sans chercher immédiatement à tout comprendre.\n\nTu n'as pas besoin de prendre une grande décision. Commence par écouter ce qui se présente en toi.",
+    "amene": "Tu arrives avec le réflexe de tout organiser et de vouloir comprendre les choses avant de te lancer.\n\nTu veux savoir si une idée est utile, si elle est réalisable et si elle mérite vraiment ton temps.\n\nCette façon de réfléchir peut être utile, mais elle peut aussi t'empêcher d'écouter tes envies spontanées.\n\nCette carte te rappelle que tu peux parfois commencer quelque chose simplement parce que cela t'attire.\n\nTu n'as pas besoin de prouver immédiatement que cette envie est importante.",
+    "se_joue": "Tu as peut-être deux façons de réagir à une nouvelle envie.\n\nLa première consiste à l'accueillir et à voir naturellement où elle te mène.\n\nLa seconde consiste à l'analyser immédiatement, à chercher ses avantages et ses inconvénients, puis à décider si elle mérite ton attention.\n\nLe problème apparaît lorsque tu réfléchis tellement que tu finis par étouffer ton envie avant même de l'avoir explorée.\n\nLa question est simple : qu'est-ce qui te donne envie en ce moment, avant même que tu cherches à l'expliquer ?",
+    "essayer": "Prends un carnet et note librement les idées qui te viennent aujourd'hui.\n\nTu peux aussi aller marcher tranquillement et observer ce qui attire ton attention.\n\nNe cherche pas immédiatement à organiser tes idées ou à transformer chacune d'elles en projet.\n\nAccueille-les simplement.\n\nTu pourras réfléchir à la suite plus tard. Pour l'instant, laisse de la place à ce qui commence naturellement à prendre forme en toi."
+  },
+  "source_referentielle": {
+    "pollack": "§4 nombres — l'as, la qualité à l'état pur, un don qui précède la forme ; as de Bâtons : l'étincelle qui ne se commande pas",
+    "wen": "§4 — famille feu : élan, désir, travail ; degré as : ouverture, un don",
+    "greer": "§6 — étage 1 : les mots-clés ; le don reconnu avant d'être justifié",
+    "production": "image du corpus mineurs feu (source et clairière), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "Une envie spontanée mérite d'être écoutée, même si tu ne sais pas encore où elle te mènera.",
+  "croix": {
+    "eloigne": "Tu commences à abandonner l'habitude d'attendre l'autorisation des autres avant de suivre tes envies. Jusqu'ici, tu avais tendance à te demander si tes projets étaient utiles, raisonnables ou suffisamment justifiés avant de te lancer. Tu apprends maintenant à écouter ce qui naît spontanément en toi. Tu n'as pas besoin de connaître toutes les conséquences d'une envie pour avoir le droit de lui donner une chance.",
+    "image_soi": "Tu as parfois l'impression que tu n'es pas encore légitime pour commencer quelque chose. Tu attends d'avoir davantage de connaissances, de confiance ou de raisons valables avant de passer à l'action. Tu analyses tes envies au lieu de leur laisser une place. En restant dans cette position, tu évites de prendre des risques, mais tu t'empêches aussi de découvrir ce qui pourrait réellement te correspondre.",
+    "entourage": "Les autres te voient comme une personne curieuse qui s'intéresse à beaucoup de choses. Ils aiment discuter de leurs projets avec toi, car tu poses des questions pertinentes et tu sembles intéressée par leurs idées. Ils peuvent penser que cette curiosité annonce de futurs projets. Ils ne se rendent pas forcément compte que tu attends parfois un signe ou une autorisation pour commencer quelque chose par toi-même."
+  }
+}

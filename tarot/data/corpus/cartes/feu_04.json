@@ -1,0 +1,56 @@
+{
+  "id": "feu_04",
+  "nom": "Participation",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 4,
+  "element": "feu",
+  "note_grille": "degré 4 (cadre) × famille feu (élan) : accord nuancé — le cadre n'enferme pas, il porte. Ici le cadre est la rivière elle-même, le lit où chaque petite lumière se joint au mouvement. Pollack : quatre de Bâtons, la place dans le groupe, la fête qui rassemble.",
+  "mots_cles": [
+    "le fleuve de lucioles",
+    "se joindre",
+    "la petite lumière",
+    "faire partie",
+    "la nuit qui brille"
+  ],
+  "tension": {
+    "pousse": "se joindre",
+    "retient": "regarder"
+  },
+  "lumiere": "Une occasion de rejoindre un groupe se présente peut-être à toi : un repas entre amis, une activité collective, un projet commun ou un événement dans ton quartier.\n\nCette carte montre des centaines de lucioles qui s'élèvent au-dessus d'une rivière et illuminent la nuit.\n\nChaque luciole apporte sa petite lumière. Aucune n'éclaire toute seule, mais ensemble, elles créent quelque chose de magnifique.\n\nC'est la même chose dans un groupe. Tu n'as pas besoin d'être la personne la plus importante ou celle qui fait le plus de choses pour avoir ta place.\n\nTa présence et ta contribution comptent, même si elles te semblent modestes.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu reçois peut-être des invitations, mais tu trouves toujours une raison pour ne pas participer.\n\nTu te dis que tu iras une prochaine fois, que tu n'as pas grand-chose à apporter ou que les autres peuvent très bien faire sans toi.\n\nAlors, tu restes à l'extérieur et tu regardes les autres partager des moments ensemble.\n\nPlus tu repousses les occasions de participer, plus il devient difficile de faire le premier pas.\n\nPourtant, tu n'as pas besoin d'apporter quelque chose d'extraordinaire. Ta présence compte déjà.",
+    "issue": "Accepte une invitation qui te semble agréable et accessible.\n\nParticipe à une activité, rejoins un groupe ou propose simplement ton aide.\n\nTu n'as pas besoin de savoir exactement quelle sera ta contribution. Commence par être présent et laisse les choses se construire naturellement."
+  },
+  "questions": [
+    "Quel groupe, quelle activité ou quel projet pourrait t'accueillir en ce moment ?",
+    "Que pourrait apporter ta présence à ce groupe ?",
+    "Quelle raison te pousse à repousser les occasions de participer ?"
+  ],
+  "image": {
+    "geste": "Des centaines de lucioles s'élèvent au-dessus d'une rivière et montent vers les étoiles. Elles forment un grand mouvement lumineux.",
+    "seuil": "La nuit recouvre la rivière et les roseaux dessinent les contours du paysage. Les lumières viennent des lucioles réunies.",
+    "detail": "La rivière reflète les lumières qui passent au-dessus d'elle. Les reflets donnent l'impression que les lucioles sont encore plus nombreuses."
+  },
+  "micro_geste": "Accepte aujourd'hui une invitation à participer à une activité de groupe qui te semble accessible et agréable.",
+  "positions": {
+    "jour": "Il y a peut-être un groupe, une activité ou un projet auquel tu pourrais participer en ce moment.\n\nCette carte montre des centaines de lucioles qui s'élèvent au-dessus d'une rivière. Chacune apporte sa lumière et contribue à créer un spectacle collectif.\n\nLe message est simple : tu n'as pas besoin d'être exceptionnel pour avoir une place parmi les autres.\n\nTu peux simplement participer, apporter ce que tu as à offrir et profiter de ce qui se construit ensemble.",
+    "amene": "Tu as peut-être pris l'habitude de penser que ta contribution est trop petite pour faire une différence.\n\nTu laisses alors les autres prendre les initiatives, organiser les activités ou faire avancer les projets.\n\nMais cette carte te rappelle qu'un groupe ne se construit pas uniquement grâce aux personnes les plus visibles. Il se construit aussi grâce à toutes celles qui sont présentes et qui apportent leur aide.\n\nTu as toi aussi quelque chose à apporter, même si cela te semble ordinaire.",
+    "se_joue": "Tu es peut-être partagé entre deux envies : rester à l'écart parce que c'est plus facile, ou rejoindre les autres parce que tu aimerais faire partie de quelque chose.\n\nTu peux avoir peur de ne pas savoir quoi dire, de ne pas trouver ta place ou de ne pas être utile.\n\nMais tu n'as pas besoin d'avoir toutes les réponses avant de participer.\n\nLa vraie question est : qu'est-ce qui t'empêche de faire un premier pas vers les autres ?",
+    "essayer": "Accepte une invitation ou participe à une activité collective.\n\nCela peut être un repas, un cours, une activité de quartier ou un projet avec des amis.\n\nN'essaie pas de te rendre indispensable. Viens simplement avec ta présence et ce que tu peux offrir.\n\nTu découvriras peut-être que ta contribution est beaucoup plus appréciée que tu ne le pensais."
+  },
+  "source_referentielle": {
+    "pollack": "§4 nombres — le 4, le cadre, ce qui tient ; quatre de Bâtons : la place dans le groupe, la fête qui rassemble",
+    "wen": "§4 — famille feu : élan, rayonnement ; degré 4 : cadre (ici la rivière elle-même)",
+    "greer": "§6 — étage 2 : la question de la place prise (ou laissée) dans le groupe",
+    "production": "image du corpus mineurs feu (fleuve de lucioles, roseaux noirs), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "Même une petite contribution a de la valeur. Un groupe devient plus riche lorsque chacun y apporte sa présence.",
+  "croix": {
+    "eloigne": "Tu commences à sortir de cette habitude qui consistait à rester en retrait lorsque tu étais avec les autres. Avant, tu préférais observer discrètement et attendre le bon moment pour partir. Tu avais du mal à te sentir vraiment à ta place. Aujourd'hui, tu peux apprendre à participer sans avoir besoin de te forcer à devenir quelqu'un d'autre. Tu n'as pas besoin d'en faire beaucoup pour avoir ta place parmi les autres.",
+    "image_soi": "Tu as tendance à penser que tu n'as pas vraiment ta place parmi les autres si tu n'apportes rien de particulier. Tu crois qu'il faut raconter quelque chose d'intéressant, rendre service ou apporter quelque chose pour mériter d'être invitée. Cette idée te pousse à rester discrète et à ne pas trop prendre de place. Pourtant, tu oublies que ta simple présence suffit aussi.",
+    "entourage": "Les autres apprécient ta compagnie lorsqu'ils te voient, mais ils remarquent aussi que tu es souvent absente. Certains pensent simplement que tu préfères rester tranquille ou que tu as besoin de solitude. Comme tu ne montres pas toujours ton envie de participer, ils ne pensent pas forcément à insister pour t'inviter. Sans mauvaise intention, ils finissent parfois par te laisser à l'écart."
+  }
+}

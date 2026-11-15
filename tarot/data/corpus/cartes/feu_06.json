@@ -1,0 +1,56 @@
+{
+  "id": "feu_06",
+  "nom": "Succès",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 6,
+  "element": "feu",
+  "note_grille": "degré 6 (circulation, réparation) × famille feu (rayonnement) : accord — le succès est la joie qui circule au-delà du cercle qui l'a produite, jusqu'au ciel qui envoie ses étoiles filantes.",
+  "mots_cles": [
+    "la fête",
+    "le feu partagé",
+    "savourer",
+    "la reconnaissance",
+    "ce qui circule"
+  ],
+  "tension": {
+    "pousse": "savourer",
+    "retient": "remettre"
+  },
+  "lumiere": "Tu as accompli quelque chose d'important et tu as le droit d'en être fier.\n\nCette carte t'invite à prendre le temps de reconnaître tes efforts et de profiter de ce que tu as réussi.\n\nLe succès ne se résume pas au résultat obtenu. Il y a aussi le plaisir de voir le chemin parcouru, de recevoir des félicitations et de partager ta satisfaction avec les autres.\n\nImagine un village réuni autour d'un grand feu pour célébrer une réussite collective.\n\nChacun a contribué à sa manière, et chacun peut maintenant profiter du moment.\n\nTu n'as pas besoin de minimiser ce que tu as accompli. Tu peux être fier de toi et partager cette joie avec les personnes qui t'entourent.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu atteins un objectif, mais tu penses immédiatement au suivant.\n\nÀ peine as-tu terminé quelque chose que tu te demandes déjà ce qu'il reste à faire.\n\nTu te dis que tu prendras le temps de célébrer plus tard, lorsque tout sera terminé.\n\nMais il y a toujours un nouvel objectif, une nouvelle responsabilité ou un autre projet.\n\nRésultat : tu avances constamment sans jamais vraiment profiter de tes réussites.\n\nTu risques de ne plus remarquer tout ce que tu accomplis.",
+    "issue": "Choisis une réussite récente et prends le temps de la célébrer aujourd'hui.\n\nTu peux en parler à quelqu'un, remercier les personnes qui t'ont aidé ou simplement t'offrir un moment agréable.\n\nMême une petite réussite mérite d'être reconnue."
+  },
+  "questions": [
+    "Quelle réussite récente n'as-tu pas encore pris le temps de célébrer ?",
+    "Comment réagis-tu lorsque quelqu'un te félicite ?",
+    "Qui t'a aidé à accomplir ce que tu as réussi, et as-tu pris le temps de le remercier ?"
+  ],
+  "image": {
+    "geste": "Les habitants d'un village dansent autour d'un grand feu. Chacun a contribué à la fête et tout le monde profite du moment.",
+    "seuil": "Le feu brûle au milieu d'un cercle de pierres. Les habitants se rassemblent autour de lui et personne ne reste obligé de regarder de loin.",
+    "detail": "Des guirlandes décorent un grand mât et des étoiles filantes traversent le ciel au-dessus de la fête."
+  },
+  "micro_geste": "Célèbre aujourd'hui une chose que tu as terminée. Parle-en à quelqu'un ou prends simplement un moment pour reconnaître ce que tu as accompli.",
+  "positions": {
+    "jour": "Tu as peut-être accompli quelque chose qui mérite d'être reconnu.\n\nPourtant, tu continues peut-être à avancer sans prendre le temps de t'arrêter et d'apprécier le résultat.\n\nCette carte montre un village réuni autour d'un grand feu pour célébrer une réussite.\n\nElle t'invite à faire la même chose à ta manière : reconnais tes efforts, accepte les compliments et prends le temps de profiter de ce que tu as accompli.\n\nTu as le droit d'être fier de toi.",
+    "amene": "Tu as peut-être l'habitude de minimiser tes réussites.\n\nLorsque quelqu'un te félicite, tu réponds que ce n'était pas grand-chose ou que tu aurais pu faire mieux.\n\nTu passes rapidement à autre chose sans vraiment accueillir la reconnaissance que l'on te donne.\n\nCette carte t'invite à changer ce réflexe.\n\nTu as le droit d'apprécier ton travail et de recevoir les félicitations sans chercher immédiatement à diminuer tes mérites.",
+    "se_joue": "Tu as peut-être terminé quelque chose, mais tu continues à penser à tout ce qu'il reste à faire.\n\nTu vérifies encore les détails, tu cherches ce qui pourrait être amélioré ou tu prépares déjà la prochaine étape.\n\nPendant ce temps, tu oublies de profiter de ce qui est déjà terminé.\n\nCette carte te demande de faire une pause et de te poser une question : peux-tu reconnaître ta réussite avant de passer à la suite ?",
+    "essayer": "Organise une petite célébration à ta manière.\n\nMets une musique que tu aimes, partage un repas avec quelqu'un, offre-toi un dessert ou prends simplement le temps de te détendre.\n\nTu n'as pas besoin d'attendre une grande occasion pour être heureux de ce que tu as accompli.\n\nMême une petite réussite mérite un moment de satisfaction."
+  },
+  "source_referentielle": {
+    "pollack": "§4, nombres — le six : la victoire qui se partage, la reconnaissance",
+    "wen": "§4 — famille feu : rayonnement ; degré 6 : circulation, réparation",
+    "greer": "§6 — questions sur la célébration : qui fête avec toi, qu'est-ce qui circule",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-10 sous le brief feu (groupe B), image d'après le corpus distillé de la fête du village, en attente de la reformulation de Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "Une réussite mérite d'être appréciée et partagée. Prendre le temps de célébrer fait partie du chemin.",
+  "croix": {
+    "eloigne": "Tu commences à abandonner l'habitude de repousser le moment de célébrer tes réussites. Jusqu'ici, tu avais tendance à considérer chaque résultat comme une étape parmi d'autres, en te disant que tu profiterais de ta réussite lorsque tout serait terminé. Tu apprends maintenant à reconnaître ce que tu as déjà accompli et à partager ta satisfaction avec les personnes qui comptent pour toi.",
+    "image_soi": "Tu as du mal à te voir comme une personne qui a réussi quelque chose. Tu te concentres davantage sur ce qu'il te reste à faire que sur ce que tu as déjà accompli. Tu as parfois l'impression que célébrer une réussite serait prétentieux ou déplacé. Tu préfères donc minimiser tes résultats et passer rapidement à la suite. Cette attitude te permet de rester modeste, mais elle t'empêche aussi de profiter de tes propres succès.",
+    "entourage": "Les autres te félicitent pour tes réussites, mais tu as tendance à répondre que ce n'était pas grand-chose. À force, ils peuvent avoir l'impression que leurs félicitations ne te touchent pas ou que tu n'as pas envie de célébrer. Certains finissent par moins insister, tandis que d'autres ne comprennent pas pourquoi tu ne profites pas davantage de tes accomplissements. Ton entourage voit ta modestie, mais ne mesure pas toujours la difficulté que tu as à reconnaître ta propre valeur."
+  }
+}

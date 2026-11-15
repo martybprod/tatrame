@@ -1,0 +1,54 @@
+{
+  "id": "major_00",
+  "nom": "Foi",
+  "type": "majeur",
+  "registre": "seuil",
+  "element": "air",
+  "note_grille": "hors colonne (Foi est le seuil du jeu, avant la première série). Élément Air : la confiance avance par l'espace et la parole. Tension signature (Pollack) : foi contre planification.",
+  "mots_cles": [
+    "le pas",
+    "sans garantie",
+    "l'élan",
+    "les habits ordinaires",
+    "la porte ouverte"
+  ],
+  "tension": {
+    "pousse": "marcher",
+    "retient": "calculer"
+  },
+  "lumiere": "Tu avances, même si tu ne sais pas encore exactement ce qui t'attend. Tu acceptes de faire le premier pas sans avoir toutes les garanties. Les grandes étapes de la vie commencent ainsi, sans préparation extraordinaire. Tes vêtements de tous les jours suffisent pour entreprendre un grand voyage. Tu fais confiance sans chercher à prouver d'avance que tout se passera bien. C'est en avançant que tu découvres cette confiance, et chaque pas t'aide davantage que tous les calculs qui te retenaient.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu repousses le moment d'avancer. La prudence te pousse à attendre une garantie supplémentaire, puis une autre. Peu à peu, tu finis par rester au bord du chemin à regarder les autres avancer. Tu as appris à fonctionner ainsi, et les autres ont souvent encouragé cette prudence, au point que tu la considères comme une obligation. Tu consacres beaucoup d'énergie à éviter de faire un choix.",
+    "issue": "Choisis le plus petit pas que tu peux faire sans avoir besoin d'une garantie, puis fais-le aujourd'hui. La confiance ne se développe pas uniquement en réfléchissant. Elle se construit aussi par l'expérience, et même un premier pas peut déjà t'apprendre beaucoup."
+  },
+  "questions": [
+    "Qu'attends-tu de savoir avant d'oser avancer ?",
+    "Quel petit pas pourrais-tu faire, même si tu crois qu'il en demande davantage ?",
+    "Dans le passé, où t'a conduit un pas que tu as fait sans avoir de garantie ?"
+  ],
+  "lecon": "Accepter de ne pas tout savoir avant de commencer. Tu peux avancer avec tes vêtements ordinaires, sans préparation parfaite, et découvrir que l'imprévu peut devenir un allié.",
+  "image": {
+    "geste": "un pied avance au-delà du bord de la falaise. Il est tendu au-dessus du vide, sans chercher à vérifier si le sol se trouve juste en dessous",
+    "seuil": "le bord de la falaise représente la porte à franchir. Il est déjà derrière toi : tu as commencé la traversée avec tes vêtements ordinaires",
+    "detail": "au fond de la brume, la rivière qui coule en contrebas présente les couleurs de l'arc-en-ciel. Ces couleurs du vide ne sont visibles que depuis cet endroit, au bord de la falaise"
+  },
+  "micro_geste": "Garde un objet simple dans la main et fais aujourd'hui le petit pas que tu repousses.",
+  "positions": {
+    "jour": "Aujourd'hui, tu te trouves devant une situation dont tu ne connais pas toutes les possibilités. C'est ce qui peut rendre ce moment intéressant. Une partie de toi attend d'avoir des certitudes avant d'avancer, tandis qu'une autre est déjà prête à faire un pas. La carte ne te promet pas que tout se déroulera comme prévu. Elle te montre plutôt que le premier pas est peut-être beaucoup plus simple que tu ne le crois. Fais-le avec ce que tu as déjà, sans attendre d'être au point.",
+    "amene": "Tu arrives avec une prudence apprise au fil du temps. On t'a souvent encouragé à tout vérifier avant d'agir, et tu as fini par prendre cette habitude. Pourtant, tu possèdes aussi une expérience faite de tous les moments où tu as avancé sans avoir de garanties. Ces expériences font déjà partie de toi. La carte t'invite à reconnaître que tu as davantage confiance en ta capacité d'avancer que tu ne le penses.",
+    "se_joue": "Tout se joue entre deux attitudes. Calculer chaque possibilité, ou accepter de faire un pas. Une partie de toi cherche à accumuler les garanties avant de bouger, tandis qu'une autre sait que toutes les réponses ne seront peut-être jamais disponibles. Les deux se trouvent devant le même passage. La question du jour est simple. Quel pas pourrais-tu faire sans avoir besoin de toutes les garanties que tu attends ?",
+    "essayer": "Essaie de faire un premier pas à petite échelle. Passe un appel sans préparer chaque phrase à l'avance, commence un projet même s'il n'est pas encore parfait ou emprunte un chemin sans connaître tous les détails du parcours. La carte ne te demande pas de prendre un risque démesuré ni de faire un geste héroïque. Elle t'invite simplement à essayer. Observe ensuite ce que l'expérience t'apprend et que tu n'aurais pas pu découvrir en réfléchissant seulement."
+  },
+  "source_referentielle": {
+    "pollack": "§3, 0 (Mat) — tout est possible parce que rien n'est fixé ; tension foi contre planification ; ombre : ne pas oser le saut, ou se jeter pour ne pas sentir",
+    "wen": "§3 — élément Air (position majoritaire) ; la carte du jour : un registre, un micro-geste, pas de prévision",
+    "greer": "§6.2 — leçon : oser l'inexpérience, accueillir l'imprévu, faire confiance sans garantie",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : texte du jour ramené à 85 mots, « d'être parfaitement préparé » neutralisé, le reste intact"
+  },
+  "croix": {
+    "eloigne": "Tu n'attends plus d'avoir toutes les preuves pour avancer. Pendant longtemps, tu as voulu connaître le terrain avant de poser le pied. Cette prudence t'a parfois retenue plus qu'elle ne t'a protégée. Ce qui demeure, c'est l'expérience des départs déjà tentés. Tu sais maintenant que tu peux avancer même lorsque la route n'est pas entièrement visible.",
+    "image_soi": "Tu te vois comme celle qui doit être certaine avant de prendre la parole ou de faire un choix. Tu prépares tes réponses, tu vérifies les détails et tu préfères attendre plutôt que de risquer une erreur. Cette prudence te donne une impression de maîtrise. Mais elle te place souvent dans le rôle de celle qui observe le départ sans y prendre part.",
+    "entourage": "Les autres te trouvent réfléchie et prennent souvent ton calme pour de l'assurance. On te demande de peser les options, de donner un avis ou de confirmer une décision. Cette réputation peut te suivre même lorsque tu as déjà changé de direction. On continue alors de solliciter ton jugement, sans toujours remarquer que tu es passée à autre chose."
+  }
+}

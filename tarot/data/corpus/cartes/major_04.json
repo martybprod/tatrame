@@ -1,0 +1,53 @@
+{
+  "id": "major_04",
+  "nom": "Liberté",
+  "type": "majeur",
+  "registre": "exterieur",
+  "element": "feu",
+  "note_grille": "colonne 4 (avec Justesse et L'Invisible) : la loi. Élément Feu : la liberté prend son élan, elle ne se négocie pas au ralenti. Tension signature (Pollack) : la structure qui libère contre la structure qui écrase. Tension assumée avec le nombre — IV porte le cadre, la loi, l'autorité, et la carte nomme la liberté qui décolle d'un construit sans le détruire.",
+  "mots_cles": [
+    "*major_04",
+    "exterieur",
+    "feu*"
+  ],
+  "tension": {
+    "pousse": "prendre de la hauteur",
+    "retient": "réagir"
+  },
+  "lumiere": "Tu parviens maintenant à voir une situation dans son ensemble : ses chemins, ses impasses et la vallée vers laquelle tout s'écoule. Cette hauteur de vue ne t'oblige pas à détruire ce qui a été construit. Les ruines du temple rappellent qu'une structure a pu être utile pendant un temps, puis terminer son rôle. Tu prends ton envol depuis son toit, sans avoir besoin de t'opposer à lui. De là-haut, tu peux choisir ta direction avec une clarté que tu ne trouvais pas au niveau du sol. La rivière te montre déjà le chemin qui mène à la vallée.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu continues de réagir à une règle qui n'est peut-être même plus présente. La contrainte a disparu ou a changé de forme, mais ta manière d'agir n'a pas suivi cette évolution. Tu fais encore tes choix en fonction de ce qui te retenait, plutôt qu'en fonction de ce qui t'attend. Ta révolte demeure attachée à ce qu'elle combat, comme un avion qui tournerait sans fin autour d'une tour abandonnée. Ce combat t'a peut-être donné beaucoup de force. Cette force mérite maintenant de servir une direction qui t'appartient, plutôt que de rester mobilisée contre un adversaire qui n'existe plus.",
+    "issue": "Nomme précisément la règle à laquelle tu continues de réagir, puis repère un choix que tu as fait cette semaine sans tenir compte de cette règle. La liberté commence lorsque tu décides pour toi-même, et non plus seulement contre quelque chose."
+  },
+  "questions": [
+    "Quelle règle te fait encore réagir, même si elle n'est plus en vigueur ?",
+    "Que choisirais-tu si tu n'avais plus rien à contredire ?",
+    "Depuis quel endroit pourrais-tu regarder ta situation avec davantage de recul ?"
+  ],
+  "lecon": "Prendre de la hauteur sans détruire ce qui a été construit, puis choisir sa direction à partir de soi plutôt qu'en réaction à son passé.",
+  "image": {
+    "geste": "Un aigle traverse le ciel, vu de dos, en direction du lointain. Il ne se retourne pas pour regarder ce qui se trouve en dessous.",
+    "seuil": "Les ruines d'un temple aux colonnes dressées s'accrochent à la paroi supérieure. Le départ se fait depuis le sommet d'une construction, et non à partir de rien.",
+    "detail": "Une rivière dessine ses méandres jusqu'à une vallée verdoyante. Sa direction se distingue depuis les hauteurs, mais c'est au niveau du sol qu'elle se parcourt."
+  },
+  "micro_geste": "Prends dix minutes aujourd'hui pour regarder ta situation depuis un point de vue plus élevé. Note ensuite une décision qui devient plus claire grâce à ce recul.",
+  "positions": {
+    "jour": "Un aigle survole un vaste paysage composé de falaises, d'un temple en ruines et d'une rivière qui serpente vers la vallée. Il ne tourne pas autour des colonnes brisées : il poursuit son vol. Aujourd'hui, une situation de ta vie peut t'offrir une vue d'ensemble que tu n'arrivais pas à obtenir en restant au cœur des événements. Tu distingues les détours, les obstacles et la direction que prend le courant. Cette nouvelle clarté ne t'oblige pas à tout détruire. Ce qui a été construit a eu son utilité, et rien ne t'empêche de prendre ton envol depuis cette structure.",
+    "amene": "Certaines structures de ta vie arrivent peut-être au terme de leur utilité sans qu'il soit nécessaire de provoquer une rupture. Un horaire, une manière de répartir les tâches ou un ancien accord ont pu jouer leur rôle. La carte t'invite à les regarder avec recul, sans colère. Ce qui a été construit a contribué à ton développement et peut encore servir de point d'appui au moment où tu prends une autre direction. Tu peux t'envoler depuis cette structure, comme l'aigle quitte la paroi. Elle reste en place, mais ton mouvement commence.",
+    "se_joue": "En ce moment, tu mesures peut-être ta liberté à la distance que tu prends par rapport à une règle, un milieu ou une attente. Mais ce calcul finit par tourner en rond, puisque chaque distance continue de se définir à partir de ce dont tu t'éloignes. La liberté ne se mesure pas seulement à ce qu'on quitte. Elle se reconnaît surtout à ce qu'on choisit. L'aigle de la carte ne regarde pas derrière lui par insouciance : il se dirige vers la vallée. Une seule décision prise en fonction de tes propres aspirations peut suffire à orienter ton vol.",
+    "essayer": "Écris sur un papier la règle à laquelle tu réagis encore. Plie ensuite la feuille et range-la dans un tiroir. Pendant le reste de la journée, fais un choix sans te référer à cette règle : un trajet, un repas ou un moment de repos. Le soir, rouvre le tiroir et relis ce que tu as écrit. Demande-toi si cette règle exerce encore la même influence sur toi. Cet exercice n'a pas besoin de témoin. Il peut rapidement t'aider à voir ce qui a changé.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, IV — le cadre, une société juste rend la croissance possible ; tension structure qui libère / structure qui écrase ; ombre : révolte collée à la règle ; colonne 4 (la loi)",
+    "wen": "§3 — élément Feu (table des majeurs, recopiée de jeu.json)",
+    "greer": "§6.2 — leçon : poser des structures, commencer, assumer son autorité",
+    "production": "concepts — pollack §3 IV (le cadre qui libère ou écrase, la révolte collée à la règle), wen §3 (Feu), greer §6.2, nom maison « Liberté » de noms_cartes.json ; image — visage validé par Martin (brief de production, Groupe A) : paysage vu de très haut, temple en ruines sur la paroi, aigle de dos vers le lointain, rivière vers la vallée — reformulé en geste / seuil / détail",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu réagis moins systématiquement aux règles et aux attentes qui t'entourent. Tu n'as plus besoin de contredire une consigne simplement parce qu'elle existe. Ce qui demeure, c'est une vue plus large de la situation. Tu peux reconnaître ce qui t'a aidée autrefois sans être obligée de le conserver. Ta liberté prend alors la forme d'un choix, plutôt que d'une opposition.",
+    "image_soi": "Tu te définis souvent par ce à quoi tu refuses de te soumettre. Résister te donne une direction claire et te permet de sentir que tu gardes le contrôle de ta vie. Mais lorsque l'opposition disparaît, tu peux te retrouver sans repère. Tu te demandes alors ce qui te guide réellement, au-delà de ce que tu ne veux plus accepter.",
+    "entourage": "On te décrit comme une personne franche, indépendante et parfois difficile à faire changer d'avis. Certains apprécient ta capacité à défendre tes positions; d'autres choisissent leurs mots avec précaution devant toi. Cette réputation peut faire oublier tes hésitations et tes changements d'idée. On remarque facilement tes refus, mais on te demande moins souvent ce que tu souhaites construire à ta manière."
+  }
+}

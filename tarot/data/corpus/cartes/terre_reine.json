@@ -1,0 +1,56 @@
+{
+  "id": "terre_reine",
+  "nom": "Épanouissement",
+  "type": "figure",
+  "famille": "terre",
+  "rang": "reine",
+  "element": "terre",
+  "note_grille": "figure terre (reine) : la maîtrise intérieure qui nourrit, recevoir d'abord puis donner. Deux lectures possibles (Greer) : une présence nourricière autour de toi, ou ta propre floraison arrivée à terme. Rang reine = la fonction tenue au-dedans.",
+  "mots_cles": [
+    "le mur de rose-trémières",
+    "la paume de graines",
+    "fleurie jusqu'au sommet",
+    "le côté ouvert",
+    "la lumière sur le visage"
+  ],
+  "tension": {
+    "pousse": "fleurir à pleine hauteur",
+    "retient": "fleurir en cachette"
+  },
+  "lumiere": "Cette année, la tige dépasse ta propre taille et porte des fleurs jusqu'à son sommet. Même à la fin de la journée, les couleurs restent vives. Tu as fait grandir cette plante en prenant le temps nécessaire, et le temps a travaillé avec toi. Dans ta paume repose maintenant une poignée de graines noires, prêtes à trouver un nouvel endroit où pousser. La main ouverte annonce la suite du cycle : recevoir, puis laisser partir. La floraison ne marque pas une fin. Elle contient déjà la possibilité d'une nouvelle croissance.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu te développes en dessous de ce dont tu serais capable, comme si atteindre ta pleine hauteur risquait de déranger quelqu'un. La couleur est présente et la tige est solide, mais tu limites volontairement ce qui pourrait devenir visible. Une ancienne crainte associe le fait de se montrer au risque de se mettre en danger. Alors, tu réduis ta présence et tu gardes tes pétales à moitié fermés. Les graines restent dans ta paume fermée, tandis que le jardin continue de pousser autour de toi sans demander la permission. Ce que tu retiens continue de grandir, mais ne peut pas encore s'épanouir pleinement.",
+    "issue": "Laisse aujourd'hui une seule chose apparaître dans toute son ampleur : un projet, un texte ou une table que tu as préparée avec soin. La lumière ne vient pas détruire la couleur, elle permet de mieux la voir. Une fleur pleinement ouverte donne aussi envie aux autres de s'épanouir. Les graines pourront ensuite poursuivre leur chemin."
+  },
+  "questions": [
+    "À quelle hauteur te laisses-tu pousser en ce moment ?",
+    "Qu'est-ce qui a fini de fleurir chez toi, et où sont ses graines ?",
+    "Quelle couleur à toi attend encore d'être montrée ?"
+  ],
+  "lecon": "La floraison représente un aboutissement qui contient déjà le début d'un nouveau cycle. Laisser partir les graines fait partie de cet accomplissement.",
+  "image": {
+    "geste": "une femme lève le visage vers la lumière du soir et sourit. Sa paume ouverte contient des graines noires, tandis que son autre main repose naturellement le long de son corps",
+    "seuil": "un sentier de terre longe un mur de fleurs plus hautes qu'une personne. Les plantes forment un ensemble dense d'un côté, tandis que l'autre côté s'ouvre sur le ciel. Le passage se fait simplement en marchant",
+    "detail": "chaque plante porte une couleur distincte, du rose pâle au bleu-violet. Toutes les tiges sont fleuries jusqu'à leur sommet"
+  },
+  "micro_geste": "Sors aujourd'hui du tiroir une chose que tu as réalisée et montre-la à quelqu'un qui saura l'apprécier.",
+  "positions": {
+    "jour": "Un mur de fleurs plus hautes qu'une personne longe un sentier de terre. D'un côté, les plantes forment un ensemble dense ; de l'autre, le ciel reste entièrement ouvert. La lumière du soir fait ressortir une couleur différente sur chaque plante. Au milieu du passage, une femme lève le visage et ouvre sa paume remplie de graines noires. Ce que tu as fait grandir pendant cette saison a maintenant atteint sa pleine hauteur. La récolte des graines commence alors même que les fleurs sont encore ouvertes. La suite du cycle est déjà en préparation.",
+    "amene": "Tu peux constater que certaines personnes repartent de ton contact avec davantage de confiance ou de solidité qu'elles n'en avaient en arrivant. Des projets prennent forme autour de toi, et certaines choses semblent mûrir grâce à ton attention. Tu appelles cela du soin ou simplement une présence attentive. Le mot maîtrise te met peut-être mal à l'aise, mais le mur de fleurs est bien là, plus haut qu'une personne. Il a grandi sur ton chemin, et tu as contribué à le faire pousser en l'entretenant.",
+    "se_joue": "Tu peux observer le moment où ta floraison arrive à son terme et où un nouvel espace devient disponible. Le mur a atteint sa hauteur, chaque tige porte ses fleurs jusqu'au sommet et le ciel reste ouvert de l'autre côté du sentier. Entre les deux, une paume de graines noires s'ouvre. C'est l'image de ta situation actuelle : tu te trouves entre ce qui a pleinement grandi et ce qui reste à semer. Ce que tu gardes dans ta main attend maintenant de trouver un nouvel endroit où pousser.",
+    "essayer": "Tu as le droit de profiter aujourd'hui de ce que tu as réalisé avant de le partager avec les autres. Prends un instant pour lever le visage vers la lumière, comme la femme sur le sentier, sans chercher à justifier ce que tu as accompli. Cette floraison est le résultat de nombreuses années de travail et de petites actions souvent discrètes. La savourer fait partie du cycle. Les graines pourront être semées lorsque tu ouvriras la main. Elles trouveront leur place dans d'autres jardins. Rien ne presse, et pourtant, tout est prêt."
+  },
+  "source_referentielle": {
+    "pollack": "§4, figures de cour — la reine maîtrise en recevant, la fonction tenue au-dedans",
+    "wen": "§4 — rang reine : la maîtrise intérieure, nourrir ; famille terre : la floraison du concret et ses graines",
+    "greer": "§6.4 — reine = nourrir et maîtrise intérieure, chez quelqu'un ou en toi",
+    "production": "image : _distillation/passation/terre_reine_Epanouissement.md et symboles/terre_reine_epanouissement.md (concept « les mauves », validé par Martin) ; angles : Pollack (reine), Wen (rang reine), Greer (rangs)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus avoir peur de prendre pleinement ta place et de montrer ce dont tu es capable. Jusqu'ici, tu pouvais avoir tendance à réduire tes ambitions ou à cacher tes réussites pour ne pas faire de l'ombre aux autres. Tu apprends maintenant à reconnaître tes qualités et à laisser tes projets grandir. Tu comprends que tu peux réussir et t'épanouir sans que cela enlève quoi que ce soit aux autres.",
+    "image_soi": "Tu as tendance à penser que tu dois rester discrète et ne pas trop montrer tes capacités. Tu peux craindre que ta réussite attire la jalousie, les critiques ou les remarques. Tu préfères alors encourager les autres et les aider à avancer plutôt que de mettre tes propres réalisations en avant. Cette modestie te rend appréciée, mais elle peut aussi t'empêcher de reconnaître pleinement ta valeur et de développer tout ton potentiel.",
+    "entourage": "Les autres voient en toi une personne qui sait créer un environnement agréable et faire grandir les projets autour d'elle. Ils apprécient tes qualités, ta patience et ta capacité à accompagner les autres. Ils viennent facilement profiter de ce que tu construis et de ce que tu partages. Pourtant, ils ne remarquent pas toujours que tu pourrais avoir envie de prendre davantage de place et de faire reconnaître tes propres ambitions."
+  }
+}

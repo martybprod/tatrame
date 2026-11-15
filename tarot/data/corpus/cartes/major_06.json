@@ -1,0 +1,54 @@
+{
+  "id": "major_06",
+  "nom": "Union",
+  "type": "majeur",
+  "registre": "exterieur",
+  "element": "air",
+  "note_grille": "colonne 6 (avec Transformation et Vérité) : le choix et l'appel. Élément Air : la rencontre passe par la parole échangée, en face, sans écran. Tension signature (Pollack) : désir contre engagement.",
+  "mots_cles": [
+    "le choix",
+    "la rencontre",
+    "le miroir",
+    "plus grand que soi",
+    "les mains jointes"
+  ],
+  "tension": {
+    "pousse": "s'engager",
+    "retient": "garder les options"
+  },
+  "lumiere": "Tu regardes l'autre véritablement et tu découvres que cette rencontre t'aide à mieux te comprendre. Ce qui te touche chez une personne te révèle quelque chose sur toi. Ce qui t'agace aussi. Ici, choisir ne signifie pas simplement renoncer aux autres possibilités. C'est accepter de t'engager dans une relation qui peut t'ouvrir à quelque chose de plus grand que toi. Deux périodes différentes d'une même relation sont représentées côte à côte, et chacune a sa place.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "La relation a pris une tournure qui enferme au lieu de soutenir. Tu continues peut-être de t'accrocher à une histoire qui est terminée depuis longtemps, comme si elle était encore la même. Dans une autre situation, tu gardes plusieurs possibilités ouvertes, sans vraiment t'engager dans aucune. Tu partages alors ton attention entre deux relations ou deux choix, sans donner à l'un ou à l'autre la présence nécessaire. S'engager n'était pas une perte de liberté. C'est plutôt l'indécision prolongée qui finit par épuiser.",
+    "issue": "Reconnais le choix que tu continues de repousser, puis prends une décision claire. Si ce choix concerne une relation, la personne concernée mérite de connaître ta position. Mettre les choses au clair libère davantage d'espace que de rester dans l'attente."
+  },
+  "questions": [
+    "Quel choix continues-tu de repousser en gardant plusieurs possibilités ouvertes ?",
+    "Que te révèle l'autre sur toi lorsque tu prends vraiment le temps de le regarder ?",
+    "Qu'est-ce qui pourrait devenir possible si tu décidais de t'engager pleinement ?"
+  ],
+  "lecon": "Choisir, s'engager et accepter les conséquences de son choix. La rencontre et l'amour aident à y voir plus clair.",
+  "image": {
+    "geste": "deux personnages se font face, les mains jointes. Ils sont pleinement engagés dans leur rencontre et aucun ne regarde vers la sortie",
+    "seuil": "derrière eux se trouvent deux arbres. L'un est dépourvu de feuilles, tandis que l'autre ploie sous le poids de ses fruits. Ils représentent deux saisons différentes d'une même relation, présentes côte à côte",
+    "detail": "un serpent doré se trouve au pied de l'arbre chargé de fruits, tandis que des colombes volent au-dessus. Le désir et la tendresse sont tous deux présents, sans que l'un prenne le dessus sur l'autre"
+  },
+  "micro_geste": "Dis clairement ce que tu penses à la personne directement concernée par ton choix.",
+  "positions": {
+    "jour": "Aujourd'hui, l'attention se porte sur tes relations. Un lien peut demander davantage de clarté ou t'amener à mieux comprendre quelque chose. La carte ne précise pas de quelle relation il s'agit. Elle montre plutôt le rôle du miroir. Ce qui te touche ou t'agace chez l'autre peut aussi t'apprendre quelque chose sur toi-même. C'est l'une des façons dont une relation fait grandir.",
+    "amene": "Tu arrives avec toute ton histoire relationnelle. Les liens qui te portent, ceux qui t'ont appris quelque chose, et celui qui te demande peut-être une décision aujourd'hui. Tu as peut-être appris à associer l'amour à une perte de liberté ou de contrôle. Alors, tu t'engages en partie, tout en gardant une certaine distance pour te protéger. Mais tu connais aussi des relations véritables qui t'aident à grandir sans perdre ton identité. La carte t'invite à te rappeler ces rencontres et ce qu'elles t'ont apporté.",
+    "se_joue": "La difficulté vient d'un choix que tu repousses. Tu gardes deux possibilités ouvertes, mais ton attention est divisée et aucune ne reçoit suffisamment de présence pour se développer pleinement. La question du jour est simple. Quelle décision continues-tu d'éviter, et qui attend peut-être que tu la prennes ?",
+    "essayer": "Essaie de clarifier la situation. Reconnais le choix que tu repousses, exprime clairement ta décision à la personne concernée ou mets fin proprement à une situation qui ne peut plus continuer ainsi. La carte montre deux personnes qui se tiennent les mains et se regardent vraiment. Elles sont pleinement présentes l'une à l'autre, sans chercher à garder une autre possibilité en réserve. Un engagement sincère peut ouvrir sur quelque chose de plus riche que ce que tu avais imaginé à force de prudence."
+  },
+  "source_referentielle": {
+    "pollack": "§3, VI (Amoureux) — deux lectures superposées : le choix et la rencontre qui ouvre sur plus grand que soi ; l'ange : ce que nul ne voit seul ; ombre : immaturité sentimentale, lien qui enferme, nostalgie d'un amour mort",
+    "wen": "§3 — élément Air ; §5 — la famille du lien (eau) relue en Air : la parole avant l'émotion",
+    "greer": "§6.2 — leçon : choisir, s'engager, assumer les conséquences du choix",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : chutes sans deux-points, « nous » impersonnel ramené au tu, accords de genre neutralisés (« soutenu », « prudent »), « clairement » en doublon retiré"
+  },
+  "croix": {
+    "eloigne": "Tu gardes moins de portes entrouvertes par crainte de choisir. Cette réserve t'a permis de ne pas te sentir enfermée, mais elle t'a aussi empêchée de t'engager pleinement. Ce qui demeure, c'est ta capacité à être présente lorsque tu accordes réellement ton attention. Tu connais la valeur d'un lien ou d'un projet auquel tu donnes du temps sans rester à moitié ailleurs.",
+    "image_soi": "Tu te présentes comme une personne indépendante, qui préfère ne pas trop s'attacher. Dans ta tête, choisir un lien ou une direction pourrait te faire perdre une part de ta liberté. Tu gardes donc une certaine distance, même lorsque tu souhaites te rapprocher. Cette position te protège de la déception, mais elle te laisse parfois dans l'attente d'un choix que tu ne fais pas.",
+    "entourage": "On te trouve chaleureuse, mais parfois difficile à rejoindre vraiment. Les autres remarquent que tu gardes une part de réserve, même lorsque les échanges sont agréables. Certains respectent cette indépendance; d'autres hésitent à proposer davantage de proximité. Comme tu exprimes peu tes attentes, chacun peut interpréter ta distance à sa façon, sans toujours vérifier ce que tu souhaites."
+  }
+}

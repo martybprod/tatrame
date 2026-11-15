@@ -1,0 +1,56 @@
+{
+  "id": "eau_as",
+  "nom": "Suivre le mouvement",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": "as",
+  "element": "eau",
+  "note_grille": "degré as (ouverture, un don) × famille eau (lien, émotion, intériorité) : accord — le don est un mouvement qui monte en toi avant d'avoir un nom, et l'ouverture se remarque, elle ne se commande pas. Pollack : as de Coupes, la coupe qui se remplit d'elle-même.",
+  "mots_cles": [
+    "La feuille dorée",
+    "le courant paisible",
+    "l'élan spontané",
+    "l'eau qui accompagne",
+    "le mouvement sans contrainte"
+  ],
+  "tension": {
+    "pousse": "suivre",
+    "retient": "pousser"
+  },
+  "lumiere": "Une feuille couleur d'or flotte au milieu d'une eau tranquille. De petits cercles se forment autour d'elle et s'éloignent lentement vers les berges. Personne ne dirige sa trajectoire. L'eau la porte et le mouvement se poursuit naturellement. Quelque chose de semblable peut être en train de se produire dans ta vie. Une idée prend forme, une envie apparaît ou une situation commence à évoluer sans que tu aies eu besoin de tout organiser. Tu peux accompagner ce mouvement plutôt que chercher à le précipiter. Certaines évolutions demandent davantage d'attention que d'effort.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu forces peut-être une situation qui aurait besoin de davantage d'espace. Tu multiplies les démarches, relances les personnes et cherches à obtenir rapidement un résultat. Chaque moment de silence te semble être un signe d'arrêt. Pourtant, il arrive que le mouvement soit déjà engagé et qu'il ait simplement besoin de temps. En voulant accélérer les choses, tu risques de troubler ce qui avançait naturellement. La feuille continue de flotter, mais toi, tu dépenses ton énergie à lutter contre le courant.",
+    "issue": "Observe une situation qui évolue déjà sans intervention constante de ta part. Décide de ne pas la relancer pendant un moment, si rien ne l'exige, et regarde comment elle se développe. Tu peux accompagner ce qui avance sans chercher à en prendre le contrôle."
+  },
+  "questions": [
+    "Quelle situation progresse actuellement sans que tu aies besoin de la diriger ?",
+    "Dans quel domaine confonds-tu parfois patience et immobilité ?",
+    "Quelle intuition ou quelle envie commence à apparaître sans que tu l'aies encore définie ?"
+  ],
+  "lecon": "Tout mouvement ne demande pas une impulsion supplémentaire. Parfois, la meilleure façon d'avancer consiste à suivre ce qui est déjà en train de se mettre en place.",
+  "image": {
+    "geste": "Aucun personnage n'apparaît. Le mouvement est porté par l'eau, qui transporte une feuille dorée sans la retenir ni la pousser.",
+    "seuil": "La surface du paysage est ouverte. L'eau avance tranquillement sous une lumière douce et une brume légère descend des collines.",
+    "detail": "Des cercles réguliers entourent la feuille et s'étendent progressivement. Sur la berge, plusieurs iris sont en pleine floraison."
+  },
+  "micro_geste": "Repère une chose qui avance déjà naturellement dans ta vie. Laisse-lui de l'espace aujourd'hui, sans chercher à accélérer son évolution.",
+  "positions": {
+    "jour": "Quelque chose pourrait progresser plus facilement que tu ne le crois. Une conversation se poursuit, une démarche suit son cours ou une décision commence à devenir évidente. La carte présente une feuille dorée portée par une eau calme. Elle ne lutte pas contre le courant et ne cherche pas à choisir sa destination à chaque instant. Tu peux t'inspirer de cette image. Ton rôle aujourd'hui n'est pas nécessairement de faire davantage. Il peut consister à reconnaître les mouvements déjà engagés et à conserver ton énergie pour ce qui dépend réellement de toi.",
+    "amene": "Tu arrives avec l'habitude de prendre en charge beaucoup de choses. Tu surveilles les étapes, anticipes les difficultés et préfères intervenir avant qu'un problème apparaisse. Cette vigilance t'a probablement été utile à plusieurs moments. Pourtant, certaines situations n'ont plus besoin de cette attention constante. La carte t'invite à distinguer ce qui réclame ton action de ce qui évolue déjà. Comme la feuille portée par la rivière, tu peux parfois faire confiance à un mouvement qui ne dépend pas entièrement de tes efforts.",
+    "se_joue": "Une situation avance peut-être, mais tu continues de lui demander des preuves de progression. Tu vérifies les réponses, attends des signes et cherches à provoquer une évolution plus rapide. Le risque est de confondre ton besoin de contrôle avec un besoin réel d'action. La carte te propose une autre position : observer le courant avant de décider si tu interviens. Ce qui se joue aujourd'hui, c'est le moment où l'effort supplémentaire cesse d'apporter quoi que ce soit.",
+    "essayer": "Choisis une petite situation qui ne dépend pas uniquement de toi. Il peut s'agir d'une demande déjà envoyée, d'une tâche en cours ou d'un projet qui suit son calendrier. Pendant quelques heures, laisse-la évoluer sans multiplier les vérifications. Occupe-toi d'autre chose et remarque ce que cela change dans ton état intérieur. Tu peux ensuite revenir vers elle avec davantage de discernement. La feuille dorée rappelle que le mouvement n'a pas toujours besoin de tes bras pour continuer."
+  },
+  "source_referentielle": {
+    "pollack": "§4 nombres — l'as, la qualité à l'état pur, un don qui précède la forme ; as de Coupes : l'ouverture qui arrive sans être commandée",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré as : ouverture, un don",
+    "greer": "§6 — étage 1 : nommer ce qui monte avant de le justifier",
+    "production": "image du corpus mineurs eau (feuille dorée au centre d'une eau calme, cercles réguliers, iris ouverts), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu ressens de moins en moins le besoin de vérifier que les choses avancent. Tu avais l'habitude de relancer les personnes, de rappeler et de demander régulièrement des nouvelles pour être sûre que rien ne s'arrêtait. Mais les choses ont commencé à avancer d'elles-mêmes. Tu découvres que tu n'as pas besoin de tout surveiller ni de tout organiser pour qu'un projet continue. Tu peux maintenant laisser les événements suivre leur cours sans intervenir constamment.",
+    "image_soi": "Tu as parfois l'impression que, sans toi, rien ne peut commencer ou avancer. Tu te sens responsable de tout mettre en route, de prendre les initiatives et de vérifier que chaque chose est faite. Rester sans rien faire te donne l'impression de ne pas être utile ou de ne pas remplir ton rôle. Pourtant, tu ne vois pas toujours que certaines choses peuvent avancer parfaitement bien sans ton intervention.",
+    "entourage": "Ton entourage compte souvent sur toi pour prendre les initiatives et faire démarrer les projets. On attend que tu proposes des idées, que tu donnes le signal du départ et que tu rassures les autres. Tu es souvent considérée comme la personne qui fait avancer les choses. À force, les autres oublient que tu peux aussi avoir envie de ne rien organiser, de ne rien décider et simplement de te laisser porter par les événements."
+  }
+}

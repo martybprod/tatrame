@@ -449,7 +449,13 @@ def _verrou_profils():
 
 @app.get("/")
 def accueil():
-    return render_template("index.html")
+    # L'onglet Tarot charge l'app sœur dans une iframe. Son adresse change selon
+    # l'environnement : locale (port 5089) ou déployée (ex. https://tarot.tatrame.ca).
+    # Une seule variable à poser dans Coolify : TAROT_URL.
+    tarot_url = os.environ.get("TAROT_URL", "").strip()
+    if not tarot_url and _EST_PROD:
+        tarot_url = "/tarot/"     # même origine, monté par wsgi.py
+    return render_template("index.html", tarot_url=tarot_url)
 
 
 @app.get("/album")

@@ -1,0 +1,56 @@
+{
+  "id": "feu_09",
+  "nom": "Épuisement",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 9,
+  "element": "feu",
+  "note_grille": "degré 9 (bilan) × famille feu (élan, projet) : le bilan porte sur l'élan lui-même — la machine tourne encore, l'homme ne s'assoit pas. L'accord est de travers : le feu a donné, le 9 compte ce qui reste. Pollack : neuf de Bâtons, la fatigue de la garde et la réserve avant la suite.",
+  "mots_cles": [
+    "la manivelle",
+    "le sablier",
+    "seul au mécanisme",
+    "la porte ouverte",
+    "la mer"
+  ],
+  "tension": {
+    "pousse": "souffler",
+    "retient": "tenir seul"
+  },
+  "lumiere": "Tu es quelqu'un sur qui les autres peuvent compter.\n\nTu sais prendre tes responsabilités, maintenir les choses en fonctionnement et faire avancer ce qui dépend de toi.\n\nCette carte montre un homme qui actionne une machine composée de rouages et de sabliers.\n\nIl entretient le mécanisme avec régularité et sait comment le faire fonctionner.\n\nMais une grande porte est ouverte à côté de lui. Elle donne sur une plage et sur la mer.\n\nCette porte représente une possibilité importante : tu peux t'arrêter, sortir et prendre du repos.\n\nÊtre capable de faire beaucoup de choses ne signifie pas que tu dois les faire sans interruption.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu as peut-être l'impression que tout dépend de toi.\n\nTu continues à travailler, à organiser, à régler les problèmes et à répondre aux demandes des autres.\n\nDès que tu t'arrêtes, tu as peur que quelque chose ne fonctionne plus.\n\nAlors, tu recommences encore et encore, même lorsque tu es fatigué.\n\nTu finis par croire que continuer sans t'arrêter est une preuve de force.\n\nMais cette habitude peut t'épuiser et t'empêcher de profiter de ta propre vie.\n\nLa machine n'a pas besoin de toute ton attention à chaque seconde.",
+    "issue": "Autorise-toi à faire une vraie pause aujourd'hui.\n\nLaisse ce que tu es en train de faire pendant quelques minutes et va prendre l'air.\n\nTu peux marcher, t'asseoir près de l'eau ou simplement profiter du calme sans penser à tes responsabilités.\n\nTu n'as pas besoin d'attendre d'être complètement épuisé pour te reposer."
+  },
+  "questions": [
+    "Quelles responsabilités continuent de fonctionner uniquement parce que tu t'en occupes ?",
+    "Depuis combien de temps n'as-tu pas pris une vraie pause ?",
+    "Qui pourrait t'aider ou prendre le relais si tu acceptais de lui confier une partie de tes tâches ?"
+  ],
+  "image": {
+    "geste": "Un homme se penche sur une machine et tourne une manivelle. Son dos est courbé et toute son attention est concentrée sur les rouages.",
+    "seuil": "Une grande porte reste ouverte à côté de lui. Elle donne directement sur une plage de sable et sur la mer. Rien ne l'empêche de sortir.",
+    "detail": "Des sabliers sont intégrés à la machine. Le temps continue de passer, comme la marée, même lorsque personne ne surveille les mécanismes."
+  },
+  "micro_geste": "Sors pendant cinq minutes aujourd'hui sans rien emporter à faire. Marche ou assieds-toi tranquillement jusqu'à ce que tu te sentes plus détendu.",
+  "positions": {
+    "jour": "Tu as peut-être l'impression de devoir maintenir beaucoup de choses en fonctionnement.\n\nTu t'occupes des responsabilités, tu réponds aux demandes et tu fais en sorte que tout avance.\n\nCette carte montre un homme qui tourne la manivelle d'une grande machine composée de rouages et de sabliers.\n\nMais à côté de lui, une porte est grande ouverte sur la mer.\n\nCette porte te rappelle que tu peux aussi sortir, prendre une pause et laisser certaines choses attendre.\n\nAujourd'hui, demande-toi depuis combien de temps tu ne t'es pas réellement arrêté.",
+    "amene": "Tu as peut-être appris à croire que tout dépend de toi.\n\nTu as pris l'habitude de gérer les problèmes, de prendre les initiatives et de faire en sorte que les choses fonctionnent.\n\nÀ force, tu as peut-être oublié que les autres peuvent aussi prendre leur part de responsabilités.\n\nCette carte te rappelle que tu n'as pas besoin d'être constamment disponible.\n\nTu peux demander de l'aide, déléguer certaines tâches et prendre du temps pour toi sans avoir à te justifier.",
+    "se_joue": "Tu es peut-être partagé entre deux choses : continuer à t'occuper de tes responsabilités ou prendre enfin le temps de souffler.\n\nTu crains peut-être que tout se complique si tu t'arrêtes.\n\nMais est-ce vraiment le cas ?\n\nCertaines choses peuvent attendre. D'autres peuvent être prises en charge par quelqu'un d'autre.\n\nLa question à te poser est simple : que se passerait-il réellement si tu t'accordais dix minutes de repos ?",
+    "essayer": "Aujourd'hui, essaie de t'éloigner quelques minutes de ce qui te demande constamment de l'attention.\n\nSors prendre l'air, marche tranquillement ou installe-toi dans un endroit calme.\n\nPendant ce moment, ne cherche pas à régler tes problèmes ni à préparer la suite.\n\nLaisse simplement ton corps et ton esprit se reposer.\n\nTu retrouveras peut-être davantage de clarté et d'énergie en revenant à tes activités."
+  },
+  "source_referentielle": {
+    "pollack": "§4, neuf de Bâtons — la fatigue de la garde, la réserve entre deux combats ; §4 nombres : 9 = bilan",
+    "wen": "§4 — famille feu : élan, projet, travail ; degré 9 : bilan",
+    "greer": "§6.3 — la question qui ouvre plutôt que la consigne ; le repos comme partie de la voie",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_feu.json (entrée feu_9), à reformuler par Martin ; ombre « subi » (le mécanisme qui fait tourner la personne), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "Tu as le droit de t'arrêter. Le repos est nécessaire pour continuer à avancer.",
+  "croix": {
+    "eloigne": "Tu commences à abandonner l'idée que tout dépend de toi et que rien ne peut fonctionner sans ton intervention. Jusqu'ici, tu avais l'impression de devoir constamment surveiller les choses pour éviter qu'elles ne se dérèglent. Tu restais en activité, même lorsque tu avais besoin de repos. Tu peux maintenant envisager de prendre du recul et de laisser certaines choses continuer sans toi.",
+    "image_soi": "Tu te vois comme la personne qui doit maintenir les choses en ordre et faire en sorte que tout continue de fonctionner. Tu as du mal à t'arrêter lorsque d'autres personnes comptent sur toi. Tu te compares constamment à ce que tu as réussi à faire auparavant et tu trouves toujours une raison de continuer. Cette image de personne indispensable te donne le sentiment d'être utile, mais elle t'empêche de reconnaître tes propres limites.",
+    "entourage": "Les autres savent qu'ils peuvent compter sur toi et viennent facilement te demander de l'aide. On te considère comme la personne qui trouve des solutions et qui règle les problèmes. Cette réputation fait que l'on pense rarement à vérifier si tu es fatiguée ou si tu as besoin de souffler. Comme tu réponds presque toujours présente, ton entourage peut oublier que tu as toi aussi besoin de soutien."
+  }
+}

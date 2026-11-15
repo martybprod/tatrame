@@ -1,0 +1,56 @@
+{
+  "id": "terre_09",
+  "nom": "Plénitude",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 9,
+  "element": "terre",
+  "note_grille": "degré 9 (bilan) × famille terre (corps, ressources) : accord franc — le bilan se pose sur du concret et il suffit. La réserve pleine et le contentement qui passe à l'intérieur font le même mouvement. Le neuvième degré ferme presque le cycle, ce qui prépare le partage du Dix.",
+  "mots_cles": [
+    "la salle voûtée",
+    "les étagères pleines",
+    "les bocaux fermés",
+    "la main sur la poitrine",
+    "l'assez qui suffit"
+  ],
+  "tension": {
+    "pousse": "savourer ce qui est là",
+    "retient": "ajouter encore"
+  },
+  "lumiere": "Tu as déjà fait suffisamment, et tu peux le reconnaître sans avoir besoin d'en faire davantage. Ce que tu as préparé, conservé et organisé couvre largement tes besoins actuels. Tu peux traverser la pièce les mains libres, sans ressentir le besoin de remplir une nouvelle étagère. Le contentement ne se trouve pas seulement dans les réserves que tu as accumulées. Il se manifeste maintenant à l'intérieur de toi, à hauteur de poitrine, comme une sensation calme qui te permet de reconnaître que ce que tu possèdes est déjà suffisant.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu repousses sans cesse le moment de profiter de ce que tu as accompli. Il reste toujours une étagère à organiser, une chose à prévoir ou un dernier détail à régler. Tu te dis qu'ensuite, tu pourras enfin t'asseoir. Mais ce moment n'arrive jamais, parce que tu remplis chaque nouvel espace libre avec une autre tâche. La salle est déjà pleine, mais tu restes debout à regarder le seul coin encore vide. Tu attends une perfection qui ne correspond à aucun moment réel, et le sentiment de plénitude est toujours remis au lendemain.",
+    "issue": "Assieds-toi pendant une minute devant une chose que tu as déjà terminée. Pose les mains à plat et prends le temps de regarder ce travail comme quelque chose d'accompli. Laisse cet instant exister sans lui ajouter une nouvelle tâche."
+  },
+  "questions": [
+    "Qu'est-ce que tu as déjà fait qui suffirait, si tu cessais de regarder le coin vide ?",
+    "Qu'est-ce que tu entasses par précaution, et à quel moment comptes-tu t'en servir ?",
+    "Où poserais-tu tes mains si la chose était terminée pour de bon ?"
+  ],
+  "lecon": "Le sentiment d'avoir assez se reconnaît dans ce qui est déjà présent. Il n'attend pas que la dernière étagère soit remplie.",
+  "image": {
+    "geste": "une main repose à plat sur la poitrine, tandis que l'autre vient de quitter un panier rempli. Rien n'est en cours et rien n'est en retard",
+    "seuil": "une petite salle voûtée en pierre est fermée par une porte basse et éclairée par une fenêtre située en hauteur. La lumière du soir traverse les bocaux et vient éclairer un visage",
+    "detail": "les yeux sont fermés et le visage se tourne vers la lumière de la fenêtre. Un sourire à peine visible indique que le bilan est fait et qu'il est satisfaisant"
+  },
+  "micro_geste": "Pose les deux mains à plat sur la table, devant ce que tu as accompli cette semaine, et reste une minute sans rien ajouter.",
+  "positions": {
+    "jour": "Prends le temps de remarquer ce qui est déjà plein autour de toi. La maison, la table, le travail terminé et rangé, la nourriture préparée pour les jours à venir. La carte montre une salle voûtée dont les étagères sont remplies des récoltes de l'été. Personne n'a besoin d'y chercher quoi que ce soit. Cette scène existe peut-être aussi dans ta vie, et une minute suffit pour la reconnaître. Ce qui est déjà là mérite simplement que tu lui accordes ton attention. Tu peux poursuivre ta journée à partir de cette constatation, sans précipitation.",
+    "amene": "Tu portes en toi l'image d'une salle entièrement remplie, et tu t'en sers comme point de comparaison. Chaque fois qu'une chose se termine, tu regardes ce qu'il reste à accomplir plutôt que ce qui est déjà terminé. Pourtant, ce que tu as accumulé cette année, dans tes réserves, tes relations et tes expériences, forme déjà un ensemble solide. Tu attends de voir la salle complète, alors qu'elle se remplit progressivement, étagère après étagère. Plusieurs d'entre elles sont déjà bien garnies.",
+    "se_joue": "Tu fais le tour de ce que tu as accompli, mais ton regard s'arrête surtout sur ce qui manque encore. La pièce est pleine, et tu comptes les bocaux qui ne s'y trouvent pas. Tout dépend en partie de la façon dont tu choisis de regarder cette pièce. Tu peux dresser la liste de ce qui reste à faire ou faire l'inventaire de ce que tu possèdes déjà. Les deux listes décrivent pourtant la même réalité, mais elles ne conduisent pas au même état d'esprit.",
+    "essayer": "Tu peux décider aujourd'hui qu'une chose est suffisante, sans attendre qu'elle soit parfaite. Tu as le droit de regarder ce que tu as accompli et de reconnaître que cela représente déjà beaucoup. Assieds-toi au milieu de ta propre salle, au milieu de ce qui est là, et laisse-toi profiter de ce moment. Si l'envie d'ajouter quelque chose revient, tu peux attendre demain. Le surplus peut patienter une journée, mais la plénitude se vit dans le présent."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Deniers, le neuf — le bilan, l'indépendance dans le concret",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré 9 : le bilan avant la fin du cycle",
+    "greer": "§6 — le contentement reconnu, pas fabriqué ; la manière d'être chez soi sans rien prouver",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-11 sous le brief terre (groupe B), image d'après la passation et la grille validée (ATRO_PLUS/_distillation, terre_09_Plenitude, concept « la resserre »), en attente de la reformulation de Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à sortir de cette impression qu'il te manque toujours quelque chose avant de pouvoir profiter de ce que tu as. Jusqu'ici, tu avais tendance à regarder ce qu'il restait à faire plutôt que de reconnaître tout ce que tu avais déjà construit. Tu apprends maintenant à apprécier tes acquis et à prendre le temps de profiter de ce qui est déjà présent dans ta vie. Tu n'as pas besoin d'attendre que tout soit terminé pour te sentir satisfaite.",
+    "image_soi": "Tu as du mal à considérer que tu as suffisamment accompli de choses pour pouvoir te reposer. Tu remarques toujours une tâche supplémentaire, un détail à régler ou un objectif à atteindre. Tu peux avoir l'impression que t'arrêter maintenant serait une forme de négligence. Tu continues donc à avancer sans vraiment profiter de ce que tu as déjà réalisé. Cette exigence te pousse à agir, mais elle t'empêche de reconnaître lorsque tu as déjà assez fait.",
+    "entourage": "Les autres te voient comme une personne qui a construit beaucoup de choses et qui possède de nombreuses ressources. Ils admirent ton organisation, tes réalisations et tout ce que tu as réussi à mettre en place. Cette image de personne qui a beaucoup peut les amener à solliciter régulièrement ton aide ou tes ressources. Ils ne remarquent pas toujours que tu as du mal à profiter de tes acquis et que tu continues à te sentir occupée malgré tout ce que tu as déjà accompli."
+  }
+}

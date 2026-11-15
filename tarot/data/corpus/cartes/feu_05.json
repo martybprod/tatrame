@@ -1,0 +1,56 @@
+{
+  "id": "feu_05",
+  "nom": "Totalité",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 5,
+  "element": "feu",
+  "note_grille": "degré 5 (secousse, test) × famille feu (élan, engagement) : le nombre éprouve la famille — le test porte sur la dose, tout l'élan ou la moitié. L'image le dit : le ballon ne monte que de tout ce monde à la fois.",
+  "mots_cles": [
+    "l'engagement entier",
+    "les deux mains",
+    "personne en spectateur",
+    "la corde tirée",
+    "l'effort qui porte"
+  ],
+  "tension": {
+    "pousse": "t'engager",
+    "retient": "garder en réserve"
+  },
+  "lumiere": "Lorsque tu t'investis vraiment dans quelque chose, tu peux découvrir une énergie que tu ne trouves pas lorsque tu fais les choses à moitié.\n\nCette carte montre quatre personnes qui tirent ensemble sur des cordes pour faire décoller un ballon.\n\nChacune participe pleinement. Personne ne se contente de tenir sa corde sans faire d'effort.\n\nC'est ce qui permet au ballon de quitter le sol.\n\nDans ta vie, c'est la même chose : lorsque tu choisis de t'engager pleinement dans une activité, un projet ou une relation, ton énergie est mieux utilisée.\n\nTu arrêtes de te demander constamment si tu devrais en faire davantage ou garder une partie de toi à distance.\n\nTu es simplement présent et engagé.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu participes peut-être à un projet tout en gardant une partie de toi en retrait.\n\nTu fais ce qu'il faut, mais sans vraiment t'impliquer. Tu gardes toujours une possibilité de sortie, au cas où les choses ne se passeraient pas comme prévu.\n\nTu veux obtenir un bon résultat, mais tu n'oses pas donner toute ton énergie.\n\nCette façon de faire peut te protéger de certaines déceptions, mais elle peut aussi t'empêcher de profiter pleinement de ce que tu entreprends.\n\nTu dépenses de l'énergie sans avoir la satisfaction d'être vraiment allé au bout de ton engagement.",
+    "issue": "Choisis une seule chose à laquelle tu souhaites vraiment t'investir.\n\nDonne-lui toute ton attention et ton énergie, au lieu de disperser tes efforts dans plusieurs directions.\n\nTu n'as pas besoin de tout faire en même temps. Tu peux laisser les autres projets attendre pendant que tu t'occupes pleinement de celui-ci."
+  },
+  "questions": [
+    "Dans quel domaine fais-tu les choses à moitié alors que tu aimerais obtenir un résultat complet ?",
+    "Qu'est-ce que tu gardes en réserve et pourquoi ?",
+    "Que pourrais-tu accomplir si tu t'investissais pleinement dans une seule chose ?"
+  ],
+  "image": {
+    "geste": "Quatre personnes différentes tiennent chacune une corde reliée à un même ballon. Elles tirent ensemble et donnent tout leur effort.",
+    "seuil": "Le ballon commence à quitter le sol. C'est le moment où les efforts des quatre personnes se rejoignent.",
+    "detail": "Les quatre personnes restent concentrées sur leur tâche. Aucune ne regarde ailleurs ou ne se contente d'observer."
+  },
+  "micro_geste": "Choisis une tâche aujourd'hui et réalise-la avec toute ton attention, sans te disperser dans d'autres activités.",
+  "positions": {
+    "jour": "Tu as peut-être besoin de t'investir davantage dans quelque chose qui compte pour toi.\n\nCette carte montre quatre personnes qui tirent ensemble sur les cordes d'un ballon. Chacune fait sa part et participe réellement à l'effort.\n\nLe message est clair : certaines choses avancent seulement lorsque tu décides de t'y engager pleinement.\n\nAujourd'hui, demande-toi dans quel projet, quelle activité ou quelle relation tu pourrais être davantage présent.\n\nTu n'as pas besoin de tout faire. Tu as surtout besoin de choisir où mettre ton énergie.",
+    "amene": "Tu as peut-être appris à ne pas trop t'investir pour éviter d'être déçu ou de donner plus que les autres.\n\nCette prudence a peut-être été utile à certains moments de ta vie.\n\nMais elle peut aussi t'empêcher de profiter pleinement de ce que tu fais aujourd'hui.\n\nCette carte t'invite à regarder les endroits où tu restes à moitié engagé alors que tu aimerais vraiment avancer.\n\nTu peux décider de donner davantage à ce qui compte réellement pour toi.",
+    "se_joue": "Tu peux être présent dans une situation sans être réellement impliqué.\n\nTu peux participer à un projet, écouter une conversation ou accepter une responsabilité tout en gardant ton attention ailleurs.\n\nLa différence entre participer et s'engager pleinement se ressent dans ce que tu fais.\n\nSi tu disperses ton énergie, tu risques de multiplier les efforts sans obtenir de résultat satisfaisant.\n\nLa question est donc : dans quelle situation pourrais-tu arrêter de faire les choses à moitié ?",
+    "essayer": "Choisis une activité aujourd'hui et consacre-lui toute ton attention.\n\nCela peut être une conversation importante, une tâche professionnelle, un moment avec un proche ou un projet personnel.\n\nMets de côté les autres distractions pendant le temps nécessaire.\n\nNe cherche pas à avancer sur dix choses à la fois. Termine correctement celle que tu as choisie.\n\nTu pourrais constater qu'un engagement complet est parfois plus satisfaisant et moins fatigant que plusieurs engagements partiels."
+  },
+  "source_referentielle": {
+    "pollack": "§4, nombres — le cinq : la secousse, l'élan mis à l'épreuve",
+    "wen": "§4 — famille feu : élan, projet ; degré 5 : secousse, test",
+    "greer": "§6 — questions sur l'engagement : où es-tu tout entier, où à moitié",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-10 sous le brief feu (groupe B), image d'après le corpus distillé du ballon à cordes, en attente de la reformulation de Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "S'investir pleinement permet souvent de mieux utiliser son énergie que de faire plusieurs choses à moitié.",
+  "croix": {
+    "eloigne": "Tu commences à abandonner cette habitude de garder toujours une possibilité de retrait. Jusqu'ici, tu participais aux projets collectifs tout en conservant une certaine distance, au cas où les choses ne se passeraient pas comme prévu. Tu apprends maintenant à faire confiance au groupe et à prendre pleinement ta place. Tu découvres que tu peux compter sur les autres sans avoir besoin de tout contrôler.",
+    "image_soi": "Tu te vois comme une personne raisonnable qui doit garder le contrôle de ses émotions. Tu as parfois peur qu'en t'impliquant complètement, tu perdes ton indépendance ou ta capacité à prendre du recul. Tu préfères donc rester légèrement en retrait, même lorsque tu participes activement. Cette attitude te donne un sentiment de sécurité, mais elle t'empêche aussi de vivre pleinement certaines expériences collectives.",
+    "entourage": "Les autres te considèrent comme une personne fiable sur laquelle ils peuvent compter. Ils savent que tu fais ta part et que tu es présente lorsque c'est nécessaire. En revanche, ils te voient souvent comme quelqu'un de calme et de réservé, qui préfère garder une certaine distance. Ils ne remarquent pas toujours que, même lorsque tu participes, tu gardes intérieurement une possibilité de partir ou de te retirer."
+  }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarot — le tirage</title>
+<link rel="stylesheet" href="css/app.css?v=28">
+</head>
+<body{% if embed %} class="embed"{% endif %}>
+
+<header class="entete">
+  <p class="surtitre" id="surtitre-jeu">Le jeu des 79</p>
+  <h1 class="marque">Tarot</h1>
+  <p class="devise">Une carte est un miroir, pas une promesse.</p>
+</header>
+
+<main class="scene">
+
+  <div class="choix-mode" role="tablist" aria-label="Mode de tirage">
+    <button class="mode actif" data-mode="1" role="tab" aria-selected="true">Une carte</button>
+    <span class="filet-mode" aria-hidden="true"></span>
+    <button class="mode" data-mode="3" role="tab" aria-selected="false">Trois cartes</button>
+    <span class="filet-mode" aria-hidden="true"></span>
+    <button class="mode" data-mode="10" role="tab" aria-selected="false">Neuf + une</button>
+    <span class="filet-mode" aria-hidden="true"></span>
+    <button class="mode" data-mode="0" role="tab" aria-selected="false">Au choix</button>
+    <span class="filet-mode" aria-hidden="true"></span>
+    <button class="mode" data-mode="11" role="tab" aria-selected="false">Croix</button>
+  </div>
+
+  <details class="ped-conteneur">
+    <summary>Comprendre ce tirage</summary>
+    <div id="ped-contenu"></div>
+  </details>
+
+  <div id="vues" class="vues invisibles" role="tablist" aria-label="Façon de lire">
+    <button class="vue-bouton" data-vue="recit" role="tab" type="button">Récit</button>
+    <button class="vue-bouton actif" data-vue="ensemble" role="tab" type="button">Ensemble</button>
+    <button class="vue-bouton" data-vue="liens" role="tab" type="button">Liens</button>
+  </div>
+
+  <div id="slots" class="slots invisibles" aria-live="polite"></div>
+
+  <p id="compteur-tirage" class="compteur-tirage invisibles" aria-live="polite"></p>
+
+  <section id="vue-recit" class="vue-recit invisibles" aria-label="La lecture, carte par carte"></section>
+
+  <section id="vue-liens" class="vue-liens invisibles" aria-label="Les liens entre les cartes"></section>
+
+  <div id="eventail" class="eventail" aria-label="Éventail de cartes, touchez-en une"></div>
+
+  <section id="choix" class="choix-zone invisibles" aria-label="Tirage au choix">
+    <p class="choix-consigne" id="choix-consigne"></p>
+    <p class="choix-compteur" id="choix-compteur"></p>
+    <div class="choix-mur" id="choix-mur"></div>
+    <div class="choix-actions">
+      <button id="choix-eliminer" class="bouton-discret invisible" type="button">Éliminer</button>
+      <button id="choix-lire" class="bouton-discret" type="button" disabled>Lire ces trois cartes</button>
+    </div>
+    <details class="choix-methode">
+      <summary>Comment choisir</summary>
+      <div id="choix-methode"></div>
+    </details>
+  </section>
+
+  <div id="grilles" class="grilles invisibles" role="tablist" aria-label="Grille de lecture"></div>
+
+  <div id="lecture" class="lecture invisibles"></div>
+
+  <div class="actions">
+    <button id="replier" class="bouton-discret invisible">Replier le jeu</button>
+  </div>
+
+</main>
+
+<footer class="pied">
+  <p id="pied-texte">79 cartes · mélange honnête, graine conservée · aucune prédiction</p>
+</footer>
+
+<div id="plein" class="plein invisible" aria-hidden="true">
+  <button class="plein-fermer" type="button" aria-label="Fermer">✕</button>
+  <div class="plein-corps">
+    <img class="plein-img" src="" alt="">
+    <div class="plein-texte">
+      <p class="plein-nom"></p>
+      <p class="plein-meta"></p>
+      <div class="plein-sections"></div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-position" id="detail-position" hidden>
+  <div class="dp-carte">
+    <button class="fermer-position" id="fermer-position" aria-label="Fermer">×</button>
+    <h3 id="dp-titre"></h3>
+    <div id="dp-corps"></div>
+  </div>
+</div>
+
+<script>window.DOS_URL = "img/dos.png?v={{ version_dos }}";</script>
+<script src="js/tirage.js?v=30"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "id": "air_as",
+  "nom": "Conscience",
+  "type": "mineur",
+  "famille": "air",
+  "degre": "as",
+  "element": "air",
+  "note_grille": "degré as (le don) × famille air (lucidité) : accord — la clarté se reçoit comme un don, elle ne se fabrique pas.",
+  "mots_cles": [
+    "le ciel dégagé",
+    "la vision lointaine",
+    "le nuage immobile",
+    "l'horizon intérieur"
+  ],
+  "tension": {
+    "pousse": "voir loin",
+    "retient": "survoler"
+  },
+  "lumiere": "Un vaste ciel s'ouvre au-dessus du paysage. Rien ne vient encombrer sa profondeur, et la lumière permet de distinguer jusqu'aux nuages lointains. Un seul petit nuage demeure immobile dans cette immensité. La carte évoque ces moments où l'esprit retrouve spontanément sa transparence. Les pensées sont toujours présentes, mais elles ne prennent plus toute la place. Tu peux alors observer une situation avec davantage de recul et reconnaître ce qui était déjà là.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu te laisses entraîner par tout ce qui traverse ton esprit. Une inquiétude en appelle une autre, une remarque revient en boucle et une vieille histoire colore ton présent. Tu finis par croire que chaque pensée exprime une vérité ou exige une réaction. Pourtant, une pensée n'est pas toujours un fait, pas plus qu'un nuage ne définit le ciel dans lequel il passe.",
+    "issue": "Choisis une pensée qui occupe beaucoup d'espace aujourd'hui. Écris-la précisément, puis demande-toi ce qui relève d'un fait, d'une interprétation ou d'une inquiétude. Cette distinction peut déjà rendre ton regard plus clair."
+  },
+  "questions": [
+    "Quelle pensée revient le plus souvent dans ton esprit actuellement ?",
+    "Que pourrais-tu observer différemment en prenant un peu de recul ?",
+    "Comment distinguer ce que tu sais de ce que tu imagines ?"
+  ],
+  "lecon": "La conscience ouvre un espace entre toi et tes pensées. C'est dans cet espace que le discernement peut apparaître.",
+  "image": {
+    "geste": "le ciel s'étend sans obstacle apparent et permet une vision très lointaine.",
+    "seuil": "aucune frontière ne vient interrompre la perspective. La clarté n'a pas besoin d'être conquise.",
+    "detail": "un petit nuage demeure visible au loin. Il rappelle qu'une pensée peut exister sans envahir tout l'espace."
+  },
+  "micro_geste": "Observe une pensée récurrente aujourd'hui. Écris-la, puis laisse quelques instants s'écouler avant de décider si elle mérite une action.",
+  "positions": {
+    "jour": "Ton regard peut gagner en netteté. Une situation qui semblait compliquée devient peut-être plus facile à comprendre lorsque tu cesses de la regarder à travers tes inquiétudes. La carte évoque une ouverture de l'esprit, une possibilité de distinguer les faits des suppositions. Profite de cette disponibilité pour regarder une question importante avec honnêteté. Tu n'as pas besoin d'avoir toutes les réponses pour voir plus clairement.",
+    "amene": "Tu arrives avec un esprit qui peut être particulièrement lucide lorsqu'il dispose d'un peu de calme. Mais les sollicitations et les pensées répétitives finissent parfois par brouiller cette capacité. La carte t'invite à ne pas confondre le mouvement de ton esprit avec ta nature profonde. Tu peux observer tes préoccupations sans leur donner automatiquement le pouvoir de décider pour toi.",
+    "se_joue": "La question centrale concerne ton rapport à ce qui traverse ton esprit. Une pensée peut attirer ton attention sans devenir une obligation. Une inquiétude peut être entendue sans être considérée comme une prédiction. La carte te propose de retrouver la distance nécessaire pour observer. Ce recul ne supprime pas les difficultés, mais il permet de les aborder avec davantage de discernement.",
+    "essayer": "Prends une minute pour observer ce qui se passe dans ton esprit. Identifie les pensées qui apparaissent sans chercher à les retenir. Tu peux les noter ou simplement les reconnaître avant de revenir à ce que tu faisais. Répète cet exercice lorsque tu sens que ton attention se disperse. La clarté se développe aussi dans ces petits moments de présence."
+  },
+  "source_referentielle": {
+    "pollack": "§4, as d'Épées — la percée de clarté, la vérité qui coupe le brouillard : notre carte garde le don sans la coupe",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré as : le don ouvert du ciel sans nuage",
+    "greer": "§5 — l'as comme invitation du jour : remarquer la clarté au lieu de la fabriquer",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air (sous-agents indisponibles, limite d'usage), image d'après corpus_mineurs_air.json (entrée air_as)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus accorder autant d'importance à chaque pensée qui traverse ton esprit. Jusqu'ici, tu pouvais analyser tes inquiétudes, chercher à comprendre leur origine et essayer de trouver une réponse à chacune d'elles. Cette activité mentale prenait parfois beaucoup de place dans tes journées. Tu apprends maintenant à prendre du recul et à comprendre qu'une pensée n'est pas nécessairement une vérité. Tu peux l'observer sans être obligée de la suivre.",
+    "image_soi": "Tu te vois comme une personne qui doit garder les idées claires et rester lucide en toutes circonstances. Tu as parfois l'impression que tu ne dois pas te laisser envahir par tes émotions ou tes inquiétudes. Tu analyses donc beaucoup ce que tu ressens avant de prendre la parole ou de prendre une décision. Cette maîtrise te donne une image de personne réfléchie, mais elle peut aussi te fatiguer en t'obligeant à tout contrôler mentalement.",
+    "entourage": "Les autres te considèrent comme une personne réfléchie qui sait garder son calme lorsque les situations deviennent compliquées. Ils viennent facilement te demander conseil parce qu'ils pensent que tu as une vision claire des choses. Tu as ainsi acquis une réputation de personne lucide et raisonnable. Pourtant, ton entourage ne remarque pas toujours que tu peux toi aussi avoir des périodes de confusion, de doute ou de surcharge mentale."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "air_09",
+  "nom": "Tristesse",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 9,
+  "element": "air",
+  "note_grille": "degré 9 (bilan) × famille air (la peine) : accord — la tristesse honnête est un bilan qui se fait assis, à hauteur du paysage.",
+  "mots_cles": [
+    "la pierre basse",
+    "les mains ouvertes",
+    "le châle bleu",
+    "l'herbe sous le vent"
+  ],
+  "tension": {
+    "pousse": "honorer",
+    "retient": "s'enliser"
+  },
+  "lumiere": "Dans un paysage balayé par le vent, une femme est assise sur une pierre basse. Ses mains reposent dans son giron et ses yeux restent ouverts. Elle porte un châle bleu profond qui contraste avec la sobriété du décor. Rien dans son attitude ne cherche à dissimuler la peine. La carte donne à la tristesse une place digne et tranquille. Elle rappelle qu'une émotion peut être accueillie sans devenir toute notre identité.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu continues d'avancer comme si rien ne t'avait atteint. Tu remplis tes journées, assumes tes obligations et réponds aux attentes, mais une peine reste en arrière-plan. Tu ne lui accordes jamais vraiment de temps. Elle revient alors dans les moments de fatigue, parfois sans que tu comprennes pourquoi. Ce que tu refuses de reconnaître ne disparaît pas forcément.",
+    "issue": "Accorde-toi un moment de calme pour reconnaître ce qui te fait souffrir. Mets des mots sur la perte, la déception ou le changement qui t'affecte. Si tu en ressens le besoin, partage ce moment avec une personne de confiance."
+  },
+  "questions": [
+    "Quelle peine n'as-tu pas encore pleinement reconnue ?",
+    "Que cherches-tu à préserver en faisant comme si tout allait bien ?",
+    "Qui pourrait t'accompagner sans chercher immédiatement à trouver une solution ?"
+  ],
+  "lecon": "Accueillir sa tristesse, c'est lui donner une place sans lui remettre les clés de toute sa vie.",
+  "image": {
+    "geste": "la femme est assise, les mains reposant tranquillement dans son giron. Son corps ne lutte pas contre l'émotion.",
+    "seuil": "ses yeux restent ouverts et son visage légèrement incliné. Elle regarde ce qui est là.",
+    "detail": "le châle bleu profond constitue la couleur la plus marquée du paysage. Il donne une présence visible à l'émotion."
+  },
+  "micro_geste": "Réserve dix minutes à ce que tu ressens. Assieds-toi tranquillement et nomme ce qui te manque ou ce qui te peine, sans chercher à corriger ton émotion.",
+  "positions": {
+    "jour": "Une émotion pourrait réclamer ton attention aujourd'hui. Tu n'as pas besoin de la repousser ni de lui trouver immédiatement une explication. La carte montre une femme assise dans le paysage, présente à ce qu'elle traverse. Tu peux prendre un moment pour reconnaître ce qui te touche. Cette honnêteté intérieure peut alléger la pression de devoir constamment paraître solide.",
+    "amene": "Tu arrives peut-être avec une peine ancienne ou récente que tu as appris à contenir. Tu as continué à avancer, parfois sans laisser beaucoup de place à ce que tu ressentais. La carte te propose une autre posture : celle qui accepte de s'arrêter un instant. Tu n'as pas à prouver ta force en restant insensible. La sensibilité peut aussi être une façon de prendre soin de toi.",
+    "se_joue": "Une partie de toi souhaite poursuivre comme si tout était réglé, tandis qu'une autre attend simplement d'être entendue. Tu peux reconnaître cette tension sans te laisser submerger. La pierre basse représente cet endroit où tu peux déposer momentanément tes efforts. Aujourd'hui, la tâche n'est pas de tout résoudre, mais de reconnaître honnêtement ce qui demande ton attention.",
+    "essayer": "Choisis un moment où tu ne seras pas dérangé. Assieds-toi et écris quelques lignes sur ce que tu as perdu, ce qui a changé ou ce qui te manque. Ne cherche pas à rendre ton texte positif. Laisse-le être juste. Si la peine devient trop lourde à porter seul, rapproche-toi d'une personne de confiance ou d'un professionnel."
+  },
+  "source_referentielle": {
+    "pollack": "§4, neuf d'Épées — l'angoisse nocturne, les soucis qui tournent : notre carte en prend la part honnête, la peine qui fait son bilan",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 9 : le bilan de la perte",
+    "greer": "§6 — le deuil honnête et sa ligne de partage avec la vaillance qui fait des dettes",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_9)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à accepter que tu n'as pas besoin de cacher ta tristesse ou de faire comme si tout allait bien. Jusqu'ici, tu pouvais remplir tes journées et multiplier les activités pour éviter de penser à ce qui te faisait souffrir. Tu continuais à sourire, à répondre aux autres et à remplir tes obligations, même lorsque tu n'en avais pas vraiment la force. Tu apprends maintenant à reconnaître ta peine et à lui laisser une place. Accepter ce que tu ressens ne te rend pas plus faible : cela te permet de mieux comprendre ce que tu traverses.",
+    "image_soi": "Tu te vois comme une personne qui doit rester forte, quelles que soient les circonstances. Tu as du mal à montrer ta tristesse devant les autres, car tu crains de perdre le contrôle ou de paraître vulnérable. Tu préfères attendre d'être seule pour laisser sortir tes émotions. Tu continues donc à sourire et à dire que tout va bien, même lorsque ce n'est pas le cas. Cette façon de te protéger te permet de tenir, mais elle peut aussi t'empêcher de recevoir le soutien dont tu aurais besoin.",
+    "entourage": "Les autres te considèrent comme une personne forte et capable de traverser les difficultés. Ils viennent facilement vers toi pour parler de leurs problèmes parce qu'ils savent que tu sais écouter. Pourtant, ils ne pensent pas toujours à te demander comment tu vas réellement. Comme tu montres rarement ta tristesse, ton entourage peut ne pas comprendre que tu traverses toi aussi des moments difficiles. On compte sur ta force sans toujours penser que tu pourrais avoir besoin d'être soutenue."
+  }
+}

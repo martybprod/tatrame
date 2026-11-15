@@ -1,0 +1,53 @@
+{
+  "id": "major_20",
+  "nom": "Vérité",
+  "type": "majeur",
+  "registre": "transpersonnel",
+  "element": "eau",
+  "note_grille": "vingtième majeur (tradition du Jugement, l'appel). Notre appel est un visage enfoui, serein et reconnaissable. Élément Eau. La vérité remonte comme l'eau remonte. Tension signature (Pollack), répondre ou trouver des excuses.",
+  "mots_cles": [
+    "major_20",
+    "transpersonnel",
+    "eau"
+  ],
+  "tension": {
+    "pousse": "reconnaître",
+    "retient": "justifier"
+  },
+  "lumiere": "Tu reconnais quelque chose de vrai en toi, et cela se passe sans déclaration solennelle. Sous les rôles, les façades et les humeurs du moment, un visage reste le même, calme et reconnaissable. Tu sais quand une chose est juste, et ce savoir ne suit pas les modes. Tu peux simplement le laisser parler, à ta mesure. Les gens autour de toi le remarquent, comme on remarque une eau claire.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu sais déjà, mais tu trouves de bonnes raisons de reporter. La réponse existe au fond de toi, comme un visage sous la terre, et tu la recouvres d'objections solides. Tu argumentes, tu compares, tu attends une version encore plus claire de ce que tu sais pourtant déjà. Un raisonnement bien construit peut facilement cacher une peur. Pendant ce temps, les jours passent.",
+    "issue": "Choisis aujourd'hui une chose que tu sais déjà et formule-la dans une phrase simple. Dis-la à voix haute chez toi, puis à la personne concernée si le moment s'y prête. La vérité se précise en se disant, pas en s'accumulant des arguments."
+  },
+  "questions": [
+    "Quelle chose connais-tu déjà, mais remets-tu à plus tard en attendant mieux ?",
+    "Qu'est-ce qui resterait vrai dans ta vie si tu enlevais tous les habillages ?",
+    "À qui n'as-tu pas encore dit la phrase que tu connais par cœur ?"
+  ],
+  "lecon": "Reconnaître ce qui reste vrai sous les apparences, et lui donner une phrase simple plutôt que de chercher à le justifier.",
+  "image": {
+    "geste": "Un immense visage de pierre repose à moitié dans la terre. Ses yeux sont clos et un sourire doux apparaît sur ses lèvres. Il n'attend rien et ne bouge pas depuis toujours.",
+    "seuil": "Le monticule d'herbe marque le seuil. Ce qui reste vrai se trouve juste sous ce que l'on foule chaque jour : enfoui, mais intact.",
+    "detail": "Trois petites fleurs blanches sont déposées en offrande sur la pierre patinée par la mousse. Quelqu'un est venu reconnaître ce visage et lui a laissé des fleurs."
+  },
+  "micro_geste": "Écris aujourd'hui sur un papier la phrase que tu sais déjà, puis relis-la une fois à voix haute.",
+  "positions": {
+    "jour": "Imagine un visage de pierre colossal, à moitié enfoui dans la terre, les yeux clos et le sourire doux. Les modes passent, les saisons le recouvrent d'herbe, et trois petites fleurs blanches reviennent se poser sur sa joue. Ce visage ne vieillit pas et ne fait aucun bruit. Ta journée possède ce même fond. Sous les rôles du matin et les échanges rapides, quelque chose de vrai demeure en toi, serein et reconnaissable. La carte te le montre pour que tu puisses t'y appuyer.",
+    "amene": "Qu'apportes-tu aujourd'hui qui est déjà vrai ? Peut-être une chose que tu sais depuis longtemps, sans lui avoir encore donné de place officielle. Une décision, un sentiment ou une version de toi qui attend sous l'herbe. La carte ne demande rien de spectaculaire. Elle remarque simplement que tu portes déjà la réponse avec toi, et qu'elle n'attend qu'une phrase pour sortir. Qu'est-ce qui t'empêche de la reconnaître à voix haute, une première fois ?",
+    "se_joue": "Tu tiens une connaissance importante à distance, avec méthode. Tu compares les options, tu poses des conditions, tu cherches le bon moment. Tout cela semble raisonnable. Pourtant, la réponse ne bouge pas : elle est là depuis bien avant tes arguments. Le nœud du jour se situe entre reconnaître et justifier. Une seule de ces deux attitudes laisse passer la lumière, et tu sais laquelle.",
+    "essayer": "Tu as le droit de dire la chose simplement aujourd'hui, sans la couvrir d'arguments. Tu as le droit de répondre à ce que tu sais déjà, même si ta réponse n'est pas complète et même si certains détails pourront changer. Une vérité reconnue se met en marche ; elle n'attend pas d'être parfaite. Si la phrase te paraît trop grande pour aujourd'hui, dis-en une version plus courte. Le visage de pierre n'a besoin d'aucun discours : il sourit.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, XX — l'appel, on reconnaît que le changement a déjà eu lieu ; dimension collective ; tension répondre / trouver des excuses ; ombre : surdité à l'appel, objections rationnelles qui masquent la peur",
+    "wen": "§3 — élément Eau (Jugement, carte partagée entre écoles) ; §5 — mode d'ombre « différé »",
+    "greer": "§6.2 — leçon : s'évaluer, changer de regard, répondre à un appel",
+    "production": "angles pollack §3 XX + wen §3 (élément Eau) + greer §6.2 ; image = visage validé du brief Groupe D (visage de pierre balinais aux yeux clos et au sourire doux, à moitié enfoui, herbe au premier plan, trois fleurs blanches en offrande), reformulé avec nos mots ; nom interne du jeu, trace noms_cartes.json, Beyond Illusion",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu n'as plus besoin de construire un argument complet avant de reconnaître ce qui te semble évident. Tu as longtemps ajouté des explications, des comparaisons et des précautions pour rendre ta position incontestable. Ce qui demeure, c'est une compréhension plus directe de la situation. Tu peux nommer ce que tu constates sans devoir préparer un dossier pour chaque parole.",
+    "image_soi": "Tu te vois comme celle qui doit pouvoir défendre chacune de ses paroles. Avant de dire ce que tu penses, tu prépares les raisons, les exemples et les réponses aux objections possibles. Cette habitude te rend précise, mais elle peut aussi t'éloigner de l'essentiel. Tu passes parfois plus de temps à construire ton argument qu'à reconnaître ce que tu souhaites vraiment dire.",
+    "entourage": "On te trouve franche et on te demande souvent ton avis. Les autres savent que tu peux nommer un problème sans beaucoup de détours. Cette réputation les amène parfois à attendre une réponse immédiate, même lorsque tu as besoin de réfléchir. Certains apprécient ta précision; d'autres peuvent hésiter à aborder un sujet délicat avec toi, de peur de recevoir une réponse trop directe."
+  }
+}

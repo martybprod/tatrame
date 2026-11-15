@@ -1,0 +1,56 @@
+{
+  "id": "terre_10",
+  "nom": "Communauté",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 10,
+  "element": "terre",
+  "note_grille": "degré 10 (achèvement ou saturation) × famille terre (corps, ressources) : accord — la moisson finie devient repas. La saturation de la réserve se résout par la table partagée, et le cycle refermé ouvre la saison suivante.",
+  "mots_cles": [
+    "la table longue",
+    "le plat posé au milieu",
+    "la terre battue",
+    "personne au bout",
+    "la fin de la moisson"
+  ],
+  "tension": {
+    "pousse": "poser entre plusieurs",
+    "retient": "garder pour soi"
+  },
+  "lumiere": "Tu peux constater qu'une chose prend une autre valeur lorsqu'elle est déposée au milieu d'une table et partagée avec les autres. Ce que tu as récolté patiemment devient autre chose lorsque chacun peut en profiter. Le fromage est entamé, le pain est partagé et les poires sont déposées sans ordre particulier. Pourtant, tout trouve naturellement sa place. Personne n'occupe le bout de la table et aucune place d'honneur n'est à gagner. La période des réserves est terminée : celle du repas commence. Tu y participes comme les autres, avec ta propre contribution.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu accumules actuellement des choses qui devraient être partagées autour d'une table. Les réserves sont pleines, mais le repas est toujours repoussé à plus tard. Une vieille peur te fait croire que tu auras moins pour toi si tu commences par servir les autres. Alors, ce que tu gardes seul finit par rester trop longtemps au fond des sacs, jusqu'à devenir mou ou à se gâter. Ce qui est conservé sans jamais être partagé finit par ne plus nourrir personne, pas même celui qui le garde.",
+    "issue": "Choisis une bonne chose dans tes réserves et dépose-la aujourd'hui au milieu d'une table où plusieurs personnes pourront en profiter. Un plat suffit, une poignée de noix aussi. Ce qui circule ne reste pas enfermé dans les réserves et retrouve sa fonction : nourrir et rassembler."
+  },
+  "questions": [
+    "Qu'est-ce que tu gardes au fond de ta réserve en attendant le bon moment ?",
+    "Qui pourrait s'asseoir à ta table si tu posais un plat de plus ?",
+    "Qu'est-ce que tu partages déjà sans y penser ?"
+  ],
+  "lecon": "Ce qui a été accumulé individuellement devient un véritable repas lorsqu'on le dépose au milieu des autres.",
+  "image": {
+    "geste": "plusieurs mains apportent des plats et les déposent au centre d'une longue table de planches installée sur des tréteaux, à l'extérieur, dans la poussière du soir",
+    "seuil": "il n'y a ni bout de table réservé ni plat d'honneur. Les places restent ouvertes des deux côtés, et chacune a la même valeur",
+    "detail": "deux enfants sont assis sous la table, entre les pieds des adultes. Les différentes générations partagent le même repas, et les plus petits y ont eux aussi leur place"
+  },
+  "micro_geste": "Ajoute aujourd'hui un plat au repas du soir et laisse chacun se servir librement.",
+  "positions": {
+    "jour": "La journée approche de la fin d'une saison, et la longue table semble se préparer naturellement. La récolte est terminée, les réserves sont pleines et l'envie de réunir les gens commence à se faire sentir. Les repas se prolongent, les chaises changent de place et les conversations se poursuivent jusque dans la cuisine. Rien n'a besoin d'être organisé dans les moindres détails. La table de planches repose sur la terre battue, le vieil arbre offre son ombre et chacun repart avec un peu plus que ce qu'il avait apporté.",
+    "amene": "Un sac de noix fermé dans un coin depuis la récolte peut représenter ta façon d'attendre. Tu préfères d'abord ranger et conserver, puis partager plus tard. Mais le moment de servir est repoussé chaque fois que de nouvelles réserves viennent s'ajouter aux anciennes. Cette habitude vient peut-être de périodes difficiles, dont tu as entendu parler ou que tu as connues, où les réserves étaient indispensables pour traverser l'hiver. Cette prudence a eu son utilité. Mais il manque maintenant quelque chose à cette histoire : la table autour de laquelle ces réserves pourraient être partagées.",
+    "se_joue": "Que se passe-t-il lorsque la part destinée au milieu de la table disparaît ? Qui finit par la prendre ? La journée met en présence ceux qui conservent et ceux qui partagent. Un vieil homme rit, la tête renversée. Une femme dépose un plat encore chaud, et une petite fille tend les mains au bout du banc. Personne ne surveille les portions et pourtant, il y en a pour tout le monde. Dans cette scène, où te places-tu ? Du côté des réserves ou du côté du plat que l'on partage ?",
+    "essayer": "Quelqu'un arrive avec un plat, sans faire d'annonce particulière, et le dépose au centre de la table. Les autres tendent les mains avant même de demander d'où il vient. La contribution de chacun se mêle alors à celle des autres, et le repas continue naturellement. Tu peux reproduire ce geste une fois aujourd'hui, puis observer ce qui change dans le partage. Ce qui circule revient parfois sous une forme plus grande, mais ce n'est pas la raison pour laquelle on donne. On le fait simplement parce qu'il y a une table et des personnes avec qui partager."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Deniers — le 10 ferme le cycle, la richesse qui dure par le partage",
+    "wen": "§4 — degré 10 : achèvement ou saturation ; famille terre : la réserve pleine devient repas",
+    "greer": "§6.3 — le 10 comme fin de cycle et héritage, les générations à la même table",
+    "production": "image : _distillation/passation/terre_10_Communaute.md et symboles/terre_10_communaute.md (concept « la table longue », validé par Martin) ; angles : Pollack (Deniers, le 10), Wen (degré 10), Greer (cycle, héritage)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à te libérer de la peur de ne pas avoir assez pour toi si tu partages avec les autres. Jusqu'ici, tu pouvais avoir tendance à calculer les quantités, à prévoir les parts et à garder certaines choses pour plus tard. Tu apprends maintenant à faire confiance au partage et à profiter davantage des moments de convivialité. Tu comprends que tu peux offrir ce que tu as sans avoir besoin de tout contrôler.",
+    "image_soi": "Tu te vois comme une personne qui doit prendre soin des autres et veiller à ce que personne ne manque de rien. Tu associes souvent l'amour et l'attention au fait de nourrir, d'aider et de répondre aux besoins de ton entourage. Tu prends donc facilement en charge l'organisation et tu veilles à ce que tout le monde soit servi. Cette générosité est précieuse, mais elle peut aussi t'empêcher de profiter pleinement des moments partagés.",
+    "entourage": "Les autres apprécient ton accueil et savent qu'ils peuvent compter sur toi pour organiser de bons moments ensemble. On aime venir chez toi et profiter de ta générosité. Tu es souvent reconnue pour ta capacité à recevoir et à prendre soin des autres. Cependant, cette réputation peut aussi faire oublier que tu as besoin de profiter des rencontres autant que les autres, sans devoir constamment t'occuper de tout le monde."
+  }
+}

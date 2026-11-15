@@ -1,0 +1,55 @@
+{
+  "id": "feu_reine",
+  "nom": "Partage",
+  "type": "figure",
+  "famille": "feu",
+  "rang": "reine",
+  "element": "feu",
+  "note_grille": "figure feu (reine) : la maîtrise intérieure qui nourrit et fait rayonner. Deux lectures toujours possibles (Greer) : quelqu'un d'autre, ou une part de soi qui a soif de donner. Rangs : la reine porte la maîtrise intérieure ; les glissements vertical (même famille) et horizontal (même rang) restent ouverts.",
+  "mots_cles": [
+    "la robe qui devient jardins",
+    "donner",
+    "le sommet",
+    "les abeilles",
+    "sans compter"
+  ],
+  "tension": {
+    "pousse": "partager",
+    "retient": "retenir"
+  },
+  "lumiere": "Tu donnes, et ce que tu offres fait pousser. Ta robe se transforme en jardins en terrasses, et les cascades arrosent chaque niveau sans que tu aies à en compter les gouttes. Partager ne t'enlève rien. Ce qui déborde de toi devient une nourriture pour les autres, et cette générosité te fait rayonner. Les abeilles se rassemblent autour de ce qui donne, jamais autour de ce qui reste enfermé.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Le don s'est transformé en échange. Tu donnes pour attirer les regards, ou tu retiens par peur de manquer, mais les deux attitudes finissent par t'enfermer. Un feu que l'on protège trop ne réchauffe plus personne. La robe qui faisait naître des jardins se replie, et les terrasses s'assèchent au sommet de la falaise.",
+    "issue": "Offre quelque chose aujourd'hui, sans rien attendre en retour. Observe simplement ce que ce geste produit. Le partage véritable nourrit les deux côtés de la falaise. Celui qui reçoit, et celui qui donne."
+  },
+  "questions": [
+    "Qu'est-ce que tu retiens, et de quelle peur cela vient-il ?",
+    "À qui as-tu donné sans compter la dernière fois ?",
+    "Qu'est-ce qui grandit lorsque tu partages ?"
+  ],
+  "lecon": "Ce qui déborde de toi nourrit les autres. Partager fait rayonner, retenir finit par éteindre.",
+  "image": {
+    "geste": "au sommet, la reine sourit près d'un petit feu. Sa robe se transforme en jardins en terrasses qui descendent le long de la pente",
+    "seuil": "aucun mur ne ferme le sommet. La pente descend naturellement vers ce que tu peux nourrir",
+    "detail": "deux abeilles tournent près du feu. Toute la montagne semble participer à ce partage"
+  },
+  "micro_geste": "Donne aujourd'hui quelque chose que tu as en abondance, puis laisse ton geste produire ses effets.",
+  "positions": {
+    "jour": "Aujourd'hui t'offre des occasions de partager, et c'est plus simple qu'il n'y paraît. Une chose que tu as en abondance suffit pour commencer. La carte ne te demande pas de te priver ni de vider tes poches. Elle montre une robe qui devient des jardins. Ce que tu partages nourrit ce qui se trouve plus bas que toi, et cela grandit sans que tu aies besoin de le mesurer.",
+    "amene": "Tu arrives avec des ressources qui ne tiennent pas dans une poche. Des savoir-faire, une lumière que les autres reconnaissent, des expériences et des choses que tu peux transmettre. On t'a peut-être appris à en garder une partie, par précaution. La carte montre pourtant une reine au sommet. Son feu est petit, mais ses jardins sont vastes, et tout descend de sa robe.",
+    "se_joue": "Tout se joue entre le désir de donner et celui de garder pour soi. Une partie de toi veut nourrir et faire profiter les autres de ce qu'elle possède, tandis qu'une autre surveille ses réserves par crainte de manquer. Une question, alors. Qu'est-ce qui déborde déjà de toi, et qu'est-ce que tu gardes encore au fond ?",
+    "essayer": "Essaie aujourd'hui un geste concret de partage. Transmettre un savoir-faire, donner quelque chose à une personne qui en fera bon usage ou accorder du temps à quelqu'un. La carte propose de laisser circuler ce que tu as, pas de te sacrifier. Ce qui descend de toi nourrit les jardins en contrebas, et leur croissance rend ton geste visible."
+  },
+  "source_referentielle": {
+    "pollack": "§4, figures de cour — des manières d'être, jamais des personnes ; les glissements vertical et horizontal",
+    "wen": "§4 — rangs : la reine, la maîtrise intérieure, nourrir et contenir ; famille feu : élan et rayonnement",
+    "greer": "§6.4 — les figures comme rôles et facettes, jamais des classes ; le partage sans tenue de registre",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : « pour être remarqué » neutralisé, métaphore d'échange retirée de l'issue, deux-points de chute retirés"
+  },
+  "croix": {
+    "eloigne": "Tu commences à abandonner l'habitude de compter tout ce que tu donnes aux autres. Jusqu'ici, tu pouvais avoir tendance à remarquer qui rendait service, qui partageait et qui ne faisait pas sa part. Tu gardais parfois en mémoire les petits déséquilibres dans les relations. Tu apprends maintenant à donner plus librement, sans avoir besoin de vérifier constamment si tout est réciproque. Tu découvres qu'un partage peut être naturel, sans calcul permanent.",
+    "image_soi": "Tu te vois comme une personne généreuse qui doit beaucoup apporter aux autres. Tu as tendance à mesurer ta valeur à tout ce que tu donnes : ton temps, tes conseils, ton aide ou ton attention. Tu peux avoir l'impression que les autres ont besoin de toi pour aller mieux. Cette image te donne le sentiment d'avoir une place importante, mais elle peut aussi te pousser à trop donner et à oublier tes propres besoins.",
+    "entourage": "Les autres te connaissent comme une personne généreuse et disponible. Ils viennent facilement vers toi lorsqu'ils ont besoin d'aide, de conseils ou de réconfort. Ils savent que tu es souvent prête à donner de ton temps et de ton énergie. On te remercie pour ce que tu fais, mais on ne pense pas toujours à te demander si tu as toi-même besoin de quelque chose. Ta générosité est visible, tandis que tes propres besoins restent parfois dans l'ombre."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "terre_as",
+  "nom": "Maturité",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": "as",
+  "element": "terre",
+  "note_grille": "degré as (la source, le potentiel pur) × famille terre (le corps, la matière) : accord — la source de la terre se montre dans la matière elle-même, à point, sans récit et sans figure.",
+  "mots_cles": [
+    "à point",
+    "la pomme lourde",
+    "la lumière basse",
+    "le sol qui reçoit",
+    "ce qui est déjà là"
+  ],
+  "tension": {
+    "pousse": "cueillir",
+    "retient": "douter"
+  },
+  "lumiere": "Il existe déjà dans ta vie une chose qui est arrivée à maturité. Elle n'a plus besoin de faire ses preuves et ne cherche pas à attirer l'attention. Une pomme mûre repose lourdement sur sa branche, portée naturellement par l'arbre. Tu peux reconnaître ce qui est prêt grâce à un signe simple : ce qui est mûr demande moins d'efforts que le reste et peut être reçu au bon moment. Le sol, en dessous, est déjà là pour accueillir le fruit.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu vois la pomme mûre, mais tu ne la cueilles pas. Tu te dis qu'elle pourrait attendre encore un peu, qu'elle n'est peut-être pas tout à fait prête ou que tu n'es pas encore certain de pouvoir la prendre. Alors, elle reste suspendue à sa branche tandis que la saison avance. Ce qui retient ton geste est peut-être une peur simple : celle de ne pas avoir le droit de recevoir ce qui est pourtant déjà à ta portée. Le fruit ne se pose aucune question. Il est mûr, il pèse et il attend.",
+    "issue": "Tends la main vers une chose qui est déjà prête dans ta vie et saisis cette occasion aujourd'hui, même si ton geste manque un peu d'assurance. Un fruit ne tombe pas toujours dans le panier tout seul. Une seule cueillette peut suffire à te montrer que le sol est là pour te soutenir."
+  },
+  "questions": [
+    "Qu'est-ce qui est déjà à point dans ta vie, et que tu laisses attendre ?",
+    "Qu'est-ce qui te fait douter que ce soit le bon moment ?",
+    "Qu'est-ce que tu pourrais recevoir avec les mains, sans rien fabriquer de plus ?"
+  ],
+  "lecon": "Ce qui est mûr se reconnaît à son poids et se cueille avec les mains.",
+  "image": {
+    "geste": "une pomme dorée pèse sur sa branche, inclinée sous son propre poids, comme si elle était sur le point de tomber",
+    "seuil": "le verger s'ouvre sans clôture autour de l'arbre, et la pomme ne tient plus qu'à un seul point de contact avec sa branche",
+    "detail": "la lumière basse arrive de derrière et illumine le fruit de l'intérieur. Au-dessous, le sol semble déjà porter sa couleur, comme s'il se préparait à le recevoir"
+  },
+  "micro_geste": "Choisis un objet terminé que tu conserves dans un coin, prends-le dans tes mains et donne-lui aujourd'hui une place bien visible.",
+  "positions": {
+    "jour": "Une pomme mûre pèse sur sa branche dans un verger au soleil couchant. Elle est restée inclinée pendant des semaines, et le moment de la cueillir est arrivé. La lumière ne vient pas du haut, mais de derrière le fruit, qu'elle semble éclairer de l'intérieur. Ta journée ressemble à ce verger tranquille. Une chose est déjà prête et demande probablement moins d'efforts que tu ne l'imagines. Il te reste à la reconnaître et à tendre la main.",
+    "amene": "Tu possèdes déjà certaines choses qui méritent d'être reconnues. Une compétence que tu maîtrises depuis longtemps, une idée qui a pris forme ou une relation solide. Pourtant, ton attention se dirige souvent vers ce qui manque, et tu ne remarques pas toujours le fruit arrivé à maturité. La carte t'invite à inverser ce mouvement. Commence par observer ce qui est déjà prêt, sans chercher immédiatement à le modifier. Tes yeux peuvent reconnaître ce qui est là avant que ta main ne vienne le cueillir.",
+    "se_joue": "Tu regardes une chose qui semble prête, mais tu continues de la trouver imparfaite. Tu l'examines sous tous les angles, comme si le doute pouvait encore la faire mûrir. Pourtant, tu sais peut-être déjà qu'un fruit ne devient pas meilleur indéfiniment en restant suspendu à sa branche. La question du moment est simple : qu'est-ce qui te manque réellement pour tendre la main et prendre ce qui est déjà prêt ?",
+    "essayer": "Essaie de cueillir une chose arrivée à maturité avant la fin de la journée. Sers le plat qui attend depuis longtemps, offre à quelqu'un le livre que tu as terminé ou signe le texte qui est prêt depuis plusieurs semaines. La carte te propose une petite récolte, un geste concret. Tu pourrais découvrir que ce geste demande beaucoup moins d'efforts que le doute qui le précédait. Le sol est déjà là pour recevoir ce que tu décides de prendre."
+  },
+  "source_referentielle": {
+    "pollack": "§4, as de Deniers — la matière offerte, le potentiel qui se remarque sans se commander ; notre carte garde le don sans la main sortie du nuage",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré as : la source de la couleur",
+    "greer": "§5 — l'as comme invitation du jour : remarquer ce qui est mûr au lieu de le fabriquer",
+    "production": "rédaction de l'agent Groupe A le 2026-11-11 sous le brief terre (Groupe A — la source et les fondamentaux), image d'après _distillation/symboles/terre_as_maturite.md (concept « la pomme » validé, master 780135)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus attendre indéfiniment le moment idéal pour passer à l'action. Jusqu'ici, tu pouvais avoir l'impression qu'il fallait encore un peu de temps, d'expérience ou de préparation avant de te lancer. Tu hésitais à saisir certaines occasions parce que tu ne te sentais pas complètement prête. Tu apprends maintenant à reconnaître que tu possèdes déjà les ressources nécessaires pour avancer.",
+    "image_soi": "Tu as tendance à penser que tu n'es pas encore suffisamment prête ou expérimentée pour entreprendre quelque chose d'important. Tu te dis qu'avec un peu plus de temps, tu seras plus compétente et plus sûre de toi. Tu peux aussi te comparer à des personnes qui semblent avoir davantage avancé. Cette exigence te pousse à vouloir progresser, mais elle peut t'empêcher de reconnaître tout ce que tu sais déjà faire.",
+    "entourage": "Les autres te considèrent comme une personne compétente et prête à passer à une nouvelle étape. Ils connaissent tes capacités et se souviennent de tes réussites. Ils peuvent donc être surpris lorsque tu hésites ou que tu manques de confiance en toi. Ton entourage voit parfois davantage tes possibilités que tu ne les vois toi-même. Comme tu ne montres pas toujours tes doutes, les autres ne comprennent pas forcément ce qui te retient."
+  }
+}

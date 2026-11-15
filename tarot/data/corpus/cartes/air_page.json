@@ -1,0 +1,55 @@
+{
+  "id": "air_page",
+  "nom": "Dispersion",
+  "type": "figure",
+  "famille": "air",
+  "rang": "page",
+  "element": "air",
+  "note_grille": "figure air (page) : l'exploration et le message qui passe par le mental — ici, l'explorateur soulève tout et dépose peu ; la carte garde l'élan et installe le sol, tension assumée.",
+  "mots_cles": [
+    "la marche rapide",
+    "la fumée légère",
+    "les objets suspendus",
+    "les pieds nus"
+  ],
+  "tension": {
+    "pousse": "penser",
+    "retient": "disperser"
+  },
+  "lumiere": "Un homme avance rapidement, les pieds nus sur un sol clair. Sa cape suit le mouvement et une fumée légère semble s'élever au-dessus de sa tête. Plusieurs objets flottent dans cette brume : une montre, une enveloppe, un sablier et un ruban noué. Son esprit semble explorer plusieurs pistes en même temps. Cette vivacité peut être une grande ressource. Elle devient féconde lorsqu'elle conserve un point d'ancrage.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Ton attention passe sans cesse d'une idée à l'autre. Tu commences plusieurs tâches, réponds à différentes sollicitations et gardes en tête des projets qui ne trouvent jamais leur aboutissement. Chaque nouvelle pensée semble urgente. À la fin de la journée, tu as beaucoup bougé mentalement, mais peu de choses ont réellement trouvé leur place. La dispersion transforme ton imagination en encombrement.",
+    "issue": "Choisis une seule préoccupation parmi toutes celles qui occupent ton esprit. Donne-lui une forme concrète : une réponse, une décision, une note ou une tâche terminée. Laisse les autres sujets attendre leur tour."
+  },
+  "questions": [
+    "Quelles préoccupations occupent actuellement ton espace mental ?",
+    "Laquelle mérite réellement ton attention aujourd'hui ?",
+    "Qu'est-ce qui t'aide à retrouver une direction lorsque tout semble urgent ?"
+  ],
+  "lecon": "Un esprit fertile a besoin d'un point d'ancrage. Les idées gagnent en valeur lorsqu'elles peuvent devenir des gestes.",
+  "image": {
+    "geste": "l'homme marche rapidement tandis que la fumée suit le mouvement de sa tête.",
+    "seuil": "les objets flottent à différentes hauteurs. Ils représentent des pensées et des préoccupations encore sans place définie.",
+    "detail": "les pieds nus reposent directement sur le sol pâle. Le contact avec le réel demeure possible malgré l'agitation mentale."
+  },
+  "micro_geste": "Écris toutes les choses qui occupent ton esprit, puis choisis-en une seule à terminer aujourd'hui.",
+  "positions": {
+    "jour": "Ton esprit semble particulièrement actif. Plusieurs sujets réclament ton attention et tu peux avoir envie de les traiter simultanément. La carte ne te demande pas de ralentir ta curiosité, mais de lui donner une direction. Choisis une idée à transformer en action concrète. Une chose terminée peut apporter davantage de satisfaction que dix commencements.",
+    "amene": "Tu arrives avec une imagination vive et une grande facilité à faire des associations. Tu vois plusieurs possibilités là où d'autres n'en remarquent qu'une. Cette richesse peut toutefois te conduire à multiplier les pistes sans prendre le temps de les approfondir. La carte t'invite à retrouver le contact avec le sol. Ton esprit peut continuer d'explorer, à condition qu'une partie de ton énergie serve à concrétiser ce qu'il découvre.",
+    "se_joue": "Un choix t'attend peut-être entre suivre toutes les sollicitations et accorder une véritable attention à une seule d'entre elles. La dispersion donne l'impression d'être partout, mais elle peut empêcher toute avancée durable. La carte montre un personnage qui continue de marcher. Elle rappelle que le mouvement peut devenir une progression lorsqu'il trouve une direction.",
+    "essayer": "Note les idées, les tâches et les préoccupations qui se bousculent. Choisis ensuite un élément qui peut être entièrement réglé aujourd'hui. Consacre-lui un temps précis, sans ouvrir de nouveaux dossiers entre-temps. Tu pourras revenir aux autres sujets plus tard. L'objectif n'est pas de réduire ta créativité, mais de lui permettre de produire quelque chose de tangible."
+  },
+  "source_referentielle": {
+    "pollack": "§4, valet d'Épées — la curiosité vive, le mental qui guette tout : notre carte en garde la richesse et ajoute le sol",
+    "wen": "§4 — rangs : la page, l'exploration et le message ; famille air : le mental qui ouvre mille pistes",
+    "greer": "§6.3 — la figure comme manière d'être, chez quelqu'un ou en toi : le penseur pressé des deux côtés de la vitre",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_page)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à sortir de cette tendance à vouloir explorer toutes les possibilités en même temps. Jusqu'ici, tu pouvais facilement passer d'une idée à une autre, répondre à toutes les sollicitations et commencer plusieurs projets sans vraiment les terminer. Tu apprends maintenant à choisir ce qui mérite ton attention et à te concentrer davantage sur une seule chose à la fois. Tu conserves ta curiosité, ta vivacité d'esprit et ta capacité à repérer rapidement de nouvelles possibilités.",
+    "image_soi": "Tu te vois comme une personne curieuse, réactive et toujours disponible pour découvrir quelque chose de nouveau. Tu aimes répondre rapidement aux demandes et ne pas laisser passer une occasion intéressante. Mais tu peux avoir du mal à reconnaître que cette disponibilité permanente te fatigue. Tu commences beaucoup de choses, puis tu te disperses avant de pouvoir les terminer. Tu appelles cela de la curiosité, mais cela peut aussi t'empêcher de consacrer suffisamment de temps à ce qui compte vraiment pour toi.",
+    "entourage": "Les autres te voient comme une personne pleine d'idées et toujours occupée par plusieurs projets. On vient facilement te demander conseil ou solliciter ton aide, car tu sembles toujours avoir une idée à proposer. Cette réputation te permet de rencontrer beaucoup de monde et de recevoir de nombreuses sollicitations. Cependant, ton entourage ne remarque pas forcément que tu aurais parfois besoin de moins de demandes et de davantage de tranquillité pour terminer ce que tu as commencé."
+  }
+}

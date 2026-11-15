@@ -11,7 +11,19 @@ in-process : plusieurs workers = rappels envoyés en double + limite de tentativ
 éclatée par worker. Pour la charge d'une bêta (<20 personnes), 1 worker + quelques
 threads suffit très largement.
 """
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
+
 from app import app, _demarrer_scheduler
 
 # Un seul worker (cf. avertissement ci-dessus) : ce démarrage a donc lieu une fois.
 _demarrer_scheduler()
+
+# ── L'app sœur Tarot, montée sous /tarot (bêta) ──────────────────────────
+# Elle vit dans tarot/ de ce dépôt et sait tourner seule (voir tarot/app.py) :
+# supprimer ce montage et le dossier rend l'intégration réversible, sans rien
+# toucher d'autre. Un échec d'import ne doit JAMAIS empêcher Ta Trame de servir.
+try:
+    from tarot.app import app as tarot_app
+    application = DispatcherMiddleware(app, {"/tarot": tarot_app})
+except Exception:  # pragma: no cover - garde-fou de production
+    application = app

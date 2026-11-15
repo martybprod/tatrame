@@ -1,0 +1,53 @@
+{
+  "id": "major_07",
+  "nom": "Volonté",
+  "type": "majeur",
+  "registre": "exterieur",
+  "element": "eau",
+  "note_grille": "colonne 7 (avec Équilibre et Accomplissement), la maîtrise et le dosage. Élément Eau. Le sept ferme la première série de Pollack (le monde) et l'eau retire le fouet — une volonté qui coule au lieu de forcer. Tension signature (Pollack) — diriger contre se raidir.",
+  "mots_cles": [
+    "*major_07",
+    "exterieur",
+    "eau*"
+  ],
+  "tension": {
+    "pousse": "avancer tranquillement",
+    "retient": "forcer"
+  },
+  "lumiere": "Tu avances d'un pas régulier, sans te presser, en emmenant avec toi les deux parts de toi qui ne s'accordent pas toujours. Le feu qui t'entoure est blanc et froid : il éclaire sans consumer. Tu gardes le cap parce que tu ne cherches plus à lutter contre une partie de toi-même. Tes deux instincts, même lorsqu'ils sont opposés, marchent à tes côtés, chacun à son rythme. Ta force n'a plus besoin d'être démontrée. Elle se manifeste naturellement dans ta manière d'avancer. C'est une maîtrise tranquille, celle qui demeure même lorsque personne ne te regarde.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu forces les choses. La situation avance peut-être, mais plus rien ne semble couler naturellement, et tu resserres encore ton contrôle chaque jour. Ta volonté s'est transformée en rigidité, comme si le moindre relâchement risquait de tout faire s'effondrer. Les deux parts de toi qui pourraient avancer ensemble tirent maintenant dans des directions opposées. Tu tiens leurs deux rênes avec force. Le mouvement continue, mais l'effort et la tension prennent toute la place, tandis que le vivant semble peu à peu s'en retirer.",
+    "issue": "Relâche légèrement une seule des rênes aujourd'hui et observe si ta progression devient plus facile. Tes deux parts avancent mieux ensemble lorsqu'aucune n'est maintenue sous un contrôle excessif."
+  },
+  "questions": [
+    "Dans quel domaine de ta vie contrôles-tu trop étroitement quelque chose qui pourrait avancer plus librement ?",
+    "Que pourrais-tu mener tranquillement, sans avoir à le démontrer à personne ?",
+    "Quelles sont les deux parts de toi que tu aimerais voir avancer ensemble ?"
+  ],
+  "lecon": "Avancer en réunissant tes deux parts, sans exercer un contrôle excessif, et découvrir qu'une maîtrise tranquille dure plus longtemps que l'effort forcé.",
+  "image": {
+    "geste": "Un homme marche en direction du spectateur, d'un pas tranquille, les manches retroussées. Rien ne semble le presser et, pourtant, il avance avec assurance.",
+    "seuil": "Deux sphinx marchent de part et d'autre de lui, l'un crème et l'autre gris foncé. Ces deux instincts opposés avancent à sa hauteur, sans que l'un ou l'autre soit tenu en laisse.",
+    "detail": "Un feu blanc et froid entoure son corps comme une aura. Il éclaire son chemin sans rien consumer. Sa force ne vient pas de ses bras, mais de cette énergie qui l'accompagne."
+  },
+  "micro_geste": "Marche dix minutes aujourd'hui à un rythme qui ne t'épuise pas, et remarque ce que tu as tendance à contrôler trop étroitement.",
+  "positions": {
+    "jour": "Ta journée possède une direction et tu sais où tu souhaites aller. La question n'est pas de savoir à quelle vitesse avancer, mais plutôt de quelle manière tu tiens les rênes. Tu peux progresser en contrôlant tout ce qui bouge autour de toi, ou choisir un rythme que tu pourras conserver tout au long de la journée. Ce qui se joue actuellement t'invite à privilégier cette deuxième manière. La carte ne promet pas un chemin court. Elle montre plutôt qu'une progression tranquille est possible, et qu'elle peut te mener loin sans t'épuiser.",
+    "amene": "Tu sais déjà garder le cap. Tu l'as démontré lorsque tu as protégé ce qui comptait pour toi, traversé une situation difficile ou continué d'avancer malgré les moments de découragement. Cette capacité est toujours présente. Ce que tu peux remarquer aujourd'hui, c'est qu'elle n'a jamais besoin de se manifester par la dureté. Les fois où tu as avancé calmement comptent autant que celles où tu as dû serrer les dents.",
+    "se_joue": "Quelle différence fais-tu entre garder une direction et vouloir contrôler tout ce qui t'entoure ? La première attitude préserve ton énergie. La seconde la dépense dans une tension constante. Une situation demande actuellement que tu avances avec calme plutôt que de démontrer ta force. Les deux instincts qui t'accompagnent, le rapide et le prudent, ont chacun leur utilité. Le problème ne vient pas d'eux, mais de la manière dont tu tiens leurs rênes trop serrées.",
+    "essayer": "Choisis une tâche aujourd'hui et accomplis-la au rythme qu'elle demande, sans exercer plus de contrôle que nécessaire. Tu peux essayer avec une conversation que tu repousses, un travail qui t'attend ou une rangée à planter. Pendant que tu agis, remarque tes épaules, ta respiration et ta mâchoire. Si tu sens une tension, relâche-la légèrement et poursuis ton activité. Tu viens de mener quelque chose sans le forcer. C'est cette capacité que tu pourras conserver pour demain.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, VII (Chariot) — tenir ensemble deux forces opposées ; la victoire d'un cycle, pas la victoire absolue ; ombre : l'effort qui gagne mais coupe du vivant",
+    "wen": "§3 — élément Eau ; §5 — mode d'ombre « retourné »",
+    "greer": "§6.2 — leçon : se prouver, avancer, protéger, tenir le cap",
+    "production": "angles — la maîtrise tranquille, les deux sphinx marchent avec lui sans laisse ; le feu blanc qui n'épuise pas ; l'ombre relue en raidissement (Pollack, l'effort qui coupe du vivant). Image — description du visage validé (BRIEF_production_majeurs.md, Groupe B), geste/seuil/détail reformulés",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu ressens moins le besoin de prouver que tu peux tout porter. Tu as longtemps cru qu'un relâchement suffirait à désorganiser ce qui dépendait de toi. Ce qui demeure, c'est l'endurance acquise dans les périodes exigeantes. Tu connais ton rythme et tu sais reconnaître les efforts qui comptent. Ta force n'a plus besoin de se manifester par une tension constante.",
+    "image_soi": "Tu t'attribues le rôle de celle qui doit maintenir l'ensemble en mouvement. Dans ta tête, si tu relâches une responsabilité, quelque chose risque de s'écrouler et tu en seras tenue responsable. Tu continues donc à organiser, prévoir et intervenir. Cette image de personne solide te donne une fonction claire, mais elle laisse peu de place à tes propres limites.",
+    "entourage": "Les autres s'appuient volontiers sur toi pour les tâches difficiles et les décisions importantes. On te remercie pour ta fiabilité et on suppose que tu sauras trouver une solution. Comme tu montres rarement tes hésitations, on pense peu à te demander si tu as encore de la disponibilité. Cette confiance peut devenir une attente permanente, même lorsque tu aurais besoin d'un relais."
+  }
+}

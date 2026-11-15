@@ -1,0 +1,53 @@
+{
+  "id": "major_01",
+  "nom": "Existence",
+  "type": "majeur",
+  "registre": "exterieur",
+  "element": "terre",
+  "note_grille": "colonne 1 (avec Courage et Emprise) : canaliser. Élément Terre : le soutien se vérifie dans le concret, sous les pieds. Tension signature (Pollack) : recevoir contre incarner. I est le premier nombre, l'élan qui prend forme — la première leçon de la série commence par recevoir le sol avant d'agir.",
+  "mots_cles": [
+    "*major_01",
+    "exterieur",
+    "terre*"
+  ],
+  "tension": {
+    "pousse": "recevoir",
+    "retient": "tout porter"
+  },
+  "lumiere": "Tu peux t'asseoir au bord de quelque chose d'immense sans avoir à te justifier. La terre te porte, la nuit t'enveloppe, et rien ne te demande de mériter ta place. Ton appartenance existe simplement parce que tu es là. Lorsque tu en prends réellement conscience, ta manière d'agir change. Tu n'as plus besoin de défendre ta place : tu peux simplement l'occuper. Ce que tu fais naît alors d'un sol qui te soutient déjà.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu portes tout seul, même ce qui pourrait être partagé. Demander de l'aide te met mal à l'aise, alors tu t'organises pour ne jamais avoir à le faire. À force de fonctionner ainsi, tu finis par croire que ta place doit se mériter et que tu dois constamment travailler pour la conserver. Ce réflexe t'a peut-être servi pendant des années. Pourtant, il t'éloigne de ce qui te soutenait déjà, simplement parce que tu as cessé de t'y appuyer.",
+    "issue": "Choisis une seule chose que tu portes par habitude et demande de l'aide pour cette tâche au cours de la semaine. Le sol ne disparaît pas lorsque tu t'appuies sur lui. C'est même à ce moment-là que tu en découvres pleinement le soutien."
+  },
+  "questions": [
+    "Qu'est-ce qui te soutient déjà, sans que tu y prêtes attention ?",
+    "Comment se déroulerait ta journée si tu n'avais rien à prouver à personne ?",
+    "À qui pourrais-tu demander de l'aide cette semaine, pour une seule chose ?"
+  ],
+  "lecon": "Reconnaître que ta place t'appartient sans condition, et agir à partir de cet appui plutôt que de chercher constamment à le défendre.",
+  "image": {
+    "geste": "Une femme est assise de dos, immobile, au bord d'un lac pendant la nuit. Elle ne fait rien pour mériter cette scène : elle en fait simplement partie.",
+    "seuil": "Sous le gazon soigneusement coupé, les racines des arbres s'étendent jusque dans la berge. Le lieu où tu t'assieds est déjà vivant et relié à tout ce qui l'entoure.",
+    "detail": "Des étoiles sont suspendues au-dessus de l'eau par de fins fils d'or. Le ciel ne se contente pas d'éclairer la scène : il semble lui-même maintenir chaque élément à sa place."
+  },
+  "micro_geste": "Assieds-toi cinq minutes dehors aujourd'hui, sans téléphone, et remarque ce qui te porte.",
+  "positions": {
+    "jour": "Une femme est assise au bord d'un immense lac, la nuit, sous des étoiles suspendues par des fils d'or. Elle n'attend rien. L'herbe la soutient, l'eau reflète le ciel, et tout cet appui existe sans qu'elle ait à faire le moindre effort. C'est cette image que la carte place devant toi aujourd'hui. Ta place dans le monde n'est pas à renégocier chaque matin. Elle existe déjà, comme le sol sous la chaise où tu t'assieds. Tout ce que tu entreprends cette semaine prend appui sur quelque chose qui te soutient depuis longtemps.",
+    "amene": "Prends un instant pour remarquer tout ce qui te soutient sans réclamer ton attention : un toit solide, des personnes qui répondent lorsque tu leur écris, des habitudes qui rendent ta vie possible. Remarque aussi comme il est facile d'oublier tout cela dès le début de la journée. Personne ne remercie le sol à chacun de ses pas, et c'est bien normal. La carte t'invite simplement à reconnaître cet appui une fois aujourd'hui, avant de passer à l'action. Ce soutien n'attend rien en retour.",
+    "se_joue": "Que ferais-tu si ta place ne dépendait de rien à prouver ? Cette question mérite de rester présente tout au long de la journée. Observe tes gestes concrets : tu te tends, tu cherches à démontrer quelque chose, tu compenses, tu repousses le repos. Chacun de ces gestes peut servir à défendre une appartenance qui, en réalité, n'est pas menacée. C'est là que se joue la différence entre te protéger sans cesse et accepter de prendre appui. L'appartenance n'a pas besoin d'être conquise : elle peut simplement être reconnue. Laisse cette question t'accompagner jusqu'au soir.",
+    "essayer": "Assieds-toi cinq minutes dehors, sans téléphone et sans objectif particulier. Le banc, la marche ou le gazon supporte ton poids, et rien ne s'écroule. En rentrant, écris sur un papier une seule chose qui t'a soutenu cette semaine sans que tu y penses. Cela peut être un nom, une rue, un animal, ou n'importe quel détail. Le lendemain, reprends cette posture dans un autre endroit. Peu à peu, tu apprends à reconnaître que le monde continue de te porter, même lorsque tu ne produis rien.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, I — le point où l'énergie se met en forme ; tension recevoir / incarner ; colonne 1 (canaliser) ; losange Foi–Existence–Intuition–Accomplissement",
+    "wen": "§3 — élément Terre (table des majeurs, recopiée de jeu.json)",
+    "greer": "§6.2 — leçon : concentrer son attention, se donner les moyens d'agir, communiquer",
+    "production": "concepts — pollack §3 I (recevoir avant d'incarner, appartenance sans conditions), wen §3 (Terre), greer §6.2, nom maison « Existence » de noms_cartes.json ; image — visage validé par Martin (brief de production, Groupe A) : femme de dos au bord du lac sous la Voie lactée, berge à racines d'arbre, étoiles suspendues par des fils d'or — reformulé en geste / seuil / détail",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu cesses peu à peu de chercher ce qui justifierait ta présence. Tu as longtemps associé ta place à ce que tu accomplissais ou à ce que tu apportais aux autres. Ce qui demeure, c'est un sentiment d'appartenance plus simple. Tu peux prendre ta place sans présenter de bilan, sans te rendre utile et sans avoir à expliquer pourquoi tu es là.",
+    "image_soi": "Tu te comportes comme si tu devais constamment rendre des comptes. Même lorsque personne ne te le demande, tu cherches à montrer que tu mérites ta place. Tu mesures parfois ta valeur à ce que tu portes ou à ce que tu règles. Le repos devient alors difficile à accepter. Tu restes debout, prête à intervenir, même quand personne n'attend rien de toi.",
+    "entourage": "On te considère comme une personne fiable et on vient naturellement te confier les problèmes. Dans les discussions, on te demande souvent de décider ou de trouver une solution. Cette confiance peut être sincère, mais elle finit parfois par laisser peu de place à tes propres besoins. Quand tu demandes de l'aide, certains semblent surpris, comme si ce rôle ne t'était pas permis."
+  }
+}

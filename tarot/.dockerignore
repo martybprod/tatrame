@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+.env
+.git/
+.pytest_cache/
+.openchamber/
+_demo/
+tests/
+maquettes/
+data/corpus/reformulations/
+data/corpus/_sauvegardes/

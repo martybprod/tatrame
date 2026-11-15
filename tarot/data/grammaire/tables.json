@@ -1,0 +1,394 @@
+{
+  "_note": "Tables de référence du moteur de lecture. Spec : GRAMMAIRE.md v1 (2026-11-08). Sources conceptuelles : Wen (syntaxe), Pollack (sémantique), Greer (usage) — voir TAROT_APP/_distillation/cartes_concepts/.",
+  "familles": {
+    "feu": {
+      "element": "feu",
+      "regime": "actif",
+      "terrain": "élan, projet, désir, travail",
+      "probleme": "l'élan qui s'épuise ou se charge de trop",
+      "voie": "bouger pour la joie de bouger"
+    },
+    "eau": {
+      "element": "eau",
+      "regime": "réceptif",
+      "terrain": "lien, émotion, intériorité, imaginaire",
+      "probleme": "la passivité et le rêve vide",
+      "voie": "accueillir et aimer"
+    },
+    "air": {
+      "element": "air",
+      "regime": "actif",
+      "terrain": "idée, parole, lucidité, conflit",
+      "probleme": "la pensée qui tourne à vide",
+      "voie": "comprendre et trancher le faux"
+    },
+    "terre": {
+      "element": "terre",
+      "regime": "réceptif",
+      "terrain": "corps, ressources, rythme, sécurité",
+      "probleme": "l'enfermement dans l'avoir et la routine",
+      "voie": "la magie de l'ordinaire"
+    }
+  },
+  "degres": {
+    "as": {
+      "etape": "ouverture",
+      "texte": "la qualité à l'état pur — un don, une racine"
+    },
+    "2": {
+      "etape": "mise en relation",
+      "texte": "deux forces qui se rencontrent ; un choix, une polarité"
+    },
+    "3": {
+      "etape": "premier fruit",
+      "texte": "quelque chose se montre ; l'idéal affronte le réel"
+    },
+    "4": {
+      "etape": "cadre",
+      "texte": "ce qui tient — ou ce qui enferme"
+    },
+    "5": {
+      "etape": "secousse",
+      "texte": "la crise, la fêlure, le test"
+    },
+    "6": {
+      "etape": "circulation",
+      "texte": "ce qui se répare et circule de nouveau"
+    },
+    "7": {
+      "etape": "évaluation",
+      "texte": "discernement, résistance ; une victoire à l'échelle du cycle"
+    },
+    "8": {
+      "etape": "mouvement",
+      "texte": "la mise en circulation, la maîtrise — ou le mouvement empêché"
+    },
+    "9": {
+      "etape": "bilan",
+      "texte": "presque accompli, encore tendu ; la veille"
+    },
+    "10": {
+      "etape": "achèvement",
+      "texte": "la fin du cycle — plénitude ou saturation"
+    }
+  },
+  "registres": {
+    "seuil": {
+      "cartes": [
+        "major_00"
+      ],
+      "texte": "la porte d'entrée : rien n'est encore fixé"
+    },
+    "exterieur": {
+      "cartes": [
+        "major_01",
+        "major_02",
+        "major_03",
+        "major_04",
+        "major_05",
+        "major_06",
+        "major_07"
+      ],
+      "texte": "le monde extérieur et la construction de soi"
+    },
+    "interieur": {
+      "cartes": [
+        "major_08",
+        "major_09",
+        "major_10",
+        "major_11",
+        "major_12",
+        "major_13",
+        "major_14"
+      ],
+      "texte": "le retournement vers l'intérieur"
+    },
+    "transpersonnel": {
+      "cartes": [
+        "major_15",
+        "major_16",
+        "major_17",
+        "major_18",
+        "major_19",
+        "major_20",
+        "major_21"
+      ],
+      "texte": "ce qui dépasse l'individu"
+    },
+    "hors_cycle": {
+      "cartes": [
+        "master"
+      ],
+      "texte": "la carte hors cycle"
+    }
+  },
+  "colonnes": {
+    "_note": "Reconstruction à partir de la division de Pollack en trois séries de sept — notre inférence, pas une thèse explicite du livre. Foi (major_00) et Éveil (master) sont hors colonne.",
+    "1": {
+      "motif": "canaliser l'énergie",
+      "cartes": [
+        "major_01",
+        "major_08",
+        "major_15"
+      ]
+    },
+    "2": {
+      "motif": "franchir le voile",
+      "cartes": [
+        "major_02",
+        "major_09",
+        "major_16"
+      ]
+    },
+    "3": {
+      "motif": "éprouver et tourner",
+      "cartes": [
+        "major_03",
+        "major_10",
+        "major_17"
+      ]
+    },
+    "4": {
+      "motif": "la réponse exacte",
+      "cartes": [
+        "major_04",
+        "major_11",
+        "major_18"
+      ]
+    },
+    "5": {
+      "motif": "le renversement du regard",
+      "cartes": [
+        "major_05",
+        "major_12",
+        "major_19"
+      ]
+    },
+    "6": {
+      "motif": "le choix et l'appel",
+      "cartes": [
+        "major_06",
+        "major_13",
+        "major_20"
+      ]
+    },
+    "7": {
+      "motif": "tenir et achever",
+      "cartes": [
+        "major_07",
+        "major_14",
+        "major_21"
+      ]
+    }
+  },
+  "liaisons": {
+    "_note": "Table des relations élémentaires (Wen). Symétrique. Même élément = pas une liaison : c'est l'écho de famille.",
+    "renforce": {
+      "paires": [
+        [
+          "feu",
+          "air"
+        ],
+        [
+          "eau",
+          "terre"
+        ]
+      ],
+      "texte": "{noms} se soutiennent : la première donne de l'air à la seconde, et l'ensemble prend de l'ampleur."
+    },
+    "neutralise": {
+      "paires": [
+        [
+          "feu",
+          "terre"
+        ],
+        [
+          "air",
+          "eau"
+        ]
+      ],
+      "texte": "{noms} se tiennent en équilibre : l'une retient l'autre, sans victoire ni défaite."
+    },
+    "tension": {
+      "paires": [
+        [
+          "feu",
+          "eau"
+        ],
+        [
+          "air",
+          "terre"
+        ]
+      ],
+      "texte": "{noms} se contrarient : ce que l'une demande, l'autre l'éteint ou l'alourdit. La tension est le sujet, pas un accident."
+    }
+  },
+  "modes_ombre": {
+    "_note": "Quatre modes repris du renversement chez Wen. Règle absolue (Pollack, « la chaîne large ») : toute ombre contient son issue, en une phrase, dans le champ 'issue' de la fiche.",
+    "amoindri": {
+      "texte": "la qualité est là, mais affaiblie — elle attend"
+    },
+    "retourne": {
+      "texte": "la qualité s'est retournée contre soi — on fait l'inverse de ce dont on a besoin"
+    },
+    "subi": {
+      "texte": "la qualité est vécue de l'extérieur, encaissée — on la subit au lieu de la poser"
+    },
+    "differe": {
+      "texte": "la qualité est repoussée — en attente derrière une occupation ou une peur"
+    }
+  },
+  "seuils_moteur": {
+    "_note": "Réglages initiaux du moteur — à calibrer pendant le pilote (phase 1).",
+    "echo_nombre_min": 2,
+    "famille_dominante_min": 2,
+    "majeurs_passage_de_vie": 2,
+    "absence_famille_min_mineurs": 2,
+    "figures_densite_min": 2,
+    "motifs_max": 3,
+    "positions_texte_mots": [
+      50,
+      85
+    ],
+    "champs_courts": {
+      "_note": "lecon, micro_geste, questions : une phrase par conception (CHARTE.md, table des longueurs). Le validateur de Ta Trame ne connaît pas ces types ; nos tests pytest les encadrent.",
+      "lecon": "1 phrase",
+      "micro_geste": "1 phrase",
+      "questions": "1 phrase chacune",
+      "issue": "1 à 2 phrases"
+    },
+    "liaison_mots": [
+      30,
+      80
+    ],
+    "seuil_mots": [
+      25,
+      70
+    ],
+    "cloture_mots": [
+      40,
+      70
+    ]
+  },
+  "motifs": {
+    "_note": "Phrases des motifs de champ, écrites sous charte. Une phrase par type, sans carte nommée — le moteur les paramètre et choisit (2 max par lecture).",
+    "seuil_passage": "Ce tirage contient au moins deux cartes majeures. Les majeures sont les grandes cartes du jeu : elles parlent des passages importants d'une vie, des changements profonds et des décisions qui peuvent marquer un parcours, plutôt que des petits détails du quotidien. Leur présence en nombre indique que le moment mérite une attention particulière.",
+    "seuil_famille": {
+      "feu": "Le feu domine ce tirage. Dans ce jeu, le feu représente l'élan : l'envie d'agir, de commencer quelque chose et de passer au mouvement. Il est question ici d'énergie, de désir et de projets.",
+      "eau": "L'eau domine ce tirage. Dans ce jeu, l'eau représente les liens et les émotions : les relations, les sentiments et tout ce qui se ressent parfois plus facilement que cela ne se dit. Le cœur de la situation se trouve donc dans ce qui te relie aux autres ou dans ce que tu éprouves.",
+      "air": "L'air domine ce tirage. Dans ce jeu, l'air représente les idées et les mots : ce que tu penses, ce que tu comprends, ce que tu exprimes, mais aussi les doutes et les questions. La situation passe surtout par la réflexion et la communication.",
+      "terre": "La terre domine ce tirage. Dans ce jeu, la terre représente le concret : le corps, la maison, l'argent, le travail et tout ce qui se construit dans la réalité. La situation concerne donc quelque chose de tangible, qui demande du temps et des gestes concrets."
+    },
+    "seuil_neutre": "Trois cartes sont posées côte à côte, mais aucune famille ne domine. Chacune apporte un aspect différent de la situation. Ensemble, elles composent un récit : c'est en les regardant les unes par rapport aux autres que leur sens apparaît.",
+    "majeurs_passage": "Ce tirage contient plusieurs cartes majeures ({noms}). Ces grandes cartes parlent des passages importants d'une vie et des décisions qui peuvent en modifier le cours. Leur présence en nombre indique que ce que tu traverses dépasse les préoccupations ordinaires du moment.",
+    "aucun_majeur": "Ce tirage ne contient aucune carte majeure : il est composé uniquement de cartes du quotidien. La situation concerne donc des éléments plus ordinaires et plus faciles à faire évoluer. Elle peut être travaillée concrètement, sans qu'il soit nécessaire d'y voir un grand bouleversement.",
+    "famille_dominante": "Deux cartes {famille} ({noms}) apparaissent dans ce tirage. {glose}. Une famille dominante ne constitue pas un verdict : elle décrit plutôt une période ou une tendance. Elle colore l'ensemble du tirage, mais cette influence n'est pas permanente.",
+    "famille_absente": {
+      "feu": "Aucune carte de feu n'apparaît dans ce tirage. Le feu représente l'élan : l'envie d'agir, de commencer quelque chose et de passer au mouvement. Son absence peut avoir deux sens : soit l'élan est déjà présent et n'a pas besoin d'être souligné, soit il manque à la situation. La question est de savoir laquelle de ces deux possibilités correspond à ce que tu vis.",
+      "eau": "Aucune carte d'eau n'apparaît dans ce tirage. L'eau représente les émotions et les liens : les relations, les sentiments et ce qui se ressent sans toujours se dire. Son absence peut signifier que tout est calme sur ce plan, ou que les émotions et les relations occupent moins de place qu'elles ne le devraient. À toi de voir laquelle de ces possibilités correspond à la situation.",
+      "air": "Aucune carte d'air n'apparaît dans ce tirage. L'air représente les idées, les mots et la compréhension. Son absence peut vouloir dire que les choses sont déjà claires, ou qu'une conversation importante n'a pas encore eu lieu. Le tirage laisse ouvertes ces deux possibilités.",
+      "terre": "Aucune carte de terre n'apparaît dans ce tirage. La terre représente le concret : le corps, la maison, les ressources et tout ce qui se construit dans la réalité. Son absence peut signifier que les aspects pratiques sont déjà réglés, ou qu'ils sont négligés. Les deux possibilités méritent d'être examinées."
+    },
+    "figures_densite": "Ce tirage contient au moins deux figures : les personnages du jeu, soit le Page, le Chevalier, la Reine et le Roi. Contrairement aux autres cartes, qui évoquent surtout des situations ou des forces, les figures représentent des manières d'être et d'agir. La question devient alors : qui adopte quel comportement, en toi ou parmi les personnes qui t'entourent ?",
+    "echo_famille": "Deux cartes {famille} ({noms}) se suivent dans ce tirage. {glose}. La même famille apparaît deux fois de suite : lorsqu'une même matière revient ainsi, son message prend davantage de poids.",
+    "echo_majeures": "Deux cartes majeures ({nom_a} et {nom_b}) portent le même élément. Les majeures représentent les grands mouvements et les passages importants d'une vie. Lorsque deux d'entre elles portent la même force, cette force occupe une place centrale dans ce que tu traverses.",
+    "echo_mixte": "Une carte majeure et une carte mineure partagent le même élément. La majeure ({nom_majeure}) parle d'un passage important de ta vie, tandis que la mineure ({nom_mineure}) concerne davantage ton quotidien. La même force apparaît donc à deux échelles : dans la grande histoire que tu traverses et dans les gestes ordinaires de tes journées.",
+    "meme_colonne": "Deux cartes majeures ({nom_a} et {nom_b}) appartiennent à la même colonne, c'est-à-dire au même groupe de sens dans le jeu. Même si elles occupent des places différentes, elles évoquent une leçon commune. Leur présence dans un même tirage crée un écho qu'il vaut la peine d'écouter.",
+    "nombre_repete": "Le même degré apparaît au moins deux fois dans ce tirage ({noms}). Son thème est : {texte}. Lorsqu'un nombre revient, c'est qu'il insiste sur un sujet particulier. Ce thème mérite donc que tu t'y arrêtes un moment.",
+    "hors_cycle": "Éveil, la 79e carte du jeu, s'est glissée dans ton tirage. C'est une présence rare. Elle ne vient rien demander et ne cherche pas à orienter ta lecture : elle est simplement là, en observatrice."
+  },
+  "deontologie": {
+    "liste_noire": {
+      "_note": "Interdits de lexique (Pollack §10 + charte Align). Un test pytest balaye tout le corpus. Piège connu : exclure les contextes niés (« pas ce que tu dois faire » n'est pas un « il faut »).",
+      "interdits": [
+        "tu vas",
+        "vous allez",
+        "bientôt",
+        "destin",
+        "destiné",
+        "c'est écrit",
+        "le signe que",
+        "un jour tu",
+        "un jour tu vas",
+        "il faut",
+        "tu dois",
+        "prédire",
+        "prédit",
+        "l'avenir dira",
+        "cela va t'arriver",
+        "prédestiné",
+        "mauvaise carte",
+        "bonne carte",
+        "carte négative",
+        "carte positive"
+      ],
+      "remplacements": {
+        "tu vas / vous allez": "en ce moment, la situation penche vers",
+        "il faut / tu dois": "tu peux essayer",
+        "bientôt": "sans échéance annoncée",
+        "destin / c'est écrit / prédestiné": "ce qui se joue en ce moment",
+        "le signe que": "un indice que",
+        "un jour tu": "une piste :"
+      }
+    },
+    "interdits_contenu": [
+      "jamais de mort ou de tragédie annoncée — on parle de passage, de transformation, de précaution",
+      "jamais de conseil juridique, médical ou financier",
+      "jamais de lecture sur un tiers sans sa place consentie dans la question",
+      "jamais de promesse d'avenir, jamais de « c'est écrit », jamais de date",
+      "jamais de réponse oui/non mécanique",
+      "jamais de score, de probabilité ou de classement des cartes par positivité"
+    ],
+    "garde_fous_ecriture": [
+      "ne jamais ouvrir un texte de carte par son titre (l'anti-tic n°1 d'un corpus de tarot)",
+      "ne jamais expliquer la même carte de la même façon dans deux positions — la position change la phrase, pas seulement l'étiquette",
+      "toute ombre contient son issue, en une phrase (champ 'issue' obligatoire)",
+      "un bon texte de carte ne doit pas être entièrement prévisible (critère de Wen : s'il confirme tout ce qu'on pensait déjà, c'est du biais)",
+      "la clôture d'une lecture revient toujours sur une ressource, jamais sur un verdict"
+    ]
+  },
+  "liaisons_paires": {
+    "air|feu": "Entre {noms}, deux forces vont dans le même sens. L'une appartient à la famille du feu, qui représente l'élan et l'envie d'agir ; l'autre appartient à la famille de l'air, qui représente les idées et les mots. Lorsque l'élan rencontre les idées justes, le mouvement gagne en ampleur.",
+    "eau|terre": "Entre {noms}, les deux forces se portent : les émotions trouvent un appui solide, et le concret devient plus doux.",
+    "feu|terre": "Entre {noms}, deux rythmes coexistent : l'un veut bouger, l'autre veut durer. Ensemble, ils imposent une cadence ni trop rapide ni trop lente.",
+    "air|eau": "Entre {noms}, il faut trouver l'équilibre : trop réfléchir noie le sentiment, trop sentir brouille l'idée. C'est cet équilibre qui compte dans la situation.",
+    "eau|feu": "Entre {noms}, l'eau peut freiner le feu, et le feu peut agiter l'eau. Cette friction n'est pas un simple détail du tirage. Elle indique précisément ce qui se joue entre ces deux cartes.",
+    "air|terre": "Entre {noms}, les idées avancent plus vite que les faits. Cette différence entre ce que tu imagines et ce que le réel permet constitue la tension à examiner."
+  },
+  "gloses": {
+    "feu": "Le feu représente l'élan : l'envie d'agir, de commencer quelque chose et de passer au mouvement.",
+    "eau": "L'eau représente les émotions et les liens : les relations, les sentiments et ce qui se ressent sans toujours se dire.",
+    "air": "L'air représente les idées, les mots et la compréhension.",
+    "terre": "La terre représente le concret : le corps, la maison, les ressources et tout ce qui se construit dans la réalité."
+  },
+  "chaines": {
+    "_note": "Gabarits des CHAÎNES de liaison : deux paires adjacentes consécutives du même type (A→B→A, les éléments alternent). Une seule phrase au lieu de deux identiques. {noms} = toutes les cartes dans l'ordre, chacune avec son élément entre parenthèses — le rythme est attribué à l'élément, donc à chaque carte.",
+    "air|feu": "Entre {noms}, l'air et le feu se répondent à tour de rôle : l'air fait naître les idées, le feu leur donne l'impulsion. À chaque passage de l'un à l'autre, l'élan prend de l'ampleur.",
+    "eau|terre": "Entre {noms}, l'eau et la terre se relaient : l'eau accueille les émotions et crée les liens, la terre leur donne une forme et les fait durer. Chaque étape s'appuie sur la précédente.",
+    "feu|terre": "Entre {noms}, le feu et la terre avancent à tour de rôle : le feu pousse au mouvement, la terre donne le temps de construire. Leur alternance crée un rythme qui permet d'avancer sans se précipiter ni s'immobiliser.",
+    "air|eau": "Entre {noms}, l'air et l'eau se succèdent : l'air cherche à comprendre, l'eau cherche à ressentir. Trop d'analyse peut étouffer le sentiment, tandis que trop d'émotion peut brouiller la réflexion. L'équilibre se construit d'une carte à l'autre.",
+    "eau|feu": "Entre {noms}, l'eau et le feu se relaient : l'eau accueille ce qui est ressenti, le feu pousse à agir. L'eau peut ralentir l'élan du feu, tandis que le feu peut intensifier les émotions. Cette tension se retrouve tout au long du tirage.",
+    "air|terre": "Entre {noms}, l'air et la terre se succèdent : l'air fait surgir les idées, la terre les confronte à ce qui est possible. L'écart entre ce qu'on imagine et ce qu'on peut réellement accomplir constitue le point de tension à examiner."
+  },
+  "noms_familles": {
+    "feu": "le feu",
+    "eau": "l'eau",
+    "air": "l'air",
+    "terre": "la terre"
+  },
+  "percee": {
+    "_note": "Le protocole de clôture : blocage → ressource → carte clé → geste. Aucun tirage nouveau, aucune carte nouvelle — les cartes déjà sorties suffisent.",
+    "titre": "La percée",
+    "blocage": "",
+    "fragile": "Le point le plus fragile est ici : cette carte est la moins soutenue par les autres.",
+    "ressource": "{nom} te pousse à {pousse}, et c'est cette force qui reste disponible.",
+    "ressource_simple": "Ce qu'elle offre reste disponible : c'est la ressource du tirage.",
+    "cle_pont": "C'est elle qui relie le blocage et la ressource.",
+    "cle_seule": "Le blocage et la ressource se tiennent dans la même carte : c'est elle qui porte les deux.",
+    "geste": "{geste}",
+    "geste_absent": "La carte clé ne propose pas de geste : garde sa question ouverte jusqu'au soir.",
+    "note": "La percée ne remplace pas la lecture : elle la referme. Elle nomme ce qui bloque, ce qui aide, et par où passer.",
+    "cle_tiree": "Tirée après les neuf autres, c'est elle qui relie le blocage et la ressource.",
+    "blocage_repli": "Le blocage tient à cette carte : elle te pousse à {pousse} et te retient de {retient}."
+  }
+}

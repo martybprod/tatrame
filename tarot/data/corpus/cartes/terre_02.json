@@ -1,0 +1,56 @@
+{
+  "id": "terre_02",
+  "nom": "Présence",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 2,
+  "element": "terre",
+  "note_grille": "degré 2 (mise en relation) × famille terre : accord — la carte relie le pas et la terre, et l'équilibre naît de ce contact plutôt que d'une force.",
+  "mots_cles": [
+    "un pas à la fois",
+    "les mains vides",
+    "la ligne étroite",
+    "l'équilibre en marche",
+    "pieds nus"
+  ],
+  "tension": {
+    "pousse": "poser le pas",
+    "retient": "tout porter"
+  },
+  "lumiere": "Tu marches, et c'est tout ce que le moment te demande. Un pied se pose, l'autre se soulève, et la terre accueille chaque appui. Tu n'as rien à apporter, rien à préparer. Tu es simplement là, en mouvement. L'équilibre se construit pendant que tu avances, un pas après l'autre. Il n'existe pas lorsque tu t'arrêtes pour le chercher, mais dans le mouvement lui-même. Si ton pied glisse, tu retrouves ton appui et tu continues.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu marches, mais ce n'est plus ton propre rythme qui te guide. La journée te tire dans une direction, la liste des choses à faire décide de tes pas, et tu arrives au soir sans avoir vraiment avancé pour toi-même. Ton corps se déplace, mais ton attention est déjà ailleurs. Dans ces journées, tu trébuches plus facilement sur de petits détails. Tu crois manquer d'équilibre, alors que c'est surtout ta présence qui fait défaut. La marche t'appartient toujours. Il ne reste qu'à reprendre ton propre rythme.",
+    "issue": "Reprends aujourd'hui le contrôle d'un seul trajet et parcours-le à ta manière, sans consulter de liste ni penser à la prochaine tâche. Un pas posé en pleine conscience peut ramener ton équilibre mieux qu'une longue réflexion."
+  },
+  "questions": [
+    "Où sont tes pieds en ce moment, et où est ton attention ?",
+    "Qu'est-ce que tu pourrais déposer pour marcher les mains libres ?",
+    "Qu'est-ce qui te fait trébucher en ce moment, et comment te relèves-tu ?"
+  ],
+  "lecon": "Être présent, c'est avancer un pas à la fois, les mains libres et l'attention dans le mouvement.",
+  "image": {
+    "geste": "un homme marche pieds nus au sommet d'un mur de pierre sèche. Vu de dos, il pose un pied devant l'autre, les mains libres le long du corps",
+    "seuil": "le mur suit la crête et sa largeur dépasse à peine celle d'un pied. D'un côté, la prairie descend doucement ; de l'autre, la pente disparaît dans la brume de la vallée",
+    "detail": "ses mains restent vides, le long du corps. C'est précisément cette liberté qui lui permet de garder son équilibre"
+  },
+  "micro_geste": "Parcours aujourd'hui une partie de ton chemin les mains libres, sans téléphone ni sac, en comptant dix pas pleinement posés.",
+  "positions": {
+    "jour": "Sur un mur de pierre sèche, un homme marche pieds nus, un pied devant l'autre. D'un côté, la prairie descend doucement ; de l'autre, la vallée disparaît dans la brume. Il ne regarde ni l'une ni l'autre. Son attention se trouve dans le pied qui se pose. Ta journée ressemble à ce passage étroit. Le pas important est celui que tu poses maintenant, à l'endroit où tu te trouves. Le suivant viendra lorsque celui-ci sera terminé.",
+    "amene": "Tu entres dans ta journée à toute vitesse, et ton corps semble suivre les consignes avant même que tu aies le temps d'y penser. La liste des tâches te tire d'un côté, une inquiétude t'entraîne ailleurs, et tes mains finissent toujours par être occupées. Tu maintiens cet équilibre grâce à ton rythme, jusqu'au moment où un petit détail te fait trébucher. La carte te propose une autre façon d'avancer : les mains libres, un pas après l'autre, et la même distance parcourue sans cette sensation de lourdeur.",
+    "se_joue": "Où se trouve ton attention pendant que ton corps accomplit une tâche ? C'est là que se situe la question du moment. Tu te rends à la cuisine en pensant encore au travail. Tu épluches un légume tout en repassant dans ta tête une conversation de la veille. Pourtant, ton pied ne connaît qu'un seul endroit : celui où il se pose. Ton équilibre dépend de cet accord entre le mouvement et le sol qui le reçoit.",
+    "essayer": "Ce soir, quelqu'un fait la vaisselle sans allumer la télévision ni consulter son téléphone. Ses mains sont dans l'eau tiède, et la fenêtre est ouverte sur le calme. Une autre personne traverse son corridor, téléphone rangé dans sa poche, en prêtant simplement attention à ses pas. La carte propose ce type d'expérience : une activité ordinaire vécue du début à la fin, sans distraction. Le corps retrouve alors naturellement son rythme et son équilibre."
+  },
+  "source_referentielle": {
+    "pollack": "§4, deux de Deniers — l'adaptation, l'équilibre trouvé en mouvement ; le jonglage de Rider est renversé ici en marche les mains vides",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré 2 : la mise en relation",
+    "greer": "§6.3 — un deux de terre relie le corps et le lieu : ici, le pas et la crête",
+    "production": "rédaction de l'agent Groupe A le 2026-11-11 sous le brief terre (Groupe A — la source et les fondamentaux), image d'après _distillation/passation/terre_02_Presence.md (concept « le muret », master 780155)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ralentir et à sortir de cette habitude de toujours courir après le temps. Jusqu'ici, tu avais tendance à penser constamment à ce que tu devais faire ensuite, même lorsque tu étais déjà occupée à autre chose. Tu apprends maintenant à être davantage présente dans ce que tu vis. Tu retrouves le plaisir de faire les choses à ton rythme, sans avoir toujours besoin de te dépêcher.",
+    "image_soi": "Tu te vois comme une personne qui doit toujours être utile et avoir quelque chose à apporter. Tu as parfois du mal à arriver quelque part sans avoir prévu de rendre service, d'aider ou de prendre quelque chose en charge. Même lorsque tu rencontres simplement quelqu'un, tu peux ressentir le besoin d'avoir quelque chose à offrir. Cette attitude te rend serviable, mais elle t'empêche parfois de profiter simplement de la présence des autres.",
+    "entourage": "Les autres te voient comme une personne active, régulière et toujours en mouvement. Ils savent que tu avances dans tes projets et que tu respectes généralement tes engagements. Ils comptent donc facilement sur toi pour organiser les choses et prendre des initiatives. En revanche, ils ne remarquent pas toujours que tu aimerais parfois ralentir, te reposer et ne plus avoir autant de responsabilités."
+  }
+}

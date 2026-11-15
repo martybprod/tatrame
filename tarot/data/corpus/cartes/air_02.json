@@ -1,0 +1,55 @@
+{
+  "id": "air_02",
+  "nom": "Dualité",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 2,
+  "element": "air",
+  "note_grille": "degré 2 (mise en relation) × famille air (la dualité nommée) : la relation se joue entre les deux côtés d'une même personne, pas entre deux extérieurs — paradoxe assumé.",
+  "mots_cles": [
+    "les paumes réunies",
+    "l'or du jour",
+    "le lilas du soir",
+    "le contact tranquille"
+  ],
+  "tension": {
+    "pousse": "relier",
+    "retient": "trancher"
+  },
+  "lumiere": "Il existe en toi plusieurs façons de regarder le monde, et elles n'ont pas nécessairement besoin de se ressembler. La carte présente deux mains qui se rejoignent doucement, l'une baignée de lumière dorée, l'autre teintée par le lilas du soir. Elles ne se retiennent pas prisonnières : elles se rencontrent simplement. Tu peux accueillir des désirs différents sans obliger l'un à faire taire l'autre. L'équilibre commence parfois par cette rencontre intérieure.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu te retrouves partagé entre deux directions qui semblent incompatibles. Chaque fois que tu avances vers l'une, l'autre revient réclamer sa place. Tu cherches une réponse définitive alors que les deux voix ont peut-être quelque chose d'important à te dire. À force de vouloir supprimer cette contradiction, tu transformes une richesse intérieure en conflit permanent.",
+    "issue": "Prends le temps de laisser parler séparément les deux parties de toi. Écris ce que chacune désire, ce qu'elle cherche à préserver et ce qu'elle redoute. Ne cherche pas immédiatement à les réconcilier. Commence par leur accorder la même écoute."
+  },
+  "questions": [
+    "Quelles sont les deux aspirations qui cohabitent actuellement en toi ?",
+    "À quel endroit pourraient-elles se rencontrer sans se contraindre ?",
+    "Qu'est-ce que tu risques de ne plus entendre en choisissant trop rapidement ?"
+  ],
+  "lecon": "L'harmonie n'exige pas que toutes les voix disent la même chose. Elle naît lorsque chacune peut exister sans devoir effacer l'autre.",
+  "image": {
+    "geste": "deux paumes se rejoignent sans pression. Le contact exprime une entente possible, pas une obligation de fusion.",
+    "seuil": "aucune séparation nette ne divise les deux espaces. Les mains partagent le même arrière-plan.",
+    "detail": "l'or du jour rencontre le lilas du soir. Deux lumières différentes peuvent appartenir au même horizon."
+  },
+  "micro_geste": "Écris deux phrases sur une contradiction que tu ressens aujourd'hui. Donne à chacune la possibilité d'exprimer sa vérité, sans décider laquelle doit l'emporter.",
+  "positions": {
+    "jour": "Deux envies importantes se présentent simultanément. Elles ne suivent pas le même chemin, mais chacune mérite d'être entendue. La carte t'invite à ne pas précipiter le choix. Imagine ces deux mains qui se rencontrent : elles restent distinctes tout en partageant un même espace. Ta journée peut trouver son équilibre dans cette coexistence, même si toutes les réponses ne sont pas encore disponibles.",
+    "amene": "Tu arrives peut-être avec le désir de simplifier une situation qui comporte plusieurs dimensions. Tu aimerais savoir exactement où te placer, sans avoir à revenir sur ta décision. Pourtant, une partie de toi connaît déjà les nuances que ton esprit voudrait éliminer. La carte te propose de ralentir ce besoin de cohérence absolue. Tu n'as pas à devenir une seule chose pour avancer.",
+    "se_joue": "Une tension intérieure cherche à être comprise plutôt qu'arbitrée. Deux besoins se présentent, l'un tourné vers le mouvement, l'autre vers la prudence. Aucun ne constitue nécessairement un obstacle. Ce qui compte aujourd'hui, c'est de découvrir comment les faire cohabiter sans sacrifier ce qu'ils ont de précieux.",
+    "essayer": "Prends une feuille et trace deux colonnes. Dans la première, écris ce que tu souhaites. Dans la seconde, ce que tu hésites à abandonner. Relis les deux côtés attentivement et cherche un petit geste qui respecte chacun d'eux. Tu n'as pas besoin de résoudre toute la contradiction aujourd'hui."
+  },
+  "source_referentielle": {
+    "pollack": "§4, deux d'Épées — l'équilibre tenu entre deux options, l'impasse délibérée : notre carte en prend le côté vivant, le contact des deux",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 2 : la mise en relation des deux côtés d'une même personne",
+    "greer": "§6.5 — l'ombre comme part non intégrée : le côté nié tire d'autant plus fort",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_2)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à accepter que plusieurs envies ou opinions différentes puissent exister en toi en même temps. Jusqu'ici, tu cherchais souvent à choisir un seul point de vue ou à trouver une réponse définitive à tes hésitations. Tu pouvais avoir l'impression que changer d'avis signifiait manquer de cohérence. Tu comprends maintenant que deux idées opposées peuvent parfois être toutes les deux justes, selon la situation.",
+    "image_soi": "Tu as l'impression que tu devrais toujours savoir exactement ce que tu penses et ce que tu veux. Tu peux considérer qu'hésiter ou changer d'avis est un signe d'indécision ou de manque de caractère. Tu essaies donc de prendre rapidement une position claire, même lorsque tu ressens plusieurs choses contradictoires. Mais les envies que tu mets de côté ne disparaissent pas pour autant : elles continuent d'exister en toi.",
+    "entourage": "Les autres peuvent te trouver changeante parce que tes opinions ou tes décisions varient parfois selon les situations. Certains remarquent que tu ne réagis pas toujours de la même manière selon les personnes avec lesquelles tu échanges. On peut aussi te demander de prendre position clairement, comme si tu devais toujours avoir une réponse définitive. Cette image ne montre pas forcément ton manque de cohérence : elle peut simplement refléter ta capacité à voir plusieurs aspects d'une même situation."
+  }
+}

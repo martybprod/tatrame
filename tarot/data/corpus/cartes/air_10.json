@@ -1,0 +1,55 @@
+{
+  "id": "air_10",
+  "nom": "Renaissance",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 10,
+  "element": "air",
+  "note_grille": "degré 10 (achèvement) × famille air (le renouveau) : tension assumée — un cycle se ferme et la preuve du suivant pousse déjà dans la même terre.",
+  "mots_cles": [
+    "le crocus",
+    "la neige intacte",
+    "le ciel ouvert",
+    "la lumière retrouvée"
+  ],
+  "tension": {
+    "pousse": "recommencer",
+    "retient": "attendre la fin"
+  },
+  "lumiere": "Au milieu d'une étendue de neige immaculée, un crocus a commencé à fleurir. Sa tige verte traverse le blanc et ses pétales violets s'ouvrent sous une lumière dorée. Au-dessus, le ciel nocturne laisse apparaître une large déchirure lumineuse. La carte montre le premier signe d'un nouveau cycle. Le changement n'attend pas que tout l'ancien ait disparu. Il commence parfois alors que les traces de l'hiver sont encore visibles.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu sens qu'un nouveau départ devient possible, mais tu hésites encore à lui faire confiance. Tu attends de te sentir complètement prêt, d'avoir oublié les difficultés précédentes ou d'être certain de ne pas répéter les mêmes erreurs. Cette prudence finit par retenir ce qui cherche déjà à grandir. Tu regardes encore l'hiver alors que quelque chose commence à fleurir.",
+    "issue": "Choisis une habitude, une intention ou une action qui représente ton nouveau départ. Donne-lui une place concrète dans ta semaine et répète-la sans attendre des conditions parfaites."
+  },
+  "questions": [
+    "Quel chapitre de ta vie semble désormais terminé ?",
+    "Quel premier signe de renouveau peux-tu déjà observer ?",
+    "Qu'attends-tu encore avant de t'autoriser à avancer ?"
+  ],
+  "lecon": "Le renouveau ne demande pas que le passé disparaisse. Il commence lorsque tu donnes une chance à ce qui veut naître.",
+  "image": {
+    "geste": "une tige droite émerge de la neige. Elle traverse la surface sans détour.",
+    "seuil": "une ouverture lumineuse déchire le ciel sombre et éclaire directement la fleur.",
+    "detail": "le cœur doré du crocus se détache au centre des pétales violets. La première floraison porte déjà sa propre lumière."
+  },
+  "micro_geste": "Fais aujourd'hui une chose qui appartient à la prochaine étape de ta vie. Même modeste, qu'elle soit réelle et choisie.",
+  "positions": {
+    "jour": "Une nouvelle possibilité commence à prendre forme. Tu n'as peut-être pas encore toutes les preuves que les choses vont changer, mais certains signes sont déjà présents. La carte montre une fleur qui traverse la neige sans attendre que le paysage soit entièrement transformé. Aujourd'hui, autorise-toi à agir à partir de ce qui commence, plutôt qu'à partir de ce qui se termine.",
+    "amene": "Tu arrives avec les habitudes d'une période qui t'a demandé beaucoup d'énergie. Tu as peut-être appris à te protéger, à anticiper les difficultés ou à ne plus espérer trop vite. Ces réflexes ont pu t'aider autrefois, mais ils ne doivent pas nécessairement diriger la suite. La carte t'invite à reconnaître que tu peux entrer dans une nouvelle saison sans avoir tout oublié de la précédente.",
+    "se_joue": "Tu te trouves entre la prudence héritée du passé et l'envie de recommencer. Une partie de toi attend encore un signe supplémentaire, tandis qu'une autre est déjà prête à sortir de la neige. Le crocus ne représente pas une transformation spectaculaire. Il incarne le commencement, discret mais bien réel. Ce qui compte aujourd'hui, c'est de lui laisser une chance de grandir.",
+    "essayer": "Choisis une action qui symbolise le nouveau chapitre que tu souhaites ouvrir. Réserve-lui un moment précis dans ta semaine et engage-toi à la répéter. Ne cherche pas à mesurer immédiatement le résultat. Concentre-toi sur la régularité du geste. Une renaissance se construit aussi par de petites preuves quotidiennes."
+  },
+  "source_referentielle": {
+    "pollack": "§4, dix d'Épées — la fin du cycle, le fond atteint et l'aube qui suit : notre carte garde l'aube sans les épées",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 10 : l'achèvement qui ouvre la place du suivant",
+    "greer": "§6 — la fin comme place libre, le renouveau qui n'emprunte pas sa forme à l'ancien",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_10)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à comprendre que tu n'as pas besoin d'avoir complètement réglé ton passé pour pouvoir recommencer quelque chose. Jusqu'ici, tu pouvais attendre que tous tes problèmes soient résolus avant de prendre un nouveau départ. Tu voulais que tout soit terminé et parfaitement rangé avant d'avancer. Tu apprends maintenant que le changement peut commencer même lorsque certaines difficultés sont encore présentes. Tu peux avancer progressivement, sans attendre que tout soit parfait.",
+    "image_soi": "Tu penses parfois que tu dois d'abord régler toutes les difficultés de ta vie avant de pouvoir recommencer. Tu as besoin de sentir que tout est terminé, que tu as fait le ménage dans ton passé et que tu es enfin prête. Tu repousses donc certains projets en attendant ce moment où tu te sentiras complètement libérée. Mais cette attente peut durer longtemps. Tu oublies que tu as aussi le droit de commencer une nouvelle étape alors que tout n'est pas encore réglé.",
+    "entourage": "Les autres continuent parfois à te voir comme la personne que tu étais avant les changements que tu traverses. Ils peuvent encore te parler de ton passé ou penser que tu as besoin de temps pour te remettre de certaines difficultés. Certains sont surpris de te voir reprendre des projets ou envisager un nouveau départ. Ton entourage ne remarque pas toujours que tu es déjà en train de changer et que tu n'as plus envie de rester définie par ce que tu as vécu auparavant."
+  }
+}

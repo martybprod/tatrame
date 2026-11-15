@@ -1,0 +1,53 @@
+{
+  "id": "major_10",
+  "nom": "Changement",
+  "type": "majeur",
+  "registre": "interieur",
+  "element": "feu",
+  "note_grille": "colonne 3 (avec Créativité et Silence), éprouver et verser. Élément Feu. Le dix ferme un cycle et en ouvre un autre (Pollack le lit comme un achèvement et un zéro à la fois), et le feu fait du tournant un élan plutôt qu'une mécanique. Tension signature (Pollack) — subir contre répondre.",
+  "mots_cles": [
+    "*major_10",
+    "interieur",
+    "feu*"
+  ],
+  "tension": {
+    "pousse": "accompagner",
+    "retient": "retenir"
+  },
+  "lumiere": "Une grande roue peinte tourne dans un ciel étoilé, et une même image semble la traverser sans interruption. Le printemps se mêle à l'aube, l'été apparaît à midi, l'automne accompagne le soir et l'hiver enveloppe la nuit sans provoquer de rupture. Tout tourne, mais rien ne se déchire au passage. Ta vie suit actuellement un mouvement semblable. Les choses changent, sans que ce mouvement détruise nécessairement ce qui demeure. Tu peux laisser tourner ce qui doit tourner, sans chercher à retenir une saison particulière.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu vis le changement à contre-courant. La roue tourne, mais tu le ressens comme une offense, en répétant que les choses n'auraient pas dû se passer ainsi. Tu négocies encore avec ce qui est déjà arrivé, tu compares la situation actuelle à celle d'avant et tu t'épuises à vouloir maintenir une saison en place. L'autre extrême existe aussi : te laisser emporter par les événements sans plus rien décider, sous prétexte que tout finit par passer. Dans les deux cas, tu subis le mouvement au lieu de chercher comment y prendre part.",
+    "issue": "Choisis une chose qui a déjà changé et qui ne peut plus revenir en arrière. Décide ensuite du premier geste que tu peux poser aujourd'hui à partir de ce qui reste. Une réponse concrète ouvre davantage de possibilités que la protestation contre ce qui est déjà arrivé."
+  },
+  "questions": [
+    "Qu'est-ce que tu continues de négocier alors que la situation a déjà changé ?",
+    "À quelle saison ou à quel moment de la journée ta situation actuelle ressemble-t-elle le plus ?",
+    "Qu'est-ce qui demeure inchangé en toi pendant que tout tourne autour de toi ?"
+  ],
+  "lecon": "Traverser les cycles en accompagnant leur mouvement plutôt qu'en cherchant à les retenir, et accueillir l'imprévu comme une partie du même mouvement.",
+  "image": {
+    "geste": "Une roue parfaitement ronde flotte dans le cosmos. Une seule peinture continue la parcourt. Les saisons de l'année et les heures de la journée s'y confondent, sans cases ni séparations.",
+    "seuil": "Un serpent doré se mord la queue et suit le contour de la roue. Le cercle se referme sur lui-même, et chaque fin de cycle devient aussi un nouveau départ.",
+    "detail": "Chaque saison de la roue possède ses propres plantes, mais la même peinture les traverse toutes sans se déchirer. Le changement n'efface pas ce qui demeure, et l'image entière le montre."
+  },
+  "micro_geste": "Choisis une chose qui a déjà changé et pose un premier geste à partir de ce qui reste, sans chercher à modifier le passé.",
+  "positions": {
+    "jour": "Un cycle arrive à son terme quelque part dans ta vie, tandis qu'un autre commence déjà à prendre sa place. Le climat de la journée est celui d'un passage : non pas une tempête, mais cet instant précis où une saison cède la place à la suivante. Tu peux regarder ce qui se termine et laisser l'espace se libérer sans chercher immédiatement à le remplir. La roue ne te demande pas d'aimer toutes les saisons. Elle t'invite simplement à ne pas bloquer le mouvement en tentant de retenir ce qui doit tourner.",
+    "amene": "Tu as déjà traversé plusieurs fins de cycle, et tu es toujours là pour en parler. Chacune t'a laissé quelque chose : une méthode, une expérience, un savoir-faire ou la preuve qu'un hiver se traverse souvent mieux qu'on ne l'imagine depuis l'automne. Tout ce bagage t'accompagne sans t'encombrer. Tu peux t'y appuyer aujourd'hui au lieu de tout calculer comme si tu traversais ton premier hiver.",
+    "se_joue": "Qu'est-ce qui change dans ta vie sans que tu l'aies décidé, et comment choisis-tu d'y répondre ? Le mouvement actuel ne dépend peut-être pas de toi. Il a commencé avant même que tu en prennes pleinement conscience, comme le soir succède naturellement à l'après-midi. Ce qui dépend de toi, c'est la posture que tu adoptes : lutter contre ce qui est déjà arrivé, tout laisser passer ou trouver ta place dans le mouvement. Entre ces possibilités, une question peut t'aider à choisir : qu'est-ce que tu souhaites conserver et qu'est-ce que tu peux accompagner ?",
+    "essayer": "Considère ce changement comme une étape de transition plutôt que comme un verdict. Réponds-y par un geste concret plutôt que par une simple opinion. Écris deux colonnes : ce qui se termine et ce qui demeure. Choisis ensuite une action à partir de la deuxième colonne. Une saison n'a jamais besoin d'être approuvée pour aller au bout de son cycle. Elle poursuit son chemin, et tu peux avancer avec elle, un choix concret à la fois.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, X (Roue) — l'événement qui arrive sans qu'on l'ait causé, la réponse plutôt que la lutte ; X lu comme un achèvement et un zéro ; ombre : s'acharner contre le fait accompli ou s'abandonner à tout",
+    "wen": "§3 — élément Feu ; §5 — mode d'ombre « subi »",
+    "greer": "§6.2 — leçon : changer de cadre, traverser les cycles, accueillir l'imprévu",
+    "production": "angles — tout tourne, les saisons et les heures fondues dans une seule mouture ; ce qui change n'abîme pas ce qui reste ; l'ombre en double piège de Pollack, s'acharner ou s'abandonner. Image — description du visage validé (BRIEF_production_majeurs.md, Groupe B), geste/seuil/détail reformulés",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu passes moins de temps à refaire le scénario de ce qui aurait pu arriver. Tu as longtemps comparé le présent à une autre version de ton histoire. Ce qui demeure, c'est ta façon personnelle de traverser les changements : tes repères, tes habitudes utiles et ta manière de répondre. Le contexte peut tourner, mais tu n'as pas à repartir de zéro.",
+    "image_soi": "Tu prends la place de celle qui doit préserver ce qui existait. Les habitudes, les objets et les façons de faire représentent pour toi une continuité importante. Tu appelles cela de la fidélité, et ce rôle te donne un sentiment de stabilité. Mais tu peux aussi te retrouver à défendre une organisation qui ne correspond plus à ta vie actuelle.",
+    "entourage": "Certains te trouvent attachée à tes habitudes et te parlent souvent de tourner la page. Ces remarques reviennent parfois dès qu'un changement se présente. On voit plus facilement ce que tu conserves que les raisons qui t'y attachent. Les autres peuvent alors confondre ton besoin de comprendre la transition avec un refus catégorique d'avancer."
+  }
+}

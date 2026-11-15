@@ -1,0 +1,56 @@
+{
+  "id": "terre_chevalier",
+  "nom": "Ralentir",
+  "type": "figure",
+  "famille": "terre",
+  "rang": "chevalier",
+  "element": "terre",
+  "note_grille": "figure terre (chevalier) : l'élan vers un seul objectif, ici ralenti jusqu'à la vitesse juste. Deux lectures possibles (Greer) : quelqu'un qui porte avec constance autour de toi, ou la charge que tu portes toi-même. Rang chevalier = la fonction en mouvement, et le mouvement qui ne renverse rien.",
+  "mots_cles": [
+    "la perche sur les épaules",
+    "les deux seaux pleins",
+    "le pas égal",
+    "le linge plié",
+    "la vitesse de la charge"
+  ],
+  "tension": {
+    "pousse": "tenir le pas",
+    "retient": "presser le mouvement"
+  },
+  "lumiere": "Deux seaux remplis d'eau sont suspendus aux extrémités d'une longue perche posée sur les épaules d'un homme qui avance lentement. Un linge plié protège ses épaules du bois. La perche fléchit sous le poids, mais l'eau bouge à peine. L'homme avance à la vitesse que lui impose sa charge, ni plus ni moins. Tu connais cette façon de progresser : atteindre sa destination sans rien renverser. Ce que tu portes actuellement repose sur la régularité de tes pas, et non sur la rapidité avec laquelle tu cherches à avancer.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu subis actuellement un rythme qui ne vient pas de toi. Les demandes des autres déterminent ta vitesse, et le poids que tu portes devient plus difficile à supporter. Tu accélères pour suivre, mais l'eau déborde un peu à chaque pas. Ton dos connaît le poids de la charge, mais il ne décide plus du rythme. C'est la précipitation extérieure qui dirige ton chemin, sans pour autant te permettre d'avancer plus efficacement.",
+    "issue": "Reprends aujourd'hui le contrôle du rythme d'une seule tâche, de préférence celle qui te demande le plus d'efforts. Accomplis-la à ta propre vitesse. Le reste pourra attendre son tour. Lorsque tu retrouves ton pas, l'eau cesse de déborder."
+  },
+  "questions": [
+    "Qu'est-ce que tu portes en ce moment, et à quelle vitesse ?",
+    "Qui décide de ton pas quand tu presses le mouvement ?",
+    "Qu'est-ce qui tient précisément parce que tu ne te presses pas ?"
+  ],
+  "lecon": "La bonne vitesse dépend du poids que l'on porte. Les épaules savent souvent mieux que l'horloge quel rythme adopter.",
+  "image": {
+    "geste": "un homme porte une longue perche horizontale sur ses épaules, protégées par un linge plié. La perche fléchit sous le poids, mais les deux seaux restent à la même hauteur",
+    "seuil": "un chemin de terre et de pierres traverse une gorge entre de gros rochers. Le seul passage à franchir est le prochain pas, posé au rythme de l'eau transportée",
+    "detail": "quelques gouttes brillent sur le sentier derrière l'homme. L'eau qui a débordé reste en arrière, mais il ne presse pas davantage son pas"
+  },
+  "micro_geste": "Aujourd'hui, transporte une charge en conservant le même rythme du début à la fin, sans chercher à accélérer.",
+  "positions": {
+    "jour": "La journée s'annonce à un rythme tranquille, même si une tâche importante doit être accomplie. Elle sera plus facile à mener en avançant lentement, au rythme d'un chemin que l'on parcourt pierre après pierre, sans courir ni s'arrêter constamment. Le poids se fait sentir sur les épaules. Il est réel, mais il peut être porté. Le soir arrivera à son heure, et les deux seaux pourront encore être pleins à l'arrivée.",
+    "amene": "Tu portes beaucoup de choses depuis un certain temps, et tu les portes surtout avec constance. Cette régularité se remarque dans les habitudes que tu maintiens et les responsabilités que tu reprends chaque matin. Quelqu'un t'a peut-être transmis ce modèle de la personne fiable, toujours prête à porter sa charge, et tu as adopté son rythme en même temps que ses responsabilités. Mais ta charge a changé au fil du temps, tandis que ton rythme est resté le même. Tu sais porter, cela ne fait aucun doute. La question concerne maintenant la vitesse à laquelle tu avances.",
+    "se_joue": "Qui a choisi le rythme que tu suis aujourd'hui ? La question se pose directement à travers tes pas. D'un côté, il y a la charge que tu as acceptée et qui correspond à tes responsabilités. De l'autre, il y a la précipitation qui voudrait que tout soit terminé avant le soir. L'homme de la carte ne se presse pas pour répondre à une consigne extérieure. Il avance à la vitesse que lui impose l'eau qu'il transporte. Son rythme dépend du poids réel de sa charge. Le tien est-il réglé sur ce que tu portes vraiment ou sur une cadence que tu as empruntée aux autres ?",
+    "essayer": "Un homme remplit deux seaux et se met en route sans courir. Il laisse le poids de l'eau déterminer sa vitesse. Le trajet prend le temps nécessaire, et l'eau reste dans les seaux sans déborder. Tu peux reprendre cette façon de faire pour une seule tâche de ta journée, en choisissant la plus lourde et en lui accordant davantage de temps. À la fin, observe ce qui a changé. Tes épaules et ce que tu transportes te donneront peut-être une meilleure réponse que l'horloge."
+  },
+  "source_referentielle": {
+    "pollack": "§4, figures de cour — le chevalier porte la couleur en mouvement, l'élan vers un seul objectif",
+    "wen": "§4 — rang chevalier : la fonction en mouvement ; famille terre : l'élan ralenti qui tient la charge",
+    "greer": "§6.4 — chevalier = la fonction dirigée vers un but, dans une personne ou en toi",
+    "production": "image : _distillation/passation/terre_chevalier_Ralentir.md et symboles/terre_chevalier_ralentir.md (concept « le porteur d'eau », validé par Martin) ; angles : Pollack (chevalier), Wen (rang chevalier), Greer (rangs)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus chercher à suivre le rythme des autres à tout prix. Jusqu'ici, tu pouvais accélérer pour ne pas avoir l'impression d'être en retard ou de ralentir le groupe. Tu avais tendance à adapter ta cadence aux attentes extérieures, même lorsque cela te demandait trop d'efforts. Tu apprends maintenant à avancer à ton propre rythme, en respectant tes capacités et tes besoins.",
+    "image_soi": "Tu as parfois peur d'être trop lente ou de ne pas être aussi efficace que les autres. Tu associes souvent la réussite à la rapidité et à la capacité de terminer rapidement ce que tu entreprends. Tu te presses donc pour ne pas donner l'impression de manquer d'efficacité. Cette façon de te voir te pousse à avancer, mais elle peut aussi te faire perdre ton rythme naturel et t'épuiser inutilement.",
+    "entourage": "Les autres savent qu'ils peuvent compter sur toi pour faire les choses sérieusement et respecter tes engagements. Ils apprécient ta régularité et ta capacité à avancer sans précipitation inutile. Ils te confient facilement des responsabilités parce qu'ils savent que tu ne laisses pas les choses au hasard. Cependant, cette confiance peut aussi les amener à te donner davantage de travail sans se demander si tu souhaites réellement continuer à tout prendre en charge."
+  }
+}

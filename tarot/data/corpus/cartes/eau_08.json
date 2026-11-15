@@ -1,0 +1,55 @@
+{
+  "id": "eau_08",
+  "nom": "Lâcher-prise",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 8,
+  "element": "eau",
+  "note_grille": "degré 8 (mouvement, mise en circulation) × famille eau (lien, intériorité) : le mouvement est intérieur — on rend, on libère, sans changer de lieu. Accord nombre × famille, pas de conflit.",
+  "mots_cles": [
+    "rendre",
+    "main ouverte",
+    "l'instant précis",
+    "l'eau reçoit",
+    "la lumière qui vient"
+  ],
+  "tension": {
+    "pousse": "rendre",
+    "retient": "retenir"
+  },
+  "lumiere": "C'est le moment où tu rends à l'eau quelque chose que tu as aimé. Ta main s'ouvre et le geste est volontaire, précis, accompli en pleine conscience, dans le calme. Ce que tu rends conserve un instant son éclat, puis l'eau l'emporte doucement. Ta main, désormais libre, peut accueillir autre chose. C'est toute la promesse de cette carte.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Le geste prend le sens inverse. Au lieu de laisser partir, tu t'accroches. Ce que tu devrais rendre reste dans ta main fermée, non plus parce que tu y tiens vraiment, mais parce que tu as pris l'habitude de le garder. Tu regardes l'eau sans croire que quelque chose pourra revenir. Tu es convaincu qu'une fois cette chose partie, rien ne pourra prendre sa place.",
+    "issue": "Commence par un petit geste. Ouvre la main pendant une minute en pensant à une seule chose que tu pourrais laisser partir. Observe ce qui se passe. Même un changement minime peut t'aider à retrouver confiance dans ce mouvement."
+  },
+  "questions": [
+    "Qu'est-ce que tu continues de retenir, et qu'est-ce qui te retient en retour ?",
+    "Que se passe-t-il lorsque tu gardes la main fermée un peu plus longtemps ?",
+    "Qu'est-ce qui pourrait prendre place si tu acceptais de libérer cet espace ?"
+  ],
+  "lecon": "Rendre n'est pas perdre. Une main ouverte peut encore recevoir.",
+  "image": {
+    "geste": "un bras tendu vers l'eau, une main ouverte et vide. Le geste consiste à rendre quelque chose, et non à le jeter",
+    "seuil": "la rive lointaine est encore derrière. Le passage vers l'autre côté viendra plus tard. Pour l'instant, toute l'attention se porte sur la main",
+    "detail": "une bague d'or flotte encore un instant à la surface de l'eau, avec son reflet juste en dessous. Même ce qu'on rend conserve un instant son éclat"
+  },
+  "micro_geste": "Ce soir, laisse partir une chose et observe l'espace qu'elle libère.",
+  "positions": {
+    "jour": "Aujourd'hui, un geste simple t'est proposé. Ouvrir la main. Dans ta vie, il y a peut-être quelque chose que tu as aimé, mais qui ne correspond plus à la personne que tu es. Une idée, un espoir ou une place que tu continues de garder. La carte ne te demande pas d'oublier. La bague brille un instant à la surface de l'eau. Elle t'invite simplement à ouvrir la main, une fois, en pleine conscience. Ce que l'eau reçoit, tu n'as plus besoin de le retenir.",
+    "amene": "Tu arrives avec quelque chose que tu as longtemps porté et qui a beaucoup compté pour toi. Cette chose a eu de la valeur, elle t'a accompagné et a contribué à façonner la personne que tu es. Mais son rôle est peut-être terminé. La carte montre ce que tu apportes avec toi. Le bord de l'eau, la chose encore présente dans ta main et, tout près, la possibilité de la laisser partir.",
+    "se_joue": "Tout se joue dans ta main. Tu sais ce que tu pourrais laisser partir, peut-être depuis longtemps, mais au dernier moment, tes doigts se referment. Tu as l'impression que rendre cette chose équivaut à la perdre. Alors tu continues de la retenir, en attendant un moment qui te semblerait plus approprié. La question du jour tient là. Est-ce le bon moment qui n'est pas encore arrivé, ou attends-tu un moment parfait qui ne viendra jamais ?",
+    "essayer": "Essaie de poser un petit geste concret. Tu peux rendre un objet emprunté, envoyer un message que tu repousses ou exprimer clairement une intention. La carte te propose d'ouvrir la main, pas de faire un sacrifice. Il s'agit de laisser filer ce qui a fini son travail, tout en conservant ce qui compte encore pour toi. Observe ensuite ce que tu as envie de faire de cette main désormais libre. C'est peut-être dans ce nouvel élan que se trouve le sens de la carte."
+  },
+  "source_referentielle": {
+    "pollack": "§4 — accord fort avec la lecture de l'8 de Coupes : quitter une situation stable pour l'inconnu ; §4 nombres : 8 = mouvement",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 8 : mise en circulation",
+    "greer": "§6.3 — équation nombre × famille : un 8 d'eau parle de libérer le lien",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à accepter de te séparer de certaines choses que tu conservais depuis longtemps. Tu avais tendance à garder des objets, des souvenirs ou des situations, même lorsqu'ils ne t'apportaient plus rien, parce que tu avais peur de regretter leur perte ou d'en avoir besoin plus tard. Aujourd'hui, tu comprends que tu peux laisser partir certaines choses sans forcément perdre quelque chose d'important. Tu as déjà commencé à faire ce choix et tu découvres que tu peux avancer sans tout conserver.",
+    "image_soi": "Tu as tendance à penser que tu dois protéger et conserver tout ce qui compte pour toi. Tu associes le fait de garder les choses à une preuve d'amour, de fidélité ou d'attachement. À l'inverse, laisser partir quelque chose peut te donner l'impression de ne pas y tenir suffisamment. Tu as donc du mal à te séparer des objets, des souvenirs ou même de certaines relations. Tu préfères garder le contrôle et surveiller ce que tu risques de perdre, plutôt que d'accepter que certaines choses puissent simplement suivre leur chemin.",
+    "entourage": "Ton entourage te considère comme une personne fiable, à qui l'on peut confier des objets, des responsabilités ou des secrets. Les autres savent que tu prends soin de ce qu'on te confie et que tu n'oublies pas facilement les choses. Cette confiance est précieuse, mais elle peut aussi t'enfermer dans le rôle de celle qui doit tout garder et tout préserver. On compte sur toi pour conserver ce qui appartient aux autres, mais on pense moins souvent à te demander si tu souhaites continuer à porter cette responsabilité."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "major_12",
+  "nom": "Perspective",
+  "type": "majeur",
+  "registre": "interieur",
+  "element": "eau",
+  "note_grille": "colonne 5 (avec Vide et Rayonnement), le motif du renversement du regard. Élément Eau, l'angle nouveau coule, il ne se force pas. Le pendu du jeu classique inquiète, notre lecture voit une suspension paisible, pas une punition (tension assumée). Tension signature de Pollack, lâcher contre se soumettre aux attentes.",
+  "mots_cles": [
+    "*major_12",
+    "interieur",
+    "eau*"
+  ],
+  "tension": {
+    "pousse": "voir à l'envers",
+    "retient": "tenir debout"
+  },
+  "lumiere": "Tu regardes une situation familière depuis un angle différent et tu découvres un sens que tu n'avais pas remarqué auparavant. Rien autour de toi n'a changé. C'est simplement ta position qui s'est déplacée, et cela suffit à transformer ta perception. Tu peux rester dans cette nouvelle posture sans lutter, puisqu'elle ne demande aucun effort particulier. Tes habitudes de regard se relâchent et la patience fait son travail. Ce que tu découvres en regardant à l'envers ne pouvait pas apparaître depuis ta position habituelle.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu repousses le moment de changer de point de vue. La situation tourne en rond, mais tu continues de regarder le même endroit, en espérant qu'il finira par révéler autre chose. Tu attends que les circonstances changent plutôt que de déplacer ton propre regard. Pendant ce temps, tu vérifies ce que les autres pensent de ta position et ajustes ton attitude en fonction de leurs attentes. Le monde reste à l'endroit, et la fatigue s'installe. Pourtant, une nouvelle compréhension attend de l'autre côté d'une question que tu ne t'es pas encore posée.",
+    "issue": "Change de place avant de chercher à transformer la situation. Demande à quelqu'un d'autre ce qu'il voit et écoute sa réponse jusqu'au bout. Un simple déplacement du regard peut suffire à remettre l'eau en mouvement."
+  },
+  "questions": [
+    "Que verrais-tu dans cette situation si tu occupais la place de quelqu'un d'autre ?",
+    "Quelle idée fixe continues-tu de maintenir alors qu'elle pourrait être examinée autrement ?",
+    "Où pourrais-tu suspendre ta course pendant quelques minutes pour laisser la patience faire son travail ?"
+  ],
+  "lecon": "Changer de perspective plutôt que chercher à forcer les choses, et laisser une pause patiente révéler ce que la position habituelle ne permettait pas de voir.",
+  "image": {
+    "geste": "Un jeune homme ailé est suspendu la tête en bas, retenu par les pieds au cadre même de la carte. Il ne se débat pas. Son calme semble venir précisément de cette position renversée.",
+    "seuil": "De petites ailes blanches longent son corps. Elles ne servent pas à fuir, mais à soutenir cette nouvelle position, différente de celle que l'on adopte habituellement debout.",
+    "detail": "Un petit paysage surmonté d'un dôme occupe la partie supérieure de la carte, là où le sol se trouverait normalement. Dans le ciel peint à l'aquarelle, un cercle doré et un triangle encadrent le personnage immobile."
+  },
+  "micro_geste": "Choisis une question qui tourne en rond dans ton esprit et réponds-y par écrit en te plaçant du point de vue d'une autre personne.",
+  "positions": {
+    "jour": "Que verrais-tu aujourd'hui si tu regardais cette situation depuis l'autre côté ? La carte pose la question sans te demander de tout remettre en cause. La scène reste la même, mais ta position change, et le sens se transforme avec elle. Tu n'as rien à perdre en essayant. Ce qui apparaît depuis cette position suspendue ne se voit pas nécessairement depuis les autres angles. Une véritable minute de recul peut suffire à le découvrir.",
+    "amene": "Tu possèdes une manière bien établie de regarder cette situation, et elle t'a probablement été utile. Elle vient peut-être de loin : des places que l'on t'attribuait lorsque tu étais plus jeune ou des points de vue que ton entourage approuvait. Cette fidélité à ton regard n'est pas un défaut en soi. La difficulté apparaît lorsqu'il ne peut plus évoluer alors que la situation, elle, a changé. Tu défends alors une ancienne manière de voir face à une réalité nouvelle, et l'effort augmente sans que rien ne se résolve.",
+    "se_joue": "Tu peux remarquer qu'une même histoire prend des significations différentes selon la place depuis laquelle on la regarde. Tu sais déjà changer de perspective : tu l'as certainement fait au cours d'une conversation pour mieux comprendre quelqu'un. Cette capacité pourrait maintenant être appliquée à la situation qui te préoccupe. Le renversement ne détruit rien. La scène demeure entière, mais elle devient lisible autrement. Les éléments sont les mêmes ; seule la pente change.",
+    "essayer": "Lis à voix haute une lettre que tu as écrite en imaginant que tu occupes la place de la personne qui va la recevoir. Tu peux faire le même exercice avec la situation qui tourne en rond. Écris d'abord la question qui te bloque, puis reformule-la depuis le point de vue de l'autre personne, sans en changer le fond. La réponse se déplace parfois d'un simple demi-pas. Ce petit décalage peut suffire à remettre les choses en mouvement.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, XII (Pendu) — le renversement du point de vue vécu comme une paix, pas une punition ; tenir tête au monde à l'envers du sens commun ; ombre — vivre selon le regard d'autrui, se battre contre soi",
+    "wen": "§3 — élément Eau (table Wen) ; §5 — le renversement relu en quatre modes d'ombre (différé ici)",
+    "greer": "§6.2 — leçon — lâcher une idée fixe, voir autrement, sortir d'une dépendance",
+    "image": "brief de production majeurs — visage validé (personnage ailé suspendu tête en bas au cadre, paysage au dôme, cercle doré et triangle), reformulé",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu relâches l'obligation de rester toujours dans la même position. Tu as longtemps défendu ton point de vue pour ne pas donner l'impression de céder. Ce qui demeure, c'est la possibilité de regarder une situation autrement. Le décor n'a pas forcément changé, mais ton angle s'est déplacé. Tu peux maintenant tenir compte de ce que tu n'avais pas vu auparavant.",
+    "image_soi": "Tu tiens à l'image d'une personne constante, qui ne change pas d'avis au premier obstacle. Revenir sur une décision te semble parfois équivaloir à perdre la face. Cette position te donne de la stabilité, mais elle peut aussi t'enfermer dans une seule interprétation. Tu continues alors à regarder la situation du même endroit, même lorsque d'autres perspectives deviennent accessibles.",
+    "entourage": "Les autres te décrivent comme une personne constante et prévisible. Ils viennent souvent chercher ton avis parce qu'ils savent à quoi s'attendre. Cette confiance peut être rassurante, mais elle laisse parfois peu de place à tes changements. On continue de te demander de confirmer une position ancienne, alors que ton regard a évolué et que tu n'as pas encore trouvé comment le faire comprendre."
+  }
+}

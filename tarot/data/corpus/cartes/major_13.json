@@ -1,0 +1,53 @@
+{
+  "id": "major_13",
+  "nom": "Transformation",
+  "type": "majeur",
+  "registre": "interieur",
+  "element": "eau",
+  "mots_cles": [
+    "passage",
+    "mue",
+    "déposer",
+    "plus léger",
+    "la suite attend"
+  ],
+  "tension": {
+    "pousse": "déposer",
+    "retient": "réparer"
+  },
+  "lumiere": "Tu acceptes de laisser partir ce qui a terminé son rôle, et tu le fais sans souffrance inutile. Tu sais reconnaître qu'une étape est terminée sans avoir l'impression de perdre tes repères. La transition a déjà commencé, et quelque chose de nouveau peut maintenant prendre sa place. Tu avances plus légèrement, non pas parce que tout est réglé, mais parce que tu ne portes plus ce qui ne t'est plus utile. Ce passage se fait simplement, dans la vie de tous les jours, sans cérémonie.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu repousses le changement. Tu continues de garder en place quelque chose qui ne te convient plus, simplement parce que cette situation t'est familière. Cela peut être une habitude que tu entretiens sans vraiment la vouloir ou un rôle que tu continues de jouer parce que tu ne sais pas encore quoi mettre à sa place. Tu restes ainsi dans une situation qui ne te satisfait plus, entre l'ennui et l'agitation. Tu dépenses beaucoup d'énergie à éviter le changement.",
+    "issue": "Choisis une seule chose dont le rôle est terminé. Un objet, une habitude ou un rôle que tu n'as plus besoin de conserver. Décide de la déposer aujourd'hui, concrètement. Laisser partir quelque chose ne signifie pas tout détruire. Un seul geste peut suffire à faire de la place et à permettre à quelque chose de nouveau de commencer."
+  },
+  "questions": [
+    "Quelle ancienne version de toi-même ne correspond plus à la personne que tu es aujourd'hui ?",
+    "Qu'est-ce que tu continues d'entretenir alors que cela ne t'apporte plus rien ?",
+    "Qu'est-ce qui pourrait se développer si tu laissais cet espace libre ?"
+  ],
+  "lecon": "Laisser partir une ancienne version de soi sans s'y accrocher. La déposer, la remercier et poursuivre son chemin plus légèrement.",
+  "image": {
+    "geste": "une forme ancienne se détache sans résistance. La transformation a déjà eu lieu, et c'est à la place de ce qui a été laissé derrière qu'une fleur s'ouvre",
+    "seuil": "rien ne reste à franchir. Ce qui est quitté se trouve déjà au sol, comme la chaîne brisée. La suite attend juste derrière, représentée par le cheval blanc",
+    "detail": "la vieille peau du serpent se détache encore de son dos. Pendant un instant, elle garde la trace de ce qu'il vient de quitter"
+  },
+  "micro_geste": "Dépose aujourd'hui, à un endroit approprié, une chose dont le rôle est terminé. Ne la jette pas nécessairement, mais décide de ne plus la porter avec toi.",
+  "positions": {
+    "jour": "Aujourd'hui, porte attention à ce qui a fait son temps dans ta vie. Un rôle, une habitude ou une ancienne version de toi à laquelle tu continues de t'accrocher. La transformation a déjà commencé, et une fleur s'ouvre à la place de ce qui a été laissé derrière. Observe ce qui se détache de toi, comme la vieille peau du serpent. Tu peux la laisser au sol, sans cérémonie, puis te tourner vers ce qui t'attend. La suite, plus légère, peut t'emmener plus loin.",
+    "amene": "Tu arrives avec quelque chose qui a rempli son rôle, mais qui ne correspond peut-être plus à tes besoins. C'est une ancienne forme de toi, et tu as évolué. La chaîne est déjà brisée au sol. Ce qui te retenait autrefois n'a peut-être plus le même pouvoir. La carte montre le chemin parcouru et une transformation déjà commencée, même si tu ne l'as pas encore reconnue. Il te reste à accepter que cette ancienne forme a eu son utilité, et que son rôle est terminé.",
+    "se_joue": "Tout se joue entre deux possibilités. Réparer ce qui existe déjà, ou accepter de le déposer. Une partie de toi cherche à maintenir l'ancienne situation en répétant les mêmes efforts et les mêmes arguments, tandis qu'une autre est prête à avancer. La question que pose cette carte est simple. Qu'est-ce que tu continues de maintenir par habitude alors qu'une place est déjà disponible pour autre chose ?",
+    "essayer": "Essaie de déposer une seule chose, de façon concrète et définitive. Pas besoin de tout changer. Un objet que tu rends, une promesse à laquelle tu renonces ou un rôle que tu ne joues plus. La carte propose de suivre l'exemple du serpent. Il ne détruit pas son ancienne peau, il la laisse derrière lui et poursuit son chemin. Si ce geste te semble trop difficile, choisis quelque chose de plus simple, jusqu'à ce que ce soit presque naturel. C'est une bonne façon de commencer."
+  },
+  "source_referentielle": {
+    "pollack": "§3, XIII — l'instant où l'ancien masque est déposé ; tension laisser mourir / retenir ; ombre : inertie, peur tapie sous l'immobilité",
+    "wen": "§3 — élément Eau ; §5 — mode d'ombre « différé »",
+    "greer": "§6.2 — leçon : laisser partir, couper, renaître",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : chutes sans deux-points, accord « tu continues », « partagé » neutralisé, longueur des positions ramenée sous 85 mots"
+  },
+  "croix": {
+    "eloigne": "Tu consacres moins d'énergie à réparer ce qui ne tient plus. Tu as longtemps repris les mêmes habitudes et les mêmes responsabilités, parfois simplement parce que tu les connaissais bien. Ce qui demeure, c'est ce que tu as développé pendant ce temps : une compétence, une patience ou un intérêt nouveau. Cette part de ton expérience ne disparaît pas avec l'ancien cadre.",
+    "image_soi": "Tu te vois comme celle qui répare et qui maintient les choses en état. Tu connais les habitudes, les besoins et les gestes qui permettent à un ensemble de continuer. Cette place te rend utile et appréciée. Elle peut aussi te retenir dans des situations qui ont changé. Tu continues à entretenir l'ancien fonctionnement, même lorsque tu ne t'y reconnais plus tout à fait.",
+    "entourage": "Les autres continuent parfois de s'adresser à toi comme avant. On te confie les mêmes tâches et on attend les réactions auxquelles on est habitué. Certains parlent de ta constance comme d'une qualité, sans remarquer les changements qui se sont produits. Il peut alors devenir difficile de faire reconnaître une nouvelle façon de participer ou de prendre ta place."
+  }
+}

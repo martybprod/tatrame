@@ -1,0 +1,56 @@
+{
+  "id": "terre_06",
+  "nom": "Compromis",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 6,
+  "element": "terre",
+  "note_grille": "degré 6 (circulation) × famille terre (corps, ressources) : accord sur le mécanisme, tension sur le sens. La circulation transporte ici l'approbation, et elle tourne au contrat là où la teinte propre commence à s'effacer.",
+  "mots_cles": [
+    "la porte entrouverte",
+    "la pièce grise",
+    "le pinceau levé",
+    "la tache humide",
+    "la teinte laissée dehors"
+  ],
+  "tension": {
+    "pousse": "garder sa couleur",
+    "retient": "se rendre pareil"
+  },
+  "lumiere": "Tu sais t'adapter aux autres sans perdre ce qui te distingue. L'échange reste équilibré et chacun conserve sa place. Tu fais un pas vers l'autre, puis un pas vers toi-même. Tu acceptes une certaine souplesse, mais ta couleur reste visible. C'est ce qui caractérise un compromis véritable : chacun fait une place à l'autre sans devoir renoncer à ce qu'il est. Tu entres dans une pièce avec ce que tu peux y apporter, et tu le conserves même lorsque tu en ressors.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu entres dans certains espaces en laissant chaque fois une partie de ta couleur à la porte. Tu parles un peu moins fort, tu ajustes tes opinions et tu approuves des choses qui ne te correspondent pas vraiment. En échange, la pièce t'accueille. Le mécanisme semble fonctionner, et c'est justement ce qui le rend difficile à reconnaître. Peu à peu, tu finis par croire que pour être accepté, tu dois ressembler à ceux qui sont déjà là. Ta véritable couleur reste alors dehors, atténuée, en attendant que tu décides de la reprendre.",
+    "issue": "Retrouve aujourd'hui ta couleur dans une situation précise. Exprime une opinion avec tes propres mots, ou place bien en vue un objet qui te représente. Un geste simple peut suffire à réduire l'effacement et à te rappeler que tu n'as pas besoin de devenir quelqu'un d'autre pour trouver ta place."
+  },
+  "questions": [
+    "Qu'est-ce que tu laisses à la porte pour qu'on te laisse entrer ?",
+    "Où l'ajustement devient-il un accord honnête, et où devient-il un effacement ?",
+    "Quelle est la couleur que les gens proches de toi reconnaissent comme la tienne ?"
+  ],
+  "lecon": "Un compromis équilibré permet aux deux couleurs de rester visibles. Il devient un effacement lorsque l'une d'elles disparaît.",
+  "image": {
+    "geste": "un pinceau chargé de gris reste levé au-dessus de la peau, sans encore la toucher. Une tache humide sur l'avant-bras montre que le geste a commencé, mais qu'il peut toujours être interrompu",
+    "seuil": "une porte de bois sombre est entrouverte entre la chaleur du dehors et une pièce entièrement grise. On peut entrer en y conservant sa couleur, l'abandonner ou reculer d'un pas",
+    "detail": "le portier tend une main ouverte sans prononcer un mot. De ses cheveux à ses souliers, aucune trace de la couleur du dehors ne subsiste chez lui"
+  },
+  "micro_geste": "Porte aujourd'hui un vêtement de ta véritable couleur, celui que tu réserves habituellement pour une occasion particulière, et garde-le toute la journée.",
+  "positions": {
+    "jour": "Une porte de bois est entrouverte devant toi, et tu sembles déjà mesurer la couleur de la pièce avant même d'y entrer. Dehors, la lumière est agréable, les murs sont chaleureux et rien ne presse. À l'intérieur, l'atmosphère est immobile et grise. Une main ouverte attend ta réponse. La carte représente précisément cet instant : le pinceau est encore levé et rien n'est irréversible. Tu peux entrer en conservant ta couleur, l'échanger contre celle de la pièce ou rester dehors. Ces trois possibilités existent encore.",
+    "amene": "Le matin, une personne ajuste son col devant la fenêtre et modifie légèrement le ton de sa voix avant de sortir. Personne ne lui demande de le faire. Elle a répété ce geste si souvent qu'il précède maintenant sa réflexion. Derrière elle, sur une chaise, restent les vêtements qu'elle aime vraiment. Cette scène peut se répéter dans ta vie, avec des paroles, des silences ou des goûts que tu ranges pour mieux t'adapter. Le soir venu, tu retrouves chez toi les couleurs que tu avais laissées à l'entrée.",
+    "se_joue": "Qu'es-tu en train d'échanger contre la possibilité d'entrer quelque part ? La question n'est pas une accusation, et la porte ne représente pas un jugement. Tout se joue dans la différence entre deux attitudes. Faire un pas vers les autres est une forme d'ouverture. Devenir semblable aux autres pour être accepté est tout autre chose. La frontière entre les deux mérite ton attention. Essaie de nommer précisément ce que tu laisses dehors. Lorsque tu le reconnais, tu peux encore décider si cet échange te convient.",
+    "essayer": "Tu as le droit de conserver ta couleur en entrant dans une pièce, même si tu as l'impression qu'elle exige que tout le monde lui ressemble. Essaie d'y entrer tel que tu es et observe ce qui se passe réellement. Il arrive que les exigences que tu imagines soient beaucoup moins importantes que tu ne le pensais. Et si un endroit refuse véritablement de faire une place à ta couleur, tu peux aussi le reconnaître et chercher un autre espace. Une porte qui exige que tu abandonnes tout ce que tu es finit par ressembler à une disparition."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Deniers, le six — la circulation, l'échange donner/recevoir dans le concret",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré 6 : la circulation, ce qui se répare",
+    "greer": "§6 — le compromis lu chez quelqu'un et en soi : la teinte qu'on prend pour entrer, la teinte qu'on laisse dehors",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-11 sous le brief terre (groupe B), image d'après la passation et la grille validée (ATRO_PLUS/_distillation, terre_06_Compromis, concept « la porte des gris »), en attente de la reformulation de Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à moins modifier ton comportement pour correspondre aux attentes des autres. Jusqu'ici, tu avais tendance à adapter tes opinions, tes goûts et ta façon de parler selon les personnes avec lesquelles tu te trouvais. Tu faisais parfois passer leurs préférences avant les tiennes pour éviter les désaccords. Tu apprends maintenant à rester toi-même, même lorsque tu évolues dans un environnement différent du tien.",
+    "image_soi": "Tu te vois comme une personne souple, capable de s'adapter à toutes les situations. Tu considères qu'il est important de faire des compromis pour maintenir de bonnes relations. Tu acceptes donc facilement de changer tes habitudes ou de mettre tes préférences de côté pour arranger les autres. Cette capacité d'adaptation est une qualité, mais elle peut aussi te faire oublier ce que tu souhaites réellement.",
+    "entourage": "Les autres te trouvent facile à vivre et apprécient ta capacité à t'adapter. Ils savent que tu fais rarement des histoires et que tu acceptes facilement les compromis. On te sollicite donc volontiers lorsqu'il faut trouver un arrangement ou éviter un conflit. Cependant, ton entourage ne se demande pas toujours si ces compromis te conviennent réellement, car tu exprimes rarement tes propres préférences."
+  }
+}

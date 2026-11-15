@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="tarot-url" content="{{ tarot_url }}">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <!-- Équivalent Android/Chrome de la balise Apple ci-dessus (Martin,
@@ -1055,6 +1056,20 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
   .miroir{font-size:19px}
   .detail-titre{font-size:27px}
 }
+
+/* ═══ L'onglet Tarot — l'app sœur, encadrée ici (2026-11-15) ═══
+   L'iframe tient la hauteur d'un écran moins l'en-tête ; elle défile en
+   interne. Sur téléphone, un peu moins haute pour laisser voir la barre. */
+.tarot-cadre{position:relative;border:1px solid var(--bord);border-radius:10px;
+  overflow:hidden;background:#0d0a12;margin-top:6px}
+.tarot-cadre iframe{display:block;width:100%;height:min(78vh,900px);min-height:520px;
+  border:0;background:#0d0a12}
+.tarot-panne{padding:46px 20px;text-align:center}
+.tarot-pied{display:flex;justify-content:center;gap:18px;margin-top:12px;font-size:12.5px}
+.tarot-pied a,.tarot-pied button{background:none;border:0;font:inherit;color:var(--encre3);
+  text-decoration:none;cursor:pointer;padding:0}
+.tarot-pied a:hover,.tarot-pied button:hover{color:var(--accent)}
+@media (max-width:700px){.tarot-cadre iframe{height:min(72vh,720px);min-height:460px}}
 </style>
 </head>
 <body>
@@ -1090,6 +1105,7 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
       <button data-vue="portrait"><span>Le Portrait</span></button>
       <button data-vue="ciel"><span>Le Ciel</span></button>
       <button data-vue="relations"><span>Relations</span></button>
+      <button data-vue="tarot"><span>Tarot</span></button>
     </nav>
   </header>
 
@@ -1099,6 +1115,7 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
   <section id="vue-portrait" class="cacher"></section>
   <section id="vue-ciel" class="cacher"></section>
   <section id="vue-relations" class="cacher"></section>
+  <section id="vue-tarot" class="cacher"></section>
   <section id="vue-regles" class="cacher"></section>
   <section id="vue-profils" class="cacher"></section>
   <section id="vue-connexion" class="cacher"></section>
@@ -2476,6 +2493,8 @@ const ICONES_NAV = {
   relations: `<circle cx="9" cy="12" r="5.4"/>
     <circle cx="15" cy="12" r="5.4"/>
     <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>`,
+  tarot: `<rect x="5.6" y="3.2" width="12.8" height="17.6" rx="1.8"/>
+    <path d="M12 8.1l1.15 2.33 2.57.37-1.86 1.81.44 2.56L12 13.96l-2.3 1.21.44-2.56-1.86-1.81 2.57-.37z"/>`,
 };
 
 const ICONES_JOUR = {
@@ -4398,10 +4417,59 @@ $('#nav').onclick = e => {
   document.querySelectorAll('#nav button').forEach(x => x.classList.toggle('actif', x === b));
   montrer(b.dataset.vue);
   if (b.dataset.vue === 'relations') vueRelations();
+  if (b.dataset.vue === 'tarot') vueTarot();
 };
 
+/* ── Le Tarot — l'app sœur, encadrée ici ──────────────────────────────
+   Un onglet, une iframe : le jeu vit dans SA propre app (port 5089) avec
+   son corpus, son album et son moteur. Ta Trame ne fait que l'encadrer.
+   L'iframe n'est créée qu'à la première visite, puis RESTE en vie : revenir
+   sur l'onglet est instantané, le tirage en cours est conservé.
+   ?embed=1 retire l'en-tête et le pied du Tarot : une seule barre à l'écran. */
+let tarotFrame = null;
+function urlTarot() {
+  // Adresse posée au déploiement (meta TAROT_URL) : c'est elle qui vaut en PWA.
+  const posee = (document.querySelector('meta[name="tarot-url"]')?.content || '').trim();
+  if (posee) return posee.endsWith('/') ? posee : posee + '/';
+  // Local : même hôte, port de l'app sœur.
+  const proto = location.protocol === 'https:' ? 'http:' : location.protocol;
+  return `${proto}//${location.hostname}:5089/`;
+}
+function vueTarot() {
+  if (tarotFrame) return;               // déjà monté : on ne reconstruit rien
+  const base = urlTarot();
+  $('#vue-tarot').innerHTML = `<div class="carte">
+    <div class="chapo">${icono(ICONES_NAV.tarot, 17)}Le Tarot</div>
+    <p class="quoi" style="margin:-2px 0 12px">Une carte est un miroir, pas une promesse.
+      Le jeu des 79, ici même : une carte, trois cartes et leurs relectures,
+      neuf + une, au choix, croix celtique.</p>
+    <div class="tarot-cadre">
+      <iframe id="tarot-frame" title="Le Tarot" src="${base}?embed=1"></iframe>
+      <div class="tarot-panne cacher" id="tarot-panne">
+        <p style="font-size:15px;color:var(--encre)">Le Tarot ne répond pas pour l'instant.</p>
+        <p class="quoi" style="margin:6px 0 14px">Ouvre-le directement, ou relance-le depuis Vibe Station.</p>
+        <a class="bouton" href="${base}" target="_blank" rel="noopener">Ouvrir le Tarot</a>
+      </div>
+    </div>
+    <div class="tarot-pied">
+      <a href="${base}" target="_blank" rel="noopener">Ouvrir dans un onglet</a>
+      <button id="tarot-recharger">Recharger</button>
+    </div>
+  </div>`;
+  tarotFrame = $('#tarot-frame');
+  $('#tarot-recharger').onclick = () => {
+    tarotFrame.src = base + '?embed=1&t=' + Date.now();
+  };
+  // app sœur éteinte : l'iframe resterait blanche — on le dit franchement
+  fetch(base + 'health', { mode: 'no-cors' })
+    .catch(() => {
+      tarotFrame.style.display = 'none';
+      $('#tarot-panne').classList.remove('cacher');
+    });
+}
+
 function montrer(vue) {
-  ['accueil','jour','apercu','portrait','ciel','relations','regles','profils','connexion'].forEach(v =>
+  ['accueil','jour','apercu','portrait','ciel','relations','tarot','regles','profils','connexion'].forEach(v =>
     $('#vue-' + v).classList.toggle('cacher', v !== vue));
   // Fondu d'entrée premium (voir .vue-entre) : on retire puis réajoute la
   // classe, avec un reflow forcé entre les deux pour REJOUER l'animation à

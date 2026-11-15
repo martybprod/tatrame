@@ -1,0 +1,53 @@
+{
+  "id": "major_16",
+  "nom": "Rupture",
+  "type": "majeur",
+  "registre": "transpersonnel",
+  "element": "feu",
+  "note_grille": "seizième majeur (tradition de la Maison-Dieu). Registre transpersonnel. La casse ne vient pas d'un procès, elle traverse. Élément Feu. La rupture est vive, et elle éclaire. Tension signature (Pollack), effondrement ou libération.",
+  "mots_cles": [
+    "major_16",
+    "transpersonnel",
+    "feu"
+  ],
+  "tension": {
+    "pousse": "regarder",
+    "retient": "rebâtir"
+  },
+  "lumiere": "Tu regardes une structure qui se fend sans détourner les yeux. Ce qui s'ouvre laisse passer la lumière, et tu vois clair dans un endroit qui était resté obscur. Une partie de ta vie était devenue trop étroite pour toi, et la fente lui redonne de l'air. Ce qui tombe à ce moment-là tombe entièrement, et tu n'as pas à retenir chaque morceau. Tu peux rester devant ce qui se passe, calmement, et laisser la lumière te montrer la suite.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu encaisses la rupture au lieu de la regarder. Quelque chose s'est ouvert dans ta vie, et tu le vis comme une punition tombée du ciel. Tu répares à toute vitesse, tu rebâtis au même endroit avec les mêmes matériaux, pour montrer que rien ne t'a atteint. Mais tu tournes le dos à la lumière qui passe par la fente. La fatigue s'accumule, et la question reste entière, cachée derrière les planches.",
+    "issue": "Arrête-toi une minute devant la fente et demande-toi ce qu'elle te montre. Ce qui se brise révèle souvent ce qui était devenu trop étroit. Tu peux regarder avant de rebâtir, puis noter ce que tu vois en une phrase."
+  },
+  "questions": [
+    "Qu'est-ce que cette secousse a ouvert, que rien d'autre n'aurait pu ouvrir ?",
+    "Que cherches-tu à rebâtir à toute vitesse, et pourquoi cette précipitation ?",
+    "Si tu regardais la fente pendant une minute, qu'y verrais-tu ?"
+  ],
+  "lecon": "Regarder la fente au lieu de rebâtir à l'identique, et laisser la lumière révéler ce qui était devenu trop étroit.",
+  "image": {
+    "geste": "Une déchirure verticale, incandescente, traverse la tapisserie du haut vers le bas. Deux petites figures tombent de chaque côté. Une femme de profil reste debout et regarde.",
+    "seuil": "Le seuil se trouve dans la déchirure elle-même. La toile qui se fend devient une ouverture, et la lumière entre par là dans le tissage.",
+    "detail": "Les fils dorés de la robe de la femme sont tissés dans la toile. Elle fait partie de ce qui se déchire, et pourtant elle reste debout."
+  },
+  "micro_geste": "Ouvre une fenêtre pendant cinq minutes et regarde ce que la lumière dépose dans la pièce, sans rien ranger pour l'instant.",
+  "positions": {
+    "jour": "Aujourd'hui, le temps change sans prévenir. Quelque chose de solide se met à bouger, et un espace s'ouvre au milieu de ce que tu croyais fixe. Les secousses de ce genre ne préviennent pas. Elles arrivent lorsque le moment est mûr, pas nécessairement lorsque tu as fini de te préparer. La journée porte ce climat, vif et clair à la fois. Ce qui s'ouvre te permet de voir plus loin que ce qui se trouvait là hier.",
+    "amene": "Tu tiens une construction à deux mains pour vérifier si elle peut tenir toute seule. Tu contrôles, tu rattrapes, tu consolides par habitude. Une partie de toi sait que tout penche, tandis qu'une autre continue de serrer. La journée te montre ces petits gestes de réparation. Regarde-les une minute sans les juger. Ils ont longtemps protégé quelque chose, et ils continuent maintenant par réflexe. La carte arrive à un moment où tenir et regarder ne peuvent plus se faire en même temps.",
+    "se_joue": "Entre tout reconstruire au plus vite et regarder ce que la fente révèle, où te situes-tu en ce moment ? La secousse a ouvert un passage, et deux façons de l'habiter se présentent. La première répare avant de comprendre. La seconde prend le temps de regarder, puis rebâtit autrement, en tenant compte de ce qu'elle a appris. Aucune des deux réactions n'est une faute, mais une seule permet de faire place à quelque chose de nouveau. Qu'aimerais-tu voir avant de rebâtir ?",
+    "essayer": "Quelqu'un ouvre la fenêtre après l'orage et regarde la rue, sans sortir ni ramasser quoi que ce soit. Pendant une minute, les deux mains posées sur l'appui, la personne laisse entrer l'air qui suit la pluie. Tu peux reprendre ce petit geste aujourd'hui face à ce qui s'est fendu dans ta vie. Regarder d'abord, agir ensuite, dans cet ordre. Pas de grand ménage avant d'avoir pris le temps de voir. L'air qui entre après la secousse raconte souvent davantage que les plans de reconstruction.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, XVI — la prison intérieure cède, la foudre n'est pas une punition, elle ouvre ; tension effondrement / libération ; ombre : subir la casse sans l'intégrer",
+    "wen": "§3 — élément Feu (Maison-Dieu) ; §5 — mode d'ombre « subi »",
+    "greer": "§6.2 — leçon : démolir ce qui ne tient plus, nettoyer, brûler l'ancien",
+    "production": "angles pollack §3 XVI + wen §3 (élément Feu) + greer §6.2 ; image = visage validé du brief Groupe D (tapisserie sur métier, tour couronnée en spirale, déchirure verticale luminescente, femme de profil aux fils dorés tissés dans la toile), reformulé avec nos mots ; nom interne du jeu, trace noms_cartes.json, Thunderbolt",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu ressens moins le besoin de reconstruire immédiatement ce qui vient de changer. Tu as peut-être voulu remettre les choses en place rapidement, comme si la continuité pouvait effacer la secousse. Cette précipitation s'apaise. Ce qui demeure, c'est une compréhension plus nette de ce qui ne tenait déjà plus. Tu peux regarder les ouvertures laissées par le changement sans devoir les refermer aussitôt.",
+    "image_soi": "Tu te vois comme celle qui doit rester solide lorsque tout se dérègle. Tu caches tes réactions et tu essaies de maintenir une apparence stable, même lorsque tu ne sais plus très bien quoi faire. Cette posture peut rassurer les autres, mais elle te demande beaucoup. Tu risques de confondre le fait de tenir debout avec l'obligation de ne rien laisser paraître.",
+    "entourage": "Les autres te savent capable de traverser des périodes difficiles. Ils commentent parfois ta solidité et supposent que tu trouveras une façon de t'en sortir. Comme tu demandes peu d'aide, certains n'osent pas intervenir ou ne pensent simplement pas à le faire. Ton silence peut alors être interprété comme un signe que tu maîtrises la situation, même si ce n'est pas le cas."
+  }
+}

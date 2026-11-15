@@ -1,0 +1,56 @@
+{
+  "id": "terre_05",
+  "nom": "Marginalité",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 5,
+  "element": "terre",
+  "note_grille": "degré 5 (secousse, le test) × famille terre (corps, ressources) : tension féconde — la secousse ne brise pas le sol, elle écarte de la file. Deux lectures simultanées (Greer) : la marge choisie, et la marge subie qui se croit fermée.",
+  "mots_cles": [
+    "le chemin de crête",
+    "la file de dos",
+    "l'herbe haute et les chardons",
+    "le pré non fauché",
+    "l'écart choisi"
+  ],
+  "tension": {
+    "pousse": "prendre l'écart",
+    "retient": "suivre la file"
+  },
+  "lumiere": "Tu avances dans la direction qui te correspond, sans laisser le groupe décider de ton chemin. Le pré qui n'est plus fauché n'est pas une terre abandonnée. Personne ne le traverse, alors les plantes y poussent librement. Tu peux y trouver ton propre passage, sans avoir à suivre la file ni à porter le même poids que les autres. Ta place ne dépend pas de ton rang dans un groupe. Ce qui pousse dans cet espace à l'écart, personne d'autre ne peut le découvrir à ta place.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu as parfois l'impression d'être laissé de côté, et cette sensation revient chaque fois qu'un groupe se forme autour de toi. Tu regardes les autres avancer ensemble, occupés et chargés de leurs affaires, et une ancienne question refait surface : pourquoi ne suis-je pas avec eux ? Ce sentiment vient peut-être de loin. Il se rattache à des souvenirs très différents, mais il raconte toujours la même histoire. Alors, tu finis par voir une clôture là où il n'y a qu'une étendue d'herbe libre.",
+    "issue": "Le passage est toujours ouvert. Pour le vérifier, choisis une situation dans laquelle tu te sens à l'écart et tente une action simple et concrète. Pose une question au groupe ou prends ta place à une table. Tu découvriras peut-être que la marge peut redevenir un choix plutôt qu'une position imposée."
+  },
+  "questions": [
+    "Où est-ce que tu marches avec les autres, et où est-ce que tu marches à côté ?",
+    "Qu'est-ce que l'écart t'a donné que la file n'aurait jamais pu te donner ?",
+    "Quelle vieille histoire te fait voir une clôture dans un pré ouvert ?"
+  ],
+  "lecon": "Rester dans la file ou choisir de traverser le pré : aucune de ces deux directions n'est une faute.",
+  "image": {
+    "geste": "un homme traverse l'herbe haute à contre-sens de la file. Les mains libres, il avance et ouvre un passage qui n'existait pas encore",
+    "seuil": "une bande d'herbe et de chardons sépare le grand chemin d'un pré qui n'est plus fauché. Entre les deux, il n'y a que la largeur de quelques pas",
+    "detail": "les silhouettes de la file projettent leurs ombres vers la crête, tandis que l'ombre de l'homme se dirige vers nous. Il est le seul à avancer dans cette direction"
+  },
+  "micro_geste": "Prends aujourd'hui un objet que tu gardes habituellement à l'écart des regards et place-le au centre de la table.",
+  "positions": {
+    "jour": "Quelle place occupes-tu aujourd'hui dans les groupes qui comptent pour toi ? La carte ne te demande pas de trouver immédiatement une réponse définitive. Elle t'invite d'abord à observer. Tu peux passer ta journée dans la file, à ta place habituelle, ou faire quelques pas de côté pour découvrir ce qui pousse dans le pré. Les deux directions sont possibles et aucune n'est mauvaise. Ce qui importe, c'est de reconnaître que tu as encore le choix.",
+    "amene": "Lorsque tu entres dans une pièce, tu vérifies peut-être d'abord, presque automatiquement, si quelqu'un t'a réservé une place. Ton regard cherche le groupe avant même de découvrir l'espace autour de toi. Ce réflexe est ancien, mais il ne définit pas ta valeur. Dans ces moments, un sentiment de manque peut revenir sans prévenir. Tu le portes depuis longtemps, comme un petit caillou dans une chaussure. Il se fait surtout sentir lorsque tu as un seuil à franchir ou une place à trouver parmi les autres.",
+    "se_joue": "Que se passerait-il si, pendant une journée, tu cessais de chercher à rejoindre la file ? C'est une question importante pour toi en ce moment. D'un côté, il y a le désir légitime d'appartenir à un groupe. De l'autre, il y a tout ce qui peut grandir en toi lorsque tu ne cherches plus à suivre le mouvement des autres. Entre ces deux possibilités se trouve le véritable enjeu de cette carte. La réponse ne dépend pas du groupe, mais de ce que tu choisis pour toi-même.",
+    "essayer": "Une personne quitte le sentier habituel et fait quelques pas dans l'herbe haute. Elle ne cherche pas à provoquer qui que ce soit. Elle avance simplement une vingtaine de pas dans le pré, observe le chemin depuis cet autre point de vue, puis revient lorsqu'elle le souhaite. En faisant cet essai, elle découvre que le pré n'était pas interdit et que le grand chemin n'était pas la seule possibilité. Tu peux vivre une expérience semblable au cours d'une journée ordinaire, sans avoir à annoncer ton choix à personne."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Deniers, le cinq — la secousse dans le concret ; l'écart vécu comme manque, et sa vérification",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré 5 : la secousse, le test",
+    "greer": "§6 — deux lectures simultanées : la marge choisie et la marge subie ; questions ouvertes",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-11 sous le brief terre (groupe B), image d'après la passation et la grille validée (ATRO_PLUS/_distillation, terre_05_Marginalite, concept « le passage des autres »), en attente de la reformulation de Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus ressentir le besoin de suivre le même chemin que tout le monde. Jusqu'ici, tu pouvais avoir tendance à te comparer aux autres et à essayer de rejoindre leur rythme pour ne pas te sentir différente. Tu apprends maintenant à avancer à ta manière, sans chercher constamment à correspondre aux attentes du groupe. Tu comprends que ton chemin peut être différent sans être moins valable.",
+    "image_soi": "Tu te vois parfois comme une personne qui ne trouve pas vraiment sa place parmi les autres. Tu as peut-être pris l'habitude de te considérer comme différente, à part ou difficile à intégrer. Cette image peut te protéger des déceptions, car elle te permet de ne pas trop attendre des autres. Mais elle peut aussi t'enfermer dans la solitude, même lorsque tu aimerais être davantage entourée.",
+    "entourage": "Les autres te trouvent indépendante et parfois difficile à approcher. Ils peuvent penser que tu préfères rester seule ou que tu n'aimes pas participer aux activités de groupe. Même lorsqu'ils t'apprécient, ils ne pensent pas toujours à t'inviter. Comme ils supposent que tu déclinerais leur proposition, ils finissent parfois par ne plus te solliciter. Cette image d'indépendance peut donc créer une distance que tu ne souhaites pas forcément."
+  }
+}

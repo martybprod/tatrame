@@ -1,0 +1,560 @@
+{
+  "_note": "Inventaire du jeu — généré depuis ATRO_PLUS/_distillation/noms_cartes.json (source de vérité des noms). 79 cartes : 22 majeurs + 56 mineurs + Éveil (hors cycle).",
+  "total": 79,
+  "cartes": [
+    {
+      "id": "major_00",
+      "nom": "Foi",
+      "type": "majeur",
+      "registre": "seuil",
+      "element": "air"
+    },
+    {
+      "id": "major_01",
+      "nom": "Existence",
+      "type": "majeur",
+      "registre": "exterieur",
+      "element": "terre"
+    },
+    {
+      "id": "major_02",
+      "nom": "Intuition",
+      "type": "majeur",
+      "registre": "exterieur",
+      "element": "eau"
+    },
+    {
+      "id": "major_03",
+      "nom": "Créativité",
+      "type": "majeur",
+      "registre": "exterieur",
+      "element": "terre"
+    },
+    {
+      "id": "major_04",
+      "nom": "Liberté",
+      "type": "majeur",
+      "registre": "exterieur",
+      "element": "feu"
+    },
+    {
+      "id": "major_05",
+      "nom": "Vide",
+      "type": "majeur",
+      "registre": "exterieur",
+      "element": "terre"
+    },
+    {
+      "id": "major_06",
+      "nom": "Union",
+      "type": "majeur",
+      "registre": "exterieur",
+      "element": "air"
+    },
+    {
+      "id": "major_07",
+      "nom": "Volonté",
+      "type": "majeur",
+      "registre": "exterieur",
+      "element": "eau"
+    },
+    {
+      "id": "major_08",
+      "nom": "Courage",
+      "type": "majeur",
+      "registre": "interieur",
+      "element": "feu"
+    },
+    {
+      "id": "major_09",
+      "nom": "Solitude",
+      "type": "majeur",
+      "registre": "interieur",
+      "element": "terre"
+    },
+    {
+      "id": "major_10",
+      "nom": "Changement",
+      "type": "majeur",
+      "registre": "interieur",
+      "element": "feu"
+    },
+    {
+      "id": "major_11",
+      "nom": "Justesse",
+      "type": "majeur",
+      "registre": "interieur",
+      "element": "air"
+    },
+    {
+      "id": "major_12",
+      "nom": "Perspective",
+      "type": "majeur",
+      "registre": "interieur",
+      "element": "eau"
+    },
+    {
+      "id": "major_13",
+      "nom": "Transformation",
+      "type": "majeur",
+      "registre": "interieur",
+      "element": "eau"
+    },
+    {
+      "id": "major_14",
+      "nom": "Équilibre",
+      "type": "majeur",
+      "registre": "interieur",
+      "element": "feu"
+    },
+    {
+      "id": "major_15",
+      "nom": "Emprise",
+      "type": "majeur",
+      "registre": "transpersonnel",
+      "element": "terre"
+    },
+    {
+      "id": "major_16",
+      "nom": "Rupture",
+      "type": "majeur",
+      "registre": "transpersonnel",
+      "element": "feu"
+    },
+    {
+      "id": "major_17",
+      "nom": "Silence",
+      "type": "majeur",
+      "registre": "transpersonnel",
+      "element": "air"
+    },
+    {
+      "id": "major_18",
+      "nom": "L'Invisible",
+      "type": "majeur",
+      "registre": "transpersonnel",
+      "element": "eau"
+    },
+    {
+      "id": "major_19",
+      "nom": "Rayonnement",
+      "type": "majeur",
+      "registre": "transpersonnel",
+      "element": "feu"
+    },
+    {
+      "id": "major_20",
+      "nom": "Vérité",
+      "type": "majeur",
+      "registre": "transpersonnel",
+      "element": "eau"
+    },
+    {
+      "id": "major_21",
+      "nom": "Accomplissement",
+      "type": "majeur",
+      "registre": "transpersonnel",
+      "element": "terre"
+    },
+    {
+      "id": "master",
+      "nom": "Éveil",
+      "type": "hors_cycle",
+      "registre": "hors_cycle",
+      "element": null,
+      "note": "carte hors cycle — phrase d'exception au tirage, pas d'élément ni de colonne"
+    },
+    {
+      "id": "feu_as",
+      "nom": "Source",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": "as"
+    },
+    {
+      "id": "feu_02",
+      "nom": "Possibilités",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 2
+    },
+    {
+      "id": "feu_03",
+      "nom": "Expérience",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 3
+    },
+    {
+      "id": "feu_04",
+      "nom": "Participation",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 4
+    },
+    {
+      "id": "feu_05",
+      "nom": "Totalité",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 5
+    },
+    {
+      "id": "feu_06",
+      "nom": "Succès",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 6
+    },
+    {
+      "id": "feu_07",
+      "nom": "Stress",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 7
+    },
+    {
+      "id": "feu_08",
+      "nom": "Voyage",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 8
+    },
+    {
+      "id": "feu_09",
+      "nom": "Épuisement",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 9
+    },
+    {
+      "id": "feu_10",
+      "nom": "Refoulement",
+      "type": "mineur",
+      "famille": "feu",
+      "degre": 10
+    },
+    {
+      "id": "feu_page",
+      "nom": "Jeu",
+      "type": "figure",
+      "famille": "feu",
+      "rang": "page"
+    },
+    {
+      "id": "feu_chevalier",
+      "nom": "Intensité",
+      "type": "figure",
+      "famille": "feu",
+      "rang": "chevalier"
+    },
+    {
+      "id": "feu_reine",
+      "nom": "Partage",
+      "type": "figure",
+      "famille": "feu",
+      "rang": "reine"
+    },
+    {
+      "id": "feu_roi",
+      "nom": "Le Créateur",
+      "type": "figure",
+      "famille": "feu",
+      "rang": "roi"
+    },
+    {
+      "id": "eau_as",
+      "nom": "Suivre le mouvement",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": "as"
+    },
+    {
+      "id": "eau_02",
+      "nom": "Amitié",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 2
+    },
+    {
+      "id": "eau_03",
+      "nom": "Célébration",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 3
+    },
+    {
+      "id": "eau_04",
+      "nom": "Recueillement",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 4
+    },
+    {
+      "id": "eau_05",
+      "nom": "Attachement",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 5
+    },
+    {
+      "id": "eau_06",
+      "nom": "Illusion",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 6
+    },
+    {
+      "id": "eau_07",
+      "nom": "Projections",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 7
+    },
+    {
+      "id": "eau_08",
+      "nom": "Lâcher-prise",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 8
+    },
+    {
+      "id": "eau_09",
+      "nom": "Paresse",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 9
+    },
+    {
+      "id": "eau_10",
+      "nom": "Harmonie",
+      "type": "mineur",
+      "famille": "eau",
+      "degre": 10
+    },
+    {
+      "id": "eau_page",
+      "nom": "Compréhension",
+      "type": "figure",
+      "famille": "eau",
+      "rang": "page"
+    },
+    {
+      "id": "eau_chevalier",
+      "nom": "Confiance",
+      "type": "figure",
+      "famille": "eau",
+      "rang": "chevalier"
+    },
+    {
+      "id": "eau_reine",
+      "nom": "Réceptivité",
+      "type": "figure",
+      "famille": "eau",
+      "rang": "reine"
+    },
+    {
+      "id": "eau_roi",
+      "nom": "Guérison",
+      "type": "figure",
+      "famille": "eau",
+      "rang": "roi"
+    },
+    {
+      "id": "air_as",
+      "nom": "Conscience",
+      "type": "mineur",
+      "famille": "air",
+      "degre": "as"
+    },
+    {
+      "id": "air_02",
+      "nom": "Dualité",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 2
+    },
+    {
+      "id": "air_03",
+      "nom": "Isolement",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 3
+    },
+    {
+      "id": "air_04",
+      "nom": "Procrastination",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 4
+    },
+    {
+      "id": "air_05",
+      "nom": "Comparaison",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 5
+    },
+    {
+      "id": "air_06",
+      "nom": "Fardeau",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 6
+    },
+    {
+      "id": "air_07",
+      "nom": "Manipulation",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 7
+    },
+    {
+      "id": "air_08",
+      "nom": "Culpabilité",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 8
+    },
+    {
+      "id": "air_09",
+      "nom": "Tristesse",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 9
+    },
+    {
+      "id": "air_10",
+      "nom": "Renaissance",
+      "type": "mineur",
+      "famille": "air",
+      "degre": 10
+    },
+    {
+      "id": "air_page",
+      "nom": "Dispersion",
+      "type": "figure",
+      "famille": "air",
+      "rang": "page"
+    },
+    {
+      "id": "air_chevalier",
+      "nom": "Lutte",
+      "type": "figure",
+      "famille": "air",
+      "rang": "chevalier"
+    },
+    {
+      "id": "air_reine",
+      "nom": "Morale",
+      "type": "figure",
+      "famille": "air",
+      "rang": "reine"
+    },
+    {
+      "id": "air_roi",
+      "nom": "Contrôle",
+      "type": "figure",
+      "famille": "air",
+      "rang": "roi"
+    },
+    {
+      "id": "terre_as",
+      "nom": "Maturité",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": "as"
+    },
+    {
+      "id": "terre_02",
+      "nom": "Présence",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 2
+    },
+    {
+      "id": "terre_03",
+      "nom": "Guidance",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 3
+    },
+    {
+      "id": "terre_04",
+      "nom": "Avarice",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 4
+    },
+    {
+      "id": "terre_05",
+      "nom": "Marginalité",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 5
+    },
+    {
+      "id": "terre_06",
+      "nom": "Compromis",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 6
+    },
+    {
+      "id": "terre_07",
+      "nom": "Patience",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 7
+    },
+    {
+      "id": "terre_08",
+      "nom": "Simplicité",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 8
+    },
+    {
+      "id": "terre_09",
+      "nom": "Plénitude",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 9
+    },
+    {
+      "id": "terre_10",
+      "nom": "Communauté",
+      "type": "mineur",
+      "famille": "terre",
+      "degre": 10
+    },
+    {
+      "id": "terre_page",
+      "nom": "Aventure",
+      "type": "figure",
+      "famille": "terre",
+      "rang": "page"
+    },
+    {
+      "id": "terre_chevalier",
+      "nom": "Ralentir",
+      "type": "figure",
+      "famille": "terre",
+      "rang": "chevalier"
+    },
+    {
+      "id": "terre_reine",
+      "nom": "Épanouissement",
+      "type": "figure",
+      "famille": "terre",
+      "rang": "reine"
+    },
+    {
+      "id": "terre_roi",
+      "nom": "Abondance",
+      "type": "figure",
+      "famille": "terre",
+      "rang": "roi"
+    }
+  ]
+}

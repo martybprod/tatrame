@@ -36,3 +36,10 @@ _distillation/
 book_OPS_*.txt
 liberez_creativite_extrait.txt
 tests/
+
+# Le Tarot (app sœur montée sous /tarot) : ses maquettes et sa distillation
+# de construction ne servent jamais au runtime.
+tarot/maquettes/
+tarot/_distillation/
+tarot/tests/
+tarot/.pytest_cache/

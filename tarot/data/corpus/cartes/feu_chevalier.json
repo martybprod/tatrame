@@ -1,0 +1,56 @@
+{
+  "id": "feu_chevalier",
+  "nom": "Intensité",
+  "type": "figure",
+  "famille": "feu",
+  "rang": "chevalier",
+  "element": "feu",
+  "note_grille": "figure feu (chevalier) : l'élan rassemblé vers un seul objectif. Deux lectures possibles (Greer) : quelqu'un qui vise juste, ou ta propre intensité qui demande une adresse. La nuit autour n'est pas une ennemie, elle rend la flamme plus visible.",
+  "mots_cles": [
+    "la lumière blanche",
+    "les lunettes de soudeur",
+    "un seul point",
+    "le manomètre",
+    "la lande la nuit"
+  ],
+  "tension": {
+    "pousse": "concentrer",
+    "retient": "disperser"
+  },
+  "lumiere": "Tu as beaucoup d'énergie et tu peux l'utiliser efficacement lorsque tu la concentres sur un seul objectif.\n\nCette carte montre un homme qui dirige une flamme blanche vers un point précis, au milieu d'une lande plongée dans la nuit.\n\nIl porte des lunettes et des gants de protection. À côté de lui, un appareil lui permet de contrôler la puissance de la flamme.\n\nCette image représente une énergie forte, mais bien maîtrisée.\n\nTu n'as pas besoin de faire plusieurs choses en même temps pour avancer rapidement.\n\nLorsque tu choisis une priorité et que tu lui consacres ton attention, tu peux obtenir de meilleurs résultats.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu as peut-être beaucoup de projets, d'idées et de choses à faire en même temps.\n\nTu commences quelque chose, puis tu passes à autre chose avant de l'avoir terminé.\n\nTu reviens sur un projet, modifies ce que tu avais déjà fait et changes encore de direction.\n\nRésultat : tu dépenses beaucoup d'énergie, mais tu as parfois l'impression de ne pas avancer.\n\nLe problème n'est pas forcément un manque de motivation ou de capacité.\n\nTu as peut-être simplement besoin de mieux choisir où concentrer ton énergie.",
+    "issue": "Choisis une seule priorité pour aujourd'hui.\n\nDécide du temps que tu peux lui consacrer et évite de passer constamment d'une tâche à une autre.\n\nLes autres projets peuvent attendre leur tour.\n\nTu avanceras plus facilement en donnant toute ton attention à une chose à la fois."
+  },
+  "questions": [
+    "Quelle tâche mérite vraiment toute ton attention aujourd'hui ?",
+    "Où pourrais-tu mieux utiliser ton énergie en ce moment ?",
+    "Qu'est-ce que tu recommences sans cesse au lieu de terminer ?"
+  ],
+  "lecon": "La force ne vient pas seulement de la quantité d'énergie que tu possèdes, mais aussi de ta capacité à la concentrer sur un objectif précis.",
+  "image": {
+    "geste": "Un homme dirige une flamme blanche vers un bloc de pierre. Il porte des lunettes de protection et des gants épais. Toute son attention est concentrée sur un seul point.",
+    "seuil": "La lande qui l'entoure reste plongée dans l'obscurité. La lumière de la flamme se concentre sur son travail.",
+    "detail": "Une petite machine en cuivre équipée d'un manomètre est reliée à la tige. Elle permet de contrôler la puissance de la flamme."
+  },
+  "micro_geste": "Choisis une seule tâche aujourd'hui. Réserve-lui un moment précis et consacre-lui toute ton attention avant de passer à autre chose.",
+  "positions": {
+    "jour": "Tu as peut-être beaucoup d'énergie à dépenser aujourd'hui, mais encore faut-il savoir où la diriger.\n\nCette carte montre un homme qui utilise une flamme blanche pour travailler sur un point précis.\n\nIl ne cherche pas à éclairer toute la lande. Il concentre son énergie exactement là où il en a besoin.\n\nC'est ce que tu peux faire aujourd'hui : choisir une priorité et lui consacrer ton attention.\n\nSi plusieurs choses te semblent urgentes, demande-toi laquelle mérite vraiment de passer en premier.",
+    "amene": "Tu possèdes peut-être déjà toute l'énergie et la motivation nécessaires pour avancer.\n\nCe qui te manque n'est pas forcément la force, mais une direction claire.\n\nTu arrives peut-être avec plusieurs projets en tête et l'envie de tout faire avancer en même temps.\n\nCette carte te rappelle que tu peux obtenir de meilleurs résultats en concentrant ton énergie sur une seule chose.\n\nTu n'as pas besoin d'en faire davantage. Tu as surtout besoin de mieux choisir où agir.",
+    "se_joue": "Tu peux utiliser ton énergie de deux façons.\n\nSoit tu la concentres sur un objectif précis et tu avances progressivement jusqu'au résultat.\n\nSoit tu la disperses dans plusieurs directions et tu risques de terminer la journée avec beaucoup de choses commencées, mais peu de choses terminées.\n\nLa différence ne vient pas de la quantité d'efforts que tu fournis, mais de la manière dont tu les utilises.\n\nLa question est donc : quelle est la chose la plus importante à terminer en ce moment ?",
+    "essayer": "Choisis une tâche importante et prépare-toi à lui consacrer un moment sans interruption.\n\nÉloigne les distractions, mets ton téléphone de côté si nécessaire et évite de commencer d'autres activités pendant ce temps.\n\nTu peux ensuite reprendre les autres projets un par un.\n\nComme la flamme de la carte, ton énergie sera plus efficace lorsqu'elle sera dirigée vers un point précis."
+  },
+  "source_referentielle": {
+    "pollack": "§4, chevalier de Bâtons — l'élan concentré, l'énergie qui fonce ; figures de cour : une manière d'être, chez quelqu'un ou en toi",
+    "wen": "§4 — rang chevalier : l'élan vers un seul objectif ; famille feu : la flamme dirigée",
+    "greer": "§6.4 — le rôle comme facette ; la question de l'adresse de l'énergie",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_feu.json (entrée feu_chevalier), à reformuler par Martin ; ombre « retourne » (l'intensité contre la personne qui la porte), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à sortir de cette tendance à vouloir mener plusieurs projets en même temps. Jusqu'ici, tu passais facilement d'une idée à l'autre, avec beaucoup d'énergie, mais sans toujours savoir où concentrer tes efforts. Tu apprends maintenant à choisir une direction et à y consacrer pleinement ton attention. Tu conserves ta capacité à agir avec détermination lorsque tu sais ce que tu veux vraiment.",
+    "image_soi": "Tu te vois comme une personne pleine d'énergie et de ressources, capable de mener plusieurs choses de front. Tu aimes pouvoir changer de direction et saisir de nouvelles occasions. Pour toi, t'arrêter ou renoncer à un projet pourrait donner l'impression que tu manques de motivation. Tu essaies donc de tout maintenir en mouvement. Cette image dynamique te valorise, mais elle peut aussi disperser ton énergie et t'empêcher d'aller au bout de ce qui compte vraiment.",
+    "entourage": "Les autres te trouvent énergique, passionnée et toujours prête à lancer de nouvelles idées. Ils viennent facilement vers toi lorsqu'il faut démarrer un projet ou donner de l'élan à un groupe. En revanche, ils peuvent être surpris lorsque tu changes rapidement de direction ou que ton intérêt se porte ailleurs. Ton entourage apprécie ton enthousiasme, mais ne sait pas toujours ce que tu souhaites réellement construire avec toute cette énergie."
+  }
+}

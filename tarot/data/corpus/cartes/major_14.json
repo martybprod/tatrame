@@ -1,0 +1,53 @@
+{
+  "id": "major_14",
+  "nom": "Équilibre",
+  "type": "majeur",
+  "registre": "interieur",
+  "element": "feu",
+  "note_grille": "colonne 7 (avec Volonté et Accomplissement), le motif de tenir et achever. Élément Feu, l'accord des contraires se vit avec chaleur, pas en tiède. Le mot latin du jeu classique dit mélanger, et le dosage précède le retour au monde (Pollack). Tension signature de Pollack, doser contre osciller.",
+  "mots_cles": [
+    "major_14",
+    "intérieur",
+    "feu"
+  ],
+  "tension": {
+    "pousse": "doser",
+    "retient": "osciller"
+  },
+  "lumiere": "Tu fais tenir ensemble deux parts de toi qui cohabitent peu. L'une aime le jour, le mouvement et le bruit des projets. L'autre préfère la nuit, le calme et la lenteur. Tu ne choisis plus entre elles : tu cherches la mesure qui laisse à chacune sa place. L'accord ne demande à aucune des deux de changer de nature. Ce mélange donne un feu doux et régulier, qui réchauffe sans consumer. Tu avances avec tout ce que tu es, et cela se voit dans ta démarche.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu passes d'un extrême à l'autre, et le mélange ne se fait plus. Une semaine entière dans le feu des projets, puis un repli dans le silence, sans transition. Chaque part de toi prend tout l'espace à son tour, tandis que l'autre attend dehors. Ta vie se découpe en morceaux qui ne se rencontrent plus. La mesure existe encore en toi, mais elle s'est affaiblie, noyée sous ces oscillations. Un feu qui vacille chauffe mal, et tu le remarques à ta fatigue.",
+    "issue": "Réunis les deux natures dans une seule heure concrète : une marche tranquille avec un projet en tête. Le dosage s'apprend par essais, et chaque essai compte."
+  },
+  "questions": [
+    "Quelle part de toi attend dehors pendant que l'autre occupe tout l'espace ?",
+    "À quoi reconnais-tu ton bon dosage, dans ton corps et dans tes journées ?",
+    "Où pourrais-tu mélanger le jour et la nuit au lieu de les empiler ?"
+  ],
+  "lecon": "Mélanger le jour et la nuit dans la juste mesure, pour que deux natures opposées partagent le même bord.",
+  "image": {
+    "geste": "Un aigle et un cygne se tiennent côte à côte au bord d'une eau calme, les ailes déployées. Leurs plumes se touchent presque, sans que l'un cherche à devenir l'autre.",
+    "seuil": "La carte est divisée en deux moitiés verticales : une nuit étoilée d'un côté, un jour doré de l'autre. Les deux oiseaux se tiennent exactement sur la ligne du milieu, chacun venu de son côté.",
+    "detail": "Dans l'eau, leurs reflets apparaissent inversés : le jour se reflète dans la nuit et la nuit dans le jour. La surface de l'eau accueille les deux sans en choisir un."
+  },
+  "micro_geste": "Mélange aujourd'hui deux goûts que tu sépares d'habitude : par exemple, prends un moment de calme au milieu d'une journée bien remplie.",
+  "positions": {
+    "jour": "Deux oiseaux très différents partagent aujourd'hui le même bord d'eau. L'aigle regarde au loin, droit dans la lumière. Le cygne flotte paisiblement, tourné vers sa propre profondeur. Leurs ailes déployées se touchent presque, et aucun des deux ne réclame la place de l'autre. Ta journée ressemble à cette scène : deux natures sont appelées à cohabiter dans un même moment. La mesure du jour n'est pas un compromis mou, mais un accord entre voisins qui se respectent.",
+    "amene": "En ce moment, deux horloges différentes semblent accrochées au même mur en toi. L'une te pousse vers l'action, les projets et le plein jour. L'autre réclame du calme, de la lenteur et du silence. Donner raison à tour de rôle à chacune est déjà une forme d'attention, et même une richesse. Deux natures bien vivantes cohabitent en toi : elles sont la matière même de l'accord qui se prépare. Il reste à poser la couture, le petit point régulier qui tient les deux morceaux ensemble.",
+    "se_joue": "Certaines semaines penchent d'un côté, puis de l'autre, sans jamais trouver le milieu. Le climat ressemble à un lac où deux vents alternent : l'un, chaud, appelle le mouvement ; l'autre, frais, réclame le repos. Rien ne se brise dans ce va-et-vient, et pourtant l'énergie se disperse. Une période comme celle-ci demande un rythme régulier plutôt qu'une décision héroïque. Le dosage se règle à l'échelle du quotidien, pas à celle des grandes décisions.",
+    "essayer": "Tu peux expérimenter le mélange à petite dose, sans réorganiser toute ta semaine. Remarque d'abord un moment où ton feu travaille déjà doucement : une activité qui t'éclaire sans t'emporter. Appuie-toi sur cette observation, puis invite l'autre nature à la même table. Accorde-toi cinq minutes de calme au milieu d'un après-midi actif. L'aigle et le cygne commencent par partager un bord avant de déployer leurs ailes ensemble. Le dosage se règle par touches successives, et chaque essai t'apprend à trouver ta mesure.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, XIV (Tempérance) — le mot latin dit mélanger ; dosage juste, un pied sur terre et un dans l'eau, retour au monde après la traversée ; le détail impossible (les deux coupes désalignées) loge le sens ; ombre — extrêmes, vie en morceaux",
+    "wen": "§3 — élément Feu (Tempérance chez Wen) ; §5 — le renversement relu en quatre modes d'ombre (amoindri ici)",
+    "greer": "§6.2 — leçon — soigner, doser, expérimenter, combiner",
+    "image": "brief de production majeurs — visage validé (aigle et cygne au bord de l'eau calme, moitiés nuit étoilée et jour doré), reformulé",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu passes moins brusquement d'une période très active à un retrait complet. Tu as connu des rythmes où tout se faisait dans l'urgence, puis où tu n'avais plus envie de rien entreprendre. Ce qui demeure, c'est une meilleure connaissance de tes besoins et de ton énergie. Tu peux reconnaître les moments où ralentir ou reprendre, sans devoir tout changer d'un coup.",
+    "image_soi": "Tu as parfois l'impression d'être composée de deux personnes qui ne se ressemblent pas. L'une est active, sociable et efficace; l'autre préfère le calme et les moments à l'écart. Tu te reproches de passer de l'une à l'autre, comme si tu manquais de cohérence. Cette opposition t'empêche de voir que ces deux façons d'être peuvent coexister.",
+    "entourage": "Les autres ne savent pas toujours à quel rythme te proposer une activité. Ils te voient parfois très présente, puis plus discrète pendant quelque temps. Certains interprètent ce changement comme de l'imprévisibilité et adaptent leurs invitations en conséquence. On ne pense pas toujours à te demander ce qui te convient dans le moment. Ton besoin de calme peut alors être pris pour un désintérêt."
+  }
+}

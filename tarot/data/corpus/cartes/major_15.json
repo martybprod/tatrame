@@ -1,0 +1,53 @@
+{
+  "id": "major_15",
+  "nom": "Emprise",
+  "type": "majeur",
+  "registre": "transpersonnel",
+  "element": "terre",
+  "note_grille": "colonne 1 (avec Existence et Courage), le motif de canaliser l'énergie. Registre transpersonnel, le conditionnement se hérite, il ne se choisit pas. Élément Terre, les fils et la sortie sont concrets. Le Diable du jeu classique fait peur, la lecture refuse la menace, les chaînes sont larges et rouillées (tension assumée, Pollack). Tension signature de Pollack, voir le lien contre s'y croire condamné.",
+  "mots_cles": [
+    "major_15",
+    "transpersonnel",
+    "terre"
+  ],
+  "tension": {
+    "pousse": "voir les fils",
+    "retient": "se résigner"
+  },
+  "lumiere": "Tu reconnais les fils qui orientent tes gestes, et ce regard change tout. La chaîne posée à côté du socle est rouillée : personne ne l'a refermée depuis longtemps. Ces habitudes viennent de loin. On te les a transmises sans que tu les choisisses. Les nommer desserre déjà une bonne part de leur emprise. Sous les bandages, quelque chose de vivant attend, entier, avec un cœur qui brille à travers. L'énergie retenue dans ces fils pourra servir à ta libération. Dans l'eau, le reflet libre montre une autre image de toi : celle qui existe sous les contraintes.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu subis un conditionnement comme s'il faisait partie de ta nature. Une habitude, une envie ou une peur dirige ta journée, et tu la vis sans voir le fil qui la commande. L'impasse paraît totale parce que le décor ne t'a jamais montré d'autre scène. Tu essaies de rompre avec tout par la force, mais les bandages se resserrent d'un cran, puis le cycle recommence. Personne n'a établi ces règles pour te nuire : elles sont arrivées avec la maison, l'éducation ou l'époque. Les fils remontent vers une main, et l'un d'eux repose dans ta propre paume.",
+    "issue": "Nomme un fil à voix haute, clairement, en précisant à quelle époque il est entré dans ta vie. Un conditionnement décrit avec précision perd déjà une part de son emprise. Au bas de la carte, le bassin montre une silhouette libre : elle attend d'être reconnue."
+  },
+  "questions": [
+    "Quel fil tiens-tu toi-même sans l'avoir choisi ?",
+    "Quelle règle de ta vie vient d'ailleurs : d'une maison, d'une école ou d'une époque révolue ?",
+    "Où ton énergie vitale se loge-t-elle lorsqu'elle n'a pas le droit de s'exprimer ?"
+  ],
+  "lecon": "Nommer les fils hérités pour reconnaître leur emprise, puis rendre son énergie vivante au mouvement.",
+  "image": {
+    "geste": "Une femme emmaillotée de bandages serrés se tient debout sur un socle noir. Des fils de marionnette remontent vers une main qui apparaît en haut du cadre. Elle tient elle-même l'un de ces fils.",
+    "seuil": "Une chaîne rouillée repose à côté du socle, ouverte. Personne ne l'a refermée depuis longtemps. La sortie ne demande pas de tout forcer, mais de se tourner vers le reflet.",
+    "detail": "Son cœur brille à travers les bandages, et la flamme d'une lampe pend à un fil. Dans le bassin au bas de la carte, l'eau reflète sa silhouette libre et lumineuse, déjà présente et intacte."
+  },
+  "micro_geste": "Nomme à voix haute une règle héritée qui dirige encore l'une de tes journées, puis note d'où elle vient.",
+  "positions": {
+    "jour": "Aujourd'hui, une figure emmaillotée examine ses propres fils, et elle en tient déjà un dans sa main. Ce détail change tout : la main qui tient peut aussi choisir de déposer. Les fils qui dirigent tes journées n'ont rien de mystérieux. Chacun possède une origine, une voix, une date. L'un d'eux attend ton regard en ce moment. En bas, le bassin conserve le reflet d'une silhouette libre : la forme vivante qui existe sous les bandages. La journée t'offre une occasion précise de nommer un fil et de le regarder en face.",
+    "amene": "Tu répètes une séquence apprise bien avant toi, et elle finit par passer pour ta nature. Le geste semble automatique, la réaction arrive toute seule, le même argument revient toujours au même endroit des discussions. Ce conditionnement est arrivé avec la maison, l'école et les années. Personne ne l'a posé sur toi dans le but de te nuire. Un indice se trouve dans la chaîne rouillée, ouverte depuis longtemps à côté du socle. Tu n'es pas condamné à rester une marionnette : tu peux apprendre à déposer les fils.",
+    "se_joue": "Qu'est-ce qui permettrait à ton corps de reconnaître qu'un fil vient de l'extérieur et non de toi ? Tout se joue dans cette distinction entre ce qui t'a été transmis et ce que tu as choisi. L'héritage se reconnaît à sa rapidité : il répond avant toi, avec les mots de la maison. Le choix, lui, se reconnaît à sa lenteur : il pèse, il hésite, il t'appartient. La question de la carte est très concrète. Examine une habitude à la fois : le concret permet souvent d'y voir plus clair que la seule volonté.",
+    "essayer": "Tu as le droit de déposer une règle qui ne vient pas de toi, même si la maison l'approuvait encore hier. Un essai suffit, sans cérémonie ni déclaration. Choisis une habitude héritée, mets-la de côté pendant une journée, puis observe ce qui tient encore debout sans elle. La catastrophe annoncée ne se produit souvent pas, et une part de ton énergie revient. Cette énergie est la même que celle qui était retenue dans les fils : elle change simplement de direction. Le reflet du bassin montre la suite, libre et lumineuse, à portée de pas.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, XV (Diable) — l'illusion qu'il n'existe rien d'autre ; les chaînes sont larges, on pourrait les ôter ; l'énergie vitale la plus brute, à traverser et pas à nier ; règle de la chaîne large, toute ombre porte son issue ; ombre — dépendance, obsession, sentiment d'impasse",
+    "wen": "§3 — élément Terre (Diable chez Wen) ; §5 — le renversement relu en quatre modes d'ombre (subi ici)",
+    "greer": "§6.2 — leçon — nommer les rapports de force, désirer, garder l'humour",
+    "image": "brief de production majeurs — visage validé (figure emmaillotée sur socle noir, fils de marionnette, cœur lumineux, reflet libre dans le bassin), reformulé",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Une règle que tu suivais sans la questionner perd de son autorité. Elle venait peut-être de ta famille, de ton milieu ou d'une ancienne expérience. Tu l'as longtemps prise pour une vérité personnelle. Ce qui demeure, c'est ce que tu peux reconnaître derrière cette habitude : tes goûts, tes besoins et tes choix. Tu peux distinguer ce qui t'appartient de ce que tu as appris à répéter.",
+    "image_soi": "Tu te décris parfois comme quelqu'un qui ne peut pas faire autrement. Tu présentes certaines habitudes comme des traits fixes de ta personnalité ou comme un héritage familial. Cette explication peut t'éviter de te sentir responsable de tout, mais elle risque aussi de te maintenir dans une position qui ne te convient plus. Tu peux finir par confondre une habitude ancienne avec une identité définitive.",
+    "entourage": "Les autres te comparent parfois à une personne de ta famille et associent tes réactions à cette ressemblance. La remarque revient dans les discussions, parfois sur le ton de la plaisanterie. Elle peut sembler anodine, mais elle réduit ton histoire à une étiquette connue. On risque alors de prévoir tes réactions au lieu de te laisser exprimer ce que tu penses réellement."
+  }
+}

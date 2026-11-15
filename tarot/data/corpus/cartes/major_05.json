@@ -1,0 +1,53 @@
+{
+  "id": "major_05",
+  "nom": "Vide",
+  "type": "majeur",
+  "registre": "exterieur",
+  "element": "terre",
+  "note_grille": "colonne 5 (avec Perspective et Rayonnement) : la doctrine transmise. Élément Terre : même le vide prend un support, ici un noir d'encre où flotte un œuf de lumière. Tension signature (Pollack) : transmettre contre se libérer du déjà-pensé. Tension assumée avec le nombre — V porte la transmission, le cadre reçu, et la carte nomme le vide d'avant la première forme, ce moment où ce qui est reçu se vidange pour laisser place à l'expérience propre.",
+  "mots_cles": [
+    "*major_05",
+    "exterieur",
+    "terre*"
+  ],
+  "tension": {
+    "pousse": "accueillir",
+    "retient": "remplir"
+  },
+  "lumiere": "Tu traverses un moment où rien n'est encore écrit, et c'est précisément pour cela que tout reste possible. La nuit représentée sur la carte ne dissimule rien. Elle protège un œuf de lumière, petit et vivant, qui brille sans se presser. Ce qui n'a pas encore pris forme ne peut pas encore te limiter. Le silence qui précède le premier mot contient tous les mots possibles. Tu peux rester dans cette pause sans chercher à la combler et lui laisser le temps de préparer la suite.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu vis le vide comme une panne qui t'arrive et tu cherches aussitôt à le remplir. Un écran s'allume, une tâche apparaît ou une conversation vient occuper le moindre espace libre. À peine installé, ton calme est déjà interrompu. Tu n'es pas nécessairement opposé à la tranquillité. C'est plutôt l'espace sans contenu que tu évites, parce qu'il te semble inutile ou improductif. Ce remplissage constant te demande beaucoup d'énergie. Pourtant, le noir profond reste là, derrière toutes ces occupations, avec son œuf de lumière intact.",
+    "issue": "Accorde-toi une minute de silence aujourd'hui, sans écran, les mains posées, sans attendre qu'il se passe quelque chose. Ce qui se prépare dans le vide n'a pas besoin d'être provoqué. Une seule minute suffit pour commencer à l'accueillir."
+  },
+  "questions": [
+    "Qu'est-ce que tu cherches à remplir en premier lorsqu'un espace vide se présente ?",
+    "Qu'est-ce qui pourrait naître en toi sans avoir encore de forme précise ?",
+    "Que remarquerais-tu si tu laissais passer une minute sans rien y ajouter ?"
+  ],
+  "lecon": "Habiter le vide comme un temps de préparation, un espace où tout demeure possible avant que la première forme apparaisse.",
+  "image": {
+    "geste": "Rien ne bouge dans un noir profond et uniforme, sans horizon ni paysage. Cette immobilité n'est pas un oubli : elle constitue le point de départ.",
+    "seuil": "Aucun bord n'est visible, mais un seuil existe malgré tout : celui de la première forme à venir. Tout ce qui suivra prendra naissance à cet endroit.",
+    "detail": "Un œuf de lumière crème flotte légèrement au-dessus du centre de l'image, entouré d'un halo discret. Il brille de l'intérieur, sans promesse ni inscription."
+  },
+  "micro_geste": "Reste une minute aujourd'hui dans un espace sans écran ni tâche à accomplir, et laisse-le vide.",
+  "positions": {
+    "jour": "La journée t'accorde une permission rare : celle de ne rien produire. Une page peut rester blanche, une réponse peut attendre et un projet peut demeurer à l'état d'ébauche. Le vide qui précède une forme n'est pas du temps perdu. C'est l'atelier d'avant, le moment où rien n'est encore formulé et où tout reste à venir. La carte montre un espace noir immense, au milieu duquel brille un seul œuf de lumière. Cela suffit. La permission tient en une phrase : tu peux habiter le silence sans chercher à le remplir.",
+    "amene": "Certaines soirées sont traversées par un silence dense, presque sans horizon. Ce climat ne correspond pas nécessairement à une peine précise et ne réclame aucun remède. C'est le temps qui précède une nouvelle forme, lorsque rien n'est encore formulé. Les projets restent en suspens, les mots se font plus rares et un petit point de lumière demeure au centre. Il ne réclame rien. Ces périodes précèdent parfois de nouveaux commencements. Tu peux les laisser exister telles qu'elles sont, dans leur calme profond, sans chercher à les transformer immédiatement.",
+    "se_joue": "Qu'est-ce qui pourrait se préparer en toi pendant les moments que tu occupes aussitôt ? Cette question paraît simple, mais elle peut traverser toute la journée. Observe ton réflexe de remplissage : l'écran que tu allumes sans raison, la tâche que tu inventes ou la conversation que tu lances pour éviter le silence. Chacun de ces gestes peut avoir son utilité, mais aucun ne résulte forcément d'un véritable choix. Le nœud se trouve entre ton inconfort devant le vide et l'œuf de lumière qui attend déjà. Que pourrait-il apparaître si tu laissais l'espace ouvert une minute de plus ?",
+    "essayer": "Tu n'as aucun résultat à atteindre au terme de cette minute. Pose simplement les mains à plat, ferme les yeux et laisse le temps passer sans lui imposer de projet. Si l'envie de remplir cet espace se manifeste, remarque-la sans lui obéir immédiatement. Tu pourras recommencer le lendemain. Personne ne juge l'usage que tu fais de cette minute. L'œuf représenté sur la carte ne brille que dans l'obscurité, et il ne demande aucun effort. Une minute par jour peut suffire pour apprendre à demeurer dans le vide.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, V — ce qui est reçu doit un jour se vider pour laisser place à une expérience propre ; tension transmettre / se libérer du déjà-pensé ; colonne 5 (la doctrine)",
+    "wen": "§3 — élément Terre (table des majeurs, recopiée de jeu.json)",
+    "greer": "§6.2 — leçon : apprendre et transmettre, comprendre le cadre dans lequel on vit",
+    "production": "concepts — pollack §3 V (le vide qui précède l'expérience propre), wen §3 (Terre), greer §6.2, nom maison « Vide » de noms_cartes.json ; image — visage validé par Martin (brief de production, Groupe A) : noir d'encre sans horizon, œuf de lumière crème flottant au-dessus du centre — reformulé en geste / seuil / détail",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu ressens moins le besoin de remplir chaque moment disponible. Les écrans, les tâches et les conversations occupaient autrefois le moindre silence. Cette agitation perd de son emprise. Ce qui demeure, c'est la possibilité de rester quelques instants sans chercher à produire ou à recevoir quelque chose. Tu découvres que le calme n'est pas nécessairement une absence : il peut simplement laisser de la place.",
+    "image_soi": "Tu associes facilement ta valeur à ce que tu accomplis. Une journée peu productive te semble incomplète, même si tu avais besoin de repos. Tu occupes le rôle de celle qui avance, qui répond et qui trouve toujours quelque chose à faire. Cette image te donne une place, mais elle rend les pauses difficiles à accepter sans justification.",
+    "entourage": "On sait que tu es disponible et on prend l'habitude de remplir ton agenda. Les demandes, les invitations et les petits services arrivent parce que tu as souvent accepté par le passé. Les autres peuvent croire que tu aimes être occupée. Ils ne voient pas nécessairement les moments de calme auxquels tu renonces pour rester présente et répondre à leurs attentes."
+  }
+}

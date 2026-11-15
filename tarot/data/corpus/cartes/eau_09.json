@@ -1,0 +1,56 @@
+{
+  "id": "eau_09",
+  "nom": "Paresse",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 9,
+  "element": "eau",
+  "note_grille": "degré 9 (bilan) × famille eau (intériorité, lien) : accord nuancé — le bilan se prend assis, au repos, et non en marchant. La barque prête évite que le repos se confonde avec l'arrivée. Pollack : neuf de Coupes, la satisfaction, le vœu posé et réalisé.",
+  "mots_cles": [
+    "L'ombre d'un arbre ancien",
+    "les racines immergées",
+    "le repos profond",
+    "la barque au bord de l'eau",
+    "le départ qui peut attendre"
+  ],
+  "tension": {
+    "pousse": "accueillir le repos",
+    "retient": "culpabiliser"
+  },
+  "lumiere": "Tu peux t'appuyer contre ce qui est solide et laisser ton corps retrouver son calme. Un grand arbre étend son ombre au-dessus de la rivière. Ses racines plongent dans l'eau et son tronc accueille celui qui vient s'y reposer. Rien ne semble pressé dans ce paysage. Une barque attend près de la berge, les avirons déjà installés. Cette carte te rappelle que le repos n'est pas une interruption inutile du chemin. Il fait partie de ce qui permet de continuer. Tu peux prendre le temps de regarder où tu en es, sans transformer chaque moment libre en nouvelle occasion de travailler.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu as trouvé un endroit confortable et tu n'as plus vraiment envie de le quitter. Le repos était nécessaire au départ, mais il se transforme peu à peu en manière d'éviter ce qui t'attend. Tu te racontes que tu reprendras demain, puis tu découvres une nouvelle raison de prolonger la pause. La barque est toujours là, les avirons prêts, mais tu ne fais aucun mouvement vers elle. Tu n'as pas abandonné ton projet. Tu as simplement cessé de regarder la différence entre une pause qui restaure et une attente qui s'étire.",
+    "issue": "Prends le temps de te reposer sans te reprocher de ralentir. Mais avant de t'installer, identifie une petite action qui marquera la reprise. Tu pourras ainsi profiter pleinement de ton repos sans perdre le contact avec ce qui compte pour toi."
+  },
+  "questions": [
+    "De quoi as-tu réellement besoin en ce moment : de récupération ou d'un nouvel élan ?",
+    "Quelle action repousses-tu régulièrement pendant que tu prolonges ta pause ?",
+    "Quel appui pourrait t'aider à reprendre sans avoir à tout porter seul ?"
+  ],
+  "lecon": "Le repos nourrit le mouvement lorsqu'il permet de retrouver ses forces. Il devient immobilité lorsqu'on oublie complètement le chemin qui nous attend.",
+  "image": {
+    "geste": "Un homme est adossé à un grand arbre. Ses mains sont placées derrière sa tête et ses pieds nus reposent dans l'eau fraîche de la rivière.",
+    "seuil": "Une petite barque attend près de la rive. Les avirons sont posés en travers et une corde la maintient à proximité du bord.",
+    "detail": "Les racines épaisses de l'arbre descendent le long de la berge et plongent dans l'eau. Elles témoignent d'un ancrage ancien et profond."
+  },
+  "micro_geste": "Accorde-toi aujourd'hui un vrai moment de repos. Avant de commencer, note simplement quelle sera ta prochaine petite étape.",
+  "positions": {
+    "jour": "Tu peux ralentir sans avoir à te justifier. La carte montre un homme installé à l'ombre d'un arbre immense, les pieds dans la rivière. Il ne semble ni inquiet ni pressé. Il profite simplement de ce moment. La barque attend à proximité et rappelle que la suite du voyage existe toujours. Tu n'as pas besoin de partir immédiatement pour être en mouvement dans ta vie. Aujourd'hui, tu peux reconnaître que le repos est une étape valable, surtout lorsque tu as beaucoup donné.",
+    "amene": "Tu arrives peut-être avec une fatigue accumulée, celle qui ne disparaît pas après une courte pause. Tu as besoin d'un espace où personne ne te demande de décider, de produire ou de répondre. La carte t'offre l'image d'un arbre ancien dont le tronc peut soutenir ton poids. Il ne s'agit pas de trouver une solution à toutes tes obligations. Il s'agit de reconnaître ce qui peut te porter pendant que tu récupères. Un environnement calme, une personne de confiance ou un moment sans sollicitation peuvent devenir cet appui.",
+    "se_joue": "Une question mérite ton attention : ton repos te permet-il de retrouver de l'énergie ou sert-il à repousser indéfiniment une étape qui t'inquiète ? Les deux situations peuvent parfois se ressembler. La différence apparaît dans ton rapport à la suite. Lorsque tu te reposes véritablement, tu sais que tu pourras reprendre. Lorsque tu évites, chaque nouvelle journée devient une raison de prolonger l'attente. La barque de la carte ne t'oblige pas à partir. Elle te rappelle seulement que tu peux garder le voyage présent à ton esprit.",
+    "essayer": "Avant de prendre une pause, écris sur un papier une seule action qui t'aidera à reprendre plus tard. Elle peut être très petite : ouvrir un document, préparer un rendez-vous ou envoyer une demande. Ensuite, laisse cette action de côté et profite réellement de ton repos. Tu n'as pas besoin de la surveiller pendant que tu récupères. La carte montre un homme qui sait qu'une barque l'attend, mais qui ne se sent pas obligé de la rejoindre à chaque instant. Tu peux retrouver cette même tranquillité."
+  },
+  "source_referentielle": {
+    "pollack": "§4, nombres — le neuf : le bilan, la satisfaction ; neuf de Coupes, le vœu réalisé et le repos qui suit",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 9 : bilan",
+    "greer": "§6 — questions sur le repos vrai et le repos qui évite ; l'appui qui porte",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-10 sous le brief eau (groupe B), image d'après le corpus distillé (corpus_mineurs_eau.json, eau_9)",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à accepter que tu as le droit de te reposer sans culpabiliser. Avant, lorsque tu t'arrêtais pour souffler, tu avais tendance à te justifier ou à préciser que tu reprendrais rapidement tes activités. Tu avais du mal à rester tranquille sans penser à ce que tu aurais encore dû faire. Peu à peu, tu comprends que le repos est nécessaire et qu'il ne signifie pas que tu manques de volonté. Tu peux laisser ton corps récupérer et retrouver de l'énergie sans avoir à justifier chaque moment d'inactivité.",
+    "image_soi": "Tu as peur d'être considérée comme une personne paresseuse lorsque tu prends du repos. Tu as l'impression que tu dois d'abord avoir beaucoup travaillé ou accompli quelque chose d'important pour mériter de t'arrêter. Alors, même lorsque tu es fatiguée, tu continues à faire des choses ou tu te trouves des occupations. Tu peux même culpabiliser lorsque tu ne fais rien. Tu t'imposes ainsi une pression constante, alors que tu aurais simplement besoin de te reposer sans avoir à te justifier.",
+    "entourage": "Certaines personnes de ton entourage ont l'impression que tu prends ton temps ou que tu ne sembles pas pressée d'agir. Elles peuvent te voir tranquille, assise ou moins active qu'auparavant, et penser que tu n'as aucune difficulté particulière. D'autres remarquent que tu es moins présente ou que tu participes moins aux activités habituelles. Mais elles ne savent pas forcément que tu luttes intérieurement contre la culpabilité de te reposer. Elles ne voient pas toujours les efforts que tu fais pour accepter de ralentir et de prendre soin de toi."
+  }
+}

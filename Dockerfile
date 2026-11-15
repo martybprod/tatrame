@@ -63,4 +63,4 @@ EXPOSE 8000
 # 1 worker (contrainte de correction, cf. wsgi.py), plusieurs threads pour encaisser
 # quelques requêtes simultanées ; timeout large car le 1er calcul de thème peut être lent.
 CMD ["gunicorn", "--workers", "1", "--threads", "4", "--timeout", "120", \
-     "--bind", "0.0.0.0:8000", "--access-logfile", "-", "wsgi:app"]
+     "--bind", "0.0.0.0:8000", "--access-logfile", "-", "wsgi:application"]

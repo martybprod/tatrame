@@ -1,0 +1,271 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "carte.schema.json",
+  "title": "Fiche-carte du corpus tarot",
+  "description": "Une fiche = une carte, tous tirages confondus. Les textes de position sont écrits sous charte (phase 1 pilote : 10 cartes ; phase 3 : les 79). Un champ texte jamais vide : les tests pytest l'exigent.",
+  "type": "object",
+  "required": [
+    "id",
+    "nom",
+    "type"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(major_[0-9]{2}|(feu|eau|air|terre)_(as|0?[2-9]|10|page|chevalier|reine|roi)|master)$",
+      "description": "identifiant canonique du jeu — voir data/grammaire/jeu.json"
+    },
+    "nom": {
+      "type": "string",
+      "description": "le nom inscrit sur la carte (cartouche)"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "majeur",
+        "mineur",
+        "figure",
+        "hors_cycle"
+      ]
+    },
+    "famille": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "feu",
+        "eau",
+        "air",
+        "terre",
+        null
+      ],
+      "description": "mineurs et figures seulement"
+    },
+    "degre": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "enum": [
+        "as",
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        null
+      ],
+      "description": "mineurs seulement"
+    },
+    "rang": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "page",
+        "chevalier",
+        "reine",
+        "roi",
+        null
+      ],
+      "description": "figures seulement"
+    },
+    "registre": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "seuil",
+        "exterieur",
+        "interieur",
+        "transpersonnel",
+        "hors_cycle",
+        null
+      ],
+      "description": "majeurs seulement (Pollack : trois séries de sept + Foi au seuil)"
+    },
+    "element": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "feu",
+        "eau",
+        "air",
+        "terre",
+        null
+      ],
+      "description": "majeurs : proposition Wen, à valider ; mineurs/figures : dérivé de la famille ; Éveil : null"
+    },
+    "mots_cles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 3,
+      "maxItems": 6,
+      "description": "de quoi la carte parle (Greer, étage 1)"
+    },
+    "tension": {
+      "type": "object",
+      "required": [
+        "pousse",
+        "retient"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "pousse": {
+          "type": "string",
+          "description": "ce que la carte invite à faire — un verbe"
+        },
+        "retient": {
+          "type": "string",
+          "description": "ce qui retient ou contrarie ce mouvement — un verbe"
+        }
+      },
+      "description": "Pollack : une fiche porte une tension, pas une définition fermée"
+    },
+    "lumiere": {
+      "type": "string",
+      "description": "la qualité quand elle circule (50-90 mots). Jamais bien/mal : fluide/entravé."
+    },
+    "ombre": {
+      "type": "object",
+      "required": [
+        "mode",
+        "texte",
+        "issue"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "amoindri",
+            "retourne",
+            "subi",
+            "differe"
+          ],
+          "description": "les quatre modes de Wen, repris du renversement sans le négatif"
+        },
+        "texte": {
+          "type": "string",
+          "description": "la même qualité, bloquée ou déviée (50-90 mots)"
+        },
+        "issue": {
+          "type": "string",
+          "description": "OBLIGATOIRE — la chaîne large de Pollack : l'ombre contient toujours sa porte de sortie, en une phrase"
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "maxItems": 4,
+      "description": "Greer (étage 2) : les questions que la carte pose quand elle sort — l'étage de l'or"
+    },
+    "lecon": {
+      "type": "string",
+      "description": "Greer (étage 3, retravaillé) : ce que la carte demande d'apprendre — une phrase au présent, jamais une affirmation performative"
+    },
+    "image": {
+      "type": "object",
+      "required": [
+        "geste",
+        "seuil",
+        "detail"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "geste": {
+          "type": "string",
+          "description": "Pollack : la posture dit la fonction — le geste dominant de l'image"
+        },
+        "seuil": {
+          "type": "string",
+          "description": "le seuil (voile, bord, porte, route) et son degré de disponibilité"
+        },
+        "detail": {
+          "type": "string",
+          "description": "le détail qui accroche — idéalement le détail impossible"
+        }
+      },
+      "description": "la description AVANT l'interprétation (Pollack + Greer : voir, puis dire)"
+    },
+    "micro_geste": {
+      "type": "string",
+      "description": "une action minuscule et faisable en 24 h, dérivée de la carte"
+    },
+    "positions": {
+      "type": "object",
+      "description": "table A — un texte par position de chaque tirage actif. Phase 1 : jour, amene, se_joue, essayer.",
+      "required": [
+        "jour",
+        "amene",
+        "se_joue",
+        "essayer"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "jour": {
+          "type": "string",
+          "description": "tirage 'jour' — ce que la carte met devant les yeux aujourd'hui"
+        },
+        "amene": {
+          "type": "string",
+          "description": "tirage causale_3, position 1 — ce que j'amène"
+        },
+        "se_joue": {
+          "type": "string",
+          "description": "tirage causale_3, position 2 — ce qui se joue, le nœud"
+        },
+        "essayer": {
+          "type": "string",
+          "description": "tirage causale_3, position 3 — ce que je peux essayer (propose, ne prédit pas)"
+        }
+      }
+    },
+    "source_referentielle": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "traçabilité : passages des cartes de concepts qui ont nourri la fiche (ex. pollack §3, wen §3). Jamais de texte de source."
+    },
+    "le_regard": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "fiche hors_cycle uniquement — 3 variantes de la phrase d'exception, la graine du tirage en choisit une (documenté, reproductible). Remplace les positions narratives."
+    }
+  },
+  "if": {
+    "properties": {
+      "type": {
+        "const": "hors_cycle"
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "le_regard"
+    ]
+  },
+  "else": {
+    "required": [
+      "positions"
+    ]
+  }
+}

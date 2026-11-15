@@ -1,0 +1,56 @@
+{
+  "id": "eau_chevalier",
+  "nom": "Confiance",
+  "type": "figure",
+  "famille": "eau",
+  "rang": "chevalier",
+  "element": "eau",
+  "note_grille": "figure eau (chevalier) : l'élan vers un seul objectif, porté par la confiance. Deux lectures possibles (Greer) : quelqu'un qui se lance, ou ta propre part prête à sauter. L'élan d'eau ne force rien, il se donne au vide qui le porte.",
+  "mots_cles": [
+    "Le grand saut",
+    "l'immensité du ciel",
+    "les bras déployés",
+    "le corps en mouvement",
+    "l'abandon confiant"
+  ],
+  "tension": {
+    "pousse": "sauter",
+    "retient": "contrôler"
+  },
+  "lumiere": "Le saut est accompli. Un corps traverse le ciel, les bras largement ouverts, le visage tourné vers l'espace qui s'étend devant lui. Rien ne semble pouvoir le retenir et rien ne garantit encore son point d'arrivée. Pourtant, aucune peur ne se lit sur son visage. La carte représente cet instant où la décision appartient déjà au passé et où il ne reste qu'à faire confiance au mouvement engagé. Tu ne peux plus tout prévoir ni tout contrôler. Tu peux simplement respirer et laisser la suite se révéler. La confiance commence parfois précisément là où les certitudes s'arrêtent.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu souhaites avancer, mais tu voudrais conserver toutes tes garanties. Tu examines encore les possibilités, cherches une confirmation supplémentaire et attends le moment où le risque aura complètement disparu. Pourtant, tu sais peut-être déjà ce que tu souhaites faire. Ce qui manque n'est pas une nouvelle analyse, mais le geste qui permettra à ton élan de prendre forme. Tu restes au bord, prêt à partir sans jamais vraiment quitter ton point d'appui. La confiance retournée ressemble à cette attente interminable où l'on veut à la fois sauter et rester accroché.",
+    "issue": "Choisis un petit geste qui demande de faire confiance à ce que tu as déjà préparé. Envoie ce message, exprime cette idée ou engage cette démarche. Ne cherche pas à vérifier chaque détail une nouvelle fois. Observe ce qui se passe lorsque tu acceptes de faire un pas sans tout maîtriser."
+  },
+  "questions": [
+    "Quelle décision as-tu déjà prise intérieurement sans encore l'assumer complètement ?",
+    "Quelle garantie supplémentaire recherches-tu avant de te lancer ?",
+    "Qu'est-ce qui t'a soutenu dans les moments où tu as osé avancer sans tout connaître ?"
+  ],
+  "lecon": "La confiance ne consiste pas à connaître l'issue avant de partir. Elle consiste à accepter le mouvement une fois que le saut est engagé.",
+  "image": {
+    "geste": "Un corps est suspendu dans un grand mouvement vers l'avant. Les bras s'ouvrent au-dessus des épaules et le visage reste lumineux.",
+    "seuil": "Aucun sol, aucune branche et aucune surface ne se trouvent sous le personnage. Le ciel s'étend sans limite apparente.",
+    "detail": "Les pieds nus sont rejetés vers l'arrière, les orteils tendus. Très loin en dessous, quelques nuages blancs dérivent paisiblement."
+  },
+  "micro_geste": "Accomplis aujourd'hui une action simple sans la contrôler plusieurs fois. Laisse-la suivre son cours.",
+  "positions": {
+    "jour": "Une partie de ta vie est peut-être déjà engagée dans une direction nouvelle. Tu as pris une décision, commencé une démarche ou exprimé quelque chose qui ne peut plus être ramené exactement à son point de départ. Pourtant, tu continues peut-être à surveiller le résultat. La carte montre un corps lancé dans un ciel immense, les bras ouverts et le visage tranquille. Elle t'invite à reconnaître ce qui est déjà parti. Tu peux accompagner ton mouvement sans chercher constamment à reprendre les commandes.",
+    "amene": "Tu arrives avec un élan qui a peut-être demandé beaucoup de courage. Tu as franchi une première étape et tu continues pourtant à te demander si tu as fait le bon choix. La carte te rappelle que l'action possède une vie propre une fois qu'elle a été engagée. Tu n'as pas besoin de rester derrière elle pour vérifier qu'elle avance. Ton énergie peut maintenant servir à découvrir ce qui vient ensuite, plutôt qu'à revenir sans cesse sur la décision initiale.",
+    "se_joue": "Il existe un instant particulier entre le moment où l'on quitte son point d'appui et celui où l'on découvre où l'on va atterrir. Cet instant peut sembler immense lorsque tu cherches à tout maîtriser. La carte le représente comme un corps en plein vol, sans sol visible, mais sans expression de panique. Peut-être vis-tu actuellement une transition semblable. Une partie de toi a déjà accepté le changement, tandis qu'une autre réclame encore des garanties. Ce qui se joue, c'est ta capacité à laisser cette transition exister sans la freiner.",
+    "essayer": "Choisis une action qui représente un petit engagement envers la suite. Tu peux prendre un rendez-vous, envoyer une candidature, exprimer une envie ou commencer quelque chose que tu repousses. Prépare ce qui est raisonnablement nécessaire, puis passe à l'action. Évite de revenir dix fois sur ce que tu viens de faire. La confiance se construit aussi dans ces petits moments où tu constates que tu peux agir sans tout vérifier. Chaque saut modeste rend le suivant un peu plus accessible."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Chevalier de Coupes — l'élan porté par le sentiment, la proposition qui part ; figures de cour : une manière d'être, chez quelqu'un ou en toi",
+    "wen": "§4 — rang chevalier : l'élan vers un seul objectif ; famille eau : la confiance qui porte",
+    "greer": "§6.4 — le rôle comme facette ; la question de ce qui est déjà lancé sans toi",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_eau.json (entrée eau_chevalier) ombre « retourne » (la confiance retournée en contrôle, l'élan retenu au départ), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à avoir davantage confiance en ta capacité à avancer sans connaître à l'avance tous les résultats. Avant de prendre une décision, tu avais besoin de vérifier chaque détail et de t'assurer que tout était suffisamment sûr. Tu voulais savoir où tu mettais les pieds avant de faire le moindre pas. Aujourd'hui, tu peux davantage te fier à ton élan et accepter une part d'incertitude. Tu as déjà réussi à avancer malgré tes doutes, et cette expérience te montre que tu n'as pas besoin de tout prévoir pour oser te lancer.",
+    "image_soi": "Tu essaies parfois de donner l'image d'une personne courageuse qui n'a peur de rien. Tu as du mal à montrer tes hésitations, car tu crains que les autres y voient un manque de confiance ou de détermination. Tu peux alors te sentir obligée d'aller jusqu'au bout d'une décision, même lorsque tu as peur ou que tu ne te sens pas prête. Tu préfères montrer que tu oses plutôt que reconnaître que tu doutes. Pourtant, être courageuse ne signifie pas ne jamais avoir peur. Tu peux être déterminée tout en reconnaissant tes inquiétudes.",
+    "entourage": "Ton entourage admire souvent ton courage et ta capacité à te lancer dans de nouvelles expériences. On te présente comme une personne audacieuse, qui ose prendre des risques et qui ne recule pas facilement devant les difficultés. Certaines personnes comptent même sur toi pour les rassurer lorsqu'elles hésitent à agir. Mais cette image peut empêcher les autres de voir que tu as aussi tes moments de peur et de doute. Ils pensent parfois que tu es toujours sûre de toi, alors que tu peux avoir besoin, toi aussi, d'être rassurée avant de faire un pas important."
+  }
+}

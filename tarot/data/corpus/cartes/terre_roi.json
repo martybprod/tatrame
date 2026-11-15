@@ -1,0 +1,56 @@
+{
+  "id": "terre_roi",
+  "nom": "Abondance",
+  "type": "figure",
+  "famille": "terre",
+  "rang": "roi",
+  "element": "terre",
+  "note_grille": "figure terre (roi) : la maîtrise extérieure qui cadre et porte la responsabilité, ici en mode donner. Deux lectures possibles (Greer) : quelqu'un qui nourrit largement autour de toi, ou ta propre capacité à exposer ce que tu as produit. Rang roi = la fonction tenue au-dehors, et ce qu'elle émet.",
+  "mots_cles": [
+    "les montagnes de fruits",
+    "la table qui fléchit",
+    "les mains à plat",
+    "l'étal du matin",
+    "personne n'a demandé"
+  ],
+  "tension": {
+    "pousse": "donner large",
+    "retient": "retenir par peur du vide"
+  },
+  "lumiere": "La table fléchit sous le poids de tout ce qui a mûri autour de toi, et tu peux en faire le tour les mains ouvertes. Les caisses ne suffisent plus à contenir la récolte. Figues, tomates, aubergines sombres et sacs d'amandes sont déposés directement sur les planches, prêts à être partagés. Ce que tu as fait grandir dépasse maintenant les besoins de ta propre cuisine. La récolte doit trouver sa place sur une table plus grande. Ce que tu exposes peut déjà nourrir plusieurs personnes, même si personne n'a encore formulé de demande.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu retiens derrière ta main ce qui devrait maintenant circuler. Les réserves continuent de grossir, mais tu repousses le moment de partager. Une ancienne peur te rappelle que les bonnes années sont toujours suivies de périodes plus difficiles. Alors, tu gardes la pelle dans son sac et tu mets les bassines pleines à l'écart. Peu à peu, l'étal devient un simple lieu de stockage, et les fruits mûrissent plus vite qu'ils ne peuvent être distribués. Ce que tu avais fait pousser pour nourrir finit par se perdre sur place, et cette perte devient lourde à porter.",
+    "issue": "Offre aujourd'hui trois choses mûres aux premières personnes qui passent. La table s'allégera et l'espace libéré pourra accueillir la suite. Partager ce que tu possèdes aide à dépasser la peur de manquer davantage que l'accumulation de nouvelles réserves."
+  },
+  "questions": [
+    "Qu'est-ce qui mûrit chez toi plus vite que tu ne le donnes ?",
+    "Que ferais-tu de ta table si personne ne venait rien réclamer ?",
+    "De quoi as-tu assez, au point de pouvoir en donner ?"
+  ],
+  "lecon": "L'abondance se reconnaît dans la capacité de donner avant même qu'on le demande, et non dans la quantité de choses accumulées.",
+  "image": {
+    "geste": "un homme pose les deux mains à plat sur les montagnes de fruits et se penche en souriant. Le bois de la table fléchit sous le poids de la récolte",
+    "seuil": "au lever du jour, l'allée du marché s'ouvre devant la table. Les premières silhouettes arrivent déjà avec des paniers vides. Le passage se fait en tendant les produits, et non en comptant ce qui reste",
+    "detail": "des sacs de grain et d'amandes attendent près de leur pelle. Des bassines remplies d'olives occupent les deux extrémités de la table"
+  },
+  "micro_geste": "Offre aujourd'hui une partie de ce que tu possèdes en surplus à une personne qui ne t'a rien demandé.",
+  "positions": {
+    "jour": "Le jour se lève sur une table qui ploie sous le poids des fruits. La matinée porte une impression de richesse tranquille : les quantités récoltées dépassent largement ce qu'une seule personne pourrait utiliser. L'air est rempli des odeurs de figues et de tomates, tandis que les sacs de grain attendent près de leur pelle. Le surplus cherche maintenant des personnes qui pourront en profiter. La lumière du matin révèle tout ce qui est prêt à être partagé. Ta journée peut prendre la mesure de ce que tu offres aux autres.",
+    "amene": "Tes mains ont appris à faire pousser et à produire au fil de nombreuses saisons. Il y a eu des essais infructueux, des récoltes plus abondantes et des années passées à apprendre le rythme de la terre. Aujourd'hui, la table contient à peine tout ce que tu as réussi à produire. Tu peux t'en approcher les mains ouvertes et reconnaître le résultat. Rien de tout cela n'est arrivé par hasard. Chaque récolte témoigne d'un travail poursuivi jusqu'au bout. L'ensemble représente une expérience et une maîtrise que tu n'avais peut-être jamais pris le temps de reconnaître.",
+    "se_joue": "Un homme se penche au-dessus de son étal, les deux mains posées sur les fruits, et il sourit. De l'autre côté de l'allée, des personnes approchent avec des paniers encore vides. Personne n'a rien demandé, mais tout est déjà prêt. Cette scène représente ce qui se joue actuellement pour toi : il y a des choses arrivées à maturité et une main qui hésite encore à les offrir. La véritable richesse de cet étal ne se trouve pas dans les réserves fermées, mais dans la possibilité de partager. Le premier panier rempli donnera le ton à toute la matinée.",
+    "essayer": "Tu peux donner généreusement aujourd'hui sans attendre qu'on te le demande. Choisis une partie de ce qui a mûri autour de toi : des connaissances, un plat préparé, du temps ou une ressource que tu possèdes en quantité. Mets-la à la disposition des autres. La table peut supporter le poids de la récolte, mais elle est aussi faite pour être partagée. Une fois que tu as offert une partie de ce que tu possèdes, l'espace se libère naturellement pour la suite. Tu as suffisamment, peut-être même davantage que nécessaire. Ce surplus peut maintenant devenir une ressource pour les autres."
+  },
+  "source_referentielle": {
+    "pollack": "§4, figures de cour — la responsabilité sociale portée par le rang roi, la fonction qui émet",
+    "wen": "§4 — rang roi : la maîtrise extérieure ; famille terre : l'abondance posée à même la table",
+    "greer": "§6.4 — roi = la fonction tenue au-dehors, chez quelqu'un ou comme ta propre posture",
+    "production": "image : _distillation/passation/terre_roi_Abondance.md et symboles/terre_roi_abondance.md (concept « l'étal du matin », validé par Martin) ; angles : Pollack (roi), Wen (rang roi), Greer (rangs)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à te libérer de cette méfiance qui t'empêchait de profiter pleinement de tes réussites et de tes ressources. Jusqu'ici, même lorsque les choses allaient bien, tu pouvais craindre que cette période d'abondance ne dure pas. Tu préférais garder une partie de ce que tu avais plutôt que de risquer de manquer plus tard. Tu apprends maintenant à apprécier ce que tu as construit et à partager davantage sans vivre constamment dans l'anticipation d'un manque.",
+    "image_soi": "Tu es fière de ce que tu as accompli et tu considères que tes efforts méritent d'être reconnus. Tu peux cependant avoir tendance à t'attacher fortement à ce que tu as construit ou acquis. Donner ou partager te donne parfois l'impression de perdre une partie de ce qui t'appartient. Tu préfères donc garder le contrôle sur tes ressources. Cette attitude protège tes acquis, mais elle peut aussi t'empêcher de profiter de l'abondance avec les autres.",
+    "entourage": "Les autres reconnaissent la qualité de ton travail et apprécient ce que tu as réussi à construire. Ils savent que tu disposes de ressources et que tu as beaucoup à partager. Cette réputation peut attirer des personnes qui souhaitent profiter de tes réussites ou qui espèrent recevoir quelque chose de toi. Certains n'osent cependant pas demander directement et attendent que tu proposes spontanément. Ton entourage voit ce que tu possèdes, mais ne sait pas toujours comment tu souhaites le partager."
+  }
+}

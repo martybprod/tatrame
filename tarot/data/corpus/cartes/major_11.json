@@ -1,0 +1,53 @@
+{
+  "id": "major_11",
+  "nom": "Justesse",
+  "type": "majeur",
+  "registre": "interieur",
+  "element": "air",
+  "note_grille": "colonne 4 (avec Liberté et L'Invisible), le motif de la réponse exacte. Élément Air, la clarté coupe net et sans drame. L'arbitrage se joue d'habitude au tribunal, la carte le tient en dedans, dans le regard sur sa propre part (tension assumée). Tension signature de Pollack, lucidité contre culpabilité.",
+  "mots_cles": [
+    "*major_11",
+    "interieur",
+    "air*"
+  ],
+  "tension": {
+    "pousse": "trancher",
+    "retient": "hésiter"
+  },
+  "lumiere": "Tu reconnais clairement ta part dans ce qui se passe, et cette lucidité te permet de prendre du recul par rapport au passé. Le moment de décider est arrivé, et tu sais où placer la coupe, ni trop tôt ni trop tard. Tu peux nommer ce qui te semble juste sans dramatiser la situation ni accuser qui que ce soit. Les éléments s'alignent, comme les fils d'un tissu bien tendu sur un métier. Ta décision peut être nette parce qu'elle arrive au bon moment. Une réponse honnête fait souvent davantage de place qu'elle n'en prend.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu retournes ta lucidité contre toi-même. Au lieu de reconnaître ta part dans la situation, tu mets en avant tout ce qui ne dépend pas de toi, jusqu'à conclure que les circonstances s'acharnent. Tu reprends l'histoire sous différents angles, et chaque nouvelle version semble confirmer ton point de vue. La plainte devient alors une manière d'occuper l'espace qui devrait être consacré à une décision. Le fil rouge attend toujours ses ciseaux, tandis que tu continues de discuter de la longueur exacte qu'il faudrait couper.",
+    "issue": "Choisis une action qui ne dépend que de toi et accomplis-la sans attendre que les autres changent. Reconnaître ta part ne signifie pas te condamner. C'est une façon de remettre la décision entre tes mains."
+  },
+  "questions": [
+    "Quelle décision attends-tu des autres alors qu'elle t'appartient peut-être ?",
+    "Dans cette situation, quelle est précisément la part qui dépend de toi ?",
+    "Que se passerait-il si tu prenais ta décision aujourd'hui, sans refaire le calcul une troisième fois ?"
+  ],
+  "lecon": "Reconnaître sa part dans ce qui arrive et prendre une décision au bon moment, sans procès ni culpabilité.",
+  "image": {
+    "geste": "Une femme pieds nus tient des ciseaux près d'un fil rouge tendu. La lame touche presque le fil. Le geste est prêt, mais il reste à décider de l'accomplir.",
+    "seuil": "Le fil rouge traverse tout l'atelier et passe à travers le tissu installé sur le métier. Tout est aligné pour la coupe, et le fil reste tendu d'un bout à l'autre.",
+    "detail": "Derrière le tissu, une peinture en trompe-l'œil représente un archer qui vient d'atteindre le centre exact de sa cible. Au premier plan, une balance de laiton demeure parfaitement de niveau."
+  },
+  "micro_geste": "Prends aujourd'hui une décision que tu repousses depuis plusieurs semaines et observe si, au fond, le geste était déjà prêt.",
+  "positions": {
+    "jour": "Un atelier de tissage occupe la scène. Un fil rouge traverse toute la pièce, tendu d'un mur à l'autre, et une femme le suit avec des ciseaux ouverts. La lame est presque en contact avec le fil. Tout autour de ce geste semble déjà en place : le tissu est installé sur le métier, la cible a été atteinte en plein centre et la balance est à niveau. Il ne reste qu'un mouvement, et celui-ci t'appartient. La journée favorise une décision claire, que tu n'auras pas besoin de reprendre dix fois.",
+    "amene": "Pourquoi relis-tu cette situation pour la dixième fois sans jamais prendre la décision finale ? Tu apportes une habitude d'arbitre discret : tu examines les arguments, tu mesures les possibilités, mais tu repousses le moment de rendre ton verdict. Cette capacité à rechercher la juste mesure peut souvent te servir. Elle devient toutefois un obstacle lorsque le calcul remplace la décision. La carte t'invite à entendre la question avant de chercher un élément supplémentaire. Ta part est maintenant visible. Elle attend une réponse de ta part, pas une troisième opinion.",
+    "se_joue": "Tu réfléchis à une décision depuis suffisamment longtemps pour en connaître tous les éléments. D'un côté, la situation est claire et tu sais ce que produira ton choix. De l'autre, un dernier doute te pousse à refaire les calculs au lieu de couper le fil. Pourtant, la mesure est juste depuis un certain temps. Ce qui retarde la décision tient peut-être moins à un manque d'information qu'à la difficulté de trancher définitivement. Tu consacres alors du temps à examiner une réponse que tu as déjà trouvée.",
+    "essayer": "Une couturière place ses ciseaux sur la marque qu'elle a choisie, prend une respiration et coupe le fil sans retracer la ligne. Tu peux reprendre ce geste avec la décision qui t'attend, en commençant par la plus petite. Pour toi, cela peut signifier écrire clairement ton choix, envoyer un message ou donner une réponse sans détour à la personne concernée. La précision du premier geste compte davantage que son importance. Une fois le fil coupé, le tissage peut continuer.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, XI (Justice) — le centre exact, voir sa part dans ce qui arrive pour se dégager du passé ; la réponse juste au bon moment, pas une sentence morale ; ombre — mauvaise foi, déni, plainte sur l'injustice du sort",
+    "wen": "§3 — élément Air (table Wen) ; §5 — le renversement relu en quatre modes d'ombre (retourné ici)",
+    "greer": "§6.2 — leçon — arbitrer, équilibrer, contracter, être vrai",
+    "image": "brief de production majeurs — visage validé (atelier de tissage, fil rouge, archer en trompe-l'œil, balance de laiton), reformulé",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu n'as plus besoin de reprendre chaque décision jusqu'à épuiser toutes les possibilités. Tu as longtemps pesé les mots, les responsabilités et les conséquences, parfois bien après avoir compris l'essentiel. Ce qui demeure, c'est ta capacité à reconnaître ta part dans une situation. Tu peux regarder les faits avec lucidité sans transformer chaque erreur en procès personnel.",
+    "image_soi": "Tu t'attribues le rôle de celle qui doit être irréprochable. Tu veux prendre la bonne décision, trouver la formulation exacte et éviter tout reproche possible. Cette rigueur te permet de voir les détails, mais elle peut te retenir longtemps devant un choix. Tu continues parfois à vérifier une mesure alors que tu as déjà assez d'éléments pour te prononcer.",
+    "entourage": "On vient te consulter lorsque la situation semble délicate, parce qu'on te trouve attentive aux nuances. Certains apprécient ton sens de l'équité; d'autres redoutent tes remarques lorsqu'ils savent qu'ils ont négligé un détail. Cette réputation peut rendre les échanges plus formels. On attend parfois de toi une décision nette, même lorsque tu aurais besoin de discuter davantage."
+  }
+}

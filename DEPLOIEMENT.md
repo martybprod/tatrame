@@ -117,3 +117,22 @@ touchent jamais.** C'est ce qui rend les mises à jour triviales et sûres.
 
 Prérequis one-shot : ajouter un remote git (GitHub privé) — le dépôt est local pour
 l'instant — et y connecter Coolify.
+
+## L'onglet Tarot (bêta) — monté sous `/tarot`
+
+Le Tarot vit dans `tarot/` de ce dépôt et `wsgi.py` le monte sous `/tarot` avec
+`DispatcherMiddleware`. En prod, l'onglet l'affiche dans une iframe (même origine,
+`?embed=1` retire son en-tête). Rien à configurer dans Coolify : `TATRAME_ENV=prod`
+suffit, l'adresse par défaut est `/tarot/`.
+
+- **Développer le Tarot** : toujours dans `../TAROT_APP` (port 5089, lancé par
+  `services.json`). Avant de committer, `outils/sync_tarot.sh` recopie la source
+  dans `tarot/`.
+- **Pourquoi ce montage** : une seule image, une seule origine, aucun CORS — le
+  plus simple pour la bêta.
+- **Revenir à deux apps séparées** (prévu) : supprimer `tarot/`, le bloc
+  `DispatcherMiddleware` de `wsgi.py`, et repasser `TAROT_URL` sur l'adresse du
+  service dédié. Aucun autre fichier n'en dépend.
+- **Volumes** : les textes édités dans l'album du Tarot vivent dans l'image
+  (`tarot/data/corpus`) ; ils sont donc éphémères en ligne. L'album s'édite en
+  local, puis arrive ici par le corpus versionné.

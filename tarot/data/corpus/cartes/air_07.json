@@ -1,0 +1,55 @@
+{
+  "id": "air_07",
+  "nom": "Manipulation",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 7,
+  "element": "air",
+  "note_grille": "degré 7 (évaluation) × famille air (les rôles) : accord — le discernement porte sur la distance entre le visage et le masque.",
+  "mots_cles": [
+    "le masque rieur",
+    "le masque sévère",
+    "les fils suspendus",
+    "le visage découvert"
+  ],
+  "tension": {
+    "pousse": "adapter",
+    "retient": "masquer"
+  },
+  "lumiere": "Une personne tient deux masques dans ses mains : l'un souriant, l'autre sévère. D'autres visages sont suspendus autour d'elle par de fins fils. Pourtant, aucun masque ne recouvre ses traits. Son visage demeure visible, calme et tourné vers la lumière. La carte rappelle que nous adaptons tous notre comportement selon les circonstances. Cette souplesse est précieuse lorsqu'elle reste un choix conscient et ne nous éloigne pas de ce que nous sommes.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu finis par présenter à chacun la version de toi qu'il semble attendre. Tu ajustes tes réponses, modifies tes opinions et retiens certaines vérités pour éviter les réactions indésirables. Avec le temps, tu ne sais plus toujours quelle parole vient réellement de toi. L'adaptation devient une stratégie permanente et ton visage intérieur se retrouve derrière une succession de rôles.",
+    "issue": "Dans une relation où tu as l'habitude de te montrer sous un jour particulier, exprime une pensée sincère que tu aurais normalement gardée pour toi. Choisis une vérité que tu peux partager sans te mettre en difficulté."
+  },
+  "questions": [
+    "Quel rôle prends-tu le plus facilement selon les personnes présentes ?",
+    "Quelle vérité as-tu récemment transformée pour être mieux accepté ?",
+    "Comment pourrais-tu rester adaptable sans perdre ta propre voix ?"
+  ],
+  "lecon": "Les masques peuvent accompagner les relations, mais ils ne doivent pas devenir ton seul visage.",
+  "image": {
+    "geste": "les deux masques sont tenus à la main, sans couvrir le visage.",
+    "seuil": "plusieurs masques pendent à des fils fins. Ils restent disponibles, mais leur présence mérite d'être observée.",
+    "detail": "le visage découvert reçoit une lumière chaude latérale. Sa véritable expression ne dépend pas des rôles qui l'entourent."
+  },
+  "micro_geste": "Repère une parole que tu aurais tendance à modifier pour plaire. Essaie de l'exprimer avec davantage de sincérité, tout en respectant ton interlocuteur.",
+  "positions": {
+    "jour": "Plusieurs rôles peuvent être sollicités aujourd'hui. Tu devras peut-être faire preuve de diplomatie, de fermeté ou de souplesse selon les personnes et les situations. La carte ne te demande pas de renoncer à ces capacités. Elle t'invite plutôt à garder conscience de ce que tu exprimes réellement. Tu peux changer de ton sans abandonner ta vérité.",
+    "amene": "Tu arrives avec une grande facilité à comprendre les attentes des autres. Tu sais adapter ton langage, trouver le bon ton et éviter certaines tensions. Cette intelligence relationnelle peut être une qualité importante. Mais elle mérite une limite : ne pas devenir une façon de disparaître derrière ce que les autres souhaitent voir. Garde un espace où ta parole peut rester entièrement la tienne.",
+    "se_joue": "Une situation pourrait te pousser à choisir entre préserver une image et exprimer quelque chose de plus authentique. Tu connais peut-être déjà le rôle attendu de toi. La question est de savoir si tu souhaites encore l'endosser. La carte montre que les masques peuvent rester dans tes mains. Tu n'es pas obligé de les porter pour exister dans une relation.",
+    "essayer": "Choisis une situation dans laquelle tu as tendance à trop contrôler l'image que tu donnes. Avant de répondre, prends quelques secondes pour identifier ce que tu penses vraiment. Formule ensuite ta réponse avec tact, mais sans la vider de son contenu. Tu peux être respectueux sans te rendre invisible."
+  },
+  "source_referentielle": {
+    "pollack": "§4, sept d'Épées — la ruse, la stratégie aux dépens d'autrui : notre carte en retourne l'attention, les rôles tenus à distance du visage",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 7 : le discernement entre l'adaptation et le masque",
+    "greer": "§6.5 — l'ombre comme part non intégrée : la phrase vraie retenue finit par manquer d'air",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_7)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus adapter systématiquement ta personnalité et tes paroles pour plaire aux autres. Jusqu'ici, tu pouvais modifier ta façon de parler, tes opinions ou tes réactions selon la personne en face de toi. Tu cherchais à éviter les tensions et à faire en sorte que chacun se sente à l'aise. Tu conserves ta diplomatie et ta capacité à comprendre les autres, mais tu apprends à ne plus sacrifier ta propre personnalité pour maintenir de bonnes relations.",
+    "image_soi": "Tu as tendance à penser que tu dois faire en sorte que chaque échange se passe bien. Tu réfléchis beaucoup à la manière dont les autres vont recevoir tes paroles et tu modifies parfois ton opinion pour éviter de les contrarier. Tu préfères adoucir tes propos plutôt que de risquer un désaccord. À force de t'adapter à tout le monde, tu peux finir par ne plus savoir ce que tu penses réellement ni quelle partie de toi tu montres aux autres.",
+    "entourage": "Les autres te trouvent diplomate et savent que tu arrives généralement à communiquer avec des personnes très différentes. On te confie facilement les discussions délicates parce que tu sais trouver les bons mots. Cependant, certaines personnes peuvent avoir du mal à savoir ce que tu penses réellement, car tu sembles parfois être d'accord avec tout le monde. Ton entourage apprécie ta capacité à éviter les conflits, mais peut aussi se demander si tu exprimes toujours sincèrement ton avis."
+  }
+}

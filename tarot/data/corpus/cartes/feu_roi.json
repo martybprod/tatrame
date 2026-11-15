@@ -1,0 +1,56 @@
+{
+  "id": "feu_roi",
+  "nom": "Le Créateur",
+  "type": "figure",
+  "famille": "feu",
+  "rang": "roi",
+  "element": "feu",
+  "note_grille": "figure feu (roi) : la maîtrise extérieure qui cadre et fait exister un centre pour les autres. Deux lectures possibles (Greer) : quelqu'un qui sait faire, ou le savoir-faire en toi qui attend de servir. Le roi de feu ne brille pas au centre du cercle, il y allume le feu, et la nuance porte la carte.",
+  "mots_cles": [
+    "les deux branches",
+    "le cercle de pierres",
+    "frotter sans se presser",
+    "le feu du centre",
+    "les neuf personnes"
+  ],
+  "tension": {
+    "pousse": "allumer",
+    "retient": "briller"
+  },
+  "lumiere": "Tu possèdes peut-être une compétence ou un savoir-faire qui pourrait être utile aux personnes autour de toi.\n\nCette carte montre un homme qui ajoute deux branches pour entretenir un feu au centre d'un cercle de pierres.\n\nAutour de lui, neuf personnes attendent. Elles ne savent pas forcément allumer le feu, mais elles peuvent ensuite profiter de sa chaleur et de sa lumière.\n\nL'homme ne cherche pas à attirer l'attention sur lui. Il utilise simplement ce qu'il sait faire pour aider les autres.\n\nC'est le message de cette carte : tes compétences prennent encore plus de valeur lorsqu'elles permettent de créer quelque chose qui profite à tout le monde.\n\nTu peux prendre une initiative, transmettre ce que tu sais ou aider un groupe à avancer.\n\nTu n'as pas besoin de te mettre en avant. Tu peux simplement apporter ce qui manque.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu possèdes peut-être des compétences que les autres pourraient apprécier ou utiliser, mais tu n'oses pas vraiment les montrer.\n\nTu considères peut-être que ce que tu sais faire est trop simple ou trop ordinaire pour être utile.\n\nTu attends que quelqu'un te demande clairement de l'aide avant de proposer quoi que ce soit.\n\nPendant ce temps, les autres ne savent pas forcément ce que tu pourrais leur apporter.\n\nTu n'as pas besoin d'attendre une reconnaissance particulière pour partager ton savoir-faire.\n\nTu peux simplement montrer ce que tu sais faire et laisser les autres en profiter.",
+    "issue": "Choisis une compétence que tu possèdes et partage-la avec quelqu'un aujourd'hui.\n\nTu peux montrer un geste, expliquer une méthode, transmettre une astuce ou préparer quelque chose d'utile pour ton entourage.\n\nN'attends pas d'être parfaitement prêt ni d'être reconnu pour ce que tu fais.\n\nCommence simplement par mettre ton savoir-faire au service des autres."
+  },
+  "questions": [
+    "Quelle compétence possèdes-tu et que tu considères peut-être comme trop ordinaire pour être partagée ?",
+    "Qui pourrait bénéficier de ce que tu sais faire ?",
+    "Que pourrais-tu créer ou mettre en place pour aider les personnes autour de toi ?"
+  ],
+  "lecon": "Créer, c'est aussi utiliser ses compétences pour apporter quelque chose aux autres et rassembler les personnes autour d'un projet commun.",
+  "image": {
+    "geste": "Un homme frotte deux branches croisées pour allumer un feu. Il prend son temps et effectue des gestes précis et réguliers.",
+    "seuil": "Le feu se trouve au centre d'un cercle formé de pierres posées une à une. Le cercle a été préparé pour accueillir les personnes qui vont s'y rassembler.",
+    "detail": "Neuf personnes de différents âges sont assises autour du cercle. Les flammes s'élèvent dans la nuit et éclairent tout le monde."
+  },
+  "micro_geste": "Montre aujourd'hui à une personne quelque chose que tu sais faire. Tu peux lui expliquer une méthode, lui apprendre un geste ou simplement lui montrer comment tu t'y prends.",
+  "positions": {
+    "jour": "Tu possèdes peut-être une compétence qui pourrait être utile à ton entourage.\n\nTu sais faire quelque chose que d'autres personnes ne savent pas forcément faire, et tu pourrais mettre cette capacité au service d'un projet commun.\n\nCette carte montre un homme qui allume un feu au centre d'un cercle de pierres. Autour de lui, neuf personnes attendent de pouvoir profiter de sa lumière et de sa chaleur.\n\nLe message est simple : tu peux apporter quelque chose d'important aux autres sans avoir besoin d'être au centre de l'attention.\n\nAujourd'hui, demande-toi ce que tu pourrais créer, préparer ou transmettre pour aider les personnes autour de toi.",
+    "amene": "Tu possèdes peut-être un savoir-faire que tu utilises naturellement, sans vraiment te rendre compte de sa valeur.\n\nCe qui te semble facile ou ordinaire peut pourtant être très utile à quelqu'un d'autre.\n\nTu peux cuisiner, organiser, réparer, expliquer, créer ou transmettre une connaissance particulière.\n\nCette carte t'invite à reconnaître la valeur de ce que tu sais faire.\n\nTu n'as pas besoin de te vanter ni de chercher à impressionner les autres. Tu peux simplement partager tes compétences lorsque l'occasion se présente.",
+    "se_joue": "Tu peux choisir entre deux façons d'utiliser tes compétences.\n\nTu peux chercher à être reconnu pour ce que tu sais faire, ou utiliser tes capacités pour aider les autres et faire avancer un projet collectif.\n\nLes deux ne sont pas incompatibles, mais cette carte met surtout l'accent sur le partage.\n\nElle t'invite à réfléchir à la manière dont ton savoir-faire pourrait être utile autour de toi.\n\nLa question est : qu'est-ce que tu pourrais mettre en place ou transmettre pour apporter quelque chose de positif à ton entourage ?",
+    "essayer": "Choisis une compétence que tu maîtrises et partage-la avec une personne ou un groupe.\n\nTu peux apprendre quelque chose à quelqu'un, proposer ton aide, préparer une activité ou prendre l'initiative de mettre en place un projet commun.\n\nNe cherche pas à attirer l'attention sur toi.\n\nFais simplement ce que tu sais faire, avec attention et générosité.\n\nTu pourrais découvrir que tes compétences ont encore plus de valeur lorsqu'elles permettent aux autres de participer, d'apprendre ou de profiter de quelque chose ensemble."
+  },
+  "source_referentielle": {
+    "pollack": "§4, roi de Bâtons — la vision qui rassemble, le feu au service du groupe ; figures de cour : des manières d'être, jamais des classes",
+    "wen": "§4 — rang roi : la maîtrise extérieure, cadre et responsabilité ; famille feu : le rayonnement organisé",
+    "greer": "§6.4 — deux lectures simultanées : le créateur chez quelqu'un, ou le savoir-faire en toi",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_feu.json (entrée feu_roi), à reformuler par Martin ; ombre « amoindri » (le savoir-faire retenu par modestie), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à ne plus avoir besoin d'être au centre de l'attention pour reconnaître la valeur de ce que tu fais. Jusqu'ici, tu pouvais attendre que les autres remarquent ton travail ou reconnaissent tes compétences. Tu apprends maintenant à créer et à agir sans dépendre autant du regard extérieur. Tu conserves ton savoir-faire et ta capacité à faire naître de nouvelles choses, mais tu peux désormais le faire avec davantage de liberté.",
+    "image_soi": "Tu te vois comme une personne compétente qui préfère rester discrète plutôt que de prendre la direction des choses. Tu penses que ton travail devrait parler de lui-même et que tu n'as pas besoin de te mettre en avant. Tu préfères donc agir en coulisses, même lorsque tu pourrais légitimement prendre davantage de place. Cette modestie te protège du regard des autres, mais elle peut aussi empêcher ton entourage de reconnaître pleinement tes capacités.",
+    "entourage": "Les autres savent que tu as les compétences nécessaires pour faire avancer les choses. Ils viennent te chercher lorsqu'ils ont besoin de ton savoir-faire et savent qu'ils peuvent compter sur toi. Cependant, ils te voient parfois davantage comme une personne qui exécute et aide que comme une personne qui peut diriger ou décider. Ton efficacité est reconnue, mais ta contribution n'est pas toujours valorisée à sa juste mesure."
+  }
+}

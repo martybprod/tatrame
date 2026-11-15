@@ -1,0 +1,54 @@
+{
+  "id": "major_17",
+  "nom": "Silence",
+  "type": "majeur",
+  "registre": "transpersonnel",
+  "element": "air",
+  "note_grille": "colonne 3 (avec Créativité et Changement) : éprouver et tourner. Élément Air : la profondeur passe par l'espace, pas par l'effort. Tension signature (Pollack) : se refaire ou se refermer.",
+  "mots_cles": [
+    "la profondeur",
+    "le calme qui contient",
+    "le reflet",
+    "au-dessus du bruit",
+    "la surface qui se tient"
+  ],
+  "tension": {
+    "pousse": "se poser",
+    "retient": "s'agiter"
+  },
+  "lumiere": "Tu parviens à prendre de la distance par rapport au bruit qui t'entoure, et tu découvres un autre espace en toi. Tu n'as pas besoin de lutter pour atteindre la profondeur. Il suffit parfois de cesser de bouger pour que ton esprit devienne calme et puisse refléter ce qui t'entoure. Tu peux trouver ta place dans ce calme, car il ne s'agit pas simplement d'une pause entre deux moments d'agitation. C'est un état dans lequel tu peux pleinement habiter.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Le calme est devenu une façon de te fermer au monde. Tu cherches à atteindre une certaine profondeur pour éviter de regarder ce qui se passe réellement en toi, et tu appelles cela du repos. Mais ce n'est pas un véritable apaisement. Même l'oiseau qui se trouve à proximité ne viendrait pas s'y poser. Ce que la surface devrait refléter reste caché en dessous, et tu entretiens ce calme apparent pour éviter que cela ne remonte.",
+    "issue": "Accorde-toi deux minutes de calme, sans chercher à penser à quelque chose en particulier ni à provoquer une réflexion. Observe simplement ce qui se présente à ton esprit. Le silence ne se force pas. Il s'installe lorsqu'on cesse de s'agiter. Il peut t'apprendre davantage que le bruit et les pensées qui se succèdent sans arrêt. Tu peux refaire cet exercice aujourd'hui, puis demain."
+  },
+  "questions": [
+    "Qu'est-ce que ton agitation t'empêche d'entendre ou de comprendre ?",
+    "Quel silence évites-tu, et depuis combien de temps ?",
+    "Que pourrais-tu découvrir si tu laissais ton esprit se calmer et observer ce qui se présente ?"
+  ],
+  "image": {
+    "geste": "une figure est assise en tailleur au-dessus des nuages, les paumes ouvertes. Elle semble en paix, sans avoir besoin de faire un effort particulier pour y parvenir",
+    "seuil": "aucun passage n'est à franchir. Le calme n'est pas un lieu qu'on atteint au bout d'un chemin : c'est un état intérieur qu'on peut laisser s'installer",
+    "detail": "un petit oiseau est posé en silence sur une branche nue. Il reste là tranquillement, comme s'il n'avait aucune raison de craindre ce silence"
+  },
+  "micro_geste": "Accorde-toi deux minutes de calme aujourd'hui, et observe simplement ce qui se présente.",
+  "positions": {
+    "jour": "Aujourd'hui, laisse un peu d'espace au silence. Cette carte arrive au-dessus du bruit habituel et te propose une question plutôt qu'un conseil. Elle ne te demande pas de créer artificiellement le calme. Elle montre une eau qui reflète tout le ciel simplement parce qu'elle a cessé de bouger. Prends un instant pour arrêter de t'agiter et observe ce qui apparaît lorsque ton esprit retrouve son calme.",
+    "amene": "Tu arrives peut-être avec une journée bien remplie et le désir de trouver davantage de profondeur au milieu de toutes tes occupations. Tu as peut-être appris à combler les silences, à répondre rapidement et à rester constamment occupé. Pourtant, tu possèdes déjà des espaces de tranquillité en toi. La carte te rappelle qu'ils existent et qu'ils peuvent contenir beaucoup plus que tu ne l'imagines.",
+    "se_joue": "Tout se joue entre deux attitudes, s'agiter ou se poser. Une partie de toi cherche à remplir chaque moment pour ne pas avoir à écouter ce qui se passe intérieurement. Une autre a simplement besoin d'espace et de tranquillité. Ces deux tendances coexistent, et c'est là que se trouve le travail proposé par cette carte. Reste une question. Qu'est-ce que tu pourrais entendre ou comprendre si tu prenais le temps de faire silence ?",
+    "essayer": "Essaie de t'accorder deux minutes de calme. Assieds-toi sans écran, sans musique et sans chercher à t'occuper l'esprit. Laisse simplement passer les pensées qui se présentent. La carte ne te demande pas de faire le vide complet dans ta tête. Elle t'invite seulement à cesser de t'agiter pendant un instant. Observe ce qui devient perceptible lorsque tu ne cherches plus à remplir le silence."
+  },
+  "source_referentielle": {
+    "pollack": "§3, XVII (Étoile) — après l'orage, la nudité calme ; verser sans compter ; tension se refaire ou se refermer ; ombre : canaux bouchés, insécurité déguisée en arrogance",
+    "wen": "§3 — élément Air ; §5 — la profondeur ne s'impose pas, elle se laisse",
+    "greer": "§6.2 — leçon : tenir un idéal, agir pour le vivant, se laisser voir",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : deux-points de chute retirés, micro-geste resserré à une phrase"
+  },
+  "lecon": "Tu n'as pas besoin de forcer le calme. Cesse simplement de t'agiter, et ton esprit pourra retrouver sa tranquillité et refléter le monde dans toute sa profondeur.",
+  "croix": {
+    "eloigne": "Tu ressens moins le besoin de remplir chaque espace par une tâche ou une conversation. Tu as longtemps répondu rapidement et enchaîné les activités sans laisser de pause. Ce qui demeure, c'est une capacité à retrouver le calme sans devoir le fabriquer. Tu peux laisser un moment se dérouler sans chercher à le rendre utile, intéressant ou productif.",
+    "image_soi": "Tu te définis souvent par ce que tu accomplis. Lorsque tu t'arrêtes, tu peux avoir l'impression de perdre ta place ou de ne plus servir à grand-chose. Tu occupes le rôle de la personne toujours en mouvement, et les autres peuvent s'y habituer. Cette image te donne une fonction, mais elle rend plus difficile le fait de rester simplement présente.",
+    "entourage": "Les autres te décrivent comme calme et posée. Ils viennent parfois te parler lorsqu'une situation devient agitée, parce que tu sembles garder ton sang-froid. Cette réputation peut faire de toi un point d'appui pour tout le monde. On remarque moins facilement que tu peux aussi avoir besoin d'écoute ou d'un moment de tranquillité qui ne soit pas consacré aux problèmes des autres."
+  }
+}

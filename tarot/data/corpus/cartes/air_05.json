@@ -1,0 +1,55 @@
+{
+  "id": "air_05",
+  "nom": "Comparaison",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 5,
+  "element": "air",
+  "note_grille": "degré 5 (secousse) × famille air (la mesure) : accord — la comparaison est la secousse qui ébranle la confiance quand la règle est empruntée.",
+  "mots_cles": [
+    "le bouleau et le pin",
+    "la terre commune",
+    "la lumière partagée",
+    "le ciel ouvert"
+  ],
+  "tension": {
+    "pousse": "s'inspirer",
+    "retient": "comparer"
+  },
+  "lumiere": "Deux arbres se dressent dans une même prairie. Le bouleau élance son tronc clair, tandis que le pin déploie sa silhouette imposante. Ils partagent la même terre et reçoivent la même lumière, mais leur croissance ne suit pas le même dessin. La carte rappelle que l'inspiration peut venir du regard porté sur les autres, à condition de ne pas transformer cette observation en jugement contre soi. La différence n'est pas une insuffisance.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu regardes les réussites voisines et tu finis par ne plus voir les tiennes. Tu mesures ta progression à partir de critères qui ne tiennent pas compte de ton histoire, de tes ressources ni des saisons que tu as traversées. Chaque comparaison semble confirmer que tu es en retard. Pourtant, tu ne regardes qu'une partie de l'arbre, jamais ses racines.",
+    "issue": "Établis un petit bilan personnel de tes avancées récentes. Note ce que tu as appris, construit ou traversé sans utiliser la réussite de quelqu'un d'autre comme unité de mesure."
+  },
+  "questions": [
+    "Quelle personne ou quelle réussite devient ta référence malgré toi ?",
+    "Quelles avancées personnelles as-tu tendance à minimiser ?",
+    "Que remarquerais-tu en comparant ta situation actuelle à celle d'autrefois ?"
+  ],
+  "lecon": "L'inspiration ouvre des possibilités. La comparaison qui rabaisse détourne le regard de sa propre croissance.",
+  "image": {
+    "geste": "deux arbres se tiennent entièrement visibles, des racines jusqu'aux cimes.",
+    "seuil": "une même terre accueille les deux silhouettes. Aucun espace ne leur est réservé au détriment de l'autre.",
+    "detail": "le ciel pâle s'étend au-dessus des deux arbres. Il ne limite la place d'aucun."
+  },
+  "micro_geste": "Écris trois progrès accomplis récemment, même modestes. Ne les compare à aucune autre trajectoire.",
+  "positions": {
+    "jour": "Un regard extérieur risque de modifier la façon dont tu évalues ta propre journée. Tu pourrais avoir l'impression que quelqu'un avance plus vite, possède davantage ou réussit mieux. La carte te propose de revenir à ta propre terre. Ce que tu construis possède ses racines, ses contraintes et son rythme. Le bouleau n'a aucune raison de regretter de ne pas être un pin.",
+    "amene": "Tu arrives avec une volonté de progresser et peut-être une certaine exigence envers toi-même. Tu sais observer ce qui fonctionne chez les autres, mais tu oublies parfois de reconnaître ce que cette observation t'apporte réellement. La carte t'invite à transformer l'envie en inspiration. Tu peux apprendre d'une autre personne sans adopter sa trajectoire comme mesure de ta valeur.",
+    "se_joue": "Une comparaison risque de prendre trop de place dans ton esprit. Tu peux continuer à mesurer ton parcours avec une règle extérieure ou retrouver une perspective plus juste. La carte présente deux arbres qui partagent le même paysage sans avoir à se ressembler. La question n'est pas de savoir lequel domine, mais de reconnaître ce qui grandit dans ta propre vie.",
+    "essayer": "Choisis un domaine dans lequel tu te sens en retard. Note ce que tu savais faire il y a un an et ce que tu sais faire aujourd'hui. Ajoute une chose que tu as comprise, dépassée ou développée depuis. Cette comparaison avec ton propre passé te donnera une mesure plus fidèle de ton évolution."
+  },
+  "source_referentielle": {
+    "pollack": "§4, cinq d'Épées — la victoire creuse, la mesure faussée : notre carte en déplace l'arme, la comparaison qui secoue la confiance",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 5 : la secousse de la règle empruntée",
+    "greer": "§6 — la comparaison comme perte de vue de sa propre racine",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_5)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à te détacher de cette habitude de comparer ta vie à celle des autres. Jusqu'ici, tu pouvais regarder leurs réussites, leurs projets ou leur évolution pour mesurer ta propre progression. Tu avais parfois l'impression de ne pas avancer assez vite ou de ne pas avoir accompli autant qu'eux. Tu apprends maintenant à reconnaître que chacun suit son propre chemin et que ta progression n'a pas besoin de ressembler à celle des autres pour avoir de la valeur.",
+    "image_soi": "Tu as tendance à penser que tu es en retard par rapport aux autres. Tu regardes ce qu'ils ont construit et tu compares leurs résultats aux tiens. Tu peux avoir l'impression de ne pas avoir suffisamment avancé ou de ne pas être aussi accomplie qu'eux. Cette comparaison te donne souvent le sentiment de manquer quelque chose, même lorsque tu progresses réellement. Tu oublies que ton parcours est différent et qu'il ne peut pas être évalué avec les mêmes critères.",
+    "entourage": "Dans ton entourage, on parle parfois des réussites des autres et on te demande où tu en es dans tes propres projets. Certaines personnes peuvent comparer ton parcours à celui de quelqu'un d'autre, tandis que d'autres apprécient ce que tu as déjà accompli. Tu peux donc recevoir des avis très différents sur ta situation. Ces jugements ne reflètent pas nécessairement ta réalité ni les efforts que tu fournis au quotidien."
+  }
+}

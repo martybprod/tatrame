@@ -1,0 +1,55 @@
+{
+  "id": "air_08",
+  "nom": "Culpabilité",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 8,
+  "element": "air",
+  "note_grille": "degré 8 (mouvement) × famille air (pensée, parole) : CONFLIT assumé — le mouvement existe, mais il est empêché. La carte dit le mouvement par son empêchement (l'exemple même de Pollack : huit d'Air).",
+  "mots_cles": [
+    "le cercle tracé",
+    "la voix ancienne",
+    "la boucle",
+    "la craie en main",
+    "l'herbe sur la ligne"
+  ],
+  "tension": {
+    "pousse": "comprendre",
+    "retient": "ressasser"
+  },
+  "lumiere": "Tu vois le cercle pour ce qu'il est. Un trait tracé de ta propre main. Cela ne rend pas la faute insignifiante. Cela signifie plutôt que la sortie est à portée de pas et que la craie peut s'effacer. Tu nommes ce qui s'est passé, tu répares ce qui peut l'être, et tu apprends à laisser le reste derrière toi. La pensée cesse de tourner en boucle et le mouvement reprend lorsque les choses sont nommées avec justesse.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Une voix plus ancienne que toi dicte la sentence. Tu ne l'as pas choisie. Elle s'est installée au fil des années, et tu l'acceptes comme si elle avait toujours raison. Le cercle de craie n'a pas été tracé aujourd'hui. Il est redessiné chaque matin par la même main, dans la même terre usée. Et chaque journée commence à l'intérieur de cette condamnation.",
+    "issue": "Demande à cette voix de nommer précisément la faute. Si elle peut être réparée, fais-le aujourd'hui. Si elle ne peut pas l'être, ou si la faute n'a jamais existé, dépose la craie et marche hors du cercle."
+  },
+  "questions": [
+    "Quelle voix te juge, et à qui appartenait-elle au départ ?",
+    "Qu'est-ce qui peut être réparé ici, et qu'est-ce qui ne peut pas l'être ?",
+    "Que ferais-tu si le cercle s'effaçait ?"
+  ],
+  "lecon": "Une faute peut servir à apprendre. On la nomme, on répare ce qui peut l'être, puis on cesse de porter ce qui appartient à une vieille voix.",
+  "image": {
+    "geste": "le cercle est tracé de ta propre main. La prison est dessinée, elle n'est pas construite",
+    "seuil": "aucun mur à franchir. La craie peut s'effacer, et la ligne reste à hauteur de pas",
+    "detail": "une touffe d'herbe pousse directement sur la ligne du cercle. Même à l'endroit de la faute, quelque chose continue de pousser"
+  },
+  "micro_geste": "Vérifie aujourd'hui une faute que tu te reproches. Sépare ce qui peut être réparé de ce qui relève d'une culpabilité héritée.",
+  "positions": {
+    "jour": "Aujourd'hui, une voix te juge et connaît ton histoire par cœur. La carte ne te demande pas d'ignorer une faute, mais de vérifier ce qui s'est réellement passé. Nomme-la précisément et regarde ce qu'il en reste. Quelque chose à réparer ou une vieille sentence qui n'a plus de raison de s'imposer. La craie est dans ta main, et le cercle peut s'effacer.",
+    "amene": "Tu arrives avec un juge intérieur bien entraîné. On t'a appris à examiner ta part de faute avant même de reconnaître ce que tu as fait de juste. Cette habitude t'a aussi donné une conscience attentive, mais elle a parfois tracé des cercles trop étroits autour de toi. La craie est encore dans ta main. C'est toi qui peux choisir de ne plus redessiner le cercle.",
+    "se_joue": "Tout se joue dans la distinction entre une faute réelle et une sentence héritée. Une partie de toi veut réparer ce qui doit l'être, tandis qu'une autre continue de porter une culpabilité bien au-delà de ce qui est nécessaire. La question du jour est simple. Que dit cette voix, et que disent les faits ?",
+    "essayer": "Essaie de poser aujourd'hui un geste de réparation précis. Si quelque chose peut être réparé, fais-le simplement, sans prolonger inutilement la culpabilité. Si rien ne peut l'être, écris la sentence, relis-la et demande-toi qui parle à travers ces mots. La carte t'invite à sortir du cercle en marchant. La craie ne trace que les lignes que tu choisis de dessiner."
+  },
+  "source_referentielle": {
+    "pollack": "§4, huit d'Épées — l'empêchement intérieur, la prison dessinée par soi ; accord avec notre carte : la faute comme lien",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 8 : mouvement empêché (le conflit nombre × famille, assumé)",
+    "greer": "§6.5 — l'ombre comme part non intégrée : la qualité niée passe à l'extérieur et devient un reproche",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : trois deux-points de chute remplacés par des phrases-fragments"
+  },
+  "croix": {
+    "eloigne": "Tu commences à prendre de la distance avec cette tendance à te rendre responsable de tout ce qui ne se passe pas comme prévu. Jusqu'ici, tu pouvais repenser longtemps à tes décisions et te demander ce que tu aurais dû faire autrement. Tu avais parfois du mal à distinguer tes véritables erreurs des responsabilités que tu avais prises sur toi. Tu apprends maintenant à reconnaître ce qui dépend réellement de toi et à ne plus te condamner pour tout.",
+    "image_soi": "Tu as tendance à te juger sévèrement et à repenser souvent à ce que tu aurais pu faire différemment. Tu te reproches de ne pas avoir compris plus tôt, de ne pas avoir réagi correctement ou de ne pas avoir pris la bonne décision. Tu analyses les situations comme si tu devais toujours trouver une faute dont tu serais responsable. Cette attitude te rend attentive à tes comportements, mais elle peut aussi t'enfermer dans une culpabilité permanente.",
+    "entourage": "Les autres remarquent parfois que tu es très exigeante envers toi-même. Ils peuvent te dire que tu réfléchis trop ou que tu devrais arrêter de te culpabiliser. Mais ils ne connaissent pas toujours les raisons profondes de ce que tu ressens. Ils essaient parfois de te rassurer sans comprendre ce que tu portes réellement. Leur regard est bienveillant, mais il ne suffit pas toujours à faire disparaître une culpabilité que tu n'arrives pas encore à exprimer."
+  }
+}

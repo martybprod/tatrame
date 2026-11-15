@@ -1,0 +1,56 @@
+{
+  "id": "terre_07",
+  "nom": "Patience",
+  "type": "mineur",
+  "famille": "terre",
+  "degre": 7,
+  "element": "terre",
+  "note_grille": "degré 7 (évaluation, discernement) × famille terre (corps, ressources) : accord — évaluer sans arracher, nommer l'âge sans déterrer. Les quatre âges du même légume portent la lenteur de la famille, et la vérification fiévreuse en est l'ombre.",
+  "mots_cles": [
+    "les quatre âges",
+    "les raies encore nues",
+    "la fève à tous les stades",
+    "les mains posées sur le ventre",
+    "le temps qui travaille"
+  ],
+  "tension": {
+    "pousse": "laisser mûrir",
+    "retient": "vérifier sans fin"
+  },
+  "lumiere": "Tu sais qu'une chose semée continue de pousser même lorsque tu ne la regardes pas. La terre fraîchement travaillée, la jeune pousse, la fleur et la gousse représentent les différentes étapes d'un même processus. Aucune ne peut être sautée. Tu as déjà accompli ta part, et ce travail compte. La suite appartient au temps, qui n'est pas ton adversaire. Aujourd'hui, ta patience ressemble à deux mains posées calmement sur quelque chose qui continue de grandir sans que tu aies besoin d'intervenir.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu remues la terre pour vérifier si les graines poussent. Tu soulèves le linge, creuses du bout des doigts et recommences les vérifications plusieurs fois par jour. Chaque fois, tu risques de déranger ce que tu souhaites pourtant voir grandir. L'attente s'est transformée en agitation. Au fond, tu as peut-être longtemps cru que rien ne pouvait avancer sans ton intervention. Le repos te donne alors l'impression de laisser tomber les choses. Tu multiplies les nouveaux départs parce qu'au moins, un commencement est immédiatement visible.",
+    "issue": "Choisis une seule chose à laquelle tu souhaites laisser le temps de mûrir. Identifie l'étape où elle se trouve actuellement, pose les mains à plat pendant une minute et laisse les jours suivants faire leur travail."
+  },
+  "questions": [
+    "Quelle chose de ta vie pousse en ce moment sans que tu la voies grandir ?",
+    "À quelle vérification te reconnaît-on, et qu'est-ce qu'elle change réellement à l'affaire ?",
+    "Qu'est-ce qui deviendrait possible si tu cessais de creuser pour savoir où ça en est ?"
+  ],
+  "lecon": "Toute chose semée traverse ses quatre âges. Le travail de la patience consiste à lui laisser le temps de les parcourir sans la déranger.",
+  "image": {
+    "geste": "les deux mains d'une femme enceinte reposent à plat sur son ventre, sans exercer de pression. Autour d'elle, une même fève traverse ses quatre étapes de croissance sur quatre planches disposées en terrasses",
+    "seuil": "quatre planches remontent une pente douce, depuis le rang fraîchement semé jusqu'aux gousses qui se courbent sous leur poids. Le passage d'une étape à l'autre se fait sans intervention, et c'est précisément ce qui est montré",
+    "detail": "un léger sourire apparaît au coin des lèvres. Elle sait à quelle étape elle se trouve et n'a pas besoin de creuser pour le vérifier"
+  },
+  "micro_geste": "Plante trois graines dans un pot ce soir. Place-le à un endroit où tu pourras le voir chaque jour, puis laisse-les pousser sans intervenir.",
+  "positions": {
+    "jour": "Une période de croissance lente traverse actuellement tes affaires. Plusieurs choses sont commencées, mais rien n'est encore prêt à être récolté. Le climat de la journée ressemble à la fin du printemps : tout pousse, mais rien n'est encore à manger. C'est une période d'attente fertile, et elle ne signifie pas que quelque chose va mal. Ce qui est en cours a besoin du temps nécessaire, ni davantage ni moins. La journée passera de toute façon, que tu vérifies constamment les progrès ou non.",
+    "amene": "Tu retournes voir si quelque chose a poussé. Une fois, puis une autre, et parfois encore pour vérifier que rien n'a changé depuis le matin. Tu passes d'un commencement à l'autre comme si tu faisais constamment le tour d'un jardin fraîchement semé. Ce réflexe vient peut-être d'une expérience ancienne. À un moment de ta vie, attendre t'a semblé risqué, et vérifier est devenu ta façon de garder le contrôle. Pourtant, les choses peuvent continuer à avancer sans cette surveillance. Tu ne leur as simplement pas encore laissé assez de temps pour le constater.",
+    "se_joue": "Quatre planches remontent une pente douce, et une même plante y traverse ses quatre étapes, depuis les premiers semis jusqu'aux gousses mûres. Ta situation actuelle ressemble à cette image. Ce qui t'occupe se trouve quelque part sur cette pente, à une étape bien précise. Tu peux apprendre à la reconnaître sans déterrer la plante pour vérifier ses racines. Nommer simplement l'étape où tu en es permet déjà de réduire l'impatience. Tu ne compares plus un semis à une récolte.",
+    "essayer": "Une personne passe entre les rangs, touche doucement la terre du bout des doigts, puis repart sans rien emporter. Elle observe la plante, reconnaît son stade de croissance et s'en va s'occuper d'autre chose jusqu'au lendemain. Tout le geste tient en une minute : regarder, reconnaître, puis laisser faire. Derrière elle, la plante poursuit tranquillement sa croissance. Tu peux appliquer cette méthode à une situation qui demande actuellement de la patience. Il suffit de faire cet essai avant la fin de la journée."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Deniers, le sept — l'évaluation, la patience du concret",
+    "wen": "§4 — famille terre : corps, ressources, rythme ; degré 7 : l'évaluation, le discernement",
+    "greer": "§6 — la patience comme manière d'être, chez la figure et chez soi",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-11 sous le brief terre (groupe B), image d'après la passation et la grille validée (ATRO_PLUS/_distillation, terre_07_Patience, concept « quatre planches, quatre âges »), en attente de la reformulation de Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à accepter que certaines choses demandent du temps et ne peuvent pas être accélérées. Jusqu'ici, tu avais tendance à vérifier régulièrement si tes efforts portaient leurs fruits. Tu voulais voir rapidement des résultats et tu pouvais t'inquiéter lorsque rien ne semblait avancer. Tu apprends maintenant à faire confiance au temps et à comprendre que certaines choses continuent de se construire même lorsque tu ne vois pas encore de changement.",
+    "image_soi": "Tu as parfois l'impression que si les choses n'avancent pas assez vite, c'est parce que tu ne fais pas correctement ce qu'il faut. Tu te sens responsable de surveiller, de vérifier et de corriger chaque étape. Tu as du mal à laisser les événements suivre leur cours sans intervenir. Cette attitude te donne l'impression de maîtriser la situation, mais elle peut aussi t'empêcher de laisser les choses évoluer naturellement.",
+    "entourage": "Les autres remarquent que tu as souvent de nouvelles idées et que tu aimes commencer de nouveaux projets. Ils te voient comme une personne dynamique qui n'hésite pas à recommencer lorsque quelque chose ne fonctionne pas. Certains peuvent même te trouver impatiente ou trop pressée d'obtenir des résultats. Cette image ne montre pas toujours les efforts que tu fais pour persévérer ni les difficultés que tu rencontres lorsque tu dois attendre."
+  }
+}

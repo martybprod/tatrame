@@ -1,0 +1,53 @@
+{
+  "id": "major_19",
+  "nom": "Rayonnement",
+  "type": "majeur",
+  "registre": "transpersonnel",
+  "element": "feu",
+  "note_grille": "dix-neuvième majeur (tradition du Soleil). Registre transpersonnel. La lumière n'attend pas ta permission pour entrer. Élément Feu. Une chaleur qui dore sans brûler. Tension signature (Pollack), s'ouvrir ou se protéger.",
+  "mots_cles": [
+    "major_19",
+    "transpersonnel",
+    "feu"
+  ],
+  "tension": {
+    "pousse": "recevoir",
+    "retient": "se voiler"
+  },
+  "lumiere": "Tu laisses entrer la lumière, et elle fait son travail sans effort de ta part. Le matin traverse les vitres et dore tout ce qu'il touche : tes projets, ta maison, tes relations. Tu n'as rien à produire pour que cela fonctionne. Il suffit que tu sois là pour que la chaleur se mette à circuler. Ton corps va bien, ton esprit est clair, et les choses importantes deviennent faciles à voir. Tu rayonnes comme on respire, sans même y penser.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu affiches davantage de lumière que tu n'en ressens, et cet écart t'épuise doucement. Tu tiens le rôle de la personne qui va bien, tandis que la vraie chaleur attend derrière cette façade. Ce dont tu as besoin, c'est de recevoir, mais tu fais exactement le contraire en continuant à produire. La veilleuse reste allumée pour le public, alors que le salon est vide. À force d'éclairer les autres, tu oublies d'entrer toi-même dans la pièce ensoleillée.",
+    "issue": "Accorde-toi cinq minutes sans représentation aujourd'hui, dans un endroit où personne ne te voit. Assieds-toi dans le premier rayon de soleil et ne fais rien d'autre que le sentir. La vraie lumière revient dès qu'on cesse de vouloir la produire."
+  },
+  "questions": [
+    "Où fais-tu plus de lumière que tu n'en ressens vraiment ?",
+    "Qu'est-ce qui devient doré en toi dès que tu arrêtes de forcer ?",
+    "Quelle joie simple n'a pas encore trouvé sa place dans ta semaine ?"
+  ],
+  "lecon": "Recevoir la lumière sans la fabriquer, et laisser la joie simple dorer ce qu'elle touche.",
+  "image": {
+    "geste": "Un enfant de dos, pieds nus, s'occupe d'un carré de semis dans une serre, au petit matin. La lumière chaude le dore entièrement pendant qu'il travaille, et il n'y prête pas attention.",
+    "seuil": "Les vitres de la serre marquent le seuil. La lumière n'a pas besoin qu'on lui ouvre la porte : elle traverse les vitres, et tout ce qu'elle touche devient or.",
+    "detail": "De larges rayons dorés sont chargés de poussière lumineuse, et un chat dort en plein milieu du passage. Rien ne semble travailler ici, et pourtant tout se dore."
+  },
+  "micro_geste": "Installe-toi dix minutes aujourd'hui dans le premier rayon de soleil que tu trouves, sans écran et sans objectif.",
+  "positions": {
+    "jour": "Le temps du jour est chaud et clair, et il ne demande rien. La lumière traverse tout sans se presser. Elle dore ce qu'elle trouve sur son passage : les objets, les visages, les heures calmes. Ce climat ne se mérite pas. Il arrive comme la lumière du matin qui entre dans une serre. Tu peux simplement l'habiter, sans l'expliquer et sans chercher à en profiter pour régler quoi que ce soit. Les jours dorés passent rarement deux fois, et celui-ci est là.",
+    "amene": "Remarque tout ce que la lumière touche déjà dans ta vie, sans que tu l'aies demandé. Une santé tranquille, une relation qui fonctionne bien, un projet qui avance, un coin de maison agréable au petit matin. Rien de tout cela ne réclame ton effort pour exister. La carte t'invite à en prendre conscience aujourd'hui, comme on compte les pots verts alignés sur un banc de serre. Cet inventaire se fait avec plaisir, et il rend la journée plus lumineuse.",
+    "se_joue": "Entre recevoir la lumière et la mettre en scène, où se situe ta journée ? Il existe une chaleur qui circule lorsque tu es simplement présent, et une autre qui est jouée : celle qui fait plaisir aux autres, mais qui te laisse un peu vide ensuite. De loin, les deux se ressemblent. De près, elles sont très différentes. Que préfères-tu : être éclairé ou éclairer ?",
+    "essayer": "Tu as le droit de prendre ta part de soleil sans la partager aujourd'hui, juste pour toi. Tu as le droit de te réjouir d'une bonne nouvelle sans la relativiser, et de laisser ta joie se voir sur ton visage. La lumière n'a pas à se justifier, et ta joie n'a aucun dossier à remplir. Si quelqu'un te demande pourquoi tu as l'air bien, tu peux répondre simplement la vérité : cela vient du matin.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, XIX — clarté simple, joie physique, le corps et l'esprit réunis ; tension s'ouvrir / se protéger ; ombre : joie voilée, lucidité en retrait",
+    "wen": "§3 — élément Feu (Soleil) ; §5 — mode d'ombre « retourné »",
+    "greer": "§6.2 — leçon : réussir, être reconnu, se réjouir, s'engager",
+    "production": "angles pollack §3 XIX + wen §3 (élément Feu) + greer §6.2 ; image = visage validé du brief Groupe D (serre victorienne au matin chaud, rais dorés épais de poussière lumineuse, enfant pieds nus au carreau, chat endormi), reformulé avec nos mots ; nom interne du jeu, trace noms_cartes.json, Innocence",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu n'as plus autant besoin de montrer que tout va bien. Tu as parfois pris en charge l'ambiance d'un groupe, en faisant rire, en rassurant ou en encourageant les autres. Ce rôle s'allège. Ce qui demeure, c'est la possibilité de goûter aux moments agréables sans avoir à les produire. Une joie tranquille peut exister même lorsqu'elle n'est remarquée par personne.",
+    "image_soi": "Tu te sens responsable de l'ambiance autour de toi. Tu essaies de garder le sourire et de ne pas laisser paraître ta fatigue, comme si ton humeur déterminait celle de tout le monde. Ce rôle te donne une place importante, mais il t'oblige à rester du côté de celle qui donne. Tu peux avoir du mal à recevoir de l'attention sans devoir en offrir aussitôt.",
+    "entourage": "Les autres apprécient ta présence et associent souvent ton arrivée à une ambiance plus légère. Ils viennent vers toi pour partager une bonne nouvelle ou retrouver un peu d'entrain. Cette image peut devenir contraignante lorsque tu es fatiguée ou préoccupée. Certains s'étonnent alors de te voir moins disponible, sans penser que tu peux simplement traverser une journée ordinaire."
+  }
+}

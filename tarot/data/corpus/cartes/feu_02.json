@@ -1,0 +1,56 @@
+{
+  "id": "feu_02",
+  "nom": "Possibilités",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 2,
+  "element": "feu",
+  "note_grille": "degré 2 (mise en relation, polarité) × famille feu (élan, désir) : accord — l'élan se met en relation avec ses directions possibles, et la polarité n'oblige pas à trancher. Pollack : deux de Bâtons, l'élan qui réfléchit à son prochain mouvement.",
+  "mots_cles": [
+    "les graines au vent",
+    "les départs possibles",
+    "semer large",
+    "plusieurs portes",
+    "sans certitude"
+  ],
+  "tension": {
+    "pousse": "semer",
+    "retient": "trancher"
+  },
+  "lumiere": "Imagine un champ de pissenlits. Le vent souffle et emporte des centaines de petites graines dans toutes les directions. Personne ne sait exactement où elles vont atterrir ni lesquelles vont pousser.\n\nC'est ce que cette carte t'invite à faire : regarder toutes les possibilités qui s'offrent à toi, sans chercher immédiatement à en choisir une seule.\n\nPlusieurs idées, projets ou envies peuvent exister en même temps. Tu n'as pas besoin de savoir dès maintenant laquelle est la meilleure. Tu peux simplement explorer les différentes possibilités et voir ce qui se développe.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu réfléchis tellement à toutes les possibilités que tu finis par ne plus rien choisir. Tu as peur de faire le mauvais choix et de regretter d'avoir laissé passer une autre occasion.\n\nÀ l'inverse, tu peux aussi prendre une décision trop rapidement, sous la pression, et abandonner toutes les autres possibilités.\n\nDans les deux cas, tu te mets trop de pression. Tu crois qu'il existe une seule bonne direction et que tu dois absolument la trouver.\n\nMais tu n'es pas obligé de décider de tout maintenant.",
+    "issue": "Au lieu de choisir immédiatement un seul projet, essaie plusieurs petites choses.\n\nTu peux commencer trois projets modestes, faire quelques essais ou explorer différentes idées. Tu verras ensuite lesquelles te donnent envie de continuer.\n\nTu n'as pas besoin de tout décider avant de commencer. L'expérience t'aidera à faire ton choix."
+  },
+  "questions": [
+    "Quelles possibilités s'offrent à toi en ce moment ?",
+    "Quelles portes fermes-tu trop rapidement par peur de te tromper ?",
+    "Et si tu laissais plusieurs projets avancer en même temps, qu'est-ce que cela changerait ?"
+  ],
+  "image": {
+    "geste": "Le vent traverse un champ de pissenlits et emporte des centaines de graines dans les airs. Elles forment une traînée dorée qui s'élève au-dessus des collines.",
+    "seuil": "On ne voit pas où les graines vont atterrir. Elles quittent leur plante sans savoir exactement où elles vont pousser.",
+    "detail": "Chaque pissenlit libère des centaines de graines. Le ciel se remplit de nouvelles possibilités, sans qu'aucune destination soit définie."
+  },
+  "micro_geste": "Choisis une idée que tu repousses depuis quelque temps et fais aujourd'hui un premier petit pas : passer un appel, écrire quelques lignes ou aller visiter un endroit.",
+  "positions": {
+    "jour": "Plusieurs projets ou envies attendent peut-être que tu leur donnes une chance. Certaines idées te trottent dans la tête depuis plusieurs semaines. D'autres possibilités n'ont même pas encore été explorées.\n\nCette carte te montre un champ de pissenlits dont les graines sont emportées par le vent dans toutes les directions.\n\nLe message est simple : tu peux commencer quelque chose sans avoir à décider de tout ton avenir.\n\nChoisis une idée et fais un premier pas aujourd'hui. Tu verras ensuite où elle peut te mener. Tu n'as pas besoin de contrôler toutes les possibilités.",
+    "amene": "On t'a appris à choisir une seule direction et à s'y tenir. Tu réfléchis, tu compares les options et tu finis par garder uniquement celle qui te semble la plus raisonnable.\n\nAvec le temps, tu as peut-être laissé de côté plusieurs envies qui auraient mérité d'être explorées.\n\nCette carte t'invite à changer cette façon de voir les choses. Tu peux garder plusieurs idées vivantes sans devoir immédiatement leur donner une place définitive dans ta vie.",
+    "se_joue": "Tu hésites peut-être entre plusieurs possibilités. Une partie de toi veut prendre une décision rapidement pour être enfin fixée. Une autre préfère attendre et garder toutes les options ouvertes.\n\nTu n'as pas besoin de faire taire l'une ou l'autre.\n\nLa vraie question est plutôt celle-ci : pourquoi faudrait-il absolument choisir maintenant, alors que tu pourrais commencer par explorer plusieurs possibilités ?",
+    "essayer": "Choisis deux ou trois idées qui t'intéressent et donne à chacune une petite chance d'exister.\n\nTu peux passer un appel pour l'une, écrire quelques lignes pour une autre ou aller découvrir un endroit qui t'attire.\n\nNe cherche pas à tout réussir ni à t'engager définitivement. Le but est simplement de commencer.\n\nTu pourras décider plus tard quels projets méritent davantage de temps et d'énergie."
+  },
+  "source_referentielle": {
+    "pollack": "§4 nombres — le 2, la mise en relation, la polarité qui n'oblige pas à trancher ; deux de Bâtons : l'élan qui réfléchit à son prochain mouvement",
+    "wen": "§4 — famille feu : élan, désir ; degré 2 : mise en relation",
+    "greer": "§6 — étage 1 : les mots-clés ; la question du choix et du droit d'avoir plusieurs envies",
+    "production": "image du corpus mineurs feu (pré de pissenlits, traînée dorée), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "Tu peux explorer plusieurs possibilités à la fois. Tu n'as pas besoin de savoir immédiatement laquelle choisir.",
+  "croix": {
+    "eloigne": "Tu commences à sortir d'une période où tu envisageais beaucoup de possibilités sans parvenir à choisir. Tu gardais toutes tes options ouvertes, en espérant voir apparaître la meilleure direction. Tu apprends maintenant à accepter de commencer quelque chose sans savoir exactement où cela te mènera.",
+    "image_soi": "Tu as l'impression que tu devrais absolument savoir ce que tu veux et être capable de prendre une décision claire. Tu penses qu'une personne sérieuse doit choisir une direction et s'y tenir. Du coup, tu te juges parce que tu hésites, au lieu de reconnaître toutes les possibilités que tu as le courage d'explorer.",
+    "entourage": "Ton entourage te connaît pour tes nombreuses idées et tes projets. On te taquine parfois parce que tu commences beaucoup de choses sans toujours les terminer. Les autres apprécient ton enthousiasme, mais ils ne te prennent pas forcément au sérieux lorsqu'il s'agit de concrétiser tes envies. À force d'être considérée comme quelqu'un qui a toujours mille projets, tu peux avoir du mal à montrer que tu es aussi capable de faire un choix et de t'y tenir."
+  }
+}

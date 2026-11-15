@@ -1,0 +1,56 @@
+{
+  "id": "feu_10",
+  "nom": "Refoulement",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 10,
+  "element": "feu",
+  "note_grille": "degré 10 (achèvement, saturation) × famille feu (désir, expression) : accord paradoxal — la saturation des retenues force la sortie du feu. Le refoulement s'achève parce qu'il ne peut plus durer.",
+  "mots_cles": [
+    "la spirale",
+    "ce qui était gardé",
+    "le grand air",
+    "la sortie",
+    "la fin de la retenue"
+  ],
+  "tension": {
+    "pousse": "exprimer",
+    "retient": "retenir"
+  },
+  "lumiere": "Tu as peut-être gardé certaines émotions, pensées ou paroles pour toi pendant longtemps.\n\nCette carte t'invite à leur donner enfin une place et à les exprimer.\n\nElle montre une femme debout dans un champ de blé, les bras ouverts. Une spirale de feu lumineux s'élève de sa poitrine vers le ciel.\n\nCe feu représente tout ce qui était retenu et qui peut maintenant être exprimé.\n\nTu peux dire ce que tu ressens, partager ton opinion ou parler d'une situation qui te dérange.\n\nExprimer ce que tu as sur le cœur ne signifie pas nécessairement créer un conflit.\n\nTu peux être honnête tout en restant respectueux des autres.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu as peut-être l'habitude de ne pas dire ce que tu penses pour éviter de déplaire ou de créer des tensions.\n\nTu préfères garder le silence, même lorsque quelque chose te dérange.\n\nTu ravales tes paroles, minimises tes émotions et fais parfois semblant que tout va bien.\n\nMais ce que tu ne dis pas ne disparaît pas forcément.\n\nÀ force de tout garder pour toi, tu peux accumuler de la frustration et te sentir de plus en plus sous pression.\n\nTu as aussi le droit d'exprimer tes besoins et de faire entendre ton point de vue.",
+    "issue": "Choisis une chose que tu gardes pour toi depuis quelque temps et trouve une manière simple de l'exprimer.\n\nTu peux en parler directement à la personne concernée ou commencer par écrire ce que tu ressens.\n\nTu n'as pas besoin de préparer un long discours ni de trouver les mots parfaits.\n\nCommence simplement par dire ce qui est important pour toi."
+  },
+  "questions": [
+    "Quelles émotions ou quelles paroles gardes-tu en toi depuis longtemps ?",
+    "De qui as-tu peur de décevoir si tu exprimes vraiment ce que tu ressens ?",
+    "Que changerait le fait de pouvoir dire ce que tu penses sans toujours te taire pour préserver la paix ?"
+  ],
+  "image": {
+    "geste": "Une femme ouvre les bras au milieu d'un champ de blé. Une spirale de lumière et de feu sort de sa poitrine et s'élève progressivement vers le ciel.",
+    "seuil": "Après être resté longtemps à l'intérieur, le feu trouve enfin un passage vers l'extérieur. Il peut maintenant s'élever librement.",
+    "detail": "Le blé sec entoure la femme, mais ne prend pas feu. Le champ reste intact malgré la lumière qui s'en dégage."
+  },
+  "micro_geste": "Exprime aujourd'hui, en une phrase simple, quelque chose que tu gardes pour toi depuis quelque temps.",
+  "positions": {
+    "jour": "Tu as peut-être quelque chose sur le cœur que tu n'as pas encore réussi à exprimer.\n\nCela peut être une émotion, une opinion, un besoin ou une chose qui te dérange depuis un moment.\n\nCette carte montre une femme qui ouvre les bras au milieu d'un champ de blé. Une spirale de lumière s'élève de sa poitrine vers le ciel.\n\nElle représente ce qui sort enfin après avoir été longtemps retenu.\n\nAujourd'hui, tu peux essayer de mettre des mots sur ce que tu ressens. Tu n'as pas besoin de tout expliquer parfaitement. Tu peux simplement commencer à dire ce qui est important pour toi.",
+    "amene": "Tu as pris l'habitude de faire passer les besoins des autres avant les tiens.\n\nPour éviter les conflits, tu préfères parfois te taire plutôt que de dire ce qui te dérange.\n\nAvec le temps, tu as peut-être accumulé beaucoup de choses que tu aurais aimé exprimer.\n\nCette carte t'invite à reconnaître que tes émotions et tes besoins ont aussi leur importance.\n\nTu n'as pas à tout garder pour toi pour que les relations restent harmonieuses.",
+    "se_joue": "Tu ressens peut-être le besoin de dire quelque chose, mais tu réfléchis tellement à la manière de le formuler que tu finis par ne rien dire.\n\nTu cherches les mots les plus doux, tu imagines les réactions des autres et tu modifies ton message avant même de l'avoir exprimé.\n\nÀ force, tu ne dis plus vraiment ce que tu penses.\n\nCette carte t'invite à retrouver une parole plus sincère.\n\nLa question est : que voudrais-tu dire si tu arrêtais de chercher à rendre ton message acceptable pour tout le monde ?",
+    "essayer": "Choisis une chose que tu as besoin d'exprimer et formule-la simplement.\n\nTu peux dire à quelqu'un que quelque chose t'a blessé, expliquer ce dont tu as besoin ou partager une opinion que tu gardais pour toi.\n\nTu peux aussi commencer par écrire tes pensées dans un carnet.\n\nL'objectif n'est pas de provoquer une dispute, mais de ne plus ignorer ce que tu ressens.\n\nTu peux être honnête et respectueux en même temps."
+  },
+  "source_referentielle": {
+    "pollack": "§4, nombres — le dix : le terme du cycle, ce qui arrive à maturité",
+    "wen": "§4 — famille feu : désir ; degré 10 : saturation, fin de cycle",
+    "greer": "§6 — questions sur l'expression : qu'est-ce qui demande à sortir, et depuis quand",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-10 sous le brief feu (groupe B), image d'après le corpus distillé de la spirale dans le blé, en attente de la reformulation de Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "Ce que tu gardes trop longtemps pour toi finit par peser. Exprimer ce que tu ressens permet de retrouver de l'espace.",
+  "croix": {
+    "eloigne": "Tu commences à moins retenir ce que tu as envie de dire. Jusqu'ici, tu réfléchissais beaucoup à tes paroles, de peur de blesser quelqu'un, de créer un conflit ou de déranger. Tu préférais souvent garder tes émotions pour toi plutôt que de prendre le risque de les exprimer. Cette retenue commence à s'alléger. Tu peux progressivement retrouver une parole plus libre et reconnaître que tes émotions ont aussi le droit d'être entendues.",
+    "image_soi": "Tu te vois comme une personne calme, raisonnable et facile à vivre. Pour toi, garder son calme signifie souvent ne pas montrer sa colère, ne pas contredire les autres et éviter les discussions difficiles. Tu fais beaucoup d'efforts pour rester dans ce rôle, même lorsque quelque chose te dérange profondément. Cette image te donne une réputation agréable, mais elle t'empêche d'exprimer ce que tu ressens réellement.",
+    "entourage": "Les autres te trouvent douce, compréhensive et conciliante. Ils ont l'impression que tu ne te mets jamais en colère et que tu acceptes facilement les situations. Cette réputation les amène parfois à compter sur toi pour gérer les moments délicats ou annoncer les mauvaises nouvelles. Comme tu exprimes rarement ton désaccord, ton entourage ne remarque pas toujours lorsque quelque chose te blesse ou te contrarie."
+  }
+}

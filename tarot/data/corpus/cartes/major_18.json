@@ -1,0 +1,53 @@
+{
+  "id": "major_18",
+  "nom": "L'Invisible",
+  "type": "majeur",
+  "registre": "transpersonnel",
+  "element": "eau",
+  "note_grille": "dix-huitième majeur (tradition de la Lune, la nuit qui trouble). Notre caverne, elle, est lumineuse. Ce qui dort dessous soutient, il n'épouvante pas. Élément Eau. L'héritage se rejoint par descente, pas par effort. Tension signature (Pollack), traverser les images ou les fuir.",
+  "mots_cles": [
+    "major_18",
+    "transpersonnel",
+    "eau"
+  ],
+  "tension": {
+    "pousse": "descendre",
+    "retient": "flotter"
+  },
+  "lumiere": "Tu retrouves un appui qui n'a jamais cessé d'être là. Sous ce que tu montres de toi, des liens anciens continuent de te porter, et tu peux t'y appuyer lorsque tu prends le temps de t'y arrêter. Un prénom, une chanson de famille, un geste transmis : le lien se rétablit. Ce qui te soutient n'a pas besoin d'être visible pour rester solide. En ce moment, tu avances avec plus de personnes derrière toi que tu ne le vois.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu vis au-dessus de ce qui te porte, sans jamais prendre le temps d'y descendre. Le lien avec tes racines existe encore, mais il s'est affaibli faute de visites. Il attend. Tu fonctionnes en surface, au jour le jour, avec l'impression de devoir tout porter par toi-même. Parfois, un vide sans nom remonte, et tu le remplis d'occupations. Ce qui repose en dessous ne demande plus rien depuis longtemps, et toi non plus. Le soutien perd de sa force lorsqu'on cesse de s'en servir.",
+    "issue": "Descends une seule fois aujourd'hui vers ce qui te relie, même pendant trois minutes. Ouvre une vieille photo ou redonne un prénom à quelqu'un de ta lignée. Le lien se rouvre par ce petit passage et se renforce à chaque visite."
+  },
+  "questions": [
+    "Qu'est-ce qui te porte depuis toujours, sans que tu y penses ?",
+    "De qui viennent tes façons de faire les choses importantes ?",
+    "Quel petit geste te remettrait en contact avec cet héritage tranquille ?"
+  ],
+  "lecon": "Retrouver le contact avec ce qui te soutient sous le visible, et entretenir ce lien par de petites visites régulières.",
+  "image": {
+    "geste": "Les racines dorées descendent de l'arbre, dans la nuit, et plongent dans une caverne lumineuse. Des chaînes d'or y sont suspendues, avec trois objets qui se balancent doucement : un anneau, une clé et une couronne.",
+    "seuil": "La ligne du sol marque le seuil. La nuit du monde visible se trouve au-dessus, tandis que la lumière tranquille de ce qui soutient s'ouvre juste en dessous.",
+    "detail": "Les trois objets sont suspendus, et non posés. Ils attendent d'être portés. Les chaînes qui les retiennent sont assez longues pour te rejoindre."
+  },
+  "micro_geste": "Manipule aujourd'hui un objet de famille, une photo ou une lettre pendant deux minutes, en te demandant de qui il vient.",
+  "positions": {
+    "jour": "Un arbre tient debout dans la nuit, et personne ne voit la moitié de son travail. Sous la ligne du sol, ses racines dorées descendent vers une caverne lumineuse où pendent un anneau, une clé et une couronne. Ta journée ressemble à ce dessin, mais tu n'en verras peut-être que la partie située au-dessus du sol. La partie cachée travaille elle aussi, et elle te porte depuis toujours. La carte place cette image à côté de ta journée pour te rappeler d'où vient ta force.",
+    "amene": "Tu peux remarquer que certains de tes gestes ne viennent pas uniquement de toi. Une expression entendue chez ta mère, une manière de tenir une maison transmise à travers les générations, un goût reçu sans explication. Ces emprunts sont des liens, et ils tiennent encore. La carte te montre ce soutien ancien, toujours présent. Tu en profites déjà aujourd'hui, sans même y penser. Un moment d'attention suffit pour le sentir.",
+    "se_joue": "Tu conduis ta vie en surface, et cela fonctionne généralement. Mais certaines décisions demandent en ce moment plus de profondeur que d'habitude, et tu sens que ce qui se trouve en dessous pourrait t'être utile. Tu hésites entre rester à la surface et descendre voir ce qui te relie. La journée pose exactement cette question. Cette descente n'a rien de dangereux. Ce qui t'attend en dessous est lumineux, et cela vient de ton histoire familiale.",
+    "essayer": "Imagine une visite chez une tante, un dimanche d'hiver. On ouvre une vieille boîte de photos et on laisse les images défiler, sans chercher à raconter une histoire précise. Un prénom revient, puis une autre image, puis un rire. Personne ne résume la visite, et pourtant tout le monde repart avec quelque chose de plus solide. Tu peux t'offrir ce genre de visite en ce moment. Trois minutes suffisent pour commencer. Le lien se rouvre dès que tu lui rends visite.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, XVIII — l'imagination qui donne forme et déforme en même temps ; tension traverser les images / les fuir ; ombre : panique, agitation pour ne pas sentir",
+    "wen": "§3 — élément Eau (Lune) ; §5 — mode d'ombre « amoindri »",
+    "greer": "§6.2 — leçon : imaginer, rêver, se laisser tirer par l'inconnu",
+    "production": "concept centré sur l'héritage invisible (visage validé du brief Groupe D, arbre la nuit, racines dorées, caverne, anneau-clé-couronne suspendus), croisement greer §6.2 et pollack §3 XVIII ; nom interne du jeu, trace noms_cartes.json, Past Lives",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu n'as plus autant besoin de présenter ton parcours comme une réussite entièrement personnelle. Tu as longtemps mis de côté les soutiens reçus et les gestes transmis, parfois sans même les remarquer. Ce qui demeure, c'est la mémoire de ces liens : des habitudes, des savoir-faire et des histoires familiales. Tu peux reconnaître ce qui t'a portée sans diminuer ce que tu as accompli.",
+    "image_soi": "Tu te vois comme quelqu'un qui s'est débrouillé seule. Cette image te donne de la fierté et te permet de préserver ton indépendance. Recevoir de l'aide ou reconnaître une influence extérieure peut te sembler difficile, comme si cela diminuait tes efforts. Tu risques alors d'oublier les gestes transmis, les personnes présentes et les ressources qui ont contribué à ton parcours.",
+    "entourage": "Les autres racontent parfois ton parcours en insistant sur ton autonomie et ta capacité à t'en sortir. On te demande comment tu as réussi, mais on s'intéresse moins aux personnes et aux traditions qui ont compté dans ton histoire. Cette lecture n'est pas forcément malveillante. Elle donne simplement une version incomplète de ton parcours, où les racines restent peu visibles."
+  }
+}

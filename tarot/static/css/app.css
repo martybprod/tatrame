@@ -1,0 +1,1281 @@
+/* Tarot — squelette visuel. Sobre : fond violet nuit, or discret, serif.
+   Pas de réseau : polices système, aucune ressource externe. */
+
+:root {
+  --fond: #131019;
+  --fond-profond: #0d0a12;
+  --encre: #ece7dc;
+  --brume: #9a92a6;
+  --or: #c9a55c;
+  --or-doux: rgba(201, 165, 92, 0.38);
+  --or-fil: rgba(201, 165, 92, 0.22);
+  --carte-l: 92px;
+  --carte-h: 161.7px;          /* ratio du dos 300×527 */
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+button { font: inherit; color: inherit; }
+
+html, body { height: 100%; }
+
+body {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(201, 165, 92, 0.05), transparent 55%),
+    radial-gradient(140% 120% at 50% 110%, rgba(0, 0, 0, 0.55), transparent 60%),
+    var(--fond);
+  color: var(--encre);
+  font-family: var(--serif);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── En-tête ─────────────────────────────────────────────────────────── */
+
+.entete { text-align: center; padding: 22px 16px 4px; }
+
+.surtitre {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: 0.85;
+}
+
+.marque {
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-top: 10px;
+}
+
+.devise {
+  font-style: italic;
+  color: var(--brume);
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.filet-titre { width: 0; }
+
+/* ── Choix du mode ───────────────────────────────────────────────────── */
+
+.choix-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 16px auto 0;
+}
+
+.mode {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brume);
+  padding: 8px 4px 6px;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.mode:hover { color: var(--encre); }
+
+.mode.actif {
+  color: var(--or);
+  border-bottom-color: var(--or-doux);
+}
+
+.filet-mode { width: 1px; height: 14px; background: var(--or-fil); }
+
+/* ── La scène ────────────────────────────────────────────────────────── */
+
+.scene { flex: 1; display: flex; flex-direction: column; }
+
+/* l'ordre visuel : la carte révélée, la lecture, puis l'éventail en contexte */
+#slots { order: 1; }
+#compteur-tirage { order: 2; }
+#lecture { order: 2; }
+#vue-recit { order: 2; }
+#vue-liens { order: 2; }
+#eventail { order: 3; }
+
+/* La ligne dépliée — défile horizontalement sur petit écran */
+
+.eventail {
+  position: relative;
+  height: calc(var(--carte-h) + 58px);
+  margin: 10px auto 0;
+  width: min(96vw, 1100px);
+  overflow: hidden;          /* tout le jeu tient dans la largeur */
+  padding: 6px 2px 0;
+  touch-action: none;        /* le doigt glisse sur le ruban sans faire défiler */
+  scrollbar-color: var(--or-fil) transparent;
+}
+
+.eventail::-webkit-scrollbar { height: 6px; }
+
+.eventail::-webkit-scrollbar-thumb {
+  background: var(--or-fil);
+  border-radius: 99px;
+}
+
+.ligne { position: relative; height: 100%; }
+
+.carte {
+  position: absolute;
+  top: 26px;
+  width: var(--carte-l);
+  height: var(--carte-h);
+  cursor: pointer;
+  perspective: 900px;
+  transition: transform 0.25s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(22px);
+  /* les cartes sont des <button> : sans ce remise à zéro, le navigateur
+     dessine son fond clair et ses coins carrés autour de l'image */
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  line-height: 0;
+}
+
+.carte.visible { opacity: 1; transform: none; }
+
+.carte .dos,
+.carte .face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+
+/* Le dos v22 est un PNG : ses coins arrondis sont déjà dans l'image. On ne le
+   rogne donc pas — sinon le rayon du CSS coupe le vrai bord de la carte. */
+.carte .dos {
+  border-radius: 0;
+}
+
+.carte .dos img,
+.carte .face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carte .face {
+  transform: rotateY(180deg);
+  background: #1c1626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carte .face .sans-visage {
+  font-size: 26px;
+  color: var(--or-doux);
+}
+
+.carte .interieur {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+  /* pas de filet clair autour de la carte : le dos porte déjà sa propre bordure */
+  border: 1px solid transparent;
+  border-radius: 7px;
+}
+
+.carte:hover .interieur,
+.carte:focus-visible .interieur {
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65), 0 0 0 1px var(--or-doux);
+}
+
+.carte.choisie { z-index: 40; }
+
+.carte.retournee .interieur { transform: rotateY(180deg); }
+
+/* Survol avant choix : la carte se soulève dans son éventail */
+
+/* La loupe : --lev est posé par le JS selon la distance au doigt */
+.eventail .carte.visible:not(.choisie) {
+  transform: translateY(calc(var(--lev, 0px) * -1));
+  transition: transform 0.12s ease-out, opacity 0.5s ease;
+}
+
+.eventail .carte.sous-loupe { z-index: 300 !important; }
+
+.eventail .carte.sous-loupe .interieur {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--or);
+}
+
+/* Emplacements du tirage à trois */
+
+/* une carte posée : le cadre pointillé disparaît, il ne reste que la carte */
+.slot .cadre:has(.carte) { border-color: transparent; }
+
+.slots {
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 4vw, 34px);
+  margin: 6px auto 0;
+  min-height: calc(var(--carte-h) * 0.86 + 26px);
+}
+
+.slot {
+  width: calc(var(--carte-l) * 0.86);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.slot-une { width: calc(var(--carte-l) * 1.08); }
+
+.slot.slot-une .cadre { border-color: transparent; }
+
+.slots.sans-vide { min-height: 0; }
+
+.slots.sans-vide .slot:not(.remplie) { display: none; }
+
+.nom-slot {
+  min-height: 20px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--or);
+}
+
+.carte.posee { cursor: pointer; }
+
+.slot .cadre {
+  width: 100%;
+  aspect-ratio: 300 / 527;
+  border: 1px dashed rgba(154, 146, 166, 0.35);
+  border-radius: 7px;
+  position: relative;
+}
+
+.slot .cadre .carte {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  opacity: 1;
+  transform: none;
+  transform-origin: 50% 50%;
+}
+
+.slot .libelle {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brume);
+  text-align: center;
+}
+
+.slot.remplie .libelle { color: var(--or); }
+
+/* Lecture sous la carte révélée */
+
+.lecture {
+  max-width: 620px;
+  margin: 14px auto 0;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.lecture .nom-carte {
+  font-size: 26px;
+  color: var(--or);
+  letter-spacing: 0.03em;
+}
+
+.lecture .meta-carte {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brume);
+  margin-top: 6px;
+}
+
+.lecture .texte-carte {
+  margin-top: 16px;
+  font-size: 16.5px;
+  line-height: 1.62;
+  color: var(--encre);
+}
+
+.lecture .attente {
+  margin-top: 16px;
+  font-style: italic;
+  color: var(--brume);
+  font-size: 14.5px;
+}
+
+/* La lecture — blocs de position (tirage à trois) et flux du jour */
+
+.lecture .bloc-lecture {
+  text-align: left;
+  border-left: 2px solid var(--or-fil);
+  padding: 8px 0 8px 18px;
+  margin: 14px 0;
+}
+
+.bloc-nom {
+  color: var(--or);
+  font-size: 16.5px;
+  margin: 0 0 6px;
+}
+
+.bloc-nom span {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brume);
+  margin-left: 10px;
+}
+
+.bloc-texte { font-size: 15px; color: var(--encre); }
+
+.surtitre-bloc {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin: 16px 0 6px;
+}
+
+.ecouter { text-align: left; }
+
+.ecouter ul { margin: 0; padding-left: 16px; }
+
+.ecouter li { margin-bottom: 5px; font-size: 14.5px; }
+
+.faire { font-size: 15px; }
+
+.seuil-ligne { font-style: italic; color: var(--encre); }
+
+.liaison-ligne,
+.motif-ligne {
+  text-align: left;
+  border-left: 2px solid var(--or-fil);
+  padding: 6px 0 6px 16px;
+  margin: 10px 0;
+  font-size: 14.5px;
+  color: var(--brume);
+}
+
+.cloture {
+  border-top: 1px solid var(--or-fil);
+  margin-top: 16px;
+  padding-top: 12px;
+}
+
+.cloture-nom { color: var(--or); font-size: 17px; }
+
+.cloture-question { font-size: 15px; }
+
+.lecture > * { opacity: 0; transform: translateY(8px); transition: opacity 0.6s ease, transform 0.6s ease; }
+
+.lecture.visible > * { opacity: 1; transform: none; }
+
+/* ── Actions & pied ──────────────────────────────────────────────────── */
+
+.actions { text-align: center; margin: 8px 0 14px; min-height: 0; order: 4; }
+
+.bouton-discret {
+  background: none;
+  border: 1px solid var(--or-fil);
+  border-radius: 999px;
+  color: var(--or);
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 10px 26px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.bouton-discret:hover { border-color: var(--or-doux); color: var(--encre); }
+
+.pied {
+  text-align: center;
+  padding: 6px 16px 14px;
+}
+
+.pied p {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(154, 146, 166, 0.55);
+}
+
+.invisible { visibility: hidden; }
+
+.cachee { display: none; }
+
+.eventail.estompe {
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  :root { --carte-l: 58px; --carte-h: 101.9px; }
+  .entete { padding-top: 30px; }
+  .eventail { height: calc(var(--carte-h) + 52px); margin-top: 8px; }
+  .lecture .nom-carte { font-size: 22px; }
+  .lecture .texte-carte { font-size: 15px; }
+}
+
+/* ── Plein écran — la vignette révélée s'agrandit au clic ───────────── */
+
+.slot .cadre .carte.retournee { cursor: zoom-in; }
+
+body.fige-scroll { overflow: hidden; }
+
+.plein {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(10, 8, 14, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+.plein.invisible {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.plein-corps {
+  display: flex;
+  gap: 44px;
+  align-items: flex-start;
+  max-width: 1120px;
+  transform: scale(0.94);
+  transition: transform 0.35s ease;
+}
+
+.plein:not(.invisible) .plein-corps { transform: scale(1); }
+
+.plein-img {
+  max-height: 76vh;
+  max-width: 40vw;
+  border-radius: 10px;
+  border: 1px solid var(--or-doux);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.85);
+}
+
+.plein-texte {
+  max-width: 460px;
+  max-height: 76vh;
+  overflow-y: auto;
+  text-align: left;
+  padding-right: 10px;
+}
+
+.plein-texte::-webkit-scrollbar { width: 5px; }
+.plein-texte::-webkit-scrollbar-thumb { background: var(--or-fil); border-radius: 99px; }
+
+.plein-nom {
+  font-size: 27px;
+  color: var(--or);
+  letter-spacing: 0.03em;
+  margin: 0 0 6px;
+}
+
+.plein-meta {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brume);
+  margin: 0 0 6px;
+}
+
+.pt-titre {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin: 18px 0 6px;
+}
+
+.plein-texte p {
+  font-size: 14.5px;
+  margin: 0 0 10px;
+}
+
+.plein-texte ul { margin: 0; padding-left: 16px; }
+
+.plein-texte li { margin-bottom: 5px; font-size: 14.5px; }
+
+.pt-issue {
+  border-left: 2px solid var(--or-fil);
+  padding-left: 12px;
+  color: var(--encre);
+}
+
+.plein-fermer {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 38px;
+  height: 38px;
+  background: none;
+  border: 1px solid var(--or-fil);
+  border-radius: 999px;
+  color: var(--brume);
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.plein-fermer:hover { color: var(--encre); border-color: var(--or-doux); }
+
+@media (max-width: 640px) {
+  .plein-corps { flex-direction: column; align-items: center; gap: 16px; }
+  .plein-img { max-height: 46vh; max-width: 88vw; }
+  .plein-texte { max-height: 34vh; max-width: 88vw; padding-right: 4px; }
+  .plein-nom { font-size: 21px; margin-top: 4px; }
+}
+
+/* ── Mouvement réduit ────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .carte, .carte .interieur, .lecture > * , .mode, .bouton-discret {
+    transition: none !important;
+  }
+}
+
+/* ── La pédagogie du tirage : repliée par défaut, le vocabulaire du jeu
+   expliqué dans le même ton que le reste. ─────────────────────────────── */
+.ped-conteneur {
+  max-width: 640px;
+  margin: 6px auto 0;
+}
+.ped-conteneur summary {
+  cursor: pointer;
+  list-style: none;
+  color: var(--brume);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 8px 0;
+  border-top: 1px solid var(--or-fil);
+}
+.ped-conteneur summary::-webkit-details-marker { display: none; }
+.ped-conteneur summary::before { content: "◇ "; color: var(--or); }
+.ped-conteneur[open] summary::before { content: "◆ "; }
+.ped-conteneur summary:hover { color: var(--encre); }
+.pedagogie {
+  text-align: left;
+  padding: 10px 6px 18px;
+  color: var(--encre);
+  font-size: 14.5px;
+  line-height: 1.62;
+}
+.pedagogie h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--or);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  margin: 14px 0 4px;
+}
+.pedagogie h4:first-child { margin-top: 2px; }
+.pedagogie p { margin: 0 0 6px; }
+.ped-pos, .ped-vocab {
+  margin: 0 0 8px;
+  padding-left: 12px;
+  border-left: 1px solid var(--or-fil);
+  color: var(--encre);
+}
+.ped-pos b, .ped-vocab b {
+  display: block;
+  color: var(--or-doux);
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+/* ── Le détail d'une position : un clic sur son libellé l'ouvre ── */
+.libelle.clic-position {
+  cursor: pointer;
+  transition: color 0.2s, text-shadow 0.2s, text-decoration-color 0.2s;
+  /* affiche qu'on peut cliquer : filet pointillé + petit i */
+  text-decoration: underline dotted var(--or-doux);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  padding: 4px 2px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(201, 165, 92, 0.18);
+}
+.libelle.clic-position:hover,
+.libelle.clic-position:focus-visible {
+  color: var(--or);
+  text-decoration-color: var(--or);
+  text-shadow: 0 0 12px rgba(201, 165, 92, 0.45);
+  outline: none;
+}
+
+.detail-position {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 10, 18, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* au-dessus des cartes magnifiées (.sous-loupe, z-index 300) et de la carte plein écran (#plein, 100) */
+  z-index: 400;
+  padding: 22px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.detail-position[hidden] { display: none; }
+.detail-position .dp-carte {
+  background: var(--fond);
+  border: 1px solid var(--or-fil);
+  border-radius: 14px;
+  padding: 26px 28px;
+  max-width: 460px;
+  width: 100%;
+  position: relative;
+  color: var(--encre);
+  /* la fenêtre tient toujours dans l'écran, même zoomée : elle défile au besoin */
+  max-height: calc(100dvh - 44px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: auto;
+}
+.detail-position .fermer-position {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--brume);
+  font-size: 20px;
+  cursor: pointer;
+}
+.detail-position h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--or);
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.detail-position .dp-bloc,
+.detail-position .dp-regard,
+.detail-position .dp-note {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+.detail-position .dp-bloc b {
+  display: block;
+  color: var(--or-doux);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.detail-position .dp-note {
+  color: var(--brume);
+  font-size: 13px;
+}
+
+/* ── Les grilles de relecture ───────────────────────────────────────── */
+
+.grilles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 700px;
+  margin: 12px auto 0;
+  padding: 0 20px;
+}
+
+.grille-bouton {
+  background: none;
+  border: 1px solid var(--or-fil);
+  border-radius: 99px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brume);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.grille-bouton:hover { color: var(--encre); border-color: var(--or-doux); }
+
+.grille-bouton.actif {
+  color: var(--fond-profond);
+  background: var(--or);
+  border-color: var(--or);
+}
+
+/* L'appoint d'une position : une ligne courte sous le texte principal */
+
+.bloc-appoint {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--brume);
+  font-style: italic;
+}
+
+.bloc-appoint span {
+  font-family: var(--sans);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-style: normal;
+  color: var(--or-doux);
+}
+
+.bloc-appoint .ombre-mode {
+  border: 1px solid var(--or-fil);
+  border-radius: 99px;
+  padding: 1px 8px;
+  font-style: normal;
+}
+
+.appoint-tension span + span { margin-left: 4px; }
+
+/* ── La percée — le protocole de clôture ───────────────────────────── */
+
+.percee-bouton-ligne { margin: 18px 0 0; text-align: center; }
+
+.percee {
+  border-top: 1px solid var(--or-fil);
+  margin-top: 20px;
+  padding-top: 14px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.percee.visible { opacity: 1; }
+
+.percee-titre {
+  color: var(--or);
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+
+.percee-etape { margin: 0 0 12px; }
+
+.percee-label {
+  font-family: var(--sans);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--or-doux);
+  margin: 0 0 3px;
+}
+
+.percee-phrase { font-size: 15px; color: var(--encre); }
+
+.percee-note {
+  font-size: 13.5px;
+  color: var(--brume);
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* ── Neuf + une : la grille des trois temps ─────────────────────────── */
+
+.slots.etendu {
+  display: grid;
+  grid-template-columns: repeat(3, calc(var(--carte-l) * 0.86));
+  justify-content: center;
+  align-items: start;
+  gap: 12px 18px;
+  min-height: 0;
+}
+
+.slots.etendu .slot { width: 100%; }
+
+.etendu-entete {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 2px;
+}
+
+.etendu-plan {
+  font-family: var(--sans);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brume);
+  text-align: center;
+}
+
+.etendu-bande { grid-column: 1 / -1; text-align: center; margin: 16px 0 0; }
+
+.etendu-bande span {
+  display: block;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--or);
+}
+
+.etendu-bande em {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+  color: var(--brume);
+}
+
+.bande-cle { margin-top: 22px; }
+
+.slot-cle { grid-column: 2; }
+
+/* Le « temps » d'une rangée, quand elle est complète */
+
+.rangee-bloc {
+  margin: 24px 0 6px;
+  border-top: 1px solid var(--or-fil);
+  padding-top: 12px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.rangee-bloc.visible { opacity: 1; }
+
+.rangee-titre {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin: 0 0 8px;
+}
+
+/* ── Le tirage au choix : le mur des 79 faces ───────────────────────── */
+
+.choix-zone {
+  max-width: 940px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.choix-consigne {
+  font-size: 15.5px;
+  color: var(--encre);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.choix-compteur {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brume);
+  margin: 10px 0 16px;
+}
+
+.choix-mur {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.carte-choix {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 4px;
+  width: 84px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.carte-choix img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+.carte-choix-nom {
+  display: block;
+  font-size: 11px;
+  line-height: 1.25;
+  color: var(--brume);
+  margin-top: 5px;
+}
+
+.carte-choix:hover { transform: translateY(-2px); }
+
+.carte-choix.gardee { border-color: var(--or); }
+.carte-choix.gardee .carte-choix-nom { color: var(--or); }
+
+.carte-choix.grande { width: 132px; }
+
+.choix-actions {
+  margin: 18px 0 8px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.note-reticence {
+  text-align: left;
+  font-size: 13.5px;
+  color: var(--brume);
+  font-style: italic;
+  margin: 0 0 14px;
+  border-left: 2px solid var(--or-fil);
+  padding-left: 14px;
+}
+
+/* La méthode du tirage au choix */
+
+.choix-methode {
+  margin: 18px auto 0;
+  max-width: 660px;
+  text-align: left;
+}
+
+.choix-methode summary {
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brume);
+  text-align: center;
+  list-style: none;
+}
+
+.choix-methode summary::-webkit-details-marker { display: none; }
+
+.choix-methode > div {
+  margin-top: 12px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--encre);
+}
+
+.choix-reticence {
+  font-style: italic;
+  color: var(--brume);
+}
+
+/* ── La croix celtique ──────────────────────────────────────────────── */
+
+.slots.croix {
+  display: grid;
+  grid-template-columns: repeat(5, calc(var(--carte-l) * 0.74));
+  justify-content: center;
+  align-items: start;
+  gap: 10px 14px;
+  min-height: 0;
+}
+
+.slots.croix .slot-croix { width: 100%; }
+
+/* La zone du tirage au choix ne s affiche que dans son mode */
+.choix-zone.invisibles { display: none; }
+
+
+/* ══ Pendant le tirage : le plan en miniature ══════════════════════════
+   Toutes les cases et tout le paquet visibles d'un coup. Les cases ont la
+   largeur --mini ; elles reprennent leur taille quand tout est posé. */
+
+body.en-tirage { --mini: 34px; }
+
+body.en-tirage .slots { gap: 10px; min-height: 0; margin-top: 14px; }
+body.en-tirage .slot { width: calc(var(--mini) * 1.25); gap: 3px; }
+body.en-tirage .slot .libelle { font-size: 8px; letter-spacing: 0.08em; }
+body.en-tirage .nom-slot { display: none; }
+body.en-tirage .slot .cadre { border-radius: 4px; }
+body.en-tirage .slot .cadre .carte .interieur { border-radius: 4px; }
+
+body.en-tirage .slots.etendu {
+  grid-template-columns: repeat(3, var(--mini));
+  gap: 6px 10px;
+}
+body.en-tirage .slots.etendu .slot { width: 100%; }
+body.en-tirage .etendu-entete { display: none; }
+body.en-tirage .etendu-bande { margin: 6px 0 0; }
+body.en-tirage .etendu-bande span { font-size: 8.5px; letter-spacing: 0.14em; }
+body.en-tirage .etendu-bande em { display: none; }
+body.en-tirage .bande-cle { margin-top: 8px; }
+
+body.en-tirage .slots.croix {
+  grid-template-columns: repeat(5, calc(var(--mini) * 0.9));
+  gap: 6px 8px;
+}
+
+.slot .cadre { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.slot .cadre.suivante {
+  border: 1px solid var(--or);
+  animation: pouls-case 1.6s ease-in-out infinite;
+}
+@keyframes pouls-case { 50% { box-shadow: 0 0 0 4px rgba(201, 165, 92, 0.16); } }
+
+/* une fois le geste commencé, on range ce qui n'aide pas à piger */
+body.en-tirage.a-commence .devise,
+body.en-tirage.a-commence .ped-conteneur,
+body.en-tirage.a-commence .pied { display: none; }
+
+.compteur-tirage {
+  text-align: center;
+  margin: 16px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.compteur-tirage.invisibles { display: none; }
+.ct-nb { font-family: var(--sans); font-size: 11px; letter-spacing: 0.16em; color: var(--brume); }
+.ct-pos { font-size: 18px; font-style: italic; color: var(--encre); }
+.ct-geste { font-family: var(--sans); font-size: 11px; color: var(--brume); margin-top: 2px; }
+
+/* ══ Après le tirage : les vues de lecture ═════════════════════════════ */
+
+.vues {
+  order: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 18px auto 4px;
+}
+.vues.invisibles { display: none; }
+.vue-bouton {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--brume);
+  cursor: pointer;
+}
+.vue-bouton.actif { color: var(--or); border-color: var(--or-doux); }
+
+/* Récit et Liens remplacent le plan et le texte d'ensemble */
+body.vue-recit #slots, body.vue-recit #lecture,
+body.vue-liens #slots, body.vue-liens #lecture,
+body.vue-recit #eventail, body.vue-liens #eventail { display: none; }
+
+.vue-recit, .vue-liens { max-width: 560px; width: 100%; margin: 6px auto 0; padding: 0 16px; }
+.vue-recit.invisibles, .vue-liens.invisibles { display: none; }
+
+.vue-recit { touch-action: pan-y; min-height: 60vh; display: flex; flex-direction: column; }
+.recit-page { text-align: center; animation: entree-page 0.35s ease; }
+@keyframes entree-page { from { opacity: 0; transform: translateY(8px); } }
+.recit-image {
+  display: block;
+  width: min(48vw, 200px);
+  margin: 6px auto 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  border-radius: 9px;
+  overflow: hidden;
+  aspect-ratio: 300 / 527;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--or-fil);
+}
+.recit-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.recit-position {
+  margin-top: 16px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--or);
+}
+.recit-nom { font-size: 21px; font-style: italic; margin-top: 4px; }
+.recit-texte { font-size: 16px; line-height: 1.6; margin-top: 12px; text-align: left; }
+.recit-temps-titre {
+  margin-top: 20px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--or);
+}
+.recit-fin { text-align: left; margin-top: 8px; }
+.recit-fin .bouton-discret { display: block; margin: 16px auto 0; }
+.recit-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 22px 0 8px;
+}
+.recit-nav .bouton-discret { white-space: nowrap; flex: none; }
+.recit-nav .bouton-discret:disabled { opacity: 0.3; cursor: default; }
+.recit-points { flex: 1 1 0; min-width: 0; display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+.recit-points i { width: 6px; height: 6px; border-radius: 50%; background: var(--or-fil); }
+.recit-points i.actif { background: var(--or); }
+
+.vue-liens { display: flex; flex-direction: column; align-items: center; }
+.vue-liens.invisibles { display: none; }
+.liens-bande {
+  width: 100%;
+  border: 1px solid var(--or-fil);
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: center;
+}
+.liens-centre { border-color: var(--or-doux); background: rgba(201, 165, 92, 0.04); }
+.liens-titre {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--or);
+}
+.liens-invite { font-size: 13px; font-style: italic; color: var(--brume); margin-top: 3px; }
+.liens-cartes { display: flex; justify-content: center; gap: 10px; margin: 10px 0 4px; }
+.liens-carte {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 64px;
+  cursor: zoom-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.liens-carte img {
+  width: 100%;
+  aspect-ratio: 300 / 527;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px var(--or-fil);
+}
+.liens-carte span {
+  font-family: var(--sans);
+  font-size: 8.5px;
+  line-height: 1.25;
+  color: var(--brume);
+  text-align: center;
+}
+.liens-phrase { font-size: 14.5px; line-height: 1.5; margin-top: 8px; text-align: left; }
+.liens-fil { width: 1px; height: 18px; background: var(--or-doux); }
+
+/* ══ Mobile : aucun défilement horizontal ═══════════════════════════════
+   La page ne bouge que de haut en bas. « clip » plutôt que « hidden » :
+   ne crée pas de conteneur de défilement (iOS Safari le respecte). */
+html, body { overflow-x: hidden; overflow-x: clip; max-width: 100%; }
+body { overscroll-behavior-x: none; }
+
+@media (max-width: 640px) {
+  /* les modes passaient hors de l'écran (« Croix » coupé à droite) :
+     ils se répartissent maintenant sur la largeur, en deux lignes au besoin */
+  .choix-mode { flex-wrap: wrap; gap: 4px 10px; padding: 0 12px; }
+  .choix-mode .filet-mode { display: none; }
+  .mode { font-size: 11px; letter-spacing: 0.12em; white-space: nowrap; }
+}
+
+/* La pédagogie à deux paliers : résumé, puis méthode complète en tiroir */
+
+.ped-resume {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--encre);
+  border-left: 2px solid var(--or);
+  padding: 2px 0 2px 14px;
+  margin: 0 0 12px;
+  text-align: left;
+}
+
+.ped-complet summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--or-doux);
+  text-align: left;
+  padding: 4px 0;
+}
+
+.ped-complet summary::-webkit-details-marker { display: none; }
+.ped-complet summary::before { content: "▸ "; }
+.ped-complet[open] summary::before { content: "▾ "; }
+.ped-complet[open] summary { margin-bottom: 6px; }
+
+/* Le choix de la grille, dans « Comprendre ce tirage » */
+
+.ped-grilles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--or-fil);
+}
+
+/* La méthode déployée porte déjà le choix des grilles : le sélecteur du bas
+   ferait doublon. Il revient dès que le panneau se referme. */
+details.ped-conteneur[open] ~ #grilles { display: none; }
+
+/* ── Intégration dans Ta Trame (?embed=1) : la page nue ─────────────── */
+
+body.embed .entete,
+body.embed .pied { display: none; }
+
+body.embed .scene { padding-top: 6px; }
+
+body.embed .choix-mode { margin-top: 4px; }

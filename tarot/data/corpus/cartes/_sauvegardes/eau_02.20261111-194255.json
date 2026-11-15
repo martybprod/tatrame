@@ -1,0 +1,51 @@
+{
+  "id": "eau_02",
+  "nom": "Amitié",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 2,
+  "element": "eau",
+  "note_grille": "degré 2 (mise en relation) × famille eau (lien, émotion) : accord fort — le deux d'eau est la relation elle-même, ici une relation qui n'exige rien. Pollack : deux de Coupes, le lien qui se forme de lui-même entre deux vies pleines.",
+  "mots_cles": [
+    "Deux arbres en fleurs",
+    "le sentier d'herbe",
+    "le rire partagé",
+    "la liberté d'être soi",
+    "deux existences entières"
+  ],
+  "tension": {
+    "pousse": "partager",
+    "retient": "exiger"
+  },
+  "lumiere": "Deux arbres couverts de fleurs inclinent doucement leurs branches l'un vers l'autre. Au-dessous, un chemin traverse l'herbe et passe sous leur voûte légère. Pourtant, aucun ne quitte son emplacement : chacun demeure solidement enraciné dans sa propre terre. Cette image raconte une amitié vivante. On s'y retrouve pour parler, rire, se raconter des histoires et marcher un moment côte à côte. Personne n'a besoin de se sacrifier pour l'autre. Le lien ne vient pas combler un vide, mais enrichir deux existences qui possèdent déjà leur propre équilibre. C'est cette liberté qui rend la rencontre précieuse.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu penses à quelqu'un depuis un moment, mais tu ne prends toujours pas le temps de lui faire signe. Le message est composé plusieurs fois dans ta tête, puis repoussé à une occasion plus favorable. Tu te rassures en te disant que cette amitié est solide, qu'elle peut supporter quelques semaines de silence et qu'il n'y a aucune urgence. Mais même les liens les plus naturels ont besoin d'être entretenus. À force de remettre le contact à demain, tu risques de laisser la distance s'installer sans l'avoir réellement choisie. Un conflit n'éloigne pas toujours les amis. Parfois, c'est simplement l'absence de petits gestes.",
+    "issue": "Choisis une personne qui te vient spontanément à l'esprit et envoie-lui quelques mots aujourd'hui. Pas besoin d'une longue explication ni d'une invitation élaborée. Un souvenir, une pensée affectueuse ou une plaisanterie suffisent. L'amitié véritable retrouve souvent son chemin avec une facilité désarmante. Il suffit parfois d'ouvrir la conversation pour que la distance perde son importance."
+  },
+  "questions": [
+    "Quelle personne aimerais-tu retrouver sans avoir encore osé faire le premier pas ?",
+    "Quelle place l'amitié occupe-t-elle dans ta vie, au-delà des obligations et des projets ?",
+    "Quel geste simple pourrait ramener cette relation dans ton quotidien ?"
+  ],
+  "lecon": "Une amitié véritable n'a pas besoin d'être constamment sollicitée, mais elle a besoin de signes de vie. Le lien demeure libre, à condition de ne pas le laisser s'endormir dans le silence.",
+  "image": {
+    "geste": "l'un des personnages raconte quelque chose avec enthousiasme, les mains animées, tandis que l'autre rit franchement en levant le visage vers lui. Le rire circule sans retenue et sans jugement.",
+    "seuil": "les branches fleuries des deux arbres se rejoignent au-dessus du chemin et dessinent un passage naturel. On peut avancer ensemble sans que l'un ait à se courber pour l'autre.",
+    "detail": "des pétales parsèment le sentier. Malgré leur proximité, les arbres conservent chacun leurs racines et leur propre ancrage. Le lien se construit dans le rapprochement, non dans la fusion."
+  },
+  "micro_geste": "Envoie trois mots à une personne à laquelle tu penses depuis quelque temps. Laisse la spontanéité remplacer les préparatifs interminables.",
+  "positions": {
+    "jour": "Tu as le droit de laisser cette relation rester simple. Si une amitié se contente d'un bout de chemin ensemble, d'un rire, de trois mots en passant, ce n'est pas un signe de paresse. La carte montre deux arbres en fleurs, chacun enraciné de son côté, et leurs branches qui se rejoignent au-dessus du chemin. C'est la forme que prend le lien quand personne n'y demande de l'effort. En ce moment, une relation penche vers la simplicité, et elle a besoin qu'on la laisse faire.",
+    "amene": "Un agenda plein, une personne à qui tu penses en montant l'escalier. La carte t'amène ici avec ce souvenir d'un rire partagé sur un chemin d'herbe, sous des branches en fleurs. Elle ne demande pas de tout replanifier pour caser une grande visite. Deux vies pleines peuvent se côtoyer sans se confondre, et le lien se nourrit de très peu. Trois mots en passant tiennent déjà lieu de rencontre.",
+    "se_joue": "Qu'est-ce qui se joue quand une amitié simple attend depuis des semaines ? Peu de chose, et pourtant quelque chose tourne. Tu entretiens une histoire intérieure avec cette personne, et l'histoire ne devient relation qu'au moment où tu la partages. La carte pose la question sans reproche. Qu'attends-tu avant d'écrire, de rappeler, de proposer un café ? Le lien n'exige rien de grand. Il attend seulement un geste qui le rende présent de nouveau.",
+    "essayer": "Deux minutes suffisent pour renouer. Tu envoies trois mots, sans introduction ni justification, la phrase qui te vient en pensant à cette personne. Un souvenir partagé, une blague de toujours, une simple nouvelle. Si le temps manque pour un café complet, le bout de conversation compte déjà. La carte montre deux arbres qui se penchent l'un vers l'autre sans se déraciner. C'est exactement le geste du message. Rester chez soi, tendre une branche."
+  },
+  "source_referentielle": {
+    "pollack": "§4 nombres — le 2, la mise en relation ; deux de Coupes : le lien qui se forme sans effort",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 2 : mise en relation",
+    "greer": "§6 — la relation qui ajoute à deux vies déjà pleines, sans que l'une porte l'autre",
+    "production": "image du corpus mineurs eau (deux adolescents sur un chemin d'herbe, arche de branches en fleurs, pétales tombés), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  }
+}

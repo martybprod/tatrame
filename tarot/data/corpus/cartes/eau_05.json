@@ -1,0 +1,56 @@
+{
+  "id": "eau_05",
+  "nom": "Attachement",
+  "type": "mineur",
+  "famille": "eau",
+  "degre": 5,
+  "element": "eau",
+  "note_grille": "degré 5 (secousse, test) × famille eau (lien, émotion, intériorité) : accord nuancé — la secousse ne vient pas de dehors, elle se joue dans la direction du regard. Le test porte sur le lien : le passé tire vers l'arrière pendant que le pas avance. Pollack : cinq de Coupes, la perte qu'on regarde trop longtemps.",
+  "mots_cles": [
+    "Des empreintes alignées",
+    "l'écume qui les efface",
+    "poursuivre sa route",
+    "le temps qui adoucit",
+    "le prochain mouvement"
+  ],
+  "tension": {
+    "pousse": "avancer",
+    "retient": "se retourner"
+  },
+  "lumiere": "Tu peux poursuivre ton chemin sans avoir à surveiller constamment ce qui reste derrière toi. Sur le sable humide, tes empreintes demeurent visibles pendant un moment, puis la mer revient les recouvrir doucement. Tu n'as pas besoin de les effacer toi-même. Le temps accomplit ce travail à sa manière. Cette carte apparaît souvent lorsqu'une ancienne histoire continue de retenir une partie de ton attention. Elle te rappelle que le souvenir peut rester présent sans devenir une obligation. Ce qui compte maintenant, c'est le pas que tu choisis de faire.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu avances dans ta vie, mais ton regard revient sans cesse vers une période passée. Tu revis certains épisodes, tu compares ce qui existe aujourd'hui avec ce qui existait autrefois et tu cherches à préserver une image intacte de ce que tu as connu. Tu crains peut-être qu'en laissant les souvenirs évoluer, tu perdes quelque chose d'important. Pourtant, cette surveillance te fatigue et détourne ton énergie du présent. Pendant que tu regardes derrière toi, le chemin continue de se dérouler devant tes pieds.",
+    "issue": "Choisis un souvenir qui occupe encore beaucoup de place dans ton esprit. Autorise-le à changer légèrement de forme, sans chercher à conserver chaque détail. Tu peux garder ce qui a compté sans maintenir toute l'histoire dans son état d'origine. Laisse le temps faire une partie du travail."
+  },
+  "questions": [
+    "Quelle période de ta vie revisites-tu le plus souvent en pensée ?",
+    "Qu'est-ce qui pourrait changer si tu laissais ce souvenir évoluer naturellement ?",
+    "Quel pas actuel mérite davantage ton attention que ce qui est déjà derrière toi ?"
+  ],
+  "lecon": "Le passé peut continuer de t'accompagner sans devenir un poids. Ce que tu laisses derrière toi n'a pas besoin d'être retenu pour avoir compté.",
+  "image": {
+    "geste": "Un homme marche pieds nus le long du rivage. Son regard reste tourné vers l'avant et ses empreintes forment une ligne régulière derrière lui.",
+    "seuil": "L'écume recouvre progressivement les marques les plus anciennes. L'eau revient dans les creux du sable et efface les contours sans intervention humaine.",
+    "detail": "Les empreintes les plus récentes sont encore bien dessinées. Plus loin, les traces se fondent déjà dans le sable humide."
+  },
+  "micro_geste": "Fais une courte promenade aujourd'hui en gardant ton regard devant toi. Remarque ce qui reste derrière sans chercher à le retenir.",
+  "positions": {
+    "jour": "Une ancienne situation pourrait encore attirer ton regard alors que quelque chose de nouveau demande ton attention. La carte montre un homme qui longe la mer, laissant derrière lui une suite d'empreintes vite recouvertes par l'écume. Il ne s'arrête pas pour vérifier ce qui disparaît. Il continue d'avancer. Tu peux adopter cette attitude aujourd'hui. Le passé ne s'efface pas parce que tu cesses de le regarder. Il trouve simplement une autre place dans ton histoire.",
+    "amene": "Tu arrives avec des souvenirs qui ont peut-être perdu une partie de leur intensité, mais dont tu continues à vérifier la présence. Certaines périodes restent particulièrement importantes parce qu'elles ont marqué ta manière de vivre, d'aimer ou de te comprendre. Tu peux les garder précieusement sans devoir les revisiter chaque jour. La carte montre que le temps travaille même lorsque tu ne l'observes pas. Les contours deviennent moins nets, les détails se transforment et une nouvelle manière de porter ton histoire apparaît peu à peu.",
+    "se_joue": "Tu pourrais être en train de consacrer beaucoup d'attention à ce qui n'existe plus de la même façon. Cela se manifeste parfois dans des gestes simples : relire une ancienne conversation, retourner voir des photographies ou comparer une situation présente à une époque révolue. Ces gestes ne sont pas nécessairement mauvais, mais ils peuvent finir par prendre la place de ce que tu vis maintenant. La carte oppose deux mouvements : regarder les traces ou continuer de marcher. Elle t'invite à reconnaître que le chemin actuel mérite lui aussi d'être découvert.",
+    "essayer": "Choisis un objet, une photographie ou un souvenir que tu conserves depuis longtemps. Demande-toi ce qu'il représente aujourd'hui et si tu as encore besoin de le garder exactement à la même place. Tu peux le ranger autrement, le transmettre ou simplement le regarder avec un regard nouveau. Il ne s'agit pas de renier ton histoire. Il s'agit de lui permettre de continuer à évoluer. Comme les empreintes sur le sable, elle reste une partie de ton parcours, même lorsque ses contours changent."
+  },
+  "source_referentielle": {
+    "pollack": "§4, nombres — le cinq : la secousse, le test ; cinq de Coupes : l'attachement au passé, la perte regardée trop longtemps",
+    "wen": "§4 — famille eau : lien, émotion, intériorité ; degré 5 : secousse, test",
+    "greer": "§6 — deux lectures simultanées : le passé qui suit peut être une personne, une époque ou une version de toi",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-10 sous le brief eau (groupe B), image d'après le corpus distillé (corpus_mineurs_eau.json, eau_5)",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à moins regarder vers le passé. Tu avais l'habitude de repenser à une période de ta vie, de revoir les événements et de comparer sans cesse le présent avec ce que tu avais connu auparavant. Tu cherchais à retrouver ce qui existait avant ou à vérifier que certains souvenirs n'avaient pas changé. Aujourd'hui, tu peux conserver ce que cette histoire t'a apporté sans avoir besoin d'y retourner constamment. Tu gardes les expériences, les leçons et les souvenirs importants, mais tu avances désormais vers la suite de ta vie.",
+    "image_soi": "Tu as parfois l'impression que tourner la page revient à oublier ou à trahir ce qui a compté pour toi. Tu associes le fait de rester attachée à tes souvenirs à une forme de fidélité. Tu continues donc à repenser au passé, à entretenir certains souvenirs et à les comparer à ta vie actuelle. Mais cette fidélité peut finir par t'empêcher d'avancer. Tu peux reconnaître l'importance d'une période de ta vie sans être obligée de continuer à la porter chaque jour.",
+    "entourage": "Ton entourage sait que certaines périodes de ton passé restent importantes pour toi. Certaines personnes abordent ces souvenirs avec précaution, de peur de te faire de la peine. D'autres évitent complètement le sujet, tandis que certaines le ramènent sans toujours savoir comment tu vas réagir. Il arrive que les autres te voient encore comme une personne tournée vers cette ancienne période de ta vie. Ils attendent parfois que tu sois prête à t'en détacher, sans forcément comprendre ce que cette histoire représente encore pour toi."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "major_08",
+  "nom": "Courage",
+  "type": "majeur",
+  "registre": "interieur",
+  "element": "feu",
+  "note_grille": "colonne 1 (avec Existence et Emprise), l'énergie qui se met en forme. Élément Feu. Le huit ouvre la série du retournement intérieur de Pollack, et le feu de cette carte couve avant de s'élancer, il ne flambe pas d'abord. Tension signature (Pollack) — libérer contre maîtriser.",
+  "mots_cles": [
+    "*major_08",
+    "interieur",
+    "feu*"
+  ],
+  "tension": {
+    "pousse": "oser",
+    "retient": "attendre encore"
+  },
+  "lumiere": "Tu t'élances alors que ta coquille n'est pas encore complètement ouverte. C'est précisément ainsi que le courage prend forme. Il naît dans quelque chose qui est encore fragile et inachevé, jamais dans une situation où tout serait déjà prêt. Le vide sous tes pieds n'attend pas que tu sois arrivé au terme de ta préparation. Il accueille le premier battement de tes ailes, et tu apprends le reste en avançant. Le véritable courage n'a jamais exigé que tu sois complet avant de partir.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu attends d'être parfaitement prêt. Tu peaufines ton projet, tu te formes davantage et tu répètes encore une fois le geste qui te permettra de sortir de ta coquille. Mais, devant toi, le vide demeure inchangé. Aucun temps d'attente ne le fait disparaître. Peu à peu, la coquille devient un lieu où tu t'installes plutôt qu'un point de départ. Tu finis même par confondre cette prudence avec de la sagesse. Pourtant, ton envie de prendre ton envol est toujours présente. Elle attend, et cette attente devient de plus en plus lourde.",
+    "issue": "Fais sortir une seule aile aujourd'hui. Pose le plus petit geste concret du projet que tu prépares depuis trop longtemps, sans attendre d'être complètement prêt. Le vide se traverse par étapes, rarement d'un seul mouvement."
+  },
+  "questions": [
+    "Qu'est-ce que tu prépares depuis si longtemps que la préparation est devenue ton lieu de résidence ?",
+    "Quel serait le plus petit geste de ce premier envol que tu pourrais accomplir dès aujourd'hui ?",
+    "Dans quelle situation as-tu déjà osé avancer sans être complètement prêt, et cela a-t-il fonctionné malgré tout ?"
+  ],
+  "lecon": "Faire naître le courage à partir de l'œuf encore tiède : partir avant d'être complètement prêt et apprendre à traverser le vide en avançant.",
+  "image": {
+    "geste": "Une coquille d'œuf s'ouvre sur un promontoire, et un oisillon en sort alors que sa forme est encore inachevée. Le premier mouvement se produit avant que tout soit terminé.",
+    "seuil": "Au bord du canyon, la brume semble tenir lieu de sol. Juste devant, un oiseau adulte traverse déjà le vide en plein vol. Il montre que ce passage est possible.",
+    "detail": "Au loin, un grand vautour plane sans effort dans ce même espace qui paraît si impressionnant depuis le bord. Vu d'en haut, le vide qui semblait effrayant n'a plus la même apparence."
+  },
+  "micro_geste": "Accomplis aujourd'hui le premier petit geste que tu répètes en pensée depuis trop longtemps.",
+  "positions": {
+    "jour": "Ton attention se porte aujourd'hui sur quelque chose que tu repousses parce que les conditions ne te semblent pas encore réunies. Pourtant, elles ne le seront probablement jamais de manière parfaite. C'est ce que la carte vient te rappeler. Elle montre un oiseau qui sort à moitié formé de sa coquille, au bord du vide, tandis qu'un autre, déjà adulte, traverse cet espace juste devant lui. Le premier battement d'ailes compte davantage qu'un nouveau plan de préparation.",
+    "amene": "Tu prends peut-être beaucoup de temps pour mesurer la porte avant de la franchir. Tu vérifies tes compétences, ton matériel et le moment choisi, puis tu ajoutes encore une étape à ta préparation. Cette lenteur minutieuse est visible de l'extérieur. Pourtant, ce que tu apportes de plus important, c'est ton envie, et elle n'a jamais disparu. Quelqu'un t'a peut-être conseillé un jour de ne pas te précipiter, et cette consigne a continué de t'accompagner bien après que la personne eut quitté ta vie.",
+    "se_joue": "Le nœud se trouve entre ton désir de partir et l'idée qu'une préparation complète est nécessaire. Une partie de toi a déjà pris son envol, tandis qu'une autre continue de dresser la liste des conditions à remplir. Au fond, la coquille ne te retient plus vraiment. Elle reste en place parce que tu continues de la tenir. La question du jour n'est donc pas de savoir si tout est prêt, mais plutôt de comprendre combien de coquille tu portes encore et pourquoi.",
+    "essayer": "Tu peux commencer avant d'être complètement prêt. Personne ne viendra vérifier ta liste de préparation, et le vide ne demande aucun formulaire rempli. Essaie simplement la plus petite partie du geste que tu repousses depuis longtemps. Fais-la de manière spontanée, imparfaite, encore marquée par ton état d'inachèvement. Le courage fonctionne ainsi depuis toujours : il ne se prépare pas nécessairement avant de se mettre en mouvement. Bien souvent, il se construit au moment même où l'on ose partir.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, VIII (Force) — apprivoiser, laisser sortir, regarder ce qu'on avait rangé ; ombre : effondrement ou passions vécues comme ennemies",
+    "wen": "§3 — élément Feu ; §5 — mode d'ombre « différé »",
+    "greer": "§6.2 — leçon : désir, endurance, gérer la passion",
+    "production": "angles — le premier vol au-dessus du vide, le courage né dans l'œuf encore tiède ; l'apprivoisement de Pollack relu par l'image, la bête à laisser sortir devient l'aile à laisser sortir. Image — description du visage validé (BRIEF_production_majeurs.md, Groupe B), geste/seuil/détail reformulés",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu repousses moins le début en attendant d'être parfaitement prête. Tu as accumulé les préparatifs, les formations et les vérifications, sans toujours passer à l'essai. Ce qui demeure, c'est l'envie qui t'a accompagnée pendant tout ce temps. Elle n'a pas disparu. Tu peux maintenant reconnaître qu'une première expérience n'exige pas de maîtriser d'avance toutes les étapes.",
+    "image_soi": "Tu te vois comme une personne encore en apprentissage, qui doit acquérir une compétence de plus avant de se lancer. Il manque toujours une formation, une meilleure organisation ou une situation plus favorable. Cette position te donne une raison valable d'attendre. Elle peut aussi te faire oublier tout ce que tu sais déjà et que tu pourrais mettre à l'épreuve.",
+    "entourage": "On te décrit comme prudente et sérieuse. Les autres apprécient que tu prennes le temps de réfléchir avant de t'engager. Ils peuvent même te consulter pour éviter les décisions précipitées. Cette image est parfois si bien installée qu'on ne remarque plus ton envie d'essayer autre chose. On respecte ton rythme, sans toujours savoir que tu hésites à franchir le premier pas."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "air_03",
+  "nom": "Isolement",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 3,
+  "element": "air",
+  "note_grille": "degré 3 (premier fruit) × famille air (le retrait) : le premier fruit du retrait est la fêlure qui monte — la sortie commence dans l'isolement même, assumé.",
+  "mots_cles": [
+    "la vitre givrée",
+    "la main contre le verre",
+    "le dégel",
+    "la fine fêlure"
+  ],
+  "tension": {
+    "pousse": "se retirer",
+    "retient": "se couper"
+  },
+  "lumiere": "Le givre a recouvert la vitre et transforme le paysage en une présence presque invisible. Une paume vient se poser contre le verre. À cet endroit précis, la chaleur dessine une ouverture dans le froid. Une mince fissure remonte depuis la main, comme le début d'un passage. La carte rappelle que le retrait peut être réparateur. Il permet de retrouver son calme, de reprendre son souffle et de revenir au monde avec un regard renouvelé.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Le silence qui devait être temporaire s'est installé durablement. Tu remets les réponses à plus tard, tu évites les rencontres et tu attends un moment où tu te sentiras davantage disponible. Mais ce moment recule sans cesse. Peu à peu, la distance devient une habitude et les autres ne savent plus comment te rejoindre. Ce qui devait te protéger commence à t'enfermer.",
+    "issue": "Rétablis un contact simple avec quelqu'un de confiance. Une réponse courte, un signe de présence ou quelques mots sincères peuvent suffire. Il ne s'agit pas de tout raconter, mais de laisser une ouverture."
+  },
+  "questions": [
+    "De quoi as-tu besoin de te protéger en ce moment ?",
+    "À quel moment le calme commence-t-il à ressembler à une séparation ?",
+    "Quelle personne pourrait recevoir aujourd'hui un signe de ta part ?"
+  ],
+  "lecon": "Le retrait devient une ressource lorsqu'il conserve un passage vers le monde. Sans ce passage, le refuge risque de devenir une prison.",
+  "image": {
+    "geste": "la paume posée sur le verre fait fondre le givre à l'endroit du contact.",
+    "seuil": "une fêlure fine traverse la surface en diagonale. Elle indique une ouverture possible.",
+    "detail": "les yeux fermés de la femme et son visage tourné vers la vitre évoquent un repos qui reste proche du monde extérieur."
+  },
+  "micro_geste": "Envoie un message simple à une personne dont tu t'es éloigné. Une phrase sincère suffit pour rétablir un premier contact.",
+  "positions": {
+    "jour": "Tu peux ressentir le besoin de prendre tes distances, de réduire les sollicitations et de retrouver un peu de silence. Cette envie mérite d'être respectée. Toutefois, la carte montre une main contre une vitre givrée : même dans le retrait, un lien peut subsister. Aujourd'hui, cherche le contact qui ne t'envahit pas, mais qui te rappelle que tu n'es pas coupé du monde.",
+    "amene": "Tu arrives avec une grande fatigue relationnelle ou mentale. Tu as peut-être besoin de retrouver un espace où personne ne te demande rien. La carte ne conteste pas ce besoin. Elle t'invite simplement à conserver une ouverture, même minuscule. Une personne informée de ton silence, une réponse différée mais annoncée, une présence discrète : autant de façons de préserver ton espace sans disparaître.",
+    "se_joue": "La frontière entre solitude réparatrice et isolement s'est peut-être amincie. Ce qui te faisait du bien auparavant ne suffit plus nécessairement aujourd'hui. La carte attire ton attention sur le point de contact, là où la chaleur commence à transformer le givre. Il ne s'agit pas de rouvrir toutes les portes, mais de choisir celle qui peut rester accessible.",
+    "essayer": "Identifie une relation que tu souhaites préserver. Prends quelques minutes pour envoyer un message honnête, sans chercher à expliquer toute ton absence. Tu peux simplement dire que tu as besoin de calme, mais que le lien compte toujours. Une petite ouverture suffit parfois à empêcher la distance de devenir définitive."
+  },
+  "source_referentielle": {
+    "pollack": "§4, trois d'Épées — la vérité qui coupe et le chagrin qui l'accompagne : notre carte déplace la coupe vers la vitre qu'on se colle soi-même",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 3 : le premier fruit du retrait, la fêlure qui ouvre",
+    "greer": "§6 — le retrait comme besoin réel et sa ligne de partage avec la coupure",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_3)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à sortir d'une période où tu avais tendance à t'isoler et à couper le contact avec les autres. Tu as peut-être laissé passer du temps sans répondre aux messages ou sans donner de nouvelles. Peu à peu, tu comprends que tu peux avoir besoin de solitude sans devoir disparaître complètement. Tu apprends à trouver un équilibre entre ton besoin de tranquillité et ton envie de garder des liens avec les autres.",
+    "image_soi": "Tu te vois comme une personne qui préfère ne pas déranger les autres lorsqu'elle traverse une période difficile. Tu te dis que tu reprendras contact lorsque tu iras mieux ou lorsque tu auras les idées plus claires. Tu peux avoir l'impression que les autres comprendront ton silence et ne t'en voudront pas. Cette façon de te protéger te donne du temps, mais elle peut aussi prolonger ton isolement et rendre le retour vers les autres plus difficile.",
+    "entourage": "Les autres ne savent pas toujours comment interpréter ton silence. Certains pensent que tu leur en veux, tandis que d'autres supposent que tu préfères être seule. Avec le temps, les messages et les invitations peuvent devenir moins fréquents, simplement parce que ton entourage ne sait plus comment te joindre. On peut encore penser à toi et tenir à toi, sans savoir que tu aimerais parfois que quelqu'un fasse le premier pas."
+  }
+}

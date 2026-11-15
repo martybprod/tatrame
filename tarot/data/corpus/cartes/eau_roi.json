@@ -1,0 +1,56 @@
+{
+  "id": "eau_roi",
+  "nom": "Guérison",
+  "type": "figure",
+  "famille": "eau",
+  "rang": "roi",
+  "element": "eau",
+  "note_grille": "figure eau (roi) : la maîtrise extérieure tournée vers le soin — guérir sans lutter, laisser l'eau faire ce qu'elle sait faire. Deux lectures possibles (Greer) : quelqu'un qui apaise autour de lui, ou ta propre part qui accepte d'être portée.",
+  "mots_cles": [
+    "Se laisser porter",
+    "les reflets dorés",
+    "ce qui revient à la surface",
+    "la blessure qui s'apaise",
+    "le soutien de l'eau"
+  ],
+  "tension": {
+    "pousse": "flotter",
+    "retient": "lutter"
+  },
+  "lumiere": "Un lac immense s'étend sous la lumière du soleil. Son eau est si claire que l'on distingue le sable pâle et les galets arrondis au fond. Des bandes lumineuses traversent la surface et un homme flotte sur le dos, les bras détendus, le visage tourné vers le ciel. Il ne cherche pas à nager ni à atteindre l'autre rive. Il accepte simplement d'être porté. Cette image évoque une guérison qui ne se commande pas. Elle commence lorsque tu peux relâcher une partie de tes défenses et laisser remonter ce qui demande à être reconnu. Tu n'as pas besoin de tout résoudre immédiatement. Tu peux commencer par te laisser soutenir.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu repousses encore le moment de prendre soin de ce qui demande ton attention. Une fatigue persiste, une peine ancienne revient ou une expérience difficile n'a pas encore trouvé sa place dans ton histoire. Pourtant, tu continues à remplir tes journées. Tu préfères rester occupé plutôt que de laisser un espace à ce qui pourrait remonter. Tu appelles parfois cela de la détermination, mais cette résistance finit par te prendre beaucoup d'énergie. La carte montre un homme qui accepte de ne plus lutter pour rester à la surface. Elle t'invite à reconnaître que tu peux aussi avoir besoin d'être porté.",
+    "issue": "Accorde-toi quelques minutes pour t'allonger confortablement et relâcher volontairement ton corps. Remarque les points de contact avec le sol ou le lit. Si une émotion apparaît, accueille-la sans chercher immédiatement à la faire disparaître. Tu peux lui laisser un peu d'espace, à ton rythme."
+  },
+  "questions": [
+    "Quelle émotion ou quelle expérience demande encore à être reconnue ?",
+    "À quel endroit de ta vie dépenses-tu beaucoup d'énergie à maintenir les choses sous contrôle ?",
+    "Quels appuis pourraient t'aider à traverser cette période avec davantage de douceur ?"
+  ],
+  "lecon": "La guérison n'est pas toujours un combat à gagner. Elle peut commencer lorsque tu acceptes de déposer tes défenses et de recevoir le soutien dont tu as besoin.",
+  "image": {
+    "geste": "Un homme flotte sur le dos au milieu d'un lac immense. Son corps repose à la surface et son visage est tourné vers le ciel.",
+    "seuil": "Aucune rive ne semble enfermer le paysage. L'eau accueille le corps tandis que le fond demeure visible sous la surface.",
+    "detail": "Des bandes lumineuses dorées traversent le lac. Trois lotus pâles flottent à distance les uns des autres."
+  },
+  "micro_geste": "Ce soir, allonge-toi quelques minutes dans un endroit confortable. Relâche tes muscles et remarque ce qui te soutient.",
+  "positions": {
+    "jour": "Tu n'es pas obligé de rester constamment fort ni de porter toutes les choses en même temps. Tu peux déposer une partie de ce que tu traverses et prendre le temps de retrouver ton souffle. La carte présente un homme qui flotte paisiblement sur un lac immense. Il ne cherche pas à lutter contre l'eau. Il lui fait confiance pour soutenir son corps. Cette image t'invite à reconnaître tes besoins de repos et d'apaisement. Si une émotion ancienne revient ou si une fatigue se fait sentir, tu peux lui accorder de l'attention sans exiger d'elle qu'elle disparaisse immédiatement.",
+    "amene": "Tu arrives peut-être avec une expérience qui continue de vivre en toi, même si les circonstances ont changé. Une peine, une déception ou une fatigue prolongée peut laisser des traces que le temps seul ne suffit pas toujours à apaiser. La carte t'offre un paysage où rien ne doit être repoussé ni dissimulé. Le lac est assez vaste pour accueillir ce qui remonte. Tu peux reconnaître ce que tu ressens sans avoir à tout expliquer. Il existe une différence entre regarder une blessure et devoir la porter seul. Tu as le droit de chercher du soutien.",
+    "se_joue": "Tu dépenses peut-être beaucoup d'énergie à maintenir une apparence de stabilité. Tu continues tes activités, réponds aux attentes et fais comme si tout allait bien, même lorsque quelque chose en toi demande une pause. Pourtant, ce qui n'a pas été reconnu peut revenir sous différentes formes : fatigue, tristesse, irritabilité ou besoin de solitude. La carte ne te demande pas de provoquer une confrontation avec ton passé. Elle t'invite plutôt à ne plus consacrer toute ton énergie à maintenir ce qui cherche à être entendu. Parfois, le premier mouvement vers l'apaisement consiste simplement à reconnaître que quelque chose est encore sensible.",
+    "essayer": "Trouve un moment tranquille pour t'installer confortablement, sans téléphone ni obligation immédiate. Laisse ton corps se déposer et remarque les sensations présentes. Si une pensée ou une émotion revient, tu peux la reconnaître sans chercher à l'analyser entièrement. Tu peux aussi écrire quelques lignes ou en parler à une personne de confiance si cela t'aide. La carte rappelle que tu n'as pas à tout traverser seul. Comme le corps porté par l'eau, tu peux accepter de recevoir du soutien au lieu de lutter continuellement pour tenir debout."
+  },
+  "source_referentielle": {
+    "pollack": "§4, Roi de Coupes — la maîtrise extérieure au service du soin ; la chaîne large : toute ombre contient sa sortie",
+    "wen": "§4 — rangs : le roi, la maîtrise extérieure ; famille eau : l'eau qui porte, la guérison",
+    "greer": "§6.4 — roi = la fonction tenue au dehors ; ici, apaiser et soigner autour de soi",
+    "production": "rédigée par agent le 2026-11-10, image source : ATRO_PLUS/_distillation/corpus_mineurs_eau.json (entrée eau_roi) ombre « differe » (la guérison repoussée derrière la lutte et l'occupation), issue obligatoire incluse",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à accepter que tu n'as pas besoin de tout affronter seule. Pendant une période difficile, tu as probablement essayé de rester forte, de continuer tes activités et de montrer aux autres que tout allait bien, même lorsque tu souffrais. Tu avais l'impression de devoir tenir bon et de ne pas laisser voir tes difficultés. Aujourd'hui, tu peux progressivement relâcher cette pression et accepter de recevoir du soutien. Tu avances dans un processus de reconstruction qui demande du temps. Tu n'as pas besoin de lutter en permanence pour prouver que tu vas mieux.",
+    "image_soi": "Tu attends de toi que tu te remettes rapidement après une difficulté ou une épreuve. Tu as l'impression qu'une personne forte doit réussir à reprendre sa vie habituelle sans trop montrer sa souffrance. Tu peux te mettre la pression pour retourner au travail, reprendre tes responsabilités et retrouver rapidement ton rythme. Alors tu t'occupes, tu ranges, tu organises et tu fais comme si tout allait bien. Mais cette attitude peut t'empêcher de prendre le temps nécessaire pour traverser ce que tu as vécu. Tu as le droit d'avoir besoin de temps pour te reconstruire, même si les autres ne voient pas immédiatement tes difficultés.",
+    "entourage": "Ton entourage pense parfois que tu vas mieux simplement parce que tu as retrouvé une apparence calme ou repris certaines de tes activités. On considère alors que la période difficile est terminée et on recommence à te confier des responsabilités. Certaines personnes parlent même de ce que tu as vécu comme d'une histoire appartenant désormais au passé. Elles peuvent s'étonner lorsque tu es moins disponible, lorsque tu réponds plus lentement ou lorsque tu ne peux pas participer à certaines activités. Elles ne réalisent pas toujours que tu es encore en train de te reconstruire. Comme tes difficultés ne sont pas forcément visibles, elles ne pensent pas spontanément à te proposer de l'aide ou à te demander ce dont tu as besoin."
+  }
+}

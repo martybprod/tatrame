@@ -1,0 +1,55 @@
+{
+  "id": "air_roi",
+  "nom": "Contrôle",
+  "type": "figure",
+  "famille": "air",
+  "rang": "roi",
+  "element": "air",
+  "note_grille": "figure air (roi) : la maîtrise extérieure qui cadre et décide. Deux lectures possibles (Greer) : quelqu'un qui contrôle, ou le contrôle que tu poses toi-même. Rang roi = la maîtrise extérieure, responsabilité et cadre.",
+  "mots_cles": [
+    "le carré tondu",
+    "la palissade close",
+    "les ronces qui passent",
+    "tenir",
+    "la plaine dehors"
+  ],
+  "tension": {
+    "pousse": "lâcher un peu de prise",
+    "retient": "tout tenir"
+  },
+  "lumiere": "Tu entretiens un carré bien délimité au milieu de la plaine, et il tient grâce à toi. Le cadre est juste, la hauteur uniforme, le buis taillé avec précision. Ce que tu diriges avance avec méthode, et les autres peuvent s'appuyer sur cette stabilité. Ton cadre repose sur la confiance et sert de repère plutôt que de barrière.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Ta confiance envers ce qui se trouve à l'extérieur du carré s'est affaiblie, alors tu as renforcé la palissade. Tu surveilles le buis, tu comptes les pieux et tu ne regardes plus la plaine. Dehors, les ronces dépassent déjà la clôture et les ombelles blanches fleurissent sans que tu t'en occupes. Le carré tient toujours, mais il a fini par prendre toute la place dans ton monde.",
+    "issue": "Ouvre une brèche dans la palissade aujourd'hui. Laisse passer une ronce et prends une minute pour regarder la plaine, avec sa lumière qui s'étend en longues bandes. Le carré peut conserver son buis bien taillé pendant que le monde retrouve sa place à côté, sans que rien soit détruit."
+  },
+  "questions": [
+    "Qu'est-ce que ta palissade protège, et de quoi cherche-t-elle réellement à te préserver ?",
+    "Qu'est-ce qui pousse dehors, plus haut que tes pieux ?",
+    "Que devient le buis si tu détournes le regard pendant une minute ?"
+  ],
+  "image": {
+    "geste": "un homme se tient debout dans son carré, les mains derrière le dos. Le jardin est entretenu avec une précision qui semble remonter à plusieurs générations",
+    "seuil": "la palissade fermée entoure entièrement le carré, sans laisser d'ouverture. La porte n'est pas dans les pieux, mais dans la possibilité de relever la tête et de regarder au-delà",
+    "detail": "les ronces dépassent la palissade, puis retombent à l'intérieur du carré. Le dehors finit tout de même par entrer"
+  },
+  "micro_geste": "Tourne aujourd'hui la tête vers une partie de la plaine pendant une minute, sans chercher à rien tailler ni à rien corriger.",
+  "positions": {
+    "jour": "Aujourd'hui, tu as besoin d'ordre, et tu sais bien l'établir. Une chose à maintenir droite, une situation à encadrer avec justesse. La carte ne te demande pas de tout relâcher. Elle montre la plaine qui pousse contre les pieux et le buis qui reste net grâce à ton savoir-faire. Choisis ce qui mérite vraiment d'être entretenu avec précision et laisse le reste suivre son cours.",
+    "amene": "Tu arrives avec une capacité à maintenir les choses en ordre. Tu as aménagé des espaces, posé des cadres et remis de la structure là où elle manquait. On t'a appris que si tu relâchais ton attention, tout risquait de se défaire, et cette prudence a parfois été nécessaire. La carte montre ce que ta constance a permis de construire. Elle montre aussi la palissade et la plaine qui continue de vivre à l'extérieur.",
+    "se_joue": "Tout se joue entre le besoin de maintenir le contrôle et la possibilité de laisser entrer ce qui échappe à ta maîtrise. Une partie de toi entretient le carré, pieu après pieu, tandis qu'une autre entend la plaine qui pousse au-delà de la clôture. Ces deux réalités coexistent, mais elles ne se rencontrent pas encore. Reste une question. Qu'est-ce que ta clôture garde à l'extérieur, et qu'est-ce que cela empêche de pousser à l'intérieur ?",
+    "essayer": "Essaie aujourd'hui de déplacer un pieu ou de laisser une ouverture dans ta façon de faire. Laisse une chose suivre son cours, invite quelqu'un à entrer dans ton espace ou assouplis légèrement un plan trop rigide. La carte ne te demande pas d'abattre toute la palissade. Elle t'invite à laisser une place au naturel, à côté du buis bien entretenu. Ce qui poussera dans cet espace te permettra de voir si ton carré était devenu une protection ou une cage."
+  },
+  "source_referentielle": {
+    "pollack": "§4, figures de cour — le roi porte la responsabilité sociale et la réussite ; le rang est une manière d'être, jamais une classe",
+    "wen": "§4 — rangs : le roi, la maîtrise extérieure ; famille air : l'idée tenue, le cadre qui rend lisible",
+    "greer": "§6.4 — les quatre rangs comme degrés de maturité dans la fonction : roi = la fonction tenue au dehors",
+    "reprise": "textes reformulés par Martin le 2026-11-09 (sa voix fait foi), puis révisés contre la charte : deux-points de chute retirés"
+  },
+  "lecon": "Entretenir un carré est une forme de maîtrise. Accepter de relâcher un peu cette maîtrise, c'est lui permettre de coexister avec le monde sans le perdre.",
+  "croix": {
+    "eloigne": "Tu commences à comprendre que tout ne dépend pas de ta surveillance et que les choses peuvent continuer à fonctionner sans ton intervention constante. Jusqu'ici, tu avais tendance à vérifier chaque détail, à contrôler les décisions et à t'assurer que tout restait parfaitement organisé. Tu apprends maintenant à faire confiance aux méthodes que tu as mises en place et à laisser les autres prendre leur part de responsabilité. Tu peux conserver ton sens de l'organisation sans devoir tout surveiller.",
+    "image_soi": "Tu te vois comme la personne qui doit tout organiser, tout prévoir et garder le contrôle de la situation. Tu as parfois peur que les choses se dérèglent si tu relâches ton attention, même pendant un court moment. Tu préfères donc vérifier toi-même et prendre les décisions importantes. Cette responsabilité te donne le sentiment d'être utile et compétente, mais elle peut aussi t'empêcher de profiter de la vie en dehors de tes obligations.",
+    "entourage": "Les autres savent qu'ils peuvent compter sur toi pour organiser les choses et prendre les décisions importantes. Ils te considèrent comme une personne fiable qui aime que tout soit bien structuré. Comme tu prends facilement les responsabilités, ton entourage te laisse souvent gérer sans proposer spontanément de prendre le relais. On peut même penser que tu préfères tout contrôler. Cette image rassure les autres, mais elle ne leur permet pas toujours de voir que tu pourrais avoir besoin de souffler."
+  }
+}

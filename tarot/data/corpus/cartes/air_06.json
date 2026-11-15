@@ -1,0 +1,55 @@
+{
+  "id": "air_06",
+  "nom": "Fardeau",
+  "type": "mineur",
+  "famille": "air",
+  "degre": 6,
+  "element": "air",
+  "note_grille": "degré 6 (circulation) × famille air (le poids) : CONFLIT assumé — le chargement empêche la circulation, et la carte donne le geste de dépose qui la rétablit.",
+  "mots_cles": [
+    "l'escalier brumeux",
+    "les bagages déposés",
+    "la voyageuse qui monte",
+    "le geste d'alléger"
+  ],
+  "tension": {
+    "pousse": "porter",
+    "retient": "s'alourdir"
+  },
+  "lumiere": "Au pied d'un escalier de pierre, plusieurs objets forment un amas de bagages. Une couverture, un sac, une gamelle, une corde et quelques provisions reposent ensemble dans la brume. Plus haut, une voyageuse poursuit son ascension, libérée de ce chargement. La carte montre qu'il est possible de continuer son chemin sans conserver tout ce que l'on a porté jusque-là. Déposer n'est pas renoncer à sa route. C'est reconnaître ce qui n'a plus besoin de l'accompagner.",
+  "ombre": {
+    "mode": "subi",
+    "texte": "Tu as pris l'habitude d'assumer toujours davantage. Certaines responsabilités sont nécessaires, d'autres sont restées entre tes mains par loyauté, culpabilité ou automatisme. Avec le temps, tu ne distingues plus ce qui t'appartient vraiment de ce que tu as accepté pour préserver les autres. Tu avances encore, mais chaque marche demande un effort supplémentaire.",
+    "issue": "Fais l'inventaire de tes engagements et de tes responsabilités. Identifie un élément que tu pourrais alléger, partager, reporter ou abandonner. Commence par celui dont l'absence ferait le moins de tort."
+  },
+  "questions": [
+    "Quelles responsabilités portent encore un sens pour toi ?",
+    "Quelles charges conserves-tu surtout par habitude ou par loyauté ?",
+    "Qu'est-ce qui changerait dans ta vie si tu déposais une partie du poids ?"
+  ],
+  "lecon": "Tout ce qui a été porté n'a pas vocation à être transporté jusqu'au bout du chemin.",
+  "image": {
+    "geste": "les bagages sont regroupés au pied de l'escalier. Le dépôt est visible et assumé.",
+    "seuil": "la voyageuse se trouve déjà plusieurs marches plus haut. Son avancée montre le bénéfice de l'allègement.",
+    "detail": "les objets usés gardent la trace de leur utilité passée. Ils ont accompagné le voyage, mais leur rôle peut être terminé."
+  },
+  "micro_geste": "Identifie une responsabilité que tu peux alléger aujourd'hui. Décide concrètement de ta modification du jour.",
+  "positions": {
+    "jour": "Tu pourrais ressentir le poids d'un engagement, d'une obligation ou d'une accumulation de petites tâches. La carte t'invite à regarder ce que tu transportes réellement. Tout ne doit pas nécessairement continuer avec toi. Certaines choses ont été utiles, mais elles peuvent désormais rester derrière. Aujourd'hui, cherche ce que tu peux déposer pour retrouver une marche plus libre.",
+    "amene": "Tu arrives avec une grande capacité à prendre en charge les choses. Tu sais répondre présent, assumer les responsabilités et poursuivre même lorsque la fatigue se fait sentir. Cette force mérite d'être reconnue, mais elle ne doit pas devenir une obligation permanente. La carte te rappelle qu'une personne capable de porter beaucoup a également le droit de choisir ce qu'elle ne portera plus.",
+    "se_joue": "Une question de fidélité se présente. Tu peux avoir peur de décevoir, de laisser tomber quelqu'un ou de ne plus être à la hauteur si tu abandonnes une responsabilité. Pourtant, certaines charges ne correspondent plus à la personne que tu es aujourd'hui. Il est peut-être temps de distinguer l'engagement véritable de l'habitude de tout prendre sur tes épaules.",
+    "essayer": "Écris les responsabilités qui occupent actuellement ton esprit. Classe-les entre celles que tu souhaites conserver, celles que tu pourrais partager et celles qui peuvent être abandonnées. Choisis une seule modification concrète cette semaine. Tu n'as pas besoin de tout déposer en même temps pour retrouver de l'espace."
+  },
+  "source_referentielle": {
+    "pollack": "§4, six d'Épées — le passage vers la rive plus calme : notre carte montre ce qu'on laisse au bord pour traverser",
+    "wen": "§4 — famille air : idée, conflit, lucidité ; degré 6 : la circulation rétablie par la dépose",
+    "greer": "§6 — le tri du chargement comme acte de fidélité au chemin, pas comme abandon",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_6)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à comprendre que tu n'as pas besoin de tout prendre en charge. Jusqu'ici, tu as peut-être accepté des responsabilités que personne ne t'avait réellement confiées, simplement parce que tu pensais devoir aider ou éviter que les choses ne se compliquent. Tu apprends maintenant à faire la différence entre ce qui dépend réellement de toi et ce qui appartient aux autres. Tu conserves ton sens des responsabilités, mais tu peux avancer sans porter tous les problèmes autour de toi.",
+    "image_soi": "Tu te vois comme la personne sur laquelle tout le monde peut compter. Tu as l'habitude de prendre les choses en main, de régler les problèmes et de prévoir ce qui pourrait mal se passer. Tu as parfois l'impression que si tu déposes une responsabilité, quelqu'un d'autre devra en subir les conséquences. Tu continues donc à tout porter, même lorsque cela devient trop lourd. Cette image de personne indispensable te donne une place importante, mais elle t'empêche de reconnaître que tu as aussi le droit de demander de l'aide.",
+    "entourage": "Les autres te considèrent comme une personne solide et responsable. Ils savent que tu es capable de gérer des situations complexes et ils te confient facilement les dossiers les plus difficiles. Comme tu trouves généralement une solution, ils ne pensent pas toujours à vérifier si tu as encore du temps ou de l'énergie disponible. Ton entourage apprécie ta fiabilité, mais peut finir par oublier que tu ne peux pas tout prendre en charge."
+  }
+}

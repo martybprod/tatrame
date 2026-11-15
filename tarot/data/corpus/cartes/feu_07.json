@@ -1,0 +1,56 @@
+{
+  "id": "feu_07",
+  "nom": "Stress",
+  "type": "mineur",
+  "famille": "feu",
+  "degre": 7,
+  "element": "feu",
+  "note_grille": "degré 7 (évaluation, discernement) × famille feu (élan) : le nombre éprouve la famille — l'élan s'est chargé de trop au lieu de trier. Le pont vide sous le fil est l'évaluation refusée.",
+  "mots_cles": [
+    "le fil",
+    "la charge trop haute",
+    "le pont vide",
+    "l'équilibre",
+    "le tri"
+  ],
+  "tension": {
+    "pousse": "déposer",
+    "retient": "empiler"
+  },
+  "lumiere": "Tu arrives à avancer tout en gardant un bon équilibre entre tes responsabilités et tes capacités.\n\nCette carte montre un homme qui marche sur un fil avec les bras ouverts. Il transporte une pile de livres et de paniers sur sa tête, mais il sait garder son équilibre.\n\nEn dessous, un pont solide traverse un ruisseau.\n\nCette image t'invite à réfléchir à ce que tu portes réellement et à vérifier si toutes ces responsabilités sont encore nécessaires.\n\nLorsque tu choisis consciemment ce que tu acceptes de prendre en charge, tu peux avancer sans te sentir constamment dépassé.\n\nTu n'as pas besoin de tout porter pour prouver que tu es capable.",
+  "ombre": {
+    "mode": "retourne",
+    "texte": "Tu as peut-être pris trop de responsabilités sans prendre le temps de vérifier si tu avais réellement la capacité de toutes les assumer.\n\nTu ajoutes un projet, puis une obligation, puis une autre tâche.\n\nPetit à petit, ta charge devient trop lourde.\n\nTu continues malgré la fatigue, parce que tu as l'impression que tu dois tout gérer.\n\nPourtant, il existe peut-être des solutions plus simples, des responsabilités que tu pourrais partager ou des tâches que tu pourrais simplement abandonner.\n\nTu n'es pas obligé de continuer à avancer dans des conditions qui te déséquilibrent.",
+    "issue": "Commence par identifier ce qui te pèse le plus actuellement.\n\nChoisis une responsabilité que tu peux supprimer, reporter, simplifier ou confier à quelqu'un d'autre.\n\nTu n'as pas besoin de tout régler aujourd'hui.\n\nLe simple fait de retirer une chose inutile peut déjà te permettre de respirer et de retrouver un peu d'équilibre."
+  },
+  "questions": [
+    "Quelles responsabilités portes-tu actuellement sans qu'elles soient vraiment nécessaires ?",
+    "Quelles tâches pourrais-tu partager, reporter ou abandonner ?",
+    "Que pourrais-tu retirer de ta charge pour retrouver un meilleur équilibre ?"
+  ],
+  "image": {
+    "geste": "Un homme marche sur un fil au-dessus du vide, les bras ouverts pour garder son équilibre. Il transporte une pile de livres et de paniers sur sa tête. Une goutte de sueur coule sur sa tempe.",
+    "seuil": "Sous le fil, un pont de bois solide traverse un ruisseau. Pourtant, personne ne l'emprunte.",
+    "detail": "L'homme a lui-même ajouté tous les objets sur sa tête, un par un. Sa charge ne s'est pas accumulée toute seule."
+  },
+  "micro_geste": "Retire aujourd'hui une chose de ta charge : une tâche dans ton agenda, une responsabilité ou un objet que tu n'as plus besoin de garder.",
+  "positions": {
+    "jour": "Tu portes peut-être beaucoup de responsabilités en ce moment.\n\nCertaines sont nécessaires, mais d'autres se sont peut-être ajoutées progressivement, sans que tu prennes le temps de vérifier si tu pouvais réellement les assumer.\n\nCette carte montre un homme qui avance sur un fil avec une pile d'objets sur la tête. Sous lui, un pont solide permettrait pourtant de traverser le ruisseau plus facilement.\n\nLe message est clair : tu n'es pas obligé de continuer à tout porter.\n\nAujourd'hui, prends le temps de regarder ce qui pourrait être retiré de ta charge.",
+    "amene": "Tu arrives avec le réflexe de tout accepter et de trouver des solutions pour chaque problème.\n\nCette capacité à prendre des responsabilités a certainement été utile dans plusieurs situations.\n\nMais elle peut aussi devenir épuisante lorsque tu ne sais plus dire non ou demander de l'aide.\n\nCette carte t'invite à reconnaître que tu as peut-être accumulé trop de choses.\n\nTu n'as pas besoin de continuer à tout porter simplement parce que tu as toujours réussi à le faire jusqu'ici.",
+    "se_joue": "Tu continues peut-être à avancer malgré une charge qui devient de plus en plus difficile à gérer.\n\nTu essaies de garder ton équilibre, mais chaque nouvelle responsabilité rend les choses plus compliquées.\n\nPourtant, il existe peut-être une solution plus simple que de continuer à faire davantage d'efforts.\n\nLa vraie question est : qu'est-ce que tu pourrais arrêter de porter pour retrouver un peu de légèreté ?",
+    "essayer": "Prends quelques minutes pour regarder tout ce que tu dois gérer aujourd'hui.\n\nChoisis une tâche que tu peux reporter, une responsabilité que tu peux partager ou une obligation dont tu peux te libérer.\n\nTu peux aussi demander de l'aide au lieu de chercher systématiquement à tout faire seul.\n\nL'objectif n'est pas d'abandonner ce qui compte, mais de retirer ce qui t'empêche d'avancer sereinement."
+  },
+  "source_referentielle": {
+    "pollack": "§4, nombres — le sept : l'épreuve de discernement, tenir sa place",
+    "wen": "§4 — famille feu : élan ; degré 7 : évaluation, ce qui vaut et ce qui pèse",
+    "greer": "§6 — questions sur la charge : qu'est-ce qui mérite sa place, qu'est-ce qui descend",
+    "production": "textes produits par l'agent-rédacteur le 2026-11-10 sous le brief feu (groupe B), image d'après le corpus distillé du fil et du pont, en attente de la reformulation de Martin",
+    "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "lecon": "Faire le tri dans ses responsabilités permet de retrouver de l'énergie et de mieux avancer.",
+  "croix": {
+    "eloigne": "Tu commences à comprendre que tu n'es pas obligée de tout gérer toute seule. Jusqu'ici, tu avais l'impression que tout reposait sur tes épaules et que le moindre relâchement risquait de provoquer des problèmes. Cette pression commence à diminuer. Tu conserves néanmoins toute l'expérience acquise en traversant les périodes difficiles et en apprenant à garder ton équilibre malgré les responsabilités.",
+    "image_soi": "Tu te vois comme celle qui doit toujours être capable de tout gérer. Tu mesures parfois ta valeur à tout ce que tu acceptes de porter et aux responsabilités que tu assumes. Pour toi, refuser une demande revient presque à abandonner quelqu'un. Tu continues donc à prendre en charge les problèmes, même lorsque tu es déjà débordée. Cette image de personne forte et fiable impressionne les autres, mais elle finit par t'épuiser.",
+    "entourage": "Ton entourage te considère comme une personne qui sait gérer les situations difficiles. Comme tu trouves généralement des solutions, les autres ont tendance à te confier encore davantage de responsabilités. On pense que tu es capable de tout supporter et que rien ne peut vraiment te déstabiliser. Cette confiance peut devenir un poids, car peu de personnes pensent spontanément à te proposer de l'aide ou à te demander si tu en as assez fait."
+  }
+}

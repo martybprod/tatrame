@@ -1,0 +1,53 @@
+{
+  "id": "major_03",
+  "nom": "Créativité",
+  "type": "majeur",
+  "registre": "exterieur",
+  "element": "terre",
+  "note_grille": "colonne 3 (avec Changement et Silence) : éprouver. Élément Terre : la création veut des mains, une table, une matière. Tension signature (Pollack) : éprouver contre comprendre. Accord du III avec le registre — l'abondance se voit dehors, dans le concret, comme les rubans qui rayonnent jusqu'au haut du cadre.",
+  "mots_cles": [
+    "*major_03",
+    "exterieur",
+    "terre*"
+  ],
+  "tension": {
+    "pousse": "faire naître",
+    "retient": "attendre"
+  },
+  "lumiere": "Tu portes en toi une énergie qui cherche à s'exprimer par tes mains, ta voix ou tes mouvements, et pas seulement par tes idées. Dès que tu lui accordes un peu d'espace, elle trouve naturellement sa place dans ta vie quotidienne. Tout le monde peut apprendre à faire ce geste. La créativité est une fonction vivante, aussi naturelle que la marche, et elle ne demande pas grand-chose pour se manifester. Une table dégagée, quinze minutes et quelques couleurs peuvent suffire à faire apparaître quelque chose là où il n'y avait encore rien.",
+  "ombre": {
+    "mode": "differe",
+    "texte": "Tu repousses ce qui cherche à prendre forme en toi aujourd'hui. Ton projet attend un moment plus calme, un meilleur espace de travail ou un regard moins critique. Pendant ce temps, tu regardes les créations des autres et tu admires leur audace. Le temps libre finit bien par arriver, mais quelque chose d'autre vient alors l'occuper. Ce n'est pas nécessairement de la paresse. C'est plutôt la peur du premier résultat, qui se dissimule derrière l'attente du moment idéal.",
+    "issue": "Accorde quinze minutes aujourd'hui à ce projet que tu remets sans cesse à plus tard. Utilise le matériel le plus simple possible. Le résultat n'a pas besoin d'être réussi : il doit simplement exister. Le reste pourra suivre."
+  },
+  "questions": [
+    "Qu'aimerais-tu faire naître avec tes mains ou avec ta voix ?",
+    "Qu'est-ce que tu repousses alors que cela cherche déjà à s'exprimer ?",
+    "Quelle petite touche de beauté pourrais-tu ajouter à un espace que tu occupes déjà ?"
+  ],
+  "lecon": "Donner de l'espace à ce qui cherche à naître en toi, en passant par ton corps, tes mains et de petites créations quotidiennes.",
+  "image": {
+    "geste": "Une danseuse tourne pieds nus, le sourire ouvert et les cheveux au vent. Les rubans qu'elle porte partent de son corps et rayonnent jusqu'en haut de l'image.",
+    "seuil": "Elle danse au centre d'un disque orné, posé sur un bassin. Même la création la plus libre a besoin d'un point d'appui, aussi petit soit-il, même lorsqu'il repose sur l'eau.",
+    "detail": "Des flammes tournent en cercle autour d'elle sans consumer l'eau. Sous les pieds de la danseuse, le feu et l'eau semblent agir ensemble."
+  },
+  "micro_geste": "Accorde quinze minutes aujourd'hui à ce que tu remets à plus tard, avec le matériel le plus simple possible.",
+  "positions": {
+    "jour": "Le climat de la journée ressemble à une salle de spectacle juste avant le début d'une représentation : elle est vide, mais déjà prête à accueillir quelque chose. Rien ne presse à l'extérieur et pourtant, en toi, une énergie remue, avec ses propres couleurs et son propre rythme. C'est le moment où des forces créatrices cherchent une issue, sans nécessairement imposer d'horaire. Ces journées ne se reproduisent jamais exactement de la même manière. Une partie de ce qui veut naître aujourd'hui ne pourra pas être conservée dans son état actuel. Le reste pourra attendre. Mais la fraîcheur du premier élan est difficile à retrouver.",
+    "amene": "Tu peux commencer modestement, sans public et sans préparation particulière. Une partie de toi attendait peut-être simplement de s'en donner la permission. Le premier geste créateur compte dès qu'il est posé, et tu n'as pas à le justifier devant qui que ce soit. Ton désir de créer quelque chose de beau est légitime, même lorsque tu n'en es qu'au stade de l'ébauche. La carte montre une danseuse qui a commencé par un seul pas. Le rayonnement est venu ensuite.",
+    "se_joue": "Tu accumules peut-être les conditions nécessaires avant de te mettre à créer, au point où ces conditions prennent plus de place que la création elle-même. Il y a le bon moment, le matériel adéquat, la forme à choisir et l'humeur qui devrait être au rendez-vous. Chaque condition possède sa logique. Ensemble, elles finissent pourtant par former une limite qui se referme sur ton projet. La créativité fonctionne dans le sens inverse : elle part d'un centre et se déploie vers l'extérieur. Le nœud se trouve entre ce qui enferme et ce qui cherche à rayonner. Un seul de tes projets suffit pour observer ce mouvement.",
+    "essayer": "Dégage un petit coin de table, pose une feuille devant toi et écris trois lignes sans les relire. Referme ensuite ton carnet et passe à autre chose, sans montrer ton texte à personne. Le lendemain, rouvre la même page et ajoute trois nouvelles lignes, sans revenir sur celles de la veille. Au bout d'une semaine, un motif commencera peut-être à apparaître, et tu reconnaîtras ta propre couleur dans ce que tu as créé. Ce genre de démarche n'a pas besoin de public. Elle peut se dérouler dans une cuisine, un autobus ou une salle d'attente.\n\n---"
+  },
+  "source_referentielle": {
+    "pollack": "§3, III — la vie éprouvée par le corps et le sentiment, sensualité et abondance ; tension éprouver / comprendre ; colonne 3 (éprouver)",
+    "wen": "§3 — élément Terre (table des majeurs, recopiée de jeu.json)",
+    "greer": "§6.2 — leçon : nourrir, faire grandir, prendre soin du corps et du beau",
+    "production": "concepts — pollack §3 III (l'abondance qui se voit dehors), wen §3 (Terre), greer §6.2, nom maison « Créativité » de noms_cartes.json ; image — visage validé par Martin (brief de production, Groupe A) : danseuse aux rubans multicolores, disque-mandala sur un bassin, flammes en anneau — reformulé en geste / seuil / détail",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu attends moins le moment parfait pour commencer. La table rangée, le matériel complet et le temps libre ne sont plus des conditions indispensables. Ce qui demeure, c'est un savoir déjà présent dans tes mains : une technique, un geste, une façon de composer. Même après une longue pause, tu peux retrouver ce fil. La création n'a pas besoin d'un grand commencement.",
+    "image_soi": "Tu te définis comme une personne pratique plutôt que créative. Pour toi, le mot artiste semble réservé à celles qui ont un atelier, une formation ou une reconnaissance. Tu préfères appeler tes essais des passe-temps. Cette étiquette t'évite de te sentir exposée au jugement, mais elle réduit aussi la place que tu accordes à tes propres idées.",
+    "entourage": "Les autres te connaissent surtout pour ton efficacité et ta capacité à régler les problèmes. Ils pensent spontanément à toi lorsqu'il faut organiser, réparer ou trouver une solution concrète. Quand tu présentes un projet plus personnel, les questions portent parfois sur son utilité ou son résultat. On ne pense pas toujours à te demander ce que tu souhaites simplement explorer ou exprimer."
+  }
+}

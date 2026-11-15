@@ -1,0 +1,55 @@
+{
+  "id": "air_reine",
+  "nom": "Morale",
+  "type": "figure",
+  "famille": "air",
+  "rang": "reine",
+  "element": "air",
+  "note_grille": "figure air (reine) : la maîtrise intérieure qui nourrit — ici la règle garde le jardin et risque d'avaler le vivant ; la tige hors forme est le test de la reine, tension assumée.",
+  "mots_cles": [
+    "les haies ordonnées",
+    "la pelouse dessinée",
+    "les mains croisées",
+    "la plante spontanée"
+  ],
+  "tension": {
+    "pousse": "encadrer",
+    "retient": "juger"
+  },
+  "lumiere": "Une femme se tient au centre d'un jardin parfaitement entretenu. Les haies sont taillées, la pelouse présente des lignes régulières et les allées sont soigneusement dessinées. Ses mains sont croisées devant elle et son regard reste assuré. Pourtant, près de ses pieds, une petite plante pousse librement. Elle n'a pas suivi le plan du jardin. La carte montre que l'ordre et la spontanéité peuvent coexister. Une structure saine laisse toujours une place à ce qui grandit autrement.",
+  "ombre": {
+    "mode": "amoindri",
+    "texte": "Tu deviens parfois si attaché à tes principes que tu ne vois plus ce qu'ils empêchent de vivre. Tu évalues les comportements, les idées et les personnes à partir de règles rigides. Tout ce qui dépasse semble devoir être corrigé. Peu à peu, la volonté de bien faire se transforme en jugement permanent. Tu protèges peut-être la forme, mais tu risques de perdre de vue ce qu'elle devait servir.",
+    "issue": "Repère une règle que tu appliques avec rigidité. Demande-toi si elle répond encore à un besoin réel ou si elle fonctionne simplement par habitude. Autorise une petite exception lorsque cela ne met personne en difficulté."
+  },
+  "questions": [
+    "Quels principes méritent réellement d'être préservés ?",
+    "Où ton besoin d'ordre devient-il une exigence excessive ?",
+    "Quelle différence pourrais-tu accueillir sans chercher à la corriger ?"
+  ],
+  "lecon": "La sagesse sait maintenir un cadre sans empêcher la vie de prendre des formes inattendues.",
+  "image": {
+    "geste": "les haies sont taillées avec précision et les allées restent parfaitement dessinées.",
+    "seuil": "une plante sauvage pousse au pied de la femme. Elle introduit une différence dans un espace très organisé.",
+    "detail": "le regard est calme et assuré. La femme observe le jardin sans perdre sa maîtrise, mais elle doit encore décider de ce qu'elle fera de cette plante."
+  },
+  "micro_geste": "Identifie une règle que tu imposes par automatisme. Laisse volontairement une petite exception exister aujourd'hui, si elle ne nuit à personne.",
+  "positions": {
+    "jour": "Ton sens de l'organisation et tes principes peuvent t'aider à garder le cap. Mais une situation pourrait te demander davantage de souplesse que prévu. La carte montre un jardin bien ordonné dans lequel une plante pousse librement. Ce détail attire ton attention sur ce qui échappe aux règles habituelles. Avant de corriger ce qui te semble imparfait, demande-toi si cela représente réellement un problème.",
+    "amene": "Tu arrives avec des convictions et des repères qui structurent ta manière d'agir. Tu accordes probablement de l'importance à la cohérence, à la responsabilité et au respect de certains principes. Ces qualités peuvent construire un environnement solide. La carte t'invite néanmoins à examiner la manière dont tu les appliques. Un cadre peut guider sans devenir une contrainte permanente pour toi ou pour les autres.",
+    "se_joue": "Une situation fait peut-être apparaître un décalage entre ce que tu considères comme correct et ce qui se présente spontanément. Tu peux être tenté de rétablir immédiatement l'ordre. Pourtant, tout ce qui sort du cadre n'est pas forcément mauvais. La carte te propose de distinguer ce qui doit réellement être corrigé de ce qui mérite simplement d'être accueilli.",
+    "essayer": "Choisis un domaine dans lequel tu as tendance à vouloir tout organiser ou contrôler. Repère une petite marge de liberté que tu pourrais accorder à quelqu'un ou à toi-même. Observe ce qui se passe sans intervenir immédiatement. Tu découvriras peut-être qu'une structure solide n'a pas besoin d'être parfaite pour rester utile."
+  },
+  "source_referentielle": {
+    "pollack": "§4, reine d'Épées — la perceptrice, la clairvoyance qui coupe net : notre carte en garde la netteté et teste la tolérance",
+    "wen": "§4 — rangs : la reine, la maîtrise intérieure qui nourrit ; famille air : la règle comme service rendu au vivant",
+    "greer": "§6.4 — la reine comme fonction : garder la forme sans avaler le pré",
+    "production": "rédaction de l'orchestrateur le 2026-11-10 sous le brief air, image d'après corpus_mineurs_air.json (entrée air_reine)",
+    "reprise": "textes reformulés par Martin le 2026-11-11 (sa voix fait foi), puis révisés contre la charte"
+  },
+  "croix": {
+    "eloigne": "Tu commences à moins ressentir le besoin de corriger les comportements des autres ou de leur expliquer constamment ce qui devrait être fait. Jusqu'ici, tu pouvais intervenir dès que quelque chose te semblait injuste, incorrect ou mal organisé. Tu apprends maintenant à accepter que tout ne soit pas fait exactement comme tu le souhaites. Tu conserves ton sens de la justice et ta capacité à reconnaître ce qui est important, mais tu comprends que tu n'as pas besoin de tout reprendre en main.",
+    "image_soi": "Tu te vois comme une personne qui sait distinguer ce qui est juste de ce qui ne l'est pas. Tu accordes beaucoup d'importance aux règles, aux principes et à la cohérence des comportements. Lorsque quelque chose te semble incorrect, tu ressens souvent le besoin de le signaler ou de le corriger. Cette exigence te donne une place de référence auprès des autres, mais elle peut aussi te rendre trop critique et t'empêcher d'accepter que chacun ait sa propre manière de faire.",
+    "entourage": "Les autres viennent facilement te demander conseil lorsqu'ils ne savent pas quelle décision prendre ou quelle attitude adopter. Ils te considèrent comme une personne de principes, capable de donner un avis clair. Certains peuvent toutefois te trouver exigeante ou sévère, surtout lorsqu'ils ont peur de recevoir une remarque. Ton entourage respecte ton sens de la justice, mais certaines personnes peuvent hésiter à te montrer leurs erreurs par crainte de ton jugement."
+  }
+}
