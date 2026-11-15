@@ -568,13 +568,15 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
      `cover` est le seul réglage qui GARANTIT une couverture totale quel que
      soit le rapport largeur/hauteur de l'écran (il choisit lui-même le facteur
      d'agrandissement nécessaire, jamais moins).
-     ⚠️ POIDS (Martin, 2026-08-26, même correctif que metier2.png) : la
-     source PNG pesait 1 888 Ko — un PNG compresse mal ce type de texture.
-     Recompressée en metierAtisser1.webp, MÊME résolution native 1024×1024
-     (contrairement à metier2 : ici l'image couvre le plein écran en
-     `cover`, donc étirée sur de grands moniteurs — réduire la résolution
-     source aurait coûté de la netteté ; seul le format change) : 254 Ko,
-     contre 1 888 Ko — 7,4× plus léger, sans perte visible. */
+     ⚠️ POIDS (Martin, 2026-08-26, même correctif que metier2.png) : le PNG
+     compresse mal ce type de texture — d'où le WebP servi, à résolution
+     native égale (l'image couvre le plein écran en `cover`, donc étirée sur
+     un grand moniteur : réduire la résolution coûterait de la netteté).
+     ⚠️ RÉSOLUTION (Martin, 2026-11-15) : l'original 1024×1024 était agrandi
+     2× par le navigateur sur tout écran large. Le PNG source est passé à
+     **2048×2048** par Real-ESRGAN (x4plus, puis réduction LANCZOS — la
+     géométrie ne bouge pas), et le WebP servi suit : 542 Ko. Le XMP de la
+     recette d'origine (graine, modèle, pas) a été reporté sur le nouveau PNG. */
   background-image:
     linear-gradient(to bottom,
       rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
@@ -1060,6 +1062,25 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
 /* ═══ L'onglet Tarot — l'app sœur, encadrée ici (2026-11-15) ═══
    L'iframe tient la hauteur d'un écran moins l'en-tête ; elle défile en
    interne. Sur téléphone, un peu moins haute pour laisser voir la barre. */
+/* ═══ LE TAROT PLEINE LARGEUR (Martin, 2026-11-15) ═══
+   Le module de tarot vivait dans la colonne de 660px de `.enveloppe` : sur un
+   écran large, trois cartes minuscules au milieu du vide, et des noms de carte
+   qui se chevauchaient faute de place. Le module sort maintenant de la colonne
+   (full-bleed, même recette que `nav`) et l'iframe du jeu prend toute la
+   largeur — c'est le jeu qui répartit ses cartes. Les textes de service (chapô,
+   pied) gardent, eux, une largeur de lecture. */
+#vue-tarot{ width:auto; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); }
+@media (max-width:700px){
+  #vue-tarot{ margin-left:-20px; margin-right:-20px; width:calc(100% + 40px); }
+}
+#vue-tarot > .carte{
+  border-radius:0; border-left:0; border-right:0; margin-bottom:0;
+  padding:20px clamp(10px,2.6vw,36px) 28px;
+}
+#vue-tarot .chapo,
+#vue-tarot .tarot-pied{ max-width:660px; margin-left:auto; margin-right:auto; }
+.tarot-cadre{ max-width:1500px; margin-left:auto; margin-right:auto; }
+
 .tarot-cadre{position:relative;border:1px solid var(--bord);border-radius:10px;
   overflow:hidden;background:#0d0a12;margin-top:6px}
 .tarot-cadre iframe{display:block;width:100%;height:min(78vh,900px);min-height:520px;
