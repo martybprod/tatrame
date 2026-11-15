@@ -231,23 +231,30 @@ body {
 /* une carte posée : le cadre pointillé disparaît, il ne reste que la carte */
 .slot .cadre:has(.carte) { border-color: transparent; }
 
+/* Les emplacements occupent la largeur disponible : --n colonnes égales,
+   plafonnées pour qu'une carte ne devienne pas énorme sur un grand écran. */
 .slots {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr));
   justify-content: center;
-  gap: clamp(12px, 4vw, 34px);
+  align-items: start;
+  gap: clamp(10px, 2.4vw, 26px);
+  width: 100%;
+  max-width: min(100%, calc(var(--n, 3) * 240px + (var(--n, 3) - 1) * 26px + 36px));
   margin: 6px auto 0;
-  min-height: calc(var(--carte-h) * 0.86 + 26px);
+  padding: 0 clamp(8px, 2vw, 18px);
 }
 
 .slot {
-  width: calc(var(--carte-l) * 0.86);
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
 }
 
-.slot-une { width: calc(var(--carte-l) * 1.08); }
+.slot-une { max-width: 200px; justify-self: center; }
 
 .slot.slot-une .cadre { border-color: transparent; }
 
@@ -256,9 +263,14 @@ body {
 .slots.sans-vide .slot:not(.remplie) { display: none; }
 
 .nom-slot {
-  min-height: 20px;
-  font-size: 13px;
+  width: 100%;
+  max-width: 100%;
+  /* un nom long se replie dans sa colonne au lieu de chevaucher le voisin */
+  font-size: clamp(12px, 1.4vw, 15px);
+  line-height: 1.25;
   font-style: italic;
+  text-align: center;
+  overflow-wrap: break-word;
   color: var(--or);
 }
 
@@ -284,6 +296,10 @@ body {
 }
 
 .slot .libelle {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  hyphens: auto;
   font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.14em;
@@ -448,6 +464,9 @@ body {
 
 @media (max-width: 640px) {
   :root { --carte-l: 58px; --carte-h: 101.9px; }
+  /* trois colonnes sur un téléphone : le libellé de position doit tenir */
+  .slot .libelle { font-size: 9px; letter-spacing: 0.08em; }
+  .slots { padding: 0 10px; }
   .entete { padding-top: 30px; }
   .eventail { height: calc(var(--carte-h) + 52px); margin-top: 8px; }
   .lecture .nom-carte { font-size: 22px; }
@@ -826,10 +845,11 @@ body.fige-scroll { overflow: hidden; }
 
 .slots.etendu {
   display: grid;
-  grid-template-columns: repeat(3, calc(var(--carte-l) * 0.86));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-content: center;
   align-items: start;
   gap: 12px 18px;
+  max-width: min(100%, calc(3 * 158px + 2 * 18px + 36px));
   min-height: 0;
 }
 
@@ -1016,10 +1036,11 @@ body.fige-scroll { overflow: hidden; }
 
 .slots.croix {
   display: grid;
-  grid-template-columns: repeat(5, calc(var(--carte-l) * 0.74));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   justify-content: center;
   align-items: start;
   gap: 10px 14px;
+  max-width: min(100%, calc(5 * 132px + 4 * 14px + 36px));
   min-height: 0;
 }
 
@@ -1033,18 +1054,22 @@ body.fige-scroll { overflow: hidden; }
    Toutes les cases et tout le paquet visibles d'un coup. Les cases ont la
    largeur --mini ; elles reprennent leur taille quand tout est posé. */
 
-body.en-tirage { --mini: 34px; }
-
-body.en-tirage .slots { gap: 10px; min-height: 0; margin-top: 14px; }
-body.en-tirage .slot { width: calc(var(--mini) * 1.25); gap: 3px; }
+body.en-tirage .slots {
+  gap: 8px;
+  margin-top: 14px;
+  max-width: min(100%, calc(var(--n, 3) * 150px + (var(--n, 3) - 1) * 8px + 24px));
+  padding: 0 8px;
+}
+body.en-tirage .slot { width: 100%; gap: 3px; }
 body.en-tirage .slot .libelle { font-size: 8px; letter-spacing: 0.08em; }
 body.en-tirage .nom-slot { display: none; }
 body.en-tirage .slot .cadre { border-radius: 4px; }
 body.en-tirage .slot .cadre .carte .interieur { border-radius: 4px; }
 
 body.en-tirage .slots.etendu {
-  grid-template-columns: repeat(3, var(--mini));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px 10px;
+  max-width: min(100%, calc(3 * 104px + 2 * 10px + 24px));
 }
 body.en-tirage .slots.etendu .slot { width: 100%; }
 body.en-tirage .etendu-entete { display: none; }
@@ -1054,8 +1079,9 @@ body.en-tirage .etendu-bande em { display: none; }
 body.en-tirage .bande-cle { margin-top: 8px; }
 
 body.en-tirage .slots.croix {
-  grid-template-columns: repeat(5, calc(var(--mini) * 0.9));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 6px 8px;
+  max-width: min(100%, calc(5 * 96px + 4 * 8px + 24px));
 }
 
 .slot .cadre { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
@@ -1279,3 +1305,10 @@ body.embed .pied { display: none; }
 body.embed .scene { padding-top: 6px; }
 
 body.embed .choix-mode { margin-top: 4px; }
+
+/* La classe « invisibles » était posée par le JS sans règle CSS : elle ne
+   masquait que les conteneurs vides. Un conteneur PLEIN (l'éventail des dos en
+   mode « au choix ») restait donc affiché. Une seule règle, pour les trois. */
+#eventail.invisibles,
+#slots.invisibles,
+#lecture.invisibles { display: none; }

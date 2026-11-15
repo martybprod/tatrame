@@ -239,6 +239,9 @@
     document.body.classList.remove("a-commence");
     reinitialiserVues();
     slotsBox.classList.toggle("etendu", mode === 10);
+    // le nombre de colonnes de la grille : les cartes occupent la largeur
+    // disponible au lieu d'une largeur fixe (--n est lu par le CSS)
+    slotsBox.style.setProperty("--n", mode === 1 ? 1 : mode === 10 ? 3 : mode);
     // mode 1 : pas d'emplacement vide avant le choix — il apparaît rempli
     slotsBox.classList.toggle("sans-vide", mode === 1);
 
