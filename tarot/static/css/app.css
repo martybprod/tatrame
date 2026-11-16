@@ -171,6 +171,12 @@ body {
   border-radius: 0;
 }
 
+/* Le dos est un PNG : ses coins arrondis sont déjà dans l'image. On ne le rogne
+   donc pas — sinon le rayon du CSS coupe le vrai bord de la carte. */
+.carte .dos {
+  border-radius: 0;
+}
+
 .carte .dos img,
 .carte .face img {
   width: 100%;

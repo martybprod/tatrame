@@ -16,7 +16,7 @@ Exemples : `coupes_as.jpg`, `deniers_7.jpg`, `epees_reine.jpg`.
 Ces 56 clés sont définies dans `moteur/mineurs.py` (`SUIT_NOM`, `RANGS`) —
 c'est la source de vérité. Le front (`urlCarteMineur()` dans
 `templates/index.html`) construit l'URL par cette même convention, avec un
-repli `onerror` sur `/static/cartes/dos.jpg` si un fichier venait à manquer.
+repli `onerror` sur `/static/cartes/dos.png` si un fichier venait à manquer.
 
 `tests/test_mineurs.py::test_images_des_56_mineurs_presentes` vérifie que
 les 56 fichiers sont bien là.

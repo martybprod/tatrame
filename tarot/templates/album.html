@@ -361,7 +361,7 @@ main{max-width:1180px; margin:0 auto; padding:8px 22px 80px}
         <span class="vignette">
           <span class="etq">{{ c.etiquette }}</span>
           <img loading="lazy" src="{{ c.mini }}?v={{ vstat }}" alt="{{ c.nom }}"
-               onerror="this.onerror=null;this.src='/static/cartes/dos.jpg'">
+               onerror="this.onerror=null;this.src='/static/cartes/dos.png'">
         </span>
         {% else %}
         <span class="vignette venue">
@@ -505,7 +505,7 @@ function afficher(id){
   feuille.classList.toggle("message", message);
   if(c.image){
     mImage.innerHTML = '<img src="' + echappe(c.image) + '?v=' + echappe(VSTAT) + '" alt="' + echappe(c.nom) + '"'
-      + ' onerror="this.onerror=null;this.src=\'/static/cartes/dos.jpg\'">';
+      + ' onerror="this.onerror=null;this.src=\'/static/cartes/dos.png\'">';
   } else if(message){
     mImage.innerHTML = "";
   } else {

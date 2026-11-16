@@ -351,7 +351,7 @@ def choisir_personnelle(candidats, vus):
 # correspondance calculée. La voie légitime — les décanats Golden Dawn — est un
 # chantier à part (voir CONCEPTION_MESSAGE_DU_JOUR.md / PROPOSITION.md).
 # ─────────────────────────────────────────────────────────────────────
-URL_DOS = "/static/cartes/dos.jpg"
+URL_DOS = "/static/cartes/dos.png"
 
 
 def url_carte(numero):
