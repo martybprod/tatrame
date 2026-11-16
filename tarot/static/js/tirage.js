@@ -873,16 +873,28 @@
       (carte.micro_geste ? `<p class="pt-titre">Faire</p><p>${carte.micro_geste}</p>` : "");
     plein.classList.remove("invisible");
     plein.setAttribute("aria-hidden", "false");
-    document.body.classList.add("fige-scroll");
+    document.body.classList.add("fige-scroll", "plein-ouvert");
   }
 
   function fermerPlein() {
     plein.classList.add("invisible");
     plein.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("fige-scroll");
+    document.body.classList.remove("fige-scroll", "plein-ouvert");
   }
 
-  plein.addEventListener("click", fermerPlein);
+  /* Un pincement se termine par un click, qui refermait la carte plein écran.
+     On retient le dernier geste à deux doigts et on ignore ce qui suit. */
+  let dernierPincement = 0;
+  const noterPincement = (e) => { if (e.touches && e.touches.length > 1) dernierPincement = Date.now(); };
+  document.addEventListener("touchstart", noterPincement, { passive: true });
+  document.addEventListener("touchmove", noterPincement, { passive: true });
+  document.addEventListener("gesturestart", () => { dernierPincement = Date.now(); }, { passive: true });
+  const pincementRecent = () => Date.now() - dernierPincement < 800;
+
+  plein.addEventListener("click", () => {
+    if (pincementRecent()) return;
+    fermerPlein();
+  });
   pleinTexte.addEventListener("click", (e) => e.stopPropagation());
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") fermerPlein();
@@ -1352,7 +1364,8 @@
   }
   document.getElementById("fermer-position").addEventListener("click", fermerDetail);
   dp.addEventListener("click", (e) => {
-    if (e.target === dp) fermerDetail();
+    if (e.target !== dp || pincementRecent()) return;
+    fermerDetail();
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") fermerDetail();

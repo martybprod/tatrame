@@ -585,6 +585,18 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
   padding-top:max(28px, env(safe-area-inset-top));
   padding-bottom:max(28px, env(safe-area-inset-bottom));
 }
+/* Sur un téléphone, la version 2048² pèse trop lourd dès qu'on pince pour
+   zoomer : iOS ré-échantillonne le calque à l'échelle du zoom avec la même
+   image, et la page finit tuée (« un problème est survenu »). On sert donc la
+   1024 d'origine sous 900 px — à cette taille elle n'est jamais agrandie. */
+@media (max-width:900px){
+  .accueil-jour{
+    background-image:
+      linear-gradient(to bottom,
+        rgba(20,17,16,.62) 0%, rgba(20,17,16,.45) 55%, rgba(20,17,16,.62) 100%),
+      url('/static/img/metierAtisser1_mobile.webp?v={{ vstat }}');
+  }
+}
 /* PREMIUM & DOUX (Martin, 2026-08-24 : « c'était glitchy »). Deux causes
    corrigées ensemble :
    1. `display:none→flex` ET `animation` démarraient dans la MÊME frame —
@@ -2218,9 +2230,18 @@ function fermerCartePlein() {
 // fermer en essayant juste de le faire défiler agaçait (retiré le 2026-08-29).
 // L'image, elle, n'est jamais du texte à lire — cliquer dessus pour sortir est
 // naturel (Martin, 2026-08-30).
+/* Un pincement se termine par un touchend/click sur l'image ou le fond : sans
+   ce garde-fou, zoomer avec deux doigts refermait la carte. On mémorise le
+   dernier geste à deux doigts et on ignore les fermetures qui suivent. */
+let dernierPincement = 0;
+document.addEventListener('touchstart', e => { if (e.touches.length > 1) dernierPincement = Date.now(); }, { passive: true });
+document.addEventListener('touchmove', e => { if (e.touches.length > 1) dernierPincement = Date.now(); }, { passive: true });
+document.addEventListener('gesturestart', () => { dernierPincement = Date.now(); }, { passive: true });
+
 function cartePleinDoitFermer(e) {
   const vue = $('#carte-plein');
   if (!vue || !vue.classList.contains('ouvert') || !e.target.closest('#carte-plein')) return false;
+  if (Date.now() - dernierPincement < 800) return false;
   // ferme sur le fond (hors corps) OU sur l'image ; jamais sur le texte
   return !e.target.closest('.carte-plein-corps') || !!e.target.closest('#carte-plein-img');
 }

@@ -481,6 +481,11 @@ body {
 
 /* ── Plein écran — la vignette révélée s'agrandit au clic ───────────── */
 
+/* Pendant le plein écran, le paquet entier sort du rendu : 79 cartes en 3D
+   n'ont aucune raison d'être ré-échantillonnées à l'échelle du zoom (c'est ce
+   qui fait tomber la mémoire sur iOS). */
+body.plein-ouvert #eventail { display: none; }
+
 .slot .cadre .carte.retournee { cursor: zoom-in; }
 
 body.fige-scroll { overflow: hidden; }
