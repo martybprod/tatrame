@@ -22,6 +22,79 @@
   const pleinCorps = plein.querySelector(".plein-corps");
   const pleinImg = plein.querySelector(".plein-img");
   const pleinTexte = plein.querySelector(".plein-texte");
+
+  /* ZOOM MAISON de la carte plein écran (2026-11-16 : « je peux zoomer un
+     peu, mais ça finit par planter »). Le pincement NATIF d'iOS agrandit
+     TOUTE la page — et dans Ta Trame, toute la page HÔTE autour de l'iframe :
+     chaque calque (fonds fixes, cartes 3D) est ré-échantillonné à l'échelle
+     du zoom, la mémoire explose et iOS tue la page (« Un problème est
+     survenu »). Ici, le zoom natif est BLOQUÉ dans #plein et seule l'IMAGE
+     grandit (transform) : un bitmap déjà décodé, coût constant. Même code
+     que zoomCarte() dans ASTRO_PLUS_APP/templates/index.html.
+     Pincer = zoomer (×1 à ×4, autour des doigts) ; un doigt = déplacer ;
+     toucher l'image zoomée = revenir à ×1 (au lieu de fermer). */
+  function zoomCarte(vue, img) {
+    const MAX = 4;
+    let s = 1, tx = 0, ty = 0, geste = null, dernierGeste = 0;
+    const dist = (a, b) => Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+    const milieu = (a, b) => ({ x: (a.clientX + b.clientX) / 2, y: (a.clientY + b.clientY) / 2 });
+    const centre = () => {  // centre de l'image SANS la translation courante
+      const r = img.getBoundingClientRect();
+      return { x: r.left + r.width / 2 - tx, y: r.top + r.height / 2 - ty };
+    };
+    const appliquer = () => {
+      const bx = img.offsetWidth * (s - 1) / 2, by = img.offsetHeight * (s - 1) / 2;
+      tx = Math.max(-bx, Math.min(bx, tx));
+      ty = Math.max(-by, Math.min(by, ty));
+      img.style.transition = geste ? "none" : "transform .25s ease";
+      img.style.transform = s > 1 ? `translate(${tx}px, ${ty}px) scale(${s})` : "";
+      vue.classList.toggle("zoom-actif", s > 1);
+    };
+    const reinitialiser = () => { s = 1; tx = ty = 0; geste = null; appliquer(); };
+    vue.addEventListener("touchstart", (e) => {
+      if (e.touches.length >= 2) {
+        e.preventDefault();
+        const [a, b] = e.touches;
+        geste = { type: "pince", d0: dist(a, b), m0: milieu(a, b), c: centre(), s0: s, tx0: tx, ty0: ty };
+      } else if (s > 1) {
+        const t = e.touches[0];
+        geste = { type: "glisse", x0: t.clientX, y0: t.clientY, tx0: tx, ty0: ty, bouge: false };
+      }
+    }, { passive: false });
+    vue.addEventListener("touchmove", (e) => {
+      if (e.touches.length >= 2) e.preventDefault();   // jamais de zoom natif ici
+      if (!geste) return;
+      if (geste.type === "pince" && e.touches.length >= 2) {
+        const [a, b] = e.touches, m = milieu(a, b);
+        s = Math.max(1, Math.min(MAX, geste.s0 * dist(a, b) / geste.d0));
+        const k = s / geste.s0;   // le point sous les doigts reste sous les doigts
+        tx = (m.x - geste.c.x) - (geste.m0.x - geste.c.x - geste.tx0) * k;
+        ty = (m.y - geste.c.y) - (geste.m0.y - geste.c.y - geste.ty0) * k;
+        appliquer();
+      } else if (geste.type === "glisse") {
+        e.preventDefault();
+        const t = e.touches[0], dx = t.clientX - geste.x0, dy = t.clientY - geste.y0;
+        if (Math.abs(dx) + Math.abs(dy) > 6) geste.bouge = true;
+        tx = geste.tx0 + dx; ty = geste.ty0 + dy;
+        appliquer();
+      }
+    }, { passive: false });
+    vue.addEventListener("touchend", (e) => {
+      if (!geste || e.touches.length) return;
+      const g = geste;
+      geste = null;
+      dernierGeste = Date.now();
+      if (g.type === "glisse" && !g.bouge) reinitialiser();   // un toucher dézoome
+      else if (s < 1.05) reinitialiser();
+      else appliquer();
+    });
+    // Safari : les événements gesture* déclenchent le zoom natif s'ils passent
+    ["gesturestart", "gesturechange"].forEach((t) =>
+      vue.addEventListener(t, (e) => e.preventDefault(), { passive: false }));
+    // occupe : zoomée, ou un geste vient de finir — aucune fermeture dans ce cas
+    return { reinitialiser, occupe: () => s > 1 || Date.now() - dernierGeste < 450 };
+  }
+  const zoomPlein = zoomCarte(plein, pleinImg);
   const surtitre = document.getElementById("surtitre-jeu");
   const piedTexte = document.getElementById("pied-texte");
 
@@ -871,6 +944,7 @@
       (q ? `<p class="pt-titre">Questions</p><ul>${q}</ul>` : "") +
       (carte.lecon ? `<p class="pt-titre">Leçon</p><p><i>${carte.lecon}</i></p>` : "") +
       (carte.micro_geste ? `<p class="pt-titre">Faire</p><p>${carte.micro_geste}</p>` : "");
+    zoomPlein.reinitialiser();
     plein.classList.remove("invisible");
     plein.setAttribute("aria-hidden", "false");
     document.body.classList.add("fige-scroll", "plein-ouvert");
@@ -892,7 +966,7 @@
   const pincementRecent = () => Date.now() - dernierPincement < 800;
 
   plein.addEventListener("click", () => {
-    if (pincementRecent()) return;
+    if (pincementRecent() || zoomPlein.occupe()) return;
     fermerPlein();
   });
   pleinTexte.addEventListener("click", (e) => e.stopPropagation());

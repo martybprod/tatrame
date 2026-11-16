@@ -58,9 +58,11 @@ self.addEventListener("activate", (event) => {
 // donc pas mis à jour et les appareils qui reviennent servaient encore
 // l'ancienne page depuis CACHE_PAGES. Le changement de nom force la purge
 // à la prochaine navigation de chaque appareil.
-const CACHE_PAGES = "tatrame-pages-v2";     // la page elle-même (SWR)
-const CACHE_STATIQUE = "tatrame-statique-v2"; // ?v= — immuable, cache-d'abord
-const CACHE_JOUR = "tatrame-jour-v2";       // le bundle du jour (repli hors-ligne)
+// v2 → v3 le 2026-11-16 : le zoom maison des cartes vit dans la page —
+// sans purge, l'iPhone gardait l'ancienne page (« aucune différence »).
+const CACHE_PAGES = "tatrame-pages-v3";     // la page elle-même (SWR)
+const CACHE_STATIQUE = "tatrame-statique-v3"; // ?v= — immuable, cache-d'abord
+const CACHE_JOUR = "tatrame-jour-v3";       // le bundle du jour (repli hors-ligne)
 
 // ─── Page : stale-while-revalidate ──────────────────────────────────────────
 // Stockée TOUJOURS sous la clé `/` (match avec ignoreSearch) : les navigations

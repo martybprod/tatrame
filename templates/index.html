@@ -733,6 +733,13 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
    nouvelle n'est pas décodée : le navigateur garderait sinon l'ancien bitmap
    affiché, d'où un flash de la carte précédente (Martin, 2026-08-27). */
 .carte-plein-corps img.img-chargement{opacity:0}
+/* Zoom maison (voir zoomCarte() côté JS) : `pan-x pan-y` retire le pincement
+   natif à la vue plein écran (le défilement du texte reste). Zoomée, l'image
+   déborde du corps défilant au lieu d'y être rognée, au-dessus du texte. */
+#carte-plein{touch-action:pan-x pan-y}
+#carte-plein-img{position:relative;z-index:2;transform-origin:center}
+#carte-plein.zoom-actif .accueil-carte,
+#carte-plein.zoom-actif .carte-plein-corps{overflow:visible}
 .carte-plein-corps .carte-plein-nom{font-family:var(--serif);font-size:22px;text-align:center}
 /* Le calcul : d'où vient la carte. Tiroir REPLIÉ (Martin, 2026-09-29 : « je
    ne veux pas qu'on voie directement l'explication ») — la carte d'abord,
@@ -2115,6 +2122,7 @@ function ouvrirCartePleinDonnees({src, nom, cause = '', invitation = '', lecture
   };
   fermetureCartePleinEnCours = false;
   vue.classList.remove('fermant');
+  zoomCartePlein().reinitialiser();
   vue.classList.add('ouvert');
   vue.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
@@ -2233,6 +2241,81 @@ function fermerCartePlein() {
 /* Un pincement se termine par un touchend/click sur l'image ou le fond : sans
    ce garde-fou, zoomer avec deux doigts refermait la carte. On mémorise le
    dernier geste à deux doigts et on ignore les fermetures qui suivent. */
+/* ZOOM MAISON de la carte plein écran (2026-11-16 : « je peux zoomer un peu,
+   mais ça finit par planter »). Le pincement NATIF d'iOS agrandit TOUTE la
+   page : chaque calque plein écran (#fond-app, les trois .accueil-jour avec
+   leur fond `cover`, l'iframe du Tarot si l'onglet a été visité) est
+   ré-échantillonné à l'échelle du zoom — la mémoire explose et iOS tue la
+   page (« Un problème est survenu »). Alléger les fonds ne faisait que
+   repousser le seuil. Ici, le zoom natif est BLOQUÉ dans la vue plein écran
+   et seule l'IMAGE grandit (transform) : un bitmap 800×1388 déjà décodé,
+   coût constant quel que soit le facteur. Même code dans TAROT_APP/tirage.js.
+   Pincer = zoomer (×1 à ×4, autour des doigts) ; un doigt = déplacer ;
+   toucher l'image zoomée = revenir à ×1 (au lieu de fermer). */
+function zoomCarte(vue, img) {
+  const MAX = 4;
+  let s = 1, tx = 0, ty = 0, geste = null, dernierGeste = 0;
+  const dist = (a, b) => Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+  const milieu = (a, b) => ({ x: (a.clientX + b.clientX) / 2, y: (a.clientY + b.clientY) / 2 });
+  const centre = () => {  // centre de l'image SANS la translation courante
+    const r = img.getBoundingClientRect();
+    return { x: r.left + r.width / 2 - tx, y: r.top + r.height / 2 - ty };
+  };
+  const appliquer = () => {
+    const bx = img.offsetWidth * (s - 1) / 2, by = img.offsetHeight * (s - 1) / 2;
+    tx = Math.max(-bx, Math.min(bx, tx));
+    ty = Math.max(-by, Math.min(by, ty));
+    img.style.transition = geste ? 'none' : 'transform .25s ease';
+    img.style.transform = s > 1 ? `translate(${tx}px, ${ty}px) scale(${s})` : '';
+    vue.classList.toggle('zoom-actif', s > 1);
+  };
+  const reinitialiser = () => { s = 1; tx = ty = 0; geste = null; appliquer(); };
+  vue.addEventListener('touchstart', e => {
+    if (e.touches.length >= 2) {
+      e.preventDefault();
+      const [a, b] = e.touches;
+      geste = { type: 'pince', d0: dist(a, b), m0: milieu(a, b), c: centre(), s0: s, tx0: tx, ty0: ty };
+    } else if (s > 1) {
+      const t = e.touches[0];
+      geste = { type: 'glisse', x0: t.clientX, y0: t.clientY, tx0: tx, ty0: ty, bouge: false };
+    }
+  }, { passive: false });
+  vue.addEventListener('touchmove', e => {
+    if (e.touches.length >= 2) e.preventDefault();   // jamais de zoom natif ici
+    if (!geste) return;
+    if (geste.type === 'pince' && e.touches.length >= 2) {
+      const [a, b] = e.touches, m = milieu(a, b);
+      s = Math.max(1, Math.min(MAX, geste.s0 * dist(a, b) / geste.d0));
+      const k = s / geste.s0;   // le point sous les doigts reste sous les doigts
+      tx = (m.x - geste.c.x) - (geste.m0.x - geste.c.x - geste.tx0) * k;
+      ty = (m.y - geste.c.y) - (geste.m0.y - geste.c.y - geste.ty0) * k;
+      appliquer();
+    } else if (geste.type === 'glisse') {
+      e.preventDefault();
+      const t = e.touches[0], dx = t.clientX - geste.x0, dy = t.clientY - geste.y0;
+      if (Math.abs(dx) + Math.abs(dy) > 6) geste.bouge = true;
+      tx = geste.tx0 + dx; ty = geste.ty0 + dy;
+      appliquer();
+    }
+  }, { passive: false });
+  vue.addEventListener('touchend', e => {
+    if (!geste || e.touches.length) return;
+    const g = geste;
+    geste = null;
+    dernierGeste = Date.now();
+    if (g.type === 'glisse' && !g.bouge) reinitialiser();   // un toucher dézoome
+    else if (s < 1.05) reinitialiser();
+    else appliquer();
+  });
+  // Safari : les événements gesture* déclenchent le zoom natif s'ils passent
+  ['gesturestart', 'gesturechange'].forEach(t =>
+    vue.addEventListener(t, e => e.preventDefault(), { passive: false }));
+  // occupe : zoomée, ou un geste vient de finir — aucune fermeture dans ce cas
+  return { reinitialiser, occupe: () => s > 1 || Date.now() - dernierGeste < 450 };
+}
+let zoomPlein = null;
+const zoomCartePlein = () => zoomPlein ||= zoomCarte($('#carte-plein'), $('#carte-plein-img'));
+
 let dernierPincement = 0;
 document.addEventListener('touchstart', e => { if (e.touches.length > 1) dernierPincement = Date.now(); }, { passive: true });
 document.addEventListener('touchmove', e => { if (e.touches.length > 1) dernierPincement = Date.now(); }, { passive: true });
@@ -2242,6 +2325,7 @@ function cartePleinDoitFermer(e) {
   const vue = $('#carte-plein');
   if (!vue || !vue.classList.contains('ouvert') || !e.target.closest('#carte-plein')) return false;
   if (Date.now() - dernierPincement < 800) return false;
+  if (zoomCartePlein().occupe()) return false;
   // ferme sur le fond (hors corps) OU sur l'image ; jamais sur le texte
   return !e.target.closest('.carte-plein-corps') || !!e.target.closest('#carte-plein-img');
 }

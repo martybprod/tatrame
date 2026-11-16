@@ -527,6 +527,13 @@ body.fige-scroll { overflow: hidden; }
   box-shadow: 0 24px 90px rgba(0, 0, 0, 0.85);
 }
 
+/* Zoom maison (voir zoomCarte() dans tirage.js) : `pan-x pan-y` retire le
+   pincement natif à la vue plein écran (le défilement du texte reste) ;
+   zoomée, l'image passe au-dessus du texte, rognée au bord de l'écran. */
+.plein { touch-action: pan-x pan-y; overflow: hidden; }
+.plein .plein-fermer { z-index: 3; }   /* le ✕ reste au-dessus de l'image zoomée */
+.plein-img { position: relative; z-index: 2; transform-origin: center; }
+
 .plein-texte {
   max-width: 460px;
   max-height: 76vh;
