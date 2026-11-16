@@ -965,7 +965,13 @@
   document.addEventListener("gesturestart", () => { dernierPincement = Date.now(); }, { passive: true });
   const pincementRecent = () => Date.now() - dernierPincement < 800;
 
-  plein.addEventListener("click", () => {
+  /* Seuls le ✕ et le fond (hors de la carte et du texte) ferment le plein
+     écran. Toucher l'IMAGE ne ferme plus (Martin, 2026-11-16 : ça entrait en
+     conflit avec le zoom) — même règle que les cartes du jour de Ta Trame.
+     Le ✕ ferme toujours, même carte zoomée. */
+  plein.addEventListener("click", (e) => {
+    if (e.target.closest(".plein-fermer")) { fermerPlein(); return; }
+    if (e.target.closest(".plein-img, .plein-texte")) return;
     if (pincementRecent() || zoomPlein.occupe()) return;
     fermerPlein();
   });

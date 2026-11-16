@@ -532,7 +532,7 @@ body.fige-scroll { overflow: hidden; }
    zoomée, l'image passe au-dessus du texte, rognée au bord de l'écran. */
 .plein { touch-action: pan-x pan-y; overflow: hidden; }
 .plein .plein-fermer { z-index: 3; }   /* le ✕ reste au-dessus de l'image zoomée */
-.plein-img { position: relative; z-index: 2; transform-origin: center; }
+.plein-img { position: relative; z-index: 2; transform-origin: center; cursor: default; }
 
 .plein-texte {
   max-width: 460px;
