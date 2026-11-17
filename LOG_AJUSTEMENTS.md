@@ -232,4 +232,4 @@
 - **Validation** : pytest verte (840 passés) ; testé au navigateur sur profil
   d'essai `jeanne-fil` (tissage au scroll, ligne de reprise, reprise → dépôt au
   bloc, bascule manuelle dans les deux sens, persistance au rechargement).
-- **Statut** : livré le jour même ; **non poussé** (déploiement sur accord de Martin).
+- **Statut** : livré et **poussé** le jour même (`cf1a3b4`) — Coolify redéploie tatrame.ca.
