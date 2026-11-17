@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarot — le tirage</title>
-<link rel="stylesheet" href="css/app.css?v=37">
+<link rel="stylesheet" href="css/app.css?v=38">
 </head>
 <body{% if embed %} class="embed"{% endif %}>
 
@@ -27,6 +27,8 @@
     <span class="filet-mode" aria-hidden="true"></span>
     <button class="mode" data-mode="11" role="tab" aria-selected="false">Croix</button>
   </div>
+
+  <div id="croix-barre" class="croix-barre invisibles" role="tablist" aria-label="Croix à lire"></div>
 
   <details class="ped-conteneur">
     <summary>Comprendre ce tirage</summary>
@@ -98,6 +100,6 @@
 </div>
 
 <script>window.DOS_URL = "img/dos.png?v={{ version_dos }}";</script>
-<script src="js/tirage.js?v=36"></script>
+<script src="js/tirage.js?v=37"></script>
 </body>
 </html>

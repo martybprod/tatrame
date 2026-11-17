@@ -398,7 +398,9 @@
     // cartes et la même variante du regard). Sans paramètre : tirage libre.
     const graineUrl = new URLSearchParams(location.search).get("graine");
     const suffixe = graineUrl ? `&graine=${encodeURIComponent(graineUrl)}` : "";
-    const r = await fetch(`api/tirage?mode=${mode}${suffixe}`);
+    // ?croix=… choisit la croix lue ; sans paramètre, celle déjà active
+    const croixReq = (mode === 11) ? `&croix=${encodeURIComponent(croixActive)}` : "";
+    const r = await fetch(`api/tirage?mode=${mode}${suffixe}${croixReq}`);
     if (!r.ok) throw new Error("tirage refusé");
     tirage = await r.json();
     dernierTotal = tirage.total_jeu;
@@ -408,6 +410,7 @@
     croixActive = (mode === 11 && tirage.grille) ? tirage.grille : "croix_celtique";
     afficherPedagogie();
     construireSlots();
+    construireBarreCroix();
     majCompteur();
     return tirage;
   }
@@ -585,31 +588,39 @@
       });
       boite.prepend(barre);
     }
-    // les trois croix se choisissent ici aussi : la même donne se relit avec
-    // une autre grammaire, sans retirer les cartes
+  }
+
+  // ── Le choix de la croix — sous les modes, toujours visible ──────────
+  // Trois croix, une seule donne : le choix se fait avant le tirage et peut
+  // se changer après, sans retirer les cartes.
+
+  function construireBarreCroix() {
+    const barre = document.getElementById("croix-barre");
+    if (!barre) return;
     const croix = (tirage && mode === 11) ? (tirage.croix_choix || []) : [];
-    if (croix.length > 1) {
-      const barre = document.createElement("div");
-      barre.className = "ped-grilles";
-      barre.setAttribute("role", "tablist");
-      barre.setAttribute("aria-label", "Croix à lire");
-      croix.forEach((c) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "grille-bouton" + (c.id === croixActive ? " actif" : "");
-        b.setAttribute("role", "tab");
-        b.setAttribute("aria-selected", String(c.id === croixActive));
-        b.textContent = c.nom;
-        b.addEventListener("click", () => changerCroix(c.id));
-        barre.appendChild(b);
-      });
-      boite.prepend(barre);
+    if (croix.length < 2) {
+      barre.classList.add("invisibles");
+      barre.innerHTML = "";
+      return;
     }
+    barre.innerHTML = "";
+    croix.forEach((c) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "grille-bouton" + (c.id === croixActive ? " actif" : "");
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", String(c.id === croixActive));
+      b.textContent = c.nom;
+      b.addEventListener("click", () => changerCroix(c.id));
+      barre.appendChild(b);
+    });
+    barre.classList.remove("invisibles");
   }
 
   function changerCroix(id) {
     if (!tirage || mode !== 11 || id === croixActive) return;
     croixActive = id;
+    construireBarreCroix();
     afficherPedagogie();
     majCompteur();
     if (ordreRevelation.length) rendreLecture();
@@ -1494,6 +1505,9 @@
   // Sans graine dans l'URL, on ouvre toujours sur « Une carte ».
   const params = new URLSearchParams(location.search);
   const modeUrl = params.has("graine") && params.has("mode") ? Number(params.get("mode")) : 1;
+  // ?croix=croix_osho : ouvrir directement sur l'une des trois croix
+  const croixUrl = params.get("croix") || "";
+  if (/^croix_[a-z_]+$/.test(croixUrl)) croixActive = croixUrl;
   if (modeUrl === 0 || modeUrl === 1 || modeUrl === 3 || modeUrl === 10 || modeUrl === 11) {
     mode = modeUrl;
     boutonsMode.forEach((b) => {

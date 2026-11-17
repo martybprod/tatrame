@@ -1315,6 +1315,18 @@ body { overscroll-behavior-x: none; }
    ferait doublon. Il revient dès que le panneau se referme. */
 details.ped-conteneur[open] ~ #grilles { display: none; }
 
+/* ── Le choix de la croix — visible dès qu'on ouvre « Croix » ───────── */
+
+.croix-barre {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 2px 0 10px;
+}
+
+.croix-barre.invisibles { display: none; }
+
 /* ── Intégration dans Ta Trame (?embed=1) : la page nue ─────────────── */
 
 body.embed .entete,
