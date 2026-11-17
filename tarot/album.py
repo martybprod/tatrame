@@ -323,6 +323,25 @@ def _champs_tirage_grille(grille):
     return champs
 
 
+def _champs_tirage_question(bloc):
+    """« Une question » (2026-11-16) : sa pédagogie, le libellé de chacune
+    des cinq questions (ce que la personne lit et choisit), son vocabulaire."""
+    champs = [
+        ("pedagogie.resume", "Résumé (deux lignes)"),
+        ("pedagogie.pourquoi", "Pourquoi ce tirage"),
+        ("pedagogie.le_tirage", "Le sens général"),
+        ("pedagogie.comment_lire", "Comment lire"),
+        ("pedagogie.apres", "Après la lecture"),
+    ]
+    for i, pos in enumerate(bloc.get("positions", [])):
+        champs.append(("positions.%d.question" % i,
+                       "Question %d — %s" % (i + 1, pos.get("libelle", ""))))
+    for i, voc in enumerate((bloc.get("pedagogie") or {}).get("vocabulaire", [])):
+        champs.append(("pedagogie.vocabulaire.%d.texte" % i,
+                       "Vocabulaire — %s" % voc.get("titre", "")))
+    return champs
+
+
 def _champs_tirage_etendu(bloc):
     """Les champs éditables du 9 + 1 : sa pédagogie, ses trois niveaux, son
     vocabulaire — construits depuis le bloc, jamais écrits en dur."""
@@ -374,6 +393,13 @@ def _cible_tirage(carte_id, champ):
         champs = _champs_tirage_etendu(bloc)
         noeud = donnees
         chemin = ["etendu_9_1"] + _chemin_de_champ(champ)
+    elif cle == "question_1":
+        bloc = donnees.get("question_1") if isinstance(donnees, dict) else None
+        if not isinstance(bloc, dict):
+            return None
+        champs = _champs_tirage_question(bloc)
+        noeud = donnees
+        chemin = ["question_1"] + _chemin_de_champ(champ)
     elif cle == "choix_3":
         bloc = donnees.get("choix_3") if isinstance(donnees, dict) else None
         if not isinstance(bloc, dict):
@@ -436,8 +462,11 @@ def _section_tirages():
         }
 
     cartes = [
-        carte_tirage("jour", "La carte du jour", CHAMPS_TIRAGE_JOUR,
-                     donnees.get("jour")),
+        carte_tirage("question_1", "Une question",
+                     _champs_tirage_question(donnees.get("question_1") or {}),
+                     donnees.get("question_1")),
+        carte_tirage("jour", "La carte du jour (ancienne, hors de l'accueil)",
+                     CHAMPS_TIRAGE_JOUR, donnees.get("jour")),
         carte_tirage("causale_3", "Trois cartes — situation, nœud, levier",
                      CHAMPS_TIRAGE_CAUSALE, donnees.get("causale_3")),
         carte_tirage("etendu_9_1", "Neuf + une — approfondir en trois temps",

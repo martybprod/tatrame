@@ -1706,3 +1706,25 @@ body.table .etendu-bande span { overflow: visible; text-overflow: clip; }
 @media (min-width: 641px) {
   :root:has(body.table) { --carte-l: 70px; --carte-h: 123px; }
 }
+
+/* Une question : la question posée, entre le nom de la carte et sa réponse */
+.lecture .question-posee {
+  margin: 18px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--or);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--encre);
+  text-align: left;
+}
+.lecture .question-posee + .texte-carte { margin-top: 12px; }
+/* La lecture à une carte : le nom reste centré sous la carte, la réponse se
+   lit alignée à gauche (texte de plusieurs lignes) ; les puces de
+   « Prolonger » rentrent dans la marge au lieu de coller au bord */
+.lecture .question-posee ~ .texte-carte,
+.lecture .question-posee ~ .bloc-appoint,
+.lecture .question-posee ~ .surtitre-bloc,
+.lecture .question-posee ~ .faire { text-align: left; }
+.lecture ul.ecouter { padding-left: 18px; margin: 4px 0 0; }
+.lecture .question-posee ~ .surtitre-bloc { margin-top: 20px; }

@@ -58,6 +58,89 @@
       "resume": "Une carte pour accompagner ta journée en quatre temps : observer, écouter, nuancer et agir. Elle ne prédit rien : elle t'offre un angle de réflexion et un geste concret."
     }
   },
+  "question_1": {
+    "id": "question_1",
+    "nom": "Une question",
+    "nb_cartes": 1,
+    "grammaire": "question",
+    "_note": "2026-11-16 — remplace « La carte du jour » dans le Tarot (Ta Trame a déjà ses cartes du jour). Sources : Wen (une carte = le cœur du sujet ; boîte de reformulation des questions), Greer (« est-ce que je vais… » devient « qu'est-ce qui se joue… »), INDEX règle 1 (jamais une carte seule : position × carte × question). Chaque question est une position qui lit un champ EXISTANT de la fiche : aucun texte de carte nouveau. Pédagogie : BROUILLON de l'agent, à reformuler par Martin (vocabulaire repris tel quel de « jour »).",
+    "positions": [
+      {
+        "id": "se_joue",
+        "libelle": "ce qui se joue",
+        "question": "Qu'est-ce qui se joue pour moi en ce moment ?",
+        "champ": "positions.se_joue",
+        "appoint": {
+          "champs": [
+            "image.detail"
+          ],
+          "genre": "detail"
+        }
+      },
+      {
+        "id": "ne_regarde_pas",
+        "libelle": "ce que je ne regarde pas",
+        "question": "Qu'est-ce que je ne regarde pas ?",
+        "champ": "ombre.texte",
+        "appoint": {
+          "champ": "ombre.mode",
+          "genre": "tag"
+        }
+      },
+      {
+        "id": "prendre_conscience",
+        "libelle": "ce dont j'ai besoin de prendre conscience",
+        "question": "De quoi ai-je besoin de prendre conscience ?",
+        "champ": "lecon",
+        "appoint": {
+          "champ": "tension",
+          "genre": "tension"
+        }
+      },
+      {
+        "id": "traverser",
+        "libelle": "comment traverser",
+        "question": "Comment traverser cela ?",
+        "champ": "ombre.issue",
+        "appoint": {
+          "champ": "micro_geste",
+          "genre": "geste"
+        }
+      },
+      {
+        "id": "apporte",
+        "libelle": "ce que j'apporte",
+        "question": "Qu'est-ce que j'apporte dans cette situation ?",
+        "champ": "positions.amene"
+      }
+    ],
+    "question_par_defaut": "se_joue",
+    "pedagogie": {
+      "resume": "Une seule carte, et une question que tu choisis parmi cinq. La carte ne répond pas à ta place : elle éclaire la question sous un angle que tu n'aurais peut-être pas pris.",
+      "pourquoi": "Une carte seule ne dit presque rien. Ce qui lui donne un sens, c'est la question qu'on lui pose. Plutôt que de te demander ce qui va arriver, ce tirage te propose cinq façons de regarder ce qui est déjà là : ce qui se joue, ce que tu ne regardes pas, ce dont tu as besoin de prendre conscience, comment traverser la situation, et ce que tu y apportes.",
+      "le_tirage": "Tu choisis d'abord ta question, puis tu tires une carte. La même carte ne répond pas de la même façon à deux questions différentes : c'est la question qui choisit le passage de la carte que tu lis.",
+      "comment_lire": "Commence par regarder l'image avant de lire le texte. Remarque ce qui t'arrête, puis lis la réponse en gardant ta question en tête. Si une phrase ne te parle pas, ne la force pas : garde celle qui résonne.",
+      "apres": "Tu peux poser une autre question à la même carte, sans la retirer. Relis aussi les questions de la fiche : elles servent à prolonger la réflexion. Termine par le geste proposé, si tu le sens juste.",
+      "vocabulaire": [
+        {
+          "titre": "Les familles",
+          "texte": "Le jeu est divisé en quatre familles, chacune associée à un domaine de l'expérience. Le feu représente l'élan : le désir d'agir, de commencer et de mettre les choses en mouvement. L'eau représente les émotions et les liens : les relations, les attachements et les ressentis. L'air représente les idées : la réflexion, les mots et la compréhension. La terre représente le concret : le corps, la maison, les ressources matérielles et ce qui se construit avec le temps."
+        },
+        {
+          "titre": "Les majeures et les mineures",
+          "texte": "Le jeu comprend 22 arcanes majeurs et 56 arcanes mineurs. Les majeurs abordent les grands passages de la vie, les expériences marquantes et les décisions importantes. Les mineurs concernent davantage les situations du quotidien. Ils sont répartis entre les quatre familles et organisés en degrés, du 1 au 10. Le 1 marque une ouverture ou un commencement ; le 10 représente un achèvement."
+        },
+        {
+          "titre": "Les figures",
+          "texte": "Le Page, le Chevalier, la Reine et le Roi ne représentent pas nécessairement des personnes. Ils décrivent quatre façons d'aborder une situation. Le Page invite à explorer et à découvrir. Le Chevalier indique où diriger son énergie et son élan. La Reine évoque la manière de nourrir et de développer quelque chose intérieurement. Le Roi représente la capacité d'organiser, de décider et de maintenir un cadre."
+        },
+        {
+          "titre": "La lecture des éléments",
+          "texte": "Lorsque deux cartes se suivent, leurs éléments permettent de comprendre comment elles interagissent. Selon leur combinaison, elles peuvent se renforcer, se neutraliser ou créer une tension. La section sur la lecture des éléments, dans la méthode du tirage à trois cartes, explique les relations entre les quatre familles et leur rôle dans l'interprétation."
+        }
+      ]
+    }
+  },
   "causale_3": {
     "id": "causale_3",
     "nom": "Trois cartes — situation, nœud, levier",

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarot — le tirage</title>
-<link rel="stylesheet" href="css/app.css?v=60">
+<link rel="stylesheet" href="css/app.css?v=62">
 </head>
 <body class="accueil{% if embed %} embed{% endif %}">
 
@@ -37,7 +37,7 @@
   <!-- Trois cartes : la grille se choisit dès l'ouverture (Martin, 2026-11-16) —
        une ligne, les quatre grilles dans le tiroir -->
   <button id="grille-avant" class="relire grille-avant invisibles" type="button" aria-haspopup="dialog">
-    <span>Grille de lecture<small id="grille-avant-sous"></small></span><span class="relire-fleche" aria-hidden="true">›</span>
+    <span><span id="grille-avant-titre">Grille de lecture</span><small id="grille-avant-sous"></small></span><span class="relire-fleche" aria-hidden="true">›</span>
   </button>
 
   <div id="vues" class="vues invisibles" role="tablist" aria-label="Façon de lire">
@@ -74,7 +74,7 @@
 
   <!-- Après la lecture : relire la même donne sous une autre grille -->
   <button id="relire" class="relire invisibles" type="button" aria-haspopup="dialog">
-    <span>Relire autrement<small id="relire-sous"></small></span><span class="relire-fleche" aria-hidden="true">›</span>
+    <span><span id="relire-titre">Relire autrement</span><small id="relire-sous"></small></span><span class="relire-fleche" aria-hidden="true">›</span>
   </button>
 
   <div class="actions">
@@ -116,6 +116,6 @@
 </div>
 
 <script>window.DOS_URL = "img/dos.png?v={{ version_dos }}";</script>
-<script src="js/tirage.js?v=63"></script>
+<script src="js/tirage.js?v=65"></script>
 </body>
 </html>

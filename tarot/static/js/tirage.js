@@ -136,16 +136,20 @@
     trois: R(5, 17, 14, 24) + R(22, 17, 14, 24) + R(39, 17, 14, 24),
     diamant: R(23, 2, 12, 17) + R(6, 21, 12, 17) + R(23, 21, 12, 17, true) +
              R(40, 21, 12, 17) + R(23, 40, 12, 17),
-    neuf: [9, 23, 37].flatMap((x) => [2, 16, 30].map((y) => R(x, y, 11, 12))).join("") +
-          R(23, 44, 11, 12, true),
+    // toutes les cases au même rapport vertical (~0,6, comme une carte) :
+    // Neuf + une et le bâton de la croix étaient presque carrés (Martin, 2026-11-16)
+    neuf: [15, 25, 35].flatMap((x) => [1, 15, 29].map((y) => R(x, y, 8, 13))).join("") +
+          R(25, 44, 8, 13, true),
     croix: R(15, 2, 10, 15) + R(2, 20, 10, 15) + R(15, 20, 10, 15) + R(28, 20, 10, 15) +
-           R(15, 38, 10, 15) + R(45, 2, 10, 12) + R(45, 16, 10, 12) + R(45, 30, 10, 12) +
-           R(45, 44, 10, 12),
+           R(15, 38, 10, 15) + R(46, 1, 8, 13) + R(46, 15, 8, 13) + R(46, 29, 8, 13) +
+           R(46, 43, 8, 13),
   };
   const CATALOGUE = [
-    { etagere: "Pour la journée", items: [
-      { id: "jour", nom: "La carte du jour", n: 1, mode: 1, schema: "un", vedette: true,
-        pour: "Un angle pour ta journée, et un geste." },
+    // « Une question » remplace la carte du jour (2026-11-16) : Ta Trame a déjà
+    // ses cartes du jour. Wen : une carte = le cœur du sujet, posé par UNE question.
+    { etagere: "Pour une question", items: [
+      { id: "question", nom: "Une question", n: 1, mode: 1, schema: "un", vedette: true,
+        pour: "Choisis ta question ; une carte l'éclaire." },
     ]},
     { etagere: "Pour éclairer une situation", items: [
       { id: "trois", nom: "Trois cartes", n: 3, mode: 3, schema: "trois", pige: true,
@@ -177,6 +181,7 @@
   // les cartes ne changent pas, seule change la question posée à la position.
   let grilleActive = "causale_3";
   let croixActive = "croix_celtique";  // même donne, trois croix possibles
+  let questionActive = null;           // Une question : la question posée à la carte
   let ordreRevelation = [];   // [{carte, i}] dans l'ordre choisi par celui qui tire
   let rangeesAnnoncees = new Set();  // mode 10 : les trois temps déjà lus
 
@@ -191,7 +196,7 @@
   function grilleCourante() {
     if (!tirage) return null;
     if (tirage.mode === 1) {
-      return { id: "jour", nom: "La carte du jour", cloture: "micro_geste",
+      return { id: "question_1", nom: "Une question", cloture: "micro_geste",
                positions: tirage.positions_def || [],
                pedagogie: tirage.pedagogie || {} };
     }
@@ -371,8 +376,13 @@
 
   // ── Compteur du tirage : où en est-on, quelle position vient ────────
 
+  function questionCourante() {
+    return (tirage && (tirage.positions_def || []).find((p) => p.id === questionActive)) || null;
+  }
+
   function libellePosition(n) {
     if (!tirage) return "";
+    if (mode === 1) { const q = questionCourante(); return q ? q.question : ""; }
     if (mode === 10) {
       const E = tirage.etendu || {};
       if (n >= 9) return (E.cle && E.cle.libelle) || "la clé d'intégration";
@@ -514,6 +524,10 @@
       grilleActive = tirage.grille || "causale_3";
     }
     if (mode === 11 && tirage.grille) croixActive = tirage.grille;
+    if (mode === 1) {
+      const ids = (tirage.positions_def || []).map((p) => p.id);
+      if (!ids.includes(questionActive)) questionActive = tirage.question_par_defaut || ids[0] || null;
+    }
     afficherPedagogie();
     construireSlots();
     // les libellés des cases suivent la grille choisie, pas celle du serveur
@@ -625,8 +639,10 @@
         setTimeout(ajusterPlan, vol + 350);   // une fois le paquet parti
       }
     } else {
-      // 2b · tirage à une carte : elle vole, se retourne, puis la lecture
+      // 2b · tirage à une carte : elle vole, se retourne, puis la lecture ;
+      // le paquet n'a plus rien à offrir, il s'efface
       el.title = "Afficher en plein écran";
+      setTimeout(() => eventail.classList.add("estompe"), vol);
       setTimeout(() => el.classList.add("retournee"), vol + 60);
       setTimeout(() => {
         carteEnPlace = false;
@@ -1112,10 +1128,19 @@
   const feuille = document.getElementById("feuille-relire");
 
   function construireGrilles() {
+    if (mode === 1) {
+      const lue = tirage && lecture.querySelector(".question-posee");
+      relire.classList.toggle("invisibles", !lue);
+      if (!lue) return;
+      document.getElementById("relire-titre").textContent = "Poser une autre question";
+      document.getElementById("relire-sous").textContent = "à la même carte, sans la retirer";
+      return;
+    }
     const montrer = mode === 3 && tirage && (tirage.grilles || []).length > 1 &&
       cartesRevelees === tirage.cartes.length;
     relire.classList.toggle("invisibles", !montrer);
     if (!montrer) return;
+    document.getElementById("relire-titre").textContent = "Relire autrement";
     const g = grilleCourante();
     document.getElementById("relire-sous").textContent =
       g ? `Grille actuelle : ${g.nom}` : "";
@@ -1130,11 +1155,19 @@
   const grilleAvant = document.getElementById("grille-avant");
 
   function majGrilleAvant() {
-    const montrer = mode === 3 && tirage && (tirage.grilles || []).length > 1 &&
-      tirageChoisi && tirageChoisi.pige;
+    const enQuestion = mode === 1 && tirage && (tirage.positions_def || []).length > 1;
+    const montrer = enQuestion || (mode === 3 && tirage && (tirage.grilles || []).length > 1 &&
+      tirageChoisi && tirageChoisi.pige);
     grilleAvant.classList.toggle("invisibles", !montrer);
     if (!montrer) return;
+    if (enQuestion) {
+      const q = questionCourante();
+      document.getElementById("grille-avant-titre").textContent = "Ta question";
+      document.getElementById("grille-avant-sous").textContent = q ? q.question : "";
+      return;
+    }
     const g = grilleCourante();
+    document.getElementById("grille-avant-titre").textContent = "Grille de lecture";
     document.getElementById("grille-avant-sous").textContent = g ? g.nom : "";
   }
 
@@ -1150,6 +1183,25 @@
       : "Les cartes ne bougent pas ; seule la question change.";
     const boite = document.getElementById("feuille-options");
     boite.innerHTML = "";
+    if (mode === 1) {
+      // Une question : les cinq questions, dans le même tiroir
+      document.getElementById("feuille-titre").textContent = "Choisir ta question";
+      feuille.querySelector(".feuille-quoi").textContent =
+        "La même carte répond autrement selon la question qu'on lui pose.";
+      (tirage.positions_def || []).forEach((q) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "feuille-option" + (q.id === questionActive ? " actif" : "");
+        b.setAttribute("aria-pressed", String(q.id === questionActive));
+        b.textContent = q.question;
+        b.addEventListener("click", () => { fermerFeuille(); changerQuestion(q.id); });
+        boite.appendChild(b);
+      });
+      feuille.hidden = false;
+      const actifQ = boite.querySelector(".actif") || boite.firstChild;
+      if (actifQ) actifQ.focus({ preventScroll: true });
+      return;
+    }
     (tirage.grilles || []).forEach((g) => {
       const b = document.createElement("button");
       b.type = "button";
@@ -1176,6 +1228,21 @@
   grilleAvant.addEventListener("click", ouvrirFeuille);
   feuille.addEventListener("click", (e) => { if (e.target === feuille) fermerFeuille(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") fermerFeuille(); });
+
+  // Une question : changer de question relit la MÊME carte (les cinq
+  // réponses sont déjà là, résolues par le serveur)
+  function changerQuestion(id) {
+    if (!tirage || mode !== 1 || id === questionActive) return;
+    questionActive = id;
+    majGrilleAvant();
+    majCompteur();
+    const carte = choisies[0];
+    if (carte && lecture.querySelector(".question-posee")) {
+      montrerLectureJour(carte);
+      const q = lecture.querySelector(".question-posee");
+      if (q) q.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
 
   function changerGrille(id) {
     if (!tirage || tirage.mode !== 3 || id === grilleActive) return;
@@ -1210,21 +1277,31 @@
 
   // ── Tirage à une carte : le jour en trois temps (voir, écouter, faire)
 
+  /* Une question : la carte répond à LA question choisie (le champ de la
+     fiche que cette question lit, résolu par le serveur), puis deux questions
+     de la fiche pour prolonger, puis le geste — sauf si la question était
+     « comment traverser », dont la réponse porte déjà le geste. */
   function montrerLectureJour(carte) {
-    const p = carte.positions || {};
-    const regard = carte.type === "hors_cycle" ? carte.regard : "";
-    const questions = (carte.questions || [])
-      .map((q) => `<li>${q}</li>`).join("");
+    const q = questionCourante();
+    const r = ((tirage && tirage.questions_textes) || {})[questionActive] || {};
+    const texte = r.texte || (carte.type === "hors_cycle" ? carte.regard : "") ||
+      (carte.positions || {}).jour || carte.lumiere || "";
+    const questions = (carte.questions || []).slice(0, 2)
+      .map((x) => `<li>${x}</li>`).join("");
+    const geste = carte.micro_geste && !(r.appoint && r.appoint.genre === "geste");
     lecture.innerHTML =
       `<p class="nom-carte">${carte.nom}</p>` +
       `<p class="meta-carte">${metaDe(carte)}</p>` +
-      `<p class="texte-carte">${regard || p.jour || carte.lumiere || ""}</p>` +
+      (q ? `<p class="question-posee">${q.question}</p>` : "") +
+      `<p class="texte-carte">${texte}</p>` +
+      appointHTML(r.appoint) +
       (questions
-        ? `<p class="surtitre-bloc">Écouter</p><ul class="ecouter">${questions}</ul>`
+        ? `<p class="surtitre-bloc">Prolonger</p><ul class="ecouter">${questions}</ul>`
         : "") +
-      (carte.micro_geste
+      (geste
         ? `<p class="surtitre-bloc">Faire</p><p class="faire">${carte.micro_geste}</p>`
         : "");
+    construireGrilles();
     lecture.classList.remove("invisibles");
     requestAnimationFrame(() => lecture.classList.add("visible"));
   }

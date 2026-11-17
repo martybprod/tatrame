@@ -349,6 +349,7 @@ def tirage():
     croix = None
     croix_textes = {}
     croix_choix = []
+    questions_textes = {}
     if nb == 3:
         lecture = moteur.composer(choisies)
         textes_par_grille = _textes_des_grilles(choisies, graine)
@@ -443,14 +444,24 @@ def tirage():
             "pedagogie": bloc.get("pedagogie", {}),
         }
     else:
+        # Une carte = « Une question » (2026-11-16) : Ta Trame a déjà ses
+        # cartes du jour. Chaque question est une position qui lit un champ de
+        # la fiche ; les cinq réponses sont résolues d'avance, comme les
+        # croix — changer de question relit la même carte.
+        bloc = TIRAGES.get("question_1") or TIRAGES.get("jour", {})
         grille = {
-            "id": "jour",
-            "nom": "La carte du jour",
+            "id": "question_1" if "question_1" in TIRAGES else "jour",
+            "nom": bloc.get("nom", "Une question"),
             "sous_titre": "",
             "cloture": "micro_geste",
-            "positions": TIRAGES.get("jour", {}).get("positions", []),
-            "pedagogie": TIRAGES.get("jour", {}).get("pedagogie", {}),
+            "positions": bloc.get("positions", []),
+            "pedagogie": bloc.get("pedagogie", {}),
         }
+        if choisies and "question_1" in TIRAGES:
+            fiche = CORPUS.get(choisies[0]["id"], {})
+            questions_textes = {
+                pos["id"]: _resoudre_position(fiche, pos, graine)
+                for pos in bloc.get("positions", [])}
 
     return jsonify({
         "mode": 11 if mode == "11" else nb,
@@ -465,6 +476,8 @@ def tirage():
         "croix": croix,
         "croix_textes": croix_textes,
         "croix_choix": croix_choix,
+        "questions_textes": questions_textes,
+        "question_par_defaut": (TIRAGES.get("question_1") or {}).get("question_par_defaut"),
         "pedagogie": grille.get("pedagogie", {}),
         "cle_pedagogie": grille["id"],
         "positions_def": grille.get("positions", []),

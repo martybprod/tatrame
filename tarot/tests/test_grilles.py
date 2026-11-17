@@ -115,7 +115,8 @@ def test_album_edite_les_grilles():
 def test_album_liste_les_grilles():
     sections = album._section_tirages()
     noms = [c["nom"] for c in sections[0]["cartes"]]
-    assert "La carte du jour" in noms
+    assert "Une question" in noms
+    assert any(n.startswith("La carte du jour") for n in noms)
     assert any("Visible · latent · résolution" in n for n in noms)
     assert any("Leçon · geste · question" in n for n in noms)
 
@@ -125,7 +126,7 @@ def test_chaque_tirage_a_un_resume_court():
     import json, pathlib
     racine = pathlib.Path(__file__).resolve().parent.parent
     t = json.loads((racine / "data/grammaire/tirages.json").read_text(encoding="utf-8"))
-    blocs = [(cle, t[cle]) for cle in ("jour", "causale_3", "etendu_9_1",
+    blocs = [(cle, t[cle]) for cle in ("jour", "question_1", "causale_3", "etendu_9_1",
                                        "choix_3", "croix_celtique")]
     blocs += [(cle, g) for cle, g in t["grilles"].items()]
     for cle, bloc in blocs:
