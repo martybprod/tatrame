@@ -4566,9 +4566,9 @@ function vueTarot() {
   const base = urlTarot();
   $('#vue-tarot').innerHTML = `<div class="carte">
     <div class="chapo">${icono(ICONES_NAV.tarot, 17)}Le Tarot</div>
-    <p class="quoi" style="margin:-2px 0 12px">Une carte est un miroir, pas une promesse.</p>
-    <!-- La liste des tirages ne vit plus ici : l'accueil du Tarot la montre
-         mieux, rangée par intention (refonte 2026-11-16). -->
+    <!-- Aucun texte d'introduction (Martin, 2026-11-16 : « trop long et non
+         pertinent ») : l'accueil du Tarot invite lui-même — « Que viens-tu
+         chercher ? » — et montre les tirages rangés par intention. -->
 
     <div class="tarot-cadre">
       <iframe id="tarot-frame" title="Le Tarot" src="${base}?embed=1"></iframe>

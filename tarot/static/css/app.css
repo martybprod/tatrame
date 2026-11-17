@@ -19,13 +19,21 @@
 
 button { font: inherit; color: inherit; }
 
-html, body { height: 100%; }
+/* COUTURE DU FOND (Martin, 2026-11-16 : « un carré transparent jusqu'à la
+   moitié de l'écran ») : avec `html, body { height: 100% }`, le dégradé du
+   body — reporté sur le canevas — prenait pour tuile la hauteur d'UN écran,
+   puis se RÉPÉTAIT dessous : au défilement, la lueur du haut et l'ombre du
+   bas se recollaient à mi-page en une ligne nette. La racine suit
+   maintenant la hauteur du contenu (une seule tuile pour toute la page), et
+   le dégradé ne se répète plus jamais. */
+html { min-height: 100%; }
 
 body {
   background:
     radial-gradient(120% 90% at 50% 0%, rgba(201, 165, 92, 0.05), transparent 55%),
     radial-gradient(140% 120% at 50% 110%, rgba(0, 0, 0, 0.55), transparent 60%),
     var(--fond);
+  background-repeat: no-repeat;
   color: var(--encre);
   font-family: var(--serif);
   display: flex;
