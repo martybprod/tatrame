@@ -253,6 +253,55 @@ nav button .ico{flex:none;opacity:.85}
 nav button:hover{color:#e9d494;background:rgba(255,255,255,.08)}
 nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 
+/* ═══ Le fil de lecture (2026-11-17) — savoir ce qu'on a déjà lu dans
+   Tout, Le Portrait et Le Ciel, et où reprendre (maquette :
+   maquettes/fil_de_lecture.html). Trois gestes ténus :
+   ① un POINT de trame dans le chapo de chaque bloc .carte[data-lu] —
+     contour pointillé (à lire) → point plein doré (lu) ; la FORME
+     change, jamais la couleur seule ;
+   ② une LIGNE DE REPRISE en tête de section (.reprise-fil) — où on en
+     est, ce qu'il reste (≈ minutes), « Reprendre à … » qui dépose au
+     premier bloc non lu ;
+   ③ un FIL de 2 px sous les onglets — la proportion lue, visible avant
+     même d'y entrer. Décoratif (aria-hidden) : le compte, lui, est en
+     texte dans la ligne de reprise.
+   Le marquage automatique est HONNÊTE : un bloc ne se compte lu que si
+   sa fin a été franchie en scrollant (ou qu'il est resté entier sous
+   les yeux) ET qu'il est demeuré visible ~2,5 s — défiler en diagonale
+   ne compte pas. Un appui sur le point bascule à la main, dans les
+   deux sens. L'état vit dans localStorage, clé par profil + version des
+   textes (VSTAT) : le corpus évolue, les fils se remettent en attente.
+   Rien n'est bloqué ni récompensé bruyamment : le repère oriente. */
+#nav button{position:relative}
+#nav button .fil{position:absolute;left:11px;right:11px;bottom:2px;height:2px;
+  border-radius:1px;background:rgba(217,185,92,.14);overflow:hidden}
+#nav button .fil i{display:block;height:100%;width:0%;background:var(--accent);
+  opacity:.72;border-radius:1px;transition:width .45s ease}
+.carte[data-lu]{scroll-margin-top:14px}
+.carte[data-lu]>.chapo{position:relative;padding-left:22px}
+.point{position:absolute;left:-5px;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;
+  background:none;border:0;cursor:pointer;padding:0}
+.point i{width:9px;height:9px;border-radius:50%;
+  border:1.4px dashed var(--encre3);transition:border-color .3s,background-color .3s}
+.point[aria-pressed="true"] i{background:var(--accent);border-color:var(--accent);border-style:solid}
+.point:focus-visible{outline:1px solid var(--accent-doux);border-radius:8px}
+/* Le bloc fraîchement tissé : un frisson très bref sur la bordure, puis rien. */
+.carte.filtisse{animation:friesson-fil .9s ease-out 1}
+@keyframes friesson-fil{0%{border-color:rgba(217,185,92,.55)}100%{border-color:var(--bord)}}
+/* Le bloc où l'on dépose la lecture (« Reprendre à … ») : souligné un instant */
+.carte.depot{outline:1px solid rgba(233,212,148,.45);outline-offset:3px}
+.reprise-fil{font-size:12.5px;color:var(--encre2);padding:14px 20px 0;line-height:1.6}
+.reprise-fil b{color:var(--encre);font-weight:600}
+.reprise-fil .ou{background:none;border:0;font:inherit;font-size:12.5px;cursor:pointer;
+  color:var(--accent-doux);padding:0;text-decoration:underline;
+  text-decoration-color:rgba(233,212,148,.35);text-underline-offset:3px}
+.reprise-fil .ou:hover{text-decoration-color:var(--accent-doux)}
+@media (prefers-reduced-motion:reduce){
+  #nav button .fil i{transition:none}
+  .carte.filtisse{animation:none}
+}
+
 /* ═══ La barre d'outils de l'en-tête (refonte 2026-08-27) ═══
    Les TROIS outils — Règles, Commentaire, Profil — partagent UNE seule famille
    de pastille (`.outil`), au lieu de deux icônes nues orphelines + une grosse
@@ -1151,9 +1200,9 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
     </div>
     <nav id="nav" class="cacher">
       <button data-vue="jour" class="actif"><span>Le Jour</span></button>
-      <button data-vue="apercu"><span>Tout</span></button>
-      <button data-vue="portrait"><span>Le Portrait</span></button>
-      <button data-vue="ciel"><span>Le Ciel</span></button>
+      <button data-vue="apercu"><span>Tout</span><span class="fil" aria-hidden="true"><i></i></span></button>
+      <button data-vue="portrait"><span>Le Portrait</span><span class="fil" aria-hidden="true"><i></i></span></button>
+      <button data-vue="ciel"><span>Le Ciel</span><span class="fil" aria-hidden="true"><i></i></span></button>
       <button data-vue="relations"><span>Relations</span></button>
       <button data-vue="tarot"><span>Tarot</span></button>
     </nav>
@@ -3617,7 +3666,7 @@ async function chargerApercu(donnees) {
      C'est ce qui bouge, donc ce qu'on regarde en premier. */
   const t = d.temps;
   const vieMot = t.vie?.corpus?.en_un_mot;
-  html += `<div class="carte">
+  html += `<div class="carte" data-lu="ou">
     <div class="chapo">Où tu en es</div>
     <div class="grille">
       ${t.vie ? tuile('Ta traversée', t.vie.age_ans + ' ans', vieMot || '—', 'vie') : ''}
@@ -3630,7 +3679,7 @@ async function chargerApercu(donnees) {
   </div>`;
 
   /* Les nombres — jamais nus. */
-  html += `<div class="carte">
+  html += `<div class="carte" data-lu="nombres">
     <div class="chapo">Tes nombres</div>
     <div class="grille">
       ${['cap','voix','foyer','elan'].map(c => {
@@ -3643,7 +3692,7 @@ async function chargerApercu(donnees) {
   </div>`;
 
   /* Le ciel — l'essentiel, pas le tableau. */
-  html += `<div class="carte">
+  html += `<div class="carte" data-lu="ciel">
     <div class="chapo">Ton ciel</div>
     <div class="grille">
       ${tuile('Le Soleil', signeOrne(d.trio.soleil.signe, 22), 'ce que tu es', 'astre:soleil', true)}
@@ -3671,7 +3720,7 @@ async function chargerApercu(donnees) {
   /* Le signe chinois — 4e axe d'identité, après le ciel. */
   if (d.chinois) {
     const ch = d.chinois, mot = ch.portrait?.en_un_mot;
-    html += `<div class="carte" id="c-chinois"${ch.portrait ? ' style="cursor:pointer"' : ''}>
+    html += `<div class="carte" id="c-chinois" data-lu="chinois"${ch.portrait ? ' style="cursor:pointer"' : ''}>
       <div class="chapo">Ton signe chinois</div>
       <div style="font-family:var(--serif);font-size:26px;margin:6px 0 2px">${T(ch.signe)}</div>
       ${mot ? `<div class="motcle">${T(mot)}</div>` : ''}
@@ -3681,7 +3730,7 @@ async function chargerApercu(donnees) {
 
   /* Le croisement — le seul endroit où les trois se parlent. */
   if (d.pont) {
-    html += `<div class="carte">
+    html += `<div class="carte" data-lu="croisement">
       <div class="chapo">Le croisement</div>
       <p style="font-size:15px;color:var(--encre2)">
         Ta carte <b style="color:var(--encre)">${T(d.cartes.naissance.nom)}</b>
@@ -3722,6 +3771,180 @@ async function chargerApercu(donnees) {
         + (ch.nuance ? `<div class="section"><h4>L'élément ${T(ch.element)}${ch.nuance.en_un_mot ? ' · ' + T(ch.nuance.en_un_mot) : ''}</h4><p>${T(ch.nuance.nuance)}</p></div>` : ''),
     });
   };
+
+  filInstaller('apercu');
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LE FIL DE LECTURE (2026-11-17 — maquette maquettes/fil_de_lecture.html)
+   Un repère discret : qu'est-ce que j'ai déjà lu dans Tout, Le Portrait
+   et Le Ciel — et où reprendre, quand on ne lit pas tout d'un coup.
+   Trois gestes (voir le bloc CSS plus haut) : le point par bloc, la
+   ligne de reprise par section, le fil sous l'onglet.
+   HONNÊTETÉ DU MARQUAGE : défiler ≠ lire. Un bloc ne se compte lu que
+   si sa fin a été franchie en scrollant (ou qu'il est resté entier sous
+   les yeux) ET qu'il est demeuré visible FIL_DWELL — sinon, l'appui
+   manuel sur le point tranche, dans les deux sens.
+   PERSISTANCE : localStorage, clé par profil, versionnée par VSTAT —
+   le corpus évolue au déploiement, les fils se remettent en attente
+   (même mécanique que le cache statique). Rien n'est bloqué : le
+   repère oriente, il n'interdit pas.
+   ═══════════════════════════════════════════════════════════ */
+const CLE_FIL = 'trame.fil.';
+const FIL_DWELL = 2500;   // ms de présence sur le bloc — défiler en diagonale ne compte pas
+const FIL_MOUVEMENT = matchMedia('(prefers-reduced-motion: reduce)');
+let FIL = { apercu: {}, portrait: {}, ciel: {} };  // vue → blocs lus (data-lu → 1)
+let FIL_PROFIL_CHARGE = null;
+let FIL_OBSERVE = null;            // UN SEUL observer pour les trois vues
+// La présence suit chaque ÉLÉMENT (WeakMap) : les nœuds sont remplacés à
+// chaque rendu, la mémoire part avec eux — et les clés ne se mélangent
+// pas entre vues qui porteraient le même data-lu (« nombres », etc.).
+const FIL_TEMPS = new WeakMap();   // temps de présence accumulé
+const FIL_ENTREE = new WeakMap();  // début de la présence en cours
+const FIL_COMPLET = new WeakMap(); // le bloc a été vu ENTIER sous les yeux
+
+function filCharger() {
+  if (FIL_PROFIL_CHARGE === profilId) return;
+  FIL_PROFIL_CHARGE = profilId;
+  let d = null;
+  try { d = JSON.parse(localStorage.getItem(CLE_FIL + profilId) || 'null'); } catch (e) {}
+  // Version des textes changée (déploiement) : la trame se retisse.
+  if (!d || d.v !== VSTAT || typeof d.apercu !== 'object')
+    d = { v: VSTAT, apercu: {}, portrait: {}, ciel: {} };
+  FIL = d;
+}
+function filSauver() {
+  try { localStorage.setItem(CLE_FIL + profilId, JSON.stringify(FIL)); } catch (e) {}
+}
+function filLu(vue, id) { return !!FIL[vue][id]; }
+function filVueDe(bloc) {
+  return bloc.closest('#vue-apercu,#vue-portrait,#vue-ciel')?.id.replace('vue-', '');
+}
+function filBlocsDe(vue) {
+  return [...document.querySelectorAll(`#vue-${vue} .carte[data-lu]`)];
+}
+
+/* Poser le décor sur une vue qui vient d'être rendue : la ligne de
+   reprise en tête, les points dans les chapos, l'observation des blocs.
+   Appelé à la FIN de chargerApercu / chargerPortrait / chargerCiel. */
+function filInstaller(vue) {
+  const racine = document.getElementById('vue-' + vue);
+  if (!racine) return;
+  filCharger();
+  racine.querySelector('.reprise-fil')?.remove();
+  racine.insertAdjacentHTML('afterbegin', '<p class="reprise-fil"></p>');
+  const blocs = [...racine.querySelectorAll('.carte[data-lu]')];
+  blocs.forEach(b => {
+    const chapo = b.querySelector('.chapo');
+    if (!chapo || chapo.querySelector('.point')) return;
+    chapo.insertAdjacentHTML('afterbegin',
+      '<button class="point" type="button" aria-pressed="false" aria-label="Marquer comme lu"><i></i></button>');
+    chapo.querySelector('.point').addEventListener('click', () =>
+      filBasculer(b, !filLu(vue, b.dataset.lu)));
+  });
+  filRafraichir();
+  if (!FIL_OBSERVE)
+    FIL_OBSERVE = new IntersectionObserver(filSurObserve, { threshold: [0, .25, .5, .75, 1] });
+  blocs.forEach(b => FIL_OBSERVE.observe(b));
+}
+
+/* La présence : on n'accumule du temps que bloc sous les yeux ; le fil
+   se noue quand le bloc SORT — fin franchie en scrollant, ou entier
+   sous les yeux assez longtemps. Quitter l'onglet masque la vue (la
+   géométrie tombe à zéro) : on accumule, mais on ne juge pas. */
+function filSurObserve(entrees) {
+  const maintenant = performance.now();
+  for (const e of entrees) {
+    const b = e.target, vue = filVueDe(b);
+    if (!vue) continue;
+    if (e.isIntersecting) {
+      FIL_ENTREE.set(b, maintenant);
+      if (e.intersectionRatio >= .95) FIL_COMPLET.set(b, true);
+    } else {
+      const debut = FIL_ENTREE.get(b);
+      if (debut) FIL_TEMPS.set(b, (FIL_TEMPS.get(b) || 0) + (maintenant - debut));
+      FIL_ENTREE.delete(b);
+      if (!e.boundingClientRect.top && !e.boundingClientRect.bottom) continue; // onglet quitté
+      const traverse = e.rootBounds &&
+        e.boundingClientRect.bottom < e.rootBounds.height * .2;
+      if ((traverse || FIL_COMPLET.get(b)) &&
+          (FIL_TEMPS.get(b) || 0) >= FIL_DWELL && !filLu(vue, b.dataset.lu))
+        filBasculer(b, true);
+    }
+  }
+}
+
+/* Le point est appuyé (ou le seuil de lecture franchi) : bascule, sauve,
+   frissonne brièvement quand ça se noue, et remet tout à jour. */
+function filBasculer(bloc, valeur) {
+  const vue = filVueDe(bloc), id = bloc.dataset.lu;
+  if (!vue || !id) return;
+  if (valeur) FIL[vue][id] = 1; else delete FIL[vue][id];
+  filSauver();
+  if (valeur) {
+    bloc.classList.add('filtisse');
+    setTimeout(() => bloc.classList.remove('filtisse'), 950);
+  } else {
+    /* Détissage MANUEL : on efface les preuves accumulées (temps, vu-en-entier,
+       présence en cours). Sinon la règle automatique retisse aussitôt le bloc
+       qu'on vient de détisser — le geste de la personne ne tiendrait pas. */
+    FIL_TEMPS.delete(bloc);
+    FIL_COMPLET.delete(bloc);
+    FIL_ENTREE.delete(bloc);
+  }
+  filRafraichir();
+}
+
+/* Tout remettre à jour : les trois fils d'onglets, les trois lignes,
+   les libellés accessibles des points. */
+function filRafraichir() {
+  for (const vue of ['apercu', 'portrait', 'ciel']) {
+    const blocs = filBlocsDe(vue);
+    const fil = document.querySelector(`#nav button[data-vue="${vue}"] .fil`);
+    if (fil) {
+      if (!blocs.length) fil.style.display = 'none';   // section vide (thème incomplet)
+      else {
+        fil.style.display = '';
+        fil.firstElementChild.style.width = Math.round(
+          100 * blocs.filter(b => filLu(vue, b.dataset.lu)).length / blocs.length) + '%';
+      }
+    }
+    blocs.forEach(b => {
+      const p = b.querySelector('.point');
+      if (!p) return;
+      p.setAttribute('aria-pressed', filLu(vue, b.dataset.lu) ? 'true' : 'false');
+      p.setAttribute('aria-label', filLu(vue, b.dataset.lu) ? 'Marquer comme non lu' : 'Marquer comme lu');
+    });
+    filLigneRafraichir(vue, blocs);
+  }
+}
+
+/* ② La ligne de reprise : où on en est, ce qu'il reste (≈ minutes),
+   et « Reprendre à … » qui dépose au premier fil non tissé. */
+function filLigneRafraichir(vue, blocs) {
+  const ligne = document.querySelector(`#vue-${vue} .reprise-fil`);
+  if (!ligne) return;
+  const lu = blocs.filter(b => filLu(vue, b.dataset.lu)).length;
+  if (!blocs.length) { ligne.innerHTML = ''; return; }
+  if (lu === blocs.length) {
+    ligne.innerHTML = lu === 1
+      ? `<b>Le fil est tissé</b> — la trame t'attend quand tu veux la relire.`
+      : `<b>Les ${lu} fils sont tissés</b> — la trame t'attend quand tu veux la relire.`;
+    return;
+  }
+  const suivant = blocs.find(b => !filLu(vue, b.dataset.lu));
+  const titre = (suivant.querySelector('.chapo')?.textContent || '').trim();
+  const mins = Math.max(1, Math.round((blocs.length - lu) * 1.5));  // ≈ 1,5 min par bloc
+  const verbe = lu ? 'Reprendre' : 'Commencer';
+  ligne.innerHTML = `Ta trame ici : <b>${lu} fil${lu > 1 ? 's' : ''} sur ${blocs.length}</b>` +
+    ` · il reste ≈ ${mins} min · ` +
+    `<button class="ou" type="button">${verbe} ${lu ? 'à' : 'par'} « ${T(titre)} » →</button>`;
+  ligne.querySelector('.ou').onclick = () => {
+    if (document.querySelector('#nav button.actif')?.dataset.vue !== vue) montrerVue(vue);
+    suivant.scrollIntoView({ behavior: FIL_MOUVEMENT.matches ? 'auto' : 'smooth', block: 'start' });
+    suivant.classList.add('depot');
+    setTimeout(() => suivant.classList.remove('depot'), 1600);
+  };
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -3743,7 +3966,7 @@ async function chargerPortrait(donnees) {
 
   /* La carte */
   const na = p.cartes.naissance, pont = p.ponts.naissance;
-  html += `<div class="carte">
+  html += `<div class="carte" data-lu="carte">
     <div class="chapo">Ta carte</div>
     <div class="arcane" id="c-arcane">
       <img class="vignette" src="${miniUrl(urlCarte(na.numero))}" alt="${T(na.nom)}">
@@ -3769,7 +3992,7 @@ async function chargerPortrait(donnees) {
   html += `</div>`;
 
   /* Les nombres — chacun nommé, chacun cliquable */
-  html += `<div class="carte"><div class="chapo">Tes nombres</div>`;
+  html += `<div class="carte" data-lu="nombres"><div class="chapo">Tes nombres</div>`;
   for (const cle of ['cap','voix','foyer','elan']) {
     const n = p.nombres[cle], a = p.accords[cle], t = terme(cle);
     const det = tx[cle]?.detail;
@@ -3803,7 +4026,7 @@ async function chargerPortrait(donnees) {
     .flatMap(c => p.nombres[c].heritages || []))];
   if (tousHeritages.length) {
     const th = terme('heritages');
-    html += `<div class="carte">
+    html += `<div class="carte" data-lu="heritages">
       <div class="chapo">${T(th.nom)}</div>
       <p style="font-size:15px;color:var(--encre2)">${T(th.quoi)}</p>
       <p class="quoi" style="margin-top:8px">${T(th.pourquoi_ce_mot || '')}</p>
@@ -3829,7 +4052,7 @@ async function chargerPortrait(donnees) {
   /* Ta période — le Soleil affiné en 48 sous-périodes (additif au signe) */
   const per = tx.periode_soleil;
   if (per) {
-    html += `<div class="carte" data-periode="1" style="cursor:pointer">
+    html += `<div class="carte" data-lu="periode" data-periode="1" style="cursor:pointer">
       <div class="chapo">Ta période</div>
       <div class="nombre">
         <div style="flex:1">
@@ -3844,7 +4067,7 @@ async function chargerPortrait(donnees) {
   /* Ton axe — d'où tu viens (nœud sud) vers où tu vas (nœud nord) */
   const ax = tx.noeuds;
   if (ax && ax.sud?.texte && ax.nord?.texte) {
-    html += `<div class="carte" data-axe="1" style="cursor:pointer">
+    html += `<div class="carte" data-lu="axe" data-axe="1" style="cursor:pointer">
       <div class="chapo">Ton axe</div>
       <div class="nombre">
         <div style="flex:1">
@@ -3861,7 +4084,7 @@ async function chargerPortrait(donnees) {
      lesquels agir quand le moment s'y prête. */
   const lois = tx.lois || [];
   if (lois.length) {
-    html += `<div class="carte">
+    html += `<div class="carte" data-lu="leviers">
       <div class="chapo">Tes leviers</div>
       <p style="font-size:15px;color:var(--encre2)">Des points de repère qui
         travaillent ta direction de fond. On les actionne quand on veut, ce ne
@@ -3882,7 +4105,7 @@ async function chargerPortrait(donnees) {
   /* Les chantiers — chacun nommé, jamais un chiffre nu */
   const ch = p.nombres.appuis.chantiers, tc = terme('chantiers');
   if (ch.length) {
-    html += `<div class="carte">
+    html += `<div class="carte" data-lu="chantiers">
       <div class="chapo">${T(tc.nom)}</div>
       <p style="font-size:15px;color:var(--encre2)">${T(tc.quoi)}</p>
       <div style="margin-top:14px">`;
@@ -4015,6 +4238,8 @@ async function chargerPortrait(donnees) {
       invitation: `Côté ciel · ${T(na.correspondance[1])}`, lecture: T(tx.arcane_naissance?.lecture || ''),
     });
   };
+
+  filInstaller('portrait');
 }
 
 /* Les raisons viennent du moteur en langage technique — on les traduit. */
@@ -4047,7 +4272,7 @@ async function chargerCiel(donnees) {
 
   /* 1 — LE TRIO. Le plus parlant, donc le premier. */
   const tr = s.trio;
-  html += `<div class="carte">
+  html += `<div class="carte" data-lu="trio">
     <div class="chapo">L'essentiel, en trois traits</div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
       ${[['soleil', tr.soleil.signe, 'ce que tu es au fond'],
@@ -4066,7 +4291,7 @@ async function chargerCiel(donnees) {
   /* 2 — CE QUI DOMINE, CE QUI MANQUE. */
   for (const [cle, bloc] of Object.entries(g)) {
     if (!bloc || !cle.includes('.')) continue;
-    html += `<div class="carte">
+    html += `<div class="carte" data-lu="g-${T(cle)}">
       <div class="chapo">${T(bloc.titre || '')}</div>
       <p style="font-size:15px;color:var(--encre2)">${T(bloc.texte)}</p>
     </div>`;
@@ -4074,7 +4299,7 @@ async function chargerCiel(donnees) {
 
   /* 3 — LES CONCENTRATIONS. */
   if (s.stelliums.length && g.stellium) {
-    html += `<div class="carte">
+    html += `<div class="carte" data-lu="stellium">
       <div class="chapo">${T(g.stellium.titre || 'Une concentration')}</div>
       ${s.stelliums.map(st => `<p style="font-family:var(--serif);font-size:18px;margin-bottom:8px">
         ${st.corps.map(c => T(nomPlanete(c))).join(', ')} — tous en ${T(st.signe)}</p>`).join('')}
@@ -4084,7 +4309,7 @@ async function chargerCiel(donnees) {
 
   /* 4 — QUI MÈNE, QUI SE VOIT. */
   if (s.maitre && g.maitre) {
-    html += `<div class="carte" data-astre="${T(s.maitre.planete)}" style="cursor:pointer">
+    html += `<div class="carte" data-lu="maitre" data-astre="${T(s.maitre.planete)}" style="cursor:pointer">
       <div class="chapo">${T(g.maitre.titre || 'Qui mène')}</div>
       <p style="font-family:var(--serif);font-size:18px;margin-bottom:8px">
         ${T(nomPlanete(s.maitre.planete))}, en ${T(s.maitre.signe)},
@@ -4094,7 +4319,7 @@ async function chargerCiel(donnees) {
     </div>`;
   }
   if (s.en_vue && g.en_vue) {
-    html += `<div class="carte" data-astre="${T(s.en_vue.planete)}" style="cursor:pointer">
+    html += `<div class="carte" data-lu="en_vue" data-astre="${T(s.en_vue.planete)}" style="cursor:pointer">
       <div class="chapo">${T(g.en_vue.titre || 'Ce qui se voit le plus')}</div>
       <p style="font-family:var(--serif);font-size:18px;margin-bottom:8px">
         ${T(nomPlanete(s.en_vue.planete))}, en ${T(s.en_vue.signe)},
@@ -4105,7 +4330,7 @@ async function chargerCiel(donnees) {
   }
 
   /* 5 — LE DÉTAIL, à la demande. Chaque ligne se lit. */
-  html += `<div class="carte">
+  html += `<div class="carte" data-lu="astres">
     <div class="chapo">Chaque astre, un par un</div>
     <p class="quoi" style="margin:-4px 0 14px">Touche une ligne pour la lire en entier.</p>`;
   for (const [nom, a] of Object.entries(d.astres)) {
@@ -4138,6 +4363,8 @@ async function chargerCiel(donnees) {
   $('#vue-ciel').innerHTML = html;
   $('#vue-ciel').querySelectorAll('[data-astre]').forEach(el =>
     el.onclick = e => { if (!e.target.closest('details')) ouvrirAstre(el.dataset.astre); });
+
+  filInstaller('ciel');
 }
 
 /* Le panneau d'un astre : ses DEUX lectures additionnées, puis ses liens.

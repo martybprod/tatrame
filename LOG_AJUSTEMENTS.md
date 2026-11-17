@@ -205,3 +205,31 @@
 - **Textes** : les 5 textes Eau (as, 2, 3, 4, 5) sont conformes à la charte ; celui de la 2
   (Amitié) réécrit (il ne nommait qu'un symbole). Livraison des 14 Eau en bloc décidée.
 - **Statut** : livré le jour même ; **non poussé**.
+## 2026-11-17 — Le fil de lecture (repère « déjà lu » sur Tout / Le Portrait / Le Ciel)
+
+- **Demande** (Martin) : « dans les sections tout, le portrait et le ciel, il y a
+  beaucoup d'informations à lire… elle ne lira pas ça d'un coup. Il serait intéressant
+  d'ajouter un repère visuel qui permet de savoir si l'utilisateur a déjà lu la
+  section. Regarde les meilleures pratiques et fais-moi une proposition. »
+- **Proposition** : maquette validée `maquettes/fil_de_lecture.html` (démo vivante,
+  meilleures pratiques citées : défiler ≠ lire, reprise de lecture, progression à
+  l'entrée, un indicateur par tâche, pas de gamification). « Le fil de lecture » :
+  ① un **point de trame** par bloc (pointillé → plein, forme jamais couleur seule,
+  bascule manuelle au doigt) ; ② une **ligne de reprise** en tête de section
+  (« X fils sur Y · il reste ≈ N min · Reprendre à « … » » qui dépose au premier
+  bloc non lu) ; ③ un **fil de 2 px** sous les onglets Tout / Le Portrait / Le Ciel.
+- **Implémentation** : `templates/index.html` seulement — bloc CSS après les styles
+  de nav, module JS `fil*` (~140 lignes vanilla, zéro réseau), `data-lu` stables sur
+  les .carte des trois vues, appel `filInstaller()` à la fin des trois chargeurs.
+  Marquage auto honnête : fin de bloc franchie (ou vu entier) + présence ≥ 2,5 s ;
+  défiler en diagonale ne compte pas ; quitter l'onglet ne juge pas. Détissage
+  manuel efface les preuves accumulées (sinon l'auto retisse aussitôt — bug vu
+  en test, corrigé le jour même). Persistance : `localStorage` clé `trame.fil.<profil>`,
+  versionnée par VSTAT (corpus qui change → fils remis en attente, même mécanique
+  que le cache statique). Accessibilité : `aria-pressed` + libellés sur les points,
+  fils `aria-hidden`, comptes en texte, `prefers-reduced-motion` respecté.
+- **Le Jour exclu** : neuf chaque matin, rien à « reprendre ».
+- **Validation** : pytest verte (840 passés) ; testé au navigateur sur profil
+  d'essai `jeanne-fil` (tissage au scroll, ligne de reprise, reprise → dépôt au
+  bloc, bascule manuelle dans les deux sens, persistance au rechargement).
+- **Statut** : livré le jour même ; **non poussé** (déploiement sur accord de Martin).
