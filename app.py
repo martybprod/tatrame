@@ -110,7 +110,9 @@ def _empreinte_statique():
     h = hashlib.sha1()
     racine = pathlib.Path(app.static_folder)
     for chemin in sorted(racine.rglob("*")):
-        if chemin.is_file():
+        # sw.js n'est jamais appelé avec ?v= : le modifier ne doit pas faire
+        # retélécharger toutes les images au téléphone (2026-11-16)
+        if chemin.is_file() and chemin.name != "sw.js":
             h.update(str(chemin.relative_to(racine)).encode("utf-8"))
             h.update(chemin.read_bytes())
     return h.hexdigest()[:10]
@@ -119,10 +121,21 @@ def _empreinte_statique():
 VSTAT = _empreinte_statique()
 
 
+def _noms_caches():
+    """Les noms de cache du service worker, LUS dans static/sw.js — une seule
+    source pour le worker et pour precharger_cache() côté page."""
+    texte = (pathlib.Path(app.static_folder) / "sw.js").read_text(encoding="utf-8")
+    trouve = lambda nom: re.search(rf'const {nom} = "([^"]+)"', texte).group(1)
+    return {"pages": trouve("CACHE_PAGES"), "statique": trouve("CACHE_STATIQUE")}
+
+
+NOMS_CACHES = _noms_caches()
+
+
 @app.context_processor
 def _injecter_vstat():
     """L'empreinte statique est disponible dans tous les gabarits (`vstat`)."""
-    return {"vstat": VSTAT}
+    return {"vstat": VSTAT, "caches_sw": NOMS_CACHES}
 
 
 moteur = Moteur()

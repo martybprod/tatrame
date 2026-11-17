@@ -1263,10 +1263,11 @@ async function precharger_cache() {
     /* Les MÊMES noms de cache que static/sw.js (v3). Jusqu'au 2026-11-16,
        on écrivait encore dans les « v1 » que le worker ne lit plus depuis le
        passage en v2 (2026-10-17) : ~2,5 Mo retéléchargés pour rien à chaque
-       changement de static/, en pleine ouverture de l'app. */
-    const pages = await caches.open('tatrame-pages-v3');
+       changement de static/, en pleine ouverture de l'app. Les noms sont
+       maintenant LUS dans sw.js par le serveur (caches_sw) — plus d'écart. */
+    const pages = await caches.open('{{ caches_sw.pages }}');
     await pages.put('/', await fetch('/'));
-    const statique = await caches.open('tatrame-statique-v3');
+    const statique = await caches.open('{{ caches_sw.statique }}');
     const rangs = ['as', '2', '3', '4', '5', '6', '7', '8', '9', '10',
                    'cavalier', 'valet', 'reine', 'roi'];
     // Les fonds et icônes du shell y sont aussi : le PREMIER chargement d'un
@@ -4933,6 +4934,14 @@ async function demarrer() {
     localStorage.removeItem(CLE_ACCUEIL_VU);
     history.replaceState(null, '', location.pathname);
   }
+  /* Le bundle du profil mémorisé part EN MÊME TEMPS que la liste des profils
+     (2026-11-16) : avant, deux allers-retours à la suite au démarrage. Si la
+     liste confirme un autre profil, la réponse anticipée est simplement
+     ignorée et le bon bundle est demandé. */
+  const profilAnticipe = profilId;
+  const bundleAnticipe = profilAnticipe
+    ? fetch(`/api/bundle/${profilAnticipe}`).then(r => r.ok ? r.json() : null).catch(() => null)
+    : Promise.resolve(null);
   await chargerProfils();
   // Un rappel peut viser un autre compte déverrouillé que le dernier ouvert.
   const rappel = _lireRappelURL();
@@ -4970,7 +4979,8 @@ async function demarrer() {
      Les chargerX restent autonomes (fetch quand on les appelle sans données)
      pour les rafraîchissements partiels — changement de profil d'un rappel,
      rechargement d'une seule vue. */
-  const bundle = await (await fetch(`/api/bundle/${profilId}`)).json();
+  const bundle = (profilId === profilAnticipe && await bundleAnticipe)
+    || await (await fetch(`/api/bundle/${profilId}`)).json();
   LEX = bundle.lexique || LEX;
   chargerJour(bundle.jour);
   chargerApercu(bundle.apercu);

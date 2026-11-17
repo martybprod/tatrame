@@ -188,6 +188,7 @@ def _carte_de_tirage(id_carte, graine):
         "element": carte.get("element") or carte.get("famille"),
         "image": visage(id_carte),
         "image_mini": vignette(id_carte),
+        "image_moyenne": moyenne(id_carte),
         "corpus": bool(fiche),
         "mots_cles": fiche.get("mots_cles", []),
         "lumiere": fiche.get("lumiere"),
@@ -254,6 +255,15 @@ def visage(id_carte):
 # tirage, le mur du choix et les liens. La face entière reste pour le plein
 # écran et le récit. Monter le numéro après avoir régénéré les vignettes.
 VERSION_VIGNETTES = 1
+
+
+def moyenne(id_carte):
+    """La taille intermédiaire (800 px, WebP) : récit et plein écran sur
+    téléphone. Repli : la face entière."""
+    p = RACINE / "static" / "img" / "cartes" / "moyenne" / f"{id_carte}.webp"
+    if p.exists():
+        return f"img/cartes/moyenne/{id_carte}.webp?v={VERSION_VIGNETTES}"
+    return visage(id_carte)
 
 
 def vignette(id_carte):

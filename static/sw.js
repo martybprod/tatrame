@@ -47,7 +47,12 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     Promise.all([
       self.clients.claim(),
-      caches.keys().then((noms) => Promise.all(noms.map((n) => caches.delete(n)))),
+      // seuls les caches qui ne sont PLUS les nôtres partent (2026-11-16) :
+      // avant, toute mise à jour du worker vidait aussi les images — et le
+      // téléphone retéléchargeait tout le jeu à chaque nouvelle version
+      caches.keys().then((noms) => Promise.all(noms
+        .filter((n) => ![CACHE_PAGES, CACHE_STATIQUE, CACHE_JOUR].includes(n))
+        .map((n) => caches.delete(n)))),
     ])
   );
 });
@@ -62,9 +67,15 @@ self.addEventListener("activate", (event) => {
 // sans purge, l'iPhone gardait l'ancienne page (« aucune différence »).
 // v3 → v4 le 2026-11-16 : le chapô de l'onglet Tarot nomme les trois croix —
 // même raison, la page est en stale-while-revalidate.
-const CACHE_PAGES = "tatrame-pages-v4";     // la page elle-même (SWR)
+// v4 → v5 (pages, jour) le 2026-11-16 : le bundle du jour passe en « cache du
+// jour d'abord ». Le cache STATIQUE garde son nom : les ?v= le rendent déjà
+// immuable, inutile de faire retélécharger les images.
+// Ces trois noms sont LUS par app.py (noms_caches) et injectés dans la page :
+// une seule source — precharger_cache() a écrit des mois dans des caches
+// que ce worker ne lisait plus.
+const CACHE_PAGES = "tatrame-pages-v5";     // la page elle-même (SWR)
 const CACHE_STATIQUE = "tatrame-statique-v4"; // ?v= — immuable, cache-d'abord
-const CACHE_JOUR = "tatrame-jour-v4";       // le bundle du jour (repli hors-ligne)
+const CACHE_JOUR = "tatrame-jour-v5";       // le bundle du jour (repli hors-ligne)
 
 // ─── Page : stale-while-revalidate ──────────────────────────────────────────
 // Stockée TOUJOURS sous la clé `/` (match avec ignoreSearch) : les navigations
@@ -90,7 +101,27 @@ async function page_swr(event) {
   return frais;                    // première visite : le réseau, simplement
 }
 
-// ─── Bundle du jour : réseau d'abord, cache en repli ────────────────────────
+// ─── Bundle du jour : le cache DU JOUR d'abord, rafraîchi en arrière-plan ──
+// Au redémarrage, l'app attendait le réseau à chaque fois (un aller-retour
+// transatlantique + l'ouverture d'une connexion chiffrée, ~1 s sur cellulaire).
+// Un bundle déjà reçu AUJOURD'HUI (même date locale, en-tête Date) s'affiche
+// tout de suite ; le frais part en arrière-plan pour la prochaine ouverture.
+// Le lendemain, ou sans cache, c'est le réseau d'abord comme avant.
+const memeJour = (reponse) => {
+  const d = new Date(reponse.headers.get("Date") || 0);
+  return d.toDateString() === new Date().toDateString();
+};
+async function jour_cache_du_jour(event) {
+  const cache = await caches.open(CACHE_JOUR);
+  const en_cache = await cache.match(event.request);
+  if (en_cache && memeJour(en_cache)) {
+    event.waitUntil(fetch(event.request)
+      .then((r) => { if (r.ok) return cache.put(event.request, r); })
+      .catch(() => {}));
+    return en_cache;
+  }
+  return jour_reseau_dabord(event);
+}
 async function jour_reseau_dabord(event) {
   const cache = await caches.open(CACHE_JOUR);
   try {
@@ -120,7 +151,7 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;   // rien d'étranger
 
   if (url.pathname.startsWith("/api/bundle/")) {
-    event.respondWith(jour_reseau_dabord(event));
+    event.respondWith(jour_cache_du_jour(event));
     return;
   }
   if (event.request.mode === "navigate") {

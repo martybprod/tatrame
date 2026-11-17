@@ -16,6 +16,11 @@ RACINE = pathlib.Path(__file__).resolve().parent.parent
 SOURCE = RACINE / "static" / "img" / "cartes"
 CIBLE = SOURCE / "mini"
 LARGEUR = 400
+# la taille intermédiaire : récit et plein écran sur téléphone (≈ 640 px
+# affichés à densité 3) — la face entière (1024, 340 Ko) reste pour le bureau
+CIBLE_MOY = SOURCE / "moyenne"
+LARGEUR_MOY = 800
+CIBLE_MOY.mkdir(exist_ok=True)
 
 CIBLE.mkdir(exist_ok=True)
 total_avant = total_apres = 0
@@ -25,6 +30,10 @@ for f in sorted(SOURCE.glob("*.jpg")):
     mini = im.resize((LARGEUR, h), Image.LANCZOS)
     dest = CIBLE / f"{f.stem}.webp"
     mini.save(dest, "WEBP", quality=82, method=6)
+    moy = im.resize((LARGEUR_MOY, round(im.height * LARGEUR_MOY / im.width)), Image.LANCZOS)
+    moy.save(CIBLE_MOY / f"{f.stem}.webp", "WEBP", quality=80, method=6)
     total_avant += f.stat().st_size
     total_apres += dest.stat().st_size
+moy_total = sum(f.stat().st_size for f in CIBLE_MOY.glob("*.webp"))
+print(f"moyennes : {moy_total/1e6:.1f} Mo")
 print(f"{len(list(CIBLE.glob('*.webp')))} vignettes · {total_avant/1e6:.1f} Mo → {total_apres/1e6:.1f} Mo")

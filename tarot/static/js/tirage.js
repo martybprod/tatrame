@@ -30,6 +30,12 @@
   }
   const dosPret = imagePrete(DOS_DEFAUT, 1500);
 
+  // l'image « de lecture » (récit, plein écran) : sur téléphone la taille
+  // intermédiaire (800 px, ~180 Ko) suffit à l'écran ; la face entière
+  // (1024 px, ~500 Ko) reste pour le bureau
+  const petitEcran = matchMedia("(max-width: 900px)");
+  const imageLecture = (c) => (petitEcran.matches && c.image_moyenne) || c.image;
+
   const eventail = document.getElementById("eventail");
   const slotsBox = document.getElementById("slots");
   const lecture = document.getElementById("lecture");
@@ -641,6 +647,8 @@
     const i = Number(el.closest(".cadre").dataset.i);
     const pos = positionsActives()[i];
     ordreRevelation.push({ carte: el._carte, i: i });
+    // l'image de lecture (récit, plein écran) se charge dès la révélation
+    if (el._carte.image) new Image().src = imageLecture(el._carte);
     setTimeout(() => {
       if (nomSlot) nomSlot.textContent = el._carte.nom;
       const libelleSlot = el.closest(".slot").querySelector(".libelle");
@@ -648,7 +656,7 @@
         libelleSlot.textContent = "le regard";
         libelleSlot.dataset.hors = "1";
       }
-      ajouterBlocLecture(el._carte, pos);
+      ajouterBlocLecture(el._carte, pos, i);
       verifierRangee(i);
       carteRevelation = false;
       cartesRevelees++;
@@ -879,7 +887,19 @@
     return `<p class="bloc-appoint appoint-detail">${appoint.texte}</p>`;
   }
 
-  function ajouterBlocLecture(carte, pos) {
+  /* L'ORDRE DU TIRAGE, pas celui des révélations (Martin, 2026-11-16 : « les
+     textes s'affichent dans l'ordre dans lequel les cartes ont été
+     dévoilées ») : chaque bloc porte son rang (data-ordre = position dans la
+     donne) et s'insère devant le premier bloc de rang supérieur. */
+  function insererDansLOrdre(el, ordre) {
+    el.dataset.ordre = String(ordre);
+    const apres = Array.from(lecture.children)
+      .find((x) => x.dataset.ordre !== undefined && Number(x.dataset.ordre) > ordre);
+    if (apres) lecture.insertBefore(el, apres);
+    else lecture.appendChild(el);
+  }
+
+  function ajouterBlocLecture(carte, pos, i) {
     const d = donneesBloc(carte, pos);
     if (!d) return;
     const bloc = document.createElement("div");
@@ -888,7 +908,7 @@
       `<p class="bloc-nom">${carte.nom} <span>— ${d.libelle}</span></p>` +
       `<p class="bloc-texte">${d.texte}</p>` +
       appointHTML(d.appoint);
-    lecture.appendChild(bloc);
+    insererDansLOrdre(bloc, i);
     requestAnimationFrame(() => bloc.classList.add("visible"));
   }
 
@@ -951,7 +971,8 @@
       `<p class="rangee-titre">${niveau.temps}</p>` +
       (rangee.liaisons || []).map((l) =>
         `<p class="liaison-ligne">${l.phrase}</p>`).join("");
-    lecture.appendChild(bloc);
+    // la synthèse d'un temps se range juste après ses trois cartes
+    insererDansLOrdre(bloc, niveauIndex * 3 + 2.5);
     requestAnimationFrame(() => bloc.classList.add("visible"));
   }
 
@@ -1058,7 +1079,7 @@
     lecture.innerHTML = L.seuil ? `<p class="seuil-ligne">${L.seuil}</p>` : "";
     ordreRevelation.forEach(({ carte, i }) => {
       const pos = positionsActives()[i];
-      if (pos) ajouterBlocLecture(carte, pos);
+      if (pos) ajouterBlocLecture(carte, pos, i);
     });
     if (cartesRevelees === tirage.cartes.length) {
       (L.liaisons || []).forEach((l) => {
@@ -1215,9 +1236,10 @@
     // la vignette (déjà en cache : elle est dans la case) s'affiche tout de
     // suite ; la face entière prend le relais une fois décodée
     const img = carte.image_mini || carte.image || DOS_DEFAUT;
-    if (carte.image && carte.image !== img) {
+    const grande = carte.image ? imageLecture(carte) : null;
+    if (grande && grande !== img) {
       const id = carte.id;
-      imagePrete(carte.image, 8000).then(() => { if (pleinImg.dataset.carte === id) pleinImg.src = carte.image; });
+      imagePrete(grande, 8000).then(() => { if (pleinImg.dataset.carte === id) pleinImg.src = grande; });
     }
     const q = (carte.questions || []).map((x) => `<li>${x}</li>`).join("");
     const ombre = carte.ombre
@@ -1643,7 +1665,7 @@
     if (p.genre === "carte") {
       corps =
         `<button type="button" class="recit-image" aria-label="Agrandir ${p.carte.nom}">` +
-        `<img src="${p.carte.image || DOS_DEFAUT}" alt="${p.carte.nom}" draggable="false"></button>` +
+        `<img src="${p.carte.image_mini || p.carte.image || DOS_DEFAUT}" data-grande="${p.carte.image ? imageLecture(p.carte) : ""}" alt="${p.carte.nom}" draggable="false"></button>` +
         `<p class="recit-position">${p.libelle}</p>` +
         `<p class="recit-nom">${p.carte.nom}</p>` +
         (p.texte ? `<p class="recit-texte">${p.texte}</p>` : "") +
@@ -1684,6 +1706,14 @@
       }
     }
     if (p.genre === "carte") {
+      // la vignette s'affiche d'emblée ; l'image de lecture la remplace
+      // dès qu'elle est prête (préchargée à la révélation, souvent déjà là)
+      const im = vueRecit.querySelector(".recit-image img");
+      const grande = im.dataset.grande;
+      if (grande) imagePrete(grande, 8000).then(() => { if (im.isConnected) im.src = grande; });
+      // et la page suivante se prépare pendant qu'on lit celle-ci
+      const suivante = pages[recitIndex + 1];
+      if (suivante && suivante.carte && suivante.carte.image) new Image().src = imageLecture(suivante.carte);
       vueRecit.querySelector(".recit-image").addEventListener("click", () => ouvrirPlein(p.carte));
     }
     vueRecit.querySelector(".recit-prec").addEventListener("click", () => { recitIndex--; dessinerRecit(); });
