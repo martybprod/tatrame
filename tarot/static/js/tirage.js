@@ -461,11 +461,23 @@
     dernierTotal = tirage.total_jeu;
     choisies = [];
     ordreRevelation = [];
-    grilleActive = tirage.grille || "causale_3";
+    // la grille choisie avant de piger survit au mélange (même tirage ouvert)
+    if (!(tirage.grilles || []).some((g) => g.id === grilleActive)) {
+      grilleActive = tirage.grille || "causale_3";
+    }
     croixActive = (estCroix() && tirage.grille) ? tirage.grille : "croix_celtique";
     afficherPedagogie();
     construireSlots();
+    // les libellés des cases suivent la grille choisie, pas celle du serveur
+    if (mode === 3) {
+      const positions = positionsActives();
+      slotsBox.querySelectorAll(".slot").forEach((slot, i) => {
+        const lib = slot.querySelector(".libelle");
+        if (lib && positions[i]) { lib.textContent = positions[i].libelle; lib.dataset.pos = positions[i].id; }
+      });
+    }
     construireBascule();
+    majGrilleAvant();
     majBarre();
     majCompteur();
     return tirage;
@@ -476,6 +488,7 @@
       const t = await demanderTirage();
       construireEventail(t.total_jeu);
       synchroniserEntete(t.total_jeu);
+      majBoutonMelange();
     } catch (e) {
       construireEventail(79);
     }
@@ -483,7 +496,7 @@
 
   function synchroniserEntete(total) {
     surtitre.textContent = "Le jeu des " + total;
-    piedTexte.textContent = total + " cartes · mélange honnête, graine conservée · aucune prédiction";
+    piedTexte.textContent = total + " cartes · aucune prédiction";
   }
 
   async function choisir(el) {
@@ -500,11 +513,11 @@
     if (!tirage || carteEnPlace || choisies.length >= tirage.cartes.length) return;
     carteEnPlace = true;
 
-    if (!choisies.length) replierBtn.classList.remove("invisible");
     document.body.classList.add("a-commence");
 
     const carte = tirage.cartes[choisies.length];
     choisies.push(carte);
+    majBoutonMelange();
     slotsBox.classList.remove("sans-vide");
 
     if (carte.image) {
@@ -663,8 +676,10 @@
     let genre = "";
     if (tirageChoisi && tirageChoisi.pige && (mode === 3 || mode === 0)) {
       genre = "pige";
-      options.push({ id: "hasard", nom: "Au hasard", sous: "mélange honnête", actif: mode === 3 });
-      options.push({ id: "choix", nom: "Je choisis", sous: "79 faces visibles", actif: mode === 0 });
+      // sans sous-titre (Martin, 2026-11-16 : « mélange honnête », pas très
+      // marketing) — les deux libellés se suffisent
+      options.push({ id: "hasard", nom: "Au hasard", sous: "", actif: mode === 3 });
+      options.push({ id: "choix", nom: "Je choisis", sous: "", actif: mode === 0 });
     } else if (tirageChoisi && tirageChoisi.lectures && mode === 11) {
       genre = "lecture";
       tirageChoisi.lectures.forEach((l) =>
@@ -680,7 +695,7 @@
       b.className = "bascule-option" + (o.actif ? " actif" : "");
       b.setAttribute("role", "tab");
       b.setAttribute("aria-selected", String(o.actif));
-      b.innerHTML = `${o.nom}<small>${o.sous}</small>`;
+      b.innerHTML = o.sous ? `${o.nom}<small>${o.sous}</small>` : o.nom;
       b.addEventListener("click", () => {
         if (genre === "lecture") changerCroix(o.id);
         else if (o.id === "choix" && mode !== 0) passerAuChoix();
@@ -1002,7 +1017,33 @@
       g ? `Grille actuelle : ${g.nom}` : "";
   }
 
-  function ouvrirFeuille() {
+  /* La grille AVANT de piger (Martin, 2026-11-16 : « que toutes les
+     possibilités s'offrent dès qu'on ouvre le tirage à trois cartes ») — en
+     tarot, la question se choisit avant de tirer : chaque grille donne un
+     autre sens aux trois positions. Une seule ligne (Hick), les quatre
+     grilles dans le même tiroir que « Relire autrement ». Visible dans Trois
+     cartes au hasard, tant qu'aucune carte n'est pigée (CSS : a-commence). */
+  const grilleAvant = document.getElementById("grille-avant");
+
+  function majGrilleAvant() {
+    const montrer = mode === 3 && tirage && (tirage.grilles || []).length > 1 &&
+      tirageChoisi && tirageChoisi.pige;
+    grilleAvant.classList.toggle("invisibles", !montrer);
+    if (!montrer) return;
+    const g = grilleCourante();
+    document.getElementById("grille-avant-sous").textContent = g ? g.nom : "";
+  }
+
+  let ouvreurFeuille = null;
+
+  function ouvrirFeuille(e) {
+    const avant = !!(e && e.currentTarget === grilleAvant);
+    ouvreurFeuille = avant ? grilleAvant : relire;
+    document.getElementById("feuille-titre").textContent =
+      avant ? "Choisir la grille de lecture" : "Relire la même donne";
+    feuille.querySelector(".feuille-quoi").textContent = avant
+      ? "Chaque grille pose une autre question aux trois positions. Tu pourras relire la donne sous les autres ensuite."
+      : "Les cartes ne bougent pas ; seule la question change.";
     const boite = document.getElementById("feuille-options");
     boite.innerHTML = "";
     (tirage.grilles || []).forEach((g) => {
@@ -1024,10 +1065,11 @@
   function fermerFeuille() {
     if (feuille.hidden) return;
     feuille.hidden = true;
-    relire.focus({ preventScroll: true });
+    if (ouvreurFeuille) ouvreurFeuille.focus({ preventScroll: true });
   }
 
   relire.addEventListener("click", ouvrirFeuille);
+  grilleAvant.addEventListener("click", ouvrirFeuille);
   feuille.addEventListener("click", (e) => { if (e.target === feuille) fermerFeuille(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") fermerFeuille(); });
 
@@ -1035,6 +1077,7 @@
     if (!tirage || tirage.mode !== 3 || id === grilleActive) return;
     grilleActive = id;
     construireGrilles();
+    majGrilleAvant();
     majBarre();
     const positions = positionsActives();
     slotsBox.querySelectorAll(".slot").forEach((slot, i) => {
@@ -1169,6 +1212,7 @@
     document.getElementById("detail-position").hidden = true;
     reinitialiserVues();
     relire.classList.add("invisibles");
+    grilleAvant.classList.add("invisibles");
   }
 
   // ── Ouvrir un tirage du catalogue, revenir au catalogue ─────────────
@@ -1198,6 +1242,7 @@
   function ouvrirTirage(t) {
     if (!t) return;
     tirageChoisi = t;
+    grilleActive = "causale_3";   // chaque ouverture repart de la grille d'origine
     mode = t.mode;
     if (t.croix) croixActive = t.croix;
     else if (t.lectures && !t.lectures.some((l) => l.id === croixActive)) croixActive = t.lectures[0].id;
@@ -1347,7 +1392,7 @@
     ordreRevelation = [];
     rangeesAnnoncees = new Set();
     cartesRevelees = 0;
-    grilleActive = d.grille || "causale_3";
+    if (!(d.grilles || []).some((g) => g.id === grilleActive)) grilleActive = d.grille || "causale_3";
     afficherPedagogie();
     construireSlots();
     majBarre();
@@ -1621,7 +1666,75 @@
     });
   }
 
-  replierBtn.addEventListener("click", replier);
+  /* MÉLANGER (Martin, 2026-11-16 : « il faut un bouton pour mélanger les
+     cartes »). Avant la première carte : le paquet se rassemble au centre,
+     puis se redéplie sur un nouveau mélange (nouvelle graine). Après une
+     carte pigée, le même bouton recommence le tirage. Absent du tirage au
+     choix (aucun hasard) et de l'accueil. */
+  function majBoutonMelange() {
+    const montrer = !!tirageChoisi && mode !== 0 && !!tirage;
+    replierBtn.classList.toggle("invisible", !montrer);
+    replierBtn.textContent = choisies.length ? "Recommencer le tirage" : "Mélanger les cartes";
+  }
+
+  function melanger() {
+    // une graine dans l'adresse rejouerait le même mélange : on l'oublie
+    const p = new URLSearchParams(location.search);
+    if (p.has("graine")) {
+      p.delete("graine"); p.delete("mode");
+      history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : ""));
+    }
+    const ligne = eventail.querySelector(".ligne");
+    const reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (choisies.length || !ligne || reduit) { replier(); return; }
+    jouerMelange(ligne).then(replier);
+  }
+
+  /* L'animation du mélange (Martin, 2026-11-16 : « une petite animation des
+     cartes qui se mélangent ») — un mélange à l'américaine, sur les cartes
+     déjà en place : le ruban se rassemble en un paquet, se coupe en deux tas
+     qui s'écartent, puis les deux tas se réentrelacent (cartes alternées, de
+     petites hauteurs différentes) ; deux fois. Ensuite seulement, le paquet
+     se redéplie sur la nouvelle donne (la cascade d'entrée existante).
+     ~1,1 s au total ; le mouvement part tout de suite (Doherty). */
+  async function jouerMelange(ligne) {
+    const attendre = (ms) => new Promise((r) => setTimeout(r, ms));
+    const cartes = cartesLibres();
+    const l = carteLargeur();
+    const centre = (ligne.offsetWidth - l) / 2;
+    const ecart = Math.min(l * 0.75, ligne.offsetWidth / 4);
+    replierBtn.disabled = true;
+    poserLoupe(-1);
+    const deplacer = (c, x, lev, duree, courbe) => {
+      c.style.transition = `left ${duree}ms ${courbe}, transform ${duree}ms ${courbe}`;
+      c.style.left = x + "px";
+      c.style.setProperty("--lev", lev + "px");
+    };
+    // 1 · le ruban se rassemble en un paquet
+    cartes.forEach((c, i) => deplacer(c, centre + (i % 3) * 0.4, 0, 320, "cubic-bezier(.3,0,.8,.15)"));
+    await attendre(330);
+    for (let passe = 0; passe < 2; passe++) {
+      // 2 · coupe : deux tas qui s'écartent, celui de droite un peu levé
+      cartes.forEach((c, i) => {
+        const droite = i >= cartes.length / 2;
+        c.style.transitionDelay = "";
+        deplacer(c, centre + (droite ? ecart : -ecart), droite ? 6 : 0, 200, "cubic-bezier(.05,.7,.1,1)");
+        c.style.zIndex = String(droite ? 2 : 1);
+      });
+      await attendre(210);
+      // 3 · les deux tas se réentrelacent : cartes alternées, hauteurs mêlées
+      cartes.forEach((c, i) => {
+        deplacer(c, centre + ((i * 7) % 5) - 2, (i % 2) ? 3 : 0, 230, "cubic-bezier(.3,0,.2,1)");
+        c.style.zIndex = String(i % 2 ? 2 : 1);
+        c.style.transitionDelay = `${(i % 10) * 4}ms`;
+      });
+      await attendre(280);
+    }
+    cartes.forEach((c) => { c.style.transitionDelay = ""; c.style.setProperty("--lev", "0px"); });
+    replierBtn.disabled = false;
+  }
+
+  replierBtn.addEventListener("click", melanger);
   slotsBox.addEventListener("click", (e) => {
     const cible = e.target.closest(".clic-position");
     if (cible) detailPosition(cible);

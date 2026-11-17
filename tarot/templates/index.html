@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarot — le tirage</title>
-<link rel="stylesheet" href="css/app.css?v=43">
+<link rel="stylesheet" href="css/app.css?v=46">
 </head>
 <body class="accueil{% if embed %} embed{% endif %}">
 
@@ -31,8 +31,14 @@
 
   <div id="ped-zone" class="ped-zone"><div id="ped-contenu"></div></div>
 
-  <!-- Le seul choix avant de piger : comment (Trois cartes) ou quelle lecture (La croix) -->
+  <!-- Avant de piger : comment (Trois cartes) ou quelle lecture (La croix) -->
   <div id="bascule" class="bascule invisibles" role="tablist"></div>
+
+  <!-- Trois cartes : la grille se choisit dès l'ouverture (Martin, 2026-11-16) —
+       une ligne, les quatre grilles dans le tiroir -->
+  <button id="grille-avant" class="relire grille-avant invisibles" type="button" aria-haspopup="dialog">
+    <span>Grille de lecture<small id="grille-avant-sous"></small></span><span class="relire-fleche" aria-hidden="true">›</span>
+  </button>
 
   <div id="vues" class="vues invisibles" role="tablist" aria-label="Façon de lire">
     <button class="vue-bouton" data-vue="recit" role="tab" type="button">Récit</button>
@@ -72,13 +78,13 @@
   </button>
 
   <div class="actions">
-    <button id="replier" class="bouton-discret invisible">Replier le jeu</button>
+    <button id="replier" class="bouton-discret invisible" type="button">Mélanger les cartes</button>
   </div>
 
 </main>
 
 <footer class="pied">
-  <p id="pied-texte">79 cartes · mélange honnête, graine conservée · aucune prédiction</p>
+  <p id="pied-texte">79 cartes · aucune prédiction</p>
 </footer>
 
 <div id="plein" class="plein invisible" aria-hidden="true">
@@ -110,6 +116,6 @@
 </div>
 
 <script>window.DOS_URL = "img/dos.png?v={{ version_dos }}";</script>
-<script src="js/tirage.js?v=40"></script>
+<script src="js/tirage.js?v=42"></script>
 </body>
 </html>

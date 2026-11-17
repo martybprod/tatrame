@@ -1034,6 +1034,16 @@ body.en-tirage .slots.croix {
   gap: 6px 8px;
   max-width: min(100%, calc(5 * 96px + 4 * 8px + 24px));
 }
+/* Le Diamant n'a que 3 colonnes : sans cette règle, la précédente (plus
+   spécifique que .slots.croix.diamant) lui imposait les 5 colonnes des
+   grandes croix pendant la pige, et ses cases se tassaient à gauche
+   (Martin, 2026-11-16). */
+body.en-tirage .slots.croix.diamant {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* même taille de case que les grandes croix en miniature (~62 px) :
+     le paquet reste visible sous le plan */
+  max-width: min(100%, calc(3 * 62px + 2 * 8px + 24px));
+}
 
 .slot .cadre { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
 .slot .cadre.suivante {
@@ -1500,3 +1510,13 @@ body.a-commence .bascule[data-genre="pige"] { display: none; }
 /* Sur grand écran, la barre garde ses trois éléments près du contenu :
    ‹ Tirages et ⓘ ne partent pas aux deux bouts d'un écran de 1440 px */
 .barre-tirage { padding-inline: max(14px, calc((100% - 760px) / 2)); }
+
+/* Trois cartes : la grille de lecture se choisit avant de piger
+   (même tiroir que « Relire autrement ») ; elle se retire à la 1re carte */
+.grille-avant { order: 0; margin: 10px auto 2px; max-width: 420px; }
+body.a-commence .grille-avant { display: none; }
+.grille-avant.invisibles { display: none; }
+
+/* Le bouton Mélanger : juste sous le paquet, toujours au même endroit */
+.actions { margin: 14px 0 18px; }
+#replier[disabled] { opacity: 0.5; cursor: default; }
