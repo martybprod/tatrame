@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarot — le tirage</title>
-<link rel="stylesheet" href="css/app.css?v=38">
+<link rel="stylesheet" href="css/app.css?v=39">
 </head>
 <body{% if embed %} class="embed"{% endif %}>
 
@@ -20,6 +20,8 @@
     <button class="mode actif" data-mode="1" role="tab" aria-selected="true">Une carte</button>
     <span class="filet-mode" aria-hidden="true"></span>
     <button class="mode" data-mode="3" role="tab" aria-selected="false">Trois cartes</button>
+    <span class="filet-mode" aria-hidden="true"></span>
+    <button class="mode" data-mode="5" role="tab" aria-selected="false">Le Diamant</button>
     <span class="filet-mode" aria-hidden="true"></span>
     <button class="mode" data-mode="10" role="tab" aria-selected="false">Neuf + une</button>
     <span class="filet-mode" aria-hidden="true"></span>
@@ -100,6 +102,6 @@
 </div>
 
 <script>window.DOS_URL = "img/dos.png?v={{ version_dos }}";</script>
-<script src="js/tirage.js?v=37"></script>
+<script src="js/tirage.js?v=38"></script>
 </body>
 </html>

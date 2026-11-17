@@ -13,7 +13,7 @@ import re
 
 import pytest
 
-from app import CROIX, app as flask_app
+from app import CROIX, TIRAGES, app as flask_app
 from moteur import _de_verbe
 
 RACINE = pathlib.Path(__file__).resolve().parent.parent
@@ -105,3 +105,31 @@ def test_album_liste_et_edite_les_trois_croix():
     assert chemin == ["croix_composite", "pedagogie", "positions_expliquees", "outil"]
     _, chemin = album._cible_tirage("tirage-croix_osho", "pedagogie.resume")
     assert chemin == ["croix_osho", "pedagogie", "resume"]
+
+
+def test_diamant_cinq_cartes(client):
+    """Le petit tirage en croix d'Osho : cinq positions, aucune case vide,
+    même graine = mêmes cartes, et il ne se mêle pas aux croix à dix cartes."""
+    d = client.get("/api/tirage?mode=5&graine=12").get_json()
+    assert d["mode"] == 5 and d["grille"] == "diamant"
+    assert len(d["cartes"]) == 5
+    assert [p["numero"] for p in d["croix"]["positions"]] == [1, 2, 3, 4, 5]
+    assert [c["id"] for c in d["croix_choix"]] == ["diamant"]
+    for carte in d["cartes"]:
+        texte = d["croix_textes"]["diamant"][carte["id"]]["texte"]
+        assert isinstance(texte, str) and texte.strip(), carte["id"]
+    # le diamant n'est pas une des trois croix à dix cartes
+    d11 = client.get("/api/tirage?mode=11&graine=12").get_json()
+    assert "diamant" not in [c["id"] for c in d11["croix_choix"]]
+
+
+def test_diamant_pedagogie_et_album():
+    import album
+    bloc = TIRAGES["diamant"]
+    P = bloc["pedagogie"]
+    assert len(P["resume"].split()) <= 45
+    expl = P.get("positions_expliquees") or {}
+    for pos in bloc["positions"]:
+        assert (expl.get(pos["id"]) or "").strip(), pos["id"]
+    noms = [c["nom"] for c in album._section_tirages()[0]["cartes"]]
+    assert "Le Diamant" in noms

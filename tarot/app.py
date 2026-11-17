@@ -86,7 +86,8 @@ GRILLES.update(TIRAGES_BRUT.get("grilles", {}))
 # Les croix à dix cartes : même disposition (les colonnes viennent des données),
 # mais chacune déclare ses positions, ses textes et sa pédagogie. La donne se
 # relit donc avec l'une ou l'autre, sans retirer les cartes.
-CROIX = {k: v for k, v in TIRAGES.items() if v.get("grammaire") == "croix"}
+CROIX = {k: v for k, v in TIRAGES.items()
+         if v.get("grammaire") == "croix" and v.get("nb_cartes") == 10}
 
 
 def _valeur_champ(fiche, chemin):
@@ -276,8 +277,8 @@ def tirage():
     est celle que le mélange a placée — comme dans un vrai jeu.
     """
     mode = request.args.get("mode", "1")
-    if mode not in ("1", "3", "10", "11"):
-        return jsonify({"erreur": "mode invalide (1, 3, 10 ou 11)"}), 400
+    if mode not in ("1", "3", "5", "10", "11"):
+        return jsonify({"erreur": "mode invalide (1, 3, 5, 10 ou 11)"}), 400
     nb = 10 if mode == "11" else int(mode)
 
     grille_id = request.args.get("grille", "causale_3")
@@ -341,8 +342,8 @@ def tirage():
             "cellules": cellules,
             "rangees": lecture["rangees"],
         }
-    elif mode == "11":
-        bloc = CROIX[croix_id]
+    elif mode in ("5", "11"):
+        bloc = CROIX[croix_id] if mode == "11" else TIRAGES["diamant"]
         positions = bloc["positions"]
         croix = {
             "positions": [{k: pos[k] for k in ("id", "numero", "libelle",
@@ -361,8 +362,10 @@ def tirage():
             }
         lecture = moteur.composer(choisies)
         # les trois croix sont résolues d'avance : en changer relit la même
-        # donne sans retirer les cartes (choix avant ou après le tirage)
-        for cid, cbloc in CROIX.items():
+        # donne sans retirer les cartes (choix avant ou après le tirage).
+        # Le diamant n'a qu'une forme : il porte sa propre définition.
+        blocs = CROIX.items() if mode == "11" else [("diamant", TIRAGES["diamant"])]
+        for cid, cbloc in blocs:
             croix_choix.append({
                 "id": cid, "nom": cbloc["nom"],
                 "sous_titre": cbloc.get("grammaire", ""),
@@ -377,10 +380,10 @@ def tirage():
 
     if nb == 3:
         grille = GRILLES[grille_id]
-    elif mode == "11":
-        bloc = CROIX[croix_id]
+    elif mode in ("5", "11"):
+        bloc = CROIX[croix_id] if mode == "11" else TIRAGES["diamant"]
         grille = {
-            "id": croix_id,
+            "id": croix_id if mode == "11" else "diamant",
             "nom": bloc["nom"],
             "sous_titre": bloc.get("grammaire", ""),
             "cloture": "percee",

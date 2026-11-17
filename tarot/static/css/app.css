@@ -66,9 +66,10 @@ body {
 
 .choix-mode {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 6px 18px;
   margin: 16px auto 0;
 }
 
@@ -1060,6 +1061,14 @@ body.fige-scroll { overflow: hidden; }
   gap: 10px 14px;
   max-width: min(100%, calc(5 * 132px + 4 * 14px + 36px));
   min-height: 0;
+}
+
+/* Le Diamant : la même croix, trois colonnes — l'issue au centre, les deux
+   influences à gauche et à droite, ce qu'il faut en bas, la résolution en haut */
+.slots.croix.diamant {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px 18px;
+  max-width: min(100%, calc(3 * 150px + 2 * 18px + 36px));
 }
 
 .slots.croix .slot-croix { width: 100%; }

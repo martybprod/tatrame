@@ -106,6 +106,9 @@
   let ordreRevelation = [];   // [{carte, i}] dans l'ordre choisi par celui qui tire
   let rangeesAnnoncees = new Set();  // mode 10 : les trois temps déjà lus
 
+  // les tirages en croix : les trois croix à dix cartes et le diamant (cinq)
+  function estCroix() { return mode === 5 || mode === 11; }
+
   function croixCourante() {
     const liste = (tirage && tirage.croix_choix) || [];
     return liste.find(c => c.id === croixActive) || liste[0] || null;
@@ -123,7 +126,7 @@
                positions: [],
                pedagogie: tirage.pedagogie || {} };
     }
-    if (mode === 11) {
+    if (estCroix()) {
       const C = croixCourante() || {};
       return { id: croixActive, nom: C.nom || "La croix celtique", cloture: "percee",
                positions: C.positions || [],
@@ -281,7 +284,7 @@
       const plan = (E.plans || [])[n % 3] || {};
       return [niv.temps, plan.libelle].filter(Boolean).join(" · ");
     }
-    if (mode === 11) {
+    if (estCroix()) {
       const p = (positionsActives() || []).find((x) => x.numero === n + 1);
       return p ? `${p.numero}. ${p.libelle}` : "";
     }
@@ -315,7 +318,7 @@
     slotsBox.classList.remove("invisibles", "cachee");
     // pendant le tirage à plusieurs cartes : le plan en miniature, pour voir
     // d'un coup toutes les cases et tout le paquet
-    document.body.classList.toggle("en-tirage", mode === 3 || mode === 10 || mode === 11);
+    document.body.classList.toggle("en-tirage", mode === 3 || mode === 10 || estCroix());
     document.body.classList.remove("a-commence");
     reinitialiserVues();
     slotsBox.classList.toggle("etendu", mode === 10);
@@ -325,8 +328,9 @@
     // mode 1 : pas d'emplacement vide avant le choix — il apparaît rempli
     slotsBox.classList.toggle("sans-vide", mode === 1);
 
-    slotsBox.classList.toggle("croix", mode === 11);
-    if (mode === 11) {
+    slotsBox.classList.toggle("croix", estCroix());
+    slotsBox.classList.toggle("diamant", mode === 5);
+    if (estCroix()) {
       const C = croixCourante() || (tirage && tirage.croix) || {};
       (C.positions || []).forEach((pos) => {
         const s = document.createElement("div");
@@ -399,7 +403,7 @@
     const graineUrl = new URLSearchParams(location.search).get("graine");
     const suffixe = graineUrl ? `&graine=${encodeURIComponent(graineUrl)}` : "";
     // ?croix=… choisit la croix lue ; sans paramètre, celle déjà active
-    const croixReq = (mode === 11) ? `&croix=${encodeURIComponent(croixActive)}` : "";
+    const croixReq = (estCroix()) ? `&croix=${encodeURIComponent(croixActive)}` : "";
     const r = await fetch(`api/tirage?mode=${mode}${suffixe}${croixReq}`);
     if (!r.ok) throw new Error("tirage refusé");
     tirage = await r.json();
@@ -407,7 +411,7 @@
     choisies = [];
     ordreRevelation = [];
     grilleActive = tirage.grille || "causale_3";
-    croixActive = (mode === 11 && tirage.grille) ? tirage.grille : "croix_celtique";
+    croixActive = (estCroix() && tirage.grille) ? tirage.grille : "croix_celtique";
     afficherPedagogie();
     construireSlots();
     construireBarreCroix();
@@ -472,7 +476,7 @@
     el.style.height = "100%";
     el.style.opacity = "1";
 
-    if (mode === 3 || mode === 10 || mode === 11) {
+    if (mode === 3 || mode === 10 || estCroix()) {
       // 2a · posée FACE CACHÉE — la révélation se fera clic par clic
       el.classList.add("posee");
       el.title = "Révéler la carte";
@@ -664,7 +668,9 @@
 
   function montrerAttente() {
     const seuil = tirage.lecture ? tirage.lecture.seuil : "";
-    const invite = mode === 11
+    const invite = mode === 5
+      ? "Les cinq cartes sont posées, face cachée. Révèle-les dans l'ordre de la croix : l'issue, les deux influences, ce qu'il faut pour dénouer, puis la résolution."
+      : mode === 11
       ? "Les dix cartes sont posées, face cachée. Révèle-les dans l'ordre de la croix, puis le bâton."
       : mode === 10
       ? "Les dix cartes sont posées, face cachée. Révèle-les rangée par rangée : le visible, le latent, la résolution — puis la clé."
@@ -711,7 +717,7 @@
   function donneesBloc(carte, pos) {
     let r = {};
     let libelle = (pos && pos.libelle) || "";
-    if (mode === 11) {
+    if (estCroix()) {
       const def = (positionsActives() || []).find((p) => p.numero === pos.numero) || {};
       const cell = ((tirage.croix_textes || {})[croixActive] || {})[carte.id] || {};
       r = { texte: cell.texte, appoint: cell.appoint, regard: cell.regard };
@@ -795,7 +801,7 @@
     const attente = lecture.querySelector(".attente");
     if (attente) attente.remove();
     // Neuf + une : la clé est une carte de la grille, et la percée referme.
-    if (mode === 10 || mode === 11) {
+    if (mode === 10 || estCroix()) {
       ajouterPercee();
       return;
     }
@@ -1264,11 +1270,11 @@
   }
 
   function montrerVues() {
-    if (!tirage || (mode !== 3 && mode !== 10 && mode !== 11)) return;
-    vuesBarre.querySelector('[data-vue="liens"]').classList.toggle("invisible", mode === 11);
+    if (!tirage || (mode !== 3 && mode !== 10 && !estCroix())) return;
+    vuesBarre.querySelector('[data-vue="liens"]').classList.toggle("invisible", estCroix());
     vuesBarre.classList.remove("invisibles");
     const memo = lireVueMemo();
-    afficherVue(memo && !(memo === "liens" && mode === 11) ? memo : "ensemble");
+    afficherVue(memo && !(memo === "liens" && estCroix()) ? memo : "ensemble");
   }
 
   function afficherVue(v) {
@@ -1508,7 +1514,8 @@
   // ?croix=croix_osho : ouvrir directement sur l'une des trois croix
   const croixUrl = params.get("croix") || "";
   if (/^croix_[a-z_]+$/.test(croixUrl)) croixActive = croixUrl;
-  if (modeUrl === 0 || modeUrl === 1 || modeUrl === 3 || modeUrl === 10 || modeUrl === 11) {
+  if (modeUrl === 0 || modeUrl === 1 || modeUrl === 3 || modeUrl === 5
+      || modeUrl === 10 || modeUrl === 11) {
     mode = modeUrl;
     boutonsMode.forEach((b) => {
       const actif = Number(b.dataset.mode) === modeUrl;

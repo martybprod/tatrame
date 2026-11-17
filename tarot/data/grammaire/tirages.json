@@ -924,5 +924,102 @@
         }
       ]
     }
+  },
+  "diamant": {
+    "id": "diamant",
+    "nom": "Le Diamant",
+    "nb_cartes": 5,
+    "grammaire": "croix",
+    "question_par_defaut": "Que faut-il voir de cette question, et qu'est-ce qui pourrait la dénouer ?",
+    "source": "Tarot Zen d'Osho, « The Diamond » — cinq cartes : l'issue, l'influence intérieure ignorée, l'influence extérieure connue, ce qu'il faut pour dénouer, la résolution. Disposition en croix, la résolution au sommet.",
+    "coeur": [],
+    "ligne_de_probabilite": [],
+    "positions": [
+      {
+        "id": "issue",
+        "numero": 1,
+        "libelle": "l'issue",
+        "question": "de quoi s'agit-il, au fond ?",
+        "se_grade": "le sujet tel qu'il se présente, sans jugement",
+        "champ": "lumiere",
+        "appoint": {
+          "champs": [
+            "image.detail",
+            "mots_cles"
+          ],
+          "genre": "detail"
+        },
+        "col": 2,
+        "row": 2
+      },
+      {
+        "id": "interieur",
+        "numero": 2,
+        "libelle": "ce qui agit sans que tu le voies",
+        "question": "quelle influence intérieure échappe à ton regard ?",
+        "se_grade": "la part cachée : ce que tu portes sans le nommer",
+        "champ": "ombre.texte",
+        "appoint": {
+          "champ": "ombre.mode",
+          "genre": "tag"
+        },
+        "col": 1,
+        "row": 2
+      },
+      {
+        "id": "exterieur",
+        "numero": 3,
+        "libelle": "ce qui vient de l'extérieur",
+        "question": "quelle influence extérieure vois-tu déjà ?",
+        "se_grade": "ce que les autres apportent, projettent ou renvoient",
+        "champ": "croix.entourage",
+        "col": 3,
+        "row": 2
+      },
+      {
+        "id": "necessaire",
+        "numero": 4,
+        "libelle": "ce qu'il faut pour dénouer",
+        "question": "qu'est-ce qui manque, ou qu'est-ce qu'il faudrait lâcher ?",
+        "se_grade": "le point de bascule : ce qui pourrait dénouer",
+        "champ": "ombre.issue",
+        "col": 2,
+        "row": 3
+      },
+      {
+        "id": "resolution",
+        "numero": 5,
+        "libelle": "la résolution",
+        "question": "quelle idée retenir de cette lecture ?",
+        "se_grade": "l'issue de la lecture, jamais un verdict",
+        "champ": "lecon",
+        "col": 2,
+        "row": 1
+      }
+    ],
+    "pedagogie": {
+      "resume": "Cinq cartes en croix pour éclaircir une question précise : l'issue, ce qui agit sans que tu le voies, ce qui vient de l'extérieur, ce qu'il faut pour dénouer, et la résolution.",
+      "pourquoi": "Cette croix courte vient du Tarot Zen d'Osho, où elle s'appelle Le Diamant. Elle garde la forme de la grande croix, mais se contente de l'essentiel : cinq cartes suffisent quand la question est nette.\n\nElle convient quand tu veux y voir clair sur un point précis, sans dérouler tout un tableau. Si la situation est large, ou si plusieurs personnes s'y croisent, la croix à dix cartes laisse plus de place. Ici, chaque carte compte double : rien à contourner.",
+      "le_tirage": "L'issue occupe le centre. À sa gauche, ce qui agit sans que tu le voies ; à sa droite, ce qui vient de l'extérieur et que tu reconnais déjà. Sous elle, ce qu'il faut pour dénouer. Au-dessus, la résolution : ce que la lecture te laisse à comprendre.\n\nLes deux influences forment un couple. Souvent, l'une est nommée et l'autre pas : c'est ce déséquilibre qui retient l'issue en place. Regarde laquelle des deux oppose le plus de résistance.",
+      "positions_expliquees": {
+        "issue": "La carte du centre nomme le sujet. Elle ne dit pas quoi faire ; elle dit de quoi il s'agit, avec le ton du moment. Si elle surprend, c'est souvent que la question posée n'était pas la vraie.",
+        "interieur": "Cette carte montre ce qui pèse ou soutient sans être reconnu : une habitude, une peur ancienne, un désir que tu n'as pas formulé. L'ombre de la carte et son mode précisent comment cette influence travaille.",
+        "exterieur": "Cette carte décrit ce qui vient des autres : ce qu'ils apportent, ce qu'ils projettent sur toi, ce que leurs réactions font revenir. Elle ne juge personne ; elle montre ce qui circule.",
+        "necessaire": "Cette carte dit ce qui pourrait dénouer l'issue : un renoncement, un pas de côté, une parole à dire. Elle nomme le point de bascule, pas la recette.",
+        "resolution": "La carte du sommet est la résolution : l'idée à retenir, ce que la lecture a mis au jour. Elle ne prédit rien. Elle ferme la croix en donnant une phrase à garder."
+      },
+      "comment_lire": "Commence par le centre, puis les deux influences côte à côte.\n\n1. **L'issue :** lis-la d'abord seule. C'est le sujet de la lecture.\n2. **Les deux influences :** ce qui agit en toi sans que tu le voies, et ce qui vient de l'extérieur. Compare-les.\n3. **Ce qu'il faut pour dénouer :** la carte du bas indique le point de bascule.\n4. **La résolution :** termine par le sommet. C'est la phrase à retenir.\n\nLes cinq cartes se lisent en un seul geste : la croix est courte, la lecture aussi.",
+      "apres": "Note l'issue en une phrase, puis le point de bascule. Relis ces deux lignes dans une semaine : c'est souvent là que le regard a bougé, plus que sur la résolution elle-même.",
+      "vocabulaire": [
+        {
+          "titre": "Le Diamant",
+          "texte": "Le nom vient d'Osho. La forme est celle d'une croix, mais réduite à cinq cartes : assez pour voir le sujet, ses deux influences et ce qui le dénoue, sans dérouler un grand tableau."
+        },
+        {
+          "titre": "Les deux influences",
+          "texte": "L'une est intérieure et cachée, l'autre extérieure et reconnue. Elles ne s'opposent pas forcément : une influence extérieure peut soutenir ce que l'intérieur retient. C'est leur écart qui éclaire."
+        }
+      ]
+    }
   }
 }
