@@ -262,3 +262,60 @@
   l'annonce ne part qu'à la fermeture) ; disparition propre vérifiée (étiquette
   retirée, classes nettoyées). Suite pytest relancée.
 - **Statut** : livré et **poussé** le jour même (`2056808`) — Coolify redéploie tatrame.ca.
+
+## 2026-11-17 — Ops : le compte admin « martin-boucher » impossible à utiliser sur tatrame.ca
+
+- **Demande** : « Le compte administrateur est Martin Boucher. Je devrais pouvoir m'y
+  connecter depuis tatrame.ca, mais ce n'est pas possible — je dois à chaque fois me créer
+  un nouveau compte et je n'ai pas mes accès administrateur. » (mot de passe voulu : « Merci »)
+- **Diagnostic** : le profil `martin-boucher` existait en prod mais en **thème secondaire**
+  du compte d'Arianne (créé sur un appareil où sa session était ouverte), avec deux doublons
+  secondaires (`-14ebda`, dont le propriétaire n'existe plus ; `-b9dba1`, chez Arianne aussi).
+  Aucun compte racine connectable au slug → `/api/connexion` 401 systématique,
+  `COMPTE_ADMIN` indéverrouillable. Le CODE était correct — c'était l'état des données.
+- **Correction** (données prod, accord explicite de Martin, backup préalable) : copie dans
+  `data/profils/_sauvegarde-2026-11-17/` (sur le volume), `proprietaire` retiré de
+  `martin-boucher.json` (redevient un compte racine, vraies données 6/4/1980 5 h), mot de
+  passe « Merci » posé (PBKDF2 généré avec le Werkzeug du conteneur — même méthode épinglée
+  que `auth.py`), doublons supprimés. Vérifié depuis l'extérieur : connexion OK + jeton admin
+  (`/api/admin/jeton`) OK. Sans redémarrage (les profils sont relus du disque à chaque requête).
+  Rappel du repli documenté : `/admin/commentaires` + `ADMIN_PASSWORD` (Coolify) depuis un
+  appareil non connecté.
+- **Statut** : résolu le jour même.
+
+## 2026-11-17 — Créer un profil pendant qu'un compte est ouvert : confirmation avant le rattachement
+
+- **Demande** (sur proposition de l'agent après le diagnostic ops, accord de Martin :
+  « point 2, oui go ») : le rattachement silencieux en thème secondaire (décision assumée
+  « le thème de ma fille ») a enfermé trois fois « martin-boucher » chez d'autres comptes —
+  ne plus jamais le faire en silence.
+- **Décision** (`templates/index.html`, aucun changement d'API) : note dès l'ouverture du
+  formulaire quand un compte est actif (« Tu es connecté à « X » : le profil créé ici
+  deviendra un thème de ce compte, pas un nouveau compte… ») + confirmation en DEUX temps
+  avant le POST (premier clic arme « Confirmer — créer le thème » + message « Petit moment
+  important… », deuxième crée). Commentaire synchronisé côté serveur (`api_creer_profil`).
+- **Validation** : suite pytest verte (840) ; parcours réel au navigateur (premier clic
+  sans création, deuxième avec rattachement, profils de test supprimés ensuite).
+- **Statut** : livré et poussé le jour même (`9b54477`).
+
+## 2026-11-17 — Tableau de bord : ajouter le Tarot aux données d'utilisation
+
+- **Demande** : « dans le tableau de bord, je ne vois pas la section tarot dans les données
+  d'utilisation, il faut l'ajouter ».
+- **Diagnostic** : plus large que le Tarot — AUCUN clic d'onglet n'était journalisé : le
+  handler `#nav` appelait `montrer()` sans passer par `montrerVue()` (seul à envoyer
+  l'événement `nav` à `/api/activite`). En prod : `nav:jour` 1239 (gonflé par les
+  démarrages), `nav:tarot`/`nav:apercu`/`nav:relations` 0 — « Sections les plus visitées »
+  ne comptait que les sauts programmatiques (liens du fil, « À méditer ») et le jour de
+  démarrage.
+- **Décision** : le handler `#nav` passe par `montrerVue()` (même bascule d'état, un
+  événement de plus) ; « tarot » rejoint `_LIBELLES_VUE` ; 3 tests
+  (`tests/test_tableau_bord.py`) verrouillent les deux bouts (journal → synthèse → libellé).
+- **Limites** : les comptages historiques restent biaisés (les événements manquants ne se
+  rattrapent pas) ; la justesse repart du déploiement.
+- **Pièges documentés au passage** : le service worker sert la racine en
+  **stale-while-revalidate** — après un déploiement, le PREMIER chargement exécute encore
+  l'ancien JS (le frais part en arrière-plan), le deuxième voit le nouveau : pour tester un
+  changement local, recharger DEUX fois. Et l'app locale (`debug=False`) met les templates
+  en cache : relancer l'app après chaque édition de `templates/`.
+- **Statut** : livré et poussé le jour même (`72bfef3`) — 843 tests verts.
