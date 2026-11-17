@@ -10,6 +10,11 @@ import copy
 import datetime as dt
 import hashlib
 import json
+import mimetypes
+# Les images WebP partaient en `application/octet-stream` en production (le
+# conteneur n'a pas de /etc/mime.types qui connaisse .webp) : Safari devait
+# deviner le format. Déclaré ici, une fois pour toutes (2026-11-16).
+mimetypes.add_type("image/webp", ".webp")
 import os
 import pathlib
 import re

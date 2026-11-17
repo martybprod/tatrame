@@ -1228,7 +1228,14 @@ function precharger_fonds() {
   fondre(document.querySelector('.bandeau-marque'), '/static/img/trame-bandeau.jpg?v={{ vstat }}');
   // Le fond « métier » de l'accueil du jour : simple mise en cache anticipée,
   // son écran fond déjà par sa propre transition d'opacité (.ouvert).
-  new Image().src = '/static/img/metierAtisser1.webp?v={{ vstat }}';
+  // LA BONNE VERSION (2026-11-16) : sur téléphone, la 1024 (254 Ko) que le CSS
+  // utilise — le préchargement demandait la 2048 (542 Ko), jamais affichée.
+  new Image().src = urlMetier();
+}
+function urlMetier() {
+  return matchMedia('(max-width:900px)').matches
+    ? '/static/img/metierAtisser1_mobile.webp?v={{ vstat }}'
+    : '/static/img/metierAtisser1.webp?v={{ vstat }}';
 }
 precharger_fonds();
 
@@ -1253,16 +1260,20 @@ async function precharger_cache() {
     localStorage.setItem(CLE_CACHE_VSTAT, VSTAT);   // posé d'emblée : une
     // interruption en cours de route laissera un cache PARTIEL, jamais à
     // refaire de zéro — et le worker complète au fil des demandes de toute façon.
-    const pages = await caches.open('tatrame-pages-v1');
+    /* Les MÊMES noms de cache que static/sw.js (v3). Jusqu'au 2026-11-16,
+       on écrivait encore dans les « v1 » que le worker ne lit plus depuis le
+       passage en v2 (2026-10-17) : ~2,5 Mo retéléchargés pour rien à chaque
+       changement de static/, en pleine ouverture de l'app. */
+    const pages = await caches.open('tatrame-pages-v3');
     await pages.put('/', await fetch('/'));
-    const statique = await caches.open('tatrame-statique-v1');
+    const statique = await caches.open('tatrame-statique-v3');
     const rangs = ['as', '2', '3', '4', '5', '6', '7', '8', '9', '10',
                    'cavalier', 'valet', 'reine', 'roi'];
     // Les fonds et icônes du shell y sont aussi : le PREMIER chargement d'un
     // appareil passe avant que le worker ne contrôle la page, donc le handler
     // statique ne les a pas vus — sans cette liste, ils manqueraient au hors-ligne.
     const urls = ['/static/img/fond-defilement.webp', '/static/img/trame-bandeau.jpg',
-      '/static/img/metierAtisser1.webp', '/static/favicon-32.png',
+      urlMetier().split('?')[0], '/static/favicon-32.png',
       '/static/ta-trame-icone-180.png', '/static/manifest.json', '/static/icone.svg',
       '/static/cartes/mini/dos.webp',
       ...Array.from({ length: 22 }, (_, i) => `/static/cartes/mini/${String(i).padStart(2, '0')}.webp`),
@@ -4968,7 +4979,9 @@ async function demarrer() {
   chargerRegles(bundle.conventions);
   // Le remplissage du cache local, une fois le jour affiché — jamais avant :
   // le premier écran passe avant les 2 Mo de confort hors-ligne.
-  setTimeout(precharger_cache, 2500);
+  // au calme : 8 s après l'ouverture, pour ne jamais disputer le réseau aux
+  // cartes et aux fonds que la personne est en train d'ouvrir
+  setTimeout(precharger_cache, 8000);
   // Une fois la vue Jour prête dessous : soit on ouvre la carte d'un rappel
   // (l'app vient d'être ouverte depuis une notification), soit l'écran d'accueil
   // du jour normal (une seule fois par jour — voir montrerAccueilJour).

@@ -528,6 +528,9 @@
   async function charger() {
     try {
       const t = await demanderTirage();
+      // les cartes de la donne sont connues d'avance : leurs vignettes se
+      // chargent dès maintenant, chaque carte pigée s'affiche sans attendre
+      (t.cartes || []).forEach((c) => { if (c.image_mini) new Image().src = c.image_mini; });
       entrerTable();   // AVANT le paquet : la table fixe la taille de ses cartes
       construireEventail(t.total_jeu);
       synchroniserEntete(t.total_jeu);
