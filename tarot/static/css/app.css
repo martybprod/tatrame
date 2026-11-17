@@ -221,7 +221,6 @@ body {
   align-items: start;
   gap: clamp(10px, 2.4vw, 26px);
   width: 100%;
-  max-width: min(100%, calc(var(--n, 3) * 240px + (var(--n, 3) - 1) * 26px + 36px));
   margin: 6px auto 0;
   padding: 0 clamp(8px, 2vw, 18px);
 }
@@ -792,7 +791,6 @@ body.fige-scroll { overflow: hidden; }
   justify-content: center;
   align-items: start;
   gap: 12px 18px;
-  max-width: min(100%, calc(3 * 158px + 2 * 18px + 36px));
   min-height: 0;
 }
 
@@ -983,7 +981,6 @@ body.fige-scroll { overflow: hidden; }
   justify-content: center;
   align-items: start;
   gap: 10px 14px;
-  max-width: min(100%, calc(5 * 132px + 4 * 14px + 36px));
   min-height: 0;
 }
 
@@ -992,7 +989,6 @@ body.fige-scroll { overflow: hidden; }
 .slots.croix.diamant {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px 18px;
-  max-width: min(100%, calc(3 * 150px + 2 * 18px + 36px));
 }
 
 .slots.croix .slot-croix { width: 100%; }
@@ -1008,7 +1004,6 @@ body.fige-scroll { overflow: hidden; }
 body.en-tirage .slots {
   gap: 8px;
   margin-top: 14px;
-  max-width: min(100%, calc(var(--n, 3) * 150px + (var(--n, 3) - 1) * 8px + 24px));
   padding: 0 8px;
 }
 body.en-tirage .slot { width: 100%; gap: 3px; }
@@ -1020,7 +1015,6 @@ body.en-tirage .slot .cadre .carte .interieur { border-radius: 4px; }
 body.en-tirage .slots.etendu {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px 10px;
-  max-width: min(100%, calc(3 * 104px + 2 * 10px + 24px));
 }
 body.en-tirage .slots.etendu .slot { width: 100%; }
 body.en-tirage .etendu-entete { display: none; }
@@ -1032,7 +1026,6 @@ body.en-tirage .bande-cle { margin-top: 8px; }
 body.en-tirage .slots.croix {
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 6px 8px;
-  max-width: min(100%, calc(5 * 96px + 4 * 8px + 24px));
 }
 /* Le Diamant n'a que 3 colonnes : sans cette règle, la précédente (plus
    spécifique que .slots.croix.diamant) lui imposait les 5 colonnes des
@@ -1042,7 +1035,6 @@ body.en-tirage .slots.croix.diamant {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   /* même taille de case que les grandes croix en miniature (~62 px) :
      le paquet reste visible sous le plan */
-  max-width: min(100%, calc(3 * 62px + 2 * 8px + 24px));
 }
 
 .slot .cadre { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
@@ -1559,20 +1551,6 @@ body.a-commence .grille-avant { display: none; }
 /* Le plan pendant la pige : la marge commune de 18 px, et des cases plus
    petites pour les grands tirages (le paquet reste dans l'écran) */
 body.en-tirage .slots { padding: 0 18px; }
-@media (max-width: 640px) {
-  body.en-tirage .slots.croix:not(.diamant) {
-    max-width: min(100%, calc(5 * 50px + 4 * 8px + 36px));
-  }
-  body.en-tirage .slots.etendu {
-    max-width: min(100%, calc(3 * 58px + 2 * 10px + 36px));
-  }
-  body.en-tirage .slots.croix.diamant {
-    max-width: min(100%, calc(3 * 62px + 2 * 8px + 36px));
-  }
-  body.en-tirage .slots:not(.croix):not(.etendu) {
-    max-width: min(100%, calc(var(--n, 3) * 92px + (var(--n, 3) - 1) * 8px + 36px));
-  }
-}
 .compteur-tirage { margin-top: 12px; }
 
 /* Tout est posé : le paquet estompé ne sert plus à rien sous la lecture */
@@ -1582,42 +1560,149 @@ body.en-tirage .slots { padding: 0 18px; }
    aligné à gauche (centré, l'œil cherche chaque début de ligne) */
 .lecture .seuil-ligne { text-align: left; }
 
-/* Pendant la pige (téléphone comme bureau) : le paquet reste accroché en bas de
-   l'écran, à portée du pouce (Fitts), avec le compteur juste au-dessus.
-   Les grands tirages (10 cartes) ne tiennent pas en entier dans un
-   écran : c'est le plan qui défile, jamais l'action qui disparaît. */
-@media (min-width: 0) {
-  body.en-tirage #eventail {
-    position: sticky;
-    bottom: 0;
-    z-index: 6;
-    margin-bottom: 0;
-    background: linear-gradient(to top, var(--fond) 78%, rgba(19, 16, 25, 0));
-  }
-  body.en-tirage #compteur-tirage {
-    position: sticky;
-    bottom: calc(var(--carte-h) + 52px);
-    z-index: 6;
-    margin-top: 0;
-    width: 100%;
-    padding: 18px 16px 4px;
-    background: linear-gradient(to top, var(--fond) 70%, rgba(19, 16, 25, 0));
-  }
+/* ══ La taille du plan — UNE seule règle, toutes phases (2026-11-16) ═══
+   Avant : seize max-width empilés au fil des séances (phase de pige,
+   phase de lecture, téléphone, bureau), qui se battaient entre eux — d'où
+   un plan miniature pendant la pige puis GÉANT après (cartes pleine
+   largeur, tirage jamais visible en entier : capture de Martin).
+   Maintenant : chaque tirage déclare sa largeur de case (--case) et son
+   nombre de colonnes ; la même taille vaut pendant la pige, la révélation
+   et la lecture. Objectif : le tirage ENTIER tient dans un écran de
+   téléphone (en dessous de la barre), et reste mesuré sur bureau. */
+/* --case = la taille PLAFOND ; à la table, ajusterPlan() la réduit pour
+   que tout le tirage tienne dans l'espace libre */
+.slots                 { --cols: var(--n, 3); --case: 112px; --gouttiere: 10px; }
+.slots.sans-vide,
+.slots:has(.slot-une)  { --cols: 1; --case: 230px; }
+.slots.croix           { --cols: 5; --case: 64px; --gouttiere: 8px; }
+.slots.croix.diamant   { --cols: 3; --case: 96px; --gouttiere: 10px; }
+.slots.etendu          { --cols: 3; --case: 92px; --gouttiere: 12px; }
+@media (min-width: 641px) {
+  .slots                 { --case: 170px; --gouttiere: 18px; }
+  .slots.sans-vide,
+  .slots:has(.slot-une)  { --case: 260px; }
+  .slots.croix           { --case: 112px; --gouttiere: 12px; }
+  .slots.croix.diamant   { --case: 130px; --gouttiere: 14px; }
+  .slots.etendu          { --case: 120px; --gouttiere: 16px; }
+}
+.scene #slots {
+  column-gap: var(--gouttiere);
+  padding-left: 18px;
+  padding-right: 18px;
 }
 
-/* Bureau : le plan miniature reste lisible mais compact — le paquet,
-   accroché en bas, ne doit pas en cacher la moitié */
+/* La barre du tirage passe toujours AU-DESSUS des cartes qui défilent
+   dessous (elles étaient à égalité, z-index 40) ; le plein écran, le
+   tiroir et le détail d'une position restent au-dessus d'elle. */
+.barre-tirage { z-index: 60; }
+.eventail { z-index: 1; }   /* la loupe (z 300) reste enfermée dans le paquet */
+
+
+/* ══ La table de jeu (2026-11-16) ═════════════════════════════════════
+   Pendant le tirage : un écran fixe, rien ne défile. Colonne : la barre,
+   le résumé (2 lignes), le choix de départ, le TIRAGE (prend tout l'espace
+   libre — sa taille est ajustée par ajusterPlan()), le compteur, le
+   paquet, le bouton Mélanger. La lecture attend la dernière carte. */
+body.table { overflow: hidden; }
+body.table .scene {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+body.table .barre-tirage { position: relative; flex: none; }
+body.table .ped-zone,
+body.table .bascule,
+body.table .grille-avant,
+body.table #compteur-tirage,
+body.table #eventail,
+body.table .actions { flex: none; }
+body.table #slots {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+  align-content: center;
+  margin-top: 10px;
+  transition: max-width 0.45s cubic-bezier(.2, .8, .2, 1);
+}
+body.table #lecture,
+body.table #vue-recit,
+body.table #vue-liens,
+body.table #vues,
+body.table #relire { display: none; }
+
+/* le résumé tient en 2 lignes à la table ; ⓘ ou « Lire la suite » ouvre tout */
+body.table .ped-zone { margin-top: 10px; }
+body.table .ped-zone .ped-resume:not(.deplie) {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 14.5px;
+  margin: 0;
+}
+body.table .ped-suite { min-height: 30px; padding: 2px 0; }
+
+/* la méthode ouverte à la table : un panneau par-dessus, sous la barre */
+body.table.ped-ouverte .ped-zone {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  max-width: none;
+  margin: 0;
+  padding: 16px max(18px, calc((100% - 640px) / 2)) 48px;
+  overflow-y: auto;
+  background: var(--fond);
+}
+body.table.ped-ouverte .ped-suite { display: none; }
+
+/* compteur sur deux lignes serrées */
+body.table #compteur-tirage { margin: 8px auto 0; gap: 2px; }
+body.table .ct-pos { font-size: 16px; }
+body.table .bascule { margin-top: 10px; }
+body.table .grille-avant { margin-top: 8px; min-height: 52px; padding-top: 9px; padding-bottom: 9px; }
+body.table #eventail { margin-top: 6px; }
+body.table .actions { margin: 4px 0 10px; }
+body.table #replier { padding: 8px 22px; }
+body.table #slots { position: relative; }   /* repère des mesures de ajusterPlan() */
+
+/* Les colonnes du plan ont la taille exacte des cases, centrées ; la grille,
+   elle, prend toute la largeur — les intitulés (temps de Neuf + une, plans)
+   ne se tassent plus dans la largeur des cartes */
+/* #slots (un identifiant) : passe devant les anciennes règles de colonnes
+   propres à la pige (body.en-tirage .slots.croix…, plus spécifiques qu'une
+   classe) — une seule règle de colonnes, dans toutes les phases */
+.scene #slots {
+  max-width: 100%;
+  grid-template-columns: repeat(var(--cols), var(--case));
+  justify-content: center;
+}
+.scene .slots .etendu-entete {
+  grid-template-columns: repeat(3, var(--case));
+  justify-content: center;
+  column-gap: var(--gouttiere);
+}
+/* À la table, chaque temps tient en UNE ligne, sans sous-titre */
+body.table .etendu-bande { margin: 8px 0 4px; }
+body.table .etendu-bande em { display: none; }
+body.table .etendu-bande span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 9.5px; }
+body.table .etendu-entete { display: none; }
+/* Neuf + une à la table : 8 rangées (4 temps + 4 rangées de cartes) —
+   l'intitulé colle à sa rangée, les rangées se resserrent */
+body.table .slots.etendu { row-gap: 4px; }
+body.table .slots.etendu .etendu-bande { margin: 6px 0 0; }
+/* l'intitulé d'un temps dépasse la largeur de ses trois cases, centré */
+body.table .slots.etendu .etendu-bande {
+  justify-self: center;
+  width: max-content;
+  max-width: calc(100vw - 36px);
+}
+body.table .etendu-bande span { overflow: visible; text-overflow: clip; }
+/* Bureau, à la table : un paquet plus bas (cartes de 70 px au lieu de 92)
+   pour laisser au tirage la hauteur de l'écran */
 @media (min-width: 641px) {
-  body.en-tirage .slots.croix:not(.diamant) {
-    max-width: calc(5 * 62px + 4 * 8px + 36px);
-  }
-  body.en-tirage .slots.etendu {
-    max-width: calc(3 * 70px + 2 * 10px + 36px);
-  }
-  body.en-tirage .slots.croix.diamant {
-    max-width: calc(3 * 76px + 2 * 8px + 36px);
-  }
-  body.en-tirage .slots:not(.croix):not(.etendu) {
-    max-width: calc(var(--n, 3) * 120px + (var(--n, 3) - 1) * 8px + 36px);
-  }
+  :root:has(body.table) { --carte-l: 70px; --carte-h: 123px; }
 }

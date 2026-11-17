@@ -1102,14 +1102,24 @@ details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
 
 .tarot-cadre{position:relative;border:1px solid var(--bord);border-radius:10px;
   overflow:hidden;background:#0d0a12;margin-top:6px}
-.tarot-cadre iframe{display:block;width:100%;height:min(78vh,900px);min-height:520px;
+/* PLEINE HAUTEUR (2026-11-16) : le Tarot est une table de jeu fixe — son
+   cadre fait exactement un écran de haut, et la page le cale en haut quand
+   un tirage s'ouvre (message « tarot: table »). Plus de cadre plus petit
+   que l'écran qui défile à l'intérieur d'une page qui défile. */
+.tarot-cadre iframe{display:block;width:100%;height:100vh;height:100dvh;min-height:480px;
   border:0;background:#0d0a12}
 .tarot-panne{padding:46px 20px;text-align:center}
+/* Téléphone : le jeu bord à bord, sans cadre ni marge — c'est un écran à
+   part entière, pas une vignette dans la page */
+@media (max-width:700px){
+  #vue-tarot > .carte{padding-left:0;padding-right:0}
+  #vue-tarot .chapo,#vue-tarot .tarot-pied{padding-left:20px;padding-right:20px}
+  .tarot-cadre{border-radius:0;border-left:0;border-right:0}
+}
 .tarot-pied{display:flex;justify-content:center;gap:18px;margin-top:12px;font-size:12.5px}
 .tarot-pied a,.tarot-pied button{background:none;border:0;font:inherit;color:var(--encre3);
   text-decoration:none;cursor:pointer;padding:0}
 .tarot-pied a:hover,.tarot-pied button:hover{color:var(--accent)}
-@media (max-width:700px){.tarot-cadre iframe{height:min(72vh,720px);min-height:460px}}
 </style>
 </head>
 <body>
@@ -4584,6 +4594,14 @@ function vueTarot() {
     </div>
   </div>`;
   tarotFrame = $('#tarot-frame');
+  // Le Tarot ouvre sa table de jeu : on cale son cadre en haut de l'écran.
+  window.addEventListener('message', e => {
+    if (!tarotFrame || e.source !== tarotFrame.contentWindow) return;
+    if (e.data && e.data.tarot === 'table') {
+      const haut = tarotFrame.closest('.tarot-cadre').getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: haut, behavior: 'smooth' });
+    }
+  });
   $('#tarot-recharger').onclick = () => {
     tarotFrame.src = base + '?embed=1&t=' + Date.now();
   };

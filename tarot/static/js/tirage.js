@@ -491,6 +491,7 @@
   async function charger() {
     try {
       const t = await demanderTirage();
+      entrerTable();   // AVANT le paquet : la table fixe la taille de ses cartes
       construireEventail(t.total_jeu);
       synchroniserEntete(t.total_jeu);
       majBoutonMelange();
@@ -536,7 +537,11 @@
         `<img src="${carte.image}" alt="${carte.nom}" draggable="false">`;
     }
 
-    // 1 · la carte quitte la ligne et rejoint son emplacement
+    // 1 · la carte quitte la ligne et VOLE jusqu'à son emplacement (FLIP :
+    // on note où elle est dans le paquet, on la pose dans sa case, puis on
+    // la fait partir de son ancienne place — 2026-11-16, « faire monter la
+    // carte pour qu'elle se place »)
+    const depart = el.getBoundingClientRect();
     const cadre = slotsBox.querySelector(`.cadre[data-i="${choisies.length - 1}"]`);
     const slot = cadre.closest(".slot");
     slot.classList.add("remplie");
@@ -551,6 +556,9 @@
     el.style.width = "100%";
     el.style.height = "100%";
     el.style.opacity = "1";
+    const vol = faireVoler(el, depart);
+    // la première carte efface les choix du départ : le plan gagne la place
+    if (choisies.length === 1) requestAnimationFrame(ajusterPlan);
 
     if (mode === 3 || mode === 10 || estCroix()) {
       // 2a · posée FACE CACHÉE — la révélation se fera clic par clic
@@ -565,17 +573,20 @@
         eventail.classList.add("estompe");
         montrerAttente();
         construireGrilles();
+        // tout est posé : le paquet s'en va, le tirage reprend sa place
+        // et l'invite à révéler s'affiche sous lui
+        setTimeout(() => { inviteRevelation(); ajusterPlan(); }, vol);
+        setTimeout(ajusterPlan, vol + 350);   // une fois le paquet parti
       }
     } else {
-      // 2b · tirage à une carte : retournement immédiat + lecture
-      el.style.transform = "scale(0.92)";
+      // 2b · tirage à une carte : elle vole, se retourne, puis la lecture
       el.title = "Afficher en plein écran";
-      requestAnimationFrame(() => { el.style.transform = "scale(1)"; });
-      setTimeout(() => el.classList.add("retournee"), 380);
+      setTimeout(() => el.classList.add("retournee"), vol + 60);
       setTimeout(() => {
         carteEnPlace = false;
+        sortirTable();
         montrerLectureJour(carte);
-      }, 1150);
+      }, vol + 820);
     }
   }
 
@@ -601,7 +612,9 @@
       verifierRangee(i);
       carteRevelation = false;
       cartesRevelees++;
+      inviteRevelation();
       if (cartesRevelees === tirage.cartes.length) {
+        sortirTable();
         montrerCloture();
         montrerVues();
       }
@@ -1243,6 +1256,9 @@
     reinitialiserVues();
     relire.classList.add("invisibles");
     grilleAvant.classList.add("invisibles");
+    sortirTable();
+    slotsBox.style.removeProperty("--case");
+    dernierCase = 0;
   }
 
   // ── Ouvrir un tirage du catalogue, revenir au catalogue ─────────────
@@ -1433,6 +1449,8 @@
     // Après placerChoisies, qui remet la table à zéro.
     document.body.classList.add("a-commence");
     lecture.classList.remove("invisibles");
+    entrerTable();
+    inviteRevelation();
     if (infos) {
       const note = document.createElement("p");
       note.className = "note-reticence";
@@ -1694,6 +1712,129 @@
         if (c) ouvrirPlein(c);
       });
     });
+  }
+
+  /* ══ LA TABLE DE JEU (Martin, 2026-11-16 : « il faut un vrai mode où on
+     voit toujours les cartes dans lesquelles on peut tirer… ou ça dézoome
+     pour qu'on voit tout ») ═══════════════════════════════════════════
+     Pendant tout le tirage, l'écran est une table FIXE, sans défilement :
+     la barre en haut, le tirage au centre, le paquet en bas. Le tirage est
+     AJUSTÉ à l'espace libre (on cherche la plus grande case qui fait tout
+     tenir) : petit tant que les choix du départ sont là, il grandit quand
+     ils s'effacent, puis quand le paquet s'en va. Une fois tout révélé, la
+     table se replie et la lecture se lit en défilant, sous le tirage.
+     Dans Ta Trame, on prévient la page hôte pour qu'elle cale le cadre en
+     haut de l'écran (fini le défilement dans le défilement). */
+  let tableActive = false;
+
+  function entrerTable() {
+    if (!tirageChoisi || mode === 0) return;
+    tableActive = true;
+    document.body.classList.add("table");
+    window.scrollTo(0, 0);
+    try { if (window.parent !== window) window.parent.postMessage({ tarot: "table" }, "*"); } catch (e) { /* hors cadre */ }
+    requestAnimationFrame(ajusterPlan);
+    setTimeout(ajusterPlan, 120);   // après le chargement des polices / du paquet
+  }
+
+  function sortirTable() {
+    if (!tableActive) return;
+    tableActive = false;
+    hauteurPlan = 0;
+    document.body.classList.remove("table");
+  }
+
+  // la plus grande case qui fait tenir tout le tirage dans la zone du plan
+  function ajusterPlan() {
+    if (!tableActive || !slotsBox.children.length) return;
+    // une carte en vol (transform depuis le paquet) fausse la mesure du
+    // débordement : on attend qu'elle soit posée
+    const attente = volJusqua - Date.now();
+    if (attente > 0) { clearTimeout(ajusterPlan._t); ajusterPlan._t = setTimeout(ajusterPlan, attente + 20); return; }
+    // la transition de largeur coupée AVANT toute mesure : sinon le
+    // navigateur mesure la largeur de départ de l'animation
+    slotsBox.style.transition = "none";
+    slotsBox.style.removeProperty("--case");
+    const max = parseFloat(getComputedStyle(slotsBox).getPropertyValue("--case")) || 104;
+    // mesure contenu calé en HAUT : centré, il déborde des deux côtés et
+    // scrollHeight ne voit que la moitié du débordement
+    slotsBox.style.alignContent = "start";
+    // les boîtes de MISE EN PAGE des cases (offsetTop/Height ignorent les
+    // transform) : une carte en vol ou soulevée ne fausse plus la mesure
+    // la marge latérale (padding, 18 px) n'est pas de l'espace utilisable
+    const marge = parseFloat(getComputedStyle(slotsBox).paddingLeft) || 0;
+    const tient = () => {
+      let bas = 0, droite = 0, gauche = Infinity;
+      for (const c of slotsBox.children) {
+        if (!c.offsetWidth && !c.offsetHeight) continue;   // élément masqué
+        bas = Math.max(bas, c.offsetTop + c.offsetHeight);
+        droite = Math.max(droite, c.offsetLeft + c.offsetWidth);
+        gauche = Math.min(gauche, c.offsetLeft);
+      }
+      return bas <= slotsBox.clientHeight + 1 &&
+             droite <= slotsBox.clientWidth - marge + 1 && gauche >= marge - 1;
+    };
+    let bas = 22, haut = max, retenu = max;
+    slotsBox.style.setProperty("--case", haut + "px");
+    if (!tient()) {
+      for (let k = 0; k < 9; k++) {
+        const mi = (bas + haut) / 2;
+        slotsBox.style.setProperty("--case", mi + "px");
+        if (tient()) bas = mi; else haut = mi;
+      }
+      retenu = Math.floor(bas);
+    }
+    slotsBox.style.alignContent = "";
+    // on repart de la taille précédente pour que le changement s'anime
+    slotsBox.style.setProperty("--case", (dernierCase || retenu) + "px");
+    slotsBox.getBoundingClientRect();
+    slotsBox.style.transition = "";
+    slotsBox.style.setProperty("--case", retenu + "px");
+    dernierCase = retenu;
+  }
+  let dernierCase = 0;
+  let volJusqua = 0;
+  // la zone du plan change de taille (résumé déplié, choix effacés, paquet
+  // parti, écran tourné…) : on réajuste. Sa hauteur ne dépend pas de --case
+  // (flex 1, débordement caché) : aucune boucle possible.
+  let hauteurPlan = 0;
+  new ResizeObserver(() => {
+    const h = slotsBox.clientHeight;
+    if (tableActive && Math.abs(h - hauteurPlan) > 2) { hauteurPlan = h; ajusterPlan(); }
+  }).observe(slotsBox);
+  window.addEventListener("resize", () => { if (tableActive) ajusterPlan(); });
+
+  // l'invite pendant la révélation (la lecture, elle, attend la fin)
+  function inviteRevelation() {
+    if (!tableActive || !tirage) return;
+    const total = tirage.cartes.length;
+    // seulement quand TOUTES les cartes sont posées (pige ou « Je choisis »)
+    if (slotsBox.querySelectorAll(".carte.choisie").length < total) return;
+    const reste = total - cartesRevelees;
+    const c = document.getElementById("compteur-tirage");
+    if (!tableActive || reste <= 0) { c.classList.add("invisibles"); return; }
+    c.innerHTML = `<span class="ct-nb">${cartesRevelees} / ${total} révélées</span>` +
+      `<span class="ct-geste">Touche chaque carte pour la retourner</span>`;
+    c.classList.remove("invisibles");
+  }
+
+  // le vol FLIP : renvoie sa durée (0 sans mouvement réduit)
+  function faireVoler(el, depart) {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !depart.width) return 0;
+    const arrivee = el.getBoundingClientRect();
+    if (!arrivee.width) return 0;
+    const dx = depart.left - arrivee.left, dy = depart.top - arrivee.top;
+    const sx = depart.width / arrivee.width, sy = depart.height / arrivee.height;
+    el.style.transformOrigin = "0 0";
+    el.style.transition = "none";
+    el.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+    el.style.zIndex = "50";
+    el.getBoundingClientRect();   // force la position de départ
+    volJusqua = Date.now() + 580;
+    el.style.transition = "transform .55s cubic-bezier(.2,.8,.2,1)";
+    el.style.transform = "none";
+    setTimeout(() => { el.style.zIndex = ""; el.style.transition = ""; el.style.transform = ""; el.style.transformOrigin = ""; }, 600);
+    return 560;
   }
 
   /* MÉLANGER (Martin, 2026-11-16 : « il faut un bouton pour mélanger les
