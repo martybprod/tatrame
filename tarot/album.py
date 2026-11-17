@@ -384,11 +384,16 @@ def _cible_tirage(carte_id, champ):
     else:
         grille = ((donnees.get("grilles") or {}) if isinstance(donnees, dict)
                   else {}).get(cle)
-        if not isinstance(grille, dict):
-            return None
+        if isinstance(grille, dict):
+            chemin = ["grilles", cle] + _chemin_de_champ(champ)
+        else:
+            # les croix vivent à la racine du fichier, comme les autres tirages
+            grille = donnees.get(cle) if isinstance(donnees, dict) else None
+            if not isinstance(grille, dict) or not grille.get("positions"):
+                return None
+            chemin = [cle] + _chemin_de_champ(champ)
         champs = _champs_tirage_grille(grille)
         noeud = donnees
-        chemin = ["grilles", cle] + _chemin_de_champ(champ)
     if champ not in dict(champs):
         return None
     # chaque maillon doit exister — on n'invente jamais une entrée
@@ -445,6 +450,11 @@ def _section_tirages():
     for cle, grille in (donnees.get("grilles") or {}).items():
         cartes.append(carte_tirage(cle, "Grille — %s" % grille.get("nom", cle),
                                    _champs_tirage_grille(grille), grille))
+    # les croix : même pédagogie qu'une grille, mais elles vivent à la racine
+    for cle, bloc in donnees.items():
+        if isinstance(bloc, dict) and bloc.get("grammaire") == "croix":
+            cartes.append(carte_tirage(cle, bloc.get("nom", cle),
+                                       _champs_tirage_grille(bloc), bloc))
 
     return [{
         "id": "tirages", "genre": "messages", "titre": "Les tirages",

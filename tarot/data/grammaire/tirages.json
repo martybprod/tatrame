@@ -616,5 +616,313 @@
       ],
       "resume": "Dix cartes réparties entre la croix et le bâton : l'atmosphère, ce qui la traverse, la base, ce qui s'éloigne, ce qui est visé, l'action, puis l'image de soi, l'entourage, l'espoir et la crainte, et l'aboutissement."
     }
+  },
+  "croix_osho": {
+    "id": "croix_osho",
+    "nom": "La croix d'Osho",
+    "nb_cartes": 10,
+    "grammaire": "croix",
+    "question_par_defaut": "Qu'est-ce qui se joue, et dans quelle direction cela peut-il aller ?",
+    "source": "Tarot Zen d'Osho — même disposition que la croix celtique, positions de processus : l'issue, les forces qui la travaillent, l'ancien et le neuf, ce qui est attiré, les désirs et les refus, la clé.",
+    "coeur": [],
+    "ligne_de_probabilite": [],
+    "positions": [
+      {
+        "id": "issue",
+        "numero": 1,
+        "libelle": "l'issue",
+        "question": "de quoi s'agit-il vraiment ?",
+        "se_grade": "le sujet tel qu'il se présente, sans jugement",
+        "champ": "lumiere",
+        "appoint": {
+          "champs": [
+            "image.detail",
+            "mots_cles"
+          ],
+          "genre": "detail"
+        },
+        "col": 2,
+        "row": 2
+      },
+      {
+        "id": "forces",
+        "numero": 2,
+        "libelle": "ce qui la diminue ou la renforce",
+        "question": "qu'est-ce qui nourrit l'issue, et qu'est-ce qui l'affaiblit ?",
+        "se_grade": "les deux mouvements qui entourent l'issue",
+        "champ": "tension",
+        "col": 3,
+        "row": 2
+      },
+      {
+        "id": "inconscientes",
+        "numero": 3,
+        "libelle": "les influences inconscientes",
+        "question": "qu'est-ce qui agit sans être nommé ?",
+        "se_grade": "ce qui pèse ou soutient sans être reconnu",
+        "champ": "ombre.texte",
+        "appoint": {
+          "champ": "ombre.mode",
+          "genre": "tag"
+        },
+        "col": 2,
+        "row": 3
+      },
+      {
+        "id": "conscientes",
+        "numero": 4,
+        "libelle": "les influences conscientes",
+        "question": "qu'est-ce que tu apportes en connaissance de cause ?",
+        "se_grade": "les acquis et les choix que tu assumes",
+        "champ": "positions.amene",
+        "col": 1,
+        "row": 2
+      },
+      {
+        "id": "anciens",
+        "numero": 5,
+        "libelle": "les anciens schémas",
+        "question": "qu'est-ce qui appartient à l'ancien ?",
+        "se_grade": "ce qui s'éloigne, et l'acquis qui demeure",
+        "champ": "croix.eloigne",
+        "col": 2,
+        "row": 1
+      },
+      {
+        "id": "nouveaux",
+        "numero": 6,
+        "libelle": "les nouveaux schémas",
+        "question": "qu'est-ce qui cherche à naître ?",
+        "se_grade": "le geste ou la direction qui n'appartient pas encore à l'ancien",
+        "champ": "positions.essayer",
+        "col": 4,
+        "row": 2
+      },
+      {
+        "id": "soi",
+        "numero": 7,
+        "libelle": "toi, face à l'issue",
+        "question": "quelle place t'attribues-tu dans cette histoire ?",
+        "se_grade": "tes sentiments et tes attitudes, vus de l'intérieur",
+        "champ": "croix.image_soi",
+        "col": 5,
+        "row": 1
+      },
+      {
+        "id": "attires",
+        "numero": 8,
+        "libelle": "ce que tu attires de l'extérieur",
+        "question": "qu'est-ce que les autres renvoient de toi ?",
+        "se_grade": "ce qui revient vers toi, et ce qu'on projette sur toi",
+        "champ": "croix.entourage",
+        "col": 5,
+        "row": 2
+      },
+      {
+        "id": "desirs",
+        "numero": 9,
+        "libelle": "tes désirs et tes refus",
+        "question": "que désires-tu vraiment, et que refuses-tu de voir ?",
+        "se_grade": "ce qui pourrait dénouer, donc ce que tu veux et ce que tu évites",
+        "champ": "ombre.issue",
+        "col": 5,
+        "row": 3
+      },
+      {
+        "id": "cle",
+        "numero": 10,
+        "libelle": "l'aboutissement et la clé",
+        "question": "que retenir de ce processus ?",
+        "se_grade": "la phrase qui résume, jamais un verdict",
+        "champ": "lecon",
+        "col": 5,
+        "row": 4
+      }
+    ],
+    "pedagogie": {
+      "resume": "Dix cartes, la même croix, une autre lecture : l'issue, les forces qui l'influencent, l'ancien et le neuf, ce que tu attires, tes désirs, tes refus et la clé du processus.",
+      "pourquoi": "Cette croix vient du Tarot Zen d'Osho. Elle reprend la disposition de la croix celtique, mais elle ne cherche pas à décrire une situation dans son ensemble. Elle suit plutôt un processus intérieur : ce qui se joue, les forces qui l'influencent, ce qui appartient à l'ancien et ce qui pourrait prendre une nouvelle direction.\n\nElle convient lorsque quelque chose te travaille sans que tu arrives à bien le définir. Si tu souhaites plutôt examiner une situation sous plusieurs angles, la croix celtique classique sera plus adaptée.",
+      "le_tirage": "Les six premières cartes forment la croix. La carte 1 présente l'issue. La carte 2 montre ce qui la renforce ou la diminue. Les cartes 3 et 4 représentent les influences inconscientes et conscientes. Les cartes 5 et 6 montrent respectivement les anciens et les nouveaux schémas.\n\nLes quatre cartes du bâton complètent la lecture : ton rapport à l'issue en 7, ce que tu attires en 8, tes désirs et tes refus en 9, puis la clé du processus en 10.\n\nPour faciliter la lecture à l'écran, la carte 2 se place à côté de la carte 1 plutôt que par-dessus.",
+      "positions_expliquees": {
+        "issue": "La première carte nomme l'issue : elle présente le sujet tel qu'il se manifeste, sans jugement. Elle ne propose pas encore de solution. Elle aide d'abord à préciser ce dont il est question.",
+        "forces": "La deuxième carte présente les deux forces qui agissent sur l'issue : ce qui la nourrit et ce qui l'affaiblit. Sa tension intérieure — ce qu'elle encourage et ce qu'elle retient — aide à comprendre ces deux mouvements.",
+        "inconscientes": "Cette carte représente ce qui agit sans être clairement reconnu ou nommé. L'ombre de la carte et son mode — retournée, différée, amoindrie ou subie — précisent comment cette influence peut se manifester.",
+        "conscientes": "Cette carte représente ce que tu apportes en connaissance de cause : tes acquis, tes habitudes et les choix que tu assumes. Elle met en lumière ce que tu engages consciemment dans le processus.",
+        "anciens": "Cette carte montre ce qui appartient à l'ancien : les habitudes ou les façons de faire qui s'éloignent, mais aussi les acquis qui restent utiles. Elle t'aide à distinguer ce que tu peux laisser derrière toi de ce que tu peux conserver.",
+        "nouveaux": "Cette carte montre ce qui pourrait prendre une nouvelle forme : un geste, une attitude ou une direction différente des anciens schémas. Elle suggère une possibilité, sans garantir son résultat.",
+        "soi": "La septième carte montre comment tu te perçois dans cette situation : la place que tu t'attribues et le rôle que tu crois devoir tenir. Ce regard intérieur n'est pas toujours facile à reconnaître.",
+        "attires": "La huitième carte porte sur ce qui vient de l'extérieur : les réactions des autres, ce qu'ils te renvoient et les attentes ou les projections qui peuvent influencer tes échanges avec eux.",
+        "desirs": "La neuvième carte met en regard tes désirs et tes refus. Elle invite à examiner ce qui pourrait dénouer la situation, mais aussi ce que tu souhaites réellement et ce que tu hésites à regarder.",
+        "cle": "La dixième carte donne la clé de lecture : l'idée essentielle à retenir et ce qui donne son sens à l'ensemble du processus. Elle ne prédit pas la suite ; elle résume ce que les cartes ont fait ressortir."
+      },
+      "comment_lire": "Lis d'abord les six cartes de la croix, puis les quatre cartes du bâton.\n\n1. **La croix :** l'issue, les forces qui la diminuent ou la renforcent, puis les influences inconscientes, conscientes, anciennes et nouvelles.\n2. **Le bâton :** ton rapport à l'issue, ce que tu attires, tes désirs et tes refus.\n3. **La clé :** termine par la dixième carte. Elle rassemble les éléments de la lecture.\n\nPrends le temps de relier les dix cartes. Chacune apporte un éclairage différent sur le même processus.",
+      "apres": "Résume l'issue en une phrase, puis note les deux forces qui la renforcent ou l'affaiblissent. Relis ces notes dans une semaine. Tu pourras voir si ton regard sur le sujet ou l'équilibre entre ces deux forces a évolué.",
+      "vocabulaire": [
+        {
+          "titre": "La croix d'Osho",
+          "texte": "Le Tarot Zen d'Osho reprend la disposition de la croix traditionnelle, mais donne un autre sens aux positions. La lecture porte sur un processus intérieur : l'issue, les forces qui l'influencent, l'ancien et le neuf."
+        },
+        {
+          "titre": "Les deux forces",
+          "texte": "La deuxième carte ne classe pas l'issue comme bonne ou mauvaise. Elle présente deux mouvements : ce qui la nourrit et ce qui l'affaiblit. Ces forces coexistent dans une même carte et peuvent agir en sens opposés."
+        },
+        {
+          "titre": "L'ancien et le neuf",
+          "texte": "Les cartes 5 et 6 se lisent ensemble. La première montre ce qui appartient à l'ancien ; la seconde, ce qui pourrait prendre une nouvelle direction. Leur comparaison aide à voir ce qui se termine, ce qui reste utile et ce qui pourrait changer."
+        }
+      ]
+    }
+  },
+  "croix_composite": {
+    "id": "croix_composite",
+    "nom": "La croix composite — la relation",
+    "nb_cartes": 10,
+    "grammaire": "croix",
+    "question_par_defaut": "Que faut-il voir de cette relation, et de ce qui peut la faire évoluer ?",
+    "source": "Greer, croix celtique composite — même disposition, sujet déplacé sur la relation elle-même : le cœur de chacun, la base, le passé, les buts, les décisions, les images de soi, le problème et l'outil.",
+    "coeur": [],
+    "ligne_de_probabilite": [],
+    "positions": [
+      {
+        "id": "coeur_toi",
+        "numero": 1,
+        "libelle": "ton cœur dans la relation",
+        "question": "qu'apportes-tu affectivement à ce lien ?",
+        "se_grade": "la qualité que tu mets dans le lien, souvent sans la nommer",
+        "champ": "lumiere",
+        "appoint": {
+          "champs": [
+            "image.detail",
+            "mots_cles"
+          ],
+          "genre": "detail"
+        },
+        "col": 2,
+        "row": 2
+      },
+      {
+        "id": "coeur_autre",
+        "numero": 2,
+        "libelle": "son cœur dans la relation",
+        "question": "qu'apporte l'autre affectivement à ce lien ?",
+        "se_grade": "ce que l'autre met dans le lien, pas ce qu'il pense de toi",
+        "champ": "lumiere",
+        "col": 3,
+        "row": 2
+      },
+      {
+        "id": "base",
+        "numero": 3,
+        "libelle": "la base du lien",
+        "question": "sur quoi repose le lien sans que vous l'ayez nommé ?",
+        "se_grade": "les habitudes et les non-dits sur lesquels la relation s'appuie",
+        "champ": "positions.amene",
+        "col": 2,
+        "row": 3
+      },
+      {
+        "id": "passe",
+        "numero": 4,
+        "libelle": "le passé du lien",
+        "question": "qu'est-ce que ce lien a déjà traversé, et qu'en reste-t-il ?",
+        "se_grade": "ce qui s'éloigne, et les talents relationnels développés",
+        "champ": "croix.eloigne",
+        "col": 1,
+        "row": 2
+      },
+      {
+        "id": "buts",
+        "numero": 5,
+        "libelle": "les buts conscients",
+        "question": "que visez-vous ensemble, et qu'est-ce qui vous retient ?",
+        "se_grade": "le but tel que vous le formulez, jamais ce qui va arriver",
+        "champ": "tension",
+        "col": 2,
+        "row": 1
+      },
+      {
+        "id": "decisions",
+        "numero": 6,
+        "libelle": "les décisions devant vous",
+        "question": "quel geste pouvez-vous faire ensemble, dès maintenant ?",
+        "se_grade": "une action concrète, faisable à deux",
+        "champ": "micro_geste",
+        "col": 4,
+        "row": 2
+      },
+      {
+        "id": "image_toi",
+        "numero": 7,
+        "libelle": "ton image de toi dans le lien",
+        "question": "quelle place t'attribues-tu dans cette relation ?",
+        "se_grade": "le rôle que tu crois devoir tenir",
+        "champ": "croix.image_soi",
+        "col": 5,
+        "row": 1
+      },
+      {
+        "id": "image_autre",
+        "numero": 8,
+        "libelle": "son image de soi dans le lien",
+        "question": "quelle place l'autre s'attribue-t-il dans cette relation ?",
+        "se_grade": "la place que l'autre se donne, pas un jugement sur toi",
+        "champ": "croix.image_soi",
+        "col": 5,
+        "row": 2
+      },
+      {
+        "id": "probleme",
+        "numero": 9,
+        "libelle": "le problème à résoudre",
+        "question": "qu'est-ce qui pèse sur le lien et demande à être résolu ?",
+        "se_grade": "la part d'ombre qui pèse, nommée sans accusation",
+        "champ": "ombre.texte",
+        "col": 5,
+        "row": 3
+      },
+      {
+        "id": "outil",
+        "numero": 10,
+        "libelle": "l'outil qui fera grandir le lien",
+        "question": "qu'est-ce qui aiderait le lien à aller plus loin ?",
+        "se_grade": "une qualité ou une phrase à retenir, jamais une promesse",
+        "champ": "lecon",
+        "col": 5,
+        "row": 4
+      }
+    ],
+    "pedagogie": {
+      "resume": "Dix cartes pour examiner une relation comme un lien à part entière : ce que chacun y apporte, ses fondations, son passé, ses objectifs, les décisions à prendre, les perceptions de chacun, le problème à résoudre et les ressources pour faire évoluer le lien.",
+      "pourquoi": "Cette croix s'inspire de la méthode de Greer. Elle reprend la disposition de la croix celtique, mais change le sujet de la lecture : il ne s'agit plus d'examiner une personne ou une situation, mais la relation elle-même.\n\nUne relation peut être vue comme une réalité construite par deux personnes. Ce tirage convient lorsque tu souhaites mieux comprendre un lien amoureux, une amitié, une relation familiale ou un partenariat. Il ne cherche pas à déterminer qui a raison. Il propose plutôt de regarder ce qui compose la relation et ce qui pourrait la faire évoluer.",
+      "le_tirage": "La croix présente d'abord le cœur de chacun, en 1 et 2, puis la base du lien en 3, son passé en 4, les buts conscients en 5 et les décisions à prendre en 6.\n\nLe bâton complète la lecture : ton image de toi dans la relation en 7, celle de l'autre en 8, le problème à résoudre en 9 et l'outil qui peut faire grandir le lien en 10.\n\nL'application ne connaît pas les deux personnes et ne peut pas reproduire leur participation individuelle au tirage. Elle utilise un seul paquet mélangé. Dans la lecture, « toi » désigne la personne qui consulte et « l'autre » désigne la seconde personne.",
+      "positions_expliquees": {
+        "coeur_toi": "Cette carte représente ce que tu apportes affectivement à la relation : la qualité ou la disposition que tu y mets, parfois sans en avoir pleinement conscience.",
+        "coeur_autre": "Cette carte pose la même question du côté de l'autre personne. Elle porte sur ce que cette personne apporte affectivement à la relation, et non sur ce qu'elle pense de toi.",
+        "base": "Cette carte montre ce sur quoi la relation repose, parfois sans que vous l'ayez clairement nommé : les habitudes, les acquis et les non-dits qui façonnent votre lien.",
+        "passe": "Cette carte évoque ce que la relation a traversé : les périodes qui s'éloignent et les capacités développées au fil du temps. Même lorsqu'une étape se termine, certains acquis peuvent demeurer.",
+        "buts": "Cette carte représente ce que vous souhaitez atteindre ensemble. Elle invite aussi à regarder ce qui vous encourage et ce qui vous retient. Elle décrit vos objectifs, pas ce qui arrivera nécessairement.",
+        "decisions": "Cette carte porte sur votre capacité à agir ensemble. Elle suggère un geste concret que vous pourriez entreprendre à deux pour faire évoluer la relation.",
+        "image_toi": "Cette carte montre la place que tu t'attribues dans la relation et le rôle que tu crois devoir tenir. Il peut être difficile de prendre du recul sur cette image, puisqu'elle vient de ton propre regard.",
+        "image_autre": "Cette carte porte sur la place que l'autre personne semble s'attribuer dans la relation. Comme le texte de la carte est formulé à la deuxième personne, lis-le de son point de vue : il ne s'agit pas d'un jugement sur toi.",
+        "probleme": "Cette carte met en lumière ce qui pèse sur la relation et demande à être examiné. Elle permet de nommer une difficulté sans chercher à désigner un responsable.",
+        "outil": "Cette carte présente une qualité, une ressource ou une idée qui pourrait aider la relation à évoluer. Elle donne une piste à retenir, sans garantir un résultat."
+      },
+      "comment_lire": "Commence par les deux premières cartes : elles montrent ce que chacun apporte affectivement à la relation.\n\n1. **La base et le passé :** les cartes 3 et 4 montrent ce qui soutient le lien et ce qu'il a traversé.\n2. **Les buts et les décisions :** les cartes 5 et 6 présentent ce que vous souhaitez construire et les gestes que vous pourriez poser.\n3. **Les images et le problème :** les cartes 7 à 9 portent sur la place que chacun s'attribue et sur ce qui demande à être résolu.\n4. **L'outil :** la carte 10 propose une ressource pour faire évoluer la relation.\n\nRelie les dix cartes pour obtenir une vue d'ensemble du lien.",
+      "apres": "Note ce que chacun apporte à la relation, puis le problème et l'outil proposés par le tirage. Si cela vous convient, vous pouvez relire ces notes ensemble. Dans la méthode de Greer, les réactions personnelles des deux participants occupent une place importante : votre expérience du lien compte autant que l'interprétation traditionnelle des cartes.",
+      "vocabulaire": [
+        {
+          "titre": "La relation comme entité",
+          "texte": "Greer propose de considérer la relation comme une troisième réalité, distincte des deux personnes qui la composent. Les cartes ne cherchent pas à déterminer qui a raison. Elles permettent d'examiner ce qui construit le lien et ce qui le fait évoluer."
+        },
+        {
+          "titre": "Ton cœur / son cœur",
+          "texte": "Les cartes 1 et 2 posent la même question à chacun. Elles ne sont pas destinées à se répondre directement, mais à être comparées. Une différence entre les deux peut faire ressortir un besoin, une attente ou un aspect du lien à mieux comprendre."
+        },
+        {
+          "titre": "Le tirage à deux",
+          "texte": "Dans la méthode originale, les deux personnes mélangent les cartes et choisissent à tour de rôle. L'application ne peut pas reproduire cette participation : elle utilise un seul paquet mélangé et désigne la personne qui consulte par « toi ». La lecture conserve son objectif : examiner la relation plutôt que distribuer les torts."
+        }
+      ]
+    }
   }
 }

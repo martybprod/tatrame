@@ -102,8 +102,14 @@
   // La même donne se relit sous plusieurs cadres (Greer, les permutations) :
   // les cartes ne changent pas, seule change la question posée à la position.
   let grilleActive = "causale_3";
+  let croixActive = "croix_celtique";  // même donne, trois croix possibles
   let ordreRevelation = [];   // [{carte, i}] dans l'ordre choisi par celui qui tire
   let rangeesAnnoncees = new Set();  // mode 10 : les trois temps déjà lus
+
+  function croixCourante() {
+    const liste = (tirage && tirage.croix_choix) || [];
+    return liste.find(c => c.id === croixActive) || liste[0] || null;
+  }
 
   function grilleCourante() {
     if (!tirage) return null;
@@ -117,10 +123,11 @@
                positions: [],
                pedagogie: tirage.pedagogie || {} };
     }
-    if (tirage.mode === 11) {
-      return { id: "croix_celtique", nom: "La croix celtique", cloture: "percee",
-               positions: [],
-               pedagogie: tirage.pedagogie || {} };
+    if (mode === 11) {
+      const C = croixCourante() || {};
+      return { id: croixActive, nom: C.nom || "La croix celtique", cloture: "percee",
+               positions: C.positions || [],
+               pedagogie: C.pedagogie || tirage.pedagogie || {} };
     }
     return (tirage.grilles || []).find(g => g.id === grilleActive) || null;
   }
@@ -275,7 +282,7 @@
       return [niv.temps, plan.libelle].filter(Boolean).join(" · ");
     }
     if (mode === 11) {
-      const p = ((tirage.croix || {}).positions || []).find((x) => x.numero === n + 1);
+      const p = (positionsActives() || []).find((x) => x.numero === n + 1);
       return p ? `${p.numero}. ${p.libelle}` : "";
     }
     const pos = positionsActives()[n];
@@ -320,7 +327,7 @@
 
     slotsBox.classList.toggle("croix", mode === 11);
     if (mode === 11) {
-      const C = (tirage && tirage.croix) || {};
+      const C = croixCourante() || (tirage && tirage.croix) || {};
       (C.positions || []).forEach((pos) => {
         const s = document.createElement("div");
         s.className = "slot slot-croix";
@@ -398,6 +405,7 @@
     choisies = [];
     ordreRevelation = [];
     grilleActive = tirage.grille || "causale_3";
+    croixActive = (mode === 11 && tirage.grille) ? tirage.grille : "croix_celtique";
     afficherPedagogie();
     construireSlots();
     majCompteur();
@@ -577,6 +585,35 @@
       });
       boite.prepend(barre);
     }
+    // les trois croix se choisissent ici aussi : la même donne se relit avec
+    // une autre grammaire, sans retirer les cartes
+    const croix = (tirage && mode === 11) ? (tirage.croix_choix || []) : [];
+    if (croix.length > 1) {
+      const barre = document.createElement("div");
+      barre.className = "ped-grilles";
+      barre.setAttribute("role", "tablist");
+      barre.setAttribute("aria-label", "Croix à lire");
+      croix.forEach((c) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "grille-bouton" + (c.id === croixActive ? " actif" : "");
+        b.setAttribute("role", "tab");
+        b.setAttribute("aria-selected", String(c.id === croixActive));
+        b.textContent = c.nom;
+        b.addEventListener("click", () => changerCroix(c.id));
+        barre.appendChild(b);
+      });
+      boite.prepend(barre);
+    }
+  }
+
+  function changerCroix(id) {
+    if (!tirage || mode !== 11 || id === croixActive) return;
+    croixActive = id;
+    afficherPedagogie();
+    majCompteur();
+    if (ordreRevelation.length) rendreLecture();
+    document.getElementById("detail-position").hidden = true;
   }
 
   // ── Le détail d'une position : un clic sur son libellé l'ouvre ──────
@@ -664,9 +701,8 @@
     let r = {};
     let libelle = (pos && pos.libelle) || "";
     if (mode === 11) {
-      const C = tirage.croix || {};
-      const cell = ((C.cartes || {})[carte.id]) || {};
-      const def = (C.positions || []).find((p) => p.id === cell.position) || {};
+      const def = (positionsActives() || []).find((p) => p.numero === pos.numero) || {};
+      const cell = ((tirage.croix_textes || {})[croixActive] || {})[carte.id] || {};
       r = { texte: cell.texte, appoint: cell.appoint, regard: cell.regard };
       libelle = def.numero ? `${def.numero}. ${def.libelle}` : (def.libelle || "");
     } else if (mode === 10) {

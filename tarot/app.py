@@ -83,6 +83,11 @@ def _grille_causale():
 GRILLES = {"causale_3": _grille_causale()}
 GRILLES.update(TIRAGES_BRUT.get("grilles", {}))
 
+# Les croix à dix cartes : même disposition (les colonnes viennent des données),
+# mais chacune déclare ses positions, ses textes et sa pédagogie. La donne se
+# relit donc avec l'une ou l'autre, sans retirer les cartes.
+CROIX = {k: v for k, v in TIRAGES.items() if v.get("grammaire") == "croix"}
+
 
 def _valeur_champ(fiche, chemin):
     """La valeur d'un champ niché (« ombre.issue », « positions.amene »)."""
@@ -119,12 +124,21 @@ def _resoudre_position(fiche, position, graine):
     tient la place, et l'appoint est passé.
     """
     texte = None
-    if position.get("champ") == "questions":
+    champ = position.get("champ", "")
+    if champ == "questions":
         questions = fiche.get("questions") or []
         if questions:
             texte = questions[graine % len(questions)]
+    elif champ == "tension":
+        # la tension est un couple (pousse / retient), pas une phrase : la
+        # position qui la lit en texte principal la met en phrase ici.
+        tension = fiche.get("tension") or {}
+        if (isinstance(tension, dict) and tension.get("pousse")
+                and tension.get("retient")):
+            texte = (f"Elle te pousse à {tension['pousse']}, et elle te "
+                     f"retient {moteur._de_verbe(tension['retient'])}.")
     else:
-        texte = _valeur_champ(fiche, position.get("champ", ""))
+        texte = _valeur_champ(fiche, champ)
 
     regard = False
     if not texte and fiche.get("le_regard"):
@@ -269,6 +283,11 @@ def tirage():
     grille_id = request.args.get("grille", "causale_3")
     if grille_id not in GRILLES:
         return jsonify({"erreur": "grille inconnue"}), 400
+    # la croix se choisit avant le tirage ; changer de croix ne change pas les
+    # cartes, seulement la question posée à chaque position
+    croix_id = request.args.get("croix", "croix_celtique")
+    if croix_id not in CROIX:
+        return jsonify({"erreur": "croix inconnue"}), 400
 
     ids_jeu = IDS
 
@@ -285,6 +304,8 @@ def tirage():
     textes_par_grille = {}
     etendu = None
     croix = None
+    croix_textes = {}
+    croix_choix = []
     if nb == 3:
         lecture = moteur.composer(choisies)
         textes_par_grille = _textes_des_grilles(choisies, graine)
@@ -321,7 +342,7 @@ def tirage():
             "rangees": lecture["rangees"],
         }
     elif mode == "11":
-        bloc = TIRAGES["croix_celtique"]
+        bloc = CROIX[croix_id]
         positions = bloc["positions"]
         croix = {
             "positions": [{k: pos[k] for k in ("id", "numero", "libelle",
@@ -339,13 +360,27 @@ def tirage():
                 "regard": res["regard"],
             }
         lecture = moteur.composer(choisies)
+        # les trois croix sont résolues d'avance : en changer relit la même
+        # donne sans retirer les cartes (choix avant ou après le tirage)
+        for cid, cbloc in CROIX.items():
+            croix_choix.append({
+                "id": cid, "nom": cbloc["nom"],
+                "sous_titre": cbloc.get("grammaire", ""),
+                "positions": cbloc.get("positions", []),
+                "pedagogie": cbloc.get("pedagogie", {}),
+            })
+            croix_textes[cid] = {
+                carte["id"]: _resoudre_position(
+                    CORPUS.get(carte["id"], {}), pos, graine)
+                for pos, carte in zip(cbloc.get("positions", []), choisies)
+            }
 
     if nb == 3:
         grille = GRILLES[grille_id]
     elif mode == "11":
-        bloc = TIRAGES["croix_celtique"]
+        bloc = CROIX[croix_id]
         grille = {
-            "id": "croix_celtique",
+            "id": croix_id,
             "nom": bloc["nom"],
             "sous_titre": bloc.get("grammaire", ""),
             "cloture": "percee",
@@ -373,7 +408,7 @@ def tirage():
         }
 
     return jsonify({
-        "mode": nb,
+        "mode": 11 if mode == "11" else nb,
         "graine": graine,
         "cartes": choisies,
         "total_jeu": len(ids_jeu),
@@ -383,6 +418,8 @@ def tirage():
         "textes_par_grille": textes_par_grille,
         "etendu": etendu,
         "croix": croix,
+        "croix_textes": croix_textes,
+        "croix_choix": croix_choix,
         "pedagogie": grille.get("pedagogie", {}),
         "cle_pedagogie": grille["id"],
         "positions_def": grille.get("positions", []),

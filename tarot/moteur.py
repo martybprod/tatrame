@@ -303,6 +303,12 @@ def carte_ressource(cartes, liaisons):
     return classees[0][1]
 
 
+def _de_verbe(verbe):
+    """« de attendre » → « d'attendre » : l'élision devant une voyelle."""
+    v = str(verbe or "").strip()
+    return ("d'" if v[:1] and v[:1].lower() in "aeiouyh" else "de ") + v
+
+
 def _premiere_phrase(texte):
     """La première phrase d'un texte, pour nommer un blocage sans le jargon
     des verbes nus (« elle pousse puiser »)."""
@@ -351,7 +357,7 @@ def percee(cartes, liaisons, ressource, cle_tiree=None):
         if tension_blocage.get("pousse") and tension_blocage.get("retient"):
             phrase_blocage = P["blocage_repli"].replace(
                 "{pousse}", tension_blocage["pousse"]).replace(
-                "{retient}", tension_blocage["retient"])
+                "de {retient}", _de_verbe(tension_blocage["retient"]))
         else:
             phrase_blocage = P["fragile"]
 
