@@ -261,5 +261,4 @@
   `annonce-surbrillance` + nom accessible « Tarot NOUVEAU » vérifié ; avec accueil :
   l'annonce ne part qu'à la fermeture) ; disparition propre vérifiée (étiquette
   retirée, classes nettoyées). Suite pytest relancée.
-- **Statut** : livré le jour même ; commité localement, **push sur demande de
-  Martin** (le push déclenche le déploiement Coolify).
+- **Statut** : livré et **poussé** le jour même (`2056808`) — Coolify redéploie tatrame.ca.
