@@ -4871,8 +4871,12 @@ async function chargerRelationsResultat() {
    ═══════════════════════════════════════════════════════════ */
 $('#nav').onclick = e => {
   const b = e.target.closest('button'); if (!b) return;
-  document.querySelectorAll('#nav button').forEach(x => x.classList.toggle('actif', x === b));
-  montrer(b.dataset.vue);
+  /* Passer par montrerVue (et non montrer seul) : c'est lui qui journalise le
+     nav — sinon AUCUN clic d'onglet n'atteignait /api/activite et le tableau
+     de bord ne voyait jamais les sections réellement visitées (« tarot »
+     absent, demandé par Martin, 2026-11-17 : le journal ne comptait que les
+     sauts programmatiques et le jour de démarrage). */
+  montrerVue(b.dataset.vue);
   if (b.dataset.vue === 'relations') vueRelations();
   if (b.dataset.vue === 'tarot') vueTarot();
 };

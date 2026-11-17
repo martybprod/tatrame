@@ -3502,7 +3502,7 @@ def _fmt_depuis(quand):
 _LIBELLES_VUE = {
     "jour": "Le Jour", "apercu": "Tout", "portrait": "Le Portrait",
     "ciel": "Le Ciel", "relations": "Relations", "regles": "Les Règles",
-    "profils": "Profils",
+    "profils": "Profils", "tarot": "Tarot",
 }
 
 
