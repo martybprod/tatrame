@@ -302,6 +302,48 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
   .carte.filtisse{animation:none}
 }
 
+/* ═══ Annonce « nouveau » — l'onglet Tarot (lancement 2026-11-17, fenêtre
+   de 10 jours, voir le module JS plus bas). À l'arrivée au menu principal,
+   l'onglet s'illumine doucement avec l'étiquette « nouveau » pendant
+   quelques secondes, puis TOUT s'efface : l'onglet redevient exactement
+   comme avant. Pratiques suivies : étiquette d'UN mot (un badge bavard
+   n'est plus un badge), signal d'arrivée qui ne s'attarde pas (un
+   « nouveau » permanent devient du bruit), contraste fort (or sur encre),
+   jamais la couleur seule (le mot EST le signal), pulsation coupée en
+   prefers-reduced-motion, et l'étiquette disparaît dès qu'on choisit
+   l'onglet — une fois sélectionné, le « nouveau » n'a plus de sens. */
+#nav button.annonce-surbrillance{
+  color:#f4ecd8;
+  background-color:rgba(217,185,92,.10);
+  box-shadow:0 0 0 1px rgba(217,185,92,.45), 0 0 20px rgba(217,185,92,.20);
+  transition:box-shadow .45s ease, background-color .45s ease;
+}
+#nav button.annonce-surbrillance:not(.annonce-fin){
+  animation:annonce-pulse 1.4s ease 2 .5s both;
+}
+@keyframes annonce-pulse{
+  0%,100%{box-shadow:0 0 0 1px rgba(217,185,92,.45), 0 0 20px rgba(217,185,92,.20)}
+  50%{box-shadow:0 0 0 1.5px rgba(233,212,148,.75), 0 0 26px rgba(217,185,92,.38)}
+}
+.annonce-nouveau{
+  flex:none;font-size:9.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--papier);background:var(--accent);
+  padding:2px 7px;border-radius:999px;margin-left:7px;
+  opacity:0;transform:translateY(1px);
+  transition:opacity .45s ease .15s;
+}
+#nav button.annonce-surbrillance .annonce-nouveau{opacity:1;transform:none}
+#nav button.annonce-fin .annonce-nouveau{opacity:0;transition:opacity .9s ease}
+#nav button.annonce-fin{
+  background-color:transparent;
+  box-shadow:0 0 0 0 transparent;
+}
+@media (prefers-reduced-motion:reduce){
+  #nav button.annonce-surbrillance:not(.annonce-fin){animation:none}
+  .annonce-nouveau{transition:none}
+  #nav button.annonce-surbrillance .annonce-nouveau{opacity:1}
+}
+
 /* ═══ La barre d'outils de l'en-tête (refonte 2026-08-27) ═══
    Les TROIS outils — Règles, Commentaire, Profil — partagent UNE seule famille
    de pastille (`.outil`), au lieu de deux icônes nues orphelines + une grosse
@@ -2104,6 +2146,9 @@ function fermerAccueilJour() {
     acc.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     fermetureAccueilEnCours = false;
+    // L'accueil refermé : on vient d'arriver au menu principal — c'est le
+    // moment de l'annonce « nouveau » (une fois par ouverture, gardée).
+    annoncerTarot();
   };
   const reduit = matchMedia('(prefers-reduced-motion:reduce)').matches;
   setTimeout(fini, reduit ? 200 : 720);  // doit couvrir le fondu .7s (voir .accueil-jour)
@@ -5263,7 +5308,9 @@ async function demarrer() {
     ouvrirCartePourRappel(rappel.carte, rappel.domaine, rappel.profil);
     _nettoyerRappelURL();
   } else {
-    montrerAccueilJour();
+    // Rien à montrer (déjà vu, ou pas d'écrit pour ce moment) : on est
+    // d'emblée au menu principal — le moment de l'annonce « nouveau ».
+    if (!montrerAccueilJour()) annoncerTarot();
   }
 }
 
@@ -5271,6 +5318,46 @@ document.querySelectorAll('#nav button[data-vue], #bouton-regles[data-vue]').for
   const ic = ICONES_NAV[b.dataset.vue];
   if (ic) b.insertAdjacentHTML('afterbegin', icono(ic, 19));
 });
+
+/* ═══ Annonce « nouveau » — l'onglet Tarot (lancement 2026-11-17) ═══
+   Pendant NOUVEAU_TAROT_JOURS à compter de NOUVEAU_TAROT_DEBUT, à
+   l'arrivée au menu principal (après l'accueil du jour s'il y a lieu),
+   l'onglet Tarot s'illumine doucement avec l'étiquette « nouveau »
+   pendant quelques secondes — puis tout s'efface, le DOM est nettoyé.
+   Déclenché à DEUX moments seulement : demarrer() quand aucun accueil
+   n'a à montrer, et la fermeture de l'accueil du jour sinon (demande
+   de Martin, 2026-11-17 : 10 jours, quelques secondes, discret).
+   Une seule fois par ouverture de l'app. */
+const NOUVEAU_TAROT_DEBUT = '2026-11-17';
+const NOUVEAU_TAROT_JOURS = 10;
+let annonceTarotFaite = false;
+
+function annonceTarotActive() {
+  const debut = new Date(NOUVEAU_TAROT_DEBUT + 'T00:00:00');   // heure locale
+  const fin = new Date(debut);
+  fin.setDate(fin.getDate() + NOUVEAU_TAROT_JOURS);            // 10 jours pleins
+  const maintenant = new Date();
+  return maintenant >= debut && maintenant < fin;
+}
+
+function annoncerTarot() {
+  if (annonceTarotFaite || !annonceTarotActive()) return;
+  annonceTarotFaite = true;
+  const b = document.querySelector('#nav button[data-vue="tarot"]');
+  if (!b) return;
+  b.insertAdjacentHTML('beforeend', '<span class="annonce-nouveau">nouveau</span>');
+  b.classList.add('annonce-surbrillance');
+  const retirer = () => {
+    b.classList.remove('annonce-surbrillance', 'annonce-fin');
+    b.querySelector('.annonce-nouveau')?.remove();
+  };
+  // Choisir l'onglet pendant l'annonce : le « nouveau » n'a plus de sens.
+  b.addEventListener('click', retirer, { once: true });
+  // Apparaît, se pose quelques secondes, s'efface, puis on nettoie.
+  setTimeout(() => b.classList.add('annonce-fin'), 4200);
+  setTimeout(retirer, 5600);
+}
+
 /* Sorti de #nav (icône seule, en haut à droite) : pas capté par la
    délégation de clic du menu, il rejoue donc le même changement de vue. */
 $('#bouton-regles').onclick = () => montrerVue('regles');

@@ -233,3 +233,33 @@
   d'essai `jeanne-fil` (tissage au scroll, ligne de reprise, reprise → dépôt au
   bloc, bascule manuelle dans les deux sens, persistance au rechargement).
 - **Statut** : livré et **poussé** le jour même (`cf1a3b4`) — Coolify redéploie tatrame.ca.
+
+## 2026-11-17 — Annonce « nouveau » sur l'onglet Tarot (10 jours)
+
+- **Demande** (Martin) : « l'onglet tarot dans ta trame est un nouvel élément. Il est
+  quand même discret donc j'aimerais que pour les 10 prochains jours, à l'ouverture
+  de l'application quand on arrive au menu principal après avoir vu le message
+  d'accueil s'il y a lieu, le bouton tarot soit mis en surbrillance avec affiché
+  discrètement le mot "nouveau". Pendant quelques secondes. Regarde les meilleures
+  pratiques avant de coder. »
+- **Pratiques suivies** : étiquette d'UN mot (« nouveau ») — un badge bavard n'est
+  plus un badge ; signal d'arrivée TRANSITOIRE (un « nouveau » permanent devient du
+  bruit, donc quelques secondes puis tout s'efface, DOM nettoyé) ; jamais la couleur
+  seule (le mot est le signal) ; contraste fort (or #d9b95c sur encre #141110, ~10:1) ;
+  pulsation coupée en `prefers-reduced-motion` ; l'étiquette disparaît dès qu'on
+  choisit l'onglet (une fois sélectionné, le « nouveau » n'a plus de sens) ; jamais
+  de vol de focus ni d'annonce qui interrompt.
+- **Implémentation** (`templates/index.html` seulement) : constantes
+  `NOUVEAU_TAROT_DEBUT = '2026-11-17'` / `NOUVEAU_TAROT_JOURS = 10` (fenêtre locale :
+  du 17 au 26 novembre inclus) ; `annoncerTarot()` gardé une fois par ouverture ;
+  déclenché à DEUX moments — `demarrer()` quand aucun accueil n'a à montrer
+  (`montrerAccueilJour()` renvoie false) et la fermeture de l'accueil du jour
+  (`fermerAccueilJour` → `fini`) ; apparition en fondu (0,45 s), deux pulsations
+  discrètes de l'anneau doré, pose ~4 s, fondu de sortie (0,9 s), puis retrait du
+  DOM ; clic sur l'onglet = retrait immédiat.
+- **Validation** : testé au navigateur sur les DEUX chemins (sans accueil : état
+  `annonce-surbrillance` + nom accessible « Tarot NOUVEAU » vérifié ; avec accueil :
+  l'annonce ne part qu'à la fermeture) ; disparition propre vérifiée (étiquette
+  retirée, classes nettoyées). Suite pytest relancée.
+- **Statut** : livré le jour même ; commité localement, **push sur demande de
+  Martin** (le push déclenche le déploiement Coolify).
