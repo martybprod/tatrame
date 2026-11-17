@@ -1671,6 +1671,18 @@ async function demanderMotDePasseCompte(racine, cible) {
 }
 
 /* ── le formulaire, en création comme en modification ── */
+/* Le nom du compte racine actif sur cet appareil ('' si aucun) — sert à
+   l'avertissement du formulaire de création : un profil créé pendant qu'un
+   compte est ouvert devient un thème de CE compte (voir /api/profil côté
+   serveur), et ce rattachement ne doit plus se faire en silence. */
+function nomCompteActif() {
+  if (!profils.length) return '';
+  const courante = profils.find(x => x.id === profilId);
+  const racine = courante?.proprietaire || courante?.id
+              || (profils.find(x => !x.secondaire) || {}).id;
+  return (profils.find(x => x.id === racine) || {}).nom_affiche || racine || '';
+}
+
 function ouvrirFormulaire(profil = null) {
   const n = profil?.naissance || {};
   const deuxChiffres = v => v === undefined || v === null ? '' : String(v).padStart(2,'0');
@@ -1682,6 +1694,10 @@ function ouvrirFormulaire(profil = null) {
         Ta date de naissance n'est pas un destin : c'est un point de départ.
         Ce que tu vas lire décrit un schéma que tu as reçu — non pour t'y enfermer,
         mais pour que tu le voies.</p>`}
+    ${!profil && profils.length ? `<p class="quoi" style="margin-bottom:12px">
+      Tu es connecté à « ${T(nomCompteActif())} » : le profil créé ici deviendra un
+      <b>thème de ce compte</b>, pas un nouveau compte (pas de mot de passe propre).
+      Pour créer ton propre compte, déconnecte-toi d'abord.</p>` : ''}
 
     <label>Prénoms et nom de naissance</label>
     <input id="f-noms" placeholder="Marie Claire Tremblay" autocomplete="off"
@@ -1750,6 +1766,9 @@ function ouvrirFormulaire(profil = null) {
 
 function câblerFormulaire(profil) {
   let minuteur;
+  // La confirmation « ce sera un thème » se réarme à chaque ouverture du
+  // formulaire (câblerFormulaire y est rappelé).
+  let creationConfirmee = false;
   document.querySelectorAll('.f-genre-b').forEach(b => b.onclick = () => {
     $('#f-genre').dataset.genre = b.dataset.genre;
     document.querySelectorAll('.f-genre-b').forEach(x => x.classList.toggle('actif', x === b));
@@ -1800,6 +1819,24 @@ function câblerFormulaire(profil) {
       corps.minute = nb('#f-minute') || 0;
     }
     if (!corps.jour || !corps.mois || !corps.annee) return err('La date est incomplète.');
+
+    // Ne plus jamais rattacher un thème à un compte EN SILENCE : un profil créé
+    // alors qu'un compte est ouvert sur l'appareil devient un thème SECONDAIRE
+    // de ce compte (voir /api/profil côté serveur) — sans mot de passe, jamais
+    // connectable seul. C'est le piège exact qui a enfermé « martin-boucher »
+    // chez les autres comptes (trois fois, novembre 2026), d'où la confirmation
+    // explicite. À ce stade le formulaire est déjà valide.
+    if (!editionDe && profils.length && !creationConfirmee) {
+      creationConfirmee = true;
+      $('#f-valider').textContent = 'Confirmer — créer le thème';
+      $('#f-erreur').innerHTML = `<b>Petit moment important</b> — ce profil sera un
+        <b>thème du compte « ${T(nomCompteActif())} »</b> : il vivra sous ce compte,
+        sans mot de passe propre (c'est le bon choix pour « le thème de ma fille »,
+        pas pour créer ton propre compte). Appuie encore pour confirmer — ou
+        déconnecte-toi d'abord pour créer un compte indépendant.`;
+      $('#f-erreur').classList.remove('cacher');
+      return;
+    }
 
     // Bêta fermée : le champ code n'existe que pour la création d'un PREMIER compte
     // (voir ouvrirFormulaire). S'il est là, on le joint — le serveur tranche (403 si faux).

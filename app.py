@@ -611,6 +611,10 @@ def api_creer_profil():
     # à ce compte (« le thème de ma fille »), jamais lui-même un compte connectable
     # (voir _deverrouille/_proprietaire_de). Personne d'autre que Martin, décision
     # explicite : « je ne veux pas que chaque thème créé crée un nouveau compte ».
+    # Ce rattachement n'est plus silencieux côté client : le formulaire exige une
+    # confirmation avant le POST (voir câblerFormulaire dans index.html — piège
+    # vécu trois fois par Martin en novembre 2026, compte admin enfermé chez les
+    # autres).
     compte_actuel = (session.get("deverrouilles") or [None])[-1]
     # Bêta fermée : créer un COMPTE racine (le 1er profil de ce navigateur) exige le code
     # d'invitation partagé. Un thème secondaire (compte déjà connecté sur cet appareil) n'en
