@@ -179,7 +179,7 @@
     }
     if (estCroix()) {
       const C = croixCourante() || {};
-      return { id: croixActive, nom: C.nom || "La croix celtique", cloture: "percee",
+      return { id: C.id || croixActive, nom: C.nom || "La croix celtique", cloture: "percee",
                positions: C.positions || [],
                pedagogie: C.pedagogie || tirage.pedagogie || {} };
     }
@@ -299,8 +299,10 @@
     });
   }
 
+  let melangeEnCours = false;   // pendant l'animation : on ne pige pas
+
   function loupeActive() {
-    return tirage && !carteEnPlace && choisies.length < tirage.cartes.length &&
+    return tirage && !carteEnPlace && !melangeEnCours && choisies.length < tirage.cartes.length &&
       !eventail.classList.contains("estompe");
   }
 
@@ -453,8 +455,11 @@
     // cartes et la même variante du regard). Sans paramètre : tirage libre.
     const graineUrl = new URLSearchParams(location.search).get("graine");
     const suffixe = graineUrl ? `&graine=${encodeURIComponent(graineUrl)}` : "";
-    // ?croix=… choisit la croix lue ; sans paramètre, celle déjà active
-    const croixReq = (estCroix()) ? `&croix=${encodeURIComponent(croixActive)}` : "";
+    // ?croix=… choisit la croix lue — SEULEMENT pour les croix à dix cartes.
+    // Le Diamant (mode 5) n'a qu'une forme : lui envoyer une croix faisait
+    // refuser le 2e tirage (« croix inconnue » pour « diamant ») et la table
+    // restait vide après un mélange (bogue 2026-11-16).
+    const croixReq = mode === 11 ? `&croix=${encodeURIComponent(croixActive)}` : "";
     const r = await fetch(`api/tirage?mode=${mode}${suffixe}${croixReq}`);
     if (!r.ok) throw new Error("tirage refusé");
     tirage = await r.json();
@@ -465,7 +470,7 @@
     if (!(tirage.grilles || []).some((g) => g.id === grilleActive)) {
       grilleActive = tirage.grille || "causale_3";
     }
-    croixActive = (estCroix() && tirage.grille) ? tirage.grille : "croix_celtique";
+    if (mode === 11 && tirage.grille) croixActive = tirage.grille;
     afficherPedagogie();
     construireSlots();
     // les libellés des cases suivent la grille choisie, pas celle du serveur
@@ -490,7 +495,13 @@
       synchroniserEntete(t.total_jeu);
       majBoutonMelange();
     } catch (e) {
+      // jamais une table vide en silence : on le dit, et on offre de réessayer
       construireEventail(79);
+      const c = document.getElementById("compteur-tirage");
+      c.innerHTML = `<span class="ct-geste">Le jeu n'a pas répondu. Touche « Réessayer ».</span>`;
+      c.classList.remove("invisibles");
+      replierBtn.textContent = "Réessayer";
+      replierBtn.classList.toggle("invisible", !tirageChoisi);
     }
   }
 
@@ -510,7 +521,7 @@
       reveler(el);
       return;
     }
-    if (!tirage || carteEnPlace || choisies.length >= tirage.cartes.length) return;
+    if (!tirage || carteEnPlace || melangeEnCours || choisies.length >= tirage.cartes.length) return;
     carteEnPlace = true;
 
     document.body.classList.add("a-commence");
@@ -637,6 +648,22 @@
     if (!boite) return;
     const g = grilleCourante();
     boite.innerHTML = g ? pedagogiePanel(g.pedagogie, g.positions) : "";
+    /* Sur téléphone, le résumé est coupé à trois lignes (CSS) pour que le
+       plan et le paquet tiennent dans l'écran ; « Lire la suite » le
+       déplie sur place. Le bouton n'apparaît que si le texte déborde. */
+    const res = boite.querySelector(".ped-resume");
+    if (res) {
+      const suite = document.createElement("button");
+      suite.type = "button";
+      suite.className = "ped-suite";
+      suite.textContent = "Lire la suite";
+      suite.hidden = true;
+      suite.addEventListener("click", () => { res.classList.add("deplie"); suite.hidden = true; });
+      res.after(suite);
+      // mesure immédiate (lire scrollHeight force la mise en page) — un
+      // requestAnimationFrame n'arrive pas dans un onglet en arrière-plan
+      suite.hidden = res.scrollHeight <= res.clientHeight + 2;
+    }
     // les grilles de relecture ne se choisissent plus ici : un seul endroit,
     // « Relire autrement », sous la lecture (refonte 2026-11-16)
   }
@@ -818,7 +845,10 @@
     let libelle = (pos && pos.libelle) || "";
     if (estCroix()) {
       const def = (positionsActives() || []).find((p) => p.numero === pos.numero) || {};
-      const cell = ((tirage.croix_textes || {})[croixActive] || {})[carte.id] || {};
+      // la croix lue : l'active pour les croix à dix cartes, « diamant » pour
+      // le Diamant (croixCourante() renvoie la bonne définition dans les deux cas)
+      const idCroix = (croixCourante() || {}).id || croixActive;
+      const cell = ((tirage.croix_textes || {})[idCroix] || {})[carte.id] || {};
       r = { texte: cell.texte, appoint: cell.appoint, regard: cell.regard };
       libelle = def.numero ? `${def.numero}. ${def.libelle}` : (def.libelle || "");
     } else if (mode === 10) {
@@ -1687,7 +1717,14 @@
     const ligne = eventail.querySelector(".ligne");
     const reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (choisies.length || !ligne || reduit) { replier(); return; }
-    jouerMelange(ligne).then(replier);
+    // le tirage ouvert au départ : si on le quitte pendant l'animation, le
+    // mélange ne recharge rien derrière (course vue à l'audit 2026-11-16)
+    const ouvert = tirageChoisi;
+    melangeEnCours = true;
+    jouerMelange(ligne).then(() => {
+      melangeEnCours = false;
+      if (tirageChoisi === ouvert) replier();
+    });
   }
 
   /* L'animation du mélange (Martin, 2026-11-16 : « une petite animation des

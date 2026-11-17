@@ -1520,3 +1520,104 @@ body.a-commence .grille-avant { display: none; }
 /* Le bouton Mélanger : juste sous le paquet, toujours au même endroit */
 .actions { margin: 14px 0 18px; }
 #replier[disabled] { opacity: 0.5; cursor: default; }
+
+/* ══ Audit de mise en page 2026-11-16 ═════════════════════════════════
+   Objectif : une seule marge latérale (18 px) partout, et sur téléphone
+   le plan + le paquet visibles sans défiler dès l'ouverture d'un tirage. */
+
+/* R4 : « La méthode complète » doublonnait le bouton ⓘ de la barre — le
+   lien n'apparaît plus que méthode ouverte (il sert alors à la refermer) */
+.ped-zone .ped-complet:not([open]) > summary { display: none; }
+.ped-zone .pedagogie { padding-left: 0; padding-right: 0; }
+
+/* Le résumé : trois lignes sur téléphone, « Lire la suite » pour le reste */
+.ped-suite {
+  display: inline-block;
+  background: none;
+  border: 0;
+  padding: 6px 0;
+  min-height: 36px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--or);
+  cursor: pointer;
+}
+.ped-suite[hidden] { display: none; }
+@media (max-width: 640px) {
+  .ped-zone .ped-resume:not(.deplie) {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+  body.ped-ouverte .ped-zone .ped-resume { display: block; -webkit-line-clamp: unset; }
+  body.ped-ouverte .ped-suite { display: none; }
+  .ped-zone .ped-resume { font-size: 15px; }
+}
+
+/* Le plan pendant la pige : la marge commune de 18 px, et des cases plus
+   petites pour les grands tirages (le paquet reste dans l'écran) */
+body.en-tirage .slots { padding: 0 18px; }
+@media (max-width: 640px) {
+  body.en-tirage .slots.croix:not(.diamant) {
+    max-width: min(100%, calc(5 * 50px + 4 * 8px + 36px));
+  }
+  body.en-tirage .slots.etendu {
+    max-width: min(100%, calc(3 * 58px + 2 * 10px + 36px));
+  }
+  body.en-tirage .slots.croix.diamant {
+    max-width: min(100%, calc(3 * 62px + 2 * 8px + 36px));
+  }
+  body.en-tirage .slots:not(.croix):not(.etendu) {
+    max-width: min(100%, calc(var(--n, 3) * 92px + (var(--n, 3) - 1) * 8px + 36px));
+  }
+}
+.compteur-tirage { margin-top: 12px; }
+
+/* Tout est posé : le paquet estompé ne sert plus à rien sous la lecture */
+.eventail.estompe { display: none; }
+
+/* Le seuil de la lecture : un paragraphe de 4 à 6 lignes se lit mieux
+   aligné à gauche (centré, l'œil cherche chaque début de ligne) */
+.lecture .seuil-ligne { text-align: left; }
+
+/* Pendant la pige (téléphone comme bureau) : le paquet reste accroché en bas de
+   l'écran, à portée du pouce (Fitts), avec le compteur juste au-dessus.
+   Les grands tirages (10 cartes) ne tiennent pas en entier dans un
+   écran : c'est le plan qui défile, jamais l'action qui disparaît. */
+@media (min-width: 0) {
+  body.en-tirage #eventail {
+    position: sticky;
+    bottom: 0;
+    z-index: 6;
+    margin-bottom: 0;
+    background: linear-gradient(to top, var(--fond) 78%, rgba(19, 16, 25, 0));
+  }
+  body.en-tirage #compteur-tirage {
+    position: sticky;
+    bottom: calc(var(--carte-h) + 52px);
+    z-index: 6;
+    margin-top: 0;
+    width: 100%;
+    padding: 18px 16px 4px;
+    background: linear-gradient(to top, var(--fond) 70%, rgba(19, 16, 25, 0));
+  }
+}
+
+/* Bureau : le plan miniature reste lisible mais compact — le paquet,
+   accroché en bas, ne doit pas en cacher la moitié */
+@media (min-width: 641px) {
+  body.en-tirage .slots.croix:not(.diamant) {
+    max-width: calc(5 * 62px + 4 * 8px + 36px);
+  }
+  body.en-tirage .slots.etendu {
+    max-width: calc(3 * 70px + 2 * 10px + 36px);
+  }
+  body.en-tirage .slots.croix.diamant {
+    max-width: calc(3 * 76px + 2 * 8px + 36px);
+  }
+  body.en-tirage .slots:not(.croix):not(.etendu) {
+    max-width: calc(var(--n, 3) * 120px + (var(--n, 3) - 1) * 8px + 36px);
+  }
+}
