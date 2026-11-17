@@ -1716,8 +1716,20 @@
       if (suivante && suivante.carte && suivante.carte.image) new Image().src = imageLecture(suivante.carte);
       vueRecit.querySelector(".recit-image").addEventListener("click", () => ouvrirPlein(p.carte));
     }
-    vueRecit.querySelector(".recit-prec").addEventListener("click", () => { recitIndex--; dessinerRecit(); });
-    vueRecit.querySelector(".recit-suiv").addEventListener("click", () => { recitIndex++; dessinerRecit(); });
+    vueRecit.querySelector(".recit-prec").addEventListener("click", () => { recitIndex--; dessinerRecit(); hautDuRecit(); });
+    vueRecit.querySelector(".recit-suiv").addEventListener("click", () => { recitIndex++; dessinerRecit(); hautDuRecit(); });
+  }
+
+  /* Chaque nouvelle page du récit remonte en haut, la carte ENTIÈRE sous la
+     barre (Martin, 2026-11-16 : sur téléphone, on arrivait au milieu de la
+     page suivante, le bouton « Suivante » étant tout en bas). On vise le haut
+     des onglets Récit · Ensemble · Liens : on sait toujours où l'on est. */
+  function hautDuRecit() {
+    const barre = document.getElementById("barre-tirage");
+    const marge = (barre && !barre.hidden ? barre.offsetHeight : 0) + 8;
+    const cible = vuesBarre.getBoundingClientRect().top + window.scrollY - marge;
+    const reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: Math.max(0, cible), behavior: reduit ? "auto" : "smooth" });
   }
 
   // glisser le doigt pour passer d'une page à l'autre
@@ -1734,6 +1746,7 @@
     if (suivant < 0 || suivant >= total) return;
     recitIndex = suivant;
     dessinerRecit();
+    hautDuRecit();
   });
 
   function vignettes(cartes, libelles) {
