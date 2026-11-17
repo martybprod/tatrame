@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planche — réorganiser les tirages</title>
+<style>
+/* Planche JETABLE de validation (méthode captivant-ui / epuration-ui) :
+   palette et typo réelles de TAROT_APP/static/css/app.css, vraies cartes. */
+:root{
+  --fond:#131019; --fond-profond:#0d0a12; --encre:#ece7dc; --brume:#9a92a6;
+  --or:#c9a55c; --or-doux:rgba(201,165,92,.38); --or-fil:rgba(201,165,92,.22);
+  --surface:rgba(255,255,255,.035); --surface-2:rgba(255,255,255,.06);
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#08060b;color:var(--encre);font-family:var(--sans);padding:32px 24px 80px}
+.planche-titre{font-family:var(--serif);font-size:30px;font-weight:400;max-width:1100px;margin:0 auto}
+.planche-intro{color:var(--brume);font-size:15px;line-height:1.6;max-width:760px;margin:10px auto 0;text-align:left}
+.bloc{max-width:1240px;margin:56px auto 0}
+.bloc h2{font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:6px}
+.bloc .quoi{color:var(--brume);font-size:14px;line-height:1.6;max-width:820px}
+.rangee{display:flex;gap:36px;flex-wrap:wrap;margin-top:22px;align-items:flex-start}
+.colonne{display:flex;flex-direction:column;gap:12px;width:360px}
+.etiquette{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+.etiquette.reco::after{content:"  ·  recommandée";color:var(--brume);letter-spacing:.12em}
+.regles{font-size:13px;line-height:1.55;color:var(--brume)}
+.regles b{color:var(--encre);font-weight:600}
+.regles li{margin-left:16px;margin-top:4px}
+
+/* ── Le téléphone ─────────────────────────────────────────────────── */
+.tel{width:360px;height:740px;border-radius:34px;border:1px solid rgba(255,255,255,.1);
+  background:
+    radial-gradient(120% 90% at 50% 0%,rgba(201,165,92,.05),transparent 55%),
+    radial-gradient(140% 120% at 50% 110%,rgba(0,0,0,.55),transparent 60%),var(--fond);
+  overflow:hidden;overflow-y:auto;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.tel::-webkit-scrollbar{width:0}
+.ecran{padding:22px 18px 28px}
+
+/* typo commune */
+.kicker{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--or);opacity:.85}
+.h-ecran{font-family:var(--serif);font-weight:400;font-size:26px;margin-top:8px;letter-spacing:.01em}
+.sous{font-family:var(--serif);font-style:italic;color:var(--brume);font-size:15px;margin-top:6px;line-height:1.45}
+.etagere{margin-top:26px}
+.etagere-titre{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brume);margin-bottom:10px}
+
+/* ── Variante A : cartes de tirage avec schéma ─────────────────────── */
+.tuile{display:flex;gap:14px;align-items:center;width:100%;text-align:left;cursor:pointer;
+  background:var(--surface);border:1px solid rgba(255,255,255,.07);border-radius:14px;
+  padding:14px 14px;margin-bottom:10px;color:var(--encre);position:relative;
+  transition:border-color .18s,background .18s}
+.tuile:hover{border-color:var(--or-doux);background:var(--surface-2)}
+.tuile.vedette{border-color:var(--or-doux);background:linear-gradient(180deg,rgba(201,165,92,.08),rgba(201,165,92,.02))}
+.schema{flex:0 0 58px;height:58px;display:flex;align-items:center;justify-content:center}
+.schema svg{width:58px;height:58px}
+.schema rect{fill:rgba(201,165,92,.14);stroke:var(--or);stroke-width:1.1}
+.schema rect.cle{fill:var(--or)}
+.tuile-nom{font-family:var(--serif);font-size:17px;line-height:1.2}
+.tuile-pour{font-size:13px;color:var(--brume);line-height:1.4;margin-top:3px}
+.tuile-meta{font-size:11px;color:var(--or);letter-spacing:.06em;margin-top:6px}
+.chevron{margin-left:auto;color:var(--brume);font-size:18px;flex:0 0 auto}
+
+/* ── Variante B : liste à rangées ──────────────────────────────────── */
+.liste{border-top:1px solid var(--or-fil)}
+.ligne{display:flex;align-items:baseline;gap:10px;padding:14px 2px;border-bottom:1px solid var(--or-fil);cursor:pointer}
+.ligne .n{font-family:var(--serif);font-size:22px;color:var(--or);width:26px;text-align:right;flex:0 0 26px}
+.ligne .nom{font-family:var(--serif);font-size:17px}
+.ligne .pour{font-size:13px;color:var(--brume);margin-top:2px;line-height:1.4}
+
+/* ── Variante C : onglets par taille (proche de l'existant) ───────── */
+.segments{display:flex;border:1px solid var(--or-fil);border-radius:999px;padding:3px;margin-top:18px}
+.segments span{flex:1;text-align:center;font-size:12px;padding:8px 0;border-radius:999px;color:var(--brume)}
+.segments span.actif{background:var(--or);color:#1a1408;font-weight:600}
+.puces{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.puce{font-size:12px;padding:7px 12px;border-radius:999px;border:1px solid var(--or-fil);color:var(--brume)}
+.puce.actif{border-color:var(--or);color:var(--encre)}
+
+/* ── L'écran d'un tirage ───────────────────────────────────────────── */
+.barre{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--or-fil);
+  position:sticky;top:0;background:rgba(19,16,25,.92);backdrop-filter:blur(6px);z-index:2}
+.retour{font-size:13px;color:var(--brume);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.barre-nom{font-family:var(--serif);font-size:17px;margin:0 auto;text-align:center}
+.barre-nom small{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brume);margin-top:2px}
+.info{width:32px;height:32px;border-radius:50%;border:1px solid var(--or-fil);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:var(--or);font-size:15px;flex:0 0 32px}
+.resume{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--encre);opacity:.92;margin-top:18px}
+.lien-doux{font-size:13px;color:var(--or);margin-top:8px;display:inline-block;border-bottom:1px solid var(--or-fil)}
+.bascule{display:flex;gap:0;margin-top:20px;border:1px solid var(--or-fil);border-radius:12px;overflow:hidden}
+.bascule span{flex:1;text-align:center;padding:10px 4px;font-size:13px;color:var(--brume)}
+.bascule span.actif{background:var(--surface-2);color:var(--encre)}
+.bascule span small{display:block;font-size:11px;color:var(--brume);margin-top:2px}
+.paquet{margin:26px auto 0;height:96px;border-radius:8px;
+  background:repeating-linear-gradient(90deg,#4b2a6b 0 6px,#3a1f55 6px 7px);
+  box-shadow:0 18px 40px rgba(0,0,0,.6);border:1px solid rgba(201,165,92,.3)}
+.consigne{text-align:center;font-size:12px;letter-spacing:.08em;color:var(--brume);margin-top:14px}
+.emplacements{display:flex;gap:10px;justify-content:center;margin-top:22px}
+.emplacements div{width:84px;height:148px;border:1px dashed rgba(255,255,255,.18);border-radius:8px;
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;font-size:9.5px;letter-spacing:.08em;color:var(--brume);text-transform:uppercase;text-align:center}
+
+/* après tirage */
+.cartes3{display:flex;gap:10px;justify-content:center;margin-top:18px}
+.cartes3 figure{width:100px;text-align:center}
+.cartes3 img{width:100%;border-radius:7px;box-shadow:0 10px 30px rgba(0,0,0,.6);display:block}
+.cartes3 figcaption{font-family:var(--serif);font-style:italic;color:var(--or);font-size:13.5px;margin-top:7px}
+.cartes3 figcaption small{display:block;font-family:var(--sans);font-style:normal;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brume);margin-top:3px}
+.onglets-lecture{display:flex;justify-content:center;gap:22px;margin-top:22px;border-bottom:1px solid var(--or-fil)}
+.onglets-lecture span{font-size:14px;color:var(--brume);padding:0 2px 9px}
+.onglets-lecture span.actif{color:var(--encre);border-bottom:2px solid var(--or)}
+.texte{font-family:var(--serif);font-size:15.5px;line-height:1.6;margin-top:16px}
+.relire{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding:13px 14px;border:1px solid var(--or-fil);border-radius:12px;font-size:13.5px}
+.relire small{display:block;color:var(--brume);font-size:12px;margin-top:2px}
+.feuille{position:absolute;left:0;right:0;bottom:0;background:#1b1622;border-top:1px solid var(--or-doux);border-radius:20px 20px 0 0;padding:18px 18px 22px;box-shadow:0 -20px 50px rgba(0,0,0,.6)}
+.feuille h4{font-family:var(--serif);font-weight:400;font-size:18px}
+.feuille .opt{padding:12px 0;border-bottom:1px solid var(--or-fil);font-size:14px}
+.feuille .opt small{display:block;color:var(--brume);font-size:12px;margin-top:2px}
+.feuille .opt.actif{color:var(--or)}
+.voile-feuille{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+
+/* avant */
+.avant .mode-ligne{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;margin-top:16px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brume)}
+.avant .mode-ligne .actif{color:var(--or)}
+.avant .pilules{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px}
+.avant .pilules span{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 10px;color:var(--brume)}
+.avant .pilules span.actif{background:var(--or);color:#1a1408;border-color:var(--or)}
+.compte{display:inline-block;margin-top:8px;font-size:12px;color:#e08a7a}
+</style>
+</head>
+<body>
+
+<h1 class="planche-titre">Réorganiser les tirages du Tarot — planche de validation</h1>
+<p class="planche-intro">Maquette jetable : ta palette, ta typo et tes vraies cartes, sur un écran de téléphone.
+Rien n'est encore touché dans l'app. Choisis en voyant : une variante pour <b>l'entrée</b> (bloc 2),
+puis valide <b>l'écran d'un tirage</b> (bloc 3) et <b>l'après-tirage</b> (bloc 4).</p>
+
+<!-- ═══════════════════ 1. AVANT ═══════════════════ -->
+<section class="bloc">
+  <h2>1. Aujourd'hui — le constat</h2>
+  <p class="quoi">Après un tirage à trois cartes, l'écran affiche <b>13 choix</b> avant la première ligne de lecture :
+  6 modes, 3 façons de lire, 4 grilles. Les tirages sont rangés par leur <i>forme</i>, pas par ce qu'on vient chercher.</p>
+  <div class="rangee">
+    <div class="tel avant"><div class="ecran" style="text-align:center">
+      <p class="kicker">Le jeu des 79</p>
+      <p class="h-ecran" style="font-size:30px">Tarot</p>
+      <div class="mode-ligne"><span>Une carte</span><span class="actif">Trois cartes</span><span>Le Diamant</span><span>Neuf + une</span><span>Au choix</span><span>Croix</span></div>
+      <p class="sous" style="font-size:13px;margin-top:12px">◇ Comprendre ce tirage</p>
+      <div class="pilules"><span>Récit</span><span style="border-color:var(--or-doux);color:var(--encre)">Ensemble</span><span>Liens</span></div>
+      <div class="pilules"><span class="actif">Situation · nœud · levier</span><span>Visible · latent · résolution</span><span>Temps</span><span>Leçon · geste · question</span></div>
+      <span class="compte">13 choix avant la lecture</span>
+      <div class="cartes3"><figure><img src="../static/img/cartes/major_13.jpg" alt=""></figure><figure><img src="../static/img/cartes/air_02.jpg" alt=""></figure><figure><img src="../static/img/cartes/terre_as.jpg" alt=""></figure></div>
+    </div></div>
+    <div class="colonne" style="width:520px">
+      <p class="etiquette">Règles enfreintes</p>
+      <ul class="regles">
+        <li><b>Hick</b> — 13 options visibles en même temps ; le temps de décision explose, la lecture recule sous le pli.</li>
+        <li><b>Modèle conceptuel (Norman)</b> — « Au choix » est une <i>façon de piger</i>, pas un tirage ; les 4 grilles sont des <i>relectures</i> de la même donne, pas des tirages ; « Croix » cache trois tirages derrière un seul onglet. Trois natures différentes, présentées pareil.</li>
+        <li><b>Signifiant absent</b> — rien ne montre la forme d'un tirage avant de l'ouvrir : « Le Diamant » et « Croix » sont deux croix, « Trois cartes » et « Au choix » donnent trois cartes. D'où la confusion.</li>
+        <li><b>Von Restorff</b> — trois rangées de pilules dorées se disputent l'œil ; plus rien n'est saillant.</li>
+        <li><b>R4 (zéro redondance)</b> — le chapô de Ta Trame énumère tous les tirages, que l'écran répète juste dessous.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 2. L'ENTRÉE ═══════════════════ -->
+<section class="bloc">
+  <h2>2. L'entrée — choisir un tirage par ce qu'on vient chercher</h2>
+  <p class="quoi">Le principe commun aux trois variantes : on entre par <b>l'intention</b> (Jakob : c'est ainsi que les grandes apps de tarot rangent leurs tirages), et chaque tirage montre <b>sa forme en miniature</b> — le signifiant qui distingue d'un coup d'œil une croix de trois cartes alignées. <b>7 tirages</b> au lieu de 6 onglets + 3 sous-onglets ; « Au choix » devient une option de Trois cartes.</p>
+  <div class="rangee">
+
+    <!-- A -->
+    <div class="colonne">
+      <p class="etiquette reco">A · Étagères + schémas</p>
+      <div class="tel"><div class="ecran">
+        <p class="kicker">Le jeu des 79</p>
+        <p class="h-ecran">Que viens-tu chercher ?</p>
+        <p class="sous">Une carte est un miroir, pas une promesse.</p>
+
+        <div class="etagere">
+          <p class="etagere-titre">Pour la journée</p>
+          <button class="tuile vedette"><span class="schema"><svg viewBox="0 0 58 58"><rect x="22" y="13" width="14" height="24" rx="2"/></svg></span>
+            <span><span class="tuile-nom">La carte du jour</span><span class="tuile-pour" style="display:block">Un angle pour ta journée, et un geste.</span><span class="tuile-meta" style="display:block">1 carte · 2 min</span></span><span class="chevron">›</span></button>
+        </div>
+
+        <div class="etagere">
+          <p class="etagere-titre">Pour éclairer une situation</p>
+          <button class="tuile"><span class="schema"><svg viewBox="0 0 58 58"><rect x="5" y="17" width="14" height="24" rx="2"/><rect x="22" y="17" width="14" height="24" rx="2"/><rect x="39" y="17" width="14" height="24" rx="2"/></svg></span>
+            <span><span class="tuile-nom">Trois cartes</span><span class="tuile-pour" style="display:block">Ce que tu amènes, ce qui se joue, ce que tu peux essayer.</span><span class="tuile-meta" style="display:block">3 cartes · 5 min</span></span><span class="chevron">›</span></button>
+          <button class="tuile"><span class="schema"><svg viewBox="0 0 58 58"><rect x="23" y="2" width="12" height="17" rx="2"/><rect x="23" y="21" width="12" height="17" rx="2" class="cle"/><rect x="23" y="40" width="12" height="17" rx="2"/><rect x="6" y="21" width="12" height="17" rx="2"/><rect x="40" y="21" width="12" height="17" rx="2"/></svg></span>
+            <span><span class="tuile-nom">Le Diamant</span><span class="tuile-pour" style="display:block">Une question précise, ce qui la nourrit, ce qui la dénoue.</span><span class="tuile-meta" style="display:block">5 cartes · 8 min</span></span><span class="chevron">›</span></button>
+        </div>
+
+        <div class="etagere">
+          <p class="etagere-titre">Pour approfondir</p>
+          <button class="tuile"><span class="schema"><svg viewBox="0 0 58 58"><g><rect x="9" y="2" width="11" height="12" rx="1.5"/><rect x="23" y="2" width="11" height="12" rx="1.5"/><rect x="37" y="2" width="11" height="12" rx="1.5"/><rect x="9" y="16" width="11" height="12" rx="1.5"/><rect x="23" y="16" width="11" height="12" rx="1.5"/><rect x="37" y="16" width="11" height="12" rx="1.5"/><rect x="9" y="30" width="11" height="12" rx="1.5"/><rect x="23" y="30" width="11" height="12" rx="1.5"/><rect x="37" y="30" width="11" height="12" rx="1.5"/><rect x="23" y="44" width="11" height="12" rx="1.5" class="cle"/></g></svg></span>
+            <span><span class="tuile-nom">Neuf + une</span><span class="tuile-pour" style="display:block">Le visible, le latent, la résolution — et la carte qui relie tout.</span><span class="tuile-meta" style="display:block">10 cartes · 15 min</span></span><span class="chevron">›</span></button>
+          <button class="tuile"><span class="schema"><svg viewBox="0 0 58 58"><rect x="15" y="2" width="10" height="15" rx="1.5"/><rect x="15" y="20" width="10" height="15" rx="1.5"/><rect x="11" y="24" width="18" height="7" rx="1.5" class="cle" style="opacity:.75"/><rect x="15" y="38" width="10" height="15" rx="1.5"/><rect x="2" y="20" width="10" height="15" rx="1.5"/><rect x="28" y="20" width="10" height="15" rx="1.5"/><rect x="45" y="2" width="10" height="12" rx="1.5"/><rect x="45" y="16" width="10" height="12" rx="1.5"/><rect x="45" y="30" width="10" height="12" rx="1.5"/><rect x="45" y="44" width="10" height="12" rx="1.5"/></svg></span>
+            <span><span class="tuile-nom">La croix</span><span class="tuile-pour" style="display:block">Le grand tirage : une situation entière, en dix cartes.</span><span class="tuile-meta" style="display:block">10 cartes · 3 lectures · 20 min</span></span><span class="chevron">›</span></button>
+        </div>
+
+        <div class="etagere">
+          <p class="etagere-titre">Pour une relation</p>
+          <button class="tuile"><span class="schema"><svg viewBox="0 0 58 58"><rect x="15" y="2" width="10" height="15" rx="1.5"/><rect x="15" y="20" width="10" height="15" rx="1.5"/><rect x="15" y="38" width="10" height="15" rx="1.5"/><rect x="2" y="20" width="10" height="15" rx="1.5"/><rect x="28" y="20" width="10" height="15" rx="1.5"/><rect x="45" y="2" width="10" height="12" rx="1.5"/><rect x="45" y="16" width="10" height="12" rx="1.5"/><rect x="45" y="30" width="10" height="12" rx="1.5"/><rect x="45" y="44" width="10" height="12" rx="1.5"/></svg></span>
+            <span><span class="tuile-nom">La croix de la relation</span><span class="tuile-pour" style="display:block">Le lien comme une entité : ce que chacun y met, ce qui le fait évoluer.</span><span class="tuile-meta" style="display:block">10 cartes · 20 min</span></span><span class="chevron">›</span></button>
+        </div>
+      </div></div>
+      <ul class="regles">
+        <li><b>Étagères</b> = des « chunks » (Miller) : 4 intentions, 1 à 2 tirages chacune.</li>
+        <li><b>La carte du jour en vedette</b> (Von Restorff) : la porte d'entrée par défaut, la seule dorée.</li>
+        <li><b>Celtique / Osho</b> : un seul tirage « La croix », les deux lectures se choisissent dedans (même donne, comme aujourd'hui). La croix de la relation a sa propre étagère : sa question est différente.</li>
+        <li>Durées indicatives, à valider (ou retirer).</li>
+      </ul>
+    </div>
+
+    <!-- B -->
+    <div class="colonne">
+      <p class="etiquette">B · Liste sobre, rangée par nombre de cartes</p>
+      <div class="tel"><div class="ecran">
+        <p class="kicker">Le jeu des 79</p>
+        <p class="h-ecran">Choisis ton tirage</p>
+        <p class="sous">Du plus court au plus profond.</p>
+        <div class="liste" style="margin-top:22px">
+          <div class="ligne"><span class="n">1</span><span><span class="nom">La carte du jour</span><span class="pour" style="display:block">Un angle pour ta journée, et un geste.</span></span></div>
+          <div class="ligne"><span class="n">3</span><span><span class="nom">Trois cartes</span><span class="pour" style="display:block">Ce que tu amènes, ce qui se joue, ce que tu peux essayer.</span></span></div>
+          <div class="ligne"><span class="n">5</span><span><span class="nom">Le Diamant</span><span class="pour" style="display:block">Une question précise, ce qui la nourrit, ce qui la dénoue.</span></span></div>
+          <div class="ligne"><span class="n">10</span><span><span class="nom">Neuf + une</span><span class="pour" style="display:block">Le visible, le latent, la résolution — et la carte qui relie tout.</span></span></div>
+          <div class="ligne"><span class="n">10</span><span><span class="nom">La croix</span><span class="pour" style="display:block">Une situation entière ; lecture celtique ou d'Osho.</span></span></div>
+          <div class="ligne"><span class="n">10</span><span><span class="nom">La croix de la relation</span><span class="pour" style="display:block">Le lien comme une entité, et ce qui le fait évoluer.</span></span></div>
+        </div>
+      </div></div>
+      <ul class="regles">
+        <li>Le plus épuré : le <b>nombre de cartes</b> sert de repère, en grand chiffre doré.</li>
+        <li>Mais il ne montre pas la <b>forme</b> : Diamant et croix restent indistincts tant qu'on ne les ouvre pas.</li>
+        <li>Classement par taille plutôt que par intention : plus facile à scanner, moins guidant.</li>
+      </ul>
+    </div>
+
+    <!-- C -->
+    <div class="colonne">
+      <p class="etiquette">C · Garder des onglets, mais par taille</p>
+      <div class="tel"><div class="ecran" style="text-align:center">
+        <p class="kicker">Le jeu des 79</p>
+        <p class="h-ecran" style="font-size:30px">Tarot</p>
+        <div class="segments"><span class="actif">Court</span><span>Moyen</span><span>Profond</span></div>
+        <div class="puces" style="justify-content:center"><span class="puce actif">Une carte</span><span class="puce">Trois cartes</span></div>
+        <p class="sous" style="margin-top:18px;font-size:14px">Un angle pour ta journée, et un geste.</p>
+        <div class="paquet" style="margin-top:30px"></div>
+        <p class="consigne">Glisse sur le paquet · lâche pour piger</p>
+      </div></div>
+      <ul class="regles">
+        <li>Le plus proche de l'existant : on reste sur l'écran du paquet, sans écran d'entrée.</li>
+        <li>Deux niveaux de choix restent visibles en permanence (3 + 2 à 3) : mieux qu'aujourd'hui, mais Hick est seulement atténué.</li>
+        <li>« Moyen » et « Profond » sont des mots de système, pas d'intention.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 3. L'ÉCRAN D'UN TIRAGE ═══════════════════ -->
+<section class="bloc">
+  <h2>3. L'écran d'un tirage — une seule chose à faire : piger</h2>
+  <p class="quoi">Une barre fine : <b>‹ Tirages</b> pour revenir, le nom au centre, <b>ⓘ</b> pour la méthode complète. Le résumé de deux phrases reste visible (ton palier 1). Le seul autre choix est <b>comment piger</b> — c'est là que vit « Au choix ». Pour la croix, le choix de lecture (celtique / Osho) prend la même place.</p>
+  <div class="rangee">
+    <div class="colonne">
+      <p class="etiquette">Trois cartes</p>
+      <div class="tel">
+        <div class="barre"><span class="retour">‹ Tirages</span><span class="barre-nom">Trois cartes<small>3 cartes</small></span><span class="info">i</span></div>
+        <div class="ecran" style="padding-top:6px">
+          <p class="resume">Trois cartes pour examiner une situation : ce que tu y apportes, ce qui s'y joue et ce que tu peux essayer.</p>
+          <span class="lien-doux">La méthode complète</span>
+          <div class="bascule"><span class="actif">Au hasard<small>mélange honnête</small></span><span>Je choisis<small>79 faces visibles</small></span></div>
+          <div class="emplacements"><div>ce que j'amène</div><div>ce qui se joue</div><div>ce que je peux essayer</div></div>
+          <div class="paquet"></div>
+          <p class="consigne">Glisse sur le paquet · lâche pour piger</p>
+        </div>
+      </div>
+    </div>
+    <div class="colonne">
+      <p class="etiquette">La croix</p>
+      <div class="tel">
+        <div class="barre"><span class="retour">‹ Tirages</span><span class="barre-nom">La croix<small>10 cartes</small></span><span class="info">i</span></div>
+        <div class="ecran" style="padding-top:6px">
+          <div class="bascule" style="margin-top:16px"><span class="actif">Celtique<small>l'état des lieux</small></span><span>Osho<small>le processus en cours</small></span></div>
+          <p class="resume">Dix cartes réparties entre la croix et le bâton : l'atmosphère, ce qui la traverse, la base, ce qui s'éloigne, ce qui est visé…</p>
+          <span class="lien-doux">La méthode complète</span>
+          <div class="paquet"></div>
+          <p class="consigne">Glisse sur le paquet · lâche pour piger</p>
+        </div>
+      </div>
+    </div>
+    <div class="colonne" style="width:340px">
+      <p class="etiquette">Ce qui change</p>
+      <ul class="regles">
+        <li><b>Un seul point saillant</b> : le paquet (Von Restorff).</li>
+        <li><b>Mapping</b> : le retour est en haut à gauche, comme partout (Jakob).</li>
+        <li><b>Au choix</b> n'est plus un tirage à part : c'est la manière de piger les trois cartes — même lecture, mêmes grilles.</li>
+        <li>« Celtique / Osho » : un sous-titre dit à quoi chacune sert, au lieu du seul nom.</li>
+        <li>La méthode complète (tes 90 textes) reste intacte, dans un tiroir.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 4. APRÈS LE TIRAGE ═══════════════════ -->
+<section class="bloc">
+  <h2>4. Après le tirage — lire d'abord, relire ensuite</h2>
+  <p class="quoi">Les cartes, puis <b>trois onglets</b> soulignés (Récit · Ensemble · Liens) — et la lecture commence. Les 4 grilles passent en <b>une seule ligne « Relire autrement »</b> sous la lecture, qui ouvre un tiroir. 13 choix → 4.</p>
+  <div class="rangee">
+    <div class="colonne">
+      <p class="etiquette">La lecture</p>
+      <div class="tel">
+        <div class="barre"><span class="retour">‹ Tirages</span><span class="barre-nom">Trois cartes<small>Situation · nœud · levier</small></span><span class="info">i</span></div>
+        <div class="ecran" style="padding-top:4px">
+          <div class="cartes3">
+            <figure><img src="../static/img/cartes/major_13.jpg" alt=""><figcaption>Transformation<small>ce que j'amène</small></figcaption></figure>
+            <figure><img src="../static/img/cartes/air_02.jpg" alt=""><figcaption>Dualité<small>ce qui se joue</small></figcaption></figure>
+            <figure><img src="../static/img/cartes/terre_as.jpg" alt=""><figcaption>Présence<small>ce que je peux essayer</small></figcaption></figure>
+          </div>
+          <div class="onglets-lecture"><span>Récit</span><span class="actif">Ensemble</span><span>Liens</span></div>
+          <p class="texte">Trois cartes sont posées côte à côte, mais aucune famille ne domine. Chacune apporte un aspect différent de la situation…</p>
+          <div class="relire"><span>Relire autrement<small>3 autres grilles, la même donne</small></span><span class="chevron">›</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="colonne">
+      <p class="etiquette">« Relire autrement » ouvert</p>
+      <div class="tel">
+        <div class="barre"><span class="retour">‹ Tirages</span><span class="barre-nom">Trois cartes<small>Situation · nœud · levier</small></span><span class="info">i</span></div>
+        <div class="ecran" style="padding-top:4px;opacity:.5">
+          <div class="cartes3">
+            <figure><img src="../static/img/cartes/major_13.jpg" alt=""></figure>
+            <figure><img src="../static/img/cartes/air_02.jpg" alt=""></figure>
+            <figure><img src="../static/img/cartes/terre_as.jpg" alt=""></figure>
+          </div>
+        </div>
+        <div class="voile-feuille"></div>
+        <div class="feuille">
+          <h4>Relire la même donne</h4>
+          <p class="regles" style="margin:4px 0 6px">Les cartes ne bougent pas ; seule la question change.</p>
+          <div class="opt actif">Situation · nœud · levier<small>Ce que tu amènes, ce qui se joue, ce que tu peux essayer</small></div>
+          <div class="opt">Visible · latent · résolution<small>Ce qui se voit, ce qui travaille dessous, ce qui dénoue</small></div>
+          <div class="opt">Le temps<small>D'où ça vient, où ça en est, vers où ça va</small></div>
+          <div class="opt" style="border:0">Leçon · geste · question<small>Ce que ça t'apprend, ce que tu peux faire, ce qui reste ouvert</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="colonne" style="width:340px">
+      <p class="etiquette">Ce qui change</p>
+      <ul class="regles">
+        <li><b>Pyramide inversée</b> : les cartes, puis le texte, tout de suite. Les relectures viennent après la lecture, pas avant.</li>
+        <li><b>Onglets soulignés</b> (convention connue) au lieu de pilules : les façons de lire ne crient plus.</li>
+        <li><b>Un seul tiroir</b> pour les relectures, chacune avec une ligne qui dit ce qu'elle demande (microcopy à valider — les sous-titres des grilles sont à moi).</li>
+        <li>La barre rappelle la grille active : on sait toujours ce qu'on lit.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 5. TA TRAME ═══════════════════ -->
+<section class="bloc">
+  <h2>5. Dans Ta Trame</h2>
+  <p class="quoi">L'onglet garde son titre « Le Tarot » et la devise ; l'énumération des tirages disparaît du chapô (l'écran d'entrée la montre mieux). Le cadre ne change pas.</p>
+</section>
+
+</body>
+</html>

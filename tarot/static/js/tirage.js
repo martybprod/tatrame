@@ -17,7 +17,6 @@
   const slotsBox = document.getElementById("slots");
   const lecture = document.getElementById("lecture");
   const replierBtn = document.getElementById("replier");
-  const boutonsMode = Array.from(document.querySelectorAll(".mode"));
   const plein = document.getElementById("plein");
   const pleinCorps = plein.querySelector(".plein-corps");
   const pleinImg = plein.querySelector(".plein-img");
@@ -97,6 +96,58 @@
   const zoomPlein = zoomCarte(plein, pleinImg);
   const surtitre = document.getElementById("surtitre-jeu");
   const piedTexte = document.getElementById("pied-texte");
+
+  // ── Le catalogue des tirages (refonte 2026-11-16) ───────────────────
+  /* Avant : 6 onglets par FORME (« Une carte », « Croix »…), trois croix sous
+     un seul onglet, « Au choix » rangé comme un tirage alors que c'est une
+     façon de piger, et jusqu'à 13 choix visibles avant la lecture.
+     Maintenant : on entre par ce qu'on vient chercher (planche validée par
+     Martin : maquettes/planche_tirages.html, variante A). Chaque tirage
+     montre sa FORME en miniature — le signifiant qui distingue d'un coup
+     d'œil une croix de trois cartes alignées. Un tirage = un mode de l'API
+     (+ la croix lue) ; « Au choix » vit dans Trois cartes, Celtique / Osho
+     dans La croix ; la croix composite devient La croix de la relation. */
+  const R = (x, y, w, h, cle) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1.6"${cle ? ' class="cle"' : ""}/>`;
+  const SCHEMAS = {
+    un: R(22, 13, 14, 24),
+    trois: R(5, 17, 14, 24) + R(22, 17, 14, 24) + R(39, 17, 14, 24),
+    diamant: R(23, 2, 12, 17) + R(6, 21, 12, 17) + R(23, 21, 12, 17, true) +
+             R(40, 21, 12, 17) + R(23, 40, 12, 17),
+    neuf: [9, 23, 37].flatMap((x) => [2, 16, 30].map((y) => R(x, y, 11, 12))).join("") +
+          R(23, 44, 11, 12, true),
+    croix: R(15, 2, 10, 15) + R(2, 20, 10, 15) + R(15, 20, 10, 15) + R(28, 20, 10, 15) +
+           R(15, 38, 10, 15) + R(45, 2, 10, 12) + R(45, 16, 10, 12) + R(45, 30, 10, 12) +
+           R(45, 44, 10, 12),
+  };
+  const CATALOGUE = [
+    { etagere: "Pour la journée", items: [
+      { id: "jour", nom: "La carte du jour", n: 1, mode: 1, schema: "un", vedette: true,
+        pour: "Un angle pour ta journée, et un geste." },
+    ]},
+    { etagere: "Pour éclairer une situation", items: [
+      { id: "trois", nom: "Trois cartes", n: 3, mode: 3, schema: "trois", pige: true,
+        pour: "Ce que tu amènes, ce qui se joue, ce que tu peux essayer." },
+      { id: "diamant", nom: "Le Diamant", n: 5, mode: 5, schema: "diamant",
+        pour: "Une question précise, ce qui la nourrit, ce qui la dénoue." },
+    ]},
+    { etagere: "Pour approfondir", items: [
+      { id: "neuf", nom: "Neuf + une", n: 10, mode: 10, schema: "neuf",
+        pour: "Le visible, le latent, la résolution — et la carte qui relie tout." },
+      { id: "croix", nom: "La croix", n: 10, mode: 11, schema: "croix",
+        pour: "Le grand tirage : une situation entière, en dix cartes.",
+        lectures: [
+          { id: "croix_celtique", nom: "Celtique", sous: "l'état des lieux" },
+          { id: "croix_osho", nom: "Osho", sous: "le processus en cours" },
+        ] },
+    ]},
+    { etagere: "Pour une relation", items: [
+      { id: "relation", nom: "La croix de la relation", n: 10, mode: 11, schema: "croix",
+        croix: "croix_composite",
+        pour: "Le lien comme une entité : ce que chacun y met, ce qui le fait évoluer." },
+    ]},
+  ];
+  const TOUS_TIRAGES = CATALOGUE.flatMap((e) => e.items);
+  let tirageChoisi = null;   // l'entrée du catalogue ouverte (null = l'accueil)
 
   // ── Grilles de relecture ────────────────────────────────────────────
   // La même donne se relit sous plusieurs cadres (Greer, les permutations) :
@@ -414,7 +465,8 @@
     croixActive = (estCroix() && tirage.grille) ? tirage.grille : "croix_celtique";
     afficherPedagogie();
     construireSlots();
-    construireBarreCroix();
+    construireBascule();
+    majBarre();
     majCompteur();
     return tirage;
   }
@@ -572,63 +624,95 @@
     if (!boite) return;
     const g = grilleCourante();
     boite.innerHTML = g ? pedagogiePanel(g.pedagogie, g.positions) : "";
-    // les quatre façons de lire trois cartes se choisissent ici aussi :
-    // un seul état (grilleActive) partagé avec le sélecteur sous les cartes
-    const grilles = (tirage && tirage.mode === 3) ? (tirage.grilles || []) : [];
-    if (grilles.length > 1) {
-      const barre = document.createElement("div");
-      barre.className = "ped-grilles";
-      barre.setAttribute("role", "tablist");
-      barre.setAttribute("aria-label", "Façon de lire trois cartes");
-      grilles.forEach((gr) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "grille-bouton" + (gr.id === grilleActive ? " actif" : "");
-        b.setAttribute("role", "tab");
-        b.setAttribute("aria-selected", String(gr.id === grilleActive));
-        b.textContent = gr.nom;
-        b.addEventListener("click", () => changerGrille(gr.id));
-        barre.appendChild(b);
-      });
-      boite.prepend(barre);
-    }
+    // les grilles de relecture ne se choisissent plus ici : un seul endroit,
+    // « Relire autrement », sous la lecture (refonte 2026-11-16)
   }
 
-  // ── Le choix de la croix — sous les modes, toujours visible ──────────
-  // Trois croix, une seule donne : le choix se fait avant le tirage et peut
-  // se changer après, sans retirer les cartes.
+  // ── La barre du tirage : ‹ Tirages · le nom · la méthode ────────────
 
-  function construireBarreCroix() {
-    const barre = document.getElementById("croix-barre");
-    if (!barre) return;
-    const croix = (tirage && mode === 11) ? (tirage.croix_choix || []) : [];
-    if (croix.length < 2) {
-      barre.classList.add("invisibles");
-      barre.innerHTML = "";
-      return;
+  const barreTirage = document.getElementById("barre-tirage");
+  const pedZone = document.getElementById("ped-zone");
+
+  function majBarre() {
+    if (!tirageChoisi) return;
+    document.getElementById("barre-nom").textContent = tirageChoisi.nom;
+    const g = (mode === 3 && tirage && tirage.grilles) ? grilleCourante() : null;
+    document.getElementById("barre-sous").textContent =
+      g ? g.nom : `${tirageChoisi.n} carte${tirageChoisi.n > 1 ? "s" : ""}`;
+  }
+
+  // ⓘ : la méthode complète, à la demande — même après le début du tirage
+  document.getElementById("barre-info").addEventListener("click", () => {
+    const ouvrir = !document.body.classList.contains("ped-ouverte");
+    document.body.classList.toggle("ped-ouverte", ouvrir);
+    document.getElementById("barre-info").setAttribute("aria-expanded", String(ouvrir));
+    const det = pedZone.querySelector(".ped-complet");
+    if (det) det.open = ouvrir;
+    if (ouvrir) pedZone.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  // ── La bascule : le seul choix avant de piger ───────────────────────
+  // Trois cartes : au hasard (mélange) ou au choix (79 faces visibles) — la
+  // même lecture au bout. La croix : celtique ou Osho, une seule donne,
+  // changeable avant comme après le tirage, sans retirer les cartes.
+
+  const bascule = document.getElementById("bascule");
+
+  function construireBascule() {
+    const options = [];
+    let genre = "";
+    if (tirageChoisi && tirageChoisi.pige && (mode === 3 || mode === 0)) {
+      genre = "pige";
+      options.push({ id: "hasard", nom: "Au hasard", sous: "mélange honnête", actif: mode === 3 });
+      options.push({ id: "choix", nom: "Je choisis", sous: "79 faces visibles", actif: mode === 0 });
+    } else if (tirageChoisi && tirageChoisi.lectures && mode === 11) {
+      genre = "lecture";
+      tirageChoisi.lectures.forEach((l) =>
+        options.push({ id: l.id, nom: l.nom, sous: l.sous, actif: l.id === croixActive }));
     }
-    barre.innerHTML = "";
-    croix.forEach((c) => {
+    bascule.innerHTML = "";
+    bascule.dataset.genre = genre;
+    bascule.setAttribute("aria-label", genre === "pige" ? "Comment piger" : "Quelle lecture");
+    bascule.classList.toggle("invisibles", !options.length);
+    options.forEach((o) => {
       const b = document.createElement("button");
       b.type = "button";
-      b.className = "grille-bouton" + (c.id === croixActive ? " actif" : "");
+      b.className = "bascule-option" + (o.actif ? " actif" : "");
       b.setAttribute("role", "tab");
-      b.setAttribute("aria-selected", String(c.id === croixActive));
-      b.textContent = c.nom;
-      b.addEventListener("click", () => changerCroix(c.id));
-      barre.appendChild(b);
+      b.setAttribute("aria-selected", String(o.actif));
+      b.innerHTML = `${o.nom}<small>${o.sous}</small>`;
+      b.addEventListener("click", () => {
+        if (genre === "lecture") changerCroix(o.id);
+        else if (o.id === "choix" && mode !== 0) passerAuChoix();
+        else if (o.id === "hasard" && mode !== 3) passerAuHasard();
+      });
+      bascule.appendChild(b);
     });
-    barre.classList.remove("invisibles");
   }
 
   function changerCroix(id) {
     if (!tirage || mode !== 11 || id === croixActive) return;
     croixActive = id;
-    construireBarreCroix();
+    construireBascule();
     afficherPedagogie();
     majCompteur();
     if (ordreRevelation.length) rendreLecture();
     document.getElementById("detail-position").hidden = true;
+  }
+
+  async function passerAuChoix() {
+    viderTable();
+    mode = 0;
+    construireBascule();
+    await demarrerChoix();
+  }
+
+  function passerAuHasard() {
+    document.getElementById("choix").classList.add("invisibles");
+    eventail.classList.remove("invisibles");
+    pedZone.classList.remove("invisible");
+    mode = 3;
+    replier();
   }
 
   // ── Le détail d'une position : un clic sur son libellé l'ouvre ──────
@@ -901,35 +985,57 @@
     lecture.classList.add("visible");
   }
 
-  // ── Le sélecteur de grille — après le tirage ────────────────────────
+  // ── « Relire autrement » — après la lecture, un seul tiroir ─────────
+  // Avant : 4 pilules dorées AU-DESSUS des cartes, en concurrence avec les
+  // modes et les vues. Les relectures viennent après la lecture, pas avant.
+
+  const relire = document.getElementById("relire");
+  const feuille = document.getElementById("feuille-relire");
 
   function construireGrilles() {
-    const barre = document.getElementById("grilles");
-    if (!barre) return;
-    if (mode !== 3 || !tirage || !tirage.grilles) {
-      barre.classList.add("invisibles");
-      barre.innerHTML = "";
-      return;
-    }
-    barre.innerHTML = "";
-    tirage.grilles.forEach((g) => {
+    const montrer = mode === 3 && tirage && (tirage.grilles || []).length > 1 &&
+      cartesRevelees === tirage.cartes.length;
+    relire.classList.toggle("invisibles", !montrer);
+    if (!montrer) return;
+    const g = grilleCourante();
+    document.getElementById("relire-sous").textContent =
+      g ? `Grille actuelle : ${g.nom}` : "";
+  }
+
+  function ouvrirFeuille() {
+    const boite = document.getElementById("feuille-options");
+    boite.innerHTML = "";
+    (tirage.grilles || []).forEach((g) => {
       const b = document.createElement("button");
       b.type = "button";
-      b.className = "grille-bouton" + (g.id === grilleActive ? " actif" : "");
-      b.setAttribute("role", "tab");
-      b.setAttribute("aria-selected", String(g.id === grilleActive));
-      b.textContent = g.nom;
-      if (g.sous_titre) b.title = g.sous_titre;
-      b.addEventListener("click", () => changerGrille(g.id));
-      barre.appendChild(b);
+      b.className = "feuille-option" + (g.id === grilleActive ? " actif" : "");
+      b.setAttribute("aria-pressed", String(g.id === grilleActive));
+      b.innerHTML = `${g.nom}<small>${g.id === "causale_3"
+        ? "ce que tu amènes, ce qui se joue, ce que tu peux essayer"
+        : (g.sous_titre || "")}</small>`;
+      b.addEventListener("click", () => { fermerFeuille(); changerGrille(g.id); });
+      boite.appendChild(b);
     });
-    barre.classList.remove("invisibles");
+    feuille.hidden = false;
+    const actif = boite.querySelector(".actif") || boite.firstChild;
+    if (actif) actif.focus({ preventScroll: true });
   }
+
+  function fermerFeuille() {
+    if (feuille.hidden) return;
+    feuille.hidden = true;
+    relire.focus({ preventScroll: true });
+  }
+
+  relire.addEventListener("click", ouvrirFeuille);
+  feuille.addEventListener("click", (e) => { if (e.target === feuille) fermerFeuille(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") fermerFeuille(); });
 
   function changerGrille(id) {
     if (!tirage || tirage.mode !== 3 || id === grilleActive) return;
     grilleActive = id;
     construireGrilles();
+    majBarre();
     const positions = positionsActives();
     slotsBox.querySelectorAll(".slot").forEach((slot, i) => {
       const lib = slot.querySelector(".libelle");
@@ -1036,7 +1142,14 @@
   // ── Replier ─────────────────────────────────────────────────────────
 
   function replier() {
+    viderTable();
+    charger();
+  }
+
+  // la table remise à nu : aucune carte, aucune lecture (sans recharger)
+  function viderTable() {
     fermerPlein();
+    fermerFeuille();
     tirage = null;
     choisies = [];
     carteEnPlace = false;
@@ -1051,15 +1164,69 @@
     replierBtn.classList.add("invisible");
     ordreRevelation = [];
     rangeesAnnoncees = new Set();
-    document.body.classList.remove("en-tirage", "a-commence");
+    document.body.classList.remove("en-tirage", "a-commence", "ped-ouverte");
+    document.getElementById("barre-info").setAttribute("aria-expanded", "false");
+    document.getElementById("detail-position").hidden = true;
     reinitialiserVues();
-    const barre = document.getElementById("grilles");
-    if (barre) {
-      barre.classList.add("invisibles");
-      barre.innerHTML = "";
-    }
-    charger();
+    relire.classList.add("invisibles");
   }
+
+  // ── Ouvrir un tirage du catalogue, revenir au catalogue ─────────────
+
+  function construireCatalogue() {
+    const boite = document.getElementById("cat-etageres");
+    boite.innerHTML = CATALOGUE.map((e) => `
+      <div class="etagere">
+        <p class="etagere-titre">${e.etagere}</p>
+        ${e.items.map((t) => `
+          <button type="button" class="tuile${t.vedette ? " vedette" : ""}" data-tirage="${t.id}">
+            <svg class="tuile-schema" viewBox="0 0 58 58" aria-hidden="true">${SCHEMAS[t.schema]}</svg>
+            <span class="tuile-corps">
+              <span class="tuile-nom">${t.nom}</span>
+              <span class="tuile-pour">${t.pour}</span>
+              <span class="tuile-meta">${t.n} carte${t.n > 1 ? "s" : ""}${t.lectures ? ` · ${t.lectures.length} lectures` : ""}</span>
+            </span>
+            <span class="tuile-chevron" aria-hidden="true">›</span>
+          </button>`).join("")}
+      </div>`).join("");
+    boite.addEventListener("click", (e) => {
+      const b = e.target.closest(".tuile");
+      if (b) ouvrirTirage(TOUS_TIRAGES.find((t) => t.id === b.dataset.tirage));
+    });
+  }
+
+  function ouvrirTirage(t) {
+    if (!t) return;
+    tirageChoisi = t;
+    mode = t.mode;
+    if (t.croix) croixActive = t.croix;
+    else if (t.lectures && !t.lectures.some((l) => l.id === croixActive)) croixActive = t.lectures[0].id;
+    document.body.classList.remove("accueil");
+    barreTirage.hidden = false;
+    document.getElementById("choix").classList.add("invisibles");
+    eventail.classList.remove("invisibles");
+    pedZone.classList.remove("invisible");
+    majBarre();
+    construireBascule();
+    window.scrollTo(0, 0);
+    replier();
+  }
+
+  function retourCatalogue() {
+    viderTable();
+    document.getElementById("choix").classList.add("invisibles");
+    eventail.innerHTML = "";
+    tirageChoisi = null;
+    barreTirage.hidden = true;
+    bascule.classList.add("invisibles");
+    document.getElementById("ped-contenu").innerHTML = "";
+    document.body.classList.add("accueil");
+    window.scrollTo(0, 0);
+    const premier = document.querySelector(".tuile");
+    if (premier) premier.focus({ preventScroll: true });
+  }
+
+  document.getElementById("retour-tirages").addEventListener("click", retourCatalogue);
 
   // ── Le tirage au choix (mode 0) ─────────────────────────────────────
   // Greer §2.4 : les 79 cartes face visible, un tas « peut-être », puis des
@@ -1096,8 +1263,7 @@
         `<div class="pedagogie"><p>${md(choixEtat.methode.comment)}</p>` +
         `<p class="choix-reticence">${md(choixEtat.methode.reticence)}</p></div>`;
     }
-    const details = document.querySelector(".ped-conteneur");
-    if (details) details.classList.add("invisible");
+    pedZone.classList.add("invisible");
     choixEtat.phase = "attirer";
     choixEtat.gardees = [];
     choixEtat.ecartees = [];
@@ -1174,23 +1340,23 @@
 
     document.getElementById("choix").classList.add("invisibles");
     eventail.classList.add("invisibles");
-    const details = document.querySelector(".ped-conteneur");
-    if (details) details.classList.remove("invisible");
+    pedZone.classList.remove("invisible");
     mode = 3;
-    boutonsMode.forEach((b) => {
-      const actif = Number(b.dataset.mode) === 3;
-      b.classList.toggle("actif", actif);
-      b.setAttribute("aria-selected", actif ? "true" : "false");
-    });
     tirage = d;
     choisies = [];
     ordreRevelation = [];
     rangeesAnnoncees = new Set();
+    cartesRevelees = 0;
     grilleActive = d.grille || "causale_3";
     afficherPedagogie();
     construireSlots();
+    majBarre();
     slotsBox.classList.remove("invisibles");
     placerChoisies();
+    // les cartes sont choisies : on passe à la lecture (même état qu'après
+    // un tirage au hasard — la bascule « comment piger » se retire).
+    // Après placerChoisies, qui remet la table à zéro.
+    document.body.classList.add("a-commence");
     lecture.classList.remove("invisibles");
     if (infos) {
       const note = document.createElement("p");
@@ -1273,6 +1439,7 @@
     if (!tirage || (mode !== 3 && mode !== 10 && !estCroix())) return;
     vuesBarre.querySelector('[data-vue="liens"]').classList.toggle("invisible", estCroix());
     vuesBarre.classList.remove("invisibles");
+    construireGrilles();   // « Relire autrement » : seulement une fois tout lu
     const memo = lireVueMemo();
     afficherVue(memo && !(memo === "liens" && estCroix()) ? memo : "ensemble");
   }
@@ -1454,28 +1621,6 @@
     });
   }
 
-  // ── Modes ───────────────────────────────────────────────────────────
-
-  async function changerMode(nouveau, bouton) {
-    if (nouveau === mode) return;
-    document.getElementById("choix").classList.add("invisibles");
-    eventail.classList.remove("invisibles");
-    const details = document.querySelector(".ped-conteneur");
-    if (details) details.classList.remove("invisible");
-    mode = nouveau;
-    boutonsMode.forEach((b) => {
-      const actif = b === bouton;
-      b.classList.toggle("actif", actif);
-      b.setAttribute("aria-selected", actif ? "true" : "false");
-    });
-    if (nouveau === 0) {
-      await demarrerChoix();
-      return;
-    }
-    replier();
-  }
-
-  boutonsMode.forEach((b) => b.addEventListener("click", () => changerMode(Number(b.dataset.mode), b)));
   replierBtn.addEventListener("click", replier);
   slotsBox.addEventListener("click", (e) => {
     const cible = e.target.closest(".clic-position");
@@ -1504,27 +1649,26 @@
     if (e.key === "Escape") fermerDetail();
   });
   window.addEventListener("resize", () => {
-    if (!tirage && !carteEnPlace) construireEventail(dernierTotal);
+    if (tirageChoisi && !tirage && !carteEnPlace && mode !== 0) construireEventail(dernierTotal);
   });
 
-  // ?mode=3 dans l'URL : préparer la relecture d'un tirage précis.
-  // Sans graine dans l'URL, on ouvre toujours sur « Une carte ».
+  // Au chargement : l'accueil, « Que viens-tu chercher ? ».
+  // ?mode=N&graine=G (relire une lecture précise) ouvre directement le
+  // tirage voulu ; ?croix=croix_osho choisit la lecture de la croix, et
+  // ?croix=croix_composite ouvre La croix de la relation.
+  construireCatalogue();
   const params = new URLSearchParams(location.search);
-  const modeUrl = params.has("graine") && params.has("mode") ? Number(params.get("mode")) : 1;
-  // ?croix=croix_osho : ouvrir directement sur l'une des trois croix
+  const modeUrl = params.has("graine") && params.has("mode") ? Number(params.get("mode")) : null;
   const croixUrl = params.get("croix") || "";
   if (/^croix_[a-z_]+$/.test(croixUrl)) croixActive = croixUrl;
-  if (modeUrl === 0 || modeUrl === 1 || modeUrl === 3 || modeUrl === 5
-      || modeUrl === 10 || modeUrl === 11) {
-    mode = modeUrl;
-    boutonsMode.forEach((b) => {
-      const actif = Number(b.dataset.mode) === modeUrl;
-      b.classList.toggle("actif", actif);
-      b.setAttribute("aria-selected", actif ? "true" : "false");
-    });
+  const entreeUrl = modeUrl === null ? null
+    : modeUrl === 0 ? TOUS_TIRAGES.find((t) => t.id === "trois")
+    : modeUrl === 11 ? TOUS_TIRAGES.find((t) => t.id === (croixUrl === "croix_composite" ? "relation" : "croix"))
+    : TOUS_TIRAGES.find((t) => t.mode === modeUrl);
+  if (entreeUrl) {
+    ouvrirTirage(entreeUrl);
+    if (modeUrl === 0) passerAuChoix();
+  } else {
+    document.body.classList.add("accueil");
   }
-
-  // au chargement : le jeu se déplie, la graine est déjà tirée
-  if (modeUrl === 0) demarrerChoix();
-  else charger();
 })();

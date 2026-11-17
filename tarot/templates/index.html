@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarot — le tirage</title>
-<link rel="stylesheet" href="css/app.css?v=39">
+<link rel="stylesheet" href="css/app.css?v=42">
 </head>
-<body{% if embed %} class="embed"{% endif %}>
+<body class="accueil{% if embed %} embed{% endif %}">
 
 <header class="entete">
   <p class="surtitre" id="surtitre-jeu">Le jeu des 79</p>
@@ -16,26 +16,23 @@
 
 <main class="scene">
 
-  <div class="choix-mode" role="tablist" aria-label="Mode de tirage">
-    <button class="mode actif" data-mode="1" role="tab" aria-selected="true">Une carte</button>
-    <span class="filet-mode" aria-hidden="true"></span>
-    <button class="mode" data-mode="3" role="tab" aria-selected="false">Trois cartes</button>
-    <span class="filet-mode" aria-hidden="true"></span>
-    <button class="mode" data-mode="5" role="tab" aria-selected="false">Le Diamant</button>
-    <span class="filet-mode" aria-hidden="true"></span>
-    <button class="mode" data-mode="10" role="tab" aria-selected="false">Neuf + une</button>
-    <span class="filet-mode" aria-hidden="true"></span>
-    <button class="mode" data-mode="0" role="tab" aria-selected="false">Au choix</button>
-    <span class="filet-mode" aria-hidden="true"></span>
-    <button class="mode" data-mode="11" role="tab" aria-selected="false">Croix</button>
+  <!-- L'entrée : les tirages rangés par ce qu'on vient chercher (rempli par le JS) -->
+  <section id="catalogue" class="catalogue" aria-labelledby="cat-titre">
+    <h2 class="cat-titre" id="cat-titre">Que viens-tu chercher ?</h2>
+    <div id="cat-etageres"></div>
+  </section>
+
+  <!-- La barre d'un tirage : revenir, le nom, la méthode -->
+  <div id="barre-tirage" class="barre-tirage" hidden>
+    <button id="retour-tirages" class="retour-tirages" type="button"><span aria-hidden="true">‹</span> Tirages</button>
+    <p class="barre-nom"><span id="barre-nom"></span><small id="barre-sous"></small></p>
+    <button id="barre-info" class="barre-info" type="button" aria-label="La méthode complète de ce tirage" aria-expanded="false">i</button>
   </div>
 
-  <div id="croix-barre" class="croix-barre invisibles" role="tablist" aria-label="Croix à lire"></div>
+  <div id="ped-zone" class="ped-zone"><div id="ped-contenu"></div></div>
 
-  <details class="ped-conteneur">
-    <summary>Comprendre ce tirage</summary>
-    <div id="ped-contenu"></div>
-  </details>
+  <!-- Le seul choix avant de piger : comment (Trois cartes) ou quelle lecture (La croix) -->
+  <div id="bascule" class="bascule invisibles" role="tablist"></div>
 
   <div id="vues" class="vues invisibles" role="tablist" aria-label="Façon de lire">
     <button class="vue-bouton" data-vue="recit" role="tab" type="button">Récit</button>
@@ -67,9 +64,12 @@
     </details>
   </section>
 
-  <div id="grilles" class="grilles invisibles" role="tablist" aria-label="Grille de lecture"></div>
-
   <div id="lecture" class="lecture invisibles"></div>
+
+  <!-- Après la lecture : relire la même donne sous une autre grille -->
+  <button id="relire" class="relire invisibles" type="button" aria-haspopup="dialog">
+    <span>Relire autrement<small id="relire-sous"></small></span><span class="relire-fleche" aria-hidden="true">›</span>
+  </button>
 
   <div class="actions">
     <button id="replier" class="bouton-discret invisible">Replier le jeu</button>
@@ -93,6 +93,14 @@
   </div>
 </div>
 
+<div class="feuille-voile" id="feuille-relire" hidden>
+  <div class="feuille" role="dialog" aria-modal="true" aria-labelledby="feuille-titre">
+    <p class="feuille-titre" id="feuille-titre">Relire la même donne</p>
+    <p class="feuille-quoi">Les cartes ne bougent pas ; seule la question change.</p>
+    <div id="feuille-options"></div>
+  </div>
+</div>
+
 <div class="detail-position" id="detail-position" hidden>
   <div class="dp-carte">
     <button class="fermer-position" id="fermer-position" aria-label="Fermer">×</button>
@@ -102,6 +110,6 @@
 </div>
 
 <script>window.DOS_URL = "img/dos.png?v={{ version_dos }}";</script>
-<script src="js/tirage.js?v=38"></script>
+<script src="js/tirage.js?v=40"></script>
 </body>
 </html>
