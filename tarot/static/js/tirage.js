@@ -12,6 +12,23 @@
 
   // le dos porte la date du fichier : jamais de vieux dos servi par le cache
   const DOS_DEFAUT = window.DOS_URL || "img/dos.png";
+  /* Le dos chargé et DÉCODÉ dès l'ouverture de l'app : le paquet n'apparaît
+     qu'avec lui (Martin, 2026-11-16 : « le deck est d'abord noir, puis
+     écrasé, puis correct » — il s'affichait avant que son image soit prête). */
+  // une image PRÊTE : décodée, ou au moins chargée — et jamais d'attente
+  // infinie (decode() peut ne jamais répondre dans un onglet en arrière-plan)
+  function imagePrete(src, delaiMax) {
+    return new Promise((ok) => {
+      const i = new Image();
+      const fini = () => ok(i);
+      i.onload = fini;
+      i.onerror = fini;
+      i.src = src;
+      if (i.decode) i.decode().then(fini, fini);
+      setTimeout(fini, delaiMax);
+    });
+  }
+  const dosPret = imagePrete(DOS_DEFAUT, 1500);
 
   const eventail = document.getElementById("eventail");
   const slotsBox = document.getElementById("slots");
@@ -252,12 +269,32 @@
     // entrée en scène, en cascade — setTimeout, pas rAF : rAF est bridé
     // dans un onglet d'arrière-plan et l'entrée n'arriverait jamais
     const cartes = Array.from(ligne.children);
-    setTimeout(() => {
+    dosPret.then(() => setTimeout(() => {
       cartes.forEach((c, i) => {
         setTimeout(() => c.classList.add("visible"), Math.min(i * 6, 420));
       });
-    }, 60);
+    }, 30));
   }
+
+  /* Le paquet se REPLACE quand sa largeur change (barre d'adresse d'iOS,
+     cadre de Ta Trame qui se cale, rotation) : sinon il garde les positions
+     calculées pour l'ancienne largeur et paraît écrasé. */
+  function replacerPaquet() {
+    const ligne = eventail.querySelector(".ligne");
+    const cartes = cartesLibres();
+    if (!ligne || !cartes.length || melangeEnCours) return;
+    const n = cartes.length;
+    const l = carteLargeur();
+    const pas = n > 1 ? (eventail.clientWidth - 4 - l) / (n - 1) : 0;
+    pasLigne = pas;
+    ligne.style.width = Math.ceil(l + pas * (n - 1)) + "px";
+    cartes.forEach((c, i) => { c.style.left = Math.round(i * pas) + "px"; });
+  }
+  let largeurPaquet = 0;
+  new ResizeObserver(() => {
+    const w = eventail.clientWidth;
+    if (w && Math.abs(w - largeurPaquet) > 2) { largeurPaquet = w; replacerPaquet(); }
+  }).observe(eventail);
 
   // ── La loupe : la carte sous le doigt se soulève, ses voisines un peu ──
 
@@ -534,7 +571,7 @@
 
     if (carte.image) {
       el.querySelector(".face").innerHTML =
-        `<img src="${carte.image}" alt="${carte.nom}" draggable="false">`;
+        `<img src="${carte.image_mini || carte.image}" alt="${carte.nom}" draggable="false">`;
     }
 
     // 1 · la carte quitte la ligne et VOLE jusqu'à son emplacement (FLIP :
@@ -1172,13 +1209,20 @@
 
   function ouvrirPlein(carte) {
     if (!carte) return;
-    const img = carte.image || DOS_DEFAUT;
+    // la vignette (déjà en cache : elle est dans la case) s'affiche tout de
+    // suite ; la face entière prend le relais une fois décodée
+    const img = carte.image_mini || carte.image || DOS_DEFAUT;
+    if (carte.image && carte.image !== img) {
+      const id = carte.id;
+      imagePrete(carte.image, 8000).then(() => { if (pleinImg.dataset.carte === id) pleinImg.src = carte.image; });
+    }
     const q = (carte.questions || []).map((x) => `<li>${x}</li>`).join("");
     const ombre = carte.ombre
       ? `<p class="pt-titre">Ombre — ${carte.ombre.mode}</p>` +
         `<p>${carte.ombre.texte}</p>` +
         `<p class="pt-issue">${carte.ombre.issue}</p>`
       : "";
+    pleinImg.dataset.carte = carte.id;
     pleinImg.src = img;
     pleinImg.alt = carte.nom;
     pleinTexte.innerHTML =
@@ -1369,7 +1413,7 @@
     const bLire = document.getElementById("choix-lire");
     mur.innerHTML = "";
     const nomDe = (id) => (choixEtat.jeu.find((c) => c.id === id) || {}).nom || id;
-    const imageDe = (id) => (choixEtat.jeu.find((c) => c.id === id) || {}).image || "";
+    const imageDe = (id) => { const c = choixEtat.jeu.find((x) => x.id === id) || {}; return c.image_mini || c.image || ""; };
 
     if (choixEtat.phase === "attirer") {
       consigne.textContent = "Passe sur chaque carte. Garde celles qui représentent quelque chose pour toi, maintenant.";
@@ -1383,7 +1427,7 @@
         b.type = "button";
         b.className = "carte-choix" + (choixEtat.gardees.includes(c.id) ? " gardee" : "");
         b.setAttribute("aria-label", c.nom);
-        b.innerHTML = `<img src="${c.image}" alt="${c.nom}" draggable="false"><span class="carte-choix-nom">${c.nom}</span>`;
+        b.innerHTML = `<img src="${c.image_mini || c.image}" alt="${c.nom}" loading="lazy" decoding="async" draggable="false"><span class="carte-choix-nom">${c.nom}</span>`;
         b.addEventListener("click", () => basculerGarde(c.id));
         mur.appendChild(b);
       });
@@ -1477,7 +1521,7 @@
         '<span class="face"></span></span>';
       if (carte.image) {
         el.querySelector(".face").innerHTML =
-          `<img src="${carte.image}" alt="${carte.nom}" draggable="false">`;
+          `<img src="${carte.image_mini || carte.image}" alt="${carte.nom}" draggable="false">`;
       }
       el._carte = carte;
       el._regard = carte.type === "hors_cycle" ? (carte.regard || "") : "";
@@ -1662,7 +1706,7 @@
   function vignettes(cartes, libelles) {
     return `<div class="liens-cartes">` + cartes.map((c, k) =>
       `<button type="button" class="liens-carte" data-id="${c.id}" aria-label="${c.nom}">` +
-      `<img src="${c.image || DOS_DEFAUT}" alt="" draggable="false">` +
+      `<img src="${c.image_mini || c.image || DOS_DEFAUT}" alt="" draggable="false">` +
       (libelles && libelles[k] ? `<span>${libelles[k]}</span>` : "") +
       `</button>`).join("") + `</div>`;
   }

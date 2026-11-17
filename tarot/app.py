@@ -182,6 +182,7 @@ def _carte_de_tirage(id_carte, graine):
         "rang": carte.get("rang"),
         "element": carte.get("element") or carte.get("famille"),
         "image": visage(id_carte),
+        "image_mini": vignette(id_carte),
         "corpus": bool(fiche),
         "mots_cles": fiche.get("mots_cles", []),
         "lumiere": fiche.get("lumiere"),
@@ -242,6 +243,32 @@ def visage(id_carte):
     la carte) — le numéro force le navigateur à recharger les images en cache."""
     p = RACINE / "static" / "img" / "cartes" / f"{id_carte}.jpg"
     return f"img/cartes/{id_carte}.jpg?v=3" if p.exists() else None
+
+
+# Vignettes (400 px, WebP — outils/generer_vignettes.py) : dans les cases du
+# tirage, le mur du choix et les liens. La face entière reste pour le plein
+# écran et le récit. Monter le numéro après avoir régénéré les vignettes.
+VERSION_VIGNETTES = 1
+
+
+def vignette(id_carte):
+    p = RACINE / "static" / "img" / "cartes" / "mini" / f"{id_carte}.webp"
+    if p.exists():
+        return f"img/cartes/mini/{id_carte}.webp?v={VERSION_VIGNETTES}"
+    return visage(id_carte)
+
+
+@app.after_request
+def cache_des_fichiers_versionnes(reponse):
+    """Les fichiers statiques appelés AVEC un numéro de version (?v=…) ne
+    changent jamais sous cette adresse : le téléphone les garde un an sans
+    redemander. Avant (2026-11-16) : `no-cache` + une signature qui changeait
+    à chaque déploiement — chaque mise à jour faisait retélécharger toutes
+    les cartes (340 Ko pièce). Sans ?v=, rien ne change (no-cache)."""
+    if request.args.get("v") and request.path.rsplit(".", 1)[-1] in (
+            "jpg", "png", "webp", "css", "js", "svg", "woff2"):
+        reponse.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+    return reponse
 
 
 @app.get("/health")
@@ -435,7 +462,7 @@ def jeu_face_visible():
     return jsonify({
         "total": len(IDS),
         "cartes": [{"id": i, "nom": CARTES[i]["nom"], "type": CARTES[i]["type"],
-                    "image": visage(i)} for i in IDS],
+                    "image": visage(i), "image_mini": vignette(i)} for i in IDS],
         "methode": TIRAGES.get("choix_3", {}).get("pedagogie", {}),
     })
 
