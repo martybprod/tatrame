@@ -9,6 +9,6 @@ set -e
 cd "$(dirname "$0")/.."
 rsync -a --delete \
   --exclude 'venv' --exclude '.env' --exclude '__pycache__' \
-  --exclude '.pytest_cache' --exclude '.openchamber' \
+  --exclude '.pytest_cache' --exclude '.openchamber' --exclude '_sauvegardes' \
   ../TAROT_APP/ tarot/
 echo "tarot/ synchronisé depuis ../TAROT_APP"

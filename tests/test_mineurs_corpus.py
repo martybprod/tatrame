@@ -165,7 +165,7 @@ def test_aucune_ouverture_ne_domine():
 # fait en regardant chaque image validée ; le texte « comprendre » doit nommer
 # tous les symboles de sa carte, l'invitation en nomme au moins trois.
 SYMBOLES_REQUIS_MINEURS = {
-    "feu_as": ["source", "eau", "lumière", "arbres", "pierres", "fougères", "fleurs"],
+    "feu_as": ["source", "spirale", "lumière", "rubans", "étoiles", "ciel"],
     "feu_2": ["pissenlits", "graines", "vent", "pré", "collines", "ciel"],
     "feu_3": ["fille", "main", "tronc", "arbre", "yeux", "forêt"],
     "feu_4": ["lucioles", "fleuve de lumière", "rivière", "nuit", "roseaux", "étoiles"],
