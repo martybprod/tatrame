@@ -372,4 +372,4 @@
 - **Piège du passage** : le service worker (stale-while-revalidate) a servi l'ancien
   document après DEUX rechargements — un `?v=…` frais dans l'URL contourne son cache
   pour tester un changement local.
-- **Statut** : livré le jour même — en attente du feu de Martin pour commit/push.
+- **Statut** : livré, poussé et déployé le jour même (`374361c`).
