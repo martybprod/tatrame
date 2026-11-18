@@ -2341,53 +2341,31 @@ function reappliquerCartesRevelees(date) {
 /* ── La signification des trois PLACES (Martin, 2026-11-17) ────────────────
    La pilule sous chaque carte du jour (« Le pouls du monde », « Ton arcane
    du jour », « Ta couleur du jour ») ouvre une petite carte qui dit CE QUE
-   LA PLACE signifie dans le trio — pas ce que la carte dit (ça, c'est le
-   plein écran de la carte). Même geste que le détail d'une position du
-   Tarot : un titre, puis trois blocs (ce que la place regarde, d'où vient
-   la carte, comment la lire). Textes vérifiés le 2026-11-17 : aucun
-   interdit de charte, aucun chevauchement avec le corpus. */
+   LA PLACE apporte aujourd'hui dans le trio — UN texte court, sans le
+   calcul (ça reste dans le plein écran de la carte et l'aide « Trois
+   cartes, pourquoi ? »), avec un mot sur les deux autres pour les situer.
+   Version courte du 2026-11-17 (retour Martin : « un texte court, pas le
+   calcul, à quoi elle sert »). Textes vérifiés le jour même : conformes à
+   la charte, aucun chevauchement avec le corpus. */
 const PLACES_CARTES_JOUR = {
   'z-carte-maj': {
     titre: 'Le pouls du monde',
-    blocs: [
-      ['Ce que cette place regarde',
-        "Le climat du jour, partagé par tout le monde. La seule des trois cartes qui ne parle pas de toi. Le même arcane se lève ce matin pour chaque personne de l'app."],
-      ["D'où vient la carte",
-        "De la date du jour seule. Le jour, le mois et l'année sont additionnés puis réduits vers 22, la même formule que ta carte de naissance appliquée à la journée. Elle change chaque jour à minuit."],
-      ['Comment la lire',
-        "Comme le décor. Tes deux autres cartes se lisent par-dessus. Le monde traverse le même climat, chacun sa façon d'y marcher."],
-    ],
+    texte: "Elle donne le climat général de la journée. C’est l’ambiance dans laquelle tout le monde évolue aujourd’hui, avant même que ta journée à toi commence. Les deux autres cartes se lisent dans ce contexte, comme sur une scène déjà installée.",
   },
   'z-carte-perso': {
     titre: 'Ton arcane du jour',
-    blocs: [
-      ['Ce que cette place regarde',
-        "Ta journée à toi, la plus personnelle des trois. Elle vient de ton ciel et de tes nombres, jamais de la date seule."],
-      ["D'où vient la carte",
-        "Chaque jour, ton ciel propose un petit vivier de cartes. La planète qui domine, le signe où elle parle, la Lune, ta carte de l'année, ta carte de naissance. Celle qui sort est celle qu'on ne t'a pas montrée depuis le plus longtemps. En un an, le jeu entier passe."],
-      ['Comment la lire',
-        "Elle dit le terrain de ta journée, pas un événement. Le climat, lui, est partagé avec tout le monde. Ta façon de le traverser ne l'est pas."],
-    ],
+    texte: "C’est ta carte, au centre du trio. Elle parle de ce qui t’habite aujourd’hui et donne une lecture plus personnelle de ta journée. Le pouls du monde pose le décor ; ta couleur du jour vient ensuite nuancer ce qu’elle révèle.",
   },
   'z-carte-min': {
     titre: 'Ta couleur du jour',
-    blocs: [
-      ['Ce que cette place regarde',
-        "La teinte fine du jour dans ton thème. La seule carte mineure des trois, moins de tonnerre et plus de météo."],
-      ["D'où vient la carte",
-        "De tes luminaires. La Lune du jour donne la couleur, l'ambiance que tout le monde partage pendant quelques jours. Le Soleil, mesuré depuis ton Ascendant de naissance, donne le rang, quatorze parts de l'As au Roi qui avancent doucement sur l'année."],
-      ['Comment la lire',
-        "La couleur dit le temps qu'il fait. Le rang dit où tu en es de ta course annuelle. Relis-la aux deux majeures, l'arcane nomme et la mineure nuance."],
-    ],
+    texte: "C’est la carte la plus subtile des trois. Elle ne détermine pas le cours de ta journée : elle en précise la nuance. À lire en dernier, elle apporte une teinte particulière au mouvement indiqué par les deux autres cartes.",
   },
 };
 
 function ouvrirPlaceCarteJour(idZone) {
   const place = PLACES_CARTES_JOUR[idZone];
   if (!place) return;
-  const corps = place.blocs.map(([titre, texte]) =>
-    `<div class="section"><h4>${T(titre)}</h4><p>${T(texte)}</p></div>`).join('');
-  ouvrirAnglePlein(place.titre, corps);
+  ouvrirAnglePlein(place.titre, `<div class="miroir" style="font-size:16px">${T(place.texte)}</div>`);
 }
 
 async function ouvrirCartePlein(zone) {

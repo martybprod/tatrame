@@ -330,15 +330,23 @@
   role button + clavier Enter/Espace, `stopPropagation` — la pilule ne dévoile PAS la
   carte, le clic sur l'image ouvre toujours le plein écran) et ouvre `#angle-plein` via
   `ouvrirPlaceCarteJour()` — le même plein écran que les autres angles du jour, pas un
-  nouveau mécanisme d'overlay. Contenu en trois blocs, calqué sur le détail de position
-  du Tarot : « Ce que cette place regarde », « D'où vient la carte », « Comment la lire ».
-  Textes dans `PLACES_CARTES_JOUR` (constante à côté des helpers des cartes du jour).
-- **Textes** : vérifiés le jour même via le validateur de charte (aucun interdit, style
-  conforme — zéro deux-points et zéro tirets dans la prose, cibles 8/10 pour 100 phrases)
-  et anti-répétition (aucun chevauchement de 8 mots avec le corpus). 87-100 mots par
-  carte, dans la fourchette des textes d'explication de l'app (mêmes aides « Trois
-  cartes, pourquoi ? »).
+  nouveau mécanisme d'overlay. **Version courte (retour Martin dans la foulée) : UN seul
+  texte par place** — ce qu'elle apporte aujourd'hui dans le trio, sans le calcul (ça
+  reste dans le plein écran de la carte et l'aide « Trois cartes, pourquoi ? »), avec un
+  mot sur les deux autres pour les situer. Textes dans `PLACES_CARTES_JOUR`.
+- **Textes** : version courte d'abord rédigée par l'agent (27-37 mots, conformes), puis
+  **reformulés par Martin le jour même et remplacés VERBATIM** (40-41 mots). Validation
+  de sa version : aucun interdit, aucun chevauchement de 8 mots avec le corpus ; le
+  validateur signale seulement les deux-points de « Ta couleur du jour » (1 sur 3
+  phrases, cible < 10 pour 100) — gardés tels quels, décision Martin de garder sa
+  formulation.
+- **Piège au passage** : `pkill -f ASTRO_PLUS_APP/app.py` ne matche pas — le process
+  s'appelle `…/Python app.py` (run.sh fait `exec ./venv/bin/python app.py`). Tuer via
+  `lsof -nP -iTCP:5073 -sTCP:LISTEN` puis `kill <PID>`, sinon le vieux serveur garde le
+  port et sert l'ancien template en cache.
 - **Validation** : suite pytest verte (843) ; parcours réel au navigateur mobile — les
   trois pilules ouvrent leur carte, la pilule ne retourne pas le dos, le clic sur
   l'image ouvre toujours la visionneuse.
-- **Statut** : livré, poussé et déployé le jour même (`b5e9212`) — 843 tests verts.
+- **Statut** : version 3 blocs poussée le jour même (`b5e9212`, déployée) — remplacée le
+  jour même par la version courte avec les textes reformulés par Martin, poussée en suite
+  de session.
