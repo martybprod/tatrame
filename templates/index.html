@@ -600,6 +600,10 @@ nav button.actif{color:#f4ecd8;background:rgba(255,255,255,.12)}
 .carte-jour-paire{display:flex; gap:16px; align-items:flex-start}
 .carte-jour-zone{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; cursor:pointer; perspective:600px}
 .carte-jour-zone .carte-jour{width:72px;height:126px}
+/* La pilule de la place (« Le pouls du monde »…) : cliquable, un léger
+   réveil au survol — même sobriété que le reste du chrome. */
+.carte-jour-place{transition:filter .15s}
+.carte-jour-place:hover{filter:brightness(1.35)}
 
 /* La visionneuse : un clic sur une carte la montre en grand, en détail.
    Ouverte par ouvrirLightbox(), fermée par clic sur le fond ou Échap. */
@@ -2334,6 +2338,58 @@ function reappliquerCartesRevelees(date) {
   });
 }
 
+/* ── La signification des trois PLACES (Martin, 2026-11-17) ────────────────
+   La pilule sous chaque carte du jour (« Le pouls du monde », « Ton arcane
+   du jour », « Ta couleur du jour ») ouvre une petite carte qui dit CE QUE
+   LA PLACE signifie dans le trio — pas ce que la carte dit (ça, c'est le
+   plein écran de la carte). Même geste que le détail d'une position du
+   Tarot : un titre, puis trois blocs (ce que la place regarde, d'où vient
+   la carte, comment la lire). Textes vérifiés le 2026-11-17 : aucun
+   interdit de charte, aucun chevauchement avec le corpus. */
+const PLACES_CARTES_JOUR = {
+  'z-carte-maj': {
+    titre: 'Le pouls du monde',
+    blocs: [
+      ['Ce que cette place regarde',
+        "Le climat du jour, partagé par tout le monde. La seule des trois cartes qui ne parle pas de toi. Le même arcane se lève ce matin pour chaque personne de l'app."],
+      ["D'où vient la carte",
+        "De la date du jour seule. Le jour, le mois et l'année sont additionnés puis réduits vers 22, la même formule que ta carte de naissance appliquée à la journée. Elle change chaque jour à minuit."],
+      ['Comment la lire',
+        "Comme le décor. Tes deux autres cartes se lisent par-dessus. Le monde traverse le même climat, chacun sa façon d'y marcher."],
+    ],
+  },
+  'z-carte-perso': {
+    titre: 'Ton arcane du jour',
+    blocs: [
+      ['Ce que cette place regarde',
+        "Ta journée à toi, la plus personnelle des trois. Elle vient de ton ciel et de tes nombres, jamais de la date seule."],
+      ["D'où vient la carte",
+        "Chaque jour, ton ciel propose un petit vivier de cartes. La planète qui domine, le signe où elle parle, la Lune, ta carte de l'année, ta carte de naissance. Celle qui sort est celle qu'on ne t'a pas montrée depuis le plus longtemps. En un an, le jeu entier passe."],
+      ['Comment la lire',
+        "Elle dit le terrain de ta journée, pas un événement. Le climat, lui, est partagé avec tout le monde. Ta façon de le traverser ne l'est pas."],
+    ],
+  },
+  'z-carte-min': {
+    titre: 'Ta couleur du jour',
+    blocs: [
+      ['Ce que cette place regarde',
+        "La teinte fine du jour dans ton thème. La seule carte mineure des trois, moins de tonnerre et plus de météo."],
+      ["D'où vient la carte",
+        "De tes luminaires. La Lune du jour donne la couleur, l'ambiance que tout le monde partage pendant quelques jours. Le Soleil, mesuré depuis ton Ascendant de naissance, donne le rang, quatorze parts de l'As au Roi qui avancent doucement sur l'année."],
+      ['Comment la lire',
+        "La couleur dit le temps qu'il fait. Le rang dit où tu en es de ta course annuelle. Relis-la aux deux majeures, l'arcane nomme et la mineure nuance."],
+    ],
+  },
+};
+
+function ouvrirPlaceCarteJour(idZone) {
+  const place = PLACES_CARTES_JOUR[idZone];
+  if (!place) return;
+  const corps = place.blocs.map(([titre, texte]) =>
+    `<div class="section"><h4>${T(titre)}</h4><p>${T(texte)}</p></div>`).join('');
+  ouvrirAnglePlein(place.titre, corps);
+}
+
 async function ouvrirCartePlein(zone) {
   const donnees = () => ({
     src: zone.dataset.src, nom: zone.dataset.nom,
@@ -3135,7 +3191,8 @@ async function chargerJour(donnees) {
                onerror="this.onerror=null;this.src='/static/cartes/mini/dos.webp?v={{ vstat }}'">
           <img class="dos" src="/static/cartes/mini/dos.webp?v={{ vstat }}" alt="">
         </span>
-        <span style="display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:${badgeCol};border:1px solid ${badgeCol};border-radius:10px;padding:1px 7px">${badge}</span>
+        <span class="carte-jour-place" role="button" tabindex="0" title="Ce que signifie cette place"
+              style="display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:${badgeCol};border:1px solid ${badgeCol};border-radius:12px;padding:4px 10px;cursor:pointer">${badge}</span>
       </div>`;
     /* Résonance : le monde et toi lisez la même arcane aujourd'hui (~5 % des
        jours). Dite une fois, sous le rang — pas un état, une rencontre. */
@@ -3459,6 +3516,17 @@ async function chargerJour(donnees) {
   [$('#z-carte-maj'), $('#z-carte-perso'), $('#z-carte-min')].forEach(zone => {
     if (!zone) return;
     zone.onclick = () => ouvrirCartePlein(zone);
+    /* La pilule de la place (Martin, 2026-11-17) : un clic ouvre le sens de
+       la place dans le trio (ouvrirPlaceCarteJour), PAS la carte —
+       stopPropagation pour ne pas dévoiler le dos au passage. La carte
+       elle-même reste ouvrable au clic sur son image. */
+    const pilule = zone.querySelector('.carte-jour-place');
+    if (!pilule) return;
+    pilule.onclick = e => { e.stopPropagation(); ouvrirPlaceCarteJour(zone.id); };
+    pilule.onkeydown = e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault(); e.stopPropagation(); ouvrirPlaceCarteJour(zone.id);
+    };
   });
   /* Une carte déjà retournée plus tôt dans la journée (même app redémarrée)
      reprend sa face dévoilée — voir memoriserCarteRevelee. */

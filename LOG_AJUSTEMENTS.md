@@ -319,3 +319,27 @@
   changement local, recharger DEUX fois. Et l'app locale (`debug=False`) met les templates
   en cache : relancer l'app après chaque édition de `templates/`.
 - **Statut** : livré et poussé le jour même (`72bfef3`) — 843 tests verts.
+
+## 2026-11-17 — Le Jour : les pilules des cartes du jour ouvrent le sens de leur place
+
+- **Demande** (Martin) : dans « Le Jour », cliquer sur les pilules « Le pouls du monde »,
+  « Ton arcane du jour », « Ta couleur du jour » doit ouvrir une petite carte qui explique
+  la signification de la place de cette carte dans le trio — « un peu comme dans la
+  section Tarot » (le détail d'une position du tirage).
+- **Décision** (`templates/index.html`) : la pilule devient cliquable (`.carte-jour-place`,
+  role button + clavier Enter/Espace, `stopPropagation` — la pilule ne dévoile PAS la
+  carte, le clic sur l'image ouvre toujours le plein écran) et ouvre `#angle-plein` via
+  `ouvrirPlaceCarteJour()` — le même plein écran que les autres angles du jour, pas un
+  nouveau mécanisme d'overlay. Contenu en trois blocs, calqué sur le détail de position
+  du Tarot : « Ce que cette place regarde », « D'où vient la carte », « Comment la lire ».
+  Textes dans `PLACES_CARTES_JOUR` (constante à côté des helpers des cartes du jour).
+- **Textes** : vérifiés le jour même via le validateur de charte (aucun interdit, style
+  conforme — zéro deux-points et zéro tirets dans la prose, cibles 8/10 pour 100 phrases)
+  et anti-répétition (aucun chevauchement de 8 mots avec le corpus). 87-100 mots par
+  carte, dans la fourchette des textes d'explication de l'app (mêmes aides « Trois
+  cartes, pourquoi ? »).
+- **Validation** : suite pytest verte (843) ; parcours réel au navigateur mobile — les
+  trois pilules ouvrent leur carte, la pilule ne retourne pas le dos, le clic sur
+  l'image ouvre toujours la visionneuse.
+- **Statut** : livré le jour même — PAS poussé (un push vaut un déploiement Coolify,
+  à la demande de Martin).
