@@ -1728,3 +1728,48 @@ body.table .etendu-bande span { overflow: visible; text-overflow: clip; }
 .lecture .question-posee ~ .faire { text-align: left; }
 .lecture ul.ecouter { padding-left: 18px; margin: 4px 0 0; }
 .lecture .question-posee ~ .surtitre-bloc { margin-top: 20px; }
+
+/* ══ LA ROUE (2026-11-17) — le paquet en éventail ═════════════════════
+   Planche validée : maquettes/planche_paquet.html, variante C. Chaque carte
+   est placée par du seul `transform` : translate(--x, --y) rotate(--ang),
+   le tout posé par placerRoue() dans tirage.js. La carte soulevée (--lev)
+   monte DANS son propre axe (rotate puis translateY). */
+.eventail.roue {
+  width: min(100%, 900px);
+  height: calc(var(--carte-h) + 64px);
+  padding: 0;
+  margin-top: 10px;
+  overflow: hidden;
+  /* les cartes de bord s'estompent au lieu d'être coupées net : la roue a
+     toujours une marge visuelle de chaque côté */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+}
+.eventail.roue .ligne { width: 100%; height: 100%; }
+.eventail.roue .carte {
+  left: calc(50% - var(--carte-l) / 2);
+  top: 46px;
+  transform-origin: 50% 100%;
+  transform: translate(var(--x, 0px), calc(var(--y, 0px) + var(--ent, 22px)))
+             rotate(var(--ang, 0deg)) translateY(calc(var(--lev, 0px) * -1));
+  transition: transform 0.2s ease-out, opacity 0.5s ease;
+}
+.eventail.roue .carte.visible { --ent: 0px; }
+.eventail.roue .carte.visible:not(.choisie) {
+  transform: translate(var(--x, 0px), var(--y, 0px)) rotate(var(--ang, 0deg)) translateY(calc(var(--lev, 0px) * -1));
+  transition: transform 0.2s ease-out, opacity 0.5s ease;
+}
+/* refermée à l'arrivée, elle s'ouvre : tout le jeu part du centre */
+.eventail.roue.ferme .carte { --x: 0px !important; --y: 0px !important; --ang: 0deg !important; }
+.eventail.roue.ouvre .carte.visible:not(.choisie) { transition: transform 0.65s cubic-bezier(.2, .8, .2, 1), opacity 0.5s ease; }
+/* pendant que le doigt fait tourner : aucune transition, la roue colle au doigt */
+.eventail.roue.glisse .carte.visible:not(.choisie) { transition: none; }
+/* la carte soulevée passe au-dessus de ses voisines */
+.eventail.roue .carte.sous-loupe { z-index: 3000 !important; }
+
+@media (max-width: 640px) {
+  .eventail.roue { margin-top: 8px; height: calc(var(--carte-h) + 64px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eventail.roue .carte, .eventail.roue .carte.visible:not(.choisie) { transition: none !important; }
+}

@@ -227,29 +227,47 @@
   let carteRevelation = false;// un retournement de révélation en cours
   let cartesRevelees = 0;     // compteur des révélations (mode 3)
 
-  // ── Ligne de cartes ─────────────────────────────────────────────────
+  // ── Le paquet : la roue ─────────────────────────────────────────────
+
+  /* ══ LA ROUE (Martin, 2026-11-17 : « trop collé sur la marge… 79 cartes,
+     c'est beaucoup pour une ligne — plutôt en éventail ») ═════════════════
+     Planche validée : maquettes/planche_paquet.html, variante C.
+     79 cartes sur 360 px laissaient 3,8 px par carte : impossible à viser,
+     quelle que soit la disposition à plat. La roue ne montre qu'une vingtaine
+     de cartes à la fois, bien séparées (≈ 17 px de pas, 5× plus), et le reste
+     défile : GLISSER fait tourner l'éventail, TOUCHER une carte (ou la TIRER
+     vers le haut) la pige. Une carte = une transformation
+     translate(x, y) rotate(angle) lue dans des variables CSS (--x, --y, --ang) :
+     rien d'autre que du `transform`, donc fluide et sans mise en page. */
+  let decal = 0;          // rang (flottant) de la carte au centre de la roue
+  let roue = { w: 360, l: 58, R: 414, pas: 17, pasAng: 0.04 };
 
   function carteLargeur() {
     const l = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--carte-l"));
     return Number.isFinite(l) ? l : 92;
   }
 
+  function mesurerRoue() {
+    const w = eventail.clientWidth || 360;
+    const l = carteLargeur();
+    const R = Math.max(380, Math.min(900, w * 1.15));   // plus l'écran est large, plus la roue est ouverte
+    const pas = l * 0.3;                                 // ce que chaque carte montre de sa largeur
+    roue = { w, l, R, pas, pasAng: pas / R };
+    return roue;
+  }
+
+  function cartesLibres() {
+    const ligne = eventail.querySelector(".ligne");
+    return ligne ? Array.from(ligne.children) : [];
+  }
+
   function construireEventail(nbCartes) {
     eventail.innerHTML = "";
-    eventail.classList.remove("estompe");
-    eventail.scrollLeft = 0;
+    eventail.classList.remove("estompe", "glisse", "ouvre");
+    eventail.classList.add("roue", "ferme");   // d'abord refermée : elle s'ouvre à l'entrée
     const n = nbCartes || dernierTotal;
-    const w = eventail.clientWidth - 4; // padding interne
-    const l = carteLargeur();
-    // tout le jeu tient dans la largeur, sans défilement : sur téléphone le
-    // pas tombe à ~3 px (un ruban de tranches) ; la loupe rend le geste précis
-    const pas = n > 1 ? (w - l) / (n - 1) : 0;
-    pasLigne = pas;
-    const total = Math.ceil(l + pas * (n - 1));
-
     const ligne = document.createElement("div");
     ligne.className = "ligne";
-    ligne.style.width = total + "px";
     const frag = document.createDocumentFragment();
 
     for (let i = 0; i < n; i++) {
@@ -257,16 +275,14 @@
       el.className = "carte";
       el.type = "button";
       el.setAttribute("aria-label", "Carte " + (i + 1) + " sur " + n);
-      el.style.left = Math.round(i * pas) + "px";
       el.innerHTML =
         '<span class="interieur">' +
         '<span class="dos"><img src="' + DOS_DEFAUT + '" alt="" draggable="false"></span>' +
         '<span class="face"><span class="sans-visage">✦</span></span>' +
         "</span>";
-      // le doigt (ou la souris) passe par la loupe : on pige au relâchement.
-      // Le clic ne sert qu'au clavier (detail === 0 : Entrée / Espace).
-      // Une fois posée dans sa case, la carte reprend le clic normal
-      // (révéler, puis plein écran).
+      // le doigt (ou la souris) pige par les gestes ci-dessous ; le clic ne
+      // sert qu'au clavier (detail === 0 : Entrée / Espace). Une fois posée
+      // dans sa case, la carte reprend le clic normal (révéler, puis plein écran).
       el.addEventListener("click", (e) => {
         // le clic qui suit le relâchement du geste de pige ne compte pas
         if (el._pigeeA && Date.now() - el._pigeeA < 500) return;
@@ -276,73 +292,69 @@
     }
     ligne.appendChild(frag);
     eventail.appendChild(ligne);
+    decal = (n - 1) / 2;
+    placerRoue();
 
-    // entrée en scène, en cascade — setTimeout, pas rAF : rAF est bridé
-    // dans un onglet d'arrière-plan et l'entrée n'arriverait jamais
+    // entrée en scène — setTimeout, pas rAF : rAF est bridé dans un onglet
+    // d'arrière-plan et l'entrée n'arriverait jamais. Le dos est prêt avant
+    // que quoi que ce soit apparaisse ; la roue s'ouvre ensuite.
     const cartes = Array.from(ligne.children);
     dosPret.then(() => setTimeout(() => {
       cartes.forEach((c, i) => {
-        setTimeout(() => c.classList.add("visible"), Math.min(i * 6, 420));
+        setTimeout(() => c.classList.add("visible"), Math.min(i * 4, 300));
       });
+      setTimeout(() => {
+        eventail.classList.add("ouvre");
+        eventail.classList.remove("ferme");
+        setTimeout(() => eventail.classList.remove("ouvre"), 900);
+      }, 140);
     }, 30));
   }
 
-  /* Le paquet se REPLACE quand sa largeur change (barre d'adresse d'iOS,
-     cadre de Ta Trame qui se cale, rotation) : sinon il garde les positions
-     calculées pour l'ancienne largeur et paraît écrasé. */
-  function replacerPaquet() {
-    const ligne = eventail.querySelector(".ligne");
+  // Positionne chaque carte libre sur la roue autour de la carte « centrale »
+  function placerRoue() {
     const cartes = cartesLibres();
-    if (!ligne || !cartes.length || melangeEnCours) return;
-    const n = cartes.length;
-    const l = carteLargeur();
-    const pas = n > 1 ? (eventail.clientWidth - 4 - l) / (n - 1) : 0;
-    pasLigne = pas;
-    ligne.style.width = Math.ceil(l + pas * (n - 1)) + "px";
-    cartes.forEach((c, i) => { c.style.left = Math.round(i * pas) + "px"; });
+    if (!cartes.length) return;
+    const { w, l, R, pasAng } = mesurerRoue();
+    decal = Math.max(0, Math.min(cartes.length - 1, decal));
+    const limite = w / 2 + l * 0.7;   // au-delà : hors champ, on ne dessine pas
+    cartes.forEach((c, i) => {
+      const a = (i - decal) * pasAng;
+      const x = R * Math.sin(a);
+      const y = R * (1 - Math.cos(a));
+      c.style.setProperty("--x", x.toFixed(1) + "px");
+      c.style.setProperty("--y", y.toFixed(1) + "px");
+      c.style.setProperty("--ang", (a * 180 / Math.PI).toFixed(2) + "deg");
+      c.style.visibility = Math.abs(x) < limite ? "" : "hidden";
+      c.style.zIndex = String(1000 - Math.round(Math.abs(i - decal) * 4));   // le centre au-dessus
+    });
   }
+
+  /* La roue se REPLACE quand sa largeur change (barre d'adresse d'iOS, cadre
+     de Ta Trame qui se cale, rotation) : son rayon en dépend. */
   let largeurPaquet = 0;
   new ResizeObserver(() => {
     const w = eventail.clientWidth;
-    if (w && Math.abs(w - largeurPaquet) > 2) { largeurPaquet = w; replacerPaquet(); }
+    if (w && Math.abs(w - largeurPaquet) > 2) { largeurPaquet = w; placerRoue(); }
   }).observe(eventail);
 
   // ── La loupe : la carte sous le doigt se soulève, ses voisines un peu ──
 
-  let pasLigne = 0;
   let loupeIndex = -1;
 
-  function cartesLibres() {
-    const ligne = eventail.querySelector(".ligne");
-    return ligne ? Array.from(ligne.children) : [];
+  function carteSous(x, y) {
+    const e = document.elementFromPoint(x, y);
+    const c = e && e.closest ? e.closest(".carte") : null;
+    return c && c.parentElement && c.parentElement.classList.contains("ligne") ? c : null;
   }
 
-  function indexSous(x) {
-    const cartes = cartesLibres();
-    if (!cartes.length) return -1;
-    const ligne = eventail.querySelector(".ligne").getBoundingClientRect();
-    // les cartes déjà pigées ont quitté la ligne : on cherche la plus proche
-    // par sa position réelle, pas par son rang
-    const cible = x - ligne.left - carteLargeur() / 2;
-    let meilleur = 0, ecart = Infinity;
-    cartes.forEach((c, j) => {
-      const d = Math.abs(parseFloat(c.style.left) - cible);
-      if (d < ecart) { ecart = d; meilleur = j; }
-    });
-    return meilleur;
-  }
+  function rangDe(c) { return c ? cartesLibres().indexOf(c) : -1; }
 
   function poserLoupe(i) {
     loupeIndex = i;
-    const pas = Math.max(pasLigne, 1);
-    // rayon : environ une demi-largeur de carte de chaque côté
-    const rayon = Math.max(2, Math.round(carteLargeur() / pas / 2));
-    const cartes = cartesLibres();
-    const x0 = i >= 0 && cartes[i] ? parseFloat(cartes[i].style.left) : 0;
-    cartes.forEach((c, j) => {
-      const d = i < 0 ? Infinity : Math.round(Math.abs(parseFloat(c.style.left) - x0) / pas);
-      const lev = d === 0 ? 26 : d <= rayon ? 14 * (1 - d / (rayon + 1)) : 0;
-      c.style.setProperty("--lev", lev.toFixed(1) + "px");
+    cartesLibres().forEach((c, j) => {
+      const d = i < 0 ? Infinity : Math.abs(j - i);
+      c.style.setProperty("--lev", (d === 0 ? 24 : d === 1 ? 8 : 0) + "px");
       c.classList.toggle("sous-loupe", d === 0);
     });
   }
@@ -354,25 +366,82 @@
       !eventail.classList.contains("estompe");
   }
 
+  function pigerRang(i) {
+    const el = cartesLibres()[i];
+    if (el) choisir(el);
+  }
+
+  /* Les gestes : glisser (> 8 px, surtout horizontal) fait TOURNER la roue ;
+     un toucher bref sur une carte la PIGE ; tirer une carte vers le haut
+     (> 34 px) la pige aussi — comme on sort une carte d'un éventail. La
+     souris soulève la carte survolée. */
+  let geste = null;
   eventail.addEventListener("pointerdown", (e) => {
     if (!loupeActive()) return;
     if (e.pointerType !== "mouse") eventail.setPointerCapture(e.pointerId);
-    poserLoupe(indexSous(e.clientX));
+    const i = rangDe(carteSous(e.clientX, e.clientY));
+    geste = { x: e.clientX, y: e.clientY, d: decal, glisse: false, i };
+    poserLoupe(i);
   });
   eventail.addEventListener("pointermove", (e) => {
     if (!loupeActive()) return;
-    if (e.pointerType === "mouse" || e.buttons) poserLoupe(indexSous(e.clientX));
+    if (!geste) {
+      if (e.pointerType === "mouse") poserLoupe(rangDe(carteSous(e.clientX, e.clientY)));
+      return;
+    }
+    const dx = e.clientX - geste.x, dy = e.clientY - geste.y;
+    if (!geste.glisse && Math.abs(dx) > 8 && Math.abs(dx) >= Math.abs(dy)) {
+      geste.glisse = true;
+      eventail.classList.add("glisse");
+      poserLoupe(-1);
+    }
+    if (geste.glisse) {
+      decal = geste.d - dx / Math.max(roue.pas, 6);
+      placerRoue();
+    } else if (dy < -34 && Math.abs(dy) > Math.abs(dx) && geste.i >= 0) {
+      const i = geste.i;
+      geste = null;
+      poserLoupe(-1);
+      pigerRang(i);
+    }
   });
-  eventail.addEventListener("pointerup", (e) => {
-    if (!loupeActive() || loupeIndex < 0) return;
-    const el = cartesLibres()[indexSous(e.clientX)];
+  const finDeGeste = (e) => {
+    if (!geste) return;
+    const g = geste;
+    geste = null;
+    eventail.classList.remove("glisse");
     poserLoupe(-1);
-    if (el) choisir(el);
-  });
+    if (e.type === "pointerup" && !g.glisse && g.i >= 0 && loupeActive()) pigerRang(g.i);
+  };
+  eventail.addEventListener("pointerup", finDeGeste);
+  eventail.addEventListener("pointercancel", finDeGeste);
   eventail.addEventListener("pointerleave", (e) => {
-    if (e.pointerType === "mouse") poserLoupe(-1);
+    if (e.pointerType === "mouse" && !geste) poserLoupe(-1);
   });
-  eventail.addEventListener("pointercancel", () => poserLoupe(-1));
+  // trackpad / molette horizontale : la roue tourne
+  eventail.addEventListener("wheel", (e) => {
+    if (!loupeActive() || Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    eventail.classList.add("glisse");
+    clearTimeout(eventail._finWheel);
+    eventail._finWheel = setTimeout(() => eventail.classList.remove("glisse"), 140);
+    decal += e.deltaX / Math.max(roue.pas, 6);
+    placerRoue();
+  }, { passive: false });
+  // clavier : la carte qui prend le focus vient au centre ; flèches = voisine
+  eventail.addEventListener("focusin", (e) => {
+    const i = rangDe(e.target.closest ? e.target.closest(".carte") : null);
+    if (i >= 0 && Math.abs(i - decal) > 0.5) { decal = i; placerRoue(); }
+  });
+  eventail.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    const cartes = cartesLibres();
+    const i = rangDe(e.target.closest ? e.target.closest(".carte") : null);
+    if (i < 0) return;
+    e.preventDefault();
+    const voisine = cartes[i + (e.key === "ArrowRight" ? 1 : -1)];
+    if (voisine) voisine.focus();
+  });
 
   // ── Compteur du tirage : où en est-on, quelle position vient ────────
 
@@ -601,7 +670,12 @@
     // on note où elle est dans le paquet, on la pose dans sa case, puis on
     // la fait partir de son ancienne place — 2026-11-16, « faire monter la
     // carte pour qu'elle se place »)
-    const depart = el.getBoundingClientRect();
+    const rd = el.getBoundingClientRect();
+    const depart = {
+      cx: rd.left + rd.width / 2, cy: rd.top + rd.height / 2,
+      w: el.offsetWidth, h: el.offsetHeight,
+      ang: parseFloat(el.style.getPropertyValue("--ang")) || 0,
+    };
     const cadre = slotsBox.querySelector(`.cadre[data-i="${choisies.length - 1}"]`);
     const slot = cadre.closest(".slot");
     slot.classList.add("remplie");
@@ -616,6 +690,7 @@
     el.style.width = "100%";
     el.style.height = "100%";
     el.style.opacity = "1";
+    placerRoue();   // les cartes restantes se resserrent autour du trou
     const vol = faireVoler(el, depart);
     // la première carte efface les choix du départ : le plan gagne la place
     if (choisies.length === 1) requestAnimationFrame(ajusterPlan);
@@ -1985,16 +2060,19 @@
     c.classList.remove("invisibles");
   }
 
-  // le vol FLIP : renvoie sa durée (0 sans mouvement réduit)
+  // le vol FLIP : la carte part du centre de sa place dans la roue, avec son
+  // inclinaison, et se pose droite dans sa case. Renvoie sa durée (0 sans
+  // mouvement réduit).
   function faireVoler(el, depart) {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !depart.width) return 0;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !depart || !depart.w) return 0;
     const arrivee = el.getBoundingClientRect();
     if (!arrivee.width) return 0;
-    const dx = depart.left - arrivee.left, dy = depart.top - arrivee.top;
-    const sx = depart.width / arrivee.width, sy = depart.height / arrivee.height;
-    el.style.transformOrigin = "0 0";
+    const dx = depart.cx - (arrivee.left + arrivee.width / 2);
+    const dy = depart.cy - (arrivee.top + arrivee.height / 2);
+    const sx = depart.w / arrivee.width, sy = depart.h / arrivee.height;
+    el.style.transformOrigin = "50% 50%";
     el.style.transition = "none";
-    el.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+    el.style.transform = `translate(${dx}px, ${dy}px) rotate(${depart.ang}deg) scale(${sx}, ${sy})`;
     el.style.zIndex = "50";
     el.getBoundingClientRect();   // force la position de départ
     volJusqua = Date.now() + 580;
@@ -2029,47 +2107,49 @@
     // mélange ne recharge rien derrière (course vue à l'audit 2026-11-16)
     const ouvert = tirageChoisi;
     melangeEnCours = true;
-    jouerMelange(ligne).then(() => {
+    jouerMelange().then(() => {
       melangeEnCours = false;
       if (tirageChoisi === ouvert) replier();
     });
   }
 
   /* L'animation du mélange (Martin, 2026-11-16 : « une petite animation des
-     cartes qui se mélangent ») — un mélange à l'américaine, sur les cartes
-     déjà en place : le ruban se rassemble en un paquet, se coupe en deux tas
-     qui s'écartent, puis les deux tas se réentrelacent (cartes alternées, de
+     cartes qui se mélangent ») — un mélange à l'américaine sur les cartes de
+     la roue : l'éventail se referme en un paquet, se coupe en deux tas qui
+     s'écartent, puis les deux tas se réentrelacent (cartes alternées, de
      petites hauteurs différentes) ; deux fois. Ensuite seulement, le paquet
-     se redéplie sur la nouvelle donne (la cascade d'entrée existante).
+     se redéplie sur la nouvelle donne (l'ouverture de la roue).
      ~1,1 s au total ; le mouvement part tout de suite (Doherty). */
-  async function jouerMelange(ligne) {
+  async function jouerMelange() {
     const attendre = (ms) => new Promise((r) => setTimeout(r, ms));
     const cartes = cartesLibres();
-    const l = carteLargeur();
-    const centre = (ligne.offsetWidth - l) / 2;
-    const ecart = Math.min(l * 0.75, ligne.offsetWidth / 4);
+    const { w, l } = mesurerRoue();
+    const ecart = Math.min(l * 0.75, w / 5);
     replierBtn.disabled = true;
     poserLoupe(-1);
-    const deplacer = (c, x, lev, duree, courbe) => {
-      c.style.transition = `left ${duree}ms ${courbe}, transform ${duree}ms ${courbe}`;
-      c.style.left = x + "px";
+    const aller = (c, x, ang, lev, duree, courbe) => {
+      c.style.visibility = "";
+      c.style.transition = `transform ${duree}ms ${courbe}`;
+      c.style.setProperty("--x", x + "px");
+      c.style.setProperty("--y", "0px");
+      c.style.setProperty("--ang", ang + "deg");
       c.style.setProperty("--lev", lev + "px");
     };
-    // 1 · le ruban se rassemble en un paquet
-    cartes.forEach((c, i) => deplacer(c, centre + (i % 3) * 0.4, 0, 320, "cubic-bezier(.3,0,.8,.15)"));
+    // 1 · l'éventail se referme en un paquet
+    cartes.forEach((c, i) => aller(c, (i % 3) * 0.4, 0, 0, 320, "cubic-bezier(.3,0,.8,.15)"));
     await attendre(330);
     for (let passe = 0; passe < 2; passe++) {
       // 2 · coupe : deux tas qui s'écartent, celui de droite un peu levé
       cartes.forEach((c, i) => {
-        const droite = i >= cartes.length / 2;
         c.style.transitionDelay = "";
-        deplacer(c, centre + (droite ? ecart : -ecart), droite ? 6 : 0, 200, "cubic-bezier(.05,.7,.1,1)");
+        const droite = i >= cartes.length / 2;
+        aller(c, droite ? ecart : -ecart, droite ? 3 : -3, droite ? 6 : 0, 200, "cubic-bezier(.05,.7,.1,1)");
         c.style.zIndex = String(droite ? 2 : 1);
       });
       await attendre(210);
       // 3 · les deux tas se réentrelacent : cartes alternées, hauteurs mêlées
       cartes.forEach((c, i) => {
-        deplacer(c, centre + ((i * 7) % 5) - 2, (i % 2) ? 3 : 0, 230, "cubic-bezier(.3,0,.2,1)");
+        aller(c, ((i * 7) % 5) - 2, 0, i % 2 ? 3 : 0, 230, "cubic-bezier(.3,0,.2,1)");
         c.style.zIndex = String(i % 2 ? 2 : 1);
         c.style.transitionDelay = `${(i % 10) * 4}ms`;
       });
