@@ -17,7 +17,7 @@
     "pousse": "laisser monter",
     "retient": "prouver"
   },
-  "lumiere": "Une envie apparaît parfois sans que tu l'aies cherchée. Tu veux créer, découvrir un endroit, changer de direction.\n\nLa carte montre un ciel noir traversé par une spirale de lumière. Les rubans partent d'un centre éclatant et s'enroulent vers l'extérieur. Des étoiles sont prises dedans.\n\nRien ne pousse la spirale et rien ne la retient. Elle tourne parce qu'elle est là.\n\nLa carte t'invite à accueillir les envies qui apparaissent, sans vouloir les expliquer. Tu peux leur laisser une chance.",
+  "lumiere": "Une envie apparaît parfois sans que tu l'aies cherchée. Tu veux créer, découvrir un endroit, changer de direction.\n\nLa carte montre un ciel plein d'étoiles traversé par une spirale de lumière. Les bras partent d'un centre éclatant et s'enroulent vers l'extérieur. Des étoiles sont prises dedans.\n\nRien ne pousse la spirale et rien ne la retient. Elle tourne parce qu'elle est là.\n\nLa carte t'invite à accueillir les envies qui apparaissent, sans vouloir les expliquer. Tu peux leur laisser une chance.",
   "ombre": {
     "mode": "amoindri",
     "texte": "Tu ressens peut-être une envie de faire quelque chose, mais tu ne lui accordes pas vraiment d'attention.\n\nTu te dis que ce n'est pas important, que tu n'as pas le temps ou que tu devrais d'abord t'occuper d'autres choses.\n\nTu repousses cette envie jusqu'à ce qu'elle devienne presque imperceptible.\n\nPetit à petit, tu peux perdre le contact avec ce qui te donne naturellement envie d'avancer.\n\nCette carte te rappelle qu'une envie n'a pas besoin d'être immédiatement utile ou parfaitement justifiée pour mériter ton attention.",
@@ -30,12 +30,12 @@
   ],
   "image": {
     "geste": "Une spirale de lumière tourne lentement autour d'un centre éclatant, puis ses bras s'ouvrent vers l'extérieur.",
-    "seuil": "Elle flotte au milieu d'un ciel entièrement noir, sans sol ni horizon, avec des étoiles entraînées dans son mouvement.",
-    "detail": "Près du centre, les premiers rubans deviennent blancs et les étoiles s'y regroupent plus densément qu'ailleurs."
+    "seuil": "Elle flotte au milieu d'un ciel rempli d'étoiles, sans sol ni horizon, et la lumière du centre efface les traits autour d'elle.",
+    "detail": "Près du centre, les bras blanchissent et les étoiles s'y rapprochent, comme attirées par la lumière."
   },
   "micro_geste": "Note aujourd'hui, sur une feuille ou dans ton téléphone, la première envie ou idée qui te vient spontanément. Écris-la sans la modifier ni la juger.",
   "positions": {
-    "jour": "Une envie nouvelle apparaît peut-être en toi. Tu as envie de faire quelque chose, sans savoir encore où cela peut te mener.\n\nCette carte montre une spirale de lumière dans un ciel noir. Elle tourne autour de son centre sans que rien ne la dirige.\n\nC'est le message de cette journée. Tu peux accueillir ce qui te donne envie d'avancer, sans chercher à tout comprendre.\n\nTu n'as pas à prendre une grande décision. Commence simplement par écouter ce qui se présente.",
+    "jour": "Une envie nouvelle apparaît peut-être en toi. Tu as envie de faire quelque chose, sans savoir encore où cela peut te mener.\n\nCette carte montre une spirale de lumière dans un ciel plein d'étoiles. Elle tourne autour de son centre sans que rien ne la dirige.\n\nC'est le message de cette journée. Tu peux accueillir ce qui te donne envie d'avancer, sans chercher à tout comprendre.\n\nTu n'as pas à prendre une grande décision. Commence simplement par écouter ce qui se présente.",
     "amene": "Tu arrives avec le réflexe de tout organiser et de vouloir comprendre les choses avant de te lancer.\n\nTu veux savoir si une idée est utile, si elle est réalisable et si elle mérite vraiment ton temps.\n\nCette façon de réfléchir peut être utile, mais elle peut aussi t'empêcher d'écouter tes envies spontanées.\n\nCette carte te rappelle que tu peux parfois commencer quelque chose simplement parce que cela t'attire.\n\nTu n'as pas besoin de prouver immédiatement que cette envie est importante.",
     "se_joue": "Tu as peut-être deux façons de réagir à une nouvelle envie.\n\nLa première consiste à l'accueillir et à voir naturellement où elle te mène.\n\nLa seconde consiste à l'analyser immédiatement, à chercher ses avantages et ses inconvénients, puis à décider si elle mérite ton attention.\n\nLe problème apparaît lorsque tu réfléchis tellement que tu finis par étouffer ton envie avant même de l'avoir explorée.\n\nLa question est simple : qu'est-ce qui te donne envie en ce moment, avant même que tu cherches à l'expliquer ?",
     "essayer": "Prends un carnet et note librement les idées qui te viennent aujourd'hui.\n\nTu peux aussi aller marcher tranquillement et observer ce qui attire ton attention.\n\nNe cherche pas immédiatement à organiser tes idées ou à transformer chacune d'elles en projet.\n\nAccueille-les simplement.\n\nTu pourras réfléchir à la suite plus tard. Pour l'instant, laisse de la place à ce qui commence naturellement à prendre forme en toi."
@@ -44,7 +44,7 @@
     "pollack": "§4 nombres — l'as, la qualité à l'état pur, un don qui précède la forme ; as de Bâtons : l'étincelle qui ne se commande pas",
     "wen": "§4 — famille feu : élan, désir, travail ; degré as : ouverture, un don",
     "greer": "§6 — étage 1 : les mots-clés ; le don reconnu avant d'être justifié",
-    "production": "image du corpus mineurs feu (spirale de rubans autour d'un centre éclatant), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
+    "production": "image du corpus mineurs feu (spirale de nébuleuses étoilées autour d'un centre éclatant sans bord), reformulée en mots à nous ; textes écrits par agent le 2026-11-10 dans la voix des fiches reformulées par Martin, à reformuler par Martin",
     "reprise": "textes reformulés par Martin le 2026-11-10 (sa voix fait foi), puis révisés contre la charte"
   },
   "lecon": "Une envie spontanée mérite d'être écoutée, même si tu ne sais pas encore où elle te mènera.",
