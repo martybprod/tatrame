@@ -1918,3 +1918,23 @@ body.table #garder { display: none; }
   font-size: 14px;
   color: var(--brume);
 }
+
+/* « Tout retourner » : une option discrète sous l'invite de révélation */
+.ct-action {
+  align-self: center;
+  margin-top: 6px;
+  min-height: 40px;
+  padding: 8px 20px;
+  background: none;
+  border: 1px solid var(--or-fil);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--or);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.ct-action:hover { border-color: var(--or-doux); color: var(--encre); }
+.ct-action:focus-visible { outline: 2px solid var(--or); outline-offset: 2px; }

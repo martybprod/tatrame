@@ -833,8 +833,11 @@
   // la révélation une par une — l'ordre appartient à celui qui tire
   function reveler(el, opts) {
     const instant = !!(opts && opts.instant);
-    if (carteRevelation) return;
-    carteRevelation = true;
+    const lot = !!(opts && opts.lot);   // « Tout retourner » : la garde est tenue par le lot
+    if (!lot) {
+      if (carteRevelation) return;
+      carteRevelation = true;
+    }
     el.classList.remove("posee");
     el.classList.add("retournee");
     el.title = "Afficher en plein écran";
@@ -853,7 +856,7 @@
       }
       ajouterBlocLecture(el._carte, pos, i);
       verifierRangee(i);
-      carteRevelation = false;
+      if (!lot) carteRevelation = false;
       cartesRevelees++;
       inviteRevelation();
       if (cartesRevelees === tirage.cartes.length) {
@@ -2518,9 +2521,37 @@
     const reste = total - cartesRevelees;
     const c = document.getElementById("compteur-tirage");
     if (!tableActive || reste <= 0) { c.classList.add("invisibles"); return; }
+    // « Tout retourner » : en option, quand il reste au moins deux cartes
+    // face cachée et qu'aucune révélation n'est en cours
+    const tout = reste >= 2 && !carteRevelation
+      ? `<button type="button" class="ct-action" id="tout-retourner" aria-label="Retourner toutes les cartes restantes">Tout retourner</button>`
+      : "";
     c.innerHTML = `<span class="ct-nb">${cartesRevelees} / ${total} révélées</span>` +
-      `<span class="ct-geste">Touche chaque carte pour la retourner</span>`;
+      `<span class="ct-geste">Touche chaque carte pour la retourner</span>` + tout;
     c.classList.remove("invisibles");
+    const b = document.getElementById("tout-retourner");
+    if (b) b.addEventListener("click", toutRetourner);
+  }
+
+  /* TOUT RETOURNER (Martin, 2026-11-17 : « une option pour retourner toutes les
+     cartes d'un coup une fois qu'elles sont toutes visibles, de dos », en
+     OPTION seulement — retourner une à une reste le geste d'origine). Les
+     cartes restantes se retournent dans l'ordre du tirage, en cascade serrée ;
+     la lecture se déroule comme après des révélations une à une. */
+  function toutRetourner() {
+    if (!tirage || carteRevelation || melangeEnCours) return;
+    const restantes = Array.from(slotsBox.querySelectorAll(".cadre"))
+      .sort((a, b) => Number(a.dataset.i) - Number(b.dataset.i))
+      .map((cadre) => cadre.querySelector(".carte.posee"))
+      .filter(Boolean);
+    if (!restantes.length) return;
+    carteRevelation = true;   // pas de retournement à la main pendant le lot
+    const reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const pas = reduit ? 0 : Math.min(110, 900 / restantes.length);
+    restantes.forEach((el, k) => setTimeout(() => reveler(el, { lot: true }), k * pas));
+    const b = document.getElementById("tout-retourner");
+    if (b) b.remove();
+    setTimeout(() => { carteRevelation = false; }, (restantes.length - 1) * pas + 760);
   }
 
   // le vol FLIP : la carte part du centre de sa place dans la roue, avec son
