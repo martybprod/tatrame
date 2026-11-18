@@ -350,3 +350,26 @@
 - **Statut** : version 3 blocs poussée le jour même (`b5e9212`, déployée) — remplacée le
   jour même par la version courte avec les textes reformulés par Martin, poussée en suite
   de session.
+
+## 2026-11-18 — Le Jour : les chevrons d'ouverture reviennent, tournés à droite
+
+- **Demande** (Martin) : réintégrer une indication visuelle sur les cartes qui offrent
+  plus d'information (« Aujourd'hui », « La Lune aujourd'hui », les angles) — retirée
+  avec les ⤢ le 2026-09-15 (`ee6dcaa`). Mais PAS le chevron ⌄ (déjà pris par les
+  tiroirs « ça se déplie ici ») : le même chevron pointant vers la DROITE.
+- **Décision** (`templates/index.html`) : nouvelle classe `.chev-plein` — le MÊME ⌄ que
+  `.tiroir-chev`, `rotate(-90deg)`, même couleur/size (accent-doux, 18px). Deux sens
+  fixes, un par geste : ⌄ = se déplie ici (tiroirs, Fil du jour, fond du temps),
+  › = s'ouvre en grand (plein écran). Posé sur : les rangées d'angles (`angleCarte`),
+  la carte « Aujourd'hui » (coin droit, absolu), l'en-tête date/Lune (quand la phase
+  est ouvrable). PAS sur les tuiles du Fil du jour (grille dense, surcharge — décision
+  2026-08-24 inchangée). Correctif au passage : `.rangee-angle .tete` passe à
+  `flex:1;min-width:0` — sans quoi le chevron colle au texte quand le résumé est court
+  (« À méditer »), au lieu d'être calé au bord droit.
+- **Validation** : suite pytest verte (843) ; vérifié au navigateur mobile — les trois
+  angles, « Aujourd'hui » et l'en-tête portent le ›, Fil du jour et fond du temps
+  gardent leur ⌄, calage à droite OK même sur résumé court.
+- **Piège du passage** : le service worker (stale-while-revalidate) a servi l'ancien
+  document après DEUX rechargements — un `?v=…` frais dans l'URL contourne son cache
+  pour tester un changement local.
+- **Statut** : livré le jour même — en attente du feu de Martin pour commit/push.

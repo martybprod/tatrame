@@ -1050,9 +1050,10 @@ details.aide.ciel-titre summary{font-size:10px}
 .carte-jour-hero{padding:28px 26px 30px; box-shadow:0 10px 34px rgba(0,0,0,.16)}
 /* La carte-entrée « Aujourd'hui » (2026-09-15) : ne montre que le chapo +
    sous-titre, garde le même relief que le héros d'avant, s'ouvre en plein
-   écran au clic (plus de glyphe ⤢ — Martin, 2026-09-15 : « les personnes
-   seront assez intelligentes pour appuyer sans le voir »). */
-.carte-jour-hero--entree{cursor:pointer; padding:22px 26px}
+   écran au clic — le chevron › (.chev-plein, 2026-11-18) en coin droit dit
+   « ça s'ouvre en grand », même grammaire que les rangées d'angles. */
+.carte-jour-hero--entree{cursor:pointer; position:relative; padding:22px 46px 22px 26px}
+.carte-jour-hero--entree .chev-plein{position:absolute; right:20px; top:50%}
 .carte-jour-hero--entree:active{opacity:.85}
 /* L'aperçu — la première phrase du message, sous le titre de la carte-entrée
    « Aujourd'hui » (Martin, 2026-09-23) : un avant-goût, plus discret que le
@@ -1082,6 +1083,9 @@ details.aide.ciel-titre summary{font-size:10px}
 }
 .rangee-angle:last-child{border-bottom:0}
 .rangee-angle:hover{background:var(--papier)}
+/* La tête prend toute la largeur : le chevron › reste calé au bord droit,
+   même quand le résumé est court (même grammaire que .tiroir .tete). */
+.rangee-angle .tete{flex:1;min-width:0}
 
 /* Rythme plus généreux entre les repères de premier niveau (on en a moins). */
 .jour-section{margin-top:34px}
@@ -1135,6 +1139,13 @@ details.tiroir>summary .tete{flex:1;min-width:0}
 .tiroir-resume em{font-style:italic;color:var(--encre2)}
 .tiroir-chev{flex:none;color:var(--accent-doux);font-size:18px;line-height:1;transition:transform .18s ease}
 details.tiroir[open]>summary .tiroir-chev{transform:rotate(180deg)}
+/* Le chevron des OUVERTURES plein écran (2026-11-18, retour demandé par
+   Martin) : le MÊME ⌄ que les tiroirs, tourné vers la droite — deux sens
+   fixes, un par geste : ⌄ = ça se déplie ici, › = ça s'ouvre en grand.
+   (Remplace les ⤢ retirés le 2026-09-15, qui laissaient les ouvertures sans
+   aucun indice. Les tuiles du Fil du jour, elles, restent sans indice :
+   sur une grille aussi dense, l'icône répétée surcharge — 2026-08-24.) */
+.chev-plein{flex:none;color:var(--accent-doux);font-size:18px;line-height:1;transform:rotate(-90deg)}
 .tiroir-corps{padding:14px 20px 18px}
 .tiroir-corps p{font-size:15px;color:var(--encre2);line-height:1.65}
 .tiroir-corps p + p{margin-top:10px}
@@ -2724,6 +2735,7 @@ function angleCarte({nom, resume, ico, corpsHTML}) {
       <span class="tiroir-nom">${T(nom)}</span>
       ${resume ? `<span class="tiroir-resume compact">${resume}</span>` : ''}
     </span>
+    <span class="chev-plein" aria-hidden="true">⌄</span>
   </div>`;
 }
 
@@ -3141,8 +3153,9 @@ async function chargerJour(donnees) {
   }
 
   let html = `<div class="carte" id="${corpsPhase ? idEntete : ''}"
-      style="text-align:center;padding:20px 22px 18px${corpsPhase ? ';cursor:pointer' : ''}">
+      style="text-align:center;padding:20px 22px 18px${corpsPhase ? ';cursor:pointer;position:relative' : ''}">
       <div class="jour-entete" style="margin-bottom:0;padding-bottom:0;border-bottom:0">${enteteJour}</div>
+      ${corpsPhase ? `<span class="chev-plein" aria-hidden="true" style="position:absolute;right:18px;top:50%">⌄</span>` : ''}
     </div>`;
 
   /* Tes cartes du jour — les TROIS cartes réunies, juste sous l'en-tête, présentées
@@ -3221,6 +3234,7 @@ async function chargerJour(donnees) {
       ${titre.sous_titre ? `<p class="quoi" style="margin:-4px 0 0">${T(titre.sous_titre)}</p>` : ''}
       <p class="apercu-message">${T(apercuAujourdhui)}</p>
       ${noteRepHeros}
+      <span class="chev-plein" aria-hidden="true">⌄</span>
     </div>`;
   }
 
