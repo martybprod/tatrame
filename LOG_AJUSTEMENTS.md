@@ -341,5 +341,4 @@
 - **Validation** : suite pytest verte (843) ; parcours réel au navigateur mobile — les
   trois pilules ouvrent leur carte, la pilule ne retourne pas le dos, le clic sur
   l'image ouvre toujours la visionneuse.
-- **Statut** : livré le jour même — PAS poussé (un push vaut un déploiement Coolify,
-  à la demande de Martin).
+- **Statut** : livré, poussé et déployé le jour même (`b5e9212`) — 843 tests verts.
