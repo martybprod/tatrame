@@ -261,10 +261,32 @@
     return ligne ? Array.from(ligne.children) : [];
   }
 
-  function construireEventail(nbCartes) {
+  /* L'ENTRÉE DU JEU (Martin, 2026-11-17 : « quand le jeu apparaît, il
+     commence par le brassage, puis se déploie en éventail — plus beau, plus
+     fluide, un peu plus long »). Le paquet apparaît rassemblé, se BRASSE
+     (la même chorégraphie que le bouton Mélanger), puis s'OUVRE : chaque
+     carte suit l'ARC de la roue (pas une ligne droite du centre à sa place),
+     en partant du centre vers les bords, avec une accélération douce et une
+     longue décélération. Pas d'intro quand le paquet vient d'être brassé par
+     le bouton (sansBrassage) ou redimensionné. */
+  let sansBrassage = false;
+  let jetonEventail = 0;      // une nouvelle roue annule l'intro de l'ancienne
+  let ouverture = null;       // (rang) → [0..1] : à quel point cette carte est ouverte
+
+  function construireEventail(nbCartes, opts) {
+    const jeton = ++jetonEventail;
+    // animer : le paquet apparaît rassemblé puis s'ouvre ; brasser : et il se
+    // brasse d'abord. Ni l'un ni l'autre au simple redimensionnement ; pas de
+    // second brassage juste après le bouton Mélanger (déjà fait).
+    const animer = !(opts && opts.intro === false);
+    const brasser = animer && !sansBrassage;
+    sansBrassage = false;
     eventail.innerHTML = "";
-    eventail.classList.remove("estompe", "glisse", "ouvre");
-    eventail.classList.add("roue", "ferme");   // d'abord refermée : elle s'ouvre à l'entrée
+    eventail.classList.remove("estompe", "glisse", "ouvre", "ferme");
+    eventail.classList.add("roue");
+    melangeEnCours = false;
+    replierBtn.disabled = false;
+    ouverture = animer ? () => 0 : null;   // d'abord rassemblé
     const n = nbCartes || dernierTotal;
     const ligne = document.createElement("div");
     ligne.className = "ligne";
@@ -295,20 +317,81 @@
     decal = (n - 1) / 2;
     placerRoue();
 
-    // entrée en scène — setTimeout, pas rAF : rAF est bridé dans un onglet
-    // d'arrière-plan et l'entrée n'arriverait jamais. Le dos est prêt avant
-    // que quoi que ce soit apparaisse ; la roue s'ouvre ensuite.
+    // setTimeout plutôt que rAF pour les attentes : rAF est bridé dans un
+    // onglet d'arrière-plan. Le dos est prêt avant que quoi que ce soit
+    // apparaisse.
+    const attendre = (ms) => new Promise((r) => setTimeout(r, ms));
     const cartes = Array.from(ligne.children);
-    dosPret.then(() => setTimeout(() => {
+    dosPret.then(async () => {
+      await attendre(30);
+      if (jeton !== jetonEventail) return;
       cartes.forEach((c, i) => {
         setTimeout(() => c.classList.add("visible"), Math.min(i * 4, 300));
       });
-      setTimeout(() => {
-        eventail.classList.add("ouvre");
-        eventail.classList.remove("ferme");
-        setTimeout(() => eventail.classList.remove("ouvre"), 900);
-      }, 140);
-    }, 30));
+      if (!animer) return;
+      melangeEnCours = true;            // on ne pige pas pendant l'entrée
+      await attendre(brasser ? 420 : 280);   // le paquet est apparu, rassemblé
+      if (jeton !== jetonEventail) return;
+      if (brasser && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        await jouerMelange({ rassemble: false, jeton });
+        if (jeton !== jetonEventail) return;
+        await attendre(120);
+        if (jeton !== jetonEventail) return;
+      }
+      await ouvrirRoue(1600, jeton);
+    });
+  }
+
+  function prochaineImage(fn) {
+    let fait = false;
+    const go = () => { if (!fait) { fait = true; fn(); } };
+    requestAnimationFrame(go);
+    setTimeout(go, 50);   // repli : onglet en arrière-plan
+  }
+
+  // l'ouverture : adoucie au départ, longue décélération à l'arrivée
+  const adoucir = (p) => {
+    const sortie = 1 - Math.pow(1 - p, 3);
+    const lisse = p * p * (3 - 2 * p);
+    return 0.5 * sortie + 0.5 * lisse;
+  };
+
+  function ouvrirRoue(duree, jeton) {
+    return new Promise((fini) => {
+      const cartes = cartesLibres();
+      const centre = decal;
+      cartes.forEach((c) => {
+        c.style.transition = "";
+        c.style.transitionDelay = "";
+        c.style.setProperty("--lev", "0px");
+      });
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        ouverture = null; placerRoue(); melangeEnCours = false; fini(); return;
+      }
+      eventail.classList.add("glisse");   // aucune transition CSS : l'animation est la nôtre
+      const t0 = performance.now();
+      const retardMax = 0.22;             // les bords partent un peu après le centre
+      let t = 0;
+      ouverture = (i) => {
+        const loin = Math.abs(i - centre) / Math.max(1, centre);
+        const p = Math.max(0, Math.min(1, (t - loin * retardMax) / (1 - retardMax)));
+        return adoucir(p);
+      };
+      const image = () => {
+        if (jeton !== jetonEventail) { fini(); return; }
+        t = Math.min(1, (performance.now() - t0) / duree);
+        placerRoue();
+        // la roue est presque ouverte : on peut piger sans attendre la fin
+        if (t >= 0.78 && melangeEnCours) { melangeEnCours = false; }
+        if (t < 1) { prochaineImage(image); return; }
+        ouverture = null;
+        eventail.classList.remove("glisse");
+        placerRoue();
+        melangeEnCours = false;
+        fini();
+      };
+      image();
+    });
   }
 
   // Positionne chaque carte libre sur la roue autour de la carte « centrale »
@@ -319,12 +402,17 @@
     decal = Math.max(0, Math.min(cartes.length - 1, decal));
     const limite = w / 2 + l * 0.7;   // au-delà : hors champ, on ne dessine pas
     cartes.forEach((c, i) => {
-      const a = (i - decal) * pasAng;
+      const a = (i - decal) * pasAng * (ouverture ? ouverture(i) : 1);
       const x = R * Math.sin(a);
       const y = R * (1 - Math.cos(a));
       c.style.setProperty("--x", x.toFixed(1) + "px");
       c.style.setProperty("--y", y.toFixed(1) + "px");
       c.style.setProperty("--ang", (a * 180 / Math.PI).toFixed(2) + "deg");
+      // le sens de l'ombre portée : vers l'extérieur de la roue, donc sur la
+      // carte voisine qu'elle recouvre ; nul au centre, plein à ±3 rangs.
+      // Posé seulement s'il change (une ombre qui change se repeint).
+      const sens = Math.max(-1, Math.min(1, (i - decal) / 3)).toFixed(2);
+      if (c._sens !== sens) { c._sens = sens; c.style.setProperty("--sens", sens); }
       c.style.visibility = Math.abs(x) < limite ? "" : "hidden";
       c.style.zIndex = String(1000 - Math.round(Math.abs(i - decal) * 4));   // le centre au-dessus
     });
@@ -2109,6 +2197,7 @@
     melangeEnCours = true;
     jouerMelange().then(() => {
       melangeEnCours = false;
+      sansBrassage = true;   // déjà brassé : la nouvelle donne s'ouvre directement
       if (tirageChoisi === ouvert) replier();
     });
   }
@@ -2120,7 +2209,10 @@
      petites hauteurs différentes) ; deux fois. Ensuite seulement, le paquet
      se redéplie sur la nouvelle donne (l'ouverture de la roue).
      ~1,1 s au total ; le mouvement part tout de suite (Doherty). */
-  async function jouerMelange() {
+  async function jouerMelange(opts) {
+    const rassemble = !(opts && opts.rassemble === false);
+    const jeton = opts && opts.jeton;
+    const annule = () => jeton !== undefined && jeton !== jetonEventail;
     const attendre = (ms) => new Promise((r) => setTimeout(r, ms));
     const cartes = cartesLibres();
     const { w, l } = mesurerRoue();
@@ -2135,10 +2227,13 @@
       c.style.setProperty("--ang", ang + "deg");
       c.style.setProperty("--lev", lev + "px");
     };
-    // 1 · l'éventail se referme en un paquet
-    cartes.forEach((c, i) => aller(c, (i % 3) * 0.4, 0, 0, 320, "cubic-bezier(.3,0,.8,.15)"));
-    await attendre(330);
+    // 1 · l'éventail se referme en un paquet (inutile à l'entrée : il l'est déjà)
+    if (rassemble) {
+      cartes.forEach((c, i) => aller(c, (i % 3) * 0.4, 0, 0, 320, "cubic-bezier(.3,0,.8,.15)"));
+      await attendre(330);
+    }
     for (let passe = 0; passe < 2; passe++) {
+      if (annule()) return;
       // 2 · coupe : deux tas qui s'écartent, celui de droite un peu levé
       cartes.forEach((c, i) => {
         c.style.transitionDelay = "";
@@ -2155,6 +2250,7 @@
       });
       await attendre(280);
     }
+    if (annule()) return;
     cartes.forEach((c) => { c.style.transitionDelay = ""; c.style.setProperty("--lev", "0px"); });
     replierBtn.disabled = false;
   }
@@ -2187,7 +2283,7 @@
     if (e.key === "Escape") fermerDetail();
   });
   window.addEventListener("resize", () => {
-    if (tirageChoisi && !tirage && !carteEnPlace && mode !== 0) construireEventail(dernierTotal);
+    if (tirageChoisi && !tirage && !carteEnPlace && mode !== 0) construireEventail(dernierTotal, { intro: false });
   });
 
   // Au chargement : l'accueil, « Que viens-tu chercher ? ».

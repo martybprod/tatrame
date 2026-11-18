@@ -1759,9 +1759,8 @@ body.table .etendu-bande span { overflow: visible; text-overflow: clip; }
   transform: translate(var(--x, 0px), var(--y, 0px)) rotate(var(--ang, 0deg)) translateY(calc(var(--lev, 0px) * -1));
   transition: transform 0.2s ease-out, opacity 0.5s ease;
 }
-/* refermée à l'arrivée, elle s'ouvre : tout le jeu part du centre */
-.eventail.roue.ferme .carte { --x: 0px !important; --y: 0px !important; --ang: 0deg !important; }
-.eventail.roue.ouvre .carte.visible:not(.choisie) { transition: transform 0.65s cubic-bezier(.2, .8, .2, 1), opacity 0.5s ease; }
+/* L'entrée (brassage puis ouverture le long de l'arc) est pilotée par
+   tirage.js (placerRoue + ouvrirRoue) : aucune règle CSS d'ouverture ici. */
 /* pendant que le doigt fait tourner : aucune transition, la roue colle au doigt */
 .eventail.roue.glisse .carte.visible:not(.choisie) { transition: none; }
 /* la carte soulevée passe au-dessus de ses voisines */
@@ -1772,4 +1771,49 @@ body.table .etendu-bande span { overflow: visible; text-overflow: clip; }
 }
 @media (prefers-reduced-motion: reduce) {
   .eventail.roue .carte, .eventail.roue .carte.visible:not(.choisie) { transition: none !important; }
+}
+
+
+/* ══ L'ombrage de l'éventail (Martin, 2026-11-17) ═════════════════════
+   Avant : la même ombre uniforme tout autour de chaque carte (0 3px 10px) —
+   les tranches visibles s'assombrissaient sans profondeur ni direction.
+   Maintenant, trois couches :
+   1. une ombre PORTÉE vers l'extérieur de la roue (--sens, posé par
+      placerRoue) : la carte qui en recouvre une autre l'ombre, comme dans un
+      vrai éventail — chaque tranche a un dégradé, pas un aplat ;
+   2. une occlusion ambiante douce, autour ;
+   3. un volume sur chaque carte : lumière en haut, ombre en bas ;
+   et un fondu en bas de la roue (les cartes se perdent dans le fond au lieu
+   d'être coupées net). */
+.eventail.roue .carte:not(.sous-loupe) .interieur {
+  box-shadow:
+    calc(var(--sens, 0) * 5px) 1px 7px rgba(6, 3, 14, 0.62),
+    0 0 15px rgba(6, 3, 14, 0.30);
+}
+.eventail.roue .carte .dos::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0) 24%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(4, 2, 10, 0.36) 100%);
+}
+/* la carte soulevée garde son ombre profonde et son filet doré */
+.eventail.roue .carte.sous-loupe .interieur {
+  box-shadow: 0 12px 24px rgba(6, 3, 14, 0.75), 0 0 0 1px var(--or);
+}
+/* bords estompés sur les côtés ET fondu en bas (les deux masques se croisent) */
+.eventail.roue {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%),
+    linear-gradient(to top, transparent 0, #000 30px);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%),
+    linear-gradient(to top, transparent 0, #000 30px);
+  mask-composite: intersect;
 }
