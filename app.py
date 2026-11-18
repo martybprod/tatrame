@@ -854,6 +854,68 @@ MAX_JOURNAL_SOURCE_NOM = 120
 MAX_JOURNAL_SOURCE_TEXTE = 4000
 
 
+# Un TIRAGE de tarot gardé (2026-11-17) : la note du journal porte, en plus de
+# son texte, de quoi rouvrir la donne EXACTE (un tirage est déterministe : la
+# graine rejoue les mêmes cartes). Rien d'autre que ces champs n'est conservé.
+_TIRAGES_TAROT = {"jour", "question", "trois", "diamant", "neuf", "croix", "relation"}
+_MOTIF_ID = re.compile(r"^[a-z0-9_]{1,40}$")
+
+
+def _tirage_valide(t):
+    """Le tirage nettoyé, ou None s'il n'est pas de la forme attendue."""
+    if not isinstance(t, dict):
+        return None
+    try:
+        out = {"v": 1}
+        tid = t.get("tirage")
+        if tid not in _TIRAGES_TAROT:
+            return None
+        out["tirage"] = tid
+        mode = t.get("mode")
+        if mode not in (0, 1, 3, 5, 10, 11):
+            return None
+        out["mode"] = mode
+        graine = t.get("graine")
+        if graine is not None:
+            if not isinstance(graine, int) or isinstance(graine, bool) or not 0 <= graine < 2 ** 53:
+                return None
+            out["graine"] = graine
+        for cle in ("croix", "grille", "question"):
+            v = t.get(cle)
+            if v is not None:
+                if not isinstance(v, str) or not _MOTIF_ID.match(v):
+                    return None
+                out[cle] = v
+        choix = t.get("choix")
+        if choix is not None:
+            ids = (choix or {}).get("ids")
+            if not isinstance(ids, list) or not 1 <= len(ids) <= 25 \
+                    or not all(isinstance(i, str) and _MOTIF_ID.match(i) for i in ids):
+                return None
+            derniere = choix.get("derniere")
+            if derniere is not None and not (isinstance(derniere, str) and _MOTIF_ID.match(derniere)):
+                return None
+            out["choix"] = {"ids": ids, "derniere": derniere}
+        if "graine" not in out and "choix" not in out:
+            return None                    # sans graine ni sélection, rien à rejouer
+        nb = t.get("nb", 0)
+        if not isinstance(nb, int) or not 0 <= nb <= 10:
+            return None
+        out["nb"] = nb
+        rev = t.get("revelees", [])
+        if not isinstance(rev, list) or len(rev) > 10 \
+                or not all(isinstance(i, int) and 0 <= i <= 9 for i in rev):
+            return None
+        out["revelees"] = rev
+        vue = t.get("vue", "ensemble")
+        out["vue"] = vue if vue in ("recit", "ensemble", "liens") else "ensemble"
+        recit = t.get("recit", 0)
+        out["recit"] = recit if isinstance(recit, int) and 0 <= recit <= 30 else 0
+        return out
+    except (AttributeError, TypeError):
+        return None
+
+
 def _chemin_journal(profil_id):
     sur = "".join(c for c in profil_id if c.isalnum() or c in "-_")
     if not sur:
@@ -879,6 +941,13 @@ def api_journal(profil_id):
 def api_journal_ajouter(profil_id):
     body = request.get_json(silent=True) or {}
     texte = (body.get("texte") or "").strip()
+    tirage = None
+    if body.get("tirage") is not None:
+        tirage = _tirage_valide(body.get("tirage"))
+        if tirage is None:
+            return jsonify({"erreur": "Tirage invalide."}), 400
+        # un tirage gardé sans note reste une entrée : le journal a besoin d'un texte
+        texte = texte or "Tirage gardé."
     if not texte:
         return jsonify({"erreur": "La note ne peut pas être vide."}), 400
     if len(texte) > MAX_JOURNAL_TEXTE:
@@ -896,6 +965,8 @@ def api_journal_ajouter(profil_id):
     if source_nom and source_texte:
         entree["source_nom"] = source_nom
         entree["source_texte"] = source_texte
+    if tirage:
+        entree["tirage"] = tirage
     entrees.append(entree)
     _ecrire(_chemin_journal(profil_id), entrees)
     return jsonify(entree)

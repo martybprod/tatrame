@@ -660,10 +660,12 @@
 
   // ── Tirage ──────────────────────────────────────────────────────────
 
-  async function demanderTirage() {
+  async function demanderTirage(graineForcee) {
     // ?graine=N dans l'URL : reproduire exactement une lecture (les mêmes
     // cartes et la même variante du regard). Sans paramètre : tirage libre.
-    const graineUrl = new URLSearchParams(location.search).get("graine");
+    // graineForcee : la reprise d'un tirage en cours ou gardé.
+    const graineUrl = graineForcee != null ? graineForcee
+      : new URLSearchParams(location.search).get("graine");
     const suffixe = graineUrl ? `&graine=${encodeURIComponent(graineUrl)}` : "";
     // ?croix=… choisit la croix lue — SEULEMENT pour les croix à dix cartes.
     // Le Diamant (mode 5) n'a qu'une forme : lui envoyer une croix faisait
@@ -728,7 +730,8 @@
     piedTexte.textContent = total + " cartes · aucune prédiction";
   }
 
-  async function choisir(el) {
+  async function choisir(el, opts) {
+    const instant = !!(opts && opts.instant);   // reprise d'un tirage : aucune animation
     // vignette déjà révélée → plein écran
     if (el.classList.contains("retournee")) {
       ouvrirPlein(el._carte);
@@ -779,7 +782,7 @@
     el.style.height = "100%";
     el.style.opacity = "1";
     placerRoue();   // les cartes restantes se resserrent autour du trou
-    const vol = faireVoler(el, depart);
+    const vol = instant ? 0 : faireVoler(el, depart);
     // la première carte efface les choix du départ : le plan gagne la place
     if (choisies.length === 1) requestAnimationFrame(ajusterPlan);
 
@@ -798,25 +801,38 @@
         construireGrilles();
         // tout est posé : le paquet s'en va, le tirage reprend sa place
         // et l'invite à révéler s'affiche sous lui
-        setTimeout(() => { inviteRevelation(); ajusterPlan(); }, vol);
-        setTimeout(ajusterPlan, vol + 350);   // une fois le paquet parti
+        if (instant) { inviteRevelation(); ajusterPlan(); }
+        else {
+          setTimeout(() => { inviteRevelation(); ajusterPlan(); }, vol);
+          setTimeout(ajusterPlan, vol + 350);   // une fois le paquet parti
+        }
       }
     } else {
       // 2b · tirage à une carte : elle vole, se retourne, puis la lecture ;
       // le paquet n'a plus rien à offrir, il s'efface
       el.title = "Afficher en plein écran";
-      setTimeout(() => eventail.classList.add("estompe"), vol);
-      setTimeout(() => el.classList.add("retournee"), vol + 60);
-      setTimeout(() => {
+      if (instant) {
+        eventail.classList.add("estompe");
+        el.classList.add("retournee");
         carteEnPlace = false;
         sortirTable();
         montrerLectureJour(carte);
-      }, vol + 820);
+      } else {
+        setTimeout(() => eventail.classList.add("estompe"), vol);
+        setTimeout(() => el.classList.add("retournee"), vol + 60);
+        setTimeout(() => {
+          carteEnPlace = false;
+          sortirTable();
+          montrerLectureJour(carte);
+        }, vol + 820);
+      }
     }
+    sauverEtat();
   }
 
   // la révélation une par une — l'ordre appartient à celui qui tire
-  function reveler(el) {
+  function reveler(el, opts) {
+    const instant = !!(opts && opts.instant);
     if (carteRevelation) return;
     carteRevelation = true;
     el.classList.remove("posee");
@@ -828,7 +844,7 @@
     ordreRevelation.push({ carte: el._carte, i: i });
     // l'image de lecture (récit, plein écran) se charge dès la révélation
     if (el._carte.image) new Image().src = imageLecture(el._carte);
-    setTimeout(() => {
+    const fin = () => {
       if (nomSlot) nomSlot.textContent = el._carte.nom;
       const libelleSlot = el.closest(".slot").querySelector(".libelle");
       if (libelleSlot && el._carte.type === "hors_cycle") {
@@ -845,7 +861,9 @@
         montrerCloture();
         montrerVues();
       }
-    }, 700);
+      sauverEtat();
+    };
+    if (instant) fin(); else setTimeout(fin, 700);
   }
 
   function pedagogiePanel(P, positions) {
@@ -980,9 +998,11 @@
     majCompteur();
     if (ordreRevelation.length) rendreLecture();
     document.getElementById("detail-position").hidden = true;
+    sauverEtat();
   }
 
   async function passerAuChoix() {
+    effacerEtat();
     viderTable();
     mode = 0;
     construireBascule();
@@ -1291,6 +1311,7 @@
   const feuille = document.getElementById("feuille-relire");
 
   function construireGrilles() {
+    majGarder();
     if (mode === 1) {
       const lue = tirage && lecture.querySelector(".question-posee");
       relire.classList.toggle("invisibles", !lue);
@@ -1405,6 +1426,7 @@
       const q = lecture.querySelector(".question-posee");
       if (q) q.scrollIntoView({ behavior: "smooth", block: "center" });
     }
+    sauverEtat();
   }
 
   function changerGrille(id) {
@@ -1426,6 +1448,7 @@
     if (ordreRevelation.length) rendreLecture();
     if (vueActive !== "ensemble") afficherVue(vueActive);
     document.getElementById("detail-position").hidden = true;
+    sauverEtat();
   }
 
   function metaDe(carte) {
@@ -1537,6 +1560,7 @@
   // ── Replier ─────────────────────────────────────────────────────────
 
   function replier() {
+    effacerEtat();   // un nouveau tirage remplace celui qui était en cours
     viderTable();
     charger();
   }
@@ -1568,6 +1592,337 @@
     sortirTable();
     slotsBox.style.removeProperty("--case");
     dernierCase = 0;
+    tirageParChoix = null;
+    tirageGarde = false;
+    garder.classList.add("invisibles");
+  }
+
+  /* ══ LA MÉMOIRE DU TIRAGE (Martin, 2026-11-17 : « quand on quitte et qu'on
+     revient dans Ta Trame, si on avait un tarot en cours, une mémoire pour le
+     continuer ») ═══════════════════════════════════════════════════════
+     Un tirage est DÉTERMINISTE : la graine rejoue exactement les mêmes cartes
+     (même texte, même regard d'Éveil). On ne garde donc que de quoi le
+     rejouer : lequel, la graine, combien de cartes sont posées, lesquelles
+     révélées (dans l'ordre), la grille / la croix / la question, la façon de
+     lire (récit, page). Au retour, la donne est rejouée INSTANTANÉMENT, sans
+     animation. Stockage : localStorage, par profil (Ta Trame passe ?profil=).
+     Si le tirage était ouvert à la fermeture, il se rouvre tout seul ;
+     si on l'avait quitté par « ‹ Tirages », une tuile « Reprendre » l'attend
+     en tête de l'accueil. Un nouveau tirage remplace l'ancien ; 14 jours. */
+  let tirageParChoix = null;   // {ids, derniere} quand la donne vient de « Je choisis »
+  let tirageGarde = false;     // ce tirage a déjà été gardé dans le journal
+  let restauration = false;    // pendant la reprise : on ne réécrit pas l'état
+  const PROFIL_MEMOIRE = (() => {
+    const p = new URLSearchParams(location.search).get("profil") || "";
+    return /^[\w-]{1,64}$/.test(p) ? p : "_";
+  })();
+  const CLE_ETAT = "tarot.etat.v1." + PROFIL_MEMOIRE;
+  const DUREE_ETAT = 14 * 24 * 3600 * 1000;
+
+  function lireEtat() {
+    try {
+      const e = JSON.parse(localStorage.getItem(CLE_ETAT) || "null");
+      if (!e || e.v !== 1 || !e.tirage || Date.now() - (e.maj || 0) > DUREE_ETAT) return null;
+      return e;
+    } catch (x) { return null; }
+  }
+  function ecrireEtat(e) { try { localStorage.setItem(CLE_ETAT, JSON.stringify(e)); } catch (x) { /* sans mémoire */ } }
+  function effacerEtat() { try { localStorage.removeItem(CLE_ETAT); } catch (x) { /* sans mémoire */ } }
+  function marquerQuitte() {
+    const e = lireEtat();
+    if (e && e.ouvert) { e.ouvert = false; ecrireEtat(e); }
+  }
+
+  function composerEtat() {
+    if (!tirageChoisi) return null;
+    const base = { v: 1, maj: Date.now(), ouvert: true, tirage: tirageChoisi.id,
+                   croix: croixActive, grille: grilleActive, question: questionActive,
+                   garde: tirageGarde };
+    if (mode === 0) {                      // « Je choisis » : encore en sélection
+      if (!choixEtat.gardees.length && !choixEtat.ecartees.length) return null;
+      return { ...base, mode: 0, selection: {
+        phase: choixEtat.phase, gardees: choixEtat.gardees.slice(), ecartees: choixEtat.ecartees.slice() } };
+    }
+    if (!tirage) return null;
+    if (tirageParChoix) {                  // la donne est née d'une sélection
+      return { ...base, mode, choix: tirageParChoix, nb: tirage.cartes.length,
+               revelees: ordreRevelation.map((r) => r.i), vue: vueActive, recit: recitIndex };
+    }
+    if (!choisies.length) return null;     // rien de tiré : rien à reprendre
+    return { ...base, mode, graine: tirage.graine, nb: choisies.length,
+             revelees: ordreRevelation.map((r) => r.i), vue: vueActive, recit: recitIndex };
+  }
+
+  function sauverEtat() {
+    if (restauration) return;
+    const e = composerEtat();
+    if (e) ecrireEtat(e);
+  }
+
+  // « La croix · 6 cartes sur 10 » : où en était le tirage
+  function resumeEtat(e) {
+    const t = TOUS_TIRAGES.find((x) => x.id === e.tirage) || {};
+    const total = e.choix ? 3 : (t.n || 0);
+    const nb = e.selection ? e.selection.gardees.length : (e.nb || 0);
+    let ou;
+    if (e.selection) ou = `${nb} carte${nb > 1 ? "s" : ""} gardée${nb > 1 ? "s" : ""}`;
+    else if (e.mode === 1) ou = nb ? "ta carte est tirée" : "à tirer";   // une seule carte : pas de révélation à part
+    else if (nb < total) ou = `${nb} carte${nb > 1 ? "s" : ""} sur ${total} tirée${nb > 1 ? "s" : ""}`;
+    else if ((e.revelees || []).length < total) ou = `${(e.revelees || []).length} sur ${total} révélées`;
+    else ou = "lecture en cours";
+    return { t, texte: `${t.nom || "Tirage"} · ${ou}` };
+  }
+
+  function afficherReprise() {
+    const boite = document.getElementById("cat-reprise");
+    if (!boite) return;
+    const e = lireEtat();
+    if (!e || !TOUS_TIRAGES.find((x) => x.id === e.tirage)) { boite.innerHTML = ""; return; }
+    const { t, texte } = resumeEtat(e);
+    boite.innerHTML = `
+      <div class="etagere reprise">
+        <p class="etagere-titre">Ton tirage en cours</p>
+        <button type="button" class="tuile vedette" id="reprise-ouvrir">
+          <svg class="tuile-schema" viewBox="0 0 58 58" aria-hidden="true">${SCHEMAS[t.schema] || ""}</svg>
+          <span class="tuile-corps">
+            <span class="tuile-nom">Reprendre ce tirage</span>
+            <span class="tuile-pour">${texte}</span>
+          </span>
+          <span class="tuile-chevron" aria-hidden="true">›</span>
+        </button>
+        <button type="button" class="reprise-abandon" id="reprise-abandon">Abandonner ce tirage</button>
+      </div>`;
+    document.getElementById("reprise-ouvrir").addEventListener("click", () => restaurer(e));
+    document.getElementById("reprise-abandon").addEventListener("click", () => { effacerEtat(); afficherReprise(); });
+  }
+
+  // Rejoue la donne : même graine, mêmes cartes posées, mêmes révélations
+  async function restaurer(e) {
+    const t = TOUS_TIRAGES.find((x) => x.id === e.tirage);
+    if (!t) return false;
+    restauration = true;
+    document.body.classList.add("restaure");     // aucune animation pendant la reprise
+    try {
+      tirageChoisi = t;
+      grilleActive = e.grille || "causale_3";
+      if (e.croix) croixActive = e.croix;
+      questionActive = e.question || null;
+      mode = e.selection ? 0 : e.choix ? 3 : t.mode;
+      viderTable();
+      tirageGarde = !!e.garde;
+      document.body.classList.remove("accueil", "reprise");
+      barreTirage.hidden = false;
+      document.getElementById("choix").classList.add("invisibles");
+      eventail.classList.remove("invisibles");
+      pedZone.classList.remove("invisible");
+      document.getElementById("cat-reprise").innerHTML = "";
+      majBarre();
+      construireBascule();
+      window.scrollTo(0, 0);
+      if (e.selection) {                         // « Je choisis » : on reprend la sélection
+        await demarrerChoix();
+        choixEtat.phase = e.selection.phase;
+        choixEtat.gardees = e.selection.gardees.slice();
+        choixEtat.ecartees = (e.selection.ecartees || []).slice();
+        dessinerChoix();
+      } else if (e.choix) {                      // la donne est née d'une sélection
+        await installerLectureChoix(e.choix.ids, e.choix.derniere);
+        revelerDeNouveau(e);
+      } else {
+        await demanderTirage(e.graine);
+        construireEventail(tirage.total_jeu, { intro: false });
+        synchroniserEntete(tirage.total_jeu);
+        majBoutonMelange();
+        entrerTable();
+        for (let k = 0; k < (e.nb || 0); k++) {
+          const el = cartesLibres()[0];
+          if (!el) break;
+          await choisir(el, { instant: true });
+        }
+        revelerDeNouveau(e);
+      }
+      return true;
+    } catch (err) {
+      // la reprise a échoué : retour propre à l'accueil, rien de cassé
+      tirageChoisi = null;
+      barreTirage.hidden = true;
+      document.body.classList.remove("reprise");
+      document.body.classList.add("accueil");
+      return false;
+    } finally {
+      restauration = false;
+      setTimeout(() => document.body.classList.remove("restaure"), 80);
+      sauverEtat();
+    }
+  }
+
+  function revelerDeNouveau(e) {
+    (e.revelees || []).forEach((i) => {
+      const el = slotsBox.querySelector(`.cadre[data-i="${i}"] .carte.posee`);
+      if (el) reveler(el, { instant: true });
+    });
+    // tout est lu : on retrouve la façon de lire (récit, page…)
+    if (e.vue && tirage && cartesRevelees === tirage.cartes.length) {
+      afficherVue(e.vue);
+      if (e.vue === "recit") { recitIndex = e.recit || 0; dessinerRecit(); }
+    }
+  }
+
+  /* ══ GARDER UN TIRAGE (Martin, 2026-11-17 : « pouvoir sauvegarder les
+     tirages, si demandé ») ═══════════════════════════════════════════
+     Un tirage gardé devient une NOTE DU JOURNAL Ta Trame, liée au profil (elle
+     suit la personne d'un appareil à l'autre) : sa note personnelle, un
+     instantané lisible (positions et cartes), et de quoi rouvrir la donne
+     EXACTE (la graine rejoue les mêmes cartes). Greer fait du journal le
+     véritable dispositif du tarot : écrire tout de suite, relire plus tard.
+     Le Tarot ne connaît pas le profil : il passe par Ta Trame (postMessage),
+     qui écrit. Hors de Ta Trame, rien à garder : le bouton n'apparaît pas. */
+  const ENCADRE = (() => { try { return window.parent !== window; } catch (e) { return false; } })();
+  const garder = document.getElementById("garder");
+  const feuilleGarder = document.getElementById("feuille-garder");
+  const gardeEtat = document.getElementById("garder-etat");
+  let gardeEnAttente = null;   // {id, delai}
+
+  function lectureComplete() {
+    if (!tirage || !tirageChoisi || mode === 0) return false;
+    if (mode === 1) return !!lecture.querySelector(".question-posee");
+    return tirage.cartes.length > 0 && cartesRevelees === tirage.cartes.length;
+  }
+
+  function majGarder() {
+    const montrer = ENCADRE && lectureComplete();
+    garder.classList.toggle("invisibles", !montrer);
+    if (!montrer) return;
+    document.getElementById("garder-titre-btn").textContent = tirageGarde ? "Tirage gardé" : "Garder ce tirage";
+    document.getElementById("garder-sous-btn").textContent = tirageGarde ? "retrouve-le dans ton journal" : "dans ton journal";
+    garder.classList.toggle("garde", tirageGarde);
+    garder.setAttribute("aria-disabled", String(tirageGarde));
+  }
+
+  function ouvrirGarder() {
+    if (tirageGarde) return;
+    gardeEtat.textContent = "";
+    document.getElementById("garder-ok").disabled = false;
+    feuilleGarder.hidden = false;
+    document.getElementById("garder-note").focus({ preventScroll: true });
+  }
+  function fermerGarder() {
+    if (feuilleGarder.hidden) return;
+    feuilleGarder.hidden = true;
+    garder.focus({ preventScroll: true });
+  }
+  garder.addEventListener("click", ouvrirGarder);
+  document.getElementById("garder-annuler").addEventListener("click", fermerGarder);
+  feuilleGarder.addEventListener("click", (e) => { if (e.target === feuilleGarder) fermerGarder(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") fermerGarder(); });
+
+  // l'instantané lisible : « position — carte », une ligne par carte
+  function instantaneTirage() {
+    const date = new Date().toLocaleDateString("fr-CA", { day: "numeric", month: "long", year: "numeric" });
+    let nom = tirageChoisi.nom;
+    if (mode === 11 && croixCourante()) nom = croixCourante().nom;
+    else if (mode === 3) { const g = grilleCourante(); if (g && g.nom) nom += " · " + g.nom; }
+    const lignes = [];
+    if (mode === 1) {
+      const q = questionCourante();
+      if (q) lignes.push("Question : " + q.question);
+      lignes.push("Carte : " + tirage.cartes[0].nom);
+    } else {
+      tirage.cartes.forEach((c, i) => {
+        const pos = libellePosition(i);
+        lignes.push((pos ? pos + " — " : "") + c.nom);
+      });
+    }
+    return { nom: "Tarot · " + nom, resume: nom + " · " + date + "\n\n" + lignes.join("\n") };
+  }
+
+  document.getElementById("garder-ok").addEventListener("click", () => {
+    if (gardeEnAttente || tirageGarde || !lectureComplete()) return;
+    const e = composerEtat();
+    if (!e) return;
+    const { ouvert, maj, garde, selection, ...tir } = e;
+    // tout ce qui a été lu : la donne rouverte arrive complète
+    if (mode !== 1) tir.revelees = tirage.cartes.map((_, i) => i);
+    const id = "g" + Date.now().toString(36);
+    const inst = instantaneTirage();
+    document.getElementById("garder-ok").disabled = true;
+    gardeEtat.textContent = "Je le range dans ton journal…";
+    gardeEnAttente = {
+      id,
+      delai: setTimeout(() => {
+        gardeEnAttente = null;
+        document.getElementById("garder-ok").disabled = false;
+        gardeEtat.textContent = "Impossible de le garder pour l'instant. Réessaie dans un moment.";
+      }, 9000),
+    };
+    window.parent.postMessage({
+      tarot: "garder", id, note: document.getElementById("garder-note").value.trim(),
+      nom: inst.nom, resume: inst.resume, tirage: tir,
+    }, "*");
+  });
+
+  window.addEventListener("message", (e) => {
+    if (!ENCADRE || e.source !== window.parent) return;
+    const d = e.data || {};
+    if (d.tarot === "garde" && gardeEnAttente && d.id === gardeEnAttente.id) {
+      clearTimeout(gardeEnAttente.delai);
+      gardeEnAttente = null;
+      if (d.ok) {
+        tirageGarde = true;
+        sauverEtat();
+        majGarder();
+        gardeEtat.textContent = "Gardé dans ton journal.";
+        document.getElementById("garder-note").value = "";
+        setTimeout(fermerGarder, 900);
+        demanderGardes();
+      } else {
+        document.getElementById("garder-ok").disabled = false;
+        gardeEtat.textContent = d.erreur === "profil"
+          ? "Ouvre ton profil dans Ta Trame pour garder tes tirages."
+          : "Impossible de le garder pour l'instant. Réessaie dans un moment.";
+      }
+    }
+    if (d.tarot === "liste") afficherGardes(d.items || []);
+  });
+
+  // ── L'étagère « Tes tirages gardés », sur l'accueil ─────────────────
+  function demanderGardes() {
+    if (ENCADRE) window.parent.postMessage({ tarot: "liste" }, "*");
+  }
+
+  function afficherGardes(items) {
+    const boite = document.getElementById("cat-gardes");
+    if (!boite) return;
+    const garde = items.filter((it) => it.tirage && TOUS_TIRAGES.find((t) => t.id === it.tirage.tirage));
+    if (!garde.length) { boite.innerHTML = ""; return; }
+    const annee = new Date().getFullYear();
+    const echap = (x) => String(x == null ? "" : x).replace(/[&<>"]/g, (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    boite.innerHTML = `
+      <div class="etagere gardes">
+        <p class="etagere-titre">Tes tirages gardés</p>
+        <div class="gardes-liste">
+          ${garde.slice(0, 8).map((it, i) => {
+            const d = new Date(it.cree_le);
+            const quand = d.toLocaleDateString("fr-CA", d.getFullYear() === annee
+              ? { day: "numeric", month: "long" } : { day: "numeric", month: "long", year: "numeric" });
+            const note = it.note && it.note !== "Tirage gardé." ? it.note : "";
+            return `<button type="button" class="garde-ligne" data-i="${i}">
+              <span class="garde-haut"><span class="garde-nom">${echap((it.nom || "").replace(/^Tarot · /, ""))}</span><span class="garde-date">${echap(quand)}</span></span>
+              ${note ? `<span class="garde-note">${echap(note)}</span>` : ""}
+            </button>`;
+          }).join("")}
+        </div>
+      </div>`;
+    boite.querySelectorAll(".garde-ligne").forEach((b) =>
+      b.addEventListener("click", () => rouvrirGarde(garde[Number(b.dataset.i)])));
+  }
+
+  // Rouvre un tirage gardé : la même donne, complète, lue comme on l'a gardée
+  function rouvrirGarde(it) {
+    const t = it && it.tirage;
+    if (!t) return;
+    restaurer({ ...t, v: 1, maj: Date.now(), ouvert: true, garde: true });
   }
 
   // ── Ouvrir un tirage du catalogue, revenir au catalogue ─────────────
@@ -1613,6 +1968,7 @@
   }
 
   function retourCatalogue() {
+    marquerQuitte();   // le tirage en cours reste repris-able
     viderTable();
     document.getElementById("choix").classList.add("invisibles");
     eventail.innerHTML = "";
@@ -1622,6 +1978,8 @@
     document.getElementById("ped-contenu").innerHTML = "";
     document.body.classList.add("accueil");
     window.scrollTo(0, 0);
+    afficherReprise();
+    demanderGardes();
     const premier = document.querySelector(".tuile");
     if (premier) premier.focus({ preventScroll: true });
   }
@@ -1714,6 +2072,7 @@
       choixEtat.phase !== "attirer" || choixEtat.gardees.length <= 3);
     bLire.classList.toggle("invisible", choixEtat.gardees.length !== 3);
     bLire.disabled = choixEtat.gardees.length !== 3;
+    sauverEtat();
   }
 
   function basculerGarde(id) {
@@ -1731,12 +2090,26 @@
 
   async function lireChoix() {
     if (choixEtat.gardees.length !== 3) return;
-    const r = await fetch("api/lecture?cartes=" + choixEtat.gardees.join(","));
-    if (!r.ok) return;
-    const d = await r.json();
     const derniere = choixEtat.ecartees[choixEtat.ecartees.length - 1];
-    const infos = derniere
-      ? choixEtat.jeu.find((x) => x.id === derniere) : null;
+    await installerLectureChoix(choixEtat.gardees.slice(), derniere);
+    sauverEtat();
+  }
+
+  // La lecture de trois cartes CHOISIES (aussi pour reprendre un tirage au choix)
+  async function installerLectureChoix(ids, derniereId) {
+    if (!choixEtat.jeu) {
+      const rj = await fetch("api/jeu");
+      if (!rj.ok) throw new Error("jeu indisponible");
+      const dj = await rj.json();
+      choixEtat.jeu = dj.cartes || [];
+      choixEtat.methode = dj.methode || {};
+    }
+    const r = await fetch("api/lecture?cartes=" + ids.join(","));
+    if (!r.ok) throw new Error("lecture refusée");
+    const d = await r.json();
+    const infos = derniereId
+      ? choixEtat.jeu.find((x) => x.id === derniereId) : null;
+    tirageParChoix = { ids: ids.slice(), derniere: derniereId || null };
 
     document.getElementById("choix").classList.add("invisibles");
     eventail.classList.add("invisibles");
@@ -1859,6 +2232,7 @@
     vueLiens.classList.toggle("invisibles", v !== "liens");
     if (v === "recit") dessinerRecit();
     if (v === "liens") dessinerLiens();
+    sauverEtat();
   }
 
   vuesBarre.addEventListener("click", (e) => {
@@ -1900,6 +2274,7 @@
     const pages = pagesRecit();
     if (!pages.length) { vueRecit.innerHTML = ""; return; }
     recitIndex = Math.max(0, Math.min(pages.length - 1, recitIndex));
+    sauverEtat();
     const p = pages[recitIndex];
     let corps = "";
     if (p.genre === "carte") {
@@ -2299,10 +2674,20 @@
     : modeUrl === 0 ? TOUS_TIRAGES.find((t) => t.id === "trois")
     : modeUrl === 11 ? TOUS_TIRAGES.find((t) => t.id === (croixUrl === "croix_composite" ? "relation" : "croix"))
     : TOUS_TIRAGES.find((t) => t.mode === modeUrl);
+  demanderGardes();
+  const etatMemoire = lireEtat();
   if (entreeUrl) {
     ouvrirTirage(entreeUrl);
     if (modeUrl === 0) passerAuChoix();
+  } else if (etatMemoire && etatMemoire.ouvert) {
+    // il était ouvert à la fermeture : on le rouvre tout seul (le catalogue
+    // ne clignote pas pendant que la donne est rejouée)
+    document.body.classList.add("accueil", "reprise");
+    restaurer(etatMemoire).then((ok) => {
+      if (!ok) { document.body.classList.add("accueil"); afficherReprise(); }
+    });
   } else {
     document.body.classList.add("accueil");
+    afficherReprise();
   }
 })();

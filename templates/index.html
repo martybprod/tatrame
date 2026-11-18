@@ -4956,6 +4956,12 @@ function urlTarot() {
   const proto = location.protocol === 'https:' ? 'http:' : location.protocol;
   return `${proto}//${location.hostname}:5089/`;
 }
+/* ?embed=1 : page nue. ?profil=… : la mémoire du Tarot (tirage en cours,
+   tirages gardés) est PAR PROFIL — deux personnes sur un même téléphone ne
+   se retrouvent pas dans le tirage de l'autre. */
+function paramsTarot() {
+  return '?embed=1&profil=' + encodeURIComponent(profilId || '');
+}
 function vueTarot() {
   if (tarotFrame) return;               // déjà monté : on ne reconstruit rien
   const base = urlTarot();
@@ -4966,7 +4972,7 @@ function vueTarot() {
          chercher ? » — et montre les tirages rangés par intention. -->
 
     <div class="tarot-cadre">
-      <iframe id="tarot-frame" title="Le Tarot" src="${base}?embed=1"></iframe>
+      <iframe id="tarot-frame" title="Le Tarot" src="${base}${paramsTarot()}"></iframe>
       <div class="tarot-panne cacher" id="tarot-panne">
         <p style="font-size:15px;color:var(--encre)">Le Tarot ne répond pas pour l'instant.</p>
         <p class="quoi" style="margin:6px 0 14px">Ouvre-le directement, ou relance-le depuis Vibe Station.</p>
@@ -4980,15 +4986,51 @@ function vueTarot() {
   </div>`;
   tarotFrame = $('#tarot-frame');
   // Le Tarot ouvre sa table de jeu : on cale son cadre en haut de l'écran.
-  window.addEventListener('message', e => {
+  window.addEventListener('message', async e => {
     if (!tarotFrame || e.source !== tarotFrame.contentWindow) return;
-    if (e.data && e.data.tarot === 'table') {
+    const d = e.data || {};
+    const repondre = (msg) => tarotFrame.contentWindow.postMessage(msg, '*');
+    if (d.tarot === 'table') {
       const haut = tarotFrame.closest('.tarot-cadre').getBoundingClientRect().top + window.scrollY;
       window.scrollTo({ top: haut, behavior: 'smooth' });
     }
+    /* GARDER UN TIRAGE (2026-11-17) : le Tarot ne connaît pas le profil ; c'est
+       Ta Trame, qui l'a, qui écrit dans le journal — une note liée au tirage
+       (de quoi le rouvrir exactement), avec un instantané lisible du message. */
+    if (d.tarot === 'garder') {
+      if (!profilId) { repondre({ tarot: 'garde', id: d.id, ok: false, erreur: 'profil' }); return; }
+      try {
+        const r = await fetch(`/api/journal/${profilId}`, {
+          method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            texte: String(d.note || '').slice(0, 8000),
+            source_nom: String(d.nom || 'Tarot').slice(0, 120),
+            source_texte: String(d.resume || '').slice(0, 4000),
+            tirage: d.tirage,
+          }),
+        });
+        const j = await r.json();
+        repondre({ tarot: 'garde', id: d.id, ok: r.ok, erreur: j.erreur || '', entree: r.ok ? j.id : null });
+      } catch (x) {
+        repondre({ tarot: 'garde', id: d.id, ok: false, erreur: 'reseau' });
+      }
+    }
+    if (d.tarot === 'liste') {
+      if (!profilId) { repondre({ tarot: 'liste', items: [] }); return; }
+      try {
+        const entrees = await (await fetch(`/api/journal/${profilId}`)).json();
+        const items = (Array.isArray(entrees) ? entrees : [])
+          .filter(x => x.tirage)
+          .slice(0, 12)
+          .map(x => ({ id: x.id, cree_le: x.cree_le, note: x.texte, nom: x.source_nom || '', tirage: x.tirage }));
+        repondre({ tarot: 'liste', items });
+      } catch (x) {
+        repondre({ tarot: 'liste', items: [] });
+      }
+    }
   });
   $('#tarot-recharger').onclick = () => {
-    tarotFrame.src = base + '?embed=1&t=' + Date.now();
+    tarotFrame.src = base + paramsTarot() + '&t=' + Date.now();
   };
   // app sœur éteinte : l'iframe resterait blanche — on le dit franchement
   fetch(base + 'health', { mode: 'no-cors' })

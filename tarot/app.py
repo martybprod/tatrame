@@ -336,7 +336,12 @@ def tirage():
 
     graine = request.args.get("graine", type=int)
     if graine is None:
-        graine = int.from_bytes(os.urandom(8), "big") ^ (time.time_ns() & 0xFFFFFFFF)
+        # 52 bits : JavaScript lit les nombres JSON en flottants (précis
+        # jusqu'à 2^53). Une graine de 64 bits revenait arrondie au navigateur,
+        # et rejouer « la même donne » (reprise d'un tirage, tirage gardé,
+        # ?graine=) donnait un AUTRE mélange. 4,5 × 10^15 mélanges possibles.
+        graine = (int.from_bytes(os.urandom(8), "big")
+                  ^ (time.time_ns() & 0xFFFFFFFF)) & ((1 << 52) - 1)
     rng = random.Random(graine)
     melange = ids_jeu[:]
     rng.shuffle(melange)

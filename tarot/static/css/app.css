@@ -1817,3 +1817,104 @@ body.table .etendu-bande span { overflow: visible; text-overflow: clip; }
     linear-gradient(to top, transparent 0, #000 30px);
   mask-composite: intersect;
 }
+
+
+/* ══ La mémoire du tirage (2026-11-17) ═══════════════════════════════
+   La tuile « Reprendre » en tête de l'accueil ; pendant la reprise, aucune
+   animation (la donne est rejouée d'un coup) et l'accueil ne clignote pas. */
+.reprise-abandon {
+  display: block;
+  margin: -2px 0 6px 4px;
+  padding: 10px 6px;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--brume);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--or-fil);
+  text-underline-offset: 3px;
+}
+.reprise-abandon:hover { color: var(--encre); }
+.reprise-abandon:focus-visible { outline: 2px solid var(--or); outline-offset: 2px; }
+body.reprise #catalogue { visibility: hidden; }
+body.restaure .carte .interieur,
+body.restaure .lecture > *,
+body.restaure .slot .cadre { transition: none !important; }
+body.restaure .lecture > * { opacity: 1; transform: none; }
+
+
+/* ══ Garder un tirage dans le journal (2026-11-17) ══════════════════ */
+.relire.garder { margin-top: 8px; }
+.relire.garder.garde { opacity: 0.75; cursor: default; }
+.relire.garder.garde .relire-fleche { visibility: hidden; }
+body.table #garder { display: none; }
+
+.garder-label { display: block; margin-top: 14px; font-family: var(--sans); font-size: 13px; color: var(--encre); }
+.garder-label span { color: var(--brume); }
+#garder-note {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--or-fil);
+  border-radius: 12px;
+  color: var(--encre);
+  font-family: var(--serif);
+  font-size: 16px;      /* 16 px : iOS ne zoome pas la page à la saisie */
+  line-height: 1.5;
+  resize: vertical;
+}
+#garder-note:focus { outline: 2px solid var(--or); outline-offset: 1px; border-color: transparent; }
+.garder-actions { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 14px; }
+.bouton-plein {
+  background: var(--or);
+  border: 1px solid var(--or);
+  border-radius: 999px;
+  color: var(--fond-profond);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.bouton-plein:disabled { opacity: 0.5; cursor: default; }
+.bouton-plein:focus-visible { outline: 2px solid var(--encre); outline-offset: 2px; }
+.garder-etat { min-height: 1.4em; margin-top: 10px; font-family: var(--sans); font-size: 13px; color: var(--brume); text-align: right; }
+
+/* L'étagère des tirages gardés, sur l'accueil : liste sobre, la plus récente d'abord */
+.gardes-liste { border-top: 1px solid var(--or-fil); }
+.garde-ligne {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--or-fil);
+  padding: 13px 2px;
+  min-height: 56px;
+  color: var(--encre);
+  cursor: pointer;
+}
+.garde-ligne:hover .garde-nom { color: var(--or); }
+.garde-ligne:focus-visible { outline: 2px solid var(--or); outline-offset: -2px; }
+.garde-haut { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.garde-nom { font-family: var(--serif); font-size: 17px; }
+.garde-date { font-family: var(--sans); font-size: 12px; color: var(--brume); white-space: nowrap; }
+.garde-note {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 3px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--brume);
+}

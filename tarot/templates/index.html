@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarot — le tirage</title>
-<link rel="stylesheet" href="css/app.css?v=65">
+<link rel="stylesheet" href="css/app.css?v=67">
 </head>
 <body class="accueil{% if embed %} embed{% endif %}">
 
@@ -19,7 +19,9 @@
   <!-- L'entrée : les tirages rangés par ce qu'on vient chercher (rempli par le JS) -->
   <section id="catalogue" class="catalogue" aria-labelledby="cat-titre">
     <h2 class="cat-titre" id="cat-titre">Que viens-tu chercher ?</h2>
+    <div id="cat-reprise"></div>
     <div id="cat-etageres"></div>
+    <div id="cat-gardes"></div>
   </section>
 
   <!-- La barre d'un tirage : revenir, le nom, la méthode -->
@@ -77,6 +79,11 @@
     <span><span id="relire-titre">Relire autrement</span><small id="relire-sous"></small></span><span class="relire-fleche" aria-hidden="true">›</span>
   </button>
 
+  <!-- Garder le tirage dans le journal de Ta Trame (seulement dans Ta Trame) -->
+  <button id="garder" class="relire garder invisibles" type="button" aria-haspopup="dialog">
+    <span><span id="garder-titre-btn">Garder ce tirage</span><small id="garder-sous-btn">dans ton journal</small></span><span class="relire-fleche" aria-hidden="true">›</span>
+  </button>
+
   <div class="actions">
     <button id="replier" class="bouton-discret invisible" type="button">Mélanger les cartes</button>
   </div>
@@ -107,6 +114,20 @@
   </div>
 </div>
 
+<div class="feuille-voile" id="feuille-garder" hidden>
+  <div class="feuille" role="dialog" aria-modal="true" aria-labelledby="garder-titre">
+    <p class="feuille-titre" id="garder-titre">Garder ce tirage</p>
+    <p class="feuille-quoi">Il rejoint ton journal Ta Trame. Écris tout de suite ce que tu en retiens : tu pourras le relire plus tard.</p>
+    <label class="garder-label" for="garder-note">Ce que j'en retiens <span>(facultatif)</span></label>
+    <textarea id="garder-note" rows="4" maxlength="1500" autocomplete="off"></textarea>
+    <div class="garder-actions">
+      <button type="button" class="bouton-discret" id="garder-annuler">Annuler</button>
+      <button type="button" class="bouton-plein" id="garder-ok">Garder</button>
+    </div>
+    <p class="garder-etat" id="garder-etat" role="status" aria-live="polite"></p>
+  </div>
+</div>
+
 <div class="detail-position" id="detail-position" hidden>
   <div class="dp-carte">
     <button class="fermer-position" id="fermer-position" aria-label="Fermer">×</button>
@@ -116,6 +137,6 @@
 </div>
 
 <script>window.DOS_URL = "img/dos.png?v={{ version_dos }}";</script>
-<script src="js/tirage.js?v=70"></script>
+<script src="js/tirage.js?v=73"></script>
 </body>
 </html>
