@@ -254,7 +254,7 @@ def visage(id_carte):
 # Vignettes (400 px, WebP — outils/generer_vignettes.py) : dans les cases du
 # tirage, le mur du choix et les liens. La face entière reste pour le plein
 # écran et le récit. Monter le numéro après avoir régénéré les vignettes.
-VERSION_VIGNETTES = 4
+VERSION_VIGNETTES = 6
 
 
 def moyenne(id_carte):
