@@ -14,7 +14,7 @@
     "pousse": "accompagner",
     "retient": "retenir"
   },
-  "lumiere": "Une grande roue peinte tourne dans un ciel étoilé, et une même image semble la traverser sans interruption. Le printemps se mêle à l'aube, l'été apparaît à midi, l'automne accompagne le soir et l'hiver enveloppe la nuit sans provoquer de rupture. Tout tourne, mais rien ne se déchire au passage. Ta vie suit actuellement un mouvement semblable. Les choses changent, sans que ce mouvement détruise nécessairement ce qui demeure. Tu peux laisser tourner ce qui doit tourner, sans chercher à retenir une saison particulière.",
+  "lumiere": "Une grande roue peinte tourne dans un ciel étoilé. Ses rayons séparent les saisons : le printemps avec ses fleurs, l'été avec son blé, l'automne avec ses citrouilles, l'hiver avec sa lune et ses glaçons. Et pourtant c'est la même roue qui les fait se succéder, sans rupture entre elles. Tout tourne, mais rien ne se déchire au passage. Ta vie suit actuellement un mouvement semblable. Les choses changent, sans que ce mouvement détruise nécessairement ce qui demeure. Tu peux laisser tourner ce qui doit tourner, sans chercher à retenir une saison particulière.",
   "ombre": {
     "mode": "subi",
     "texte": "Tu vis le changement à contre-courant. La roue tourne, mais tu le ressens comme une offense, en répétant que les choses n'auraient pas dû se passer ainsi. Tu négocies encore avec ce qui est déjà arrivé, tu compares la situation actuelle à celle d'avant et tu t'épuises à vouloir maintenir une saison en place. L'autre extrême existe aussi : te laisser emporter par les événements sans plus rien décider, sous prétexte que tout finit par passer. Dans les deux cas, tu subis le mouvement au lieu de chercher comment y prendre part.",
@@ -27,9 +27,9 @@
   ],
   "lecon": "Traverser les cycles en accompagnant leur mouvement plutôt qu'en cherchant à les retenir, et accueillir l'imprévu comme une partie du même mouvement.",
   "image": {
-    "geste": "Une roue parfaitement ronde flotte dans le cosmos. Une seule peinture continue la parcourt. Les saisons de l'année et les heures de la journée s'y confondent, sans cases ni séparations.",
+    "geste": "Une roue parfaitement ronde flotte dans le cosmos. Ses rayons de bois la découpent en quatre saisons, et la même peinture les traverse toutes.",
     "seuil": "Un serpent doré se mord la queue et suit le contour de la roue. Le cercle se referme sur lui-même, et chaque fin de cycle devient aussi un nouveau départ.",
-    "detail": "Chaque saison de la roue possède ses propres plantes, mais la même peinture les traverse toutes sans se déchirer. Le changement n'efface pas ce qui demeure, et l'image entière le montre."
+    "detail": "Chaque saison a son secteur et ses plantes, et c'est la roue qui les fait passer l'une dans l'autre. Le changement n'efface pas ce qui demeure."
   },
   "micro_geste": "Choisis une chose qui a déjà changé et pose un premier geste à partir de ce qui reste, sans chercher à modifier le passé.",
   "positions": {
