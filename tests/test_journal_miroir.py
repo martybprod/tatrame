@@ -118,6 +118,34 @@ def test_le_rattrapage_se_dit_par_le_geste_quand_le_nom_a_varie(espace):
     assert entree["source_miroir"] == fil["miroir"]
 
 
+def test_le_rattrapage_trouve_aussi_les_voix_du_titre(espace):
+    """Le routage a changé depuis août (mur des voix, bascule numérologique) :
+    une note prise sur le titre d'ALORS se retrouve par son geste dans la voix
+    elle-même (chinois, numéro, lune), même si le titre recalculé dit autre chose."""
+    profil = _ecrire_profil(espace / "profils")
+    n = profil["naissance"]
+    sc = application.chinois.saillance_chinoise(n["annee"], n["mois"], n["jour"], JOUR_NOTE)
+    candidats = [
+        f"{sc['relation']}_{application.chinois.ELEMENT_SLUG[sc['element_du_jour']]}",
+        sc["relation"],
+    ]
+    rel = next((application.corpus.lire("chinois_detail", "relations", c)
+                for c in candidats
+                if isinstance(application.corpus.lire("chinois_detail", "relations", c), dict)
+                and application.corpus.lire("chinois_detail", "relations", c).get("geste")
+                and application.corpus.lire("chinois_detail", "relations", c).get("miroir")), None)
+    if rel is None:
+        pytest.skip("pas de texte chinois miroir+geste ce jour-là")
+    note = {"id": "a8", "texte": "Ma note", "cree_le": "2026-07-16T09:30:00-04:00",
+            "source_nom": "Aujourd'hui", "source_texte": rel["geste"]}
+    (espace / "journal" / "jean-journal.json").write_text(
+        json.dumps([note], ensure_ascii=False), encoding="utf-8")
+    assert application.completer_journal_retro() == 1
+    entree = json.loads(
+        (espace / "journal" / "jean-journal.json").read_text(encoding="utf-8"))[0]
+    assert entree["source_miroir"] == rel["miroir"]
+
+
 def test_le_rattrapage_est_idempotent(espace):
     profil = _ecrire_profil(espace / "profils")
     bloc = _bloc_du_jour(profil)

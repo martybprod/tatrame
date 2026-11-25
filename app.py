@@ -1019,48 +1019,105 @@ def _miroir_perdu(profil, jour_note, source_nom, geste):
     pour_nom = [b for nom, b in candidats
                 if nom == source_nom and b.get("geste") == geste]
     pour_geste = [b for _nom, b in candidats if b.get("geste") == geste]
-    for groupe in (pour_nom, pour_geste):
-        for bloc in groupe:
+    for bloc in pour_nom + pour_geste:
+        miroir = (bloc.get("miroir") or "").strip()
+        if miroir:
+            return miroir
+    # Le ROUTAGE a pu changer depuis la prise de note (mur des voix, bascule
+    # numérologique, pic lunaire) : le titre d'alors n'est plus le titre de
+    # maintenant. Le geste reste l'empreinte fiable du bloc — on le cherche
+    # donc aussi dans les voix du titre, hors routeur (petites tables, lectures
+    # directes du corpus, zéro calcul de plus).
+    n = profil["naissance"]
+    voix = []
+    sc = chinois.saillance_chinoise(n["annee"], n["mois"], n["jour"], jour_note)
+    for cle in (f"{sc['relation']}_{chinois.ELEMENT_SLUG[sc['element_du_jour']]}",
+                sc["relation"]):
+        rel = corpus.lire("chinois_detail", "relations", cle)
+        if isinstance(rel, dict):
+            voix.append(rel)
+    for num in (annee_personnelle(n["jour"], n["mois"], jour_note.year),
+                mois_personnel(n["jour"], n["mois"], jour_note.year, jour_note.month)):
+        for table in ("annee_numeros", "mois_numeros"):
+            txt = corpus.lire("titres_voix", "numero", table, num)
+            if isinstance(txt, dict):
+                voix.append(txt)
+    for quel in ("annee", "mois"):
+        txt = corpus.lire("titres_voix", "numero", quel)
+        if isinstance(txt, dict):
+            voix.append(txt)
+    for quel in ("nouvelle", "pleine"):
+        txt = corpus.lire("titres_voix", "lune", quel)
+        if isinstance(txt, dict):
+            voix.append(txt)
+    for bloc in voix:
+        if bloc.get("geste") == geste:
             miroir = (bloc.get("miroir") or "").strip()
             if miroir:
                 return miroir
     return None
 
 
-def completer_journal_retro():
+def completer_journal_retro(rapport=False):
     """Regreffe le miroir aux notes du journal qui n'ont que leur geste.
 
     Appelé au démarrage (app.py en dev, wsgi.py en prod) : au premier boot qui
     suit le déploiement, toutes les notes des usagers récupèrent le message
     complet qu'elles montraient à l'écriture. Ne bloque JAMAIS l'app (données
     d'usage) : un fichier abîmé est sauté, pas « réparé » à la va-vite.
+
+    Renvoie le nombre de notes complétées à cette exécution ; rapport=True
+    imprime le détail (carnets vus, déjà complètes, complétées, gestes
+    introuvables) — pour lire ce que le rattrapage a fait dans les logs de
+    boot au lieu de le deviner.
     """
+    stats = {"carnets": 0, "deja": 0, "tirages": 0, "sans_source": 0,
+             "completees": 0, "introuvables": 0, "abimes": 0}
     completees = 0
     for chemin in sorted(JOURNAL.glob("*.json")):
         try:
             entrees = json.loads(chemin.read_text(encoding="utf-8"))
             if not isinstance(entrees, list):
+                stats["abimes"] += 1
                 continue
+            profil = _charger(chemin.stem)
+            stats["carnets"] += 1
             modifie = False
             for e in entrees:
-                if not isinstance(e, dict) or e.get("source_miroir") or e.get("tirage"):
-                    continue  # déjà complète — ou note de tirage (déjà un instantané lisible)
+                if not isinstance(e, dict):
+                    stats["abimes"] += 1
+                    continue
+                if e.get("source_miroir"):
+                    stats["deja"] += 1          # déjà complète (ou déjà rattrapée)
+                    continue
+                if e.get("tirage"):
+                    stats["tirages"] += 1       # un instantané lisible déjà stocké
+                    continue
                 geste = (e.get("source_texte") or "").strip()
                 if not geste or not e.get("source_nom"):
+                    stats["sans_source"] += 1   # écrite hors crayon : rien à regreffer
                     continue
-                profil = _charger(chemin.stem)
-                if not profil or not profil.get("complet"):
-                    continue
-                jour_note = dt.datetime.fromisoformat(e["cree_le"]).date()
-                miroir = _miroir_perdu(profil, jour_note, e["source_nom"], geste)
+                try:
+                    jour_note = dt.datetime.fromisoformat(e["cree_le"]).date()
+                    miroir = _miroir_perdu(profil, jour_note, e["source_nom"], geste) \
+                        if profil and profil.get("complet") else None
+                except (ValueError, KeyError):
+                    miroir = None
                 if miroir:
                     e["source_miroir"] = miroir[:MAX_JOURNAL_SOURCE_TEXTE]
                     modifie = True
                     completees += 1
+                else:
+                    stats["introuvables"] += 1  # jamais deviner : la note reste telle quelle
             if modifie:
                 _ecrire(chemin, entrees)
         except (OSError, ValueError, KeyError):
-            continue  # un fichier abîmé n'empêche pas les autres
+            stats["abimes"] += 1                # un fichier abîmé n'empêche pas les autres
+    if rapport:
+        print(f"[journal] rattrapage : {stats['carnets']} carnet(s) — "
+              f"{stats['deja']} déjà complète(s), {stats['completees']} complétée(s) à l'instant, "
+              f"{stats['introuvables']} geste(s) introuvable(s), {stats['tirages']} tirage(s) intouché(s), "
+              f"{stats['sans_source']} sans message d'origine, {stats['abimes']} entrée(s) abîmée(s).")
     return completees
 
 
@@ -3754,9 +3811,7 @@ if __name__ == "__main__":
               "repasser DEV_MARTIN_VOIT_TOUS_LES_THEMES à False avant mise en ligne.")
     _demarrer_scheduler()
     # Le rattrapage rétroactif du journal (notes d'avant le 2026-11-25 : regreffer
-    # le miroir manquant) — idempotent, ne coûte qu'au premier boot utile.
-    n_notes = completer_journal_retro()
-    if n_notes:
-        print(f"[journal] {n_notes} note(s) complétée(s) : le message d'origine "
-              "est regreffé (miroir retrouvé par le Jour recalculé).")
+    # le miroir manquant) — idempotent, ne coûte qu'au premier boot utile. Le
+    # rapport passe dans la console : on lit ce qu'il a fait, on ne devine pas.
+    completer_journal_retro(rapport=True)
     app.run(host="0.0.0.0", port=5073, debug=False)

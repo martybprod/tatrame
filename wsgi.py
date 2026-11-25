@@ -18,8 +18,8 @@ from app import app, _demarrer_scheduler, completer_journal_retro
 # Un seul worker (cf. avertissement ci-dessus) : ce démarrage a donc lieu une fois.
 _demarrer_scheduler()
 # Rattrapage rétroactif du journal (notes d'avant le 2026-11-25 : regreffer le
-# miroir manquant) — idempotent, il ne fait rien au boot suivant.
-completer_journal_retro()
+# miroir manquant) — idempotent ; le rapport passe dans les logs du conteneur.
+completer_journal_retro(rapport=True)
 
 # ── L'app sœur Tarot, montée sous /tarot (bêta) ──────────────────────────
 # Elle vit dans tarot/ de ce dépôt et sait tourner seule (voir tarot/app.py) :

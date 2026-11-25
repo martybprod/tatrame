@@ -70,10 +70,15 @@ self.addEventListener("activate", (event) => {
 // v4 → v5 (pages, jour) le 2026-11-16 : le bundle du jour passe en « cache du
 // jour d'abord ». Le cache STATIQUE garde son nom : les ?v= le rendent déjà
 // immuable, inutile de faire retélécharger les images.
+// v5 → v6 (pages) le 2026-11-25 : le journal ne changeait NI sw.js NI static/
+// (templates + app seulement) — les appareils servaient donc l'ancienne page
+// (« aucune différence », le retour du piège du 2026-11-16). La page porte
+// désormais la réouverture complète des notes (carte cliquable : date +
+// message d'origine + note).
 // Ces trois noms sont LUS par app.py (noms_caches) et injectés dans la page :
 // une seule source — precharger_cache() a écrit des mois dans des caches
 // que ce worker ne lisait plus.
-const CACHE_PAGES = "tatrame-pages-v5";     // la page elle-même (SWR)
+const CACHE_PAGES = "tatrame-pages-v6";     // la page elle-même (SWR)
 const CACHE_STATIQUE = "tatrame-statique-v4"; // ?v= — immuable, cache-d'abord
 const CACHE_JOUR = "tatrame-jour-v5";       // le bundle du jour (repli hors-ligne)
 
