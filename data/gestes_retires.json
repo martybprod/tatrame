@@ -1,0 +1,126 @@
+{
+ "Appelle quelqu'un dont l'état t'a traversé l'esprit ces temps-ci. Rien de spécial à dire. La justesse est là aujourd'hui. Autant qu'elle serve à quelqu'un.": {
+  "miroir": "Il y a de la place à l'intérieur aujourd'hui. Les gens se lisent sans effort, les états aussi. Cette disponibilité passe très bien pour une journée ordinaire.",
+  "table": "data/corpus/transits.json"
+ },
+ "Choisis aujourd'hui, entre deux options d'argent, celle qui te laisse le plus tranquille, pas la plus optimale.": {
+  "miroir": "L'argent ne te pèse pas émotionnellement aujourd'hui, pour une fois. La meilleure boussole en argent reste souvent est-ce que ça m'aide à bien dormir la nuit, plus qu'un calcul parfait sur papier.",
+  "table": "data/corpus/fil.json"
+ },
+ "Choisis un seul plaisir aujourd'hui plutôt que d'essayer de tout garder à la fois. Renonce à voix haute à l'autre option, même si ça pince un peu. Le choix libère plus qu'il ne coûte.": {
+  "miroir": "Deux choses que tu aimes tirent aujourd'hui chacune de leur côté. Un plaisir et une économie, un lien et un autre, et tu sens qu'il va falloir laisser filer l'un pour garder l'autre.",
+  "table": "data/corpus/transits.json"
+ },
+ "Choisis une chose que tu veux voir exister dans deux ans et donne-lui son premier quart d'heure aujourd'hui. Ce genre de terrain ne reste pas meuble longtemps.": {
+  "miroir": "La durée travaille pour toi ces mois-ci. Ce que tu poses tient, les structures acceptent d'être bâties. Rien n'insiste, et c'est pour ça qu'on passe à côté.",
+  "table": "data/corpus/transits.json"
+ },
+ "Choisis une chose à faire aujourd'hui à ta manière, c'est-à-dire bien, du début à la fin. Tu peux la faire à ton rythme, sans te comparer. C'est comme ça que tu te reconnais toi-même.": {
+  "miroir": "Aujourd'hui, ton goût des choses bien faites se voit. Ta manière de dire les choses nettement peut se faire remarquer, ton besoin de clarté peut guider tes échanges, et tu peux avoir peu de temps pour les demi-mesures. C'est une partie réelle de qui tu es, et les gens peuvent compter dessus. Ce qui rend ce côté-là encore plus fort, c'est quand il vient avec de la douceur.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Commence ta journée par la chose que tu sais le mieux faire, même si elle semble banale. Ce premier pas facile peut te mettre en confiance pour le reste. Les grandes journées commencent souvent par un geste que tu connais déjà par cœur.": {
+  "miroir": "Aujourd'hui, ce que tu sais déjà faire te porte. Une habitude que tu suis depuis longtemps peut se révéler très utile, une tâche familière peut avancer sans effort, et les gens autour de toi peuvent compter sur toi sans même le dire. Tu es sur ton terrain, et ça se sent. Le fait de partir de ce que tu maîtrises déjà te donne une base solide pour le reste de la journée.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Dis à quelqu'un ce que tu apprécies chez lui, précisément, sans l'emballer dans une blague. Aujourd'hui ça passe tout seul. Demain ce sera plus cher.": {
+  "miroir": "Le lien coule tout seul aujourd'hui. On te trouve agréable sans que tu aies rien fait pour. C'est si facile qu'on oublie de s'en servir.",
+  "table": "data/corpus/transits.json"
+ },
+ "Fais aujourd'hui ta part le mieux possible, et laisse la question du contrôle de côté pour une fois.": {
+  "miroir": "Un rapport de force se joue aujourd'hui autour de ton travail, qui décide, qui a le dernier mot. Tu as droit à ton travail, pas aux fruits de ton travail, et ça suffit pour tenir même quand le contrôle t'échappe.",
+  "table": "data/corpus/fil.json"
+ },
+ "Fais la chose que tu repousses parce qu'elle t'ennuie. Pas la grande, la pénible. Le coût est bas aujourd'hui, c'est tout l'intérêt de la journée.": {
+  "miroir": "Agir demande peu aujourd'hui. L'obstacle qui te bloquait la semaine dernière a la même taille, mais il pèse moins. Et rien ne te le signalera.",
+  "table": "data/corpus/transits.json"
+ },
+ "Garde ton plan de départ, mais tiens-le à bout de bras, avec de la place pour les changements. Tu peux choisir la seule chose qui doit vraiment rester fixe aujourd'hui, et laisser le reste suivre. Ce qui bouge un peu n'empêche rien d'arriver.": {
+  "miroir": "Aujourd'hui, les plans peuvent changer sans prévenir. Une heure peut se déplacer, une personne peut annuler à la dernière minute, et tu peux avoir l'impression de réorganiser sans arrêt. Ça peut te sembler flou, et tu peux préférer quand c'est clair et écrit. Ces changements-là ne viennent pas de toi, et ils ne disent rien de ta journée entière. Le fait de t'adapter une fois à la fois suffit largement.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Isole-toi un moment sans but précis, même dix minutes. Pas pour produire quoi que ce soit. Juste pour laisser ton dedans se retrouver, comme on remet de l'ordre dans une pièce délaissée.": {
+  "miroir": "Une fois par mois, ton énergie revient à son point de départ. C'est une journée de vraie recharge, où ton besoin profond se fait sentir clairement, sans que tu aies à te l'expliquer.",
+  "table": "data/corpus/transits.json"
+ },
+ "Laisse sortir ce qui est bon aujourd'hui, un compliment, un souvenir drôle, une invitation. Tu peux le dire à la première personne qui passe par ta tête. Ta manière d'être là égaye plus de journées que tu ne le crois.": {
+  "miroir": "Aujourd'hui, ta chaleur naturelle se fait voir. Ton rire peut arriver plus facilement, tes opinions peuvent se dire avec plus d'éclat, et les gens peuvent se sentir plus vivants quand ils sont avec toi. C'est ta manière à toi de réchauffer une pièce, et ça marche sans effort. Le fait de le savoir te permet d'en profiter sans te forcer.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Mets en marche une chose que tu gardais en attente, même en petit. Un premier mot écrit, un premier appel, un premier pas dehors. Ce qui pousse aujourd'hui peut continuer à pousser dans les jours qui viennent.": {
+  "miroir": "Aujourd'hui, ce que tu commences peut avancer plus vite que prévu. Une idée peut trouver sa forme rapidement, un projet peut démarrer sans obstacle, et ton corps peut te demander de bouger, de créer, de faire. Cette envie d'avancer est à toi, et elle est bonne. Le fait de commencer aujourd'hui donne une longueur d'avance à ce qui compte pour toi.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Offre-toi le rituel qui te sécurise depuis toujours, celui que tu juges un peu enfantin. Une recette précise, un objet, une habitude du soir. Il rend plus aujourd'hui qu'il ne coûte.": {
+  "miroir": "Ce que tu ressens et ce qui te rassure marchent dans le même sens aujourd'hui, sans accroc. Le réconfort habituel fonctionne encore mieux que prévu, presque sans effort de ta part.",
+  "table": "data/corpus/transits.json"
+ },
+ "Partage ce qui te fait plaisir aujourd'hui, une chanson, une photo, une nouvelle qui te réjouit. Tu peux l'envoyer à quelqun qui aura de la joie à le recevoir. Ce qui est partagé aujourd'hui peut éclairer la journée de plus d'une personne.": {
+  "miroir": "Aujourd'hui, ta bonne humeur peut se propager. Un mot gai peut dérider une journée, un rire peut faire baisser la pression, et les gens peuvent aimer être avec toi sans raison précise. Tu n'as pas à faire d'efforts pour plaire, il suffit que tu sois toi. Cette chaleur-là est réelle, et elle fait du bien autour de toi.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Propose l'idée un peu ambitieuse que tu gardes pour toi depuis un moment. Le climat s'y prête aujourd'hui, profites en pour la dire à voix haute.": {
+  "miroir": "L'humeur du jour et ta confiance marchent dans le même sens sans effort. Voir grand te coûte moins cher que d'habitude, presque naturellement.",
+  "table": "data/corpus/transits.json"
+ },
+ "Prévois plus de temps que tu ne crois nécessaire entre deux choses, et laisse les retards exister sans les poursuivre. Tu peux utiliser ces moments d'attente pour respirer ou pour te lever et bouger. La journée avance quand même, à son rythme.": {
+  "miroir": "Aujourd'hui, les choses peuvent aller plus lentement que tu ne l'aimerais. Un déplacement peut prendre du retard, une personne peut tarder à répondre, et tes projets du jour peuvent demander plus de temps que prévu. Ça peut te sembler lourd, et tu peux avoir envie de tout pousser. Ces lenteurs ne durent pas, et elles ne remettent rien en question de ce que tu as bâti.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Quand le sol bouge, reviens aux gestes que tu connais bien. Trois respirations lentes, les pieds bien au plancher, une petite chose à finir. C'est comme ça que tu retrouves ton équilibre, un pas à la fois.": {
+  "miroir": "Aujourd'hui, tes repères habituels changent. Un plan ne se déroule plus comme prévu, une réponse que tu attendais prend une autre direction, et une ancienne certitude commence à être remise en question. Tu as l'impression que le sol bouge sous tes pieds et tu cherches un nouvel équilibre. Ce changement peut être déstabilisant, mais il fait aussi émerger quelque chose que tu n'avais peut-être pas encore remarqué. Cette chose mérite que tu y prêtes attention.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Quand quelque chose t'irrite, laisse passer quelques secondes avant de répondre, et détends tes épaules au passage. Tu peux aussi t'éloigner quelques minutes de ce qui chauffe, sans en faire toute une histoire. La plupart de ces petites tensions retombent toutes seules.": {
+  "miroir": "Aujourd'hui, de petites tensions peuvent monter plus vite que d'habitude. Une remarque peut tomber mal, une attente peut se prolonger, et ton impatience peut se faire sentir avant même que tu la remarques. Ça peut te surprendre, parce que ce n'est pas ton habitude. Ces étincelles-là s'éteignent vite quand tu les prends au bon moment.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Quand tu sens que ça s'emballe, tu peux t'accorder une pause avant de répondre. Quelques minutes suffisent, le temps de boire un verre d'eau ou de marcher un peu. Tu peux revenir avec la même conviction, et des mots plus faciles à recevoir.": {
+  "miroir": "Aujourd'hui, tout peut s'emballer un peu, autour de toi comme en toi. Une discussion peut monter plus vite que prévu, une impatience peut te prendre tout à coup, et tu peux avoir envie d'agir sur-le-champ. Ça peut te sembler plus fort que toi, et tu peux te demander comment garder ton calme. Mais cette montée-là montre ce qui compte vraiment pour toi. Le fait de la ralentir un peu, au lieu de l'étouffer, permet de t'en servir.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Relis une seule chose avant de l'envoyer ou de la signer, la plus importante de ta journée. Tu peux aussi poser une question au lieu de deviner, quand quelque chose n'est pas clair. Un mot de plus vérifié vaut mieux qu'un malentendu.": {
+  "miroir": "Aujourd'hui, les détails peuvent coincer un peu. Un mot peut être mal compris dans un message, un chiffre peut se glisser de travers, et une consigne peut prêter à confusion. Ça peut t'agacer, surtout si tu aimes que ce soit clair. Ce sont des petits riens, et le fait de vérifier une fois de plus évite presque tous les problèmes.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Remarque une fois aujourd'hui où tu es la personne stable du groupe, celle qui écoute ou qui tient le rythme. Tu peux le noter dans un coin, sans en faire toute une analyse. C'est une de tes forces, et la voir clairement permet de mieux t'en servir.": {
+  "miroir": "Aujourd'hui, ce qui te ressemble le plus, c'est ta constance. Ta manière de tenir tes engagements peut se voir, ton besoin de choses réelles peut guider tes choix, et les gens peuvent venir te chercher quand il leur faut quelqu'un de fiable. Tu es comme ça tous les jours, mais aujourd'hui, ça se remarque. Le fait de le voir toi aussi vaut le détour.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Retire une chose de ta journée. Une seule, la moins nécessaire. Tu ne renonces à rien, tu fais de la place à ton besoin de repos. Il en demande peu, mais il en demande.": {
+  "miroir": "Ton dedans et ton agenda ne vont pas dans le même sens. C'est le dedans qui encaisse, en silence, sans rien réclamer.",
+  "table": "data/corpus/transits.json"
+ },
+ "S'il y a une chose claire à dire à quelqu'un, tu peux la dire aujourd'hui, par exemple remercier une personne pour quelque chose de précis. Tu peux nommer exactement ce qui t'a aidé ou fait plaisir. Un mot précis dit aujourd'hui peut compter longtemps.": {
+  "miroir": "Aujourd'hui, les mots passent bien. Une conversation peut être claire dès le départ, quelqu'un peut te donner son avis franchement et avec respect, et vous pouvez vous entendre rapidement sur ce qui compte. Tu as l'impression d'être sur la même longueur que les personnes autour de toi, et c'est agréable. Quand les choses se disent clairement comme aujourd'hui, ça renforce ce qui va bien.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "S'il y a une idée que tu gardes pour toi depuis un moment, tu peux la partager aujourd'hui avec quelqu'un de confiance. Vous pouvez en parler simplement, sans plan précis, juste pour la voir grandir. C'est souvent à deux que les idées commencent vraiment à pousser.": {
+  "miroir": "Aujourd'hui, les bonnes idées peuvent venir à deux. Une personne peut t'encourager au bon moment, un projet commun peut démarrer plus facilement que prévu, et une relation peut faire un pas en avant, comme une amitié qui devient plus proche. Tu sens que ça avance et que tu n'es pas seul pour le faire grandir. Le fait de commencer quelque chose à deux donne de l'élan.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Si les choses ne suivent pas ton rythme, tu peux laisser couler un peu. Tu peux prendre une grande respiration, laisser passer la vague, et revenir plus tard. Le fait de ne pas forcer laisse souvent la place aux choses de se remettre en ordre.": {
+  "miroir": "Aujourd'hui, les choses peuvent changer de direction sans prévenir. Un plan peut se défaire tout seul, une humeur peut monter et descendre, et tu peux avoir l'impression de nager contre le courant. Ça peut te sembler instable, et tu peux te demander où tu vas. Mais comme l'eau, les choses trouvent un chemin, même quand ça ne va pas tout droit. La journée peut prendre une forme différente de celle que tu avais imaginée, et elle peut être tout aussi bonne.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Si quelqu'un t'a aidé aujourd'hui, tu peux le remercier simplement, avec tes propres mots. Tu peux aussi écrire à une personne qui compte pour toi, juste pour prendre de ses nouvelles. Les relations solides se construisent avec des gestes simples comme celui-là.": {
+  "miroir": "Aujourd'hui, tes relations proches te soutiennent. Quelqu'un peut t'offrir son aide sans que tu aies à la demander, une personne que tu connais depuis longtemps peut être là au bon moment, et une promesse peut être tenue sans discussion. Tu as le sentiment d'être sur un terrain solide avec les gens que tu aimes, et c'est reposant. Cette stabilité ne se voit pas toujours, mais aujourd'hui, tu peux t'en servir pour avancer.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Si tu repousses un appel ou un message, tu peux le faire aujourd'hui, en quelques mots simples. Ça peut être une nouvelle, une question, ou juste des nouvelles. Les relations se sentent proches quand on leur laisse couler un petit moment ensemble.": {
+  "miroir": "Aujourd'hui, l'entente peut venir toute seule. Une personne peut te comprendre à demi-mot, un malentendu vieux de plusieurs jours peut se dissoudre en une phrase, et vous pouvez passer du bon temps sans organiser grand-chose. Tu as l'impression que les choses circulent, et c'est reposant. Le fait de ne rien forcer laisse l'entente venir à toi.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Si tu sens que tu veux tout faire, tu peux commencer par choisir une seule chose. Tu peux la noter sur papier, et lui donner toute ta place aujourd'hui. Les autres peuvent attendre leur tour, sans que tu aies l'impression de les abandonner.": {
+  "miroir": "Aujourd'hui, tu peux avoir envie d'avancer sur plusieurs choses en même temps. Un nouveau projet peut te tenter, des idées peuvent arriver en même temps, et tu peux vouloir tout commencer maintenant. Mais le jour pousse dans un autre sens que le tien, et chaque chose peut te sembler plus lente que prévu. Cette friction peut être frustrante, mais elle aide aussi à choisir. Tu ne peux pas tout faire aujourd'hui, et c'est très bien de choisir ce qui compte le plus.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Si tu sens que ça déborde un peu, tu peux t'accorder un moment tranquille, dans un endroit calme ou avec une personne qui te fait du bien. Tu peux aussi écrire ce que tu ressens, deux lignes suffisent. C'est ta manière à toi de revenir au calme.": {
+  "miroir": "Aujourd'hui, ta sensibilité aux choses est plus vive. Tu peux remarquer les humeurs autour de toi avant même les mots, tes envies peuvent changer de forme en cours de journée, et tu peux ressentir les choses plus profondément que d'habitude. C'est une manière à toi d'être attentif au monde, et elle est précieuse. Le fait de la connaître te permet de prendre soin de toi quand c'est trop.",
+  "table": "data/corpus/chinois_detail.json"
+ },
+ "Termine une chose que tu prolonges par habitude. Un abonnement, un dossier, une politesse. Le moment coûte peu. Ce n'est pas toujours le cas.": {
+  "miroir": "Le fond bouge sans violence en ce moment. Ce qui doit finir peut finir proprement, ce qui doit changer change sans qu'il faille tout casser. La porte est entrouverte.",
+  "table": "data/corpus/transits.json"
+ }
+}

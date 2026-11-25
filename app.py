@@ -998,6 +998,19 @@ def api_journal_supprimer(profil_id, entree_id):
 # complète est ignorée, une journée introuvable (profil disparu, corpus changé)
 # est laissée telle quelle, jamais « complétée » à côté.
 
+# Le registre des gestes retirés (outils/registre_gestes.py) : quand un geste du
+# corpus a été reformulé depuis août, les vieilles notes qui le portaient ne
+# trouvent plus leur miroir nulle part dans le corpus actuel — ce registre garde
+# la dernière paire (geste → miroir) connue de l'histoire du corpus. Versionné,
+# donc dans l'image ; absent ou abîmé, le rattrapage continue sans lui.
+try:
+    _REGISTRE_GESTES_RETIRES = json.loads(
+        (RACINE / "data" / "gestes_retires.json").read_text(encoding="utf-8"))
+    if not isinstance(_REGISTRE_GESTES_RETIRES, dict):
+        _REGISTRE_GESTES_RETIRES = {}
+except (OSError, json.JSONDecodeError):
+    _REGISTRE_GESTES_RETIRES = {}
+
 def _miroir_perdu(profil, jour_note, source_nom, geste):
     """Le miroir d'origine d'une note, recalculé — ou None s'il est introuvable."""
     d = _jour_pour(profil, jour_note)
@@ -1055,6 +1068,14 @@ def _miroir_perdu(profil, jour_note, source_nom, geste):
             miroir = (bloc.get("miroir") or "").strip()
             if miroir:
                 return miroir
+    # Dernier recours : le geste a été RETIRÉ du corpus depuis la note (une
+    # reformulation, une remise à la charte) — le registre garde sa dernière
+    # paire (geste → miroir) connue de l'histoire du corpus.
+    retire = _REGISTRE_GESTES_RETIRES.get(geste)
+    if retire:
+        miroir = (retire.get("miroir") or "").strip()
+        if miroir:
+            return miroir
     return None
 
 

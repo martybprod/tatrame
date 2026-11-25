@@ -209,3 +209,31 @@ def test_un_profil_inconnu_laisse_ses_notes_intactes(espace):
     entree = json.loads(
         (espace / "journal" / "profil-efface.json").read_text(encoding="utf-8"))[0]
     assert "source_miroir" not in entree
+
+
+def test_un_geste_retire_du_corpus_est_dans_le_registre(espace, monkeypatch):
+    """Le geste a été reformulé depuis la note : il n'existe plus dans aucun
+    bloc du Jour — le registre (outils/registre_gestes.py, généré depuis
+    l'histoire du corpus) garde sa dernière paire geste → miroir connue."""
+    _ecrire_profil(espace / "profils")
+    monkeypatch.setattr(application, "_REGISTRE_GESTES_RETIRES", {
+        "Choisis aujourd'hui, entre deux options d'argent, celle qui te laisse le plus léger.":
+            {"miroir": "L'argent demandait sa part de décision ce mois-ci.",
+             "table": "data/corpus/fil.json"},
+    })
+    note = {"id": "a9", "texte": "Ma note", "cree_le": "2026-09-10T09:30:00-04:00",
+            "source_nom": "Famille",
+            "source_texte": "Choisis aujourd'hui, entre deux options d'argent, celle qui te laisse le plus léger."}
+    (espace / "journal" / "jean-journal.json").write_text(
+        json.dumps([note], ensure_ascii=False), encoding="utf-8")
+    assert application.completer_journal_retro() == 1
+    entree = json.loads(
+        (espace / "journal" / "jean-journal.json").read_text(encoding="utf-8"))[0]
+    assert entree["source_miroir"] == "L'argent demandait sa part de décision ce mois-ci."
+
+
+def test_le_registre_reel_est_lisible():
+    """Le registre embarqué : chaque geste retiré porte un miroir, sinon il
+    n'aurait pas sa place dedans (le rattrapage n'en tirerait rien)."""
+    for geste, info in application._REGISTRE_GESTES_RETIRES.items():
+        assert isinstance(info, dict) and info.get("miroir"), geste[:50]
