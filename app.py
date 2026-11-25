@@ -962,9 +962,16 @@ def api_journal_ajouter(profil_id):
     }
     source_nom = (body.get("source_nom") or "").strip()[:MAX_JOURNAL_SOURCE_NOM]
     source_texte = (body.get("source_texte") or "").strip()[:MAX_JOURNAL_SOURCE_TEXTE]
+    # Le message COMPLET d'où venait le crayon (le miroir au-dessus du geste) :
+    # sans lui, la note rouverte ne montrait que l'action, pas ce qui la portait
+    # (retour bêta, 2026-11-25). Rétroactif pour les notes d'avant : voir
+    # completer_journal_retro().
+    source_miroir = (body.get("source_miroir") or "").strip()[:MAX_JOURNAL_SOURCE_TEXTE]
     if source_nom and source_texte:
         entree["source_nom"] = source_nom
         entree["source_texte"] = source_texte
+        if source_miroir:
+            entree["source_miroir"] = source_miroir
     if tirage:
         entree["tirage"] = tirage
     entrees.append(entree)
@@ -980,6 +987,81 @@ def api_journal_supprimer(profil_id, entree_id):
         return jsonify({"erreur": "introuvable"}), 404
     _ecrire(_chemin_journal(profil_id), restantes)
     return jsonify({"ok": True})
+
+
+# --- Rattrapage rétroactif du journal -----------------------------------------
+# Les notes prises AVANT le 2026-11-25 ne portent que le geste (la partie
+# « En action ») dans source_texte : à la réouverture, on voyait l'action sans
+# le message qui la portait. Le Jour est DÉTERMINISTE (même profil + même date
+# = mêmes textes, c'est la thèse de l'app) : on recalcule donc la journée de la
+# note et on regreffe le miroir du bloc retrouvé. Idempotent — une note déjà
+# complète est ignorée, une journée introuvable (profil disparu, corpus changé)
+# est laissée telle quelle, jamais « complétée » à côté.
+
+def _miroir_perdu(profil, jour_note, source_nom, geste):
+    """Le miroir d'origine d'une note, recalculé — ou None s'il est introuvable."""
+    d = _jour_pour(profil, jour_note)
+    candidats = [("Aujourd'hui", d.get("titre") or {})]
+    t = d.get("textes") or {}
+    for cle, nom in (("transit", "Ce qui domine aujourd'hui"),
+                     ("lune_maison", "La Lune aujourd'hui"),
+                     ("phase", "Le moment du cycle")):
+        if isinstance(t.get(cle), dict):
+            candidats.append((nom, t[cle]))
+    for cle in ("fil", "mois_perso", "annee_perso"):
+        # Le nom affiché varie (label du domaine, « Ton mois 5 · … ») : ces blocs
+        # ne se reconnaissent qu'à leur geste.
+        if isinstance(t.get(cle), dict):
+            candidats.append((None, t[cle]))
+    # D'abord le bloc NOMMÉ par la note (et qui porte encore ce geste), sinon le
+    # premier bloc qui porte exactement ce geste — les libellés d'angle ont pu
+    # varier entre la prise de note et aujourd'hui.
+    pour_nom = [b for nom, b in candidats
+                if nom == source_nom and b.get("geste") == geste]
+    pour_geste = [b for _nom, b in candidats if b.get("geste") == geste]
+    for groupe in (pour_nom, pour_geste):
+        for bloc in groupe:
+            miroir = (bloc.get("miroir") or "").strip()
+            if miroir:
+                return miroir
+    return None
+
+
+def completer_journal_retro():
+    """Regreffe le miroir aux notes du journal qui n'ont que leur geste.
+
+    Appelé au démarrage (app.py en dev, wsgi.py en prod) : au premier boot qui
+    suit le déploiement, toutes les notes des usagers récupèrent le message
+    complet qu'elles montraient à l'écriture. Ne bloque JAMAIS l'app (données
+    d'usage) : un fichier abîmé est sauté, pas « réparé » à la va-vite.
+    """
+    completees = 0
+    for chemin in sorted(JOURNAL.glob("*.json")):
+        try:
+            entrees = json.loads(chemin.read_text(encoding="utf-8"))
+            if not isinstance(entrees, list):
+                continue
+            modifie = False
+            for e in entrees:
+                if not isinstance(e, dict) or e.get("source_miroir") or e.get("tirage"):
+                    continue  # déjà complète — ou note de tirage (déjà un instantané lisible)
+                geste = (e.get("source_texte") or "").strip()
+                if not geste or not e.get("source_nom"):
+                    continue
+                profil = _charger(chemin.stem)
+                if not profil or not profil.get("complet"):
+                    continue
+                jour_note = dt.datetime.fromisoformat(e["cree_le"]).date()
+                miroir = _miroir_perdu(profil, jour_note, e["source_nom"], geste)
+                if miroir:
+                    e["source_miroir"] = miroir[:MAX_JOURNAL_SOURCE_TEXTE]
+                    modifie = True
+                    completees += 1
+            if modifie:
+                _ecrire(chemin, entrees)
+        except (OSError, ValueError, KeyError):
+            continue  # un fichier abîmé n'empêche pas les autres
+    return completees
 
 
 @app.post("/api/deconnexion")
@@ -3671,4 +3753,10 @@ if __name__ == "__main__":
         print("[dev] ⚠️  martin-boucher voit TOUS les thèmes (mode test) — "
               "repasser DEV_MARTIN_VOIT_TOUS_LES_THEMES à False avant mise en ligne.")
     _demarrer_scheduler()
+    # Le rattrapage rétroactif du journal (notes d'avant le 2026-11-25 : regreffer
+    # le miroir manquant) — idempotent, ne coûte qu'au premier boot utile.
+    n_notes = completer_journal_retro()
+    if n_notes:
+        print(f"[journal] {n_notes} note(s) complétée(s) : le message d'origine "
+              "est regreffé (miroir retrouvé par le Jour recalculé).")
     app.run(host="0.0.0.0", port=5073, debug=False)

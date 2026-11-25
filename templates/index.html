@@ -2645,10 +2645,17 @@ async function chargerEntreesJournal() {
     if (bouton) bouton.onclick = () => supprimerEntreeJournal(e.id);
     // Revoir le message d'origine : instantané figé au moment de l'écriture,
     // rouvert dans le même plein écran (voir ouvrirAnglePlein) — pas un lien
-    // vers la page du jour, qui elle a changé depuis.
+    // vers la page du jour, qui elle a changé depuis. Le message COMPLET quand
+    // la note le porte (miroir + geste, 2026-11-25) ; les notes d'avant,
+    // complétées au démarrage par completer_journal_retro(), se rattrapent ici.
     const source = document.getElementById(`journal-source-${e.id}`);
-    if (source) source.onclick = () =>
-      ouvrirAnglePlein(e.source_nom, `<p class="quoi">${T(e.source_texte)}</p>`);
+    if (source) source.onclick = () => {
+      const corps = e.source_miroir
+        ? `<div class="miroir">${T(e.source_miroir)}</div>
+           <div class="geste" style="margin-top:12px"><strong>${LBL_ACTION} :</strong> ${T(e.source_texte)}</div>`
+        : `<p class="quoi">${T(e.source_texte)}</p>`;
+      ouvrirAnglePlein(e.source_nom, corps);
+    };
   });
 }
 
@@ -2662,6 +2669,11 @@ async function ajouterEntreeJournal() {
     const corps = _journalSource
       ? {texte, source_nom: _journalSource.nom, source_texte: _journalSource.texte}
       : {texte};
+    // Le miroir part seulement quand il complète vraiment le geste (sinon le
+    // serveur ne le stockerait pas, et la note rouverte le lirait en double).
+    if (_journalSource && _journalSource.miroir && _journalSource.miroir !== _journalSource.texte) {
+      corps.source_miroir = _journalSource.miroir;
+    }
     const r = await (await fetch(`/api/journal/${profilId}`, {
       method: 'POST', headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(corps),
@@ -2682,11 +2694,14 @@ async function supprimerEntreeJournal(id) {
 
 // Le message d'où vient le crayon cliqué, pour toute la session d'écriture en
 // cours (voir blocGeste) — null quand le journal s'ouvre sans contexte (lien
-// « Écrire » de Le jour). Envoyé avec la note dans ajouterEntreeJournal.
+// « Écrire » de Le jour). Envoyé avec la note dans ajouterEntreeJournal : le
+// geste (texte) ET le miroir qui le portait (le message complet).
 let _journalSource = null;
 
-function ouvrirJournal(nomOrigine, texteOrigine) {
-  _journalSource = (nomOrigine && texteOrigine) ? {nom: nomOrigine, texte: texteOrigine} : null;
+function ouvrirJournal(nomOrigine, texteOrigine, miroirOrigine) {
+  _journalSource = (nomOrigine && texteOrigine)
+    ? {nom: nomOrigine, texte: texteOrigine, miroir: miroirOrigine || texteOrigine}
+    : null;
   const refHTML = _journalSource ? `<div class="journal-a-propos">
       <span class="lib">À propos de</span>
       <p class="journal-a-propos-nom">${T(_journalSource.nom)}</p>
@@ -2761,15 +2776,18 @@ const ICONE_CRAYON = `<path d="M4 20l0.9-4.1L15.6 5.5a1.8 1.8 0 0 1 2.5 0l0.5 0.
    Aujourd'hui, Ce qui domine, la Lune, la phase, un domaine, le mois, l'année,
    la carte d'accueil). Un seul endroit pour ajouter le crayon du journal —
    discret, à côté du texte, jamais un bouton séparé qui surchargerait. */
-function blocGeste(texte, nomOrigine) {
+function blocGeste(texte, nomOrigine, miroirOrigine) {
   if (!texte) return '';
-  // nomOrigine + texte partent en data-attributs (échappés via T()) plutôt qu'en
-  // arguments inline (le texte du corpus contient apostrophes/guillemets) — lus
-  // par ouvrirJournal au clic pour garder le lien avec le message d'origine.
+  // nomOrigine + texte + miroir partent en data-attributs (échappés via T())
+  // plutôt qu'en arguments inline (le texte du corpus contient
+  // apostrophes/guillemets) — lus par ouvrirJournal au clic pour garder le lien
+  // avec le message d'origine, COMPLET : le miroir au-dessus du geste (sinon la
+  // note rouverte ne montrait que l'action, retour bêta 2026-11-25).
   return `<div class="geste"><strong>${LBL_ACTION} :</strong> ${T(texte)}
     <button type="button" class="crayon-journal" title="Écrire dans le journal"
       aria-label="Écrire dans le journal" data-nom="${T(nomOrigine || '')}" data-texte="${T(texte)}"
-      onclick="event.stopPropagation(); ouvrirJournal(this.dataset.nom, this.dataset.texte);">${icono(ICONE_CRAYON, 20)}</button></div>`;
+      data-miroir="${T(miroirOrigine || '')}"
+      onclick="event.stopPropagation(); ouvrirJournal(this.dataset.nom, this.dataset.texte, this.dataset.miroir);">${icono(ICONE_CRAYON, 20)}</button></div>`;
 }
 
 /* Un tiroir du jour : la pensée reste visible dans l'en-tête (resume), l'action
@@ -2992,7 +3010,7 @@ async function ouvrirDomainePlein(domaine, label) {
     const c = r.texte;
     _cacheDomaines[domaine] = c
       ? `<div class="miroir" style="font-size:16px;margin-bottom:8px">${T(c.miroir)}</div>
-         ${blocGeste(c.geste, label)}
+         ${blocGeste(c.geste, label, c.miroir)}
          ${aide("D'où vient ce conseil ?", "Une strate de coaching distillée de nombreux ouvrages de développement personnel, réécrite dans la voix de Ta Trame. Tu choisis le domaine ; le transit dominant du jour et la phase ou la tonalité choisissent l'entrée à l'intérieur. C'est le ciel qui décide — reviens demain, ce ne sera pas la même.")}`
       : `<p class="quoi">Le corpus n'a pas encore d'entrée pour cette configuration du ciel, ${T(label).toLowerCase()}.</p>`;
   }
@@ -3142,7 +3160,7 @@ async function chargerJour(donnees) {
   const corpsPhase = (ph && ph.miroir) ? `
       <div class="miroir" style="font-size:16px">${T(ph.miroir)}</div>
       <p class="quoi" style="margin:4px 0 10px">${nomPhase(phase)} — ${quoiPhase(phase)}</p>
-      ${blocGeste(ph.geste, 'Le moment du cycle')}
+      ${blocGeste(ph.geste, 'Le moment du cycle', ph.miroir)}
       ${aide("D'où vient la phase ?", "L'écart entre la Lune et le Soleil dans le ciel du jour, divisé en huit parts égales — un calcul purement astronomique, le même pour tout le monde, qui donne les huit phases classiques (nouvelle, premier quartier, pleine…).")}` : '';
   const idEntete = 'jour-entete-clic';
   if (corpsPhase) {
@@ -3214,7 +3232,7 @@ async function chargerJour(donnees) {
         <p class="quoi" style="margin:4px 0 12px">${domTempo}</p></details>` : ''}
       ${cielMene ? noteRepTransit : ''}
       <div class="miroir">${T(titre.miroir)}</div>
-      ${blocGeste(titre.geste, "Aujourd'hui")}
+      ${blocGeste(titre.geste, "Aujourd'hui", titre.miroir)}
       ${cielMene && dom ? domCalc : aide("D'où vient ce message ?", "Chaque jour, plusieurs voix se disputent la place : le ciel du jour (une planète qui touche ton thème de naissance), ta numérologie (le changement d'année ou de mois personnel), la Lune (Nouvelle ou Pleine) et ton signe chinois (la relation entre l'animal du jour et le tien). Ta Trame calcule laquelle est la plus marquante aujourd'hui et retient son message, différent pour chacun selon ton thème.")}
       ${cielMene ? domRetourAide : ''}`;
     const idAuj = 'ac-aujourdhui';
@@ -3258,7 +3276,7 @@ async function chargerJour(donnees) {
       corpsHTML: `<details class="aide"><summary>Dans le ciel</summary><p>${domPhrase}</p></details>
         <p class="quoi">${domTempo}</p>
         ${noteRepTransit}
-        ${blocGeste(t.transit?.geste, "Ce qui domine aujourd'hui")}
+        ${blocGeste(t.transit?.geste, "Ce qui domine aujourd'hui", t.transit?.miroir)}
         ${domCalc}${domRetourAide}`
     })}</div>`;
   }
@@ -3276,7 +3294,7 @@ async function chargerJour(donnees) {
       corpsHTML: `
         <details class="aide"><summary>Dans le ciel</summary><p>La Lune traverse ta maison ${lune.maison} aujourd'hui.</p></details>
         <p class="quoi" style="margin:4px 0 12px">${nomMaison(lune.maison)} — ${quoiMaison(lune.maison)}</p>
-        ${blocGeste(lm.geste, 'La Lune aujourd\'hui')}
+        ${blocGeste(lm.geste, 'La Lune aujourd\'hui', lm.miroir)}
         ${aide("D'où vient ce calcul ?", "La Lune du jour traverse une maison de ton thème de naissance — précise à ta carte, elle seule dit sur quel terrain de ta vie ça se joue aujourd'hui. Elle change de maison environ tous les deux jours et demi.")}`
     })}</div>`;
   }
@@ -3345,7 +3363,7 @@ async function chargerJour(donnees) {
       nom: nomMois,
       resume: T(m.miroir || ''),
       ico: icono(ICONES_JOUR.cycle),
-      corps: `${blocGeste(m.geste, nomMois)}
+      corps: `${blocGeste(m.geste, nomMois, m.miroir)}
         <span class="tout-lire" data-cible="mois">tout lire →</span>
         ${aide("C'est quoi, « ton mois » ?", terme('mois_personnel').quoi, terme('mois_personnel').quand)}`
     });
@@ -3359,7 +3377,7 @@ async function chargerJour(donnees) {
       nom: nomAnnee,
       resume: T(t.annee_perso.miroir || ''),
       ico: icono(ICONES_JOUR.cycle),
-      corps: `${blocGeste(t.annee_perso.geste, nomAnnee)}
+      corps: `${blocGeste(t.annee_perso.geste, nomAnnee, t.annee_perso.miroir)}
         ${t.annee_perso.univers ? `<div class="pont" style="margin-top:14px">
           <span>Le monde, lui, est en année <span class="cible">${t.annee_perso.univers.universelle}</span>${t.annee_perso.univers.titre ? ` — ${T(t.annee_perso.univers.titre.toLowerCase())}` : ''}.</span></div>` : ''}
         <div class="pont carte-annee" style="margin-top:14px;display:flex;align-items:center;gap:14px">
