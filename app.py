@@ -1026,6 +1026,19 @@ def _miroir_perdu(profil, jour_note, source_nom, geste):
         # ne se reconnaissent qu'à leur geste.
         if isinstance(t.get(cle), dict):
             candidats.append((None, t[cle]))
+    # Les DOMAINES d'Explorer : la personne choisit SON domaine — chacun a SA
+    # résolution du jour (même mécanique que /api/explorer), différente du fil
+    # du jour quand la maison de la Lune n'est pas ce domaine. Sans ça, une
+    # note prise sur « Mots » cherchait son geste dans l'entrée d'un autre
+    # domaine (vécu du 2026-11-25 : 6 notes introuvables pour ça).
+    if isinstance(d.get("jour"), dict):
+        j = d["jour"]
+        for slug, label in DOMAINE_LABELS.items():
+            for cle in J._cles_fil_domaine(slug, j.get("dominante"), j.get("phase")):
+                texte = corpus.lire("fil", cle)
+                if texte:
+                    candidats.append((label, texte))
+                    break
     # D'abord le bloc NOMMÉ par la note (et qui porte encore ce geste), sinon le
     # premier bloc qui porte exactement ce geste — les libellés d'angle ont pu
     # varier entre la prise de note et aujourd'hui.

@@ -232,6 +232,37 @@ def test_un_geste_retire_du_corpus_est_dans_le_registre(espace, monkeypatch):
     assert entree["source_miroir"] == "L'argent demandait sa part de décision ce mois-ci."
 
 
+def test_le_rattrapage_trouve_aussi_les_domaines_d_explorer(espace):
+    """La personne choisit SON domaine (Explorer) : chaque domaine a SA
+    résolution du jour, différente du fil du jour. Une note prise sur
+    « Mots » doit retrouver l'entrée du domaine Mots, pas celle du ciel."""
+    profil = _ecrire_profil(espace / "profils")
+    d = application._jour_pour(profil, JOUR_NOTE)
+    j = d["jour"]
+    fil = (d.get("textes") or {}).get("fil") or {}
+    choisi = None
+    for slug, label in application.DOMAINE_LABELS.items():
+        for cle in application.J._cles_fil_domaine(slug, j.get("dominante"), j.get("phase")):
+            texte = application.corpus.lire("fil", cle)
+            if texte and texte.get("miroir") and texte.get("geste") \
+                    and texte.get("geste") != fil.get("geste"):
+                choisi = (label, texte)
+                break
+        if choisi:
+            break
+    if not choisi:
+        pytest.skip("aucun domaine distinct du fil du jour ce jour-là")
+    label, texte = choisi
+    note = {"id": "a10", "texte": "Ma note", "cree_le": "2026-07-16T09:30:00-04:00",
+            "source_nom": label, "source_texte": texte["geste"]}
+    (espace / "journal" / "jean-journal.json").write_text(
+        json.dumps([note], ensure_ascii=False), encoding="utf-8")
+    assert application.completer_journal_retro() == 1
+    entree = json.loads(
+        (espace / "journal" / "jean-journal.json").read_text(encoding="utf-8"))[0]
+    assert entree["source_miroir"] == texte["miroir"]
+
+
 def test_le_registre_reel_est_lisible():
     """Le registre embarqué : chaque geste retiré porte un miroir, sinon il
     n'aurait pas sa place dedans (le rattrapage n'en tirerait rien)."""
