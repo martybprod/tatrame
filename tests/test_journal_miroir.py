@@ -268,3 +268,49 @@ def test_le_registre_reel_est_lisible():
     n'aurait pas sa place dedans (le rattrapage n'en tirerait rien)."""
     for geste, info in application._REGISTRE_GESTES_RETIRES.items():
         assert isinstance(info, dict) and info.get("miroir"), geste[:50]
+
+
+# ------------------------------------------------------- la page d'admin
+
+def test_la_page_admin_du_journal_exige_le_mot_de_passe(client):
+    assert client.get("/admin/journal").status_code == 403
+    # une relance anonyme ne passe pas non plus
+    r = client.post("/admin/journal")
+    assert r.status_code == 403
+
+
+def test_la_page_admin_affiche_l_etat_des_notes(client, espace, monkeypatch):
+    monkeypatch.setattr(application, "PROFILS", espace / "profils")
+    monkeypatch.setattr(application, "JOURNAL", espace / "journal")
+    with client.session_transaction() as sess:
+        sess["admin_ok"] = True
+    _ecrire_profil(espace / "profils")
+    notes = [
+        {"id": "b1", "texte": "Une", "cree_le": "2026-07-16T09:30:00-04:00",
+         "source_nom": "Aujourd'hui", "source_texte": "un geste", "source_miroir": "un miroir"},
+        {"id": "b2", "texte": "Deux", "cree_le": "2026-07-15T09:30:00-04:00",
+         "source_nom": "Aujourd'hui", "source_texte": "un geste perdu"},
+    ]
+    (espace / "journal" / "jean-journal.json").write_text(
+        json.dumps(notes, ensure_ascii=False), encoding="utf-8")
+    page = client.get("/admin/journal").get_data(as_text=True)
+    assert "complète" in page and "GESTE INTROUVABLE" in page
+    assert "un miroir" in page and "un geste perdu" in page
+
+
+def test_la_relance_d_admin_regreffe_une_note(client, espace, monkeypatch):
+    monkeypatch.setattr(application, "PROFILS", espace / "profils")
+    monkeypatch.setattr(application, "JOURNAL", espace / "journal")
+    with client.session_transaction() as sess:
+        sess["admin_ok"] = True
+    profil = _ecrire_profil(espace / "profils")
+    bloc = _bloc_du_jour(profil)
+    note = {"id": "b3", "texte": "Ma note", "cree_le": "2026-07-16T09:30:00-04:00",
+            "source_nom": "Aujourd'hui", "source_texte": bloc["geste"]}
+    (espace / "journal" / "jean-journal.json").write_text(
+        json.dumps([note], ensure_ascii=False), encoding="utf-8")
+    r = client.post("/admin/journal")
+    assert r.status_code == 302
+    entree = json.loads(
+        (espace / "journal" / "jean-journal.json").read_text(encoding="utf-8"))[0]
+    assert entree["source_miroir"] == bloc["miroir"]

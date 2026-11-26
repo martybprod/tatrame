@@ -3671,6 +3671,129 @@ def admin_commentaires():
                                    maj=request.args.get("maj"), jeton=jeton)
 
 
+# La page d'admin du journal : l'état de chaque note face au rattrapage
+# rétroactif — ce que Martin a sous la main quand une note « ne montre que
+# l'action » : quelle note, quel geste, le rattrapage l'a-t-il regreffé, dans
+# quel carnet, et un bouton pour relancer à chaud (sans redéploiement). Fragments
+# seulement : un outil de diagnostic, pas une relecture des carnets.
+
+_ADMIN_JOURNAL_TPL = """<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journal — Ta Trame</title>
+<style>
+body{font-family:-apple-system,sans-serif;max-width:900px;margin:34px auto;padding:0 20px;
+  background:#141110;color:#eee}
+a{color:#e9d494}
+.onglets{margin-bottom:18px}.onglets a{margin-right:16px}
+h2{margin:26px 0 12px}
+button{font:inherit;padding:8px 14px;border-radius:6px;border:none;cursor:pointer;
+  background:#e9d494;color:#141110;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:14px}
+th,td{text-align:left;padding:8px 8px;border-bottom:1px solid #2a2622;vertical-align:top}
+th{color:#999;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.etat-ok{color:#8fbf7f}.etat-ko{color:#d98a7a}.etat-neutre{color:#999}
+.extrait{color:#bbb;font-size:12.5px}
+.bandeau{background:#1c1918;border:1px solid #2a2622;border-radius:8px;padding:10px 14px;margin:14px 0}
+</style>
+</head><body>
+<p class="onglets"><a href="/">← Ta Trame</a> · <a href="/admin/commentaires{% if jeton %}?t={{ jeton }}{% endif %}">Commentaires</a> · <b>Journal</b></p>
+<h2>Journal — le rattrapage rétroactif</h2>
+<div class="bandeau">
+  {{ totals.notes }} note(s) à crayon · <b class="etat-ok">{{ totals.avec_miroir }} complète(s)</b> ·
+  <b class="etat-ko">{{ totals.introuvables }} geste(s) introuvable(s)</b> ·
+  {{ totals.tirages }} tirage(s) · {{ totals.sans_source }} sans message d'origine
+  {% if fait %}<br><small>Dernière relance : {{ fait }} note(s) complétée(s) à l'instant.</small>{% endif %}
+</div>
+<form method="post"><button type="submit">Relancer le rattrapage maintenant</button></form>
+<table>
+<tr><th>Carnet</th><th>Profil</th><th>Date</th><th>Source</th><th>État</th><th>Geste (extrait)</th><th>Miroir (extrait)</th></tr>
+{% for l in lignes %}
+<tr>
+  <td>{{ l.carnet }}</td>
+  <td class="{{ l.profil_classe }}">{{ l.profil_etat }}</td>
+  <td>{{ l.date }}</td>
+  <td>{{ l.source or '—' }}</td>
+  <td class="{{ l.classe }}">{{ l.etat }}</td>
+  <td class="extrait">{{ l.geste }}</td>
+  <td class="extrait">{{ l.miroir }}</td>
+</tr>
+{% else %}
+<p>Aucune note pour l'instant.</p>
+{% endfor %}
+</table>
+</body></html>"""
+
+
+@app.route("/admin/journal", methods=["GET", "POST"])
+def admin_journal():
+    """Réservé à Martin — même porte que /admin/commentaires (formulaire POST,
+    drapeau de session, jeton ?t= accepté). Le bouton de relance exécute
+    completer_journal_retro() dans le conteneur VIVANT : regreffer une note
+    ne doit pas attendre le prochain déploiement."""
+    jeton = request.args.get("t", "")
+    if request.method == "POST":
+        if request.form.get("mdp") == ADMIN_PASSWORD:
+            session["admin_ok"] = True
+            session.permanent = True
+            return redirect(f"/admin/journal?t={jeton}")
+        if not _est_admin():
+            return render_template_string(_ADMIN_LOGIN_TPL), 403
+        fait = completer_journal_retro()
+        return redirect(f"/admin/journal?t={jeton}&fait={fait}")
+    if not _est_admin():
+        return render_template_string(_ADMIN_LOGIN_TPL), 403
+    lignes = []
+    totals = {"notes": 0, "avec_miroir": 0, "introuvables": 0,
+              "sans_source": 0, "tirages": 0}
+    for chemin in sorted(JOURNAL.glob("*.json")):
+        try:
+            entrees = json.loads(chemin.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if not isinstance(entrees, list):
+            continue
+        carnet = chemin.stem
+        profil = _charger(carnet)
+        if profil is None:
+            profil_etat, profil_classe = "absent", "etat-ko"
+        elif not profil.get("complet"):
+            profil_etat, profil_classe = "incomplet", "etat-ko"
+        else:
+            profil_etat, profil_classe = "✓", "etat-ok"
+        for e in sorted(entrees, key=lambda x: x.get("cree_le", ""), reverse=True):
+            if not isinstance(e, dict):
+                continue
+            geste = (e.get("source_texte") or "").strip()
+            miroir = (e.get("source_miroir") or "").strip()
+            if e.get("tirage"):
+                etat, classe = "tirage (résumé embarqué)", "etat-neutre"
+                totals["tirages"] += 1
+            elif not e.get("source_nom") or not geste:
+                etat, classe = "sans message d'origine", "etat-neutre"
+                totals["sans_source"] += 1
+            elif miroir:
+                etat, classe = "complète", "etat-ok"
+                totals["avec_miroir"] += 1
+            else:
+                etat, classe = "GESTE INTROUVABLE", "etat-ko"
+                totals["introuvables"] += 1
+            if e.get("source_nom") and geste and not e.get("tirage"):
+                totals["notes"] += 1
+            lignes.append({
+                "carnet": carnet,
+                "profil_etat": profil_etat, "profil_classe": profil_classe,
+                "date": (e.get("cree_le") or "")[:16].replace("T", " "),
+                "source": e.get("source_nom") or "",
+                "etat": etat, "classe": classe,
+                "geste": geste[:70] + ("…" if len(geste) > 70 else ""),
+                "miroir": (miroir[:70] + ("…" if len(miroir) > 70 else "")) if miroir else "—",
+            })
+    lignes.sort(key=lambda l: l["date"], reverse=True)
+    return render_template_string(_ADMIN_JOURNAL_TPL, lignes=lignes,
+                                   totals=totals, fait=request.args.get("fait"),
+                                   jeton=jeton)
+
+
 _ADMIN_BORD_TPL = """<!doctype html><html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tableau de bord — Ta Trame</title>
